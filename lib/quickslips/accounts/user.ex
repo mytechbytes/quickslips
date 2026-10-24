@@ -3,12 +3,16 @@ defmodule QuickSlips.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
+    field :name, :string
+    field :avatar_url, :string
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :utc_datetime
     field :authenticated_at, :utc_datetime, virtual: true
 
+    # Google Fields
+    field :google_uid, :string
     timestamps(type: :utc_datetime)
   end
 
@@ -126,6 +130,34 @@ defmodule QuickSlips.Accounts.User do
   def confirm_changeset(user) do
     now = DateTime.utc_now(:second)
     change(user, confirmed_at: now)
+  end
+
+  @doc """
+  Attaches a verified Google identity to a user.
+
+  `info` is built by our own code from Google's response, never from form params,
+  so we use `change/2` rather than `cast/3`.
+  """
+  def google_changeset(user_or_changeset, %{google_uid: uid} = info) when is_binary(uid) do
+    changes =
+      info
+      |> Map.take([:google_uid, :name, :avatar_url])
+      |> Enum.reject(fn {_key, value} -> is_nil(value) end)
+
+    user_or_changeset
+    |> change(changes)
+    |> unique_constraint(:google_uid)
+  end
+
+  @doc """
+  A changeset for a brand new user who signed up with Google: email is already
+  verified by Google, so the account starts confirmed and has no password.
+  """
+  def google_registration_changeset(%{email: email} = info) do
+    %__MODULE__{}
+    |> email_changeset(%{email: email})
+    |> google_changeset(info)
+    |> confirm_changeset()
   end
 
   @doc """
