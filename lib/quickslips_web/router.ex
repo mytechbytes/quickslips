@@ -45,6 +45,13 @@ defmodule QuickSlipsWeb.Router do
     end
   end
 
+  scope "/auth", QuickSlipsWeb do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
+
   ## Authentication routes
 
   scope "/", QuickSlipsWeb do

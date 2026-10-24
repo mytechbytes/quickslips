@@ -90,6 +90,19 @@ defmodule QuickSlipsWeb.UserLive.Login do
             Log in only this time
           </.button>
         </.form>
+
+        <div class="relative py-2 text-center text-xs uppercase tracking-wide text-base-content/50">
+          <span class="relative z-10 bg-base-100 px-2">or</span>
+          <span class="absolute inset-x-0 top-1/2 -z-0 border-t border-base-300"></span>
+        </div>
+
+        <.link
+          id="google-login"
+          href={~p"/auth/google"}
+          class="flex w-full items-center justify-center gap-2 rounded-lg border border-base-300 px-4 py-2.5 text-sm font-medium transition hover:bg-base-200 focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          Continue with Google
+        </.link>
       </div>
     </Layouts.app>
     """
