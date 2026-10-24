@@ -304,6 +304,52 @@ defmodule QuickSlips.Accounts do
     :ok
   end
 
+  ## Google sign-in
+
+  @doc """
+  Finds, links or creates the user for a verified Google identity.
+
+  `info` is a map: `%{google_uid: _, email: _, name: _, avatar_url: _, email_verified?: _}`.
+  Returns `{:ok, user}` or `{:error, :email_not_verified | %Ecto.Changeset{}}`.
+  """
+  def get_or_register_google_user(%{email_verified?: true} = info) do
+    cond do
+      user = Repo.get_by(User, google_uid: info.google_uid) ->
+        {:ok, user}
+      user = get_user_by_email(info.email) ->
+        link_google_account(user, info)
+
+      true ->
+        info
+        |> User.google_registration_changeset()
+        |> Repo.insert()
+
+    end
+  end
+
+  def get_or_register_google_user(_info), do: {:error, :email_not_verified}
+
+  # The account was never confirmed, so any password on it was set by someone who
+  # did not prove they own the email. Google proved it; drop the password and
+  # every existing session/token before handing the account over.
+  defp link_google_account(%User{confirmed_at: nil} = user, info) do
+    user
+    |> User.google_changeset(info)
+    |> User.confirm_changeset()
+    |> Ecto.Changeset.change(hashed_password: nil)
+    |> update_user_and_delete_all_tokens()
+    |> case do
+      {:ok, {user, _expired_tokens}} -> {:ok, user}
+      {:error, _} = error -> error
+    end
+  end
+
+  defp link_google_account(%User{} = user, info) do
+    user
+    |> User.google_changeset(info)
+    |> Repo.update()
+  end
+
   ## Token helper
 
   defp update_user_and_delete_all_tokens(changeset) do
