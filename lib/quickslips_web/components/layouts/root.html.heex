@@ -38,27 +38,38 @@
     </script>
     {Application.get_env(:live_debugger, :live_debugger_tags)}
   </head>
-  <body>
-    <ul class="menu menu-horizontal w-full relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
-      <%= if @current_scope do %>
-        <li>
-          {@current_scope.user.email}
-        </li>
-        <li>
-          <.link href={~p"/users/settings"}>Settings</.link>
-        </li>
-        <li>
-          <.link href={~p"/users/log-out"} method="delete">Log out</.link>
-        </li>
-      <% else %>
-        <li>
-          <.link href={~p"/users/register"}>Register</.link>
-        </li>
-        <li>
-          <.link href={~p"/users/log-in"}>Log in</.link>
-        </li>
-      <% end %>
-    </ul>
+  <body class="min-h-screen bg-base-100 text-base-content">
+    <header class="border-b border-base-300">
+      <nav
+        id="main-nav"
+        aria-label="Main"
+        class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6"
+      >
+        <.link href={~p"/"} class="text-lg font-semibold tracking-tight">QuickSlips</.link>
+
+        <ul class="flex items-center gap-4 text-sm">
+          <%= if @current_scope && @current_scope.user do %>
+            <li><.link href={~p"/dashboard"} class="hover:underline">Dashboard</.link></li>
+            <li><.link href={~p"/users/settings"} class="hover:underline">Settings</.link></li>
+            <li>
+              <.link href={~p"/users/log-out"} method="delete" class="hover:underline">
+                Log out
+              </.link>
+            </li>
+          <% else %>
+            <li><.link href={~p"/users/log-in"} class="hover:underline">Log in</.link></li>
+            <li>
+              <.link
+                href={~p"/users/register"}
+                class="rounded-md bg-primary px-3 py-1.5 font-medium text-primary-content transition hover:opacity-90"
+              >
+                Sign up
+              </.link>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
     {@inner_content}
   </body>
 </html>

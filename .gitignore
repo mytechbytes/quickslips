@@ -41,3 +41,14 @@ npm-debug.log
 # Ignore .DS_Store files on macOS.
 .DS_Store
 .qs-transfer.tgz
+
+# Licensed Tailwind Plus snippets, for personal reference only. Never commit or push.
+# Layer 1: this file. Layer 2: tailwind-ui-block/.gitignore ignores everything inside.
+# Layer 3: .git/info/exclude (local). Layer 4: .git/hooks/pre-commit blocks `git add -f`.
+/tailwind-ui-block/
+/tailwind-ui-block*/
+# If a Tailwind Plus download is ever unzipped at the project root by mistake.
+/application-ui-v*/
+/ecommerce-v*/
+/marketing-v*/
+/design

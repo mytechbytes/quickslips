@@ -36,7 +36,7 @@ defmodule QuickSlips.AccountsFixtures do
   def user_fixture(attrs \\ %{}) do
     attrs
     |> unconfirmed_user_fixture()
-    |> Accounts.User.confirm_changeset()
+    |> QuickSlips.Accounts.User.confirm_changeset()
     |> QuickSlips.Repo.update!()
   end
 
