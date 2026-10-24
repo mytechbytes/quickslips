@@ -23,6 +23,11 @@ end
 config :quickslips, QuickSlipsWeb.Endpoint,
   http: [port: String.to_integer(System.get_env("PORT", "4000"))]
 
+# Social Logins
+config :ueberauth, Ueberauth.Strategy.Google.OAuth,
+  client_id: System.get_env("GOOGLE_CLIENT_ID"),
+  client_secret: System.get_env("GOOGLE_CLIENT_SECRET")
+
 if config_env() == :dev do
   # Reload browser tabs when matching files change.
   config :quickslips, QuickSlipsWeb.Endpoint,

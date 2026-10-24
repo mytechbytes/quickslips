@@ -41,6 +41,10 @@ config :phoenix_live_view,
   # the attribute set on all root tags. Used for Phoenix.LiveView.ColocatedCSS.
   root_tag_attribute: "phx-r"
 
+# Social Logins
+config :ueberauth, Ueberauth,
+  providers: [google: {Ueberauth.Strategy.Google, [default_scope: "email profile"]}]
+
 # Configure the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

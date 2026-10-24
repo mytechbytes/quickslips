@@ -52,3 +52,7 @@ npm-debug.log
 /ecommerce-v*/
 /marketing-v*/
 /design
+
+# local secrets
+.env
+.env.*
