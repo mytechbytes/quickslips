@@ -10,11 +10,15 @@ defmodule QuickSlips.AccountsFixtures do
   alias QuickSlips.Accounts.Scope
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
-  def valid_user_password, do: "hello world!"
+  # Must satisfy the rules in User.password_changeset/3: length, one lower case,
+  # one upper case and one digit or punctuation character.
+  def valid_user_password, do: "Hello world!"
 
   def valid_user_attributes(attrs \\ %{}) do
     Enum.into(attrs, %{
-      email: unique_user_email()
+      email: unique_user_email(),
+      password: valid_user_password(),
+      password_confirmation: valid_user_password()
     })
   end
 
@@ -27,18 +31,18 @@ defmodule QuickSlips.AccountsFixtures do
     user
   end
 
+  # Users registered with a password cannot be confirmed through a bare magic
+  # link (see Accounts.login_user_by_magic_link/1), so confirm them directly.
   def user_fixture(attrs \\ %{}) do
-    user = unconfirmed_user_fixture(attrs)
+    attrs
+    |> unconfirmed_user_fixture()
+    |> Accounts.User.confirm_changeset()
+    |> QuickSlips.Repo.update!()
+  end
 
-    token =
-      extract_user_token(fn url ->
-        Accounts.deliver_login_instructions(user, url)
-      end)
-
-    {:ok, {user, _expired_tokens}} =
-      Accounts.login_user_by_magic_link(token)
-
-    user
+  # An unconfirmed user with no password, the shape a social login would create.
+  def unconfirmed_passwordless_user_fixture do
+    QuickSlips.Repo.insert!(%Accounts.User{email: unique_user_email()})
   end
 
   def user_scope_fixture do

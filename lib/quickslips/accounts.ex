@@ -76,8 +76,15 @@ defmodule QuickSlips.Accounts do
   """
   def register_user(attrs) do
     %User{}
-    |> User.email_changeset(attrs)
+    |> User.registration_changeset(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+  Returns a changeset for the registration form (no hashing, no uniqueness query).
+  """
+  def change_user_registration(%User{} = user, attrs \\ %{}, opts \\ []) do
+    User.registration_changeset(user, attrs, opts)
   end
 
   ## Settings
@@ -222,15 +229,10 @@ defmodule QuickSlips.Accounts do
     {:ok, query} = UserToken.verify_magic_link_token_query(token)
 
     case Repo.one(query) do
-      # Prevent session fixation attacks by disallowing magic links for unconfirmed users with password
+      # Unconfirmed users who have a password must confirm with
+      # confirm_user_with_password/2 (see below), not with the link alone.
       {%User{confirmed_at: nil, hashed_password: hash}, _token} when not is_nil(hash) ->
-        raise """
-        magic link log in is not allowed for unconfirmed users with a password set!
-
-        This cannot happen with the default implementation, which indicates that you
-        might have adapted the code to a different use case. Please make sure to read the
-        "Mixing magic link and password registration" section of `mix help phx.gen.auth`.
-        """
+        {:error, :password_required}
 
       {%User{confirmed_at: nil} = user, _token} ->
         user
@@ -243,6 +245,27 @@ defmodule QuickSlips.Accounts do
 
       nil ->
         {:error, :not_found}
+    end
+  end
+
+  @doc """
+  Confirms an account that was registered with a password.
+
+  Holding the emailed token is not enough: the caller must also know the password
+  chosen at registration. This stops an attacker from pre-registering someone
+  else's email with a password only the attacker knows.
+
+  Returns `{:ok, {user, expired_tokens}}` or `{:error, :invalid}`.
+  """
+  def confirm_user_with_password(token, password) when is_binary(token) and is_binary(password) do
+    with {:ok, query} <- UserToken.verify_magic_link_token_query(token),
+         {%User{confirmed_at: nil} = user, _token} <- Repo.one(query),
+         true <- User.valid_password?(user, password) do
+      user
+      |> User.confirm_changeset()
+      |> update_user_and_delete_all_tokens()
+    else
+      _ -> {:error, :invalid}
     end
   end
 

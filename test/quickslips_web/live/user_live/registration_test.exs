@@ -33,6 +33,31 @@ defmodule QuickSlipsWeb.UserLive.RegistrationTest do
       assert result =~ "Register"
       assert result =~ "must have the @ sign and no spaces"
     end
+
+    test "renders password fields and live password errors", %{conn: conn} do
+      {:ok, lv, _html} = live(conn, ~p"/users/register")
+
+      assert has_element?(lv, "#registration_form input[name='user[password]'][type=password]")
+
+      assert has_element?(
+               lv,
+               "#registration_form input[name='user[password_confirmation]'][type=password]"
+             )
+
+      result =
+        lv
+        |> element("#registration_form")
+        |> render_change(
+          user: %{
+            "email" => "me@example.com",
+            "password" => "short",
+            "password_confirmation" => "different"
+          }
+        )
+
+      assert result =~ "should be at least 6 character(s)"
+      assert result =~ "does not match password"
+    end
   end
 
   describe "register user" do
@@ -47,7 +72,7 @@ defmodule QuickSlipsWeb.UserLive.RegistrationTest do
         |> follow_redirect(conn, ~p"/users/log-in")
 
       assert html =~
-               ~r/An email was sent to .*, please access it to confirm your account/
+               ~r/An email was sent to .*, please access it and use the password you just chose to confirm your account/
     end
 
     test "renders errors for duplicated email", %{conn: conn} do

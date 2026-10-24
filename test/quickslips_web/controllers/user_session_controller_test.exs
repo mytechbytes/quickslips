@@ -92,13 +92,55 @@ defmodule QuickSlipsWeb.UserSessionControllerTest do
       assert response =~ ~p"/users/log-out"
     end
 
-    test "confirms unconfirmed user", %{conn: conn, unconfirmed_user: user} do
+    test "does not confirm an unconfirmed user from the link alone", %{
+      conn: conn,
+      unconfirmed_user: user
+    } do
+      {token, _hashed_token} = generate_user_magic_link_token(user)
+
+      conn =
+        post(conn, ~p"/users/log-in", %{
+          "user" => %{"token" => token},
+          "_action" => "confirmed"
+        })
+
+      refute get_session(conn, :user_token)
+      assert redirected_to(conn) == ~p"/users/log-in"
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :error) ==
+               "The link is invalid or it has expired."
+
+      refute Accounts.get_user!(user.id).confirmed_at
+    end
+
+    test "does not confirm an unconfirmed user with the wrong password", %{
+      conn: conn,
+      unconfirmed_user: user
+    } do
+      {token, _hashed_token} = generate_user_magic_link_token(user)
+
+      conn =
+        post(conn, ~p"/users/log-in", %{
+          "user" => %{"token" => token, "password" => "Not the password1"},
+          "_action" => "confirmed"
+        })
+
+      refute get_session(conn, :user_token)
+      assert redirected_to(conn) == ~p"/users/log-in"
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :error) ==
+               "That link or password is not valid."
+
+      refute Accounts.get_user!(user.id).confirmed_at
+    end
+
+    test "confirms unconfirmed user with the password", %{conn: conn, unconfirmed_user: user} do
       {token, _hashed_token} = generate_user_magic_link_token(user)
       refute user.confirmed_at
 
       conn =
         post(conn, ~p"/users/log-in", %{
-          "user" => %{"token" => token},
+          "user" => %{"token" => token, "password" => valid_user_password()},
           "_action" => "confirmed"
         })
 

@@ -77,11 +77,17 @@ defmodule QuickSlips.AccountsTest do
       assert "has already been taken" in errors_on(changeset).email
     end
 
-    test "registers users without password" do
+    test "requires password to be set" do
+      {:error, changeset} = Accounts.register_user(%{email: unique_user_email()})
+
+      assert %{password: ["can't be blank"]} = errors_on(changeset)
+    end
+
+    test "registers users with a hashed password, unconfirmed" do
       email = unique_user_email()
       {:ok, user} = Accounts.register_user(valid_user_attributes(email: email))
       assert user.email == email
-      assert is_nil(user.hashed_password)
+      assert is_binary(user.hashed_password)
       assert is_nil(user.confirmed_at)
       assert is_nil(user.password)
     end
@@ -191,13 +197,13 @@ defmodule QuickSlips.AccountsTest do
         Accounts.change_user_password(
           %User{},
           %{
-            "password" => "new valid password"
+            "password" => "New valid password1"
           },
           hash_password: false
         )
 
       assert changeset.valid?
-      assert get_change(changeset, :password) == "new valid password"
+      assert get_change(changeset, :password) == "New valid password1"
       assert is_nil(get_change(changeset, :hashed_password))
     end
   end
@@ -214,10 +220,17 @@ defmodule QuickSlips.AccountsTest do
           password_confirmation: "another"
         })
 
-      assert %{
-               password: ["should be at least 12 character(s)"],
-               password_confirmation: ["does not match password"]
-             } = errors_on(changeset)
+      errors = errors_on(changeset)
+
+      assert "at least one upper case character" in errors.password
+      assert "at least one digit or punctuation character" in errors.password
+      assert errors.password_confirmation == ["does not match password"]
+    end
+
+    test "validates minimum length for password", %{user: user} do
+      {:error, changeset} = Accounts.update_user_password(user, %{password: "aB1!"})
+
+      assert "should be at least 6 character(s)" in errors_on(changeset).password
     end
 
     test "validates maximum values for password for security", %{user: user} do
@@ -232,12 +245,12 @@ defmodule QuickSlips.AccountsTest do
     test "updates the password", %{user: user} do
       {:ok, {user, expired_tokens}} =
         Accounts.update_user_password(user, %{
-          password: "new valid password"
+          password: "New valid password1"
         })
 
       assert expired_tokens == []
       assert is_nil(user.password)
-      assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
+      assert Accounts.get_user_by_email_and_password(user.email, "New valid password1")
     end
 
     test "deletes all tokens for the given user", %{user: user} do
@@ -245,7 +258,7 @@ defmodule QuickSlips.AccountsTest do
 
       {:ok, {_, _}} =
         Accounts.update_user_password(user, %{
-          password: "new valid password"
+          password: "New valid password1"
         })
 
       refute Repo.get_by(UserToken, user_id: user.id)
@@ -330,8 +343,8 @@ defmodule QuickSlips.AccountsTest do
   end
 
   describe "login_user_by_magic_link/1" do
-    test "confirms user and expires tokens" do
-      user = unconfirmed_user_fixture()
+    test "confirms an unconfirmed user without a password and expires tokens" do
+      user = unconfirmed_passwordless_user_fixture()
       refute user.confirmed_at
       {encoded_token, hashed_token} = generate_user_magic_link_token(user)
 
@@ -350,14 +363,13 @@ defmodule QuickSlips.AccountsTest do
       assert {:error, :not_found} = Accounts.login_user_by_magic_link(encoded_token)
     end
 
-    test "raises when unconfirmed user has password set" do
+    test "refuses an unconfirmed user who has a password" do
       user = unconfirmed_user_fixture()
-      {1, nil} = Repo.update_all(User, set: [hashed_password: "hashed"])
+      assert user.hashed_password
       {encoded_token, _hashed_token} = generate_user_magic_link_token(user)
 
-      assert_raise RuntimeError, ~r/magic link log in is not allowed/, fn ->
-        Accounts.login_user_by_magic_link(encoded_token)
-      end
+      assert {:error, :password_required} = Accounts.login_user_by_magic_link(encoded_token)
+      refute Accounts.get_user!(user.id).confirmed_at
     end
   end
 

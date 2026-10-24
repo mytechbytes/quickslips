@@ -33,6 +33,24 @@ defmodule QuickSlipsWeb.UserLive.Registration do
             phx-mounted={JS.focus()}
           />
 
+          <.input
+            field={@form[:password]}
+            type="password"
+            label="Password"
+            autocomplete="new-password"
+            spellcheck="false"
+            required
+          />
+
+          <.input
+            field={@form[:password_confirmation]}
+            type="password"
+            label="Confirm Password"
+            autocomplete="new-password"
+            spellcheck="false"
+            required
+          />
+
           <.button phx-disable-with="Creating account..." class="btn btn-primary w-full">
             Create an account
           </.button>
@@ -49,7 +67,12 @@ defmodule QuickSlipsWeb.UserLive.Registration do
   end
 
   def mount(_params, _session, socket) do
-    changeset = Accounts.change_user_email(%User{}, %{}, validate_unique: false)
+    # changeset = Accounts.change_user_email(%User{}, %{}, validate_unique: false)
+    changeset =
+      Accounts.change_user_registration(%User{}, %{},
+        validate_unique: false,
+        hash_password: false
+      )
 
     {:ok, assign_form(socket, changeset), temporary_assigns: [form: nil]}
   end
@@ -68,7 +91,7 @@ defmodule QuickSlipsWeb.UserLive.Registration do
          socket
          |> put_flash(
            :info,
-           "An email was sent to #{user.email}, please access it to confirm your account."
+           "An email was sent to #{user.email}, please access it and use the password you just chose to confirm your account."
          )
          |> push_navigate(to: ~p"/users/log-in")}
 
@@ -78,7 +101,13 @@ defmodule QuickSlipsWeb.UserLive.Registration do
   end
 
   def handle_event("validate", %{"user" => user_params}, socket) do
-    changeset = Accounts.change_user_email(%User{}, user_params, validate_unique: false)
+    # changeset = Accounts.change_user_email(%User{}, user_params, validate_unique: false)
+    changeset =
+      Accounts.change_user_registration(%User{}, user_params,
+        validate_unique: false,
+        hash_password: false
+      )
+
     {:noreply, assign_form(socket, Map.put(changeset, :action, :validate))}
   end
 

@@ -17,8 +17,22 @@ defmodule QuickSlipsWeb.UserLive.ConfirmationTest do
           Accounts.deliver_login_instructions(user, url)
         end)
 
-      {:ok, _lv, html} = live(conn, ~p"/users/log-in/#{token}")
+      {:ok, lv, html} = live(conn, ~p"/users/log-in/#{token}")
       assert html =~ "Confirm and stay logged in"
+      assert has_element?(lv, "#confirmation_form input[type=password]")
+    end
+
+    test "does not ask for a password when the unconfirmed user has none", %{conn: conn} do
+      user = unconfirmed_passwordless_user_fixture()
+
+      token =
+        extract_user_token(fn url ->
+          Accounts.deliver_login_instructions(user, url)
+        end)
+
+      {:ok, lv, html} = live(conn, ~p"/users/log-in/#{token}")
+      assert html =~ "Confirm and stay logged in"
+      refute has_element?(lv, "#confirmation_form input[type=password]")
     end
 
     test "renders login page for confirmed user", %{conn: conn, confirmed_user: user} do
@@ -53,7 +67,11 @@ defmodule QuickSlipsWeb.UserLive.ConfirmationTest do
 
       {:ok, lv, _html} = live(conn, ~p"/users/log-in/#{token}")
 
-      form = form(lv, "#confirmation_form", %{"user" => %{"token" => token}})
+      form =
+        form(lv, "#confirmation_form", %{
+          "user" => %{"token" => token, "password" => valid_user_password()}
+        })
+
       render_submit(form)
 
       conn = follow_trigger_action(form, conn)
@@ -74,6 +92,29 @@ defmodule QuickSlipsWeb.UserLive.ConfirmationTest do
         |> follow_redirect(conn, ~p"/users/log-in")
 
       assert html =~ "Magic link is invalid or it has expired"
+    end
+
+    test "does not confirm with the wrong password", %{conn: conn, unconfirmed_user: user} do
+      token =
+        extract_user_token(fn url ->
+          Accounts.deliver_login_instructions(user, url)
+        end)
+
+      {:ok, lv, _html} = live(conn, ~p"/users/log-in/#{token}")
+
+      form =
+        form(lv, "#confirmation_form", %{
+          "user" => %{"token" => token, "password" => "Not the password1"}
+        })
+
+      render_submit(form)
+
+      conn = follow_trigger_action(form, conn)
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :error) =~ "not valid"
+      assert redirected_to(conn) == ~p"/users/log-in"
+      refute get_session(conn, :user_token)
+      refute Accounts.get_user!(user.id).confirmed_at
     end
 
     test "logs confirmed user in without changing confirmed_at", %{

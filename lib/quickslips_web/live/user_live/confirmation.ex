@@ -22,6 +22,14 @@ defmodule QuickSlipsWeb.UserLive.Confirmation do
           phx-trigger-action={@trigger_submit}
         >
           <input type="hidden" name={@form[:token].name} value={@form[:token].value} />
+          <.input
+            :if={@user.hashed_password}
+            field={@form[:password]}
+            type="password"
+            label="Password you chose at sign-up"
+            autocomplete="current-password"
+            required
+          />
           <.button
             name={@form[:remember_me].name}
             value="true"

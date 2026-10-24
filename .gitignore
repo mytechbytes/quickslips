@@ -35,3 +35,9 @@ quickslips-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Temporary documented files for development, for example, from tests/docs.
+/docs/
+
+# Ignore .DS_Store files on macOS.
+.DS_Store
+.qs-transfer.tgz
