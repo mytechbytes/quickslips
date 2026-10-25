@@ -24,10 +24,9 @@ defmodule QuickSlipsWeb.AuthController do
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
     case Accounts.get_or_register_google_user(google_info(auth)) do
       {:ok, user} ->
-        IO.inspect(auth, label: "GOOGLE")
         conn
         |> put_flash(:info, "Welcome!")
-        |> UserAuth.log_in_user(user, %{"remember_me" => "trueß"})
+        |> UserAuth.log_in_user(user, %{"remember_me" => "true"})
 
       {:error, :email_not_verified} ->
         conn

@@ -1,0 +1,175 @@
+/* QuickSlips theme: the one file that controls the whole look.
+   Colours, fonts, radii, shadows and the spacing base live here and nowhere else.
+   When the design is approved this file moves unchanged to assets/css/theme.css.
+
+   1. Raw values per theme (CSS variables). The only place a colour is written (oklch).
+   2. @theme inline: maps the variables to Tailwind utilities (bg-primary, text-ink ...).
+      `inline` makes the utilities read the variable at runtime, so they follow the theme.
+   3. @theme: settings that do not change per theme (fonts, radii, shadows, spacing base).
+   4. The `dark` custom variant, for the rare component that needs a theme-specific tweak.
+
+   The theme is picked by data-theme="light" | "dark" on <html>.
+   A new theme is one more [data-theme="name"] block with the same variable names. */
+
+/* 1. Raw values ------------------------------------------------------------ */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --page: oklch(97.6% 0.009 88);
+  --surface: oklch(99.4% 0.004 88);
+  --surface-muted: oklch(95.2% 0.011 88);
+  --sidebar: oklch(25% 0.05 168);
+  --on-sidebar: oklch(94% 0.02 165);
+  --overlay: oklch(20% 0.035 168 / 0.55);
+
+  /* Text */
+  --ink: oklch(22% 0.012 160);
+  --ink-muted: oklch(42% 0.015 160);
+  --ink-faint: oklch(52% 0.013 160);
+
+  /* Lines */
+  --line: oklch(91% 0.012 88);
+  --line-strong: oklch(63% 0.013 88);
+  --focus: oklch(52% 0.125 245);
+
+  /* Brand */
+  --primary: oklch(52% 0.096 170);
+  --primary-hover: oklch(45% 0.085 170);
+  --primary-soft: oklch(96% 0.03 170);
+  --on-primary: oklch(99% 0.008 171);
+  --accent: oklch(70% 0.165 52);
+  --accent-soft: oklch(95.5% 0.03 70);
+  --on-accent: oklch(24% 0.05 45);
+
+  /* Status */
+  --success: oklch(50% 0.12 150);
+  --success-soft: oklch(95% 0.04 150);
+  --warning: oklch(49% 0.1 70);
+  --warning-soft: oklch(96% 0.05 90);
+  --danger: oklch(52% 0.19 27);
+  --danger-soft: oklch(95.5% 0.02 25);
+  --info: oklch(52% 0.13 245);
+  --info-soft: oklch(95% 0.024 245);
+
+  /* Document */
+  --paper: oklch(100% 0 0);
+  --paper-ink: oklch(22% 0.01 90);
+  --tray: oklch(92.5% 0.012 88);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --page: oklch(17% 0.009 165);
+  --surface: oklch(21% 0.011 165);
+  --surface-muted: oklch(25% 0.013 165);
+  --sidebar: oklch(21.5% 0.045 170);
+  --on-sidebar: oklch(93% 0.02 165);
+  --overlay: oklch(8% 0.01 165 / 0.7);
+
+  /* Text */
+  --ink: oklch(95% 0.008 90);
+  --ink-muted: oklch(76% 0.012 100);
+  --ink-faint: oklch(65% 0.012 100);
+
+  /* Lines */
+  --line: oklch(31% 0.014 165);
+  --line-strong: oklch(53% 0.014 165);
+  --focus: oklch(77% 0.12 235);
+
+  /* Brand */
+  --primary: oklch(74% 0.125 171);
+  --primary-hover: oklch(80% 0.12 171);
+  --primary-soft: oklch(30% 0.05 171);
+  --on-primary: oklch(21% 0.04 171);
+  --accent: oklch(74% 0.15 55);
+  --accent-soft: oklch(30% 0.06 55);
+  --on-accent: oklch(22% 0.05 50);
+
+  /* Status */
+  --success: oklch(75% 0.14 150);
+  --success-soft: oklch(28% 0.05 150);
+  --warning: oklch(80% 0.13 80);
+  --warning-soft: oklch(30% 0.05 80);
+  --danger: oklch(72% 0.17 25);
+  --danger-soft: oklch(28% 0.07 25);
+  --info: oklch(75% 0.11 240);
+  --info-soft: oklch(28% 0.05 240);
+
+  /* Document */
+  --paper: oklch(100% 0 0);
+  --paper-ink: oklch(22% 0.01 90);
+  --tray: oklch(12.5% 0.008 165);
+}
+
+/* 2. Map the variables to Tailwind utilities ---------------------------- */
+@theme inline {
+  /* Surfaces */
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-sidebar: var(--sidebar);
+  --color-on-sidebar: var(--on-sidebar);
+  --color-overlay: var(--overlay);
+
+  /* Text */
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+
+  /* Lines */
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-focus: var(--focus);
+
+  /* Brand */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+
+  /* Status */
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  /* Document */
+  --color-paper: var(--paper);
+  --color-paper-ink: var(--paper-ink);
+  --color-tray: var(--tray);
+}
+
+/* 3. Settings that do not change per theme ------------------------------ */
+@theme {
+  /* Fonts: system stack. To use a web font later, change --font-sans (self-hosted file, no external link). */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Radii */
+  --radius-card: 1rem;
+  --radius-field: 0.625rem;
+  --radius-button: 0.625rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px 0 oklch(25% 0.03 168 / 0.06), 0 1px 3px 0 oklch(25% 0.03 168 / 0.05);
+  --shadow-pop: 0 2px 6px 0 oklch(25% 0.03 168 / 0.08), 0 14px 34px -8px oklch(25% 0.03 168 / 0.24);
+  --shadow-paper: 0 1px 1px 0 oklch(20% 0.02 88 / 0.1), 0 8px 24px -6px oklch(20% 0.02 88 / 0.2), 0 28px 56px -14px oklch(20% 0.02 88 / 0.16);
+
+  /* Spacing base: every spacing and sizing utility is a multiple of this */
+  --spacing: 0.25rem;
+}
+
+/* 4. Theme-specific tweaks (use rarely: the tokens already follow the theme) */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
