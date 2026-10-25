@@ -5,66 +5,80 @@ defmodule QuickSlipsWeb.UserLive.Settings do
 
   alias QuickSlips.Accounts
 
-  @impl true
+    @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope}>
-      <div class="text-center">
-        <.header>
-          Account Settings
-          <:subtitle>Manage your account email address and password settings</:subtitle>
-        </.header>
+    <Layouts.app
+      flash={@flash}
+      current_scope={@current_scope}
+      active={:settings}
+      title="Settings"
+      subtitle="Manage your account email address and password settings"
+    >
+      <div class="space-y-8">
+        <.form_section id="email" title="Email address" text="Where we send your log-in links.">
+          <.form
+            for={@email_form}
+            id="email_form"
+            phx-submit="update_email"
+            phx-change="validate_email"
+            class="max-w-md"
+          >
+            <.input
+              field={@email_form[:email]}
+              type="email"
+              label="Email"
+              autocomplete="username"
+              spellcheck="false"
+              required
+              help="We send a confirmation link to the new address. Your email changes after you open it."
+            />
+            <div class="mt-4">
+              <.button phx-disable-with="Changing...">Change Email</.button>
+            </div>
+          </.form>
+        </.form_section>
+
+        <.form_section id="password" title="Password" text="Choose a new password for this account.">
+          <.form
+            for={@password_form}
+            id="password_form"
+            action={~p"/users/update-password"}
+            method="post"
+            phx-change="validate_password"
+            phx-submit="update_password"
+            phx-trigger-action={@trigger_submit}
+            class="max-w-md"
+          >
+            <input
+              name={@password_form[:email].name}
+              type="hidden"
+              id="hidden_user_email"
+              spellcheck="false"
+              value={@current_email}
+            />
+            <.input
+              field={@password_form[:password]}
+              type="password"
+              label="New password"
+              autocomplete="new-password"
+              spellcheck="false"
+              required
+              help="6 to 72 characters, with a lower-case letter, an upper-case letter and a number or symbol."
+            />
+            <.input
+              field={@password_form[:password_confirmation]}
+              type="password"
+              label="Confirm new password"
+              autocomplete="new-password"
+              spellcheck="false"
+            />
+            <div class="mt-4">
+              <.button phx-disable-with="Saving...">Save Password</.button>
+            </div>
+          </.form>
+        </.form_section>
       </div>
-
-      <.form for={@email_form} id="email_form" phx-submit="update_email" phx-change="validate_email">
-        <.input
-          field={@email_form[:email]}
-          type="email"
-          label="Email"
-          autocomplete="username"
-          spellcheck="false"
-          required
-        />
-        <.button variant="primary" phx-disable-with="Changing...">Change Email</.button>
-      </.form>
-
-      <div class="divider" />
-
-      <.form
-        for={@password_form}
-        id="password_form"
-        action={~p"/users/update-password"}
-        method="post"
-        phx-change="validate_password"
-        phx-submit="update_password"
-        phx-trigger-action={@trigger_submit}
-      >
-        <input
-          name={@password_form[:email].name}
-          type="hidden"
-          id="hidden_user_email"
-          spellcheck="false"
-          value={@current_email}
-        />
-        <.input
-          field={@password_form[:password]}
-          type="password"
-          label="New password"
-          autocomplete="new-password"
-          spellcheck="false"
-          required
-        />
-        <.input
-          field={@password_form[:password_confirmation]}
-          type="password"
-          label="Confirm new password"
-          autocomplete="new-password"
-          spellcheck="false"
-        />
-        <.button variant="primary" phx-disable-with="Saving...">
-          Save Password
-        </.button>
-      </.form>
     </Layouts.app>
     """
   end
@@ -94,6 +108,7 @@ defmodule QuickSlipsWeb.UserLive.Settings do
       |> assign(:email_form, to_form(email_changeset))
       |> assign(:password_form, to_form(password_changeset))
       |> assign(:trigger_submit, false)
+      |> assign(:page_title, "Settings")
 
     {:ok, socket}
   end
