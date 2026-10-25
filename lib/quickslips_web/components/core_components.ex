@@ -2,22 +2,15 @@ defmodule QuickSlipsWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
-  At first glance, this module may seem daunting, but its goal is to provide
-  core building blocks for your application, such as tables, forms, and
-  inputs. The components consist mostly of markup and are well-documented
-  with doc strings and declarative assigns. You may customize and style
-  them in any way you want, based on your application growth and needs.
+  Every component here returns a fixed set of design-token classes (`bg-surface`,
+  `text-ink`, `border-line`, `rounded-field`, `shadow-card` ...). The tokens live in
+  `assets/css/theme.css`, the single file that controls the whole look, and switch
+  by themselves between the light and the dark theme. Never write a palette colour
+  class, a hex value or a `dark:` pair in a component.
 
-  The foundation for styling is Tailwind CSS, a utility-first CSS framework,
-  augmented with daisyUI, a Tailwind CSS plugin that provides UI components
-  and themes. Here are useful references:
-
-    * [daisyUI](https://daisyui.com/docs/intro/) - a good place to get
-      started and see the available components.
-
-    * [Tailwind CSS](https://tailwindcss.com) - the foundational framework
-      we build on. You will use it for layout, sizing, flexbox, grid, and
-      spacing.
+  The markup comes from the design in `design/components/`. Each function here is the
+  Phoenix version of one snippet there, so a change to the design is a change to one
+  function.
 
     * [Heroicons](https://heroicons.com) - see `icon/1` for usage.
 
@@ -32,7 +25,7 @@ defmodule QuickSlipsWeb.CoreComponents do
   alias Phoenix.LiveView.JS
 
   @doc """
-  Renders flash notices.
+  Renders flash notices as toasts.
 
   ## Examples
 
@@ -62,24 +55,32 @@ defmodule QuickSlipsWeb.CoreComponents do
       :if={msg = render_slot(@inner_block) || Phoenix.Flash.get(@flash, @kind)}
       id={@id}
       phx-click={JS.push("lv:clear-flash", value: %{key: @kind}) |> hide("##{@id}")}
-      role="alert"
-      class="toast toast-top toast-end z-50"
+      role={if @kind == :error, do: "alert", else: "status"}
+      class="pointer-events-auto w-full max-w-sm rounded-card bg-surface shadow-pop outline-1 outline-line"
       {@rest}
     >
-      <div class={[
-        "alert w-80 sm:w-96 max-w-80 sm:max-w-96 text-wrap",
-        @kind == :info && "alert-info",
-        @kind == :error && "alert-error"
-      ]}>
-        <.icon :if={@kind == :info} name="hero-information-circle" class="size-5 shrink-0" />
-        <.icon :if={@kind == :error} name="hero-exclamation-circle" class="size-5 shrink-0" />
-        <div>
-          <p :if={@title} class="font-semibold">{@title}</p>
-          <p>{msg}</p>
+      <div class="flex items-start p-4">
+        <.icon
+          :if={@kind == :info}
+          name="hero-information-circle"
+          class="size-6 shrink-0 text-info"
+        />
+        <.icon :if={@kind == :error} name="hero-x-circle" class="size-6 shrink-0 text-danger" />
+        <div class="ml-3 w-0 flex-1 pt-0.5">
+          <p :if={@title} class="text-sm/5 font-medium text-ink">{@title}</p>
+          <p class={["text-sm/5", (@title && "mt-1 text-ink-muted") || "font-medium text-ink"]}>
+            {msg}
+          </p>
         </div>
-        <div class="flex-1" />
-        <button type="button" class="group self-start cursor-pointer" aria-label={gettext("close")}>
-          <.icon name="hero-x-mark" class="size-5 opacity-40 group-hover:opacity-70" />
+        <button
+          type="button"
+          class={[
+            "-m-1.5 ml-4 inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-field text-ink-faint hover:bg-surface-muted hover:text-ink-muted",
+            focus_ring()
+          ]}
+          aria-label={gettext("close")}
+        >
+          <.icon name="hero-x-mark" class="size-5" />
         </button>
       </div>
     </div>
@@ -92,36 +93,88 @@ defmodule QuickSlipsWeb.CoreComponents do
   ## Examples
 
       <.button>Send!</.button>
-      <.button phx-click="go" variant="primary">Send!</.button>
-      <.button navigate={~p"/"}>Home</.button>
+      <.button phx-click="go" variant="secondary">Send!</.button>
+      <.button navigate={~p"/"} size="lg" block>Home</.button>
+      <.button loading>Making the PDF</.button>
   """
-  attr :rest, :global, include: ~w(href navigate patch method download name value disabled)
-  attr :class, :any
-  attr :variant, :string, values: ~w(primary)
+  attr :rest, :global,
+    include: ~w(href navigate patch method download name value disabled type form)
+
+  attr :class, :any, default: nil, doc: "extra classes, added to the variant and size classes"
+
+  attr :variant, :string,
+    values: ~w(primary secondary ghost ghost-danger danger),
+    default: "primary"
+
+  attr :size, :string, values: ~w(sm md lg), default: "md"
+  attr :block, :boolean, default: false, doc: "fill the width of the container"
+  attr :loading, :boolean, default: false, doc: "show a spinner and disable the button"
+  attr :on_dark, :boolean, default: false, doc: "use the focus ring made for the dark sidebar"
   slot :inner_block, required: true
 
-  def button(%{rest: rest} = assigns) do
-    variants = %{"primary" => "btn-primary", nil => "btn-primary btn-soft"}
-
+  def button(assigns) do
     assigns =
-      assign_new(assigns, :class, fn ->
-        ["btn", Map.fetch!(variants, assigns[:variant])]
+      assigns
+      |> assign(:classes, button_classes(assigns))
+      |> then(fn assigns ->
+        if assigns.loading do
+          assign(assigns, :rest, Map.put(assigns.rest, :disabled, true))
+        else
+          assigns
+        end
       end)
 
-    if rest[:href] || rest[:navigate] || rest[:patch] do
+    if assigns.rest[:href] || assigns.rest[:navigate] || assigns.rest[:patch] do
       ~H"""
-      <.link class={@class} {@rest}>
+      <.link class={@classes} {@rest}>
+        <.icon :if={@loading} name="hero-arrow-path" class="size-5 shrink-0 motion-safe:animate-spin" />
         {render_slot(@inner_block)}
       </.link>
       """
     else
       ~H"""
-      <button class={@class} {@rest}>
+      <button class={@classes} aria-busy={@loading && "true"} {@rest}>
+        <.icon :if={@loading} name="hero-arrow-path" class="size-5 shrink-0 motion-safe:animate-spin" />
         {render_slot(@inner_block)}
       </button>
       """
     end
   end
+
+  # The ring that shows where the keyboard focus is. Shared by buttons, links and checkboxes.
+  defp focus_ring,
+    do: "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+
+  defp button_classes(assigns) do
+    [
+      "inline-flex items-center justify-center gap-2 rounded-button font-semibold whitespace-nowrap",
+      "motion-safe:transition motion-safe:duration-150 motion-safe:active:translate-y-px",
+      "disabled:pointer-events-none disabled:opacity-50",
+      if(assigns.on_dark,
+        do:
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar",
+        else: focus_ring()
+      ),
+      button_variant(assigns.variant),
+      button_size(assigns.size),
+      assigns.block && "w-full",
+      assigns.class
+    ]
+  end
+
+  defp button_variant("primary"),
+    do: "bg-primary text-on-primary shadow-card hover:bg-primary-hover"
+
+  defp button_variant("secondary"),
+    do: "border border-line-strong bg-surface text-ink shadow-card hover:bg-surface-muted"
+
+  defp button_variant("ghost"), do: "text-ink-muted hover:bg-surface-muted hover:text-ink"
+  defp button_variant("ghost-danger"), do: "text-danger hover:bg-danger-soft"
+  defp button_variant("danger"), do: "bg-danger text-on-primary shadow-card hover:bg-danger/90"
+
+  defp button_size("sm"), do: "min-h-9 px-3 text-sm pointer-coarse:min-h-11"
+  defp button_size("md"), do: "min-h-11 px-4 text-sm"
+  defp button_size("lg"), do: "min-h-12 px-5 text-base"
 
   @doc """
   Renders an input with label and error messages.
@@ -149,6 +202,7 @@ defmodule QuickSlipsWeb.CoreComponents do
   ```heex
   <.input field={@form[:email]} type="email" />
   <.input name="my-input" errors={["oh no!"]} />
+  <.input field={@form[:gstin]} label="GSTIN" help="15 characters, like 29ABCDE1234F1Z5" />
   ```
 
   ## Select type
@@ -166,6 +220,7 @@ defmodule QuickSlipsWeb.CoreComponents do
   attr :id, :any, default: nil
   attr :name, :any
   attr :label, :string, default: nil
+  attr :help, :string, default: nil, doc: "a hint under the field; hidden while there is an error"
   attr :value, :any
 
   attr :type, :string,
@@ -212,69 +267,105 @@ defmodule QuickSlipsWeb.CoreComponents do
       end)
 
     ~H"""
-    <div class="fieldset mb-2">
-      <label for={@id}>
-        <input
-          type="hidden"
-          name={@name}
-          value="false"
-          disabled={@rest[:disabled]}
-          form={@rest[:form]}
-        />
-        <span class="label">
-          <input
-            type="checkbox"
-            id={@id}
-            name={@name}
-            value="true"
-            checked={@checked}
-            class={@class || "checkbox checkbox-sm"}
-            {@rest}
-          />{@label}
-        </span>
-      </label>
-      <.error :for={msg <- @errors}>{msg}</.error>
+    <div class="mb-2">
+      <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} form={@rest[:form]} />
+      <div class="flex gap-3">
+        <div class="flex h-6 shrink-0 items-center">
+          <div class="group grid size-6 grid-cols-1">
+            <input
+              type="checkbox"
+              id={@id}
+              name={@name}
+              value="true"
+              checked={@checked}
+              aria-invalid={@errors != [] && "true"}
+              class={
+                @class ||
+                  [
+                    "col-start-1 row-start-1 appearance-none rounded-[calc(var(--radius-field)/2.5)] border border-line-strong bg-surface",
+                    "checked:border-primary checked:bg-primary disabled:border-line disabled:bg-surface-muted forced-colors:appearance-auto",
+                    focus_ring()
+                  ]
+              }
+              {@rest}
+            />
+            <svg
+              viewBox="0 0 14 14"
+              fill="none"
+              class="pointer-events-none col-start-1 row-start-1 size-4 self-center justify-self-center stroke-on-primary group-has-disabled:stroke-ink-faint"
+            >
+              <path
+                d="M3 8L6 11L11 3.5"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="opacity-0 group-has-checked:opacity-100"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="text-sm/6">
+          <label for={@id} class="font-medium text-ink">{@label}</label>
+        </div>
+      </div>
+      <.error :for={msg <- @errors} id={"#{@id}-error"}>{msg}</.error>
     </div>
     """
   end
 
   def input(%{type: "select"} = assigns) do
     ~H"""
-    <div class="fieldset mb-2">
+    <div class="mb-2">
       <label for={@id}>
-        <span :if={@label} class="label mb-1">{@label}</span>
-        <select
-          id={@id}
-          name={@name}
-          class={[@class || "w-full select", @errors != [] && (@error_class || "select-error")]}
-          multiple={@multiple}
-          {@rest}
-        >
-          <option :if={@prompt} value="">{@prompt}</option>
-          {Phoenix.HTML.Form.options_for_select(@options, @value)}
-        </select>
+        <span :if={@label} class={label_class()}>{@label}</span>
+        <span class="grid grid-cols-1">
+          <select
+            id={@id}
+            name={@name}
+            class={[
+              @class || control_class(),
+              @errors == [] && "border-line-strong focus:border-focus focus:outline-focus",
+              @errors != [] && (@error_class || error_class()),
+              "col-start-1 row-start-1 appearance-none pr-9"
+            ]}
+            aria-invalid={@errors != [] && "true"}
+            aria-describedby={describedby(assigns)}
+            multiple={@multiple}
+            {@rest}
+          >
+            <option :if={@prompt} value="">{@prompt}</option>
+            {Phoenix.HTML.Form.options_for_select(@options, @value)}
+          </select>
+          <.icon
+            name="hero-chevron-down"
+            class="pointer-events-none col-start-1 row-start-1 mr-3 size-4 self-center justify-self-end text-ink-muted"
+          />
+        </span>
       </label>
-      <.error :for={msg <- @errors}>{msg}</.error>
+      <.field_notes id={@id} help={@help} errors={@errors} />
     </div>
     """
   end
 
   def input(%{type: "textarea"} = assigns) do
     ~H"""
-    <div class="fieldset mb-2">
+    <div class="mb-2">
       <label for={@id}>
-        <span :if={@label} class="label mb-1">{@label}</span>
+        <span :if={@label} class={label_class()}>{@label}</span>
         <textarea
           id={@id}
           name={@name}
           class={[
-            @class || "w-full textarea",
-            @errors != [] && (@error_class || "textarea-error")
+            @class || control_class(),
+            @errors == [] && "border-line-strong focus:border-focus focus:outline-focus",
+            @errors != [] && (@error_class || error_class())
           ]}
+          aria-invalid={@errors != [] && "true"}
+          aria-describedby={describedby(assigns)}
           {@rest}
         >{Phoenix.HTML.Form.normalize_value("textarea", @value)}</textarea>
       </label>
-      <.error :for={msg <- @errors}>{msg}</.error>
+      <.field_notes id={@id} help={@help} errors={@errors} />
     </div>
     """
   end
@@ -282,31 +373,66 @@ defmodule QuickSlipsWeb.CoreComponents do
   # All other inputs text, datetime-local, url, password, etc. are handled here...
   def input(assigns) do
     ~H"""
-    <div class="fieldset mb-2">
+    <div class="mb-2">
       <label for={@id}>
-        <span :if={@label} class="label mb-1">{@label}</span>
+        <span :if={@label} class={label_class()}>{@label}</span>
         <input
           type={@type}
           name={@name}
           id={@id}
           value={Phoenix.HTML.Form.normalize_value(@type, @value)}
           class={[
-            @class || "w-full input",
-            @errors != [] && (@error_class || "input-error")
+            @class || control_class(),
+            @errors == [] && "border-line-strong focus:border-focus focus:outline-focus",
+            @errors != [] && (@error_class || error_class())
           ]}
+          aria-invalid={@errors != [] && "true"}
+          aria-describedby={describedby(assigns)}
           {@rest}
         />
       </label>
-      <.error :for={msg <- @errors}>{msg}</.error>
+      <.field_notes id={@id} help={@help} errors={@errors} />
     </div>
     """
   end
 
+  defp label_class, do: "mb-1 block text-sm/6 font-medium text-ink"
+
+  defp control_class do
+    "block w-full rounded-field border bg-surface px-3 py-2.5 text-base text-ink placeholder:text-ink-faint " <>
+      "focus:outline-2 focus:-outline-offset-1 disabled:bg-surface-muted disabled:text-ink-faint sm:text-sm/6"
+  end
+
+  defp error_class, do: "border-danger focus:outline-danger"
+
+  # The ids of the help text and the error, so a screen reader reads them with the field.
+  defp describedby(%{help: help, errors: errors, id: id}) do
+    ids = [help && errors == [] && "#{id}-help", errors != [] && "#{id}-error"]
+    ids |> Enum.filter(& &1) |> Enum.join(" ") |> then(&if(&1 == "", do: nil, else: &1))
+  end
+
+  # The help text shows until there is an error; then the error replaces it.
+  attr :id, :string, required: true
+  attr :help, :string, default: nil
+  attr :errors, :list, default: []
+
+  defp field_notes(assigns) do
+    ~H"""
+    <p :if={@help && @errors == []} id={"#{@id}-help"} class="mt-1.5 text-sm text-ink-muted">
+      {@help}
+    </p>
+    <.error :for={msg <- @errors} id={"#{@id}-error"}>{msg}</.error>
+    """
+  end
+
   # Helper used by inputs to generate form errors
+  attr :id, :string, default: nil
+  slot :inner_block, required: true
+
   defp error(assigns) do
     ~H"""
-    <p class="mt-1.5 flex gap-2 items-center text-sm text-error">
-      <.icon name="hero-exclamation-circle" class="size-5" />
+    <p id={@id} class="mt-1.5 flex gap-2 items-center text-sm text-danger">
+      <.icon name="hero-exclamation-circle" class="size-5 shrink-0" />
       {render_slot(@inner_block)}
     </p>
     """
@@ -323,10 +449,10 @@ defmodule QuickSlipsWeb.CoreComponents do
     ~H"""
     <header class={[@actions != [] && "flex items-center justify-between gap-6", "pb-4"]}>
       <div>
-        <h1 class="text-lg font-semibold leading-8">
+        <h1 class="font-display text-2xl/8 font-semibold tracking-tight text-ink">
           {render_slot(@inner_block)}
         </h1>
-        <p :if={@subtitle != []} class="text-sm text-base-content/70">
+        <p :if={@subtitle != []} class="mt-1 text-sm/6 text-ink-muted">
           {render_slot(@subtitle)}
         </p>
       </div>
@@ -367,34 +493,55 @@ defmodule QuickSlipsWeb.CoreComponents do
       end
 
     ~H"""
-    <table class="table table-zebra">
-      <thead>
-        <tr>
-          <th :for={col <- @col}>{col[:label]}</th>
-          <th :if={@action != []}>
-            <span class="sr-only">{gettext("Actions")}</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody id={@id} phx-update={is_struct(@rows, Phoenix.LiveView.LiveStream) && "stream"}>
-        <tr :for={row <- @rows} id={@row_id && @row_id.(row)}>
-          <td
-            :for={col <- @col}
-            phx-click={@row_click && @row_click.(row)}
-            class={@row_click && "hover:cursor-pointer"}
-          >
-            {render_slot(col, @row_item.(row))}
-          </td>
-          <td :if={@action != []} class="w-0 font-semibold">
-            <div class="flex gap-4">
-              <%= for action <- @action do %>
-                {render_slot(action, @row_item.(row))}
-              <% end %>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="overflow-hidden rounded-card border border-line bg-surface shadow-card">
+      <table class="min-w-full divide-y divide-line">
+        <thead class="bg-surface-muted">
+          <tr>
+            <th
+              :for={{col, i} <- Enum.with_index(@col)}
+              scope="col"
+              class={[
+                "text-left text-sm/6 font-semibold text-ink-muted",
+                i == 0 && "py-3 pr-3 pl-4 sm:pl-6",
+                i > 0 && "px-3 py-3"
+              ]}
+            >
+              {col[:label]}
+            </th>
+            <th :if={@action != []} scope="col" class="py-3 pr-4 pl-3 sm:pr-6">
+              <span class="sr-only">{gettext("Actions")}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          id={@id}
+          phx-update={is_struct(@rows, Phoenix.LiveView.LiveStream) && "stream"}
+          class="divide-y divide-line"
+        >
+          <tr :for={row <- @rows} id={@row_id && @row_id.(row)} class="hover:bg-surface-muted">
+            <td
+              :for={{col, i} <- Enum.with_index(@col)}
+              phx-click={@row_click && @row_click.(row)}
+              class={[
+                "text-sm/6 text-ink",
+                i == 0 && "py-3 pr-3 pl-4 sm:pl-6",
+                i > 0 && "px-3 py-3",
+                @row_click && "hover:cursor-pointer"
+              ]}
+            >
+              {render_slot(col, @row_item.(row))}
+            </td>
+            <td :if={@action != []} class="py-1 pr-2 pl-3 whitespace-nowrap sm:pr-4">
+              <div class="flex justify-end gap-x-1 font-semibold">
+                <%= for action <- @action do %>
+                  {render_slot(action, @row_item.(row))}
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     """
   end
 
@@ -414,14 +561,12 @@ defmodule QuickSlipsWeb.CoreComponents do
 
   def list(assigns) do
     ~H"""
-    <ul class="list">
-      <li :for={item <- @item} class="list-row">
-        <div class="list-col-grow">
-          <div class="font-bold">{item.title}</div>
-          <div>{render_slot(item)}</div>
-        </div>
-      </li>
-    </ul>
+    <dl class="divide-y divide-line rounded-card border border-line bg-surface px-4 shadow-card">
+      <div :for={item <- @item} class="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+        <dt class="text-sm/6 font-medium text-ink-muted">{item.title}</dt>
+        <dd class="mt-1 text-sm/6 text-ink sm:col-span-2 sm:mt-0">{render_slot(item)}</dd>
+      </div>
+    </dl>
     """
   end
 
@@ -432,7 +577,7 @@ defmodule QuickSlipsWeb.CoreComponents do
   By default, the outline style is used, but solid and mini may
   be applied by using the `-solid` and `-mini` suffix.
 
-  You can customize the size and colors of the icons by setting
+  You can customize the size and colors of the icon by setting
   width, height, and background color classes.
 
   Icons are extracted from the `deps/heroicons` directory and bundled within
@@ -448,7 +593,7 @@ defmodule QuickSlipsWeb.CoreComponents do
 
   def icon(%{name: "hero-" <> _} = assigns) do
     ~H"""
-    <span class={[@name, @class]} />
+    <span class={[@name, @class]} aria-hidden="true" />
     """
   end
 

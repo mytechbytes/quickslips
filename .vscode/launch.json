@@ -12,7 +12,7 @@
             "projectDir": "${workspaceRoot}",
             "debugAutoInterpretAllModules": false,
             "debugInterpretModulesPatterns": [
-                "Quickslips*"
+                "QuickSlips*"
             ],
             "exitAfterTaskReturns": false
         },

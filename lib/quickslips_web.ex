@@ -86,6 +86,7 @@ defmodule QuickSlipsWeb do
       import Phoenix.HTML
       # Core UI components
       import QuickSlipsWeb.CoreComponents
+      import QuickSlipsWeb.UI
 
       # Common modules used in templates
       alias Phoenix.LiveView.JS

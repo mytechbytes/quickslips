@@ -4,29 +4,19 @@ defmodule QuickSlipsWeb.UserLive.Registration do
   alias QuickSlips.Accounts
   alias QuickSlips.Accounts.User
 
-  @impl true
+    @impl true
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash} current_scope={@current_scope}>
-      <div class="mx-auto max-w-sm">
-        <div class="text-center">
-          <.header>
-            Register for an account
-            <:subtitle>
-              Already registered?
-              <.link navigate={~p"/users/log-in"} class="font-semibold text-brand hover:underline">
-                Log in
-              </.link>
-              to your account now.
-            </:subtitle>
-          </.header>
-        </div>
-
+      <.auth_card
+        title="Create your account"
+        subtitle="Free to start. You will confirm your email next."
+      >
         <.form for={@form} id="registration_form" phx-submit="save" phx-change="validate">
           <.input
             field={@form[:email]}
             type="email"
-            label="Email"
+            label="Email address"
             autocomplete="username"
             spellcheck="false"
             required
@@ -40,35 +30,38 @@ defmodule QuickSlipsWeb.UserLive.Registration do
             autocomplete="new-password"
             spellcheck="false"
             required
+            help="6 to 72 characters, with a lower-case letter, an upper-case letter and a number or symbol."
           />
 
           <.input
             field={@form[:password_confirmation]}
             type="password"
-            label="Confirm Password"
+            label="Confirm password"
             autocomplete="new-password"
             spellcheck="false"
             required
           />
 
-          <.button phx-disable-with="Creating account..." class="btn btn-primary w-full">
-            Create an account
-          </.button>
+          <div class="pt-2">
+            <.button phx-disable-with="Creating account..." block>Sign up</.button>
+          </div>
         </.form>
 
-        <div class="relative py-2 text-center text-xs uppercase tracking-wide text-base-content/50">
-          <span class="relative z-10 bg-base-100 px-2">or</span>
-          <span class="absolute inset-x-0 top-1/2 -z-0 border-t border-base-300"></span>
+        <div class="mt-6">
+          <.divider>or</.divider>
+          <div class="mt-6"><.google_button /></div>
         </div>
 
-        <.link
-          id="google-login"
-          href={~p"/auth/google"}
-          class="flex w-full items-center justify-center gap-2 rounded-lg border border-base-300 px-4 py-2.5 text-sm font-medium transition hover:bg-base-200 focus-visible:outline-2 focus-visible:outline-offset-2"
-        >
-          Continue with Google
-        </.link>
-      </div>
+        <:footer>
+          Already have an account?
+          <.link
+            navigate={~p"/users/log-in"}
+            class="font-semibold text-primary hover:text-primary-hover hover:underline"
+          >
+            Log in
+          </.link>
+        </:footer>
+      </.auth_card>
     </Layouts.app>
     """
   end
@@ -87,7 +80,12 @@ defmodule QuickSlipsWeb.UserLive.Registration do
         hash_password: false
       )
 
-    {:ok, assign_form(socket, changeset), temporary_assigns: [form: nil]}
+    socket =
+      socket
+      |> assign(:page_title, "Sign up")
+      |> assign_form(changeset)
+
+    {:ok, socket, temporary_assigns: [form: nil]}
   end
 
   @impl true

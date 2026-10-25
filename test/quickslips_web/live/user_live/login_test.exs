@@ -10,7 +10,7 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
 
       assert html =~ "Log in"
       assert html =~ "Sign up"
-      assert html =~ "Log in with email"
+      assert html =~ "Email me a link"
     end
   end
 
@@ -85,7 +85,7 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/users/register")
 
-      assert login_html =~ "Register"
+      assert login_html =~ "Create your account"
     end
   end
 
@@ -99,8 +99,8 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
       {:ok, _lv, html} = live(conn, ~p"/users/log-in")
 
       assert html =~ "You need to reauthenticate"
-      refute html =~ "Register"
-      assert html =~ "Log in with email"
+      refute html =~ "Create your account"
+      assert html =~ "Email me a link"
 
       assert html =~
                ~s(<input type="email" name="user[email]" id="login_form_magic_email" value="#{user.email}")
