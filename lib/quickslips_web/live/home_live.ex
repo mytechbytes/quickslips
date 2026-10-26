@@ -3,7 +3,7 @@ defmodule QuickSlipsWeb.HomeLive do
 
   import QuickSlipsWeb.CatalogueComponents
 
-  alias QuickSlipsWeb.SampleTemplates
+  alias QuickSlips.Templates
 
   @impl true
   def mount(_params, _session, socket) do
@@ -11,7 +11,7 @@ defmodule QuickSlipsWeb.HomeLive do
       socket
       |> assign(
         page_title: "Free bill and receipt generator",
-        categories: SampleTemplates.categories(),
+        categories: Enum.map(Templates.list_by_category(), & &1.name),
         query: "",
         category: "all"
       )
@@ -35,7 +35,7 @@ defmodule QuickSlipsWeb.HomeLive do
     %{query: query, category: category} = socket.assigns
 
     templates =
-      Enum.filter(SampleTemplates.list(), fn template ->
+      Enum.filter(Templates.list(), fn template ->
         matches_category?(template, category) and matches_query?(template, query)
       end)
 

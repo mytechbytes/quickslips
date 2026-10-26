@@ -28,7 +28,7 @@ defmodule QuickSlipsWeb.HomeLiveTest do
 
       view |> element("#chip-travel") |> render_click()
 
-      assert has_element?(view, "#template-taxi-receipt")
+      assert has_element?(view, "#template-fuel-bill")
       refute has_element?(view, "#template-rent-receipt")
       assert has_element?(view, "#chip-travel[aria-pressed=true]")
 

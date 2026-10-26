@@ -3,14 +3,14 @@ defmodule QuickSlipsWeb.DashboardLive do
 
   import QuickSlipsWeb.CatalogueComponents, only: [template_tile: 1]
 
-  alias QuickSlipsWeb.SampleTemplates
+  alias QuickSlips.Templates
 
   @impl true
   def mount(_params, _session, socket) do
     {:ok,
      socket
      |> assign(:page_title, "Dashboard")
-     |> assign(:quick_start, Enum.take(SampleTemplates.list(), 4))}
+     |> assign(:quick_start, Enum.take(Templates.list(), 4))}
   end
 
   @impl true
