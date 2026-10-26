@@ -10,6 +10,7 @@ defmodule QuickSlips.Application do
     children = [
       QuickSlipsWeb.Telemetry,
       QuickSlips.Repo,
+      QuickSlips.Templates.Registry,
       {DNSCluster, query: Application.get_env(:quickslips, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: QuickSlips.PubSub},
       # Start a worker by calling: QuickSlips.Worker.start_link(arg)

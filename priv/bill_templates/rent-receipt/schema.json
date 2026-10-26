@@ -1,0 +1,19 @@
+{
+  "slug": "rent-receipt",
+  "title": "Rent Receipt Generator",
+  "category": "Home & utilities",
+  "icon": "hero-home",
+  "summary": "Monthly rent receipts, ready to submit for HRA.",
+  "description": "Create a rent receipt with tenant, landlord, property and amount. Preview instantly and download as PDF.",
+  "templates": [{ "id": "t1", "name": "Classic" }],
+  "fields": [
+    { "key": "tenant_name", "label": "Tenant name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "landlord_name", "label": "Landlord name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "landlord_pan", "label": "Landlord PAN (optional)", "type": "text", "required": false, "max_length": 10 },
+    { "key": "property_address", "label": "Rented property address", "type": "textarea", "required": true, "max_length": 250 },
+    { "key": "month", "label": "Rent for month", "type": "month", "required": true },
+    { "key": "monthly_rent", "label": "Monthly rent (₹)", "type": "number", "required": true, "min": 1 },
+    { "key": "payment_mode", "label": "Payment mode", "type": "select", "options": ["Bank transfer", "UPI", "Cash", "Cheque"], "required": true },
+    { "key": "receipt_date", "label": "Receipt date", "type": "date", "required": true }
+  ]
+}

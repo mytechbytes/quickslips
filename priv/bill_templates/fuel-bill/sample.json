@@ -1,0 +1,10 @@
+{
+  "station_name": "Sunrise Fuel Station",
+  "station_address": "NH-48, Sector 12, Gurugram, Haryana",
+  "bill_number": "FB-10482",
+  "date": "2026-10-12",
+  "vehicle_number": "HR 26 AB 1234",
+  "fuel_type": "Petrol",
+  "quantity": 28.5,
+  "rate": 102.45
+}
