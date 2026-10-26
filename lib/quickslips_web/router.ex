@@ -80,5 +80,7 @@ defmodule QuickSlipsWeb.Router do
 
     post "/users/log-in", UserSessionController, :create
     delete "/users/log-out", UserSessionController, :delete
+
+    get "/:slug", TemplateController, :show
   end
 end
