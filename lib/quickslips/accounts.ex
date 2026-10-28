@@ -316,6 +316,7 @@ defmodule QuickSlips.Accounts do
     cond do
       user = Repo.get_by(User, google_uid: info.google_uid) ->
         {:ok, user}
+
       user = get_user_by_email(info.email) ->
         link_google_account(user, info)
 
@@ -323,7 +324,6 @@ defmodule QuickSlips.Accounts do
         info
         |> User.google_registration_changeset()
         |> Repo.insert()
-
     end
   end
 

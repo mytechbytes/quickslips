@@ -3,7 +3,7 @@ defmodule QuickSlipsWeb.UserLive.Confirmation do
 
   alias QuickSlips.Accounts
 
-    @impl true
+  @impl true
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash} current_scope={@current_scope}>
@@ -83,7 +83,8 @@ defmodule QuickSlipsWeb.UserLive.Confirmation do
     if user = Accounts.get_user_by_magic_link_token(token) do
       form = to_form(%{"token" => token}, as: "user")
 
-      {:ok, assign(socket, user: user, form: form, trigger_submit: false, page_title: "Welcome"), temporary_assigns: [form: nil]}
+      {:ok, assign(socket, user: user, form: form, trigger_submit: false, page_title: "Welcome"),
+       temporary_assigns: [form: nil]}
     else
       {:ok,
        socket

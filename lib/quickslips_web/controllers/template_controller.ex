@@ -11,6 +11,7 @@ defmodule QuickSlipsWeb.TemplateController do
           page_title: schema["title"],
           meta_description: schema["description"]
         )
+
       {:error, :not_found} ->
         raise QuickSlipsWeb.NotFoundError
     end

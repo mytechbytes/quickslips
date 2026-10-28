@@ -4,7 +4,7 @@ defmodule QuickSlipsWeb.UserLive.Registration do
   alias QuickSlips.Accounts
   alias QuickSlips.Accounts.User
 
-    @impl true
+  @impl true
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash} current_scope={@current_scope}>
