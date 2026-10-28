@@ -24,9 +24,11 @@ defmodule QuickSlipsWeb.Router do
   # end
 
   # Other scopes may use custom stacks.
-  # scope "/api", QuickSlipsWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", QuickSlipsWeb do
+    pipe_through :api
+
+    post "/generate", GenerateController, :create
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:quickslips, :dev_routes) do
