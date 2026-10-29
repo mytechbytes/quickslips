@@ -18,4 +18,11 @@ defmodule QuickSlips.Templates do
 
   @doc "`{:ok, schema}` or `{:error, :not_found}`."
   def get(slug) when is_binary(slug), do: Registry.fetch(slug)
+
+  @doc "`{:ok, sample_map}` for a template."
+  def sample(slug) do
+    with {:ok, _schema} <- get(slug) do
+      {:ok, slug |> template_dir() |> Path.join("sample.json") |> File.read!() |> Jason.decode!()}
+    end
+  end
 end

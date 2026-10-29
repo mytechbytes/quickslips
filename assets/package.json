@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "@tailwindplus/elements": "^1.0.22"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
   }
 }

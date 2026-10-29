@@ -1,21 +1,32 @@
 <Layouts.app flash={@flash} current_scope={@current_scope}>
-  <article id="template-page" class="mx-auto max-w-2xl py-10">
+  <article id="template-page" class="mx-auto max-w-5xl py-10">
     <h1 class="font-display text-3xl font-bold tracking-tight text-ink">{@schema["title"]}</h1>
     <p class="mt-2 text-ink-muted">{@schema["description"]}</p>
 
-    <h2 class="mt-8 text-lg font-semibold text-ink">Fields in this template</h2>
-    <ul
-      id="field-list"
-      class="mt-3 divide-y divide-line rounded-card border border-line bg-surface shadow-card"
+    <div
+      id="bill-app"
+      data-slug={@schema["slug"]}
+      data-template="t1"
+      data-schema={Jason.encode!(@schema)}
+      data-sample={Jason.encode!(@sample)}
+      data-worker={~p"/assets/js/preview_worker.js"}
+      class="mt-8 grid gap-8 lg:grid-cols-2"
     >
-      <li :for={field <- @schema["fields"]} class="flex justify-between px-4 py-2 text-sm">
-        <span class="text-ink">{field["label"]}</span>
-        <span class="text-ink-faint">{field["type"]}</span>
-      </li>
-    </ul>
+      <form id="bill-form" class="space-y-4" novalidate>
+      </form>
 
-    <.alert kind={:info} class="mt-8">
-      The live form and preview arrive in Milestone 6.
-    </.alert>
+      <div>
+        <div
+          id="bill-preview"
+          class="flex min-h-96 items-center justify-center rounded-card border border-line bg-tray p-2"
+        >
+          <p class="text-sm text-ink-muted">Preview loads here…</p>
+        </div>
+        <p id="bill-status" class="mt-2 text-sm text-ink-muted" role="status"></p>
+        <.button id="download-button" type="button" block class="mt-4">
+          Download PDF
+        </.button>
+      </div>
+    </div>
   </article>
 </Layouts.app>
