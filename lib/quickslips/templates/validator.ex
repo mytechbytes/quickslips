@@ -39,18 +39,30 @@ defmodule QuickSlips.Templates.Validator do
     max = field["max_length"]
 
     cond do
-      not is_binary(value) -> {:error, "must be text"}
-      is_integer(max) and String.length(value) > max -> {:error, "must be at most #{max} characters"}
-      true -> {:ok, String.trim(value)}
+      not is_binary(value) ->
+        {:error, "must be text"}
+
+      is_integer(max) and String.length(value) > max ->
+        {:error, "must be at most #{max} characters"}
+
+      true ->
+        {:ok, String.trim(value)}
     end
   end
 
   defp check(%{"type" => "number"} = field, value) do
     cond do
-      not is_number(value) -> {:error, "must be a number"}
-      is_number(field["min"]) and value < field["min"] -> {:error, "must be at least #{field["min"]}"}
-      is_number(field["max"]) and value > field["max"] -> {:error, "must be at most #{field["max"]}"}
-      true -> {:ok, value}
+      not is_number(value) ->
+        {:error, "must be a number"}
+
+      is_number(field["min"]) and value < field["min"] ->
+        {:error, "must be at least #{field["min"]}"}
+
+      is_number(field["max"]) and value > field["max"] ->
+        {:error, "must be at most #{field["max"]}"}
+
+      true ->
+        {:ok, value}
     end
   end
 
@@ -70,7 +82,9 @@ defmodule QuickSlips.Templates.Validator do
   end
 
   defp check(%{"type" => "select", "options" => options}, value) do
-    if value in options, do: {:ok, value}, else: {:error, "must be one of: #{Enum.join(options, ", ")}"}
+    if value in options,
+      do: {:ok, value},
+      else: {:error, "must be one of: #{Enum.join(options, ", ")}"}
   end
 
   defp check(_field, _value), do: {:error, "has an unsupported type"}

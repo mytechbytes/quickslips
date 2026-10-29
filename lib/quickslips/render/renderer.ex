@@ -28,7 +28,9 @@ defmodule QuickSlips.Render.Renderer do
   # template_id comes from a user; only accept ids the schema lists. This also
   # makes path tricks like "../../etc/passwd" impossible.
   defp ensure_template(%{"templates" => templates}, template_id) do
-    if Enum.any?(templates, &(&1["id"] == template_id)), do: :ok, else: {:error, :unknown_template}
+    if Enum.any?(templates, &(&1["id"] == template_id)),
+      do: :ok,
+      else: {:error, :unknown_template}
   end
 
   defp typst_executable do
@@ -45,7 +47,11 @@ defmodule QuickSlips.Render.Renderer do
     File.mkdir_p!(tmp)
 
     try do
-      File.cp!(Path.join(Templates.template_dir(slug), template_id <> ".typ"), Path.join(tmp, "main.typ"))
+      File.cp!(
+        Path.join(Templates.template_dir(slug), template_id <> ".typ"),
+        Path.join(tmp, "main.typ")
+      )
+
       File.write!(Path.join(tmp, "data.json"), Jason.encode!(data))
       compile(typst, tmp, mode)
     after
@@ -58,10 +64,13 @@ defmodule QuickSlips.Render.Renderer do
 
     args = [
       "compile",
-      "--root", tmp,
-      "--font-path", fonts_dir(),
+      "--root",
+      tmp,
+      "--font-path",
+      fonts_dir(),
       "--ignore-system-fonts",
-      "--input", "mode=#{mode}",
+      "--input",
+      "mode=#{mode}",
       Path.join(tmp, "main.typ"),
       out
     ]
