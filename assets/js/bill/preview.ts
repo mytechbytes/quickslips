@@ -27,8 +27,11 @@ export function createPreview(opts: {
       console.error(error)
       return
     }
+    // typst.ts puts a <script> in the SVG (for text selection). Its code is not valid XML, so <img>
+    // would refuse the whole picture. We don't need it, so cut it out.
+    const clean = svg.replace(/<script[\s\S]*?<\/script>/g, "")
     // Show the SVG through <img> (not innerHTML): scripts inside an SVG never run there.
-    const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }))
+    const url = URL.createObjectURL(new Blob([clean], { type: "image/svg+xml" }))
     img.src = url
     if (currentUrl) URL.revokeObjectURL(currentUrl)
     currentUrl = url

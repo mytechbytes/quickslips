@@ -6,7 +6,7 @@ Tinymist// Fuel bill, design t1. Reads data.json (next to this file).
   paper: "a5",
   margin: (x: 14mm, y: 14mm),
   background: if preview {
-    rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[PREVIEW])
+    rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[QUICK SLIPS])
   },
 )
 #set text(font: "Noto Sans", size: 10pt)

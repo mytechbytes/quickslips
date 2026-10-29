@@ -13,9 +13,10 @@ $typst.setRendererInitOptions({
 self.onmessage = async (event: MessageEvent<Job>) => {
   const { id, source, data } = event.data
   try {
-    // Make data.json visible to the template, like the file next to main.typ on the server.
-    await $typst.addSource("/data.json", JSON.stringify(data))
-    const svg = await $typst.svg({ mainContent: source, inputs: { mode: "preview" } })
+    // Same layout as on the server: main.typ with data.json next to it.
+    await $typst.mapShadow("/data.json", new TextEncoder().encode(JSON.stringify(data)))
+    await $typst.addSource("/main.typ", source)
+    const svg = await $typst.svg({ mainFilePath: "/main.typ", inputs: { mode: "preview" } })
     self.postMessage({ id, svg })
   } catch (error) {
     self.postMessage({ id, error: String(error) })

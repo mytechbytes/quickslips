@@ -6,7 +6,7 @@
   paper: "a5",
   margin: (x: 16mm, y: 16mm),
   background: if preview {
-    rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[PREVIEW])
+    rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[QUICK SLIPS])
   },
 )
 #set text(font: "Noto Sans", size: 10.5pt)
