@@ -82,4 +82,7 @@ if (process.env.NODE_ENV === "development") {
     window.liveReloader = reloader
   })
 }
+if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+  navigator.serviceWorker.register("/sw.js").catch((error) => console.warn("sw failed", error))
+}
 
