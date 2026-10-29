@@ -1,4 +1,5 @@
 import { buildForm, type BillData, type Schema } from "./form"
+import { createPreview } from "./preview"
 
 function init() {
   const root = document.getElementById("bill-app")
@@ -10,6 +11,14 @@ function init() {
 
   const ui = buildForm(form, schema, sample, (data) => console.log("changed", data))
   console.log("initial", ui.read())
+  const preview = createPreview({
+    workerUrl: root.dataset.worker!,
+    slug: schema.slug,
+    template: root.dataset.template!,
+    container: root.querySelector<HTMLElement>("#bill-preview")!,
+    status: root.querySelector<HTMLElement>("#bill-status")!,
+  })
+  preview.renderNow(sample)
 }
 
 document.addEventListener("DOMContentLoaded", init)
