@@ -37,10 +37,10 @@ defmodule QuickSlips.Quota do
     row = %{key: key, day: day, count: 1, inserted_at: stamp, updated_at: stamp}
 
     case Repo.insert_all(Counter, [row],
-      on_conflict: on_conflict,
-      conflict_target: [:key, :day],
-      returning: [:count]
-    ) do
+           on_conflict: on_conflict,
+           conflict_target: [:key, :day],
+           returning: [:count]
+         ) do
       {1, [%{count: count}]} -> {:ok, limit - count}
       {0, _} -> {:error, :limit_reached}
     end
@@ -61,7 +61,10 @@ defmodule QuickSlips.Quota do
   @doc "Downloads left today for `key` (read-only; for the badge)."
   def remaining(key, limit, now \\ DateTime.utc_now()) do
     day = today_ist(now)
-    used = Repo.one(from c in Counter, where: c.key == ^key and c.day == ^day, select: c.count) || 0
+
+    used =
+      Repo.one(from c in Counter, where: c.key == ^key and c.day == ^day, select: c.count) || 0
+
     max(limit - used, 0)
   end
 end

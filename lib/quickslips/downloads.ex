@@ -23,7 +23,8 @@ defmodule QuickSlips.Downloads do
     visitor_key = "v:#{vid}"
     ip_key = "ip:#{ip}"
 
-    with {:ok, remaining} <- Quota.check_and_increment(visitor_key, limits.anonymous), :ok <- reserve_ip(ip_key, limits.ip, visitor_key) do
+    with {:ok, remaining} <- Quota.check_and_increment(visitor_key, limits.anonymous),
+         :ok <- reserve_ip(ip_key, limits.ip, visitor_key) do
       {:ok, %{keys: [visitor_key, ip_key], remaining: remaining}}
     else
       {:error, :limit_reached} -> {:error, {:limit_reached, :anonymous}}
