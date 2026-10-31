@@ -26,6 +26,9 @@ config :quickslips, QuickSlipsWeb.Endpoint,
 # In test we don't send emails
 config :quickslips, QuickSlips.Mailer, adapter: Swoosh.Adapters.Test
 
+# limits of quota for downloads PDF
+config :quickslips, :quota, anonymous: 2, user: 3, ip: 5
+
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false
 

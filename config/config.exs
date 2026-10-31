@@ -86,6 +86,9 @@ config :phoenix, :json_library, Jason
 
 config :quickslips, :typst_bin, "typst"
 
+# limits of quota for downloads PDF
+config :quickslips, :quota, anonymous: 2, user: 10, ip: 20
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
