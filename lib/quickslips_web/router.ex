@@ -18,6 +18,14 @@ defmodule QuickSlipsWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :api_session do
+    plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_current_scope_for_user
+    plug :protect_from_forgery
+    plug QuickSlipsWeb.Plugs.VisitorId
+  end
+
   # scope "/", QuickSlipsWeb do
   #   pipe_through :browser
 
@@ -26,9 +34,10 @@ defmodule QuickSlipsWeb.Router do
 
   # Other scopes may use custom stacks.
   scope "/api", QuickSlipsWeb do
-    pipe_through :api
+    pipe_through :api_session
 
     post "/generate", GenerateController, :create
+    get "/quota", QuotaController, :show
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

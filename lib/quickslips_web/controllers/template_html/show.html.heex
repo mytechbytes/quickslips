@@ -23,6 +23,13 @@
           <p class="text-sm text-ink-muted">Preview loads here…</p>
         </div>
         <p id="bill-status" class="mt-2 text-sm text-ink-muted" role="status"></p>
+        <p id="quota-badge" class="mt-4 text-sm text-ink-muted" role="status"></p>
+        <.alert id="login-prompt" kind={:warning} class="mt-2 hidden">
+          You've used your free downloads for today.
+          <.link href={~p"/users/log-in"} class="font-medium underline">Log in</.link>
+          or <.link href={~p"/users/register"} class="font-medium underline">sign up</.link>
+          to keep going, and come back tomorrow for more.
+        </.alert>
         <.button id="download-button" type="button" block class="mt-4">
           Download PDF
         </.button>

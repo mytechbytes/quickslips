@@ -13,6 +13,12 @@ defmodule QuickSlipsWeb.FallbackController do
     conn |> put_status(:unprocessable_entity) |> json(%{errors: errors})
   end
 
+  def call(conn, {:error, {:limit_reached, tier}}) do
+    conn
+    |> put_status(:too_many_requests)
+    |> json(%{error: "daily limit reached", tier: tier})
+  end
+
   def call(conn, {:error, _reason}) do
     conn
     |> put_status(:internal_server_error)

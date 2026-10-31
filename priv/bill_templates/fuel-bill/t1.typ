@@ -1,4 +1,4 @@
-Tinymist// Fuel bill, design t1. Reads data.json (next to this file).
+// Tinymist: Fuel bill, design t1. Reads data.json (next to this file).
 #let data = json("data.json")
 #let preview = sys.inputs.at("mode", default: "final") == "preview"
 
