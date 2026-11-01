@@ -88,9 +88,9 @@ defmodule QuickSlips.MixProject do
       "assets.setup": [
         "tailwind.install --if-missing",
         "esbuild.install --if-missing",
-        "mkdir -p priv/static/wasm",
-        "cp assets/node_modules/@myriaddreamin/typst-ts-web-compiler/pkg/typst_ts_web_compiler_bg.wasm priv/static/wasm/",
-        "cp assets/node_modules/@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm priv/static/wasm/"
+        "cmd mkdir -p priv/static/wasm",
+        "cmd cp assets/node_modules/@myriaddreamin/typst-ts-web-compiler/pkg/typst_ts_web_compiler_bg.wasm priv/static/wasm/",
+        "cmd cp assets/node_modules/@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm priv/static/wasm/"
       ],
       "assets.build": ["compile", "tailwind quickslips", "esbuild quickslips"],
       "assets.deploy": [

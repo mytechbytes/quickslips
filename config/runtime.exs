@@ -139,4 +139,7 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Req
   #
   # See https://swoosh.hexdocs.pm/Swoosh.html#module-installation for details.
+
+  config :quickslips, :typst_bin, System.get_env("TYPST_BIN", "/usr/local/bin/typst")
+  config :quickslips, :uploads_dir, System.get_env("UPLOADS_DIR", "/data/uploads")
 end
