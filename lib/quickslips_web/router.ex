@@ -94,6 +94,7 @@ defmodule QuickSlipsWeb.Router do
     delete "/users/log-out", UserSessionController, :delete
 
     get "/source/:slug/:template", TemplateSourceController, :show
+    get "/healthz", HealthController, :show
     get "/:slug", TemplateController, :show
   end
 end
