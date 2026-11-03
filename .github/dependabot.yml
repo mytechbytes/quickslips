@@ -1,0 +1,35 @@
+# Weekly update pull requests. Each ecosystem is grouped, so you get at most one pull request per
+# ecosystem per week, and CI (ci.yml) runs on it like on any other pull request.
+#
+# Not covered, because Dependabot cannot read them: the Elixir, OTP and Node versions
+# (.tool-versions, .nvmrc), the Typst version and checksums (Dockerfile, ci.yml), and the
+# Docker base images, which are built from ARGs. Bump those by hand.
+version: 2
+
+updates:
+  # The actions used by the workflow (checkout, setup-beam, cache, ...).
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  # Elixir dependencies in mix.exs / mix.lock.
+  - package-ecosystem: mix
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      mix-minor-and-patch:
+        update-types: [minor, patch]
+
+  # JavaScript packages in assets/package.json (typst.ts, Tailwind Plus Elements, TypeScript).
+  - package-ecosystem: npm
+    directory: /assets
+    schedule:
+      interval: weekly
+    groups:
+      npm-minor-and-patch:
+        update-types: [minor, patch]
