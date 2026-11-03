@@ -26,14 +26,19 @@ ARG RUNNER_IMAGE="docker.io/debian:${DEBIAN_VERSION}"
 # --------------- typst image start ---------------
 FROM debian:bookworm-slim AS typst
 ARG TYPST_VERSION=0.15.1
+# SHA-256 of each release file for the version above (the "digest" shown on the GitHub release page).
+# Update all three together; .github/workflows/ci.yml checks that the version and amd64 hash agree.
+ARG TYPST_SHA256_AMD64=a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c
+ARG TYPST_SHA256_ARM64=5aa8d74a3d906e60ea12a66ac2f37f8eef1b14cbad7182a745e393a10c23dcee
 ARG TARGETARCH
 RUN apt-get update -y && apt-get install -y --no-install-recommends curl xz-utils ca-certificates \
   && case "$TARGETARCH" in \
-       amd64) TYPST_TARGET=x86_64-unknown-linux-musl ;; \
-       arm64) TYPST_TARGET=aarch64-unknown-linux-musl ;; \
+       amd64) TYPST_TARGET=x86_64-unknown-linux-musl; TYPST_SHA256="$TYPST_SHA256_AMD64" ;; \
+       arm64) TYPST_TARGET=aarch64-unknown-linux-musl; TYPST_SHA256="$TYPST_SHA256_ARM64" ;; \
        *) echo "unsupported arch $TARGETARCH" && exit 1 ;; \
      esac \
   && curl -fsSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-${TYPST_TARGET}.tar.xz" -o /tmp/typst.tar.xz \
+  && echo "${TYPST_SHA256}  /tmp/typst.tar.xz" | sha256sum -c - \
   && tar -xJf /tmp/typst.tar.xz -C /tmp \
   && mv "/tmp/typst-${TYPST_TARGET}/typst" /usr/local/bin/typst \
   && /usr/local/bin/typst --version
@@ -75,7 +80,8 @@ RUN mix compile
 COPY assets assets
 
 # compile assets
-RUN npm install --prefix assets
+# npm ci installs exactly what assets/package-lock.json says (and fails if it is out of date)
+RUN npm ci --prefix assets
 RUN mix assets.setup
 
 # compile assets
