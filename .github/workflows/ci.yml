@@ -6,12 +6,13 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# A newer push to the same branch or pull request cancels the run that is still going.
+# A newer push to the same branch or pull request cancels the run that is still going. Runs on main
+# are never cancelled: a run that is already publishing or deploying must finish, and a newer one waits.
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
-# The jobs only read the repository. Nothing here can push, comment or deploy.
+# Read-only by default. Only the docker job below is given more, and only to publish the image.
 permissions:
   contents: read
 
@@ -125,21 +126,92 @@ jobs:
           mix assets.setup
           mix assets.deploy
 
+  # The one and only build of the production image. Pull requests build it to prove the Dockerfile
+  # works; a push to main also publishes it to GitHub's container registry, and Dokploy pulls it from
+  # there (see the deploy job). Dokploy never builds anything.
   docker:
     name: Docker image builds
     needs: test
-    runs-on: ubuntu-24.04
+    # The Dokploy server is arm64, so the image is built for arm64, natively and without QEMU. The arm64
+    # runner is free because the repository is public. The Dockerfile also supports amd64.
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 30
+
+    permissions:
+      contents: read
+      packages: write
+
+    env:
+      PUBLISH: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
     steps:
       - uses: actions/checkout@v7
 
       - uses: docker/setup-buildx-action@v4
 
-      # Builds the production image from the Dockerfile without pushing it anywhere.
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.PUBLISH == 'true' }}
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Tags: `latest` (what Dokploy runs) and `sha-<commit>` (to roll back to a known build).
+      # It also sets the labels that link the image to this repository.
+      - id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=latest
+            type=sha
+
+      # `provenance: false` keeps the registry free of the extra "unknown/unknown" attestation entries
+      # that a single-platform image would otherwise get on every build.
       - uses: docker/build-push-action@v7
         with:
           context: .
-          push: false
+          platforms: linux/arm64
+          push: ${{ env.PUBLISH == 'true' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  # Tells Dokploy to deploy: it pulls `latest` (the image pushed above) and restarts the application.
+  # Only runs for pushes to main, after the tests passed and the image was published.
+  deploy:
+    name: Deploy to Dokploy
+    needs: docker
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    # Needs no access to the repository or its packages: it only calls Dokploy.
+    permissions: {}
+
+    # One deploy at a time; a newer one waits instead of cancelling a deployment that is running.
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+
+    steps:
+      - name: Ask Dokploy to deploy
+        env:
+          DOKPLOY_URL: ${{ secrets.DOKPLOY_URL }}
+          DOKPLOY_API_KEY: ${{ secrets.DOKPLOY_API_KEY }}
+          DOKPLOY_APPLICATION_ID: ${{ secrets.DOKPLOY_APPLICATION_ID }}
+        run: |
+          if [ -z "$DOKPLOY_URL" ] || [ -z "$DOKPLOY_API_KEY" ] || [ -z "$DOKPLOY_APPLICATION_ID" ]; then
+            echo "::notice::Skipped. Add the DOKPLOY_URL, DOKPLOY_API_KEY and DOKPLOY_APPLICATION_ID secrets to deploy."
+            exit 0
+          fi
+          jq -n --arg id "$DOKPLOY_APPLICATION_ID" --arg title "GitHub Actions ${GITHUB_SHA::7}" \
+            '{applicationId: $id, title: $title}' |
+            curl --fail-with-body --silent --show-error --max-time 60 \
+              --request POST "${DOKPLOY_URL%/}/api/application.deploy" \
+              --header "x-api-key: $DOKPLOY_API_KEY" \
+              --header "Content-Type: application/json" \
+              --data @-

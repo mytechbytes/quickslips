@@ -36,6 +36,19 @@ mix test --warnings-as-errors
 
 CI also builds the assets and the production Docker image.
 
+## Deploy
+
+CI builds the production image once, for arm64 (the architecture of the Dokploy server). On every push to `main`, after the checks pass, it publishes the image to `ghcr.io/mytechbytes/quickslips` as `latest` and `sha-<commit>`, then asks Dokploy to deploy. Dokploy only pulls that image; it never builds one.
+
+One-time setup:
+
+1. Merge to `main`, so CI publishes the first image. The deploy job reports "Skipped" until step 4.
+2. On GitHub, open the `quickslips` package (your profile or organization → Packages → Package settings) and change its visibility to Public. The image holds no secrets: the configuration comes from Dokploy's environment variables.
+3. In Dokploy, open the application → General → Provider → **Docker**. Set the image to `ghcr.io/mytechbytes/quickslips:latest` and leave the username, password and registry URL empty. Save, then deploy once by hand. The environment, domain and volume settings stay as they are.
+4. In Dokploy, generate an API key (Settings → Profile → API/CLI). In GitHub → Settings → Secrets and variables → Actions, add `DOKPLOY_URL` (for example `https://dokploy.example.com`), `DOKPLOY_API_KEY` and `DOKPLOY_APPLICATION_ID` (the id at the end of the application page's URL).
+
+To roll back, set the image tag in Dokploy to an earlier `sha-<commit>` and deploy.
+
 ## Where versions live
 
 | What | Where |
