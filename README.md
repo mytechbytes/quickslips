@@ -45,7 +45,11 @@ One-time setup:
 1. Merge to `main`, so CI publishes the first image. The deploy job reports "Skipped" until step 4.
 2. On GitHub, open the `quickslips` package (your profile or organization → Packages → Package settings) and change its visibility to Public. The image holds no secrets: the configuration comes from Dokploy's environment variables.
 3. In Dokploy, open the application → General → Provider → **Docker**. Set the image to `ghcr.io/mytechbytes/quickslips:latest` and leave the username, password and registry URL empty. Save, then deploy once by hand. The environment, domain and volume settings stay as they are.
-4. In Dokploy, generate an API key (Settings → Profile → API/CLI). In GitHub → Settings → Secrets and variables → Actions, add `DOKPLOY_URL` (for example `https://dokploy.example.com`), `DOKPLOY_API_KEY` and `DOKPLOY_APPLICATION_ID` (the id at the end of the application page's URL).
+4. Optional, to deploy on every push instead of pressing Deploy by hand. The Dokploy panel is only reachable over Tailscale, so the deploy job joins the tailnet first (the same setup as the `mangogst` repository). Add these repository secrets (GitHub → Settings → Secrets and variables → Actions, or `gh secret set NAME`); until all four exist, the job reports "Skipped":
+   * `TS_AUTHKEY`: a Tailscale auth key that is ephemeral, reusable and tagged `tag:ci`. Auth keys expire after at most 90 days; an OAuth client does not (see the comment in `ci.yml`).
+   * `DOKPLOY_URL`: the panel's tailnet address with its port, for example `http://<machine>.<tailnet>.ts.net:3000`. Not the public domain: Cloudflare challenges automated requests.
+   * `DOKPLOY_API_KEY`: generated in Dokploy (Settings → Profile → API/CLI).
+   * `DOKPLOY_APP_ID`: the id at the end of the application page's URL in Dokploy.
 
 To roll back, set the image tag in Dokploy to an earlier `sha-<commit>` and deploy.
 

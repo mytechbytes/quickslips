@@ -182,6 +182,11 @@ jobs:
 
   # Tells Dokploy to deploy: it pulls `latest` (the image pushed above) and restarts the application.
   # Only runs for pushes to main, after the tests passed and the image was published.
+  #
+  # The Dokploy panel is only reachable over Tailscale (its public domain sits behind Cloudflare,
+  # which challenges automated requests), so the runner first joins the tailnet as a temporary node
+  # tagged tag:ci, then calls the panel's tailnet address. Same setup as the mangogst repository.
+  # This repository is public, so its logs are too: nothing below prints the panel's address.
   deploy:
     name: Deploy to Dokploy
     needs: docker
@@ -198,20 +203,61 @@ jobs:
       cancel-in-progress: false
 
     steps:
+      # Until the four secrets exist, the job reports "Skipped" and the run stays green.
+      - name: Check that deploying is set up
+        id: setup
+        env:
+          TS_AUTHKEY: ${{ secrets.TS_AUTHKEY }}
+          DOKPLOY_URL: ${{ secrets.DOKPLOY_URL }}
+          DOKPLOY_API_KEY: ${{ secrets.DOKPLOY_API_KEY }}
+          DOKPLOY_APP_ID: ${{ secrets.DOKPLOY_APP_ID }}
+        run: |
+          if [ -n "$TS_AUTHKEY" ] && [ -n "$DOKPLOY_URL" ] && [ -n "$DOKPLOY_API_KEY" ] && [ -n "$DOKPLOY_APP_ID" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipped. Add the TS_AUTHKEY, DOKPLOY_URL, DOKPLOY_API_KEY and DOKPLOY_APP_ID secrets to deploy."
+          fi
+
+      # TS_AUTHKEY: an ephemeral, reusable auth key with tag:ci. Auth keys expire after at most 90
+      # days; an OAuth client does not (use `oauth-client-id`, `oauth-secret` and `tags: tag:ci` instead).
+      - name: Connect to Tailscale
+        if: steps.setup.outputs.ready == 'true'
+        uses: tailscale/github-action@v4
+        with:
+          authkey: ${{ secrets.TS_AUTHKEY }}
+
+      # DOKPLOY_URL is the panel's tailnet address with its port, for example
+      # http://<machine>.<tailnet>.ts.net:3000 (plain http is fine inside a tailnet).
       - name: Ask Dokploy to deploy
+        if: steps.setup.outputs.ready == 'true'
         env:
           DOKPLOY_URL: ${{ secrets.DOKPLOY_URL }}
           DOKPLOY_API_KEY: ${{ secrets.DOKPLOY_API_KEY }}
-          DOKPLOY_APPLICATION_ID: ${{ secrets.DOKPLOY_APPLICATION_ID }}
+          DOKPLOY_APP_ID: ${{ secrets.DOKPLOY_APP_ID }}
         run: |
-          if [ -z "$DOKPLOY_URL" ] || [ -z "$DOKPLOY_API_KEY" ] || [ -z "$DOKPLOY_APPLICATION_ID" ]; then
-            echo "::notice::Skipped. Add the DOKPLOY_URL, DOKPLOY_API_KEY and DOKPLOY_APPLICATION_ID secrets to deploy."
-            exit 0
+          # Pasted secrets often carry a stray newline or space.
+          url="$(printf '%s' "$DOKPLOY_URL" | tr -d '[:space:]')"
+          key="$(printf '%s' "$DOKPLOY_API_KEY" | tr -d '[:space:]')"
+          id="$(printf '%s' "$DOKPLOY_APP_ID" | tr -d '[:space:]')"
+          body="$(jq -n --arg id "$id" --arg title "GitHub Actions ${GITHUB_SHA::7}" \
+            '{applicationId: $id, title: $title}')"
+
+          # curl's own error messages contain the host name, so its stderr is dropped.
+          rc=0
+          code="$(curl --silent --max-time 60 --output "$RUNNER_TEMP/dokploy.json" \
+            --write-out '%{http_code}' \
+            --request POST "${url%/}/api/application.deploy" \
+            --header "x-api-key: $key" \
+            --header "Content-Type: application/json" \
+            --data "$body" 2>/dev/null)" || rc=$?
+          if [ "$rc" -ne 0 ]; then
+            echo "::error::Could not reach Dokploy (curl exit $rc). Is the runner on the tailnet, and is the address in DOKPLOY_URL right?"
+            exit 1
           fi
-          jq -n --arg id "$DOKPLOY_APPLICATION_ID" --arg title "GitHub Actions ${GITHUB_SHA::7}" \
-            '{applicationId: $id, title: $title}' |
-            curl --fail-with-body --silent --show-error --max-time 60 \
-              --request POST "${DOKPLOY_URL%/}/api/application.deploy" \
-              --header "x-api-key: $DOKPLOY_API_KEY" \
-              --header "Content-Type: application/json" \
-              --data @-
+
+          echo "Dokploy answered HTTP $code"
+          if [ "$code" -lt 200 ] || [ "$code" -ge 300 ]; then
+            head -c 500 "$RUNNER_TEMP/dokploy.json"; echo
+            exit 1
+          fi
