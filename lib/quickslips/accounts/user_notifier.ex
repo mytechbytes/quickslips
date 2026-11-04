@@ -9,7 +9,7 @@ defmodule QuickSlips.Accounts.UserNotifier do
     email =
       new()
       |> to(recipient)
-      |> from({"QuickSlips", "contact@example.com"})
+      |> from({"QuickSlips", Application.fetch_env!(:quickslips, :mail_from)})
       |> subject(subject)
       |> text_body(body)
 
