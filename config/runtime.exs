@@ -124,21 +124,42 @@ if config_env() == :prod do
 
   # ## Configuring the mailer
   #
-  # In production you need to configure the mailer to use a different adapter.
-  # Here is an example configuration for Mailgun:
-  #
-  #     config :quickslips, QuickSlips.Mailer,
-  #       adapter: Swoosh.Adapters.Mailgun,
-  #       api_key: System.get_env("MAILGUN_API_KEY"),
-  #       domain: System.get_env("MAILGUN_DOMAIN")
-  #
-  # Most non-SMTP adapters require an API client. Swoosh supports Req, Hackney,
-  # and Finch out-of-the-box. This configuration is typically done at
-  # compile-time in your config/prod.exs:
-  #
-  #     config :swoosh, :api_client, Swoosh.ApiClient.Req
-  #
-  # See https://swoosh.hexdocs.pm/Swoosh.html#module-installation for details.
+  # Email goes out over SMTP. All four values are required, so a release without them refuses to
+  # start instead of silently dropping confirmation and log-in emails.
+  smtp_host = System.fetch_env!("SMTP_HOST")
+  smtp_port = String.to_integer(System.get_env("SMTP_PORT", "587"))
+  # Port 465 is TLS from the first byte; the usual port 587 starts plain and upgrades (STARTTLS).
+  smtp_implicit_tls? = smtp_port == 465
+
+  # gen_smtp's defaults do not work with OTP 26 and later: its STARTTLS default has no CA list, and
+  # its connection default is `depth: 0`, which rejects every certificate chain that has an
+  # intermediate CA (that is all of them). These options verify the server's certificate against the
+  # system CA store (the image installs ca-certificates).
+  smtp_tls_options = [
+    versions: [:"tlsv1.2", :"tlsv1.3"],
+    verify: :verify_peer,
+    depth: 10,
+    cacerts: :public_key.cacerts_get(),
+    server_name_indication: String.to_charlist(smtp_host),
+    customize_hostname_check: [match_fun: :public_key.pkix_verify_hostname_match_fun(:https)]
+  ]
+
+  config :quickslips, QuickSlips.Mailer,
+    adapter: Swoosh.Adapters.SMTP,
+    relay: smtp_host,
+    port: smtp_port,
+    username: System.fetch_env!("SMTP_USERNAME"),
+    password: System.fetch_env!("SMTP_PASSWORD"),
+    auth: :always,
+    ssl: smtp_implicit_tls?,
+    tls: if(smtp_implicit_tls?, do: :never, else: :always),
+    tls_options: smtp_tls_options,
+    # gen_smtp opens an implicit-TLS connection with `sockopts` and ignores `tls_options` there.
+    sockopts: if(smtp_implicit_tls?, do: smtp_tls_options, else: []),
+    retries: 2
+
+  # The address the emails are sent from (an address on a domain you control).
+  config :quickslips, :mail_from, System.fetch_env!("MAIL_FROM")
 
   config :quickslips, :typst_bin, System.get_env("TYPST_BIN", "/usr/local/bin/typst")
   config :quickslips, :uploads_dir, System.get_env("UPLOADS_DIR", "/data/uploads")

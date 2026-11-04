@@ -49,6 +49,24 @@ One-time setup:
 
 To roll back, set the image tag in Dokploy to an earlier `sha-<commit>` and deploy.
 
+### Environment variables
+
+Set these in Dokploy, on the application's Environment tab. `config/runtime.exs` reads them when the release starts.
+
+| Variable | Value |
+|---|---|
+| `PHX_SERVER` | `true` |
+| `PHX_HOST` | the public domain, for example `quickslips.example.com` |
+| `SECRET_KEY_BASE` | the output of `mix phx.gen.secret` |
+| `DATABASE_URL` | `ecto://USER:PASSWORD@HOST:5432/DATABASE` |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | the Google OAuth client, for "Continue with Google" |
+| `SMTP_HOST`, `SMTP_USERNAME`, `SMTP_PASSWORD` | the SMTP details from your email provider |
+| `SMTP_PORT` | optional, default `587` (STARTTLS); `465` uses TLS from the first byte |
+| `MAIL_FROM` | the From address of every email, on a domain you control (set up SPF and DKIM for it) |
+| `TYPST_BIN`, `UPLOADS_DIR`, `POOL_SIZE`, `PORT` | optional, with defaults in `runtime.exs` |
+
+The release refuses to start without `SMTP_HOST`, `SMTP_USERNAME`, `SMTP_PASSWORD` and `MAIL_FROM`, so confirmation and log-in emails can never be dropped silently. The server's certificate is always verified against the system CA store. Any port other than 465 (for example 2525) is treated as STARTTLS.
+
 ## Where versions live
 
 | What | Where |
