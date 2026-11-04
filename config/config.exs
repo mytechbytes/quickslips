@@ -55,7 +55,7 @@ config :ueberauth, Ueberauth,
 config :quickslips, QuickSlips.Mailer, adapter: Swoosh.Adapters.Local
 
 # The From address of every email. Production sets it from the MAIL_FROM environment variable.
-config :quickslips, :mail_from, "noreply.quickslips@mytechbytes.in"
+config :quickslips, :mail_from, "no-reply@mytechbytes.in"
 
 # Configure esbuild (the version is required)
 config :esbuild,
