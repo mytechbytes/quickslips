@@ -1,4 +1,4 @@
-import { buildForm, type BillData, type Schema } from "./form"
+import { buildForm, type Business, type BillData, type Schema } from "./form"
 import { createPreview } from "./preview"
 import { downloadPdf } from "./download"
 import { createTurnstile } from "./turnstile"
@@ -19,6 +19,7 @@ function init() {
   const button = root.querySelector<HTMLButtonElement>("#download-button")!
   const status = root.querySelector<HTMLElement>("#bill-status")!
   const schema: Schema = JSON.parse(root.dataset.schema!)
+  const businesses: Business[] = JSON.parse(root.dataset.businesses ?? "[]")
   const sample: BillData = JSON.parse(root.dataset.sample!)
   const form = root.querySelector<HTMLFormElement>("#bill-form")!
   const preview = createPreview({
@@ -29,7 +30,7 @@ function init() {
     status: root.querySelector<HTMLElement>("#bill-status")!,
   })
   preview.renderNow(sample)
-  const ui = buildForm(form, schema, sample, (data) => preview.schedule(data))
+  const ui = buildForm(form, schema, sample, (data) => preview.schedule(data), businesses)
   // const ui = buildForm(form, schema, sample, (data) => console.log("changed", data))
   // console.log("initial", ui.read())
 

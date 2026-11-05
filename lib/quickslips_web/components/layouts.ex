@@ -58,7 +58,8 @@ defmodule QuickSlipsWeb.Layouts do
   #   {:documents, "Documents", "hero-document-text", ~p"/documents"}
   defp nav_items do
     [
-      {:dashboard, "Dashboard", "hero-squares-2x2", ~p"/dashboard"}
+      {:dashboard, "Dashboard", "hero-squares-2x2", ~p"/dashboard"},
+      {:businesses, "Saved businesses", "hero-building-storefront", ~p"/businesses"}
     ]
   end
 
