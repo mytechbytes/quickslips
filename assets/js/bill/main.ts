@@ -1,12 +1,18 @@
 import { buildForm, type BillData, type Schema } from "./form"
 import { createPreview } from "./preview"
 import { downloadPdf } from "./download"
+import { createTurnstile } from "./turnstile"
 
 type Quota = { remaining: number; limit: number; tier: string }
 
 function init() {
   const root = document.getElementById("bill-app")
   if (!root) return // not on a template page
+
+  const siteKey = root.dataset.turnstileSiteKey
+  const turnstile = siteKey
+    ? createTurnstile(root.querySelector<HTMLElement>("#turnstile-box")!, siteKey).catch(() => null)
+    : null
 
   const badge = root.querySelector<HTMLElement>("#quota-badge")!
   const loginPrompt = root.querySelector<HTMLElement>("#login-prompt")!
@@ -47,7 +53,17 @@ function init() {
     button.disabled = true
     status.textContent = "Creating your PDF…"
     ui.showErrors({})
-    const result = await downloadPdf(schema.slug, root.dataset.template!, ui.read())
+    let turnstileToken: string | undefined
+    if (turnstile) {
+      const widget = await turnstile
+      if (!widget) {
+        button.disabled = false
+        status.textContent = "We couldn't verify your browser. Turn off your ad blocker, or log in."
+        return
+      }
+      turnstileToken = await widget.token()
+    }
+    const result = await downloadPdf(schema.slug, root.dataset.template!, ui.read(), turnstileToken)
     button.disabled = false
 
     if (result.ok) {

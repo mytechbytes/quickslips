@@ -194,6 +194,9 @@ defmodule QuickSlipsWeb.UserAuth do
       on user_token.
       Redirects to login page if there's no logged user.
 
+    * `:require_admin` - Like `:require_authenticated`, and the user must be an
+      admin (see `QuickSlips.Accounts.admin?/1`). Everyone else is sent to the home page.
+
   ## Examples
 
   Use the `on_mount` lifecycle macro in LiveViews to mount or authenticate
@@ -246,6 +249,17 @@ defmodule QuickSlipsWeb.UserAuth do
     end
   end
 
+  def on_mount(:require_admin, _params, session, socket) do
+    socket = mount_current_scope(socket, session)
+    scope = socket.assigns.current_scope
+
+    if Accounts.admin?(scope && scope.user) do
+      {:cont, socket}
+    else
+      {:halt, Phoenix.LiveView.redirect(socket, to: ~p"/")}
+    end
+  end
+
   defp mount_current_scope(socket, session) do
     Phoenix.Component.assign_new(socket, :current_scope, fn ->
       {user, _} =
@@ -277,6 +291,21 @@ defmodule QuickSlipsWeb.UserAuth do
       |> maybe_store_return_to()
       |> redirect(to: ~p"/users/log-in")
       |> halt()
+    end
+  end
+
+  @doc """
+  Plug for routes that only admins may open (see `QuickSlips.Accounts.admin?/1`).
+
+  Everybody else gets a 404, as if the page did not exist.
+  """
+  def require_admin(conn, _opts) do
+    scope = conn.assigns.current_scope
+
+    if Accounts.admin?(scope && scope.user) do
+      conn
+    else
+      raise QuickSlipsWeb.NotFoundError
     end
   end
 

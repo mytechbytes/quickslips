@@ -29,6 +29,10 @@ config :quickslips, QuickSlips.Mailer, adapter: Swoosh.Adapters.Test
 # limits of quota for downloads PDF
 config :quickslips, :quota, anonymous: 2, user: 3, ip: 5
 
+# turnstile
+config :quickslips, :turnstile, site_key: "test", secret_key: "test"
+config :quickslips, :turnstile_req_options, plug: {Req.Test, QuickSlips.Turnstile}
+
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false
 

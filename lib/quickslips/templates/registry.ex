@@ -8,7 +8,7 @@ defmodule QuickSlips.Templates.Registry do
   # If you add another single-segment route (like /pricing), add its name here too.
   @reserved ~w(users auth dashboard dev api assets images fonts wasm uploads source
                history documents businesses credits bulk bulk-import templates
-               healthz sitemap.xml sw.js favicon.ico robots.txt)
+               healthz sitemap.xml sw.js favicon.ico robots.txt admin)
 
   ## Client API
 

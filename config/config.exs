@@ -92,6 +92,16 @@ config :quickslips, :typst_bin, "typst"
 # limits of quota for downloads PDF
 config :quickslips, :quota, anonymous: 2, user: 10, ip: 20
 
+# Error tracking (Task 7.8). Errors are kept in our own Postgres, with no third party. What may be stored
+# and what is not worth storing are decided by QuickSlips.ErrorFilter and QuickSlips.ErrorIgnorer.
+config :error_tracker,
+  repo: QuickSlips.Repo,
+  otp_app: :quickslips,
+  filter: QuickSlips.ErrorFilter,
+  ignorer: QuickSlips.ErrorIgnorer,
+  # Errors you mark as resolved in the dashboard are deleted after a day.
+  plugins: [ErrorTracker.Plugins.Pruner]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

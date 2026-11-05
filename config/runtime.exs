@@ -28,6 +28,21 @@ config :ueberauth, Ueberauth.Strategy.Google.OAuth,
   client_id: System.get_env("GOOGLE_CLIENT_ID"),
   client_secret: System.get_env("GOOGLE_CLIENT_SECRET")
 
+# Cloudflare Turnstile. Locally the keys come from .env (Cloudflare's dummy pair); the prod block below
+# makes the release refuse to start without the real ones.
+config :quickslips, :turnstile,
+  site_key: System.get_env("TURNSTILE_SITE_KEY"),
+  secret_key: System.get_env("TURNSTILE_SECRET_KEY")
+
+# The people who may open the error dashboard (/admin/errors): e-mail addresses, comma-separated.
+# Nobody can open it while this is empty.
+config :quickslips,
+       :admin_emails,
+       "ADMIN_EMAILS"
+       |> System.get_env("")
+       |> String.split(",", trim: true)
+       |> Enum.map(&(&1 |> String.trim() |> String.downcase()))
+
 if config_env() == :dev do
   # Reload browser tabs when matching files change.
   config :quickslips, QuickSlipsWeb.Endpoint,
@@ -131,6 +146,11 @@ if config_env() == :prod do
   smtp_port = String.to_integer(System.get_env("SMTP_PORT", "587"))
   # Port 465 is TLS from the first byte; the usual port 587 starts plain and upgrades (STARTTLS).
   smtp_implicit_tls? = smtp_port == 465
+
+  # congis for turnstile
+  config :quickslips, :turnstile,
+    site_key: System.fetch_env!("TURNSTILE_SITE_KEY"),
+    secret_key: System.fetch_env!("TURNSTILE_SECRET_KEY")
 
   # gen_smtp's defaults do not work with OTP 26 and later: its STARTTLS default has no CA list, and
   # its connection default is `depth: 0`, which rejects every certificate chain that has an

@@ -8,9 +8,11 @@ defmodule QuickSlipsWeb.GenerateController do
 
   action_fallback QuickSlipsWeb.FallbackController
 
-  def create(conn, %{"slug" => slug, "template" => template, "data" => data}) when is_map(data) do
+  def create(conn, %{"slug" => slug, "template" => template, "data" => data} = params)
+      when is_map(data) do
     with {:ok, schema} <- Templates.get(slug),
          {:ok, clean} <- Validator.validate(schema, data),
+         :ok <- verify_human(conn, params),
          {:ok, grant} <- Downloads.reserve(caller(conn)),
          {:ok, pdf} <- render_or_refund(slug, template, clean, grant) do
       conn
@@ -44,5 +46,12 @@ defmodule QuickSlipsWeb.GenerateController do
       visitor_id: conn.assigns.visitor_id,
       ip: conn.remote_ip |> :inet.ntoa() |> to_string()
     }
+  end
+
+  defp verify_human(conn, params) do
+    case conn.assigns[:current_scope] do
+      %{user: %{}} -> :ok
+      _anonymous -> QuickSlips.Turnstile.verify(params["turnstile_token"], caller(conn).ip)
+    end
   end
 end
