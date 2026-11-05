@@ -1,5 +1,6 @@
 defmodule QuickSlipsWeb.Router do
   use QuickSlipsWeb, :router
+  use ErrorTracker.Web, :router
 
   import QuickSlipsWeb.UserAuth
 
@@ -55,6 +56,13 @@ defmodule QuickSlipsWeb.Router do
       live_dashboard "/dashboard", metrics: QuickSlipsWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  # The error dashboard (Task 7.8). Only the people in ADMIN_EMAILS may open it; everyone else gets a 404.
+  scope "/admin" do
+    pipe_through [:browser, :require_authenticated_user, :require_admin]
+
+    error_tracker_dashboard "/errors", on_mount: [{QuickSlipsWeb.UserAuth, :require_admin}]
   end
 
   scope "/auth", QuickSlipsWeb do

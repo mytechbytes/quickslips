@@ -87,6 +87,21 @@ defmodule QuickSlips.Accounts do
     User.registration_changeset(user, attrs, opts)
   end
 
+  ## Admins
+
+  @doc """
+  Whether the user may open the admin pages (the error dashboard).
+
+  The people are listed in the `ADMIN_EMAILS` environment variable, so nobody is an admin until you say who
+  is. An account whose address was never confirmed doesn't count: anyone can register an address that is
+  not theirs, and logging in with a password does not ask for the confirmation.
+  """
+  def admin?(%User{email: email, confirmed_at: %DateTime{}}) do
+    String.downcase(email) in Application.get_env(:quickslips, :admin_emails, [])
+  end
+
+  def admin?(_user), do: false
+
   ## Settings
 
   @doc """

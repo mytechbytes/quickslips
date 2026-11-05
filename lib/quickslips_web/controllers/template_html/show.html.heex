@@ -10,6 +10,7 @@
       data-schema={Jason.encode!(@schema)}
       data-sample={Jason.encode!(@sample)}
       data-worker={~p"/assets/js/preview_worker.js"}
+      data-turnstile-site-key={turnstile_site_key(@current_scope)}
       class="mt-8 grid gap-8 lg:grid-cols-2"
     >
       <form id="bill-form" class="space-y-4" novalidate></form>
@@ -29,6 +30,7 @@
           or <.link href={~p"/users/register"} class="font-medium underline">sign up</.link>
           to keep going, and come back tomorrow for more.
         </.alert>
+        <div id="turnstile-box" class="mt-4"></div>
         <.button id="download-button" type="button" block class="mt-4">
           Download PDF
         </.button>

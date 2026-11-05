@@ -19,6 +19,12 @@ defmodule QuickSlipsWeb.FallbackController do
     |> json(%{error: "daily limit reached", tier: tier})
   end
 
+  def call(conn, {:error, :turnstile_failed}) do
+    conn
+    |> put_status(:forbidden)
+    |> json(%{error: "verification failed"})
+  end
+
   def call(conn, {:error, _reason}) do
     conn
     |> put_status(:internal_server_error)

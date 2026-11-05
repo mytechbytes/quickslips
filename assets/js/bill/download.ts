@@ -4,13 +4,13 @@ export type DownloadResult =
   | { ok: true }
   | { ok: false; status: number; errors?: Record<string, string[]>; message?: string }
 
-export async function downloadPdf(slug: string, template: string, data: BillData): Promise<DownloadResult> {
+export async function downloadPdf(slug: string, template: string, data: BillData, turnstileToken?: string): Promise<DownloadResult> {
   const csrf = document.querySelector<HTMLMetaElement>("meta[name='csrf-token']")?.content ?? ""
 
   const response = await fetch("/api/generate", {
     method: "POST",
     headers: { "content-type": "application/json", "x-csrf-token": csrf },
-    body: JSON.stringify({ slug, template, data }),
+    body: JSON.stringify({ slug, template, data, turnstile_token: turnstileToken }),
   })
 
   if (!response.ok) {
