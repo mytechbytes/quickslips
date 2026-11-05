@@ -78,6 +78,7 @@ if config_env() == :prod do
   host = System.get_env("PHX_HOST") || "example.com"
 
   config :quickslips, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
+  config :quickslips, :trust_cloudflare_ip, System.get_env("TRUST_CLOUDFLARE_IP") == "true"
 
   config :quickslips, QuickSlipsWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
