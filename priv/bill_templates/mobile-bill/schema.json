@@ -1,5 +1,6 @@
 {
   "slug": "mobile-bill",
+  "public_slug": "mobile-bill-generator",
   "title": "Mobile Bill Generator",
   "category": "Home & utilities",
   "icon": "hero-device-phone-mobile",

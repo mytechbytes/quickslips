@@ -11,6 +11,7 @@ defmodule QuickSlipsWeb.UserLive.Settings do
     <Layouts.app
       flash={@flash}
       current_scope={@current_scope}
+      locale={@locale}
       active={:settings}
       title="Settings"
       subtitle="Manage your account email address and password settings"

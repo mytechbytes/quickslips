@@ -1,0 +1,38 @@
+{
+  "title": "Generador de Factura de Gasolina",
+  "name": "Factura de Gasolina",
+  "public_slug": "generador-de-factura-de-gasolina",
+  "summary": "Crea una factura de gasolina o diésel en PDF.",
+  "description": "Genera una factura de combustible con el nombre de la gasolinera, la fecha, el tipo de combustible, la cantidad y el precio. Previsualízala al instante y descarga el PDF.",
+  "designs": { "t1": "Clásico" },
+  "fields": {
+    "station_name": { "label": "Nombre de la gasolinera" },
+    "station_address": { "label": "Dirección de la gasolinera" },
+    "bill_number": { "label": "Número de factura" },
+    "date": { "label": "Fecha" },
+    "vehicle_number": { "label": "Matrícula del vehículo" },
+    "fuel_type": { "label": "Tipo de combustible", "options": { "Petrol": "Gasolina", "Diesel": "Diésel", "CNG": "GNC" } },
+    "quantity": { "label": "Cantidad (litros)" },
+    "rate": { "label": "Precio por litro ({currency})" }
+  },
+  "print": {
+    "bill_no": "N.º",
+    "date": "Fecha",
+    "vehicle": "Vehículo",
+    "fuel": "Combustible",
+    "item": "Concepto",
+    "quantity": "Cant. (L)",
+    "rate": "Precio",
+    "amount": "Importe",
+    "total": "Total",
+    "signatory": "Firma autorizada",
+    "thanks": "Gracias por su visita."
+  },
+  "sample": {
+    "station_name": "Gasolinera El Sol",
+    "station_address": "Av. de la Constitución, 45, 41001 Sevilla",
+    "bill_number": "A-10482",
+    "vehicle_number": "5821 KDH",
+    "rate": 1.58
+  }
+}

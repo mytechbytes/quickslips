@@ -1,11 +1,12 @@
 {
   "slug": "taxi-receipt",
-  "title": "Taxi Receipt Generator",
+  "public_slug": "cab-bill-generator",
+  "title": "Cab Bill Generator",
   "category": "Travel",
   "icon": "hero-map-pin",
   "number_field": "receipt_number",
-  "summary": "Cab or auto trip receipt with fare, toll and GST.",
-  "description": "Generate a taxi or auto-rickshaw receipt with pickup and drop, distance, fare, toll and GST. Preview instantly and download as PDF.",
+  "summary": "Cab or auto trip bill with fare, toll and GST.",
+  "description": "Generate a cab, taxi or auto-rickshaw bill with pickup and drop, distance, fare, toll and GST. Preview instantly and download as PDF.",
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
     { "key": "operator_name", "label": "Cab company or driver name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },

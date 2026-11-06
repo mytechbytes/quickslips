@@ -1,5 +1,6 @@
 {
   "slug": "restaurant-bill",
+  "public_slug": "restaurant-bill-generator",
   "title": "Restaurant Bill Generator",
   "category": "Food & shopping",
   "icon": "hero-cake",

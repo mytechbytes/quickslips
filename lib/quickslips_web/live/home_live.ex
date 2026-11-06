@@ -3,15 +3,27 @@ defmodule QuickSlipsWeb.HomeLive do
 
   import QuickSlipsWeb.CatalogueComponents
 
+  alias QuickSlips.Locales
   alias QuickSlips.Templates
 
+  # The catalogue of one locale (`/en-in`, `/hi-in`): the templates that are in its language, named in it.
   @impl true
-  def mount(_params, _session, socket) do
+  def mount(%{"locale" => code}, _session, socket) do
+    locale =
+      case Locales.fetch(code) do
+        {:ok, locale} -> locale
+        :error -> raise QuickSlipsWeb.NotFoundError
+      end
+
+    # The address decides, whatever the session says: this page is the catalogue of that locale.
+    Gettext.put_locale(QuickSlipsWeb.Gettext, locale.language)
+
     socket =
       socket
       |> assign(
-        page_title: "Free bill and receipt generator",
-        categories: Enum.map(Templates.list_by_category(), & &1.name),
+        page_title: gettext("Free bill and receipt generator"),
+        locale: locale,
+        categories: Templates.categories(locale),
         query: "",
         category: "all"
       )
@@ -32,10 +44,10 @@ defmodule QuickSlipsWeb.HomeLive do
 
   # Re-stream the whole list with `reset: true` whenever the filter changes.
   defp stream_templates(socket) do
-    %{query: query, category: category} = socket.assigns
+    %{locale: locale, query: query, category: category} = socket.assigns
 
     templates =
-      Enum.filter(Templates.list(), fn template ->
+      Enum.filter(Templates.list(locale), fn template ->
         matches_category?(template, category) and matches_query?(template, query)
       end)
 
@@ -47,7 +59,7 @@ defmodule QuickSlipsWeb.HomeLive do
 
   defp matches_query?(template, query) do
     haystack =
-      String.downcase("#{template["title"]} #{template["summary"]} #{template["category"]}")
+      String.downcase("#{template["title"]} #{template["summary"]} #{template["category_name"]}")
 
     String.contains?(haystack, query |> String.trim() |> String.downcase())
   end
@@ -58,8 +70,9 @@ defmodule QuickSlipsWeb.HomeLive do
     <Layouts.app
       flash={@flash}
       current_scope={@current_scope}
-      title={if signed_in?(@current_scope), do: "Templates"}
-      subtitle={if signed_in?(@current_scope), do: "Pick one to start a new document."}
+      locale={@locale}
+      title={if signed_in?(@current_scope), do: gettext("Templates")}
+      subtitle={if signed_in?(@current_scope), do: gettext("Pick one to start a new document.")}
     >
       <section
         :if={!signed_in?(@current_scope)}
@@ -70,10 +83,10 @@ defmodule QuickSlipsWeb.HomeLive do
           id="home-title"
           class="font-display text-3xl font-bold tracking-tight text-balance text-ink sm:text-4xl lg:text-5xl"
         >
-          Bills and receipts, ready in seconds
+          {gettext("Bills and receipts, ready in seconds")}
         </h1>
         <p class="mx-auto mt-3 max-w-xl text-base/7 text-pretty text-ink-muted lg:mt-4 lg:max-w-2xl lg:text-lg/8">
-          Pick a template, fill in the form and download the PDF. No account needed.
+          {gettext("Pick a template, fill in the form and download the PDF. No account needed.")}
         </p>
       </section>
 
@@ -90,8 +103,8 @@ defmodule QuickSlipsWeb.HomeLive do
           <.search_input
             id="template-search"
             value={@query}
-            label="Search templates"
-            placeholder="Search templates, like fuel or rent"
+            label={gettext("Search templates")}
+            placeholder={gettext("Search templates, like fuel or rent")}
           />
         </form>
 
@@ -109,7 +122,7 @@ defmodule QuickSlipsWeb.HomeLive do
             id="no-templates"
             class="hidden only:block col-span-full rounded-card border-2 border-dashed border-line-strong px-6 py-10 text-center text-sm/6 text-ink-muted"
           >
-            No template matches your search.
+            {gettext("No template matches your search.")}
           </li>
           <.template_card :for={{id, template} <- @streams.templates} id={id} template={template} />
         </ul>
@@ -119,12 +132,20 @@ defmodule QuickSlipsWeb.HomeLive do
           class="mt-12 rounded-card bg-primary-soft px-6 py-8 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:px-8"
         >
           <div>
-            <h2 class="text-lg/7 font-semibold text-ink">Need more than 2 downloads a day?</h2>
-            <p class="mt-1 text-sm/6 text-ink-muted">Log in or sign up to make more documents.</p>
+            <h2 class="text-lg/7 font-semibold text-ink">
+              {gettext("Need more than 2 downloads a day?")}
+            </h2>
+            <p class="mt-1 text-sm/6 text-ink-muted">
+              {gettext("Log in or sign up to make more documents.")}
+            </p>
           </div>
           <div class="mt-5 flex gap-3 sm:mt-0 sm:shrink-0">
-            <.button id="cta-login" variant="secondary" navigate={~p"/users/log-in"}>Log in</.button>
-            <.button id="cta-signup" navigate={~p"/users/register"}>Sign up</.button>
+            <.button id="cta-login" variant="secondary" navigate={~p"/users/log-in"}>
+              {gettext("Log in")}
+            </.button>
+            <.button id="cta-signup" navigate={~p"/users/register"}>
+              {gettext("Sign up")}
+            </.button>
           </div>
         </div>
       </div>

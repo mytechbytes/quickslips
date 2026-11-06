@@ -1,5 +1,6 @@
 {
   "slug": "medical-bill",
+  "public_slug": "medical-bill-generator",
   "title": "Medical Bill Generator",
   "category": "Health & learning",
   "icon": "hero-heart",

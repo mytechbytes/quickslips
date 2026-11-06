@@ -6,7 +6,7 @@ defmodule QuickSlipsWeb.BrandTest do
   # The files the logo and the favicon are made of live in priv/static, and the layout points at them.
   describe "the favicon" do
     test "every page links the icons, and the files exist", %{conn: conn} do
-      html = conn |> get(~p"/") |> html_response(200)
+      html = conn |> get(~p"/en-in") |> html_response(200)
 
       hrefs =
         html
@@ -54,7 +54,7 @@ defmodule QuickSlipsWeb.BrandTest do
 
   describe "the logo" do
     test "the header of the public pages shows the mark next to the name", %{conn: conn} do
-      {:ok, view, _html} = live(conn, ~p"/")
+      {:ok, view, _html} = live(conn, ~p"/en-in")
 
       assert has_element?(view, ~s(#logo img[src^="/images/logo-mark.svg"]))
       assert has_element?(view, "#logo", "QuickSlips")

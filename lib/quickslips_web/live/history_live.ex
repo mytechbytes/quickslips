@@ -5,6 +5,7 @@ defmodule QuickSlipsWeb.HistoryLive do
 
   alias QuickSlips.Documents
   alias QuickSlips.Documents.Document
+  alias QuickSlips.Locales
   alias QuickSlips.Templates
 
   @impl true
@@ -51,12 +52,25 @@ defmodule QuickSlipsWeb.HistoryLive do
 
   defp icon(icons, slug), do: icons[slug] || "hero-document-text"
 
+  # The page of the template in the language the document was made in, with the document to start from. A
+  # template that is not (any more) in that language opens in the default one.
+  defp edit_path(doc) do
+    locale = Locales.for_document(doc.language, doc.options)
+
+    path =
+      Templates.public_path(doc.slug, locale) ||
+        Templates.public_path(doc.slug, Locales.default())
+
+    if path, do: path <> "?" <> URI.encode_query(from: doc.id), else: ~p"/"
+  end
+
   @impl true
   def render(assigns) do
     ~H"""
     <Layouts.app
       flash={@flash}
       current_scope={@current_scope}
+      locale={@locale}
       active={:history}
       title="Documents"
       subtitle="Everything you have downloaded. Download it again, change it or delete it."
@@ -131,7 +145,7 @@ defmodule QuickSlipsWeb.HistoryLive do
               </.link>
               <.link
                 id={"edit-#{doc.id}"}
-                href={~p"/#{doc.slug}?#{[from: doc.id]}"}
+                href={edit_path(doc)}
                 title="Edit and regenerate"
                 class="inline-flex size-11 items-center justify-center rounded-button text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus sm:size-9 pointer-coarse:size-11"
               >

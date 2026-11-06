@@ -49,6 +49,31 @@ defmodule QuickSlips.DocumentsTest do
       assert document.user_id == scope.user.id
     end
 
+    test "create_document/2 keeps the language and the options, and defaults to English" do
+      scope = user_scope_fixture()
+      attrs = %{data: %{}, title: "t", template: "t1", slug: "fuel-bill"}
+
+      assert {:ok, %Document{language: "en", options: %{}}} =
+               Documents.create_document(scope, attrs)
+
+      assert {:ok, %Document{language: "hi", options: %{"country" => "in", "currency" => "INR"}}} =
+               Documents.create_document(
+                 scope,
+                 Map.merge(attrs, %{
+                   language: "hi",
+                   options: %{"country" => "in", "currency" => "INR"}
+                 })
+               )
+    end
+
+    test "create_document/2 refuses a language the site does not have" do
+      scope = user_scope_fixture()
+      attrs = %{data: %{}, title: "t", template: "t1", slug: "fuel-bill", language: "xx"}
+
+      assert {:error, %Ecto.Changeset{errors: [language: {"is invalid", _}]}} =
+               Documents.create_document(scope, attrs)
+    end
+
     test "create_document/2 with invalid data returns error changeset" do
       scope = user_scope_fixture()
       assert {:error, %Ecto.Changeset{}} = Documents.create_document(scope, @invalid_attrs)
@@ -264,6 +289,17 @@ defmodule QuickSlips.DocumentsTest do
 
       assert Documents.build_title(@fuel_bill, %{"date" => "2026-10-12"}) ==
                "Fuel Bill · 12 Oct 2026"
+    end
+
+    test "uses the name and the months of the language" do
+      schema = Map.put(@fuel_bill, "name", "पेट्रोल बिल")
+      months = ~w(जन. फ़र. मार्च अप्रैल मई जून जुलाई अग. सित. अक्टू. नव. दिस.)
+
+      data = %{"bill_number" => "FB-1", "date" => "2026-10-05"}
+
+      assert Documents.build_title(schema, data, months) == "पेट्रोल बिल · FB-1 · 05 अक्टू. 2026"
+      # With no months given, English ones.
+      assert Documents.build_title(schema, data) == "पेट्रोल बिल · FB-1 · 05 Oct 2026"
     end
 
     test "falls back to a month when there is no date" do

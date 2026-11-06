@@ -1,0 +1,7 @@
+{
+  "code": "in",
+  "currency": "INR",
+  "number": { "decimal": ".", "group": ",", "grouping": "indian" },
+  "money": { "position": "before", "space": true },
+  "date": { "order": "dmy", "separator": "/" }
+}
