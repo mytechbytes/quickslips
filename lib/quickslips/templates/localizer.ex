@@ -42,8 +42,10 @@ defmodule QuickSlips.Templates.Localizer do
   def localize(schema, texts, shared, locale) do
     text = merged(texts, locale)
     title = text["title"] || schema["title"]
+    mode = tax_mode(schema, locale.country)
 
     Map.merge(schema, %{
+      "tax_mode" => mode,
       "locale" => locale.code,
       "language" => locale.language,
       "public_slug" => text["public_slug"] || schema["public_slug"] || schema["slug"],
@@ -57,6 +59,7 @@ defmodule QuickSlips.Templates.Localizer do
       "fields" =>
         schema["fields"]
         |> Enum.filter(&in_country?(&1, locale.country))
+        |> Enum.reject(&(&1["type"] == "tax_rate" and mode == "none"))
         |> Enum.map(&localize_field(&1, text["fields"] || %{}, tax(locale)))
     })
   end
@@ -70,12 +73,18 @@ defmodule QuickSlips.Templates.Localizer do
     Map.put(design, "name", names[design["id"]] || design["name"] || design["id"])
   end
 
+  # What a bill does with tax in a country, from the `"tax"` rule of its schema: `{"default": "added", "es": "included"}`.
+  # `"none"`: no tax rate on the bill; `"added"`: the rate is added to the amount; `"included"`: the amount already
+  # holds the tax and the bill shows how much. A schema with no rule keeps the rate field it has (`nil`).
+  defp tax_mode(%{"tax" => %{} = rule}, country), do: rule[country] || rule["default"] || "none"
+  defp tax_mode(_schema, _country), do: nil
+
   # A field with `"countries": ["in"]` (a registration number only India has) is only in the pages of those countries.
   defp in_country?(%{"countries" => countries}, country), do: country in countries
   defp in_country?(_field, _country), do: true
 
   defp tax(locale) do
-    case Regions.build(locale.country) do
+    case Regions.build(locale.country, nil, locale.language) do
       {:ok, %{"tax" => %{} = tax}} -> tax
       _ -> %{}
     end
@@ -120,8 +129,14 @@ defmodule QuickSlips.Templates.Localizer do
           into: %{},
           do: {key, labels}
 
+    mode =
+      localized["tax_mode"] ||
+        if(Enum.any?(localized["fields"], &(&1["type"] == "tax_rate")), do: "added", else: "none")
+
     %{
       "lang" => locale.language,
+      "fonts" => QuickSlips.Fonts.families(locale.language),
+      "tax_mode" => mode,
       "months" => words["months"],
       "months_short" => words["months_short"],
       "print" => text["print"] || %{},

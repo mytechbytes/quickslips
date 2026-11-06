@@ -7,6 +7,7 @@
   "number_field": "receipt_number",
   "summary": "Membership or monthly fee receipt.",
   "description": "Create a gym membership receipt with member, plan, validity dates, fee and GST. Preview instantly and download as PDF.",
+  "tax": { "default": "added" },
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
     { "key": "gym_name", "label": "Gym or fitness club", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },

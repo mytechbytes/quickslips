@@ -1,5 +1,5 @@
 <Layouts.app flash={@flash} current_scope={@current_scope} locale={@locale}>
-  <article id="template-page" class="mx-auto max-w-5xl py-10">
+  <article id="template-page" class="mx-auto max-w-8xl py-10">
     <h1 class="font-display text-3xl font-bold tracking-tight text-ink">{@schema["title"]}</h1>
     <p class="mt-2 text-ink-muted">{@schema["description"]}</p>
 
@@ -8,6 +8,7 @@
       data-slug={@schema["slug"]}
       data-template="t1"
       data-locale={@locale.code}
+      data-fonts={Jason.encode!(@fonts)}
       data-i18n={Jason.encode!(ui_strings())}
       data-region={Jason.encode!(@region)}
       data-text={Jason.encode!(@text)}
@@ -19,7 +20,50 @@
       data-turnstile-site-key={turnstile_site_key(@current_scope)}
       class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
     >
-      <form id="bill-form" class="space-y-4" novalidate></form>
+      <div class="space-y-5">
+        <section
+          id="region-panel"
+          aria-labelledby="region-title"
+          class="rounded-card border border-line bg-surface p-4"
+        >
+          <h2 id="region-title" class="text-sm/6 font-semibold text-ink">
+            {gettext("Region & tax")}
+          </h2>
+          <div class="mt-2 grid grid-cols-2 gap-3">
+            <label class="block text-sm/6 text-ink-muted">
+              {gettext("Country")}
+              <select
+                id="region-country"
+                class="mt-1 block w-full rounded-field border border-line-strong bg-surface px-2 py-2 text-sm text-ink"
+              >
+                <option
+                  :for={country <- @countries}
+                  value={country.code}
+                  selected={country.code == @region["country"]}
+                >
+                  {country.name}
+                </option>
+              </select>
+            </label>
+            <label class="block text-sm/6 text-ink-muted">
+              {gettext("Currency")}
+              <select
+                id="region-currency"
+                class="mt-1 block w-full rounded-field border border-line-strong bg-surface px-2 py-2 text-sm text-ink"
+              >
+                <option
+                  :for={currency <- @currencies}
+                  value={currency["code"]}
+                  selected={currency["code"] == @region["currency"]["code"]}
+                >
+                  {currency["code"]} {currency["symbol"]}
+                </option>
+              </select>
+            </label>
+          </div>
+        </section>
+        <form id="bill-form" class="space-y-4" novalidate></form>
+      </div>
 
       <div>
         <div

@@ -35,6 +35,13 @@ defmodule QuickSlips.Regions do
   @doc "The codes of the countries that have a file, like `[\"es\", \"in\"]`."
   def countries, do: @countries |> Map.keys() |> Enum.sort()
 
+  @doc "The currencies a document may use: `[%{\"code\" => \"EUR\", \"symbol\" => \"€\"}, ...]` by code."
+  def currencies do
+    @currencies
+    |> Enum.map(fn {code, money} -> Map.put(money, "code", code) end)
+    |> Enum.sort_by(& &1["code"])
+  end
+
   @doc "The currency a country uses unless the document says otherwise, like `\"INR\"`."
   def default_currency(country) do
     case @countries do
@@ -45,16 +52,20 @@ defmodule QuickSlips.Regions do
 
   @doc """
   The region of a document: a map with string keys, which is also the `region.json` that the Typst helpers
-  read. `currency` is the code of the currency, or `nil` for the country's own.
+  read. `currency` is the code of the currency, or `nil` for the country's own; `language` picks the names
+  of the tax where a country has more than one.
 
       iex> {:ok, region} = QuickSlips.Regions.build("es", nil)
       iex> region["currency"]
       %{"code" => "EUR", "symbol" => "€", "decimals" => 2}
   """
-  def build(country, currency \\ nil) do
+  def build(country, currency \\ nil, language \\ nil) do
     with {:ok, data} <- fetch(@countries, country, :unknown_country),
          code = currency || data["currency"],
          {:ok, money} <- fetch(@currencies, code, :unknown_currency) do
+      # A country with two languages may write numbers and money differently in each (French Canada).
+      data = Map.merge(data, get_in(data, ["by_language", language]) || %{})
+
       {:ok,
        %{
          "country" => data["code"],
@@ -62,10 +73,24 @@ defmodule QuickSlips.Regions do
          "number" => data["number"],
          "money" => data["money"],
          "date" => data["date"],
-         "tax" => data["tax"]
+         "tax" => localize_tax(data["tax"], language)
        }}
     end
   end
+
+  # What the tax and its registration number are called may differ by language: `"name": {"en": "VAT", "fr": "TVA"}`.
+  defp localize_tax(nil, _language), do: nil
+
+  defp localize_tax(tax, language) do
+    tax
+    |> Map.update!("name", &pick(&1, language))
+    |> update_in(["id", "label"], &pick(&1, language))
+  end
+
+  defp pick(%{} = names, language),
+    do: names[language] || names["en"] || names |> Map.values() |> hd()
+
+  defp pick(name, _language), do: name
 
   defp fetch(map, key, error) when is_binary(key) do
     case map do

@@ -7,6 +7,7 @@
   "number_field": "bill_number",
   "summary": "Broadband or fibre bill with plan, period and GST.",
   "description": "Create a broadband or fibre internet bill with plan, billing period, charges and GST. Preview instantly and download as PDF.",
+  "tax": { "default": "added" },
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
     { "key": "provider_name", "label": "Internet provider", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },

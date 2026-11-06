@@ -11,13 +11,21 @@ export async function downloadPdf(
   turnstileToken?: string,
   businessId?: number | null,
   locale?: string,
+  // The country and currency the document is made for (the "Region & tax" panel).
+  region?: { country: string; currency: string },
 ): Promise<DownloadResult> {
   const csrf = document.querySelector<HTMLMetaElement>("meta[name='csrf-token']")?.content ?? ""
 
   const response = await fetch("/api/generate", {
     method: "POST",
     headers: { "content-type": "application/json", "x-csrf-token": csrf },
-    body: JSON.stringify({ slug, template, data, locale, turnstile_token: turnstileToken, business_id: businessId }),
+    body: JSON.stringify({ slug, template, data,
+      locale,
+      country: region?.country,
+      currency: region?.currency,
+      turnstile_token: turnstileToken,
+      business_id: businessId,
+    }),
   })
 
   if (!response.ok) {

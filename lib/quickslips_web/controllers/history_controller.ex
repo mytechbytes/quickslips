@@ -22,6 +22,8 @@ defmodule QuickSlipsWeb.HistoryController do
 
     # The document is made again in the language and for the country it was made for.
     locale = Locales.for_document(document.language, document.options)
+    country = document.options["country"]
+    locale = Locales.with_country(locale, country)
 
     # The template may have changed since the document was saved, so the data is checked again.
     with {:ok, schema} <- Templates.get(document.slug, locale),
@@ -29,7 +31,8 @@ defmodule QuickSlipsWeb.HistoryController do
          {:ok, pdf} <-
            Renderer.render(document.slug, document.template, Map.merge(clean, image_names),
              assets: files,
-             locale: locale.code,
+             locale: Locales.for_document(document.language, document.options).code,
+             country: country,
              currency: document.options["currency"]
            ) do
       send_download(conn, {:binary, pdf},

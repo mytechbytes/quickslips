@@ -7,8 +7,8 @@ defmodule QuickSlips.LocalesTest do
   @all Enum.map(Locales.all(), &%{&1 | live: true, auto: true})
 
   describe "the list" do
-    test "has six locales, and the first three are live" do
-      assert length(Locales.all()) == 6
+    test "has thirteen locales (the ten largest economies and Spain), and the first three are live" do
+      assert length(Locales.all()) == 13
       assert Enum.map(Locales.live(), & &1.code) == ["en-in", "hi-in", "es-es"]
     end
 
@@ -23,7 +23,7 @@ defmodule QuickSlips.LocalesTest do
     end
 
     test "lists the languages once" do
-      assert Locales.languages() == ["en", "hi", "es"]
+      assert Locales.languages() == ["en", "hi", "es", "zh", "de", "ja", "fr", "it", "pt"]
     end
   end
 
@@ -50,7 +50,7 @@ defmodule QuickSlips.LocalesTest do
       code |> then(&Enum.find(Locales.all(), fn l -> l.code == &1 end)) |> Locales.chain()
     end
 
-    assert chain.("es-mx") == ["es-mx", "es", "en"]
+    assert chain.("fr-ca") == ["fr-ca", "fr", "en"]
     assert chain.("hi-in") == ["hi-in", "hi", "en"]
     assert chain.("en-in") == ["en-in", "en"]
   end
@@ -69,7 +69,7 @@ defmodule QuickSlips.LocalesTest do
     end
 
     test "falls back to the language, then to the default" do
-      # Spanish for Mexico is not live yet: Spain's page is the closest.
+      # Spanish for Mexico has no locale: Spain's page is the closest.
       assert %{code: "es-es"} = Locales.for_document("es", %{"country" => "mx"})
       assert %{code: "es-es"} = Locales.for_document("es", %{})
       assert %{code: "es-es"} = Locales.for_document("es", nil)
@@ -84,8 +84,8 @@ defmodule QuickSlips.LocalesTest do
     end
 
     test "among the locales of a language the country decides, then the region of the language tag" do
-      assert %{code: "es-mx"} = Locales.guess("es", "MX", @all)
-      assert %{code: "es-mx"} = Locales.guess("es-MX,es;q=0.9", nil, @all)
+      assert %{code: "fr-ca"} = Locales.guess("fr", "CA", @all)
+      assert %{code: "fr-ca"} = Locales.guess("fr-CA,fr;q=0.9", nil, @all)
       assert %{code: "en-gb"} = Locales.guess("en-GB,en;q=0.9", nil, @all)
       # Where the visitor is beats what the browser's tag says.
       assert %{code: "en-in"} = Locales.guess("en-GB,en;q=0.9", "IN", @all)
@@ -99,8 +99,8 @@ defmodule QuickSlips.LocalesTest do
     end
 
     test "a language we do not have gives the locale of the country, then the default" do
-      assert %{code: "es-es"} = Locales.guess("fr-FR,fr;q=0.9", "ES", @all)
-      assert %{code: "en-in"} = Locales.guess("fr-FR,fr;q=0.9", "FR", @all)
+      assert %{code: "es-es"} = Locales.guess("ko-KR,ko;q=0.9", "ES", @all)
+      assert %{code: "en-in"} = Locales.guess("ko-KR,ko;q=0.9", "KR", @all)
       assert %{code: "en-in"} = Locales.guess(nil, nil, @all)
       assert %{code: "en-in"} = Locales.guess("", "", @all)
     end
@@ -115,5 +115,15 @@ defmodule QuickSlips.LocalesTest do
       assert %{code: "en-in"} = Locales.guess(";;;,,q=,-", "??", @all)
       assert %{code: "en-in"} = Locales.guess("hi;q=abc", nil, [])
     end
+  end
+
+  test "with_country/2 is the same language for another country, and not a page" do
+    hindi = Locales.fetch!("hi-in")
+
+    assert Locales.with_country(hindi, nil) == hindi
+    assert Locales.with_country(hindi, "in") == hindi
+
+    assert %{code: "hi-jp", language: "hi", country: "jp", live: false} =
+             Locales.with_country(hindi, "jp")
   end
 end

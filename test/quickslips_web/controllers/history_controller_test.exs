@@ -162,4 +162,19 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
       refute html =~ "item_1"
     end
   end
+
+  describe "a document made for another country" do
+    setup :register_and_log_in_user
+
+    test "is made again for that country", %{conn: conn, scope: scope} do
+      doc =
+        document_fixture(scope, %{
+          data: Map.put(sample("fuel-bill"), "seller_tax_id", "B41234567"),
+          options: %{"country" => "es", "currency" => "EUR"}
+        })
+
+      # as an English document for Spain it has a Spanish NIF, which an Indian one would refuse
+      assert "%PDF" <> _ = conn |> get(~p"/history/#{doc.id}/download") |> response(200)
+    end
+  end
 end

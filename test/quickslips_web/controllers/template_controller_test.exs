@@ -282,4 +282,52 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       assert html =~ "Sunrise Fuel Station"
     end
   end
+
+  describe "the Region & tax panel" do
+    test "lists the countries and the currencies, with the page's own chosen", %{conn: conn} do
+      html = conn |> get(~p"/es-es/generador-de-factura-de-gasolina") |> html_response(200)
+      document = LazyHTML.from_document(html)
+
+      assert document
+             |> LazyHTML.query("#region-country option[selected]")
+             |> LazyHTML.attribute("value") == ["es"]
+
+      assert document
+             |> LazyHTML.query("#region-currency option[selected]")
+             |> LazyHTML.attribute("value") == ["EUR"]
+
+      assert document |> LazyHTML.query("#region-country option") |> Enum.count() == 11
+      assert document |> LazyHTML.query("#region-currency option") |> Enum.count() == 8
+
+      assert document |> LazyHTML.query("#region-country option[value=jp]") |> LazyHTML.text() =~
+               "Japón"
+    end
+
+    test "tells the preview which fonts to load", %{conn: conn} do
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      assert [fonts] = attrs(html, "#bill-app", "data-fonts")
+      assert Jason.decode!(fonts) == ["/fonts/NotoSans-Regular.ttf", "/fonts/NotoSans-Bold.ttf"]
+    end
+
+    test "a document made for another country opens with that country's form", %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      sample = "priv/bill_templates/fuel-bill/sample.json" |> File.read!() |> Jason.decode!()
+
+      doc =
+        document_fixture(scope, %{
+          data: sample,
+          options: %{"country" => "es", "currency" => "EUR"}
+        })
+
+      html = conn |> get("/en-in/fuel-bill-generator?from=#{doc.id}") |> html_response(200)
+      document = LazyHTML.from_document(html)
+
+      assert document
+             |> LazyHTML.query("#region-country option[selected]")
+             |> LazyHTML.attribute("value") == ["es"]
+
+      assert [schema] = attrs(html, "#bill-app", "data-schema") |> Enum.map(&Jason.decode!/1)
+      assert Enum.find(schema["fields"], &(&1["key"] == "tax_percent"))["rates"] == [0, 4, 10, 21]
+    end
+  end
 end

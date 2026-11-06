@@ -85,4 +85,50 @@ defmodule QuickSlips.Templates.TaxTest do
       refute Map.has_key?(clean, "tax_percent")
     end
   end
+
+  describe "the tax rule of a bill" do
+    test "says what the bill does with tax in each country" do
+      assert schema("fuel-bill", "en-in")["tax_mode"] == "none"
+      assert schema("fuel-bill", "es-es")["tax_mode"] == "included"
+      assert schema("restaurant-bill", "en-in")["tax_mode"] == "added"
+      # a bill with no rule has no mode, and keeps the fields it has
+      assert schema("rent-receipt", "en-in")["tax_mode"] == nil
+    end
+
+    test "a bill that does not tax in a country does not ask for a tax rate there" do
+      assert field(schema("fuel-bill", "en-in"), "tax_percent") == nil
+      assert field(schema("fuel-bill", "es-es"), "tax_percent")["rates"] == [0, 4, 10, 21]
+    end
+
+    test "the words for the layout carry the mode and the fonts" do
+      text = Templates.print_text("fuel-bill", Locales.fetch!("es-es"))
+      assert text["tax_mode"] == "included"
+      assert text["fonts"] == ["Noto Sans"]
+      assert Templates.print_text("restaurant-bill", Locales.default())["tax_mode"] == "added"
+      assert Templates.print_text("rent-receipt", Locales.default())["tax_mode"] == "none"
+    end
+  end
+
+  describe "a document for another country than its page" do
+    test "is worked out from the same files: Hindi made for Spain has Spain's rates and tax id" do
+      locale = Locales.with_country(Locales.fetch!("hi-in"), "es")
+      assert {:ok, schema} = Templates.get("fuel-bill", locale)
+
+      assert field(schema, "tax_percent")["rates"] == [0, 4, 10, 21]
+      assert field(schema, "seller_tax_id")["pattern"] =~ "XYZ"
+      assert field(schema, "station_name")["label"] == "पेट्रोल पंप का नाम"
+      assert Templates.print_text("fuel-bill", locale)["lang"] == "hi"
+    end
+
+    test "a language the bill is not in is still refused" do
+      locale = Locales.with_country(Locales.fetch!("en-in"), "es") |> Map.put(:language, "ko")
+      assert {:error, :not_found} = Templates.get("fuel-bill", locale)
+    end
+
+    test "an unknown country gives the bill with no country rates" do
+      locale = Locales.with_country(Locales.fetch!("en-in"), "zz")
+      assert {:ok, schema} = Templates.get("restaurant-bill", locale)
+      assert field(schema, "gst_percent")["rates"] == []
+    end
+  end
 end

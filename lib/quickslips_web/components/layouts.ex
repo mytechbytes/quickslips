@@ -82,7 +82,7 @@ defmodule QuickSlipsWeb.Layouts do
       <header class="border-b border-line bg-surface">
         <nav
           aria-label={gettext("Main")}
-          class="mx-auto flex max-w-7xl items-center justify-between gap-x-4 px-4 py-3 sm:px-6 lg:px-8"
+          class="mx-auto flex max-w-8xl items-center justify-between gap-x-4 px-4 py-3 sm:px-6 lg:px-8"
         >
           <div class="flex items-center gap-x-10">
             <.wordmark id="logo" navigate={~p"/"} />
@@ -167,12 +167,12 @@ defmodule QuickSlipsWeb.Layouts do
         </dialog>
       </el-dialog>
 
-      <main class="mx-auto w-full max-w-7xl grow px-4 sm:px-6 lg:px-8">
+      <main class="mx-auto w-full max-w-8xl grow px-4 sm:px-6 lg:px-8">
         {render_slot(@inner_block)}
       </main>
 
       <footer class="border-t border-line">
-        <div class="mx-auto max-w-7xl space-y-6 px-4 py-8 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-8xl space-y-6 px-4 py-8 sm:px-6 lg:px-8">
           <.locale_picker id="footer-locale" locale={@locale} />
           <p class="text-sm/6 text-ink-muted">
             {gettext(
@@ -197,7 +197,7 @@ defmodule QuickSlipsWeb.Layouts do
     <%!-- Phone: a dark top bar with a menu --%>
     <div class="lg:hidden">
       <nav aria-label={gettext("Main")} class="bg-sidebar">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mx-auto max-w-8xl px-4 sm:px-6">
           <div class="flex h-16 items-center justify-between">
             <.wordmark id="m-logo" tone={:sidebar} navigate={~p"/dashboard"} />
             <div class="-mr-2 flex items-center gap-x-1">
@@ -326,7 +326,7 @@ defmodule QuickSlipsWeb.Layouts do
 
       <main>
         <div :if={@title} class="border-b border-line bg-surface lg:border-0 lg:bg-transparent">
-          <div class="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 lg:pt-8 lg:pb-0">
+          <div class="mx-auto max-w-8xl px-4 py-5 sm:px-6 lg:px-8 lg:pt-8 lg:pb-0">
             <div class="sm:flex sm:items-center sm:justify-between sm:gap-x-6">
               <div>
                 <h1 class="font-display text-2xl/8 font-semibold tracking-tight text-ink">
@@ -340,7 +340,7 @@ defmodule QuickSlipsWeb.Layouts do
             </div>
           </div>
         </div>
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+        <div class="mx-auto max-w-8xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
           {render_slot(@inner_block)}
         </div>
       </main>

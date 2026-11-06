@@ -191,12 +191,17 @@ export function buildForm(
     return data
   }
 
-  form.addEventListener("input", () => onChange(read()))
+  const onInput = () => onChange(read())
+  form.addEventListener("input", onInput)
 
   addBusinessPicker(form, schema, businesses, controls, () => onChange(read()), onBusiness)
 
   return {
     read,
+    /** Takes the form's listener away, before the form is built again. */
+    destroy() {
+      form.removeEventListener("input", onInput)
+    },
     /** Show server-side errors: `{ field_key: ["message"] }`. Pass {} to clear. */
     showErrors(errors: Record<string, string[]>) {
       for (const [key, el] of errorEls) el.textContent = (errors[key] ?? []).join(", ")

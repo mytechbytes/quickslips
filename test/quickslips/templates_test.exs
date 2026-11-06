@@ -249,7 +249,9 @@ defmodule QuickSlips.TemplatesTest do
       for locale <- Locales.live(), {:ok, schema} = Templates.get("fuel-bill", locale) do
         # a field that only some countries have (a Spanish tax rate) is not in every locale
         everywhere = fn fields ->
-          for %{"key" => key} = f <- fields, not is_map_key(f, "countries"), do: key
+          for %{"key" => key} = f <- fields,
+              not is_map_key(f, "countries") and f["type"] != "tax_rate",
+              do: key
         end
 
         assert everywhere.(schema["fields"]) == everywhere.(english["fields"])

@@ -1,0 +1,34 @@
+{
+  "code": "gb",
+  "currency": "GBP",
+  "number": {
+    "decimal": ".",
+    "group": ",",
+    "grouping": "standard"
+  },
+  "money": {
+    "position": "before",
+    "space": false
+  },
+  "date": {
+    "order": "dmy",
+    "separator": "/"
+  },
+  "tax": {
+    "name": "VAT",
+    "rates": [
+      0,
+      5,
+      20
+    ],
+    "id": {
+      "label": "VAT number",
+      "pattern": "^(GB)?([0-9]{9}|[0-9]{12})$"
+    },
+    "checked": "2026-11-06",
+    "note": "Standard 20%, reduced 5%, zero 0% (gov.uk). The nine-digit VAT number shape is from general knowledge and was not checked in a source.",
+    "sources": [
+      "https://www.gov.uk/vat-rates"
+    ]
+  }
+}
