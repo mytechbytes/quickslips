@@ -1,0 +1,41 @@
+{
+  "code": "de",
+  "currency": "EUR",
+  "number": {
+    "decimal": ",",
+    "group": ".",
+    "grouping": "standard"
+  },
+  "money": {
+    "position": "after",
+    "space": true
+  },
+  "date": {
+    "order": "dmy",
+    "separator": "."
+  },
+  "tax": {
+    "name": {
+      "en": "VAT",
+      "de": "USt."
+    },
+    "rates": [
+      0,
+      7,
+      19
+    ],
+    "id": {
+      "label": {
+        "en": "VAT ID",
+        "de": "USt-IdNr."
+      },
+      "pattern": "^DE[0-9]{9}$"
+    },
+    "checked": "2026-11-06",
+    "note": "Standard 19%, reduced 7%. Checked against secondary sources (tax advisers, Stripe); the Federal Ministry of Finance pages were not reached.",
+    "sources": [
+      "https://taxfix.de/en/vat-number-germany/",
+      "https://stripe.com/de-lu/resources/more/germany-vat-rate"
+    ]
+  }
+}

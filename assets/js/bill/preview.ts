@@ -13,8 +13,13 @@ export function createPreview(opts: {
   // (`text.json`) and what its country and currency decide (`region.json`).
   text: string
   region: string
+  // The font files of the language, as web paths (Noto Sans, and a Chinese or Japanese font for those languages).
+  fonts: string[]
 }) {
   const worker = new Worker(opts.workerUrl)
+  // The words and the region of the document; the "Region & tax" panel changes them.
+  let text = opts.text
+  let region = opts.region
   let source: string | null = null
   let helpers: string | null = null
   let latest = 0
@@ -76,8 +81,9 @@ export function createPreview(opts: {
       helpers: await loadHelpers(),
       data: { ...data, ...imageNames },
       images,
-      text: opts.text,
-      region: opts.region,
+      text,
+      region,
+      fonts: opts.fonts,
     })
   }
 
@@ -108,6 +114,12 @@ export function createPreview(opts: {
 
   return {
     renderNow,
+    /** The document is for another country or currency: use its words and region from now on. */
+    setRegion(newText: string, newRegion: string) {
+      text = newText
+      region = newRegion
+      if (lastData) renderNow(lastData)
+    },
     setBusiness,
     /** Re-render after the user stops typing for `delay` ms (Task 6.3). */
     schedule(data: BillData, delay = 300) {

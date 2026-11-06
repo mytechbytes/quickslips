@@ -23,6 +23,8 @@ msgstr "no es válido"
 msgid "must be accepted"
 msgstr "debe ser aceptado"
 
+#: lib/quickslips_web/error_messages.ex:31
+#, elixir-autogen
 msgid "has invalid format"
 msgstr "tiene un formato no válido"
 
@@ -101,32 +103,32 @@ msgstr "debe ser mayor o igual que %{number}"
 msgid "must be equal to %{number}"
 msgstr "debe ser igual a %{number}"
 
-#: lib/quickslips_web/error_messages.ex:69
+#: lib/quickslips_web/error_messages.ex:70
 #, elixir-autogen, elixir-format
 msgid "at least one digit or punctuation character"
 msgstr "al menos un número o un signo de puntuación"
 
-#: lib/quickslips_web/error_messages.ex:67
+#: lib/quickslips_web/error_messages.ex:68
 #, elixir-autogen, elixir-format
 msgid "at least one lower case character"
 msgstr "al menos una letra minúscula"
 
-#: lib/quickslips_web/error_messages.ex:68
+#: lib/quickslips_web/error_messages.ex:69
 #, elixir-autogen, elixir-format
 msgid "at least one upper case character"
 msgstr "al menos una letra mayúscula"
 
-#: lib/quickslips_web/error_messages.ex:65
+#: lib/quickslips_web/error_messages.ex:66
 #, elixir-autogen, elixir-format
 msgid "did not change"
 msgstr "no ha cambiado"
 
-#: lib/quickslips_web/error_messages.ex:66
+#: lib/quickslips_web/error_messages.ex:67
 #, elixir-autogen, elixir-format
 msgid "does not match password"
 msgstr "no coincide con la contraseña"
 
-#: lib/quickslips_web/error_messages.ex:31
+#: lib/quickslips_web/error_messages.ex:32
 #, elixir-autogen, elixir-format
 msgid "has an unsupported type"
 msgstr "tiene un tipo no admitido"
@@ -136,12 +138,12 @@ msgstr "tiene un tipo no admitido"
 msgid "is required"
 msgstr "es obligatorio"
 
-#: lib/quickslips_web/error_messages.ex:34
+#: lib/quickslips_web/error_messages.ex:35
 #, elixir-autogen, elixir-format
 msgid "must be a date like 2026-10-31"
 msgstr "debe ser una fecha, como 2026-10-31"
 
-#: lib/quickslips_web/error_messages.ex:37
+#: lib/quickslips_web/error_messages.ex:38
 #, elixir-autogen, elixir-format
 msgid "must be a month like 2026-10"
 msgstr "debe ser un mes, como 2026-10"
@@ -156,22 +158,22 @@ msgstr "debe ser un número"
 msgid "must be an object"
 msgstr "debe ser un objeto"
 
-#: lib/quickslips_web/error_messages.ex:51
+#: lib/quickslips_web/error_messages.ex:52
 #, elixir-autogen, elixir-format
 msgid "must be at least %{min}"
 msgstr "debe ser como mínimo %{min}"
 
-#: lib/quickslips_web/error_messages.ex:48
+#: lib/quickslips_web/error_messages.ex:49
 #, elixir-autogen, elixir-format
 msgid "must be at most %{max}"
 msgstr "debe ser como máximo %{max}"
 
-#: lib/quickslips_web/error_messages.ex:42
+#: lib/quickslips_web/error_messages.ex:43
 #, elixir-autogen, elixir-format
 msgid "must be at most %{max} characters"
 msgstr "debe tener como máximo %{max} caracteres"
 
-#: lib/quickslips_web/error_messages.ex:54
+#: lib/quickslips_web/error_messages.ex:55
 #, elixir-autogen, elixir-format
 msgid "must be one of: %{options}"
 msgstr "debe ser uno de: %{options}"
@@ -181,7 +183,7 @@ msgstr "debe ser uno de: %{options}"
 msgid "must be text"
 msgstr "debe ser texto"
 
-#: lib/quickslips_web/error_messages.ex:64
+#: lib/quickslips_web/error_messages.ex:65
 #, elixir-autogen, elixir-format
 msgid "must have the @ sign and no spaces"
 msgstr "debe tener el signo @ y no contener espacios"
@@ -191,7 +193,7 @@ msgstr "debe tener el signo @ y no contener espacios"
 msgid "must be a list"
 msgstr "debe ser una lista"
 
-#: lib/quickslips_web/error_messages.ex:45
+#: lib/quickslips_web/error_messages.ex:46
 #, elixir-autogen, elixir-format
 msgid "must have at most %{max} rows"
 msgstr "debe tener como máximo %{max} filas"

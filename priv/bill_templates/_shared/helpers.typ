@@ -43,7 +43,7 @@
       rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[QUICK SLIPS])
     },
   )
-  set text(font: "Noto Sans", size: size, lang: text-data.at("lang", default: "en"))
+  set text(font: text-data.at("fonts", default: ("Noto Sans",)), size: size, lang: text-data.at("lang", default: "en"))
   body
 }
 
@@ -179,6 +179,20 @@
 #let picture(data, key, height) = {
   let name = data.at(key, default: none)
   if name != none { image("/" + name, height: height) }
+}
+
+// What the bill does with tax: "none", "added" (the rate is added to the amount) or "included" (the amount holds it).
+#let tax-mode = text-data.at("tax_mode", default: "none")
+
+// The three amounts of a bill with tax, whichever way the country does it: `(base, tax, total)`.
+#let tax-split(amount, rate) = {
+  if tax-mode == "included" {
+    let base = amount / (1 + rate / 100)
+    (base: base, tax: amount - base, total: amount)
+  } else {
+    let tax = amount * rate / 100
+    (base: amount, tax: tax, total: amount + tax)
+  }
 }
 
 // How the tax of the country is called ("GST", "IVA") and what its registration number is called ("GSTIN", "NIF").

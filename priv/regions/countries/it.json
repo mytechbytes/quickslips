@@ -1,0 +1,42 @@
+{
+  "code": "it",
+  "currency": "EUR",
+  "number": {
+    "decimal": ",",
+    "group": ".",
+    "grouping": "standard"
+  },
+  "money": {
+    "position": "after",
+    "space": true
+  },
+  "date": {
+    "order": "dmy",
+    "separator": "/"
+  },
+  "tax": {
+    "name": {
+      "en": "VAT",
+      "it": "IVA"
+    },
+    "rates": [
+      0,
+      4,
+      5,
+      10,
+      22
+    ],
+    "id": {
+      "label": {
+        "en": "VAT No.",
+        "it": "Partita IVA"
+      },
+      "pattern": "^(IT)?[0-9]{11}$"
+    },
+    "checked": "2026-11-06",
+    "note": "Standard 22%; 10%, 5% and 4% for goods and services in Tabella A. Checked against tax-advice sites, not the Agenzia delle Entrate. The 11-digit partita IVA is from general knowledge and was not checked in a source.",
+    "sources": [
+      "https://www.fiscozen.it/guide/tipologie-iva/"
+    ]
+  }
+}

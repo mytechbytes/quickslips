@@ -532,9 +532,15 @@ defmodule QuickSlipsWeb.UI do
   """
   def country_name("in"), do: gettext("India")
   def country_name("es"), do: gettext("Spain")
-  def country_name("mx"), do: gettext("Mexico")
   def country_name("us"), do: gettext("United States")
   def country_name("gb"), do: gettext("United Kingdom")
+  def country_name("cn"), do: gettext("China")
+  def country_name("de"), do: gettext("Germany")
+  def country_name("jp"), do: gettext("Japan")
+  def country_name("fr"), do: gettext("France")
+  def country_name("it"), do: gettext("Italy")
+  def country_name("br"), do: gettext("Brazil")
+  def country_name("ca"), do: gettext("Canada")
   def country_name(code), do: String.upcase(code)
 
   @doc """

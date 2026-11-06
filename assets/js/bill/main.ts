@@ -25,17 +25,20 @@ function init() {
   const businesses: Business[] = JSON.parse(root.dataset.businesses ?? "[]")
   const sample: BillData = JSON.parse(root.dataset.sample!)
   const form = root.querySelector<HTMLFormElement>("#bill-form")!
-  // The language and country of the page ("hi-in"), and the sign of its currency for the labels.
+  // The language and country of the page ("hi-in"). The document may be made for another country (the "Region & tax"
+  // panel), so what depends on the country is kept in `region` and changes with it.
   const locale = root.dataset.locale!
-  const region = JSON.parse(root.dataset.region!)
-  const currencySign: string = region.currency.symbol
+  const language = locale.split("-")[0]
+  let region = JSON.parse(root.dataset.region!)
   // Amounts as the country writes them: ₹1,23,456.00 in India, 1.234,56 € in Spain.
-  const money = new Intl.NumberFormat(locale.replace(/-(\w+)$/, (_, country: string) => "-" + country.toUpperCase()), {
-    style: "currency",
-    currency: region.currency.code,
-    minimumFractionDigits: region.currency.decimals,
-    maximumFractionDigits: region.currency.decimals,
-  })
+  const makeMoney = (r: typeof region) =>
+    new Intl.NumberFormat(`${language}-${String(r.country).toUpperCase()}`, {
+      style: "currency",
+      currency: r.currency.code,
+      minimumFractionDigits: r.currency.decimals,
+      maximumFractionDigits: r.currency.decimals,
+    })
+  let money = makeMoney(region)
   const preview = createPreview({
     workerUrl: root.dataset.worker!,
     slug: schema.slug,
@@ -44,6 +47,7 @@ function init() {
     status: root.querySelector<HTMLElement>("#bill-status")!,
     text: root.dataset.text!,
     region: root.dataset.region!,
+    fonts: JSON.parse(root.dataset.fonts ?? "[]"),
   })
   preview.renderNow(sample)
   // The saved business the user picked, if any: its logo and signature go on the preview and the PDF.
@@ -52,7 +56,42 @@ function init() {
     business = picked
     preview.setBusiness(picked)
   }
-  const ui = buildForm(form, schema, sample, (data) => preview.schedule(data), businesses, useBusiness, { currency: currencySign, tax: region.tax?.name, tax_id: region.tax?.id?.label }, (amount) => money.format(amount))
+  const mountForm = (initial: BillData) =>
+    buildForm(
+      form,
+      schema,
+      initial,
+      (data) => preview.schedule(data),
+      businesses,
+      useBusiness,
+      { currency: region.currency.symbol, tax: region.tax?.name, tax_id: region.tax?.id?.label },
+      (amount) => money.format(amount),
+    )
+  let ui = mountForm(sample)
+
+  // The "Region & tax" panel: another country or currency means other rates, other registration numbers, other
+  // money and date formats. The server says what the form is for that country; the values typed so far stay.
+  const countrySelect = root.querySelector<HTMLSelectElement>("#region-country")!
+  const currencySelect = root.querySelector<HTMLSelectElement>("#region-currency")!
+  async function changeRegion(countryChanged: boolean) {
+    const params = new URLSearchParams({ locale, country: countrySelect.value })
+    if (!countryChanged) params.set("currency", currencySelect.value)
+    const response = await fetch(`/api/bill/${schema.slug}/view?${params}`).catch(() => null)
+    if (!response?.ok) return
+    const view = await response.json()
+    const data = ui.read()
+    ui.destroy()
+    form.replaceChildren()
+    schema.fields = view.fields
+    region = view.region
+    money = makeMoney(region)
+    currencySelect.value = region.currency.code
+    ui = mountForm(data)
+    if (business) form.querySelector<HTMLSelectElement>("#business-select")!.value = String(business.id)
+    preview.setRegion(JSON.stringify(view.text), JSON.stringify(view.region))
+  }
+  countrySelect.addEventListener("change", () => changeRegion(true))
+  currencySelect.addEventListener("change", () => changeRegion(false))
 
   // "Edit and regenerate": the document was made with this business, so it is selected again. Its fields
   // already hold what the document had, so nothing is filled in.
@@ -94,7 +133,10 @@ function init() {
       }
       turnstileToken = await widget.token()
     }
-    const result = await downloadPdf(schema.slug, root.dataset.template!, ui.read(), turnstileToken, business?.id, locale)
+    const result = await downloadPdf(schema.slug, root.dataset.template!, ui.read(), turnstileToken, business?.id, locale, {
+      country: region.country,
+      currency: region.currency.code,
+    })
     button.disabled = false
 
     if (result.ok) {

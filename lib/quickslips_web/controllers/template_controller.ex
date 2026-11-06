@@ -3,6 +3,7 @@ defmodule QuickSlipsWeb.TemplateController do
 
   alias QuickSlips.Businesses
   alias QuickSlips.Documents
+  alias QuickSlips.Locales
   alias QuickSlips.Regions
   alias QuickSlips.Templates
   alias QuickSlips.Templates.Items
@@ -18,9 +19,13 @@ defmodule QuickSlipsWeb.TemplateController do
       {:ok, schema} ->
         slug = schema["slug"]
         {:ok, sample} = Templates.sample(slug, locale)
-        {:ok, region} = Regions.build(locale.country)
         # "Edit and regenerate" (Task 8.3): the form starts with the data of an earlier document.
         document = find_document(conn.assigns.current_scope, params["from"], slug)
+
+        # A document may have been made for another country than its page: the form is that country's.
+        {view_locale, currency} = document_region(locale, document)
+        {:ok, region} = Regions.build(view_locale.country, currency, view_locale.language)
+        {:ok, schema} = Templates.get(slug, view_locale)
 
         conn
         |> assign(:page_title, schema["title"])
@@ -32,7 +37,14 @@ defmodule QuickSlipsWeb.TemplateController do
           document: document,
           locale: locale,
           region: region,
-          text: Templates.print_text(slug, locale),
+          text: Templates.print_text(slug, view_locale),
+          countries:
+            for(
+              code <- Regions.countries(),
+              do: %{code: code, name: QuickSlipsWeb.UI.country_name(code)}
+            ),
+          currencies: Regions.currencies(),
+          fonts: QuickSlips.Fonts.urls(locale.language),
           businesses: saved_businesses(conn.assigns.current_scope)
         )
 
@@ -40,6 +52,11 @@ defmodule QuickSlipsWeb.TemplateController do
         raise QuickSlipsWeb.NotFoundError
     end
   end
+
+  defp document_region(locale, %{options: %{"country" => country} = options}),
+    do: {Locales.with_country(locale, country), options["currency"]}
+
+  defp document_region(locale, _no_document), do: {locale, nil}
 
   # Only a logged-in user's own document of this template counts. Anything else is ignored, so the form
   # starts with the sample, and nobody learns whether somebody else's document exists.

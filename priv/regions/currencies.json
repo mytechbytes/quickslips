@@ -1,4 +1,34 @@
 {
-  "INR": { "symbol": "₹", "decimals": 2 },
-  "EUR": { "symbol": "€", "decimals": 2 }
+  "INR": {
+    "symbol": "₹",
+    "decimals": 2
+  },
+  "EUR": {
+    "symbol": "€",
+    "decimals": 2
+  },
+  "USD": {
+    "symbol": "$",
+    "decimals": 2
+  },
+  "CNY": {
+    "symbol": "¥",
+    "decimals": 2
+  },
+  "JPY": {
+    "symbol": "¥",
+    "decimals": 0
+  },
+  "GBP": {
+    "symbol": "£",
+    "decimals": 2
+  },
+  "BRL": {
+    "symbol": "R$",
+    "decimals": 2
+  },
+  "CAD": {
+    "symbol": "$",
+    "decimals": 2
+  }
 }

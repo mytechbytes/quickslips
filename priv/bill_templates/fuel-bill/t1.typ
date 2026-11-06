@@ -38,14 +38,15 @@
 // Where the country has a tax on fuel that is part of the price (IVA in Spain), the bill shows what the price holds.
 #let rate = opt(data, "tax_percent")
 #if rate != none {
-  let base = total / (1 + rate / 100)
+  let split = tax-split(total, rate)
+  let base = split.base
   align(right, grid(
     columns: (auto, auto),
     column-gutter: 6mm,
     row-gutter: 1.5mm,
     align: (left, right),
     text(fill: muted)[#t.taxable], [#money(base)],
-    text(fill: muted)[#tax-name (#fmt-number(rate)%)], [#money(total - base)],
+    text(fill: muted)[#tax-name (#fmt-number(rate)%)], [#money(split.tax)],
   ))
   v(1mm)
 }

@@ -42,6 +42,7 @@ defmodule QuickSlipsWeb.Router do
 
     post "/generate", GenerateController, :create
     get "/quota", QuotaController, :show
+    get "/bill/:slug/view", BillViewController, :show
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

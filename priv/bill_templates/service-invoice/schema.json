@@ -7,6 +7,7 @@
   "number_field": "invoice_number",
   "summary": "Charges for work or a service, with GST.",
   "description": "Generate an invoice for a service with client details, any number of service lines, GST and payment notes. Preview instantly and download as PDF.",
+  "tax": { "default": "added" },
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
     { "key": "seller_name", "label": "Your business name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },

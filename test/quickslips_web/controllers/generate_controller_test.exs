@@ -373,4 +373,51 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
                |> json_response(422)
     end
   end
+
+  describe "a document for another country" do
+    setup :register_and_log_in_user
+
+    test "is made with that country's numbers, and keeps the country and the currency", %{
+      conn: conn,
+      scope: scope
+    } do
+      conn =
+        generate(conn, %{
+          country: "de",
+          currency: "EUR",
+          data: Map.delete(sample(), "seller_tax_id")
+        })
+
+      assert "%PDF" <> _ = response(conn, 200)
+
+      assert [doc] = QuickSlips.Documents.list_documents(scope)
+      assert doc.language == "en"
+      assert doc.options == %{"country" => "de", "currency" => "EUR"}
+    end
+
+    test "the currency defaults to the country's", %{conn: conn, scope: scope} do
+      conn
+      |> generate(%{country: "jp", data: Map.delete(sample(), "seller_tax_id")})
+      |> response(200)
+
+      assert [%{options: %{"country" => "jp", "currency" => "JPY"}}] =
+               QuickSlips.Documents.list_documents(scope)
+    end
+
+    test "is checked against that country's fields: a Spanish NIF is not an Indian GSTIN", %{
+      conn: conn
+    } do
+      data = Map.put(sample(), "seller_tax_id", "B41234567")
+
+      assert %{"errors" => %{"seller_tax_id" => ["has invalid format"]}} =
+               conn |> generate(%{data: data}) |> json_response(422)
+
+      assert "%PDF" <> _ = conn |> generate(%{data: data, country: "es"}) |> response(200)
+    end
+
+    test "a country or currency that does not exist is a 400", %{conn: conn} do
+      assert conn |> generate(%{country: "zz"}) |> json_response(400)
+      assert conn |> generate(%{currency: "XXX"}) |> json_response(400)
+    end
+  end
 end

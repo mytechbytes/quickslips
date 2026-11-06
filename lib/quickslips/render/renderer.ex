@@ -20,6 +20,7 @@ defmodule QuickSlips.Render.Renderer do
     * `assets: %{"logo.png" => "/abs/path/to/the/file"}`: pictures to copy next to the template, so it can
       draw them with `#image("logo.png")`. The names come from our code, never from a user.
     * `locale: "hi-in"`: the language of the words and the country of the numbers and dates (default `en-in`).
+    * `country: "jp"`: the document is made for another country than the locale's (its numbers, dates, tax).
     * `currency: "EUR"`: a currency other than the country's own.
 
   Returns `{:ok, pdf_binary}` or `{:error, reason}`.
@@ -31,8 +32,10 @@ defmodule QuickSlips.Render.Renderer do
     with {:ok, schema} <- Templates.get(slug),
          :ok <- ensure_template(schema, template_id),
          {:ok, locale} <- fetch_locale(Keyword.get(opts, :locale, Locales.default().code)),
+         locale = Locales.with_country(locale, Keyword.get(opts, :country)),
          {:ok, text} <- fetch_text(slug, locale),
-         {:ok, region} <- Regions.build(locale.country, Keyword.get(opts, :currency)),
+         {:ok, region} <-
+           Regions.build(locale.country, Keyword.get(opts, :currency), locale.language),
          {:ok, typst} <- typst_executable() do
       words = %{"text.json" => text, "region.json" => region}
       run_in_tmp_dir(typst, slug, template_id, data, words, mode, assets)

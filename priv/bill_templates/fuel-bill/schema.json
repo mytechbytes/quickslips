@@ -4,6 +4,7 @@
   "icon": "hero-fire",
   "number_field": "bill_number",
   "languages": ["en", "hi", "es"],
+  "tax": { "default": "none", "es": "included" },
   "templates": [{ "id": "t1" }],
   "fields": [
     { "key": "station_name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
@@ -15,6 +16,6 @@
     { "key": "fuel_type", "type": "select", "options": ["Petrol", "Diesel", "CNG"], "required": true },
     { "key": "quantity", "type": "number", "required": true, "min": 0.01 },
     { "key": "rate", "type": "number", "required": true, "min": 0.01 },
-    { "key": "tax_percent", "type": "tax_rate", "required": false, "countries": ["es"] }
+    { "key": "tax_percent", "type": "tax_rate", "required": false }
   ]
 }
