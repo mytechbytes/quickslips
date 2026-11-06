@@ -1,0 +1,566 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: hi\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: lib/quickslips_web/controllers/template_html.ex:16
+#, elixir-autogen, elixir-format
+msgid "%{remaining} of %{limit} downloads left today"
+msgstr "आज %{limit} में से %{remaining} डाउनलोड बचे हैं"
+
+#: lib/quickslips_web/controllers/template_html.ex:11
+#, elixir-autogen, elixir-format
+msgid "%{remaining} of %{limit} free downloads left today"
+msgstr "आज %{limit} में से %{remaining} मुफ़्त डाउनलोड बचे हैं"
+
+#: lib/quickslips_web/live/user_live/registration.ex:34
+#, elixir-autogen, elixir-format
+msgid "6 to 72 characters, with a lower-case letter, an upper-case letter and a number or symbol."
+msgstr "6 से 72 अक्षर; इनमें एक छोटा अक्षर (a), एक बड़ा अक्षर (A) और एक अंक या चिह्न ज़रूर हो।"
+
+#: lib/quickslips_web/components/core_components.ex:512
+#, elixir-autogen, elixir-format
+msgid "Actions"
+msgstr "कार्रवाइयाँ"
+
+#: lib/quickslips_web/components/catalogue_components.ex:66
+#, elixir-autogen, elixir-format
+msgid "All"
+msgstr "सभी"
+
+#: lib/quickslips_web/live/user_live/registration.ex:62
+#, elixir-autogen, elixir-format
+msgid "Already have an account?"
+msgstr "पहले से खाता है?"
+
+#: lib/quickslips_web/components/layouts.ex:387
+#: lib/quickslips_web/components/layouts.ex:402
+#, elixir-autogen, elixir-format
+msgid "Attempting to reconnect"
+msgstr "फिर से जुड़ने की कोशिश हो रही है"
+
+#: lib/quickslips_web/live/home_live.ex:86
+#, elixir-autogen, elixir-format
+msgid "Bills and receipts, ready in seconds"
+msgstr "बिल और रसीदें, कुछ ही सेकंड में तैयार"
+
+#: lib/quickslips_web/components/catalogue_components.ex:62
+#, elixir-autogen, elixir-format
+msgid "Categories"
+msgstr "श्रेणियाँ"
+
+#: lib/quickslips_web/controllers/template_html.ex:30
+#, elixir-autogen, elixir-format
+msgid "Choose a saved business…"
+msgstr "सहेजा हुआ व्यवसाय चुनें…"
+
+#: lib/quickslips_web/components/layouts.ex:140
+#, elixir-autogen, elixir-format
+msgid "Close menu"
+msgstr "मेन्यू बंद करें"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:39
+#, elixir-autogen, elixir-format
+msgid "Confirm and log in only this time"
+msgstr "पक्का करें और सिर्फ़ इस बार लॉग इन करें"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:36
+#, elixir-autogen, elixir-format
+msgid "Confirm and stay logged in"
+msgstr "पक्का करें और लॉग इन रहें"
+
+#: lib/quickslips_web/live/user_live/login.ex:11
+#, elixir-autogen, elixir-format
+msgid "Confirm it is you"
+msgstr "पुष्टि करें कि यह आप हैं"
+
+#: lib/quickslips_web/live/user_live/registration.ex:43
+#, elixir-autogen, elixir-format
+msgid "Confirm password"
+msgstr "पासवर्ड दोबारा डालें"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:33
+#: lib/quickslips_web/live/user_live/confirmation.ex:38
+#, elixir-autogen, elixir-format
+msgid "Confirming..."
+msgstr "पुष्टि हो रही है..."
+
+#: lib/quickslips_web/components/ui.ex:345
+#, elixir-autogen, elixir-format
+msgid "Continue with Google"
+msgstr "Google से जारी रखें"
+
+#: lib/quickslips_web/components/layouts/root.html.heex:9
+#, elixir-autogen, elixir-format
+msgid "Create bills and receipts as PDF in seconds."
+msgstr "बिल और रसीदें कुछ ही सेकंड में PDF के रूप में बनाएं।"
+
+#: lib/quickslips_web/live/user_live/registration.ex:12
+#, elixir-autogen, elixir-format
+msgid "Create your account"
+msgstr "अपना खाता बनाएं"
+
+#: lib/quickslips_web/live/user_live/registration.ex:50
+#, elixir-autogen, elixir-format
+msgid "Creating account..."
+msgstr "खाता बन रहा है..."
+
+#: lib/quickslips_web/controllers/template_html.ex:20
+#, elixir-autogen, elixir-format
+msgid "Creating your PDF…"
+msgstr "आपका PDF बन रहा है…"
+
+#: lib/quickslips_web/components/ui.ex:504
+#, elixir-autogen, elixir-format
+msgid "Dark"
+msgstr "डार्क"
+
+#: lib/quickslips_web/components/layouts.ex:71
+#, elixir-autogen, elixir-format
+msgid "Dashboard"
+msgstr "डैशबोर्ड"
+
+#: lib/quickslips_web/controllers/template_html.ex:29
+#, elixir-autogen, elixir-format
+msgid "Document preview"
+msgstr "दस्तावेज़ का प्रीव्यू"
+
+#: lib/quickslips_web/components/layouts.ex:72
+#, elixir-autogen, elixir-format
+msgid "Documents"
+msgstr "दस्तावेज़"
+
+#: lib/quickslips_web/controllers/template_html/show.html.heex:48
+#, elixir-autogen, elixir-format
+msgid "Download PDF"
+msgstr "PDF डाउनलोड करें"
+
+#: lib/quickslips_web/controllers/template_html.ex:21
+#, elixir-autogen, elixir-format
+msgid "Downloaded."
+msgstr "डाउनलोड हो गया।"
+
+#: lib/quickslips_web/live/user_live/login.ex:41
+#: lib/quickslips_web/live/user_live/login.ex:75
+#: lib/quickslips_web/live/user_live/registration.ex:19
+#, elixir-autogen, elixir-format
+msgid "Email address"
+msgstr "ईमेल पता"
+
+#: lib/quickslips_web/live/user_live/login.ex:63
+#, elixir-autogen, elixir-format
+msgid "Email link"
+msgstr "ईमेल लिंक"
+
+#: lib/quickslips_web/live/user_live/login.ex:82
+#, elixir-autogen, elixir-format
+msgid "Email me a link"
+msgstr "मुझे लिंक ईमेल करें"
+
+#: lib/quickslips_web/controllers/template_html.ex:31
+#, elixir-autogen, elixir-format
+msgid "Fill from a saved business"
+msgstr "सहेजे हुए व्यवसाय से भरें"
+
+#: lib/quickslips_web/live/user_live/login.ex:53
+#, elixir-autogen, elixir-format
+msgid "Forgot it? Use the Email link tab, then set a new password in Settings."
+msgstr "भूल गए? \"ईमेल लिंक\" टैब से लॉग इन करें, फिर सेटिंग्स में नया पासवर्ड बनाएं।"
+
+#: lib/quickslips_web/live/home_live.ex:24
+#, elixir-autogen, elixir-format
+msgid "Free bill and receipt generator"
+msgstr "मुफ़्त बिल और रसीद जनरेटर"
+
+#: lib/quickslips_web/live/user_live/registration.ex:13
+#, elixir-autogen, elixir-format
+msgid "Free to start. You will confirm your email next."
+msgstr "शुरू करना मुफ़्त है। अगले चरण में आप अपना ईमेल पक्का करेंगे।"
+
+#: lib/quickslips_web/controllers/auth_controller.ex:33
+#, elixir-autogen, elixir-format
+msgid "Google says that email address isn't verified."
+msgstr "Google के अनुसार यह ईमेल पता सत्यापित नहीं है।"
+
+#: lib/quickslips_web/controllers/auth_controller.ex:20
+#, elixir-autogen, elixir-format
+msgid "Google sign-in didn't complete. Please try again."
+msgstr "Google से साइन-इन पूरा नहीं हुआ। कृपया फिर कोशिश करें।"
+
+#: lib/quickslips_web/live/user_live/login.ex:132
+#, elixir-autogen, elixir-format
+msgid "If your email is in our system, you will receive instructions for logging in shortly."
+msgstr "अगर आपका ईमेल हमारे सिस्टम में है, तो आपको लॉग इन करने के निर्देश जल्द ही मिल जाएंगे।"
+
+#: lib/quickslips_web/components/ui.ex:533
+#, elixir-autogen, elixir-format
+msgid "India"
+msgstr "भारत"
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:64
+#, elixir-autogen, elixir-format
+msgid "Invalid email or password"
+msgstr "ईमेल या पासवर्ड गलत है"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:66
+#, elixir-autogen, elixir-format
+msgid "Keep me logged in on this device"
+msgstr "इस डिवाइस पर मुझे लॉग इन रखें"
+
+#: lib/quickslips_web/components/ui.ex:569
+#: lib/quickslips_web/components/ui.ex:578
+#: lib/quickslips_web/components/ui.ex:625
+#, elixir-autogen, elixir-format
+msgid "Language and country"
+msgstr "भाषा और देश"
+
+#: lib/quickslips_web/components/ui.ex:503
+#, elixir-autogen, elixir-format
+msgid "Light"
+msgstr "लाइट"
+
+#: lib/quickslips_web/components/layouts.ex:104
+#: lib/quickslips_web/components/layouts.ex:157
+#: lib/quickslips_web/controllers/template_html/show.html.heex:40
+#: lib/quickslips_web/live/home_live.ex:144
+#: lib/quickslips_web/live/user_live/confirmation.ex:57
+#: lib/quickslips_web/live/user_live/login.ex:115
+#: lib/quickslips_web/live/user_live/registration.ex:67
+#, elixir-autogen, elixir-format
+msgid "Log in"
+msgstr "लॉग इन"
+
+#: lib/quickslips_web/live/user_live/login.ex:57
+#, elixir-autogen, elixir-format
+msgid "Log in and stay logged in"
+msgstr "लॉग इन करें और लॉग इन रहें"
+
+#: lib/quickslips_web/live/user_live/login.ex:59
+#, elixir-autogen, elixir-format
+msgid "Log in only this time"
+msgstr "सिर्फ़ इस बार लॉग इन करें"
+
+#: lib/quickslips_web/live/home_live.ex:139
+#, elixir-autogen, elixir-format
+msgid "Log in or sign up to make more documents."
+msgstr "और दस्तावेज़ बनाने के लिए लॉग इन या साइन अप करें।"
+
+#: lib/quickslips_web/live/user_live/login.ex:11
+#, elixir-autogen, elixir-format
+msgid "Log in to QuickSlips"
+msgstr "QuickSlips में लॉग इन करें"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:69
+#, elixir-autogen, elixir-format
+msgid "Log me in only this time"
+msgstr "मुझे सिर्फ़ इस बार लॉग इन करें"
+
+#: lib/quickslips_web/components/layouts.ex:260
+#: lib/quickslips_web/components/ui.ex:700
+#, elixir-autogen, elixir-format
+msgid "Log out"
+msgstr "लॉग आउट"
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:85
+#, elixir-autogen, elixir-format
+msgid "Logged out successfully."
+msgstr "आप लॉग आउट हो गए हैं।"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:56
+#: lib/quickslips_web/live/user_live/confirmation.ex:63
+#: lib/quickslips_web/live/user_live/confirmation.ex:68
+#, elixir-autogen, elixir-format
+msgid "Logging in..."
+msgstr "लॉग इन हो रहा है..."
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:98
+#, elixir-autogen, elixir-format
+msgid "Magic link is invalid or it has expired."
+msgstr "यह लिंक मान्य नहीं है या इसकी समय-सीमा समाप्त हो गई है।"
+
+#: lib/quickslips_web/components/layouts.ex:84
+#: lib/quickslips_web/components/layouts.ex:199
+#: lib/quickslips_web/components/layouts.ex:272
+#, elixir-autogen, elixir-format
+msgid "Main"
+msgstr "मुख्य"
+
+#: lib/quickslips_web/components/ui.ex:535
+#, elixir-autogen, elixir-format
+msgid "Mexico"
+msgstr "मेक्सिको"
+
+#: lib/quickslips_web/live/home_live.ex:136
+#, elixir-autogen, elixir-format
+msgid "Need more than 2 downloads a day?"
+msgstr "दिन में 2 से ज़्यादा डाउनलोड चाहिए?"
+
+#: lib/quickslips_web/components/layouts.ex:223
+#: lib/quickslips_web/components/layouts.ex:280
+#, elixir-autogen, elixir-format
+msgid "New document"
+msgstr "नया दस्तावेज़"
+
+#: lib/quickslips_web/live/user_live/login.ex:94
+#, elixir-autogen, elixir-format
+msgid "New here?"
+msgstr "यहाँ नए हैं?"
+
+#: lib/quickslips_web/live/home_live.ex:125
+#, elixir-autogen, elixir-format
+msgid "No template matches your search."
+msgstr "आपकी खोज से कोई टेम्पलेट नहीं मिला।"
+
+#: lib/quickslips_web/components/layouts.ex:117
+#: lib/quickslips_web/components/layouts.ex:213
+#, elixir-autogen, elixir-format
+msgid "Open main menu"
+msgstr "मुख्य मेन्यू खोलें"
+
+#: lib/quickslips_web/components/ui.ex:678
+#, elixir-autogen, elixir-format
+msgid "Open user menu"
+msgstr "यूज़र मेन्यू खोलें"
+
+#: lib/quickslips_web/live/user_live/login.ex:28
+#: lib/quickslips_web/live/user_live/login.ex:50
+#: lib/quickslips_web/live/user_live/registration.ex:29
+#, elixir-autogen, elixir-format
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:80
+#, elixir-autogen, elixir-format
+msgid "Password updated successfully!"
+msgstr "पासवर्ड बदल गया!"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:25
+#, elixir-autogen, elixir-format
+msgid "Password you chose at sign-up"
+msgstr "साइन अप के समय चुना गया पासवर्ड"
+
+#: lib/quickslips_web/live/home_live.ex:89
+#, elixir-autogen, elixir-format
+msgid "Pick a template, fill in the form and download the PDF. No account needed."
+msgstr "टेम्पलेट चुनें, फ़ॉर्म भरें और PDF डाउनलोड करें। खाता बनाने की ज़रूरत नहीं।"
+
+#: lib/quickslips_web/live/home_live.ex:75
+#, elixir-autogen, elixir-format
+msgid "Pick one to start a new document."
+msgstr "नया दस्तावेज़ शुरू करने के लिए एक चुनें।"
+
+#: lib/quickslips_web/controllers/template_html.ex:22
+#, elixir-autogen, elixir-format
+msgid "Please fix the highlighted fields."
+msgstr "कृपया चिह्नित फ़ील्ड ठीक करें।"
+
+#: lib/quickslips_web/controllers/template_html.ex:28
+#, elixir-autogen, elixir-format
+msgid "Preview could not be rendered."
+msgstr "प्रीव्यू नहीं बन सका।"
+
+#: lib/quickslips_web/controllers/template_html/show.html.heex:29
+#, elixir-autogen, elixir-format
+msgid "Preview loads here…"
+msgstr "प्रीव्यू यहाँ दिखेगा…"
+
+#: lib/quickslips_web/components/layouts.ex:73
+#, elixir-autogen, elixir-format
+msgid "Saved businesses"
+msgstr "सहेजे हुए व्यवसाय"
+
+#: lib/quickslips_web/live/home_live.ex:106
+#, elixir-autogen, elixir-format
+msgid "Search templates"
+msgstr "टेम्पलेट खोजें"
+
+#: lib/quickslips_web/live/home_live.ex:107
+#, elixir-autogen, elixir-format
+msgid "Search templates, like fuel or rent"
+msgstr "टेम्पलेट खोजें, जैसे पेट्रोल या किराया"
+
+#: lib/quickslips_web/components/layouts.ex:252
+#: lib/quickslips_web/components/layouts.ex:307
+#: lib/quickslips_web/components/ui.ex:692
+#, elixir-autogen, elixir-format
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+#: lib/quickslips_web/components/layouts.ex:107
+#: lib/quickslips_web/components/layouts.ex:160
+#: lib/quickslips_web/controllers/template_html/show.html.heex:42
+#: lib/quickslips_web/live/home_live.ex:147
+#: lib/quickslips_web/live/user_live/login.ex:99
+#: lib/quickslips_web/live/user_live/registration.ex:51
+#: lib/quickslips_web/live/user_live/registration.ex:91
+#, elixir-autogen, elixir-format
+msgid "Sign up"
+msgstr "साइन अप"
+
+#: lib/quickslips_web/components/layouts.ex:394
+#, elixir-autogen, elixir-format
+msgid "Something went wrong!"
+msgstr "कुछ गड़बड़ हो गई!"
+
+#: lib/quickslips_web/controllers/template_html.ex:26
+#, elixir-autogen, elixir-format
+msgid "Something went wrong. Please try again."
+msgstr "कुछ गड़बड़ हो गई। कृपया फिर कोशिश करें।"
+
+#: lib/quickslips_web/components/ui.ex:534
+#, elixir-autogen, elixir-format
+msgid "Spain"
+msgstr "स्पेन"
+
+#: lib/quickslips_web/components/ui.ex:502
+#, elixir-autogen, elixir-format
+msgid "System"
+msgstr "सिस्टम"
+
+#: lib/quickslips_web/components/layouts.ex:95
+#: lib/quickslips_web/components/layouts.ex:152
+#: lib/quickslips_web/live/home_live.ex:74
+#, elixir-autogen, elixir-format
+msgid "Templates"
+msgstr "टेम्पलेट"
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:31
+#, elixir-autogen, elixir-format
+msgid "That link or password is not valid."
+msgstr "वह लिंक या पासवर्ड मान्य नहीं है।"
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:48
+#, elixir-autogen, elixir-format
+msgid "The link is invalid or it has expired."
+msgstr "यह लिंक मान्य नहीं है या इसकी समय-सीमा समाप्त हो गई है।"
+
+#: lib/quickslips_web/components/ui.ex:494
+#, elixir-autogen, elixir-format
+msgid "Theme"
+msgstr "थीम"
+
+#: lib/quickslips_web/controllers/locale_controller.ex:49
+#, elixir-autogen, elixir-format
+msgid "This page is not available in this language yet. Here are the templates that are."
+msgstr "यह पेज अभी इस भाषा में उपलब्ध नहीं है। जो टेम्पलेट उपलब्ध हैं, वे यहाँ हैं।"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:76
+#, elixir-autogen, elixir-format
+msgid "Tip: If you prefer passwords, you can enable them in the user settings."
+msgstr "सुझाव: अगर आप पासवर्ड पसंद करते हैं, तो उसे यूज़र सेटिंग्स में चालू कर सकते हैं।"
+
+#: lib/quickslips_web/components/ui.ex:537
+#, elixir-autogen, elixir-format
+msgid "United Kingdom"
+msgstr "यूनाइटेड किंगडम"
+
+#: lib/quickslips_web/components/ui.ex:536
+#, elixir-autogen, elixir-format
+msgid "United States"
+msgstr "संयुक्त राज्य अमेरिका"
+
+#: lib/quickslips_web/controllers/template_html.ex:27
+#, elixir-autogen, elixir-format
+msgid "Updating preview…"
+msgstr "प्रीव्यू अपडेट हो रहा है…"
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:8
+#, elixir-autogen, elixir-format
+msgid "User confirmed successfully."
+msgstr "खाता सफलतापूर्वक पक्का हो गया।"
+
+#: lib/quickslips_web/components/layouts.ex:379
+#, elixir-autogen, elixir-format
+msgid "We can't find the internet"
+msgstr "इंटरनेट नहीं मिल रहा"
+
+#: lib/quickslips_web/controllers/auth_controller.ex:38
+#, elixir-autogen, elixir-format
+msgid "We couldn't sign you in with Google. Please try again."
+msgstr "हम आपको Google से साइन इन नहीं कर सके। कृपया फिर कोशिश करें।"
+
+#: lib/quickslips_web/controllers/template_html.ex:25
+#, elixir-autogen, elixir-format
+msgid "We couldn't verify your browser. Turn off your ad blocker, or log in."
+msgstr "हम आपके ब्राउज़र की पुष्टि नहीं कर सके। अपना ऐड ब्लॉकर बंद करें, या लॉग इन करें।"
+
+#: lib/quickslips_web/live/user_live/login.ex:79
+#, elixir-autogen, elixir-format
+msgid "We email you a link that logs you in. No password needed."
+msgstr "हम आपको एक लिंक ईमेल करेंगे, जिससे आप लॉग इन हो जाएंगे। पासवर्ड की ज़रूरत नहीं।"
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:10
+#: lib/quickslips_web/live/user_live/confirmation.ex:93
+#, elixir-autogen, elixir-format
+msgid "Welcome"
+msgstr "स्वागत है"
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:12
+#, elixir-autogen, elixir-format
+msgid "Welcome back!"
+msgstr "वापसी पर स्वागत है!"
+
+#: lib/quickslips_web/live/user_live/login.ex:15
+#, elixir-autogen, elixir-format
+msgid "Welcome back."
+msgstr "वापसी पर स्वागत है।"
+
+#: lib/quickslips_web/controllers/auth_controller.ex:28
+#, elixir-autogen, elixir-format
+msgid "Welcome!"
+msgstr "स्वागत है!"
+
+#: lib/quickslips_web/user_auth.ex:231
+#: lib/quickslips_web/user_auth.ex:294
+#, elixir-autogen, elixir-format
+msgid "You must log in to access this page."
+msgstr "इस पेज को देखने के लिए आपको लॉग इन करना होगा।"
+
+#: lib/quickslips_web/user_auth.ex:248
+#, elixir-autogen, elixir-format
+msgid "You must re-authenticate to access this page."
+msgstr "इस पेज को देखने के लिए आपको दोबारा पहचान की पुष्टि करनी होगी।"
+
+#: lib/quickslips_web/live/user_live/login.ex:14
+#, elixir-autogen, elixir-format
+msgid "You need to reauthenticate to perform sensitive actions on your account."
+msgstr "अपने खाते पर संवेदनशील कार्रवाई करने के लिए आपको दोबारा पुष्टि करनी होगी।"
+
+#: lib/quickslips_web/controllers/template_html.ex:23
+#, elixir-autogen, elixir-format
+msgid "You've used today's free downloads."
+msgstr "आपने आज के मुफ़्त डाउनलोड इस्तेमाल कर लिए हैं।"
+
+#: lib/quickslips_web/controllers/template_html/show.html.heex:35
+#, elixir-autogen, elixir-format
+msgid "You've used your free downloads for today. Log in or sign up to keep going, and come back tomorrow for more."
+msgstr "आपने आज के मुफ़्त डाउनलोड इस्तेमाल कर लिए हैं। जारी रखने के लिए लॉग इन या साइन अप करें, या कल फिर आएं।"
+
+#: lib/quickslips_web/components/core_components.ex:81
+#, elixir-autogen, elixir-format
+msgid "close"
+msgstr "बंद करें"
+
+#: lib/quickslips_web/live/user_live/login.ex:89
+#: lib/quickslips_web/live/user_live/registration.ex:57
+#, elixir-autogen, elixir-format
+msgid "or"
+msgstr "या"
+
+#: lib/quickslips_web/components/layouts.ex:178
+#, elixir-autogen, elixir-format
+msgid "© %{year} QuickSlips. We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
+msgstr "© %{year} QuickSlips. हम आपके दिए गए विवरण से दस्तावेज़ बनाते हैं। उनकी सटीकता और उन्हें कानून के अनुसार इस्तेमाल करने की ज़िम्मेदारी आपकी है।"
+
+#: lib/quickslips_web/live/user_live/registration.ex:111
+#, elixir-autogen, elixir-format
+msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account."
+msgstr "%{email} पर एक ईमेल भेजा गया है। उसे खोलें और अभी चुना हुआ पासवर्ड डालकर अपना खाता पक्का करें।"

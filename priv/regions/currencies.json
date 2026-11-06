@@ -1,0 +1,4 @@
+{
+  "INR": { "symbol": "₹", "decimals": 2 },
+  "EUR": { "symbol": "€", "decimals": 2 }
+}

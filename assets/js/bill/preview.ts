@@ -1,4 +1,5 @@
 import type { BillData, Business } from "./form"
+import { t } from "./i18n"
 
 type Reply = { id: number; svg?: string; error?: string }
 
@@ -8,6 +9,10 @@ export function createPreview(opts: {
   template: string
   container: HTMLElement
   status: HTMLElement
+  // The two files every template reads next to its data, as JSON text: the words of the document's language
+  // (`text.json`) and what its country and currency decide (`region.json`).
+  text: string
+  region: string
 }) {
   const worker = new Worker(opts.workerUrl)
   let source: string | null = null
@@ -22,14 +27,14 @@ export function createPreview(opts: {
   let businessToken = 0
 
   const img = document.createElement("img")
-  img.alt = "Document preview"
+  img.alt = t("preview_alt")
   img.className = "max-h-[75vh] w-auto bg-white shadow"
 
   worker.onmessage = (event: MessageEvent<Reply>) => {
     const { id, svg, error } = event.data
     if (id !== latest) return // an older render finished late; ignore it
     if (error || !svg) {
-      opts.status.textContent = "Preview could not be rendered."
+      opts.status.textContent = t("preview_failed")
       console.error(error)
       return
     }
@@ -62,7 +67,7 @@ export function createPreview(opts: {
 
   async function renderNow(data: BillData) {
     lastData = data
-    opts.status.textContent = "Updating preview…"
+    opts.status.textContent = t("preview_updating")
     const id = ++latest
     // The templates draw "logo" and "signature" when the data names a file, as the server does.
     worker.postMessage({
@@ -71,6 +76,8 @@ export function createPreview(opts: {
       helpers: await loadHelpers(),
       data: { ...data, ...imageNames },
       images,
+      text: opts.text,
+      region: opts.region,
     })
   }
 

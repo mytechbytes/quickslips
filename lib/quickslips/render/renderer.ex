@@ -5,6 +5,8 @@ defmodule QuickSlips.Render.Renderer do
   """
   require Logger
 
+  alias QuickSlips.Locales
+  alias QuickSlips.Regions
   alias QuickSlips.Templates
 
   @timeout_ms 15_000
@@ -17,6 +19,8 @@ defmodule QuickSlips.Render.Renderer do
     * `mode: :final | :preview` (preview adds the watermark).
     * `assets: %{"logo.png" => "/abs/path/to/the/file"}`: pictures to copy next to the template, so it can
       draw them with `#image("logo.png")`. The names come from our code, never from a user.
+    * `locale: "hi-in"`: the language of the words and the country of the numbers and dates (default `en-in`).
+    * `currency: "EUR"`: a currency other than the country's own.
 
   Returns `{:ok, pdf_binary}` or `{:error, reason}`.
   """
@@ -26,8 +30,27 @@ defmodule QuickSlips.Render.Renderer do
 
     with {:ok, schema} <- Templates.get(slug),
          :ok <- ensure_template(schema, template_id),
+         {:ok, locale} <- fetch_locale(Keyword.get(opts, :locale, Locales.default().code)),
+         {:ok, text} <- fetch_text(slug, locale),
+         {:ok, region} <- Regions.build(locale.country, Keyword.get(opts, :currency)),
          {:ok, typst} <- typst_executable() do
-      run_in_tmp_dir(typst, slug, template_id, data, mode, assets)
+      words = %{"text.json" => text, "region.json" => region}
+      run_in_tmp_dir(typst, slug, template_id, data, words, mode, assets)
+    end
+  end
+
+  defp fetch_locale(code) do
+    case Locales.fetch(code) do
+      {:ok, locale} -> {:ok, locale}
+      :error -> {:error, :unknown_locale}
+    end
+  end
+
+  # The template must be in the language of the locale; the words it prints come from there.
+  defp fetch_text(slug, locale) do
+    case Templates.print_text(slug, locale) do
+      nil -> {:error, :unsupported_language}
+      text -> {:ok, text}
     end
   end
 
@@ -48,7 +71,7 @@ defmodule QuickSlips.Render.Renderer do
     end
   end
 
-  defp run_in_tmp_dir(typst, slug, template_id, data, mode, assets) do
+  defp run_in_tmp_dir(typst, slug, template_id, data, words, mode, assets) do
     tmp = Path.join(System.tmp_dir!(), "quickslips-" <> random_id())
     File.mkdir_p!(tmp)
 
@@ -59,6 +82,9 @@ defmodule QuickSlips.Render.Renderer do
       )
 
       File.write!(Path.join(tmp, "data.json"), Jason.encode!(data))
+
+      # The words and the region of the document, which the helpers read (`text.json`, `region.json`).
+      for {name, content} <- words, do: File.write!(Path.join(tmp, name), Jason.encode!(content))
       # The helpers every template imports (`#import "_shared/helpers.typ": *`).
       File.cp_r!(Path.join(Templates.root_dir(), "_shared"), Path.join(tmp, "_shared"))
 

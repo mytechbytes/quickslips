@@ -1,4 +1,4 @@
-<Layouts.app flash={@flash} current_scope={@current_scope}>
+<Layouts.app flash={@flash} current_scope={@current_scope} locale={@locale}>
   <article id="template-page" class="mx-auto max-w-5xl py-10">
     <h1 class="font-display text-3xl font-bold tracking-tight text-ink">{@schema["title"]}</h1>
     <p class="mt-2 text-ink-muted">{@schema["description"]}</p>
@@ -7,6 +7,10 @@
       id="bill-app"
       data-slug={@schema["slug"]}
       data-template="t1"
+      data-locale={@locale.code}
+      data-i18n={Jason.encode!(ui_strings())}
+      data-region={Jason.encode!(@region)}
+      data-text={Jason.encode!(@text)}
       data-businesses={Jason.encode!(@businesses)}
       data-business-id={@document && @document.business_id}
       data-schema={Jason.encode!(@schema)}
@@ -22,19 +26,26 @@
           id="bill-preview"
           class="flex min-h-96 items-center justify-center rounded-card border border-line bg-tray p-2"
         >
-          <p class="text-sm text-ink-muted">Preview loads here…</p>
+          <p class="text-sm text-ink-muted">{gettext("Preview loads here…")}</p>
         </div>
         <p id="bill-status" class="mt-2 text-sm text-ink-muted" role="status"></p>
         <p id="quota-badge" class="mt-4 text-sm text-ink-muted" role="status"></p>
         <.alert id="login-prompt" kind={:warning} class="mt-2 hidden">
-          You've used your free downloads for today.
-          <.link href={~p"/users/log-in"} class="font-medium underline">Log in</.link>
-          or <.link href={~p"/users/register"} class="font-medium underline">sign up</.link>
-          to keep going, and come back tomorrow for more.
+          <p>
+            {gettext(
+              "You've used your free downloads for today. Log in or sign up to keep going, and come back tomorrow for more."
+            )}
+          </p>
+          <p class="mt-2 flex gap-x-4">
+            <.link href={~p"/users/log-in"} class="font-medium underline">{gettext("Log in")}</.link>
+            <.link href={~p"/users/register"} class="font-medium underline">
+              {gettext("Sign up")}
+            </.link>
+          </p>
         </.alert>
         <div id="turnstile-box" class="mt-4"></div>
         <.button id="download-button" type="button" block class="mt-4">
-          Download PDF
+          {gettext("Download PDF")}
         </.button>
       </div>
     </div>

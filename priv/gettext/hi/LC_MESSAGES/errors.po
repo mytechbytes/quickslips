@@ -1,0 +1,187 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: hi\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "can't be blank"
+msgstr "खाली नहीं हो सकता"
+
+msgid "has already been taken"
+msgstr "पहले से इस्तेमाल में है"
+
+msgid "is invalid"
+msgstr "मान्य नहीं है"
+
+msgid "must be accepted"
+msgstr "स्वीकार करना ज़रूरी है"
+
+msgid "has invalid format"
+msgstr "का प्रारूप सही नहीं है"
+
+msgid "has an invalid entry"
+msgstr "में एक प्रविष्टि मान्य नहीं है"
+
+msgid "is reserved"
+msgstr "आरक्षित है"
+
+msgid "does not match confirmation"
+msgstr "पुष्टि से मेल नहीं खाता"
+
+msgid "is still associated with this entry"
+msgstr "अभी भी इस प्रविष्टि से जुड़ा है"
+
+msgid "are still associated with this entry"
+msgstr "अभी भी इस प्रविष्टि से जुड़े हैं"
+
+msgid "should have %{count} item(s)"
+msgid_plural "should have %{count} item(s)"
+msgstr[0] "में %{count} आइटम होना चाहिए"
+msgstr[1] "में %{count} आइटम होने चाहिए"
+
+msgid "should be %{count} character(s)"
+msgid_plural "should be %{count} character(s)"
+msgstr[0] "%{count} अक्षर का होना चाहिए"
+msgstr[1] "%{count} अक्षरों का होना चाहिए"
+
+msgid "should be %{count} byte(s)"
+msgid_plural "should be %{count} byte(s)"
+msgstr[0] "%{count} बाइट का होना चाहिए"
+msgstr[1] "%{count} बाइट का होना चाहिए"
+
+msgid "should have at least %{count} item(s)"
+msgid_plural "should have at least %{count} item(s)"
+msgstr[0] "में कम से कम %{count} आइटम होना चाहिए"
+msgstr[1] "में कम से कम %{count} आइटम होने चाहिए"
+
+msgid "should be at least %{count} character(s)"
+msgid_plural "should be at least %{count} character(s)"
+msgstr[0] "कम से कम %{count} अक्षर का होना चाहिए"
+msgstr[1] "कम से कम %{count} अक्षरों का होना चाहिए"
+
+msgid "should be at least %{count} byte(s)"
+msgid_plural "should be at least %{count} byte(s)"
+msgstr[0] "कम से कम %{count} बाइट का होना चाहिए"
+msgstr[1] "कम से कम %{count} बाइट का होना चाहिए"
+
+msgid "should have at most %{count} item(s)"
+msgid_plural "should have at most %{count} item(s)"
+msgstr[0] "में अधिकतम %{count} आइटम होना चाहिए"
+msgstr[1] "में अधिकतम %{count} आइटम होने चाहिए"
+
+msgid "should be at most %{count} character(s)"
+msgid_plural "should be at most %{count} character(s)"
+msgstr[0] "अधिकतम %{count} अक्षर का होना चाहिए"
+msgstr[1] "अधिकतम %{count} अक्षरों का होना चाहिए"
+
+msgid "should be at most %{count} byte(s)"
+msgid_plural "should be at most %{count} byte(s)"
+msgstr[0] "अधिकतम %{count} बाइट का होना चाहिए"
+msgstr[1] "अधिकतम %{count} बाइट का होना चाहिए"
+
+msgid "must be less than %{number}"
+msgstr "%{number} से कम होना चाहिए"
+
+msgid "must be greater than %{number}"
+msgstr "%{number} से ज़्यादा होना चाहिए"
+
+msgid "must be less than or equal to %{number}"
+msgstr "%{number} या उससे कम होना चाहिए"
+
+msgid "must be greater than or equal to %{number}"
+msgstr "%{number} या उससे ज़्यादा होना चाहिए"
+
+msgid "must be equal to %{number}"
+msgstr "%{number} के बराबर होना चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:65
+#, elixir-autogen, elixir-format
+msgid "at least one digit or punctuation character"
+msgstr "कम से कम एक अंक या चिह्न होना चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:63
+#, elixir-autogen, elixir-format
+msgid "at least one lower case character"
+msgstr "कम से कम एक छोटा अक्षर होना चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:64
+#, elixir-autogen, elixir-format
+msgid "at least one upper case character"
+msgstr "कम से कम एक बड़ा अक्षर होना चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:61
+#, elixir-autogen, elixir-format
+msgid "did not change"
+msgstr "बदला नहीं है"
+
+#: lib/quickslips_web/error_messages.ex:62
+#, elixir-autogen, elixir-format
+msgid "does not match password"
+msgstr "पासवर्ड से मेल नहीं खाता"
+
+#: lib/quickslips_web/error_messages.ex:30
+#, elixir-autogen, elixir-format
+msgid "has an unsupported type"
+msgstr "का प्रकार समर्थित नहीं है"
+
+#: lib/quickslips_web/error_messages.ex:26
+#, elixir-autogen, elixir-format
+msgid "is required"
+msgstr "ज़रूरी है"
+
+#: lib/quickslips_web/error_messages.ex:33
+#, elixir-autogen, elixir-format
+msgid "must be a date like 2026-10-31"
+msgstr "तारीख होनी चाहिए, जैसे 2026-10-31"
+
+#: lib/quickslips_web/error_messages.ex:36
+#, elixir-autogen, elixir-format
+msgid "must be a month like 2026-10"
+msgstr "महीना होना चाहिए, जैसे 2026-10"
+
+#: lib/quickslips_web/error_messages.ex:28
+#, elixir-autogen, elixir-format
+msgid "must be a number"
+msgstr "संख्या होनी चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:29
+#, elixir-autogen, elixir-format
+msgid "must be an object"
+msgstr "ऑब्जेक्ट होना चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:47
+#, elixir-autogen, elixir-format
+msgid "must be at least %{min}"
+msgstr "कम से कम %{min} होना चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:44
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max}"
+msgstr "अधिकतम %{max} होना चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:41
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max} characters"
+msgstr "अधिकतम %{max} अक्षर होने चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:50
+#, elixir-autogen, elixir-format
+msgid "must be one of: %{options}"
+msgstr "इनमें से एक होना चाहिए: %{options}"
+
+#: lib/quickslips_web/error_messages.ex:27
+#, elixir-autogen, elixir-format
+msgid "must be text"
+msgstr "पाठ (टेक्स्ट) होना चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:60
+#, elixir-autogen, elixir-format
+msgid "must have the @ sign and no spaces"
+msgstr "में @ चिह्न होना चाहिए और कोई खाली जगह नहीं"

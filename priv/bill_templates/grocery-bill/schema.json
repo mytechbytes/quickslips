@@ -1,5 +1,6 @@
 {
   "slug": "grocery-bill",
+  "public_slug": "grocery-bill-generator",
   "title": "Grocery Bill Generator",
   "category": "Food & shopping",
   "icon": "hero-shopping-cart",

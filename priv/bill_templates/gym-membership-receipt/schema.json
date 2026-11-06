@@ -1,5 +1,6 @@
 {
   "slug": "gym-membership-receipt",
+  "public_slug": "gym-membership-receipt-generator",
   "title": "Gym Membership Receipt Generator",
   "category": "Health & learning",
   "icon": "hero-trophy",

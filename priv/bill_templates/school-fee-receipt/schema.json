@@ -1,5 +1,6 @@
 {
   "slug": "school-fee-receipt",
+  "public_slug": "school-fee-receipt-generator",
   "title": "School Fee Receipt Generator",
   "category": "Health & learning",
   "icon": "hero-academic-cap",

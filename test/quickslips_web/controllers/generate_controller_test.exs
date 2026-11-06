@@ -155,4 +155,138 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
 
     assert QuickSlips.Repo.aggregate(QuickSlips.Documents.Document, :count) == 0
   end
+
+  describe "languages" do
+    defp sample_for(code) do
+      {:ok, sample} = QuickSlips.Templates.sample("fuel-bill", QuickSlips.Locales.fetch!(code))
+      sample
+    end
+
+    defp generate_in(conn, code, extra \\ %{}) do
+      post(
+        conn,
+        ~p"/api/generate",
+        Map.merge(
+          %{
+            slug: "fuel-bill",
+            template: "t1",
+            locale: code,
+            data: sample_for(code),
+            turnstile_token: "test"
+          },
+          extra
+        )
+      )
+    end
+
+    test "makes the document in Hindi and in Spanish", %{conn: conn} do
+      for code <- ["hi-in", "es-es"] do
+        assert "%PDF" <> _ = conn |> generate_in(code) |> response(200)
+      end
+    end
+
+    test "a request with no locale is for English, India", %{conn: conn} do
+      assert "%PDF" <> _ =
+               conn
+               |> post(~p"/api/generate", %{
+                 slug: "fuel-bill",
+                 template: "t1",
+                 data: sample(),
+                 turnstile_token: "test"
+               })
+               |> response(200)
+    end
+
+    test "a locale that is not live, or does not exist, is a 400", %{conn: conn} do
+      for code <- ["es-mx", "xx-yy", "", 5] do
+        conn =
+          post(conn, ~p"/api/generate", %{
+            slug: "fuel-bill",
+            template: "t1",
+            locale: code,
+            data: sample(),
+            turnstile_token: "test"
+          })
+
+        assert %{"error" => "unknown language or country"} = json_response(conn, 400)
+      end
+    end
+
+    test "a template that is not in the language is a 404, and costs no download", %{conn: conn} do
+      conn =
+        post(conn, ~p"/api/generate", %{
+          slug: "rent-receipt",
+          template: "t1",
+          locale: "hi-in",
+          data: %{},
+          turnstile_token: "test"
+        })
+
+      assert %{"error" => "unknown template"} = json_response(conn, 404)
+    end
+
+    test "what is wrong with the data is said in the language of the page", %{conn: conn} do
+      spanish = conn |> generate_in("es-es", %{data: %{}}) |> json_response(422)
+      assert %{"errors" => %{"station_name" => ["es obligatorio"]}} = spanish
+
+      hindi = conn |> generate_in("hi-in", %{data: %{}}) |> json_response(422)
+      assert %{"errors" => %{"station_name" => ["ज़रूरी है"]}} = hindi
+
+      english = conn |> generate_in("en-in", %{data: %{}}) |> json_response(422)
+      assert %{"errors" => %{"station_name" => ["is required"]}} = english
+    end
+
+    test "a message with a number in it is translated with the number", %{conn: conn} do
+      data = Map.put(sample_for("es-es"), "station_name", String.duplicate("x", 81))
+
+      assert %{"errors" => %{"station_name" => ["debe tener como máximo 80 caracteres"]}} =
+               conn |> generate_in("es-es", %{data: data}) |> json_response(422)
+
+      data = Map.put(sample_for("hi-in"), "quantity", 0)
+
+      assert %{"errors" => %{"quantity" => ["कम से कम 0.01 होना चाहिए"]}} =
+               conn |> generate_in("hi-in", %{data: data}) |> json_response(422)
+    end
+
+    # The option is the English word in every language: "Petrol" is a petrol bill in Hindi too.
+    test "an option is the same value in every language", %{conn: conn} do
+      data = Map.put(sample_for("hi-in"), "fuel_type", "Gasolina")
+
+      assert %{"errors" => %{"fuel_type" => [_]}} =
+               conn |> generate_in("hi-in", %{data: data}) |> json_response(422)
+    end
+  end
+
+  describe "the history of a document in another language" do
+    setup :register_and_log_in_user
+
+    test "keeps the language and the country, and names the document in that language", %{
+      conn: conn,
+      scope: scope
+    } do
+      conn |> generate_in("hi-in") |> response(200)
+      conn |> generate_in("es-es") |> response(200)
+
+      assert [spanish, hindi] = QuickSlips.Documents.list_documents(scope)
+
+      assert hindi.language == "hi"
+      assert hindi.options == %{"country" => "in", "currency" => "INR"}
+      assert hindi.title == "पेट्रोल बिल · FB-10482 · सनराइज़ फ्यूल स्टेशन · 12 अक्टू. 2026"
+
+      assert spanish.language == "es"
+      assert spanish.options == %{"country" => "es", "currency" => "EUR"}
+      assert spanish.title == "Factura de Gasolina · A-10482 · Gasolinera El Sol · 12 oct 2026"
+
+      # What is kept is the internal slug, whatever the language: the history finds the page from it.
+      assert spanish.slug == "fuel-bill"
+    end
+
+    test "a document made without a locale is English, for India", %{conn: conn, scope: scope} do
+      conn |> generate() |> response(200)
+
+      assert [doc] = QuickSlips.Documents.list_documents(scope)
+      assert doc.language == "en"
+      assert doc.options == %{"country" => "in", "currency" => "INR"}
+    end
+  end
 end

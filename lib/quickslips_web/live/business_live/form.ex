@@ -14,7 +14,7 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope} active={:businesses}>
+    <Layouts.app flash={@flash} current_scope={@current_scope} locale={@locale} active={:businesses}>
       <.header>
         {@page_title}
         <:subtitle>

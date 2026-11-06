@@ -2,11 +2,13 @@ defmodule QuickSlipsWeb.CatalogueComponents do
   @moduledoc """
   The pieces of the template catalogue: search box, category chips and template cards.
 
-  A "template" is a map with string keys, the shape of a `schema.json`:
-  `%{"slug" => _, "title" => _, "summary" => _, "category" => _, "icon" => "hero-fire"}`
-  (`"icon"` is optional).
+  A "template" is a map with string keys, the schema of a template as one locale sees it (see
+  `QuickSlips.Templates.get/2`): `%{"locale" => "en-in", "public_slug" => _, "title" => _, "summary" => _,
+  "icon" => "hero-fire"}` (`"icon"` is optional). The card links to the page of the template in that locale.
   """
   use Phoenix.Component
+  use Gettext, backend: QuickSlipsWeb.Gettext
+  use QuickSlipsWeb, :verified_routes
 
   import QuickSlipsWeb.CoreComponents, only: [icon: 1]
 
@@ -42,34 +44,38 @@ defmodule QuickSlipsWeb.CatalogueComponents do
   end
 
   @doc """
-  Category buttons. A click sends the `category` event with the chosen name, or `"all"`.
+  Category buttons. A click sends the `category` event with the key of the category, or `"all"`.
 
   Scroll sideways on a phone, wrap from `sm` up.
   """
-  attr :categories, :list, required: true
+  attr :categories, :list,
+    required: true,
+    doc:
+      "maps with `:key` (what a click sends, and the chip's id) and `:name` (what the chip says)"
+
   attr :selected, :string, default: "all"
 
   def category_chips(assigns) do
     ~H"""
     <div
       role="group"
-      aria-label="Categories"
+      aria-label={gettext("Categories")}
       class="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
     >
       <button
-        :for={name <- ["all" | @categories]}
-        id={"chip-#{slug(name)}"}
+        :for={{key, name} <- [{"all", gettext("All")} | Enum.map(@categories, &{&1.key, &1.name})]}
+        id={"chip-#{slug(key)}"}
         type="button"
         phx-click="category"
-        phx-value-category={name}
-        aria-pressed={to_string(name == @selected)}
+        phx-value-category={key}
+        aria-pressed={to_string(key == @selected)}
         class={[
           "inline-flex min-h-11 items-center rounded-full border border-line-strong bg-surface px-4 text-sm/6 font-medium whitespace-nowrap text-ink-muted hover:bg-surface-muted",
           "aria-pressed:border-primary aria-pressed:bg-primary-soft aria-pressed:text-primary sm:min-h-9",
           focus()
         ]}
       >
-        {if name == "all", do: "All", else: name}
+        {name}
       </button>
     </div>
     """
@@ -97,10 +103,9 @@ defmodule QuickSlipsWeb.CatalogueComponents do
 
   def template_tile(assigns) do
     ~H"""
-    <%!-- The page for each template is built in Task 4.5. Until then these links lead to a 404. --%>
     <a
       id={"open-#{@template["slug"]}"}
-      href={"/" <> @template["slug"]}
+      href={bill_path(@template)}
       class={[
         "group relative h-full gap-3 rounded-card border border-line bg-surface p-5 shadow-card hover:shadow-pop",
         "motion-safe:transition motion-safe:duration-200 motion-safe:hover:-translate-y-0.5",
@@ -133,7 +138,7 @@ defmodule QuickSlipsWeb.CatalogueComponents do
     ~H"""
     <a
       id={"open-#{@template["slug"]}-thumb"}
-      href={"/" <> @template["slug"]}
+      href={bill_path(@template)}
       class={[
         "group flex h-full w-full flex-col rounded-card border border-line bg-surface p-3 text-left shadow-card hover:shadow-pop",
         "motion-safe:transition motion-safe:duration-200 motion-safe:hover:-translate-y-0.5",
@@ -179,6 +184,8 @@ defmodule QuickSlipsWeb.CatalogueComponents do
   defp thumb_lines(slug), do: Enum.at(@patterns, :erlang.phash2(slug, 4))
 
   defp focus, do: @focus
+
+  defp bill_path(template), do: ~p"/#{template["locale"]}/#{template["public_slug"]}"
 
   # A schema.json may leave out "icon"; the card then shows a plain document.
   defp icon_name(template), do: template["icon"] || "hero-document-text"

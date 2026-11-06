@@ -7,16 +7,16 @@ defmodule QuickSlipsWeb.UserLive.Registration do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope}>
+    <Layouts.app flash={@flash} current_scope={@current_scope} locale={@locale}>
       <.auth_card
-        title="Create your account"
-        subtitle="Free to start. You will confirm your email next."
+        title={gettext("Create your account")}
+        subtitle={gettext("Free to start. You will confirm your email next.")}
       >
         <.form for={@form} id="registration_form" phx-submit="save" phx-change="validate">
           <.input
             field={@form[:email]}
             type="email"
-            label="Email address"
+            label={gettext("Email address")}
             autocomplete="username"
             spellcheck="false"
             required
@@ -26,39 +26,45 @@ defmodule QuickSlipsWeb.UserLive.Registration do
           <.input
             field={@form[:password]}
             type="password"
-            label="Password"
+            label={gettext("Password")}
             autocomplete="new-password"
             spellcheck="false"
             required
-            help="6 to 72 characters, with a lower-case letter, an upper-case letter and a number or symbol."
+            help={
+              gettext(
+                "6 to 72 characters, with a lower-case letter, an upper-case letter and a number or symbol."
+              )
+            }
           />
 
           <.input
             field={@form[:password_confirmation]}
             type="password"
-            label="Confirm password"
+            label={gettext("Confirm password")}
             autocomplete="new-password"
             spellcheck="false"
             required
           />
 
           <div class="pt-2">
-            <.button phx-disable-with="Creating account..." block>Sign up</.button>
+            <.button phx-disable-with={gettext("Creating account...")} block>
+              {gettext("Sign up")}
+            </.button>
           </div>
         </.form>
 
         <div class="mt-6">
-          <.divider>or</.divider>
+          <.divider>{gettext("or")}</.divider>
           <div class="mt-6"><.google_button /></div>
         </div>
 
         <:footer>
-          Already have an account?
+          {gettext("Already have an account?")}
           <.link
             navigate={~p"/users/log-in"}
             class="font-semibold text-primary hover:text-primary-hover hover:underline"
           >
-            Log in
+            {gettext("Log in")}
           </.link>
         </:footer>
       </.auth_card>
@@ -82,7 +88,7 @@ defmodule QuickSlipsWeb.UserLive.Registration do
 
     socket =
       socket
-      |> assign(:page_title, "Sign up")
+      |> assign(:page_title, gettext("Sign up"))
       |> assign_form(changeset)
 
     {:ok, socket, temporary_assigns: [form: nil]}
@@ -102,7 +108,10 @@ defmodule QuickSlipsWeb.UserLive.Registration do
          socket
          |> put_flash(
            :info,
-           "An email was sent to #{user.email}, please access it and use the password you just chose to confirm your account."
+           gettext(
+             "An email was sent to %{email}, please access it and use the password you just chose to confirm your account.",
+             email: user.email
+           )
          )
          |> push_navigate(to: ~p"/users/log-in")}
 

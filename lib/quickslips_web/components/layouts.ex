@@ -11,6 +11,11 @@ defmodule QuickSlipsWeb.Layouts do
   # and other static content.
   embed_templates "layouts/*"
 
+  # The `lang` of the page: the language and country of its locale (`hi-IN`), English for the pages that have
+  # none, like the log-in page.
+  defp html_lang(nil), do: "en"
+  defp html_lang(locale), do: QuickSlips.Locales.hreflang(locale)
+
   @doc """
   Renders your app layout. Every page starts with it.
 
@@ -45,12 +50,17 @@ defmodule QuickSlipsWeb.Layouts do
     default: nil,
     doc: "the sidebar item to highlight, one of the keys in nav_items/0"
 
+  attr :locale, :map,
+    default: nil,
+    doc: "the locale of the page (`QuickSlips.Locales`), for the language and country switch"
+
   attr :title, :string, default: nil, doc: "the page title (app shell)"
   attr :subtitle, :string, default: nil, doc: "a line under the title (app shell)"
   slot :actions, doc: "buttons at the right of the title (app shell)"
   slot :inner_block, required: true
 
   def app(assigns) do
+    assigns = assign(assigns, :locale, assigns.locale || QuickSlips.Locales.default())
     if signed_in?(assigns.current_scope), do: app_shell(assigns), else: public_shell(assigns)
   end
 
@@ -58,9 +68,9 @@ defmodule QuickSlipsWeb.Layouts do
   #   {:credits, "Credits", "hero-banknotes", ~p"/credits"}
   defp nav_items do
     [
-      {:dashboard, "Dashboard", "hero-squares-2x2", ~p"/dashboard"},
-      {:history, "Documents", "hero-document-text", ~p"/history"},
-      {:businesses, "Saved businesses", "hero-building-storefront", ~p"/businesses"}
+      {:dashboard, gettext("Dashboard"), "hero-squares-2x2", ~p"/dashboard"},
+      {:history, gettext("Documents"), "hero-document-text", ~p"/history"},
+      {:businesses, gettext("Saved businesses"), "hero-building-storefront", ~p"/businesses"}
     ]
   end
 
@@ -71,7 +81,7 @@ defmodule QuickSlipsWeb.Layouts do
     <div class="flex min-h-screen flex-col">
       <header class="border-b border-line bg-surface">
         <nav
-          aria-label="Global"
+          aria-label={gettext("Main")}
           class="mx-auto flex max-w-7xl items-center justify-between gap-x-4 px-4 py-3 sm:px-6 lg:px-8"
         >
           <div class="flex items-center gap-x-10">
@@ -82,15 +92,20 @@ defmodule QuickSlipsWeb.Layouts do
                 navigate={~p"/"}
                 class="rounded-field text-sm/6 font-semibold text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
               >
-                Templates
+                {gettext("Templates")}
               </.link>
             </div>
           </div>
           <div class="flex items-center gap-x-1 sm:gap-x-2">
+            <.locale_menu id="locale-menu" locale={@locale} />
             <.theme_menu id="theme-menu" />
             <div class="hidden items-center gap-x-2 lg:flex">
-              <.button id="header-login" variant="ghost" navigate={~p"/users/log-in"}>Log in</.button>
-              <.button id="header-signup" navigate={~p"/users/register"}>Sign up</.button>
+              <.button id="header-login" variant="ghost" navigate={~p"/users/log-in"}>
+                {gettext("Log in")}
+              </.button>
+              <.button id="header-signup" navigate={~p"/users/register"}>
+                {gettext("Sign up")}
+              </.button>
             </div>
             <button
               id="open-menu"
@@ -99,7 +114,7 @@ defmodule QuickSlipsWeb.Layouts do
               commandfor="mobile-menu"
               class="flex size-11 items-center justify-center rounded-full text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus lg:hidden"
             >
-              <span class="sr-only">Open main menu</span>
+              <span class="sr-only">{gettext("Open main menu")}</span>
               <.icon name="hero-bars-3" class="size-6" />
             </button>
           </div>
@@ -122,7 +137,7 @@ defmodule QuickSlipsWeb.Layouts do
                   commandfor="mobile-menu"
                   class="flex size-11 items-center justify-center rounded-full text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
                 >
-                  <span class="sr-only">Close menu</span>
+                  <span class="sr-only">{gettext("Close menu")}</span>
                   <.icon name="hero-x-mark" class="size-6" />
                 </button>
               </div>
@@ -134,12 +149,16 @@ defmodule QuickSlipsWeb.Layouts do
                       navigate={~p"/"}
                       class="-mx-3 flex min-h-11 items-center rounded-card px-3 py-2 text-base/7 font-semibold text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
                     >
-                      Templates
+                      {gettext("Templates")}
                     </.link>
                   </div>
                   <div class="grid grid-cols-2 gap-3 py-6">
-                    <.button id="menu-login" variant="secondary" navigate={~p"/users/log-in"}>Log in</.button>
-                    <.button id="menu-signup" navigate={~p"/users/register"}>Sign up</.button>
+                    <.button id="menu-login" variant="secondary" navigate={~p"/users/log-in"}>
+                      {gettext("Log in")}
+                    </.button>
+                    <.button id="menu-signup" navigate={~p"/users/register"}>
+                      {gettext("Sign up")}
+                    </.button>
                   </div>
                 </div>
               </div>
@@ -153,10 +172,13 @@ defmodule QuickSlipsWeb.Layouts do
       </main>
 
       <footer class="border-t border-line">
-        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl space-y-6 px-4 py-8 sm:px-6 lg:px-8">
+          <.locale_picker id="footer-locale" locale={@locale} />
           <p class="text-sm/6 text-ink-muted">
-            © {Date.utc_today().year} QuickSlips. We create documents from the details you enter.
-            You are responsible for their accuracy and for using them lawfully.
+            {gettext(
+              "© %{year} QuickSlips. We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully.",
+              year: Date.utc_today().year
+            )}
           </p>
         </div>
       </footer>
@@ -174,11 +196,12 @@ defmodule QuickSlipsWeb.Layouts do
     ~H"""
     <%!-- Phone: a dark top bar with a menu --%>
     <div class="lg:hidden">
-      <nav aria-label="Main" class="bg-sidebar">
+      <nav aria-label={gettext("Main")} class="bg-sidebar">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
           <div class="flex h-16 items-center justify-between">
             <.wordmark id="m-logo" tone={:sidebar} navigate={~p"/dashboard"} />
             <div class="-mr-2 flex items-center gap-x-1">
+              <.locale_menu id="m-locale-menu" locale={@locale} on_dark />
               <.theme_menu id="m-theme-menu" on_dark />
               <button
                 id="mobile-menu-toggle"
@@ -187,7 +210,7 @@ defmodule QuickSlipsWeb.Layouts do
                 commandfor="mobile-menu"
                 class="relative inline-flex size-11 items-center justify-center rounded-full text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
               >
-                <span class="sr-only">Open main menu</span>
+                <span class="sr-only">{gettext("Open main menu")}</span>
                 <.icon name="hero-bars-3" class="size-6 in-aria-expanded:hidden" />
                 <.icon name="hero-x-mark" class="size-6 not-in-aria-expanded:hidden" />
               </button>
@@ -197,7 +220,7 @@ defmodule QuickSlipsWeb.Layouts do
         <el-disclosure id="mobile-menu" hidden class="block">
           <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
             <.button id="m-new-document" navigate={~p"/"} block on_dark class="mb-2">
-              <.icon name="hero-plus" class="size-5" /> New document
+              <.icon name="hero-plus" class="size-5" /> {gettext("New document")}
             </.button>
             <.link
               :for={{key, label, ic, path} <- nav_items()}
@@ -226,7 +249,7 @@ defmodule QuickSlipsWeb.Layouts do
                 aria-current={@active == :settings && "page"}
                 class="flex min-h-11 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
               >
-                <.icon name="hero-cog-6-tooth" class="size-5 shrink-0" /> Settings
+                <.icon name="hero-cog-6-tooth" class="size-5 shrink-0" /> {gettext("Settings")}
               </.link>
               <.link
                 id="m-logout"
@@ -234,7 +257,9 @@ defmodule QuickSlipsWeb.Layouts do
                 method="delete"
                 class="flex min-h-11 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
               >
-                <.icon name="hero-arrow-right-start-on-rectangle" class="size-5 shrink-0" /> Log out
+                <.icon name="hero-arrow-right-start-on-rectangle" class="size-5 shrink-0" /> {gettext(
+                  "Log out"
+                )}
               </.link>
             </div>
           </div>
@@ -244,7 +269,7 @@ defmodule QuickSlipsWeb.Layouts do
 
     <%!-- Laptop: the dark sidebar --%>
     <nav
-      aria-label="Main"
+      aria-label={gettext("Main")}
       class="hidden bg-sidebar ring-1 ring-on-sidebar/10 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col"
     >
       <div class="flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4">
@@ -252,7 +277,7 @@ defmodule QuickSlipsWeb.Layouts do
           <.wordmark id="logo" tone={:sidebar} navigate={~p"/dashboard"} />
         </div>
         <.button id="new-document" navigate={~p"/"} block on_dark>
-          <.icon name="hero-plus" class="size-5" /> New document
+          <.icon name="hero-plus" class="size-5" /> {gettext("New document")}
         </.button>
         <div class="flex flex-1 flex-col">
           <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -279,7 +304,7 @@ defmodule QuickSlipsWeb.Layouts do
                     aria-current={@active == :settings && "page"}
                     class="group flex min-h-11 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
                   >
-                    <.icon name="hero-cog-6-tooth" class="size-6 shrink-0" /> Settings
+                    <.icon name="hero-cog-6-tooth" class="size-6 shrink-0" /> {gettext("Settings")}
                   </.link>
                 </li>
               </ul>
@@ -292,6 +317,7 @@ defmodule QuickSlipsWeb.Layouts do
     <div class="lg:pl-72">
       <header class="sticky top-0 z-40 hidden h-16 shrink-0 items-center gap-x-3 border-b border-line bg-surface px-8 lg:flex">
         <div class="ml-auto flex items-center gap-x-3">
+          <.locale_menu id="locale-menu" locale={@locale} />
           <.theme_menu id="theme-menu" />
           <div aria-hidden="true" class="h-6 w-px bg-line"></div>
           <.user_menu id="user-menu" user={@user} />

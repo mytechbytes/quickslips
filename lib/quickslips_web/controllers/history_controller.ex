@@ -3,6 +3,7 @@ defmodule QuickSlipsWeb.HistoryController do
 
   alias QuickSlips.Businesses
   alias QuickSlips.Documents
+  alias QuickSlips.Locales
   alias QuickSlips.Render.Renderer
   alias QuickSlips.Templates
   alias QuickSlips.Templates.Validator
@@ -18,12 +19,17 @@ defmodule QuickSlipsWeb.HistoryController do
     business = document.business_id && Businesses.get_business!(scope, document.business_id)
     %{data: image_names, files: files} = Businesses.render_assets(business)
 
+    # The document is made again in the language and for the country it was made for.
+    locale = Locales.for_document(document.language, document.options)
+
     # The template may have changed since the document was saved, so the data is checked again.
-    with {:ok, schema} <- Templates.get(document.slug),
+    with {:ok, schema} <- Templates.get(document.slug, locale),
          {:ok, clean} <- Validator.validate(schema, document.data),
          {:ok, pdf} <-
            Renderer.render(document.slug, document.template, Map.merge(clean, image_names),
-             assets: files
+             assets: files,
+             locale: locale.code,
+             currency: document.options["currency"]
            ) do
       send_download(conn, {:binary, pdf},
         filename: "#{document.slug}.pdf",

@@ -1,11 +1,12 @@
 {
   "slug": "service-invoice",
-  "title": "Service Invoice Generator",
+  "public_slug": "invoice-generator",
+  "title": "Invoice Generator",
   "category": "Work",
   "icon": "hero-wrench-screwdriver",
   "number_field": "invoice_number",
   "summary": "Charges for work or a service, with GST.",
-  "description": "Generate a service invoice with client details, up to three service lines, GST and payment notes. Preview instantly and download as PDF.",
+  "description": "Generate an invoice for a service with client details, up to three service lines, GST and payment notes. Preview instantly and download as PDF.",
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
     { "key": "seller_name", "label": "Your business name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
