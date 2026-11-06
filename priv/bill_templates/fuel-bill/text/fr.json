@@ -1,0 +1,71 @@
+{
+  "title": "Générateur de facture carburant",
+  "name": "Facture carburant",
+  "public_slug": "generateur-de-facture-carburant",
+  "summary": "Créez une facture de carburant (essence ou gazole) en PDF.",
+  "description": "Générez une facture de carburant claire avec le nom de la station, la date, le type de carburant, la quantité et le prix. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Classique"
+  },
+  "fields": {
+    "station_name": {
+      "label": "Nom de la station-service"
+    },
+    "station_address": {
+      "label": "Adresse de la station"
+    },
+    "bill_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "vehicle_number": {
+      "label": "Immatriculation du véhicule"
+    },
+    "fuel_type": {
+      "label": "Type de carburant",
+      "options": {
+        "Petrol": "Essence",
+        "Diesel": "Gazole",
+        "CNG": "GNV"
+      }
+    },
+    "quantity": {
+      "label": "Quantité (litres)"
+    },
+    "rate": {
+      "label": "Prix au litre ({currency})"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facultatif)"
+    }
+  },
+  "print": {
+    "bill_no": "N° de facture",
+    "date": "Date",
+    "vehicle": "Véhicule",
+    "fuel": "Carburant",
+    "item": "Désignation",
+    "quantity": "Qté (L)",
+    "rate": "Prix",
+    "amount": "Montant",
+    "total": "Total",
+    "signatory": "Signature autorisée",
+    "thanks": "Merci de votre visite.",
+    "taxable": "Base HT",
+    "tax_included": "Taxe incluse dans le prix."
+  },
+  "sample": {
+    "station_name": "Station Soleil",
+    "station_address": "12 avenue de la République, 75011 Paris",
+    "bill_number": "FC-10482",
+    "vehicle_number": "AB-123-CD",
+    "rate": 1.85,
+    "seller_tax_id": "FR12345678901",
+    "tax_percent": 20
+  }
+}

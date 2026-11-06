@@ -13,6 +13,8 @@ export type Field = {
   // What each option is called in the language of the page: the data holds the option, the form shows this.
   option_labels?: Record<string, string>
   prefill?: string
+  // The section of the form the field belongs to (one of GROUPS).
+  group?: string
   // A table of items: the heads of its columns, how many rows it may have, how long a name may be.
   columns?: { name?: string; qty?: string; rate?: string }
   // A tax rate field: the percentages the country offers.
@@ -30,6 +32,10 @@ export type Business = {
   logo_url: string | null
   signature_url: string | null
 }
+
+// The sections of the form, in the order they appear; a field says which one it is in. The titles are ui strings
+// (`group_business`, ...), so every language has them.
+const GROUPS = ["business", "registration", "document", "customer", "details", "charges", "payment"]
 
 type Control = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
@@ -83,6 +89,13 @@ function createControl(field: Field, id: string): Control {
   if (field.type === "textarea") {
     control = document.createElement("textarea")
     control.rows = 3
+  } else if (field.type === "tax_rate" && (field.rates ?? []).length === 0) {
+    // A country with no standard rate to offer (the United States, Brazil): the rate is typed.
+    control = document.createElement("input")
+    control.type = "number"
+    control.step = "any"
+    control.min = "0"
+    control.max = "100"
   } else if (field.type === "tax_rate") {
     // The rates of the country; "none" for a document without tax when the field is optional.
     control = document.createElement("select")
@@ -129,6 +142,24 @@ export function buildForm(
   const controls = new Map<string, Control>()
   const errorEls = new Map<string, HTMLElement>()
   const tables = new Map<string, ReturnType<typeof createItemsField>>()
+  const sections = new Map<string, HTMLElement>()
+
+  // The grid of a section, with its heading (a bar, the title, a hairline), made when its first field comes.
+  const sectionOf = (field: Field): HTMLElement => {
+    const id = field.group && GROUPS.includes(field.group) ? field.group : "details"
+    let grid = sections.get(id)
+    if (!grid) {
+      const section = document.createElement("section")
+      section.dataset.group = id
+      section.innerHTML =
+        `<div class="mb-2.5 flex items-center gap-3"><h3 class="border-l-2 border-accent pl-2 text-xs font-semibold uppercase tracking-wider text-ink"></h3><span class="h-px flex-1 bg-line"></span></div>` +
+        `<div class="grid gap-x-3 gap-y-2.5 sm:grid-cols-2"></div>`
+      section.querySelector("h3")!.textContent = t(`group_${id}`)
+      grid = section.querySelector<HTMLElement>("div:last-child")!
+      sections.set(id, grid)
+    }
+    return grid
+  }
 
   for (const field of schema.fields) {
     if (field.type === "items") {
@@ -138,17 +169,21 @@ export function buildForm(
         { currency: vars.currency ?? "", formatMoney },
         () => onChange(read()),
       )
-      form.append(table.element)
+      table.element.classList.add("sm:col-span-2")
+      sectionOf(field).append(table.element)
       tables.set(field.key, table)
       continue
     }
 
     const id = `field-${field.key}`
     const wrapper = document.createElement("div")
+    wrapper.dataset.fieldType = field.type
+    // A text area and a long line (an address, a route) take the whole row; the rest share it two by two.
+    if (field.type === "textarea" || (field.max_length ?? 0) >= 120) wrapper.className = "sm:col-span-2"
 
     const label = document.createElement("label")
     label.htmlFor = id
-    label.className = "mb-1 block text-sm/6 font-medium text-ink"
+    label.className = "mb-0.5 block text-sm/5 font-medium text-ink"
     label.textContent =
       field.label
         .replace("{currency}", vars.currency ?? "")
@@ -159,8 +194,8 @@ export function buildForm(
     const initialValue = initial[field.key]
     if (initialValue !== undefined) {
       // A saved document may carry a rate the country no longer offers (12%): it stays choosable.
-      if (field.type === "tax_rate" && ![...(control as HTMLSelectElement).options].some((o) => o.value === String(initialValue)))
-        (control as HTMLSelectElement).append(new Option(`${initialValue}%`, String(initialValue)))
+      if (control instanceof HTMLSelectElement && field.type === "tax_rate" && ![...control.options].some((o) => o.value === String(initialValue)))
+        control.append(new Option(`${initialValue}%`, String(initialValue)))
       control.value = String(initialValue)
     }
 
@@ -170,9 +205,14 @@ export function buildForm(
     control.setAttribute("aria-describedby", error.id)
 
     wrapper.append(label, control, error)
-    form.append(wrapper)
+    sectionOf(field).append(wrapper)
     controls.set(field.key, control)
     errorEls.set(field.key, error)
+  }
+
+  for (const id of GROUPS) {
+    const grid = sections.get(id)
+    if (grid) form.append(grid.parentElement!)
   }
 
   const read = (): BillData => {

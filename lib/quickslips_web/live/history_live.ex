@@ -1,6 +1,9 @@
 defmodule QuickSlipsWeb.HistoryLive do
   use QuickSlipsWeb, :live_view
 
+  # A live navigation does not run the router's plugs, so the login is checked here too.
+  on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}
+
   import QuickSlipsWeb.CatalogueComponents, only: [search_input: 1]
 
   alias QuickSlips.Documents
@@ -76,7 +79,7 @@ defmodule QuickSlipsWeb.HistoryLive do
       subtitle="Everything you have downloaded. Download it again, change it or delete it."
     >
       <:actions>
-        <.button id="history-new-document" navigate={~p"/"}>
+        <.button id="history-new-document" navigate={home_path(@locale)}>
           <.icon name="hero-plus" class="size-5" /> New document
         </.button>
       </:actions>
@@ -98,7 +101,7 @@ defmodule QuickSlipsWeb.HistoryLive do
         >
           Documents you download while logged in are kept here, so you can download them again later.
           <:actions>
-            <.button id="history-empty-new-document" navigate={~p"/"}>
+            <.button id="history-empty-new-document" navigate={home_path(@locale)}>
               <.icon name="hero-plus" class="size-5" /> New document
             </.button>
           </:actions>
@@ -145,7 +148,7 @@ defmodule QuickSlipsWeb.HistoryLive do
               </.link>
               <.link
                 id={"edit-#{doc.id}"}
-                href={edit_path(doc)}
+                navigate={edit_path(doc)}
                 title="Edit and regenerate"
                 class="inline-flex size-11 items-center justify-center rounded-button text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus sm:size-9 pointer-coarse:size-11"
               >

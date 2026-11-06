@@ -52,7 +52,7 @@
 )
 
 #v(3mm)
-#totals((([Subtotal], subtotal), ([GST (#tax-rate%)], tax)), total, label: "Amount due")
+#totals((([Subtotal], subtotal), ([#tax-name (#tax-rate%)], tax)), total, label: "Amount due")
 
 #if opt(data, "due_date") != none [
   #v(6mm)

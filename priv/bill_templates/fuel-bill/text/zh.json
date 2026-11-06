@@ -1,0 +1,71 @@
+{
+  "title": "加油小票生成器",
+  "name": "加油小票",
+  "public_slug": "fuel-bill-generator",
+  "summary": "生成汽油或柴油加油小票的 PDF。",
+  "description": "生成清晰的加油小票，包含加油站名称、日期、油品类型、数量和单价。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "经典"
+  },
+  "fields": {
+    "station_name": {
+      "label": "加油站名称"
+    },
+    "station_address": {
+      "label": "加油站地址"
+    },
+    "bill_number": {
+      "label": "单号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "vehicle_number": {
+      "label": "车牌号"
+    },
+    "fuel_type": {
+      "label": "油品类型",
+      "options": {
+        "Petrol": "汽油",
+        "Diesel": "柴油",
+        "CNG": "压缩天然气（CNG）"
+      }
+    },
+    "quantity": {
+      "label": "数量（升）"
+    },
+    "rate": {
+      "label": "每升单价（{currency}）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "tax_percent": {
+      "label": "{tax}（%）（选填）"
+    }
+  },
+  "print": {
+    "bill_no": "单号",
+    "date": "日期",
+    "vehicle": "车辆",
+    "fuel": "油品",
+    "item": "项目",
+    "quantity": "数量（升）",
+    "rate": "单价",
+    "amount": "金额",
+    "total": "合计",
+    "signatory": "授权签字",
+    "thanks": "谢谢惠顾，欢迎再次光临。",
+    "taxable": "不含税金额",
+    "tax_included": "价格含税。"
+  },
+  "sample": {
+    "station_name": "朝阳加油站",
+    "station_address": "北京市朝阳区建国路88号",
+    "bill_number": "FB-10482",
+    "vehicle_number": "京A·12345",
+    "rate": 7.85,
+    "seller_tax_id": "91110000600037341L",
+    "tax_percent": 13
+  }
+}

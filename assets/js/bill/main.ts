@@ -6,10 +6,11 @@ import { loadStrings, t } from "./i18n"
 
 type Quota = { remaining: number; limit: number; tier: string }
 
-function init() {
-  const root = document.getElementById("bill-app")
-  if (!root) return // not on a template page
-
+/**
+ * Starts the form, the preview and the download on the element `#bill-app` of a bill's page, and returns what to
+ * call when the page goes away (a live navigation takes the element with it, but not the preview's worker).
+ */
+export function mountBillApp(root: HTMLElement): () => void {
   loadStrings(root.dataset.i18n)
 
   const siteKey = root.dataset.turnstileSiteKey
@@ -56,8 +57,37 @@ function init() {
     business = picked
     preview.setBusiness(picked)
   }
-  const mountForm = (initial: BillData) =>
-    buildForm(
+  // The "Region & tax" dialog: another country or currency means other rates, other registration numbers, other
+  // money and date formats. The server says what the form is for that country; the values typed so far stay.
+  const dialog = root.querySelector<HTMLDialogElement>("#region-dialog")!
+  const countrySelect = root.querySelector<HTMLSelectElement>("#region-country")!
+  const currencySelect = root.querySelector<HTMLSelectElement>("#region-currency")!
+
+  // The one button that opens the dialog. It sits with the tax rate when the bill has one, else at the top of the form.
+  function placeRegionButton() {
+    const button = document.createElement("button")
+    button.type = "button"
+    button.id = "region-button"
+    button.className =
+      "mt-1 inline-flex items-center gap-1.5 rounded-field border border-line-strong bg-surface px-2.5 py-1 text-sm text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+    button.innerHTML = `<span class="hero-globe-alt size-4 text-ink-muted" aria-hidden="true"></span>`
+    const text = document.createElement("span")
+    const country = countrySelect.selectedOptions[0]?.text ?? ""
+    text.textContent = `${t("region_and_tax")}: ${country} · ${region.currency.code}${region.tax ? " · " + region.tax.name : ""}`
+    button.append(text)
+    button.addEventListener("click", () => dialog.showModal())
+    const taxField = form.querySelector<HTMLElement>('[data-field-type="tax_rate"]')
+    if (taxField) {
+      taxField.append(button)
+    } else {
+      const row = document.createElement("div")
+      row.append(button)
+      form.prepend(row)
+    }
+  }
+
+  const mountForm = (initial: BillData) => {
+    const built = buildForm(
       form,
       schema,
       initial,
@@ -67,12 +97,19 @@ function init() {
       { currency: region.currency.symbol, tax: region.tax?.name, tax_id: region.tax?.id?.label },
       (amount) => money.format(amount),
     )
+    placeRegionButton()
+    return built
+  }
   let ui = mountForm(sample)
 
-  // The "Region & tax" panel: another country or currency means other rates, other registration numbers, other
-  // money and date formats. The server says what the form is for that country; the values typed so far stay.
-  const countrySelect = root.querySelector<HTMLSelectElement>("#region-country")!
-  const currencySelect = root.querySelector<HTMLSelectElement>("#region-currency")!
+  // The design of the bill: its own layout, drawn again in the preview, and sent with the download.
+  let template = root.dataset.template!
+  const templateSelect = root.querySelector<HTMLSelectElement>("#template-select")!
+  templateSelect.addEventListener("change", () => {
+    template = templateSelect.value
+    preview.setTemplate(template)
+  })
+
   async function changeRegion(countryChanged: boolean) {
     const params = new URLSearchParams({ locale, country: countrySelect.value })
     if (!countryChanged) params.set("currency", currencySelect.value)
@@ -133,7 +170,7 @@ function init() {
       }
       turnstileToken = await widget.token()
     }
-    const result = await downloadPdf(schema.slug, root.dataset.template!, ui.read(), turnstileToken, business?.id, locale, {
+    const result = await downloadPdf(schema.slug, template, ui.read(), turnstileToken, business?.id, locale, {
       country: region.country,
       currency: region.currency.code,
     })
@@ -153,6 +190,6 @@ function init() {
       status.textContent = result.status === 403 ? t("verify_failed") : t("error")
     }
   })
-}
 
-document.addEventListener("DOMContentLoaded", init)
+  return () => preview.destroy()
+}

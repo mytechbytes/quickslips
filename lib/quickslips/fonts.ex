@@ -12,7 +12,7 @@ defmodule QuickSlips.Fonts do
   @base ["Noto Sans"]
   @base_files ["NotoSans-Regular.ttf", "NotoSans-Bold.ttf"]
 
-  # language => {family, files}. Not there yet: the files are added when the locale goes live.
+  # language => {family, files}: Noto Sans SC and JP (subset OTF, from notofonts/noto-cjk), in `priv/fonts`.
   @extra %{
     "zh" => {"Noto Sans SC", ["NotoSansSC-Regular.otf", "NotoSansSC-Bold.otf"]},
     "ja" => {"Noto Sans JP", ["NotoSansJP-Regular.otf", "NotoSansJP-Bold.otf"]}

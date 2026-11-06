@@ -31,7 +31,7 @@
   (
     ([Membership fee (#data.plan)], data.fee),
     ([Joining fee], joining),
-    ([GST (#tax-rate%)], tax),
+    ([#tax-name (#tax-rate%)], tax),
   ),
   total,
 )

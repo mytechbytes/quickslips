@@ -1,0 +1,32 @@
+{
+  "fields": {
+    "station_name": {
+      "label": "Gas station name"
+    },
+    "quantity": {
+      "label": "Quantity (gallons)"
+    },
+    "rate": {
+      "label": "Price per gallon ({currency})"
+    },
+    "fuel_type": {
+      "label": "Fuel type",
+      "options": {
+        "Petrol": "Gasoline",
+        "Diesel": "Diesel",
+        "CNG": "CNG"
+      }
+    }
+  },
+  "print": {
+    "quantity": "Qty (gal)"
+  },
+  "sample": {
+    "station_name": "Sunrise Gas Station",
+    "station_address": "1450 Main Street, Austin, TX 78701",
+    "vehicle_number": "7ABC123",
+    "quantity": 11.5,
+    "rate": 3.49,
+    "seller_tax_id": "12-3456789"
+  }
+}

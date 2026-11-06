@@ -10,22 +10,23 @@ defmodule QuickSlips.Locales do
       once the locale has a catalogue big enough to be a first page.
   """
 
-  # The ten largest economies and their languages, and Spain (live since the first release). Only the first
-  # three are live; the others are planned and become live when their tax data, text and bills are ready.
+  # The ten largest economies and their languages, and Spain (live since the first release). All thirteen
+  # are live (Chinese and Japanese bring their fonts, see `QuickSlips.Fonts`). The English
+  # locales have a first page worth guessing (`auto`): all the bills are in English.
   @locales [
     %{code: "en-in", language: "en", country: "in", name: "English", live: true, auto: true},
     %{code: "hi-in", language: "hi", country: "in", name: "हिन्दी", live: true, auto: false},
     %{code: "es-es", language: "es", country: "es", name: "Español", live: true, auto: false},
-    %{code: "en-us", language: "en", country: "us", name: "English", live: false, auto: false},
-    %{code: "zh-cn", language: "zh", country: "cn", name: "简体中文", live: false, auto: false},
-    %{code: "de-de", language: "de", country: "de", name: "Deutsch", live: false, auto: false},
-    %{code: "ja-jp", language: "ja", country: "jp", name: "日本語", live: false, auto: false},
-    %{code: "en-gb", language: "en", country: "gb", name: "English", live: false, auto: false},
-    %{code: "fr-fr", language: "fr", country: "fr", name: "Français", live: false, auto: false},
-    %{code: "it-it", language: "it", country: "it", name: "Italiano", live: false, auto: false},
-    %{code: "pt-br", language: "pt", country: "br", name: "Português", live: false, auto: false},
-    %{code: "en-ca", language: "en", country: "ca", name: "English", live: false, auto: false},
-    %{code: "fr-ca", language: "fr", country: "ca", name: "Français", live: false, auto: false}
+    %{code: "en-us", language: "en", country: "us", name: "English", live: true, auto: true},
+    %{code: "zh-cn", language: "zh", country: "cn", name: "简体中文", live: true, auto: false},
+    %{code: "de-de", language: "de", country: "de", name: "Deutsch", live: true, auto: false},
+    %{code: "ja-jp", language: "ja", country: "jp", name: "日本語", live: true, auto: false},
+    %{code: "en-gb", language: "en", country: "gb", name: "English", live: true, auto: true},
+    %{code: "fr-fr", language: "fr", country: "fr", name: "Français", live: true, auto: false},
+    %{code: "it-it", language: "it", country: "it", name: "Italiano", live: true, auto: false},
+    %{code: "pt-br", language: "pt", country: "br", name: "Português", live: true, auto: false},
+    %{code: "en-ca", language: "en", country: "ca", name: "English", live: true, auto: true},
+    %{code: "fr-ca", language: "fr", country: "ca", name: "Français", live: true, auto: false}
   ]
 
   @doc "Every locale, live or not."

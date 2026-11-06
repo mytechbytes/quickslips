@@ -25,14 +25,21 @@ import {LiveSocket} from "phoenix_live_view"
 import {hooks as colocatedHooks} from "phoenix-colocated/quickslips"
 import topbar from "../vendor/topbar"
 import "@tailwindplus/elements";
-import "./bill/main"
+import {mountBillApp} from "./bill/main"
 import "./locale"
+
+// The form and the preview of a bill's page (`TemplateLive`): started when the page is there, stopped when it goes.
+const BillApp = {
+  mounted() { this.stop = mountBillApp(this.el) },
+  destroyed() { this.stop?.() },
+}
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 const liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
-  params: {_csrf_token: csrfToken},
-  hooks: {...colocatedHooks},
+  // The locale of the page the visitor is on goes along when a LiveView connects (see `Plugs.Locale.on_mount/4`).
+  params: () => ({_csrf_token: csrfToken, locale: document.documentElement.dataset.locale}),
+  hooks: {...colocatedHooks, BillApp},
 })
 
 // Show progress bar on live navigation and form submits

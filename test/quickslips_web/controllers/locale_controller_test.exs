@@ -134,4 +134,44 @@ defmodule QuickSlipsWeb.LocaleControllerTest do
     assert redirected_to(conn) == "/es-es/generador-de-factura-de-gasolina"
     assert conn |> recycle() |> get(~p"/") |> redirected_to() == "/es-es"
   end
+
+  describe "when the page's script asks for JSON" do
+    defp choose_by_script(conn, locale, from) do
+      conn
+      |> put_req_header("x-locale-switch", "fetch")
+      |> post(~p"/locale", %{"locale" => locale, "from" => from})
+    end
+
+    test "answers with where to go (a bill to the same bill is live), and remembers the choice all the same",
+         %{conn: conn} do
+      conn = choose_by_script(conn, "hi-in", "/en-in/fuel-bill-generator")
+
+      assert %{"to" => "/hi-in/fuel-bill-generator", "live" => true, "lang" => "hi-IN"} =
+               json_response(conn, 200)
+
+      assert conn.resp_cookies["qs_locale"].value == "hi-in"
+      assert get_session(conn, :locale) == "hi-in"
+    end
+
+    test "a page without a locale in its address is a full load", %{conn: conn} do
+      conn = choose_by_script(conn, "de-de", "/dashboard")
+
+      assert %{"to" => "/dashboard", "live" => false} = json_response(conn, 200)
+    end
+
+    test "a catalogue to a catalogue can be a live navigation", %{conn: conn} do
+      conn = choose_by_script(conn, "de-de", "/en-in")
+
+      assert %{"to" => "/de-de", "live" => true, "lang" => "de-DE"} = json_response(conn, 200)
+    end
+
+    test "a page that is not in the new language is a full load, which shows the flash", %{
+      conn: conn
+    } do
+      conn = choose_by_script(conn, "hi-in", "/en-in/rent-receipt-generator")
+
+      assert %{"to" => "/hi-in", "live" => false} = json_response(conn, 200)
+      assert Phoenix.Flash.get(conn.assigns.flash, :info)
+    end
+  end
 end

@@ -14,6 +14,10 @@
     "order": "dmy",
     "separator": "."
   },
+  "example": {
+    "address": "Hauptstraße 12, 10115 Berlin",
+    "tax_id": "DE123456789"
+  },
   "tax": {
     "name": {
       "en": "VAT",

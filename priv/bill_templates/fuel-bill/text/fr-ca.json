@@ -1,0 +1,14 @@
+{
+  "print": {
+    "tax_included": "Taxes incluses dans le prix."
+  },
+  "sample": {
+    "station_name": "Station Érable",
+    "station_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "vehicle_number": "ABC 123",
+    "quantity": 40,
+    "rate": 1.72,
+    "seller_tax_id": "123456789RT0001",
+    "tax_percent": 5
+  }
+}

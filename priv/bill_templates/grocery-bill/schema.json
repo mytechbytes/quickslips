@@ -9,17 +9,17 @@
   "description": "Create a grocery bill with as many items as you need, quantities, prices and a discount. Preview instantly and download as PDF.",
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
-    { "key": "store_name", "label": "Store name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "store_address", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
-    { "key": "gstin", "label": "GSTIN (optional)", "type": "text", "required": false, "max_length": 15, "prefill": "business.gstin" },
-    { "key": "fssai_number", "label": "FSSAI licence no. (optional)", "type": "text", "required": false, "max_length": 14, "pattern": "^[0-9]{14}$", "countries": ["in"] },
-    { "key": "bill_number", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "date", "label": "Date", "type": "date", "required": true },
-    { "key": "customer_name", "label": "Customer name (optional)", "type": "text", "required": false, "max_length": 80 },
-    { "key": "items", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 80,
+    { "key": "store_name", "group": "business", "label": "Store name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "store_address", "group": "business", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "gstin", "group": "registration", "label": "{tax_id} (optional)", "type": "text", "required": false, "max_length": 20, "prefill": "business.gstin" },
+    { "key": "fssai_number", "group": "registration", "label": "FSSAI licence no. (optional)", "type": "text", "required": false, "max_length": 14, "pattern": "^[0-9]{14}$", "countries": ["in"] },
+    { "key": "bill_number", "group": "document", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "customer_name", "group": "customer", "label": "Customer name (optional)", "type": "text", "required": false, "max_length": 80 },
+    { "key": "items", "group": "details", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 80,
       "columns": { "name": "Item", "qty": "Qty", "rate": "Price ({currency})" },
       "legacy": { "name": "item", "qty": "qty", "rate": "price", "count": 6 } },
-    { "key": "discount", "label": "Discount (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "payment_mode", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
+    { "key": "discount", "group": "charges", "label": "Discount ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
   ]
 }

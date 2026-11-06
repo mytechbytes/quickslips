@@ -1,0 +1,37 @@
+{
+  "months": [
+    "janeiro",
+    "fevereiro",
+    "março",
+    "abril",
+    "maio",
+    "junho",
+    "julho",
+    "agosto",
+    "setembro",
+    "outubro",
+    "novembro",
+    "dezembro"
+  ],
+  "months_short": [
+    "jan",
+    "fev",
+    "mar",
+    "abr",
+    "mai",
+    "jun",
+    "jul",
+    "ago",
+    "set",
+    "out",
+    "nov",
+    "dez"
+  ],
+  "categories": {
+    "Travel": "Viagens",
+    "Home & utilities": "Casa e contas",
+    "Health & learning": "Saúde e educação",
+    "Food & shopping": "Comida e compras",
+    "Work": "Trabalho"
+  }
+}
