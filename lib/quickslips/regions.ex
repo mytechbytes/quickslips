@@ -51,6 +51,18 @@ defmodule QuickSlips.Regions do
   end
 
   @doc """
+  An address and a tax-registration number written the way the country writes them, for the sample a form starts
+  with: `%{"address" => "...", "tax_id" => "..."}`, or `nil` for a country without examples (India, whose
+  examples are the ones in every template's own sample).
+  """
+  def example(country) do
+    case @countries do
+      %{^country => %{"example" => example}} -> example
+      _ -> nil
+    end
+  end
+
+  @doc """
   The region of a document: a map with string keys, which is also the `region.json` that the Typst helpers
   read. `currency` is the code of the currency, or `nil` for the country's own; `language` picks the names
   of the tax where a country has more than one.

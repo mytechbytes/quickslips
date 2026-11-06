@@ -82,14 +82,14 @@ defmodule QuickSlipsWeb.Layouts do
       <header class="border-b border-line bg-surface">
         <nav
           aria-label={gettext("Main")}
-          class="mx-auto flex max-w-8xl items-center justify-between gap-x-4 px-4 py-3 sm:px-6 lg:px-8"
+          class="mx-auto flex max-w-8xl items-center justify-between gap-x-4 px-4 py-2 sm:px-6 lg:px-8"
         >
           <div class="flex items-center gap-x-10">
-            <.wordmark id="logo" navigate={~p"/"} />
+            <.wordmark id="logo" navigate={home_path(@locale)} />
             <div class="hidden lg:flex lg:gap-x-8">
               <.link
                 id="nav-templates"
-                navigate={~p"/"}
+                navigate={home_path(@locale)}
                 class="rounded-field text-sm/6 font-semibold text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
               >
                 {gettext("Templates")}
@@ -112,7 +112,7 @@ defmodule QuickSlipsWeb.Layouts do
               type="button"
               command="show-modal"
               commandfor="mobile-menu"
-              class="flex size-11 items-center justify-center rounded-full text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus lg:hidden"
+              class="flex size-10 sm:size-9 items-center justify-center rounded-full text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus lg:hidden"
             >
               <span class="sr-only">{gettext("Open main menu")}</span>
               <.icon name="hero-bars-3" class="size-6" />
@@ -129,13 +129,13 @@ defmodule QuickSlipsWeb.Layouts do
           <div tabindex="0" class="fixed inset-0 focus:outline-none">
             <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-surface p-6 transition duration-300 ease-in-out motion-reduce:transition-none data-closed:translate-x-full sm:max-w-sm sm:ring-1 sm:ring-line">
               <div class="flex items-center justify-between">
-                <.wordmark id="menu-logo" navigate={~p"/"} />
+                <.wordmark id="menu-logo" navigate={home_path(@locale)} />
                 <button
                   id="close-menu"
                   type="button"
                   command="close"
                   commandfor="mobile-menu"
-                  class="flex size-11 items-center justify-center rounded-full text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+                  class="flex size-10 sm:size-9 items-center justify-center rounded-full text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
                 >
                   <span class="sr-only">{gettext("Close menu")}</span>
                   <.icon name="hero-x-mark" class="size-6" />
@@ -146,8 +146,8 @@ defmodule QuickSlipsWeb.Layouts do
                   <div class="space-y-1 py-6">
                     <.link
                       id="menu-templates"
-                      navigate={~p"/"}
-                      class="-mx-3 flex min-h-11 items-center rounded-card px-3 py-2 text-base/7 font-semibold text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+                      navigate={home_path(@locale)}
+                      class="-mx-3 flex min-h-10 sm:min-h-9 items-center rounded-card px-3 py-2 text-base/7 font-semibold text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
                     >
                       {gettext("Templates")}
                     </.link>
@@ -172,7 +172,7 @@ defmodule QuickSlipsWeb.Layouts do
       </main>
 
       <footer class="border-t border-line">
-        <div class="mx-auto max-w-8xl space-y-6 px-4 py-8 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-8xl space-y-3 px-4 py-5 sm:px-6 lg:px-8">
           <.locale_picker id="footer-locale" locale={@locale} />
           <p class="text-sm/6 text-ink-muted">
             {gettext(
@@ -208,7 +208,7 @@ defmodule QuickSlipsWeb.Layouts do
                 type="button"
                 command="--toggle"
                 commandfor="mobile-menu"
-                class="relative inline-flex size-11 items-center justify-center rounded-full text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                class="relative inline-flex size-10 sm:size-9 items-center justify-center rounded-full text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
               >
                 <span class="sr-only">{gettext("Open main menu")}</span>
                 <.icon name="hero-bars-3" class="size-6 in-aria-expanded:hidden" />
@@ -219,7 +219,7 @@ defmodule QuickSlipsWeb.Layouts do
         </div>
         <el-disclosure id="mobile-menu" hidden class="block">
           <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-            <.button id="m-new-document" navigate={~p"/"} block on_dark class="mb-2">
+            <.button id="m-new-document" navigate={home_path(@locale)} block on_dark class="mb-2">
               <.icon name="hero-plus" class="size-5" /> {gettext("New document")}
             </.button>
             <.link
@@ -227,7 +227,7 @@ defmodule QuickSlipsWeb.Layouts do
               id={"m-nav-#{key}"}
               navigate={path}
               aria-current={@active == key && "page"}
-              class="flex min-h-11 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+              class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
             >
               <.icon name={ic} class="size-5 shrink-0" />{label}
             </.link>
@@ -247,7 +247,7 @@ defmodule QuickSlipsWeb.Layouts do
                 id="m-settings"
                 navigate={~p"/users/settings"}
                 aria-current={@active == :settings && "page"}
-                class="flex min-h-11 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
               >
                 <.icon name="hero-cog-6-tooth" class="size-5 shrink-0" /> {gettext("Settings")}
               </.link>
@@ -255,7 +255,7 @@ defmodule QuickSlipsWeb.Layouts do
                 id="m-logout"
                 href={~p"/users/log-out"}
                 method="delete"
-                class="flex min-h-11 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
               >
                 <.icon name="hero-arrow-right-start-on-rectangle" class="size-5 shrink-0" /> {gettext(
                   "Log out"
@@ -276,7 +276,7 @@ defmodule QuickSlipsWeb.Layouts do
         <div class="flex h-16 shrink-0 items-center">
           <.wordmark id="logo" tone={:sidebar} navigate={~p"/dashboard"} />
         </div>
-        <.button id="new-document" navigate={~p"/"} block on_dark>
+        <.button id="new-document" navigate={home_path(@locale)} block on_dark>
           <.icon name="hero-plus" class="size-5" /> {gettext("New document")}
         </.button>
         <div class="flex flex-1 flex-col">
@@ -288,7 +288,7 @@ defmodule QuickSlipsWeb.Layouts do
                     id={"nav-#{key}"}
                     navigate={path}
                     aria-current={@active == key && "page"}
-                    class="group flex min-h-11 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                    class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
                   >
                     <.icon name={ic} class="size-6 shrink-0" />{label}
                   </.link>
@@ -302,7 +302,7 @@ defmodule QuickSlipsWeb.Layouts do
                     id="nav-settings"
                     navigate={~p"/users/settings"}
                     aria-current={@active == :settings && "page"}
-                    class="group flex min-h-11 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                    class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
                   >
                     <.icon name="hero-cog-6-tooth" class="size-6 shrink-0" /> {gettext("Settings")}
                   </.link>
@@ -326,7 +326,7 @@ defmodule QuickSlipsWeb.Layouts do
 
       <main>
         <div :if={@title} class="border-b border-line bg-surface lg:border-0 lg:bg-transparent">
-          <div class="mx-auto max-w-8xl px-4 py-5 sm:px-6 lg:px-8 lg:pt-8 lg:pb-0">
+          <div class="mx-auto max-w-8xl px-4 py-4 sm:px-6 lg:px-8 lg:pt-5 lg:pb-0">
             <div class="sm:flex sm:items-center sm:justify-between sm:gap-x-6">
               <div>
                 <h1 class="font-display text-2xl/8 font-semibold tracking-tight text-ink">
@@ -340,7 +340,7 @@ defmodule QuickSlipsWeb.Layouts do
             </div>
           </div>
         </div>
-        <div class="mx-auto max-w-8xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+        <div class="mx-auto max-w-8xl px-4 py-4 sm:px-6 lg:px-8 lg:py-5">
           {render_slot(@inner_block)}
         </div>
       </main>

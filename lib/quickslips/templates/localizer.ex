@@ -51,8 +51,8 @@ defmodule QuickSlips.Templates.Localizer do
       "public_slug" => text["public_slug"] || schema["public_slug"] || schema["slug"],
       "title" => title,
       "name" => text["name"] || (title && String.replace_suffix(title, " Generator", "")),
-      "summary" => text["summary"] || schema["summary"],
-      "description" => text["description"] || schema["description"],
+      "summary" => with_tax(text["summary"] || schema["summary"], tax(locale)),
+      "description" => with_tax(text["description"] || schema["description"], tax(locale)),
       "category_name" => category_name(schema, shared, locale),
       "languages" => schema["languages"] || ["en"],
       "templates" => Enum.map(schema["templates"], &localize_design(&1, text["designs"] || %{})),
@@ -63,6 +63,10 @@ defmodule QuickSlips.Templates.Localizer do
         |> Enum.map(&localize_field(&1, text["fields"] || %{}, tax(locale)))
     })
   end
+
+  # `{tax}` in a summary or a description is what the country calls its tax: "GST", "IVA", "VAT".
+  defp with_tax(nil, _tax), do: nil
+  defp with_tax(text, tax), do: String.replace(text, "{tax}", tax["name"] || "tax")
 
   defp category_name(schema, shared, locale) do
     categories = merged(shared, locale)["categories"] || %{}
@@ -145,7 +149,34 @@ defmodule QuickSlips.Templates.Localizer do
   end
 
   @doc "The sample a form starts with: `sample.json`, with the words (and the numbers) of the language over it."
-  def sample(base, texts, locale), do: Map.merge(base, merged(texts, locale)["sample"] || %{})
+  def sample(base, texts, locale) do
+    base
+    |> adapt_to_country(Regions.example(locale.country))
+    |> Map.merge(merged(texts, locale)["sample"] || %{})
+  end
+
+  # The sample of a template is written for India: an Indian address, a GSTIN, UPI. For another country the
+  # addresses and the registration numbers are that country's examples, and cash is paid with. What a text file
+  # says for its own language and country (`sample`) is laid over this.
+  defp adapt_to_country(sample, nil), do: sample
+
+  defp adapt_to_country(sample, example) do
+    Map.new(sample, fn
+      {key, _value} when key in ~w(gstin client_gstin seller_tax_id) ->
+        {key, example["tax_id"]}
+
+      {key, value} when is_binary(value) ->
+        cond do
+          String.ends_with?(key, "_address") -> {key, example["address"]}
+          value == "UPI" -> {key, "Cash"}
+          true -> {key, value}
+        end
+
+      other ->
+        other
+    end)
+    |> Map.drop(~w(fssai_number landlord_pan))
+  end
 
   @doc """
   The dotted names of the keys that `reference` has and `candidate` has not, like `["fields.rate.label"]`. It

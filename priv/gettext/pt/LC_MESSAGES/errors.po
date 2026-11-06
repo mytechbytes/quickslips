@@ -1,0 +1,199 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: pt\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "can't be blank"
+msgstr "não pode ficar em branco"
+
+msgid "has already been taken"
+msgstr "já está em uso"
+
+msgid "is invalid"
+msgstr "é inválido"
+
+msgid "must be accepted"
+msgstr "deve ser aceito"
+
+#: lib/quickslips_web/error_messages.ex:31
+#, elixir-autogen
+msgid "has invalid format"
+msgstr "tem formato inválido"
+
+msgid "has an invalid entry"
+msgstr "tem uma entrada inválida"
+
+msgid "is reserved"
+msgstr "é reservado"
+
+msgid "does not match confirmation"
+msgstr "não corresponde à confirmação"
+
+msgid "is still associated with this entry"
+msgstr "ainda está associado a este registro"
+
+msgid "are still associated with this entry"
+msgstr "ainda estão associados a este registro"
+
+msgid "should have %{count} item(s)"
+msgid_plural "should have %{count} item(s)"
+msgstr[0] "deve ter %{count} item"
+msgstr[1] "deve ter %{count} itens"
+
+msgid "should be %{count} character(s)"
+msgid_plural "should be %{count} character(s)"
+msgstr[0] "deve ter %{count} caractere"
+msgstr[1] "deve ter %{count} caracteres"
+
+msgid "should be %{count} byte(s)"
+msgid_plural "should be %{count} byte(s)"
+msgstr[0] "deve ter %{count} byte"
+msgstr[1] "deve ter %{count} bytes"
+
+msgid "should have at least %{count} item(s)"
+msgid_plural "should have at least %{count} item(s)"
+msgstr[0] "deve ter pelo menos %{count} item"
+msgstr[1] "deve ter pelo menos %{count} itens"
+
+msgid "should be at least %{count} character(s)"
+msgid_plural "should be at least %{count} character(s)"
+msgstr[0] "deve ter pelo menos %{count} caractere"
+msgstr[1] "deve ter pelo menos %{count} caracteres"
+
+msgid "should be at least %{count} byte(s)"
+msgid_plural "should be at least %{count} byte(s)"
+msgstr[0] "deve ter pelo menos %{count} byte"
+msgstr[1] "deve ter pelo menos %{count} bytes"
+
+msgid "should have at most %{count} item(s)"
+msgid_plural "should have at most %{count} item(s)"
+msgstr[0] "deve ter no máximo %{count} item"
+msgstr[1] "deve ter no máximo %{count} itens"
+
+msgid "should be at most %{count} character(s)"
+msgid_plural "should be at most %{count} character(s)"
+msgstr[0] "deve ter no máximo %{count} caractere"
+msgstr[1] "deve ter no máximo %{count} caracteres"
+
+msgid "should be at most %{count} byte(s)"
+msgid_plural "should be at most %{count} byte(s)"
+msgstr[0] "deve ter no máximo %{count} byte"
+msgstr[1] "deve ter no máximo %{count} bytes"
+
+msgid "must be less than %{number}"
+msgstr "deve ser menor que %{number}"
+
+msgid "must be greater than %{number}"
+msgstr "deve ser maior que %{number}"
+
+msgid "must be less than or equal to %{number}"
+msgstr "deve ser menor ou igual a %{number}"
+
+msgid "must be greater than or equal to %{number}"
+msgstr "deve ser maior ou igual a %{number}"
+
+msgid "must be equal to %{number}"
+msgstr "deve ser igual a %{number}"
+
+#: lib/quickslips_web/error_messages.ex:70
+#, elixir-autogen, elixir-format
+msgid "at least one digit or punctuation character"
+msgstr "pelo menos um dígito ou sinal de pontuação"
+
+#: lib/quickslips_web/error_messages.ex:68
+#, elixir-autogen, elixir-format
+msgid "at least one lower case character"
+msgstr "pelo menos uma letra minúscula"
+
+#: lib/quickslips_web/error_messages.ex:69
+#, elixir-autogen, elixir-format
+msgid "at least one upper case character"
+msgstr "pelo menos uma letra maiúscula"
+
+#: lib/quickslips_web/error_messages.ex:66
+#, elixir-autogen, elixir-format
+msgid "did not change"
+msgstr "não foi alterado"
+
+#: lib/quickslips_web/error_messages.ex:67
+#, elixir-autogen, elixir-format
+msgid "does not match password"
+msgstr "não corresponde à senha"
+
+#: lib/quickslips_web/error_messages.ex:32
+#, elixir-autogen, elixir-format
+msgid "has an unsupported type"
+msgstr "tem um tipo não suportado"
+
+#: lib/quickslips_web/error_messages.ex:26
+#, elixir-autogen, elixir-format
+msgid "is required"
+msgstr "é obrigatório"
+
+#: lib/quickslips_web/error_messages.ex:35
+#, elixir-autogen, elixir-format
+msgid "must be a date like 2026-10-31"
+msgstr "deve ser uma data, como 2026-10-31"
+
+#: lib/quickslips_web/error_messages.ex:38
+#, elixir-autogen, elixir-format
+msgid "must be a month like 2026-10"
+msgstr "deve ser um mês, como 2026-10"
+
+#: lib/quickslips_web/error_messages.ex:28
+#, elixir-autogen, elixir-format
+msgid "must be a number"
+msgstr "deve ser um número"
+
+#: lib/quickslips_web/error_messages.ex:29
+#, elixir-autogen, elixir-format
+msgid "must be an object"
+msgstr "deve ser um objeto"
+
+#: lib/quickslips_web/error_messages.ex:52
+#, elixir-autogen, elixir-format
+msgid "must be at least %{min}"
+msgstr "deve ser no mínimo %{min}"
+
+#: lib/quickslips_web/error_messages.ex:49
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max}"
+msgstr "deve ser no máximo %{max}"
+
+#: lib/quickslips_web/error_messages.ex:43
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max} characters"
+msgstr "deve ter no máximo %{max} caracteres"
+
+#: lib/quickslips_web/error_messages.ex:55
+#, elixir-autogen, elixir-format
+msgid "must be one of: %{options}"
+msgstr "deve ser um destes: %{options}"
+
+#: lib/quickslips_web/error_messages.ex:27
+#, elixir-autogen, elixir-format
+msgid "must be text"
+msgstr "deve ser texto"
+
+#: lib/quickslips_web/error_messages.ex:65
+#, elixir-autogen, elixir-format
+msgid "must have the @ sign and no spaces"
+msgstr "deve ter o sinal @ e nenhum espaço"
+
+#: lib/quickslips_web/error_messages.ex:30
+#, elixir-autogen, elixir-format
+msgid "must be a list"
+msgstr "deve ser uma lista"
+
+#: lib/quickslips_web/error_messages.ex:46
+#, elixir-autogen, elixir-format
+msgid "must have at most %{max} rows"
+msgstr "deve ter no máximo %{max} linhas"

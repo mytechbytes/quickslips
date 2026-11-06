@@ -208,14 +208,34 @@ defmodule QuickSlips.TemplatesTest do
 
       assert Templates.public_path("rent-receipt", Locales.fetch!("hi-in")) == nil
 
-      assert [
-               {%{code: "en-in"}, "fuel-bill-generator"},
-               {%{code: "hi-in"}, "fuel-bill-generator"},
-               {%{code: "es-es"}, "generador-de-factura-de-gasolina"}
-             ] =
-               Templates.alternates("fuel-bill")
+      alternates = Templates.alternates("fuel-bill")
 
-      assert [{%{code: "en-in"}, "rent-receipt-generator"}] = Templates.alternates("rent-receipt")
+      assert Enum.map(alternates, fn {locale, _slug} -> locale.code end) ==
+               [
+                 "en-in",
+                 "hi-in",
+                 "es-es",
+                 "en-us",
+                 "zh-cn",
+                 "de-de",
+                 "ja-jp",
+                 "en-gb",
+                 "fr-fr",
+                 "it-it",
+                 "pt-br",
+                 "en-ca",
+                 "fr-ca"
+               ]
+
+      assert {%{code: "es-es"}, "generador-de-factura-de-gasolina"} = Enum.at(alternates, 2)
+      assert {%{code: "de-de"}, "tankrechnung-generator"} = Enum.at(alternates, 5)
+
+      # A bill that is in English only is in the English locales: India, the United States, the UK, Canada.
+      assert ["en-in", "en-us", "en-gb", "en-ca"] =
+               "rent-receipt"
+               |> Templates.alternates()
+               |> Enum.map(fn {locale, _} -> locale.code end)
+
       assert Templates.alternates("nope") == []
     end
 
@@ -282,6 +302,35 @@ defmodule QuickSlips.TemplatesTest do
       assert hindi["rate"] == english["rate"]
       assert spanish["rate"] == 1.58
       assert spanish["fuel_type"] == "Petrol"
+    end
+
+    test "the sample for another country has that country's address and registration number, and no Indian ones" do
+      {:ok, indian} = Templates.sample("restaurant-bill")
+      {:ok, american} = Templates.sample("restaurant-bill", Locales.fetch!("en-us"))
+      example = QuickSlips.Regions.example("us")
+
+      assert indian["gstin"] =~ "ABCDE"
+      assert indian["fssai_number"]
+      assert american["restaurant_address"] == example["address"]
+      assert american["gstin"] == example["tax_id"]
+      refute Map.has_key?(american, "fssai_number")
+      assert american["payment_mode"] == "Cash"
+      assert american["restaurant_name"] == indian["restaurant_name"]
+    end
+
+    test "Chinese and Japanese: the fuel bill is translated, its sample is valid and they print with their fonts" do
+      for {language, country} <- [{"zh", "cn"}, {"ja", "jp"}] do
+        locale = Locales.with_country(%{Locales.default() | language: language}, country)
+        assert {:ok, view} = QuickSlips.Templates.Registry.view("fuel-bill", locale)
+
+        assert {:ok, _clean} = Validator.validate(view.schema, view.sample), language
+        assert view.sample["station_name"] =~ ~r/[^\x00-\x7F]/
+
+        assert view.print["fonts"] == [
+                 "Noto Sans",
+                 if(language == "zh", do: "Noto Sans SC", else: "Noto Sans JP")
+               ]
+      end
     end
 
     test "the sample of every language is valid for its template" do

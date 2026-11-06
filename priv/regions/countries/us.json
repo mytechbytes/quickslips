@@ -14,6 +14,10 @@
     "order": "mdy",
     "separator": "/"
   },
+  "example": {
+    "address": "1450 Main Street, Austin, TX 78701",
+    "tax_id": "12-3456789"
+  },
   "tax": {
     "name": "Sales tax",
     "rates": [],

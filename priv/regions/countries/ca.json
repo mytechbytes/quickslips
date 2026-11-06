@@ -14,6 +14,10 @@
     "order": "ymd",
     "separator": "-"
   },
+  "example": {
+    "address": "250 Yonge Street, Toronto, ON M5B 2L7",
+    "tax_id": "123456789RT0001"
+  },
   "by_language": {
     "fr": {
       "number": {

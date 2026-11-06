@@ -34,7 +34,7 @@
         [Bill to],
         [*#data.client_name*#if opt(data, "client_address") != none [ \ #lines(opt(data, "client_address"))]],
       ),
-      ([Client GSTIN], opt(data, "client_gstin")),
+      ([Client #tax-id-label], opt(data, "client_gstin")),
     ),
     columns: 1,
   ),
@@ -47,7 +47,7 @@
 )
 
 #v(3mm)
-#totals((([Subtotal], subtotal), ([GST (#tax-rate%)], tax)), total)
+#totals((([Subtotal], subtotal), ([#tax-name (#tax-rate%)], tax)), total)
 
 #if opt(data, "notes") != none [
   #v(8mm)

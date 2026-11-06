@@ -172,9 +172,9 @@ defmodule QuickSlipsWeb.CoreComponents do
   defp button_variant("ghost-danger"), do: "text-danger hover:bg-danger-soft"
   defp button_variant("danger"), do: "bg-danger text-on-primary shadow-card hover:bg-danger/90"
 
-  defp button_size("sm"), do: "min-h-9 px-3 text-sm pointer-coarse:min-h-11"
-  defp button_size("md"), do: "min-h-11 px-4 text-sm"
-  defp button_size("lg"), do: "min-h-12 px-5 text-base"
+  defp button_size("sm"), do: "min-h-8 px-3 text-sm pointer-coarse:min-h-11"
+  defp button_size("md"), do: "min-h-10 px-4 text-sm sm:min-h-9"
+  defp button_size("lg"), do: "min-h-11 px-5 text-base sm:min-h-10"
 
   @doc """
   Renders an input with label and error messages.
@@ -396,11 +396,11 @@ defmodule QuickSlipsWeb.CoreComponents do
     """
   end
 
-  defp label_class, do: "mb-1 block text-sm/6 font-medium text-ink"
+  defp label_class, do: "mb-0.5 block text-sm/5 font-medium text-ink"
 
   defp control_class do
-    "block w-full rounded-field border bg-surface px-3 py-2.5 text-base text-ink placeholder:text-ink-faint " <>
-      "focus:outline-2 focus:-outline-offset-1 disabled:bg-surface-muted disabled:text-ink-faint sm:text-sm/6"
+    "block w-full rounded-field border bg-surface px-3 py-2 text-base text-ink placeholder:text-ink-faint " <>
+      "focus:outline-2 focus:-outline-offset-1 disabled:bg-surface-muted disabled:text-ink-faint sm:py-1.5 sm:text-sm/5"
   end
 
   defp error_class, do: "border-danger focus:outline-danger"

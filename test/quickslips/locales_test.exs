@@ -7,9 +7,9 @@ defmodule QuickSlips.LocalesTest do
   @all Enum.map(Locales.all(), &%{&1 | live: true, auto: true})
 
   describe "the list" do
-    test "has thirteen locales (the ten largest economies and Spain), and the first three are live" do
+    test "has thirteen locales (the ten largest economies and Spain), all live" do
       assert length(Locales.all()) == 13
-      assert Enum.map(Locales.live(), & &1.code) == ["en-in", "hi-in", "es-es"]
+      assert Enum.map(Locales.live(), & &1.code) == Enum.map(Locales.all(), & &1.code)
     end
 
     test "a code is the language and the country" do
@@ -28,8 +28,19 @@ defmodule QuickSlips.LocalesTest do
   end
 
   test "by_country/0 groups the live locales by country, in the order of the list" do
-    assert [{"in", [%{code: "en-in"}, %{code: "hi-in"}]}, {"es", [%{code: "es-es"}]}] =
-             Locales.by_country()
+    assert [
+             {"in", [%{code: "en-in"}, %{code: "hi-in"}]},
+             {"es", [%{code: "es-es"}]},
+             {"us", [%{code: "en-us"}]},
+             {"cn", [%{code: "zh-cn"}]},
+             {"de", [%{code: "de-de"}]},
+             {"jp", [%{code: "ja-jp"}]},
+             {"gb", [%{code: "en-gb"}]},
+             {"fr", [%{code: "fr-fr"}]},
+             {"it", [%{code: "it-it"}]},
+             {"br", [%{code: "pt-br"}]},
+             {"ca", [%{code: "en-ca"}, %{code: "fr-ca"}]}
+           ] = Locales.by_country()
   end
 
   describe "fetch/1" do
@@ -73,7 +84,11 @@ defmodule QuickSlips.LocalesTest do
       assert %{code: "es-es"} = Locales.for_document("es", %{"country" => "mx"})
       assert %{code: "es-es"} = Locales.for_document("es", %{})
       assert %{code: "es-es"} = Locales.for_document("es", nil)
-      assert %{code: "en-in"} = Locales.for_document("fr", %{"country" => "fr"})
+      assert %{code: "fr-fr"} = Locales.for_document("fr", %{"country" => "fr"})
+      assert %{code: "fr-ca"} = Locales.for_document("fr", %{"country" => "ca"})
+      assert %{code: "zh-cn"} = Locales.for_document("zh", %{"country" => "cn"})
+      # Arabic has no locale: the default is the closest.
+      assert %{code: "en-in"} = Locales.for_document("ar", %{"country" => "sa"})
     end
   end
 

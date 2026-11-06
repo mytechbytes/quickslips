@@ -9,19 +9,19 @@
   "description": "Create a medical bill with patient, doctor, consultation, medicines and test charges. Preview instantly and download as PDF.",
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
-    { "key": "clinic_name", "label": "Clinic, pharmacy or lab", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "clinic_address", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
-    { "key": "registration_number", "label": "Registration number (optional)", "type": "text", "required": false, "max_length": 30 },
-    { "key": "bill_number", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "date", "label": "Date", "type": "date", "required": true },
-    { "key": "patient_name", "label": "Patient name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "patient_details", "label": "Age and sex (optional)", "type": "text", "required": false, "max_length": 20 },
-    { "key": "doctor_name", "label": "Doctor (optional)", "type": "text", "required": false, "max_length": 80 },
-    { "key": "consultation_fee", "label": "Consultation (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "medicines_cost", "label": "Medicines (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "tests_cost", "label": "Tests and procedures (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "other_charges", "label": "Other charges (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "discount", "label": "Discount (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "payment_mode", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
+    { "key": "clinic_name", "group": "business", "label": "Clinic, pharmacy or lab", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "clinic_address", "group": "business", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "registration_number", "group": "registration", "label": "Registration number (optional)", "type": "text", "required": false, "max_length": 30 },
+    { "key": "bill_number", "group": "document", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "patient_name", "group": "customer", "label": "Patient name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "patient_details", "group": "customer", "label": "Age and sex (optional)", "type": "text", "required": false, "max_length": 20 },
+    { "key": "doctor_name", "group": "customer", "label": "Doctor (optional)", "type": "text", "required": false, "max_length": 80 },
+    { "key": "consultation_fee", "group": "charges", "label": "Consultation ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "medicines_cost", "group": "charges", "label": "Medicines ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "tests_cost", "group": "charges", "label": "Tests and procedures ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "other_charges", "group": "charges", "label": "Other charges ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "discount", "group": "charges", "label": "Discount ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
   ]
 }

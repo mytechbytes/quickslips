@@ -14,6 +14,10 @@
     "order": "dmy",
     "separator": "/"
   },
+  "example": {
+    "address": "Via Roma 12, 00184 Roma RM",
+    "tax_id": "IT01234567890"
+  },
   "tax": {
     "name": {
       "en": "VAT",

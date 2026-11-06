@@ -10,7 +10,7 @@ const COLUMNS: (keyof ItemRow)[] = ["name", "qty", "rate"]
 
 // The table: heads on top, a row per item, the amount of the row and a remove icon at its end. The amount is left out
 // on a phone, where the row would not fit; the subtotal is still shown.
-const CELL_INPUT_CLASS = INPUT_CLASS.replace("px-3 py-2.5", "px-2 py-2")
+const CELL_INPUT_CLASS = INPUT_CLASS.replace("px-3 py-2", "px-2 py-1.5").replace("sm:py-1.5", "sm:py-1")
 const HEAD_CLASS = "px-1 pb-1 text-xs font-medium text-ink-muted"
 
 const isBlank = (row: ItemRow) => COLUMNS.every((column) => row[column] === undefined || row[column] === "")

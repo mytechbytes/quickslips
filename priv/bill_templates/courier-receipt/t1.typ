@@ -36,7 +36,7 @@
   (
     ([Freight (#data.service)], freight),
     ([Insurance], insurance),
-    ([GST (#tax-rate%)], tax),
+    ([#tax-name (#tax-rate%)], tax),
   ),
   total,
 )

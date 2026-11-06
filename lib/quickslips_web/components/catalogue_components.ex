@@ -37,7 +37,7 @@ defmodule QuickSlipsWeb.CatalogueComponents do
         placeholder={@placeholder}
         autocomplete="off"
         phx-debounce="200"
-        class="block w-full rounded-field border border-line-strong bg-surface py-2.5 pr-3 pl-10 text-base text-ink placeholder:text-ink-faint focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:text-sm/6"
+        class="block w-full rounded-field border border-line-strong bg-surface py-2 pr-3 pl-10 text-base text-ink placeholder:text-ink-faint focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:py-1.5 sm:text-sm/5"
       />
     </div>
     """
@@ -70,7 +70,7 @@ defmodule QuickSlipsWeb.CatalogueComponents do
         phx-value-category={key}
         aria-pressed={to_string(key == @selected)}
         class={[
-          "inline-flex min-h-11 items-center rounded-full border border-line-strong bg-surface px-4 text-sm/6 font-medium whitespace-nowrap text-ink-muted hover:bg-surface-muted",
+          "inline-flex min-h-10 sm:min-h-9 items-center rounded-full border border-line-strong bg-surface px-4 text-sm/6 font-medium whitespace-nowrap text-ink-muted hover:bg-surface-muted",
           "aria-pressed:border-primary aria-pressed:bg-primary-soft aria-pressed:text-primary sm:min-h-9",
           focus()
         ]}
@@ -103,9 +103,9 @@ defmodule QuickSlipsWeb.CatalogueComponents do
 
   def template_tile(assigns) do
     ~H"""
-    <a
+    <.link
       id={"open-#{@template["slug"]}"}
-      href={bill_path(@template)}
+      navigate={bill_path(@template)}
       class={[
         "group relative h-full gap-3 rounded-card border border-line bg-surface p-5 shadow-card hover:shadow-pop",
         "motion-safe:transition motion-safe:duration-200 motion-safe:hover:-translate-y-0.5",
@@ -113,7 +113,7 @@ defmodule QuickSlipsWeb.CatalogueComponents do
         focus()
       ]}
     >
-      <span class="flex size-11 shrink-0 items-center justify-center rounded-field bg-primary-soft text-primary">
+      <span class="flex size-10 sm:size-9 shrink-0 items-center justify-center rounded-field bg-primary-soft text-primary">
         <.icon name={icon_name(@template)} class="size-6" />
       </span>
       <span class="min-w-0">
@@ -124,7 +124,7 @@ defmodule QuickSlipsWeb.CatalogueComponents do
         name="hero-arrow-right"
         class="absolute top-5 right-5 size-5 text-ink-faint group-hover:text-primary motion-safe:transition motion-safe:group-hover:translate-x-0.5"
       />
-    </a>
+    </.link>
     """
   end
 
@@ -136,9 +136,9 @@ defmodule QuickSlipsWeb.CatalogueComponents do
     assigns = assign(assigns, :lines, thumb_lines(assigns.template["slug"]))
 
     ~H"""
-    <a
+    <.link
       id={"open-#{@template["slug"]}-thumb"}
-      href={bill_path(@template)}
+      navigate={bill_path(@template)}
       class={[
         "group flex h-full w-full flex-col rounded-card border border-line bg-surface p-3 text-left shadow-card hover:shadow-pop",
         "motion-safe:transition motion-safe:duration-200 motion-safe:hover:-translate-y-0.5",
@@ -170,7 +170,7 @@ defmodule QuickSlipsWeb.CatalogueComponents do
         </span>
         <.icon name="hero-arrow-right" class="mt-0.5 size-5 shrink-0 text-ink-faint" />
       </span>
-    </a>
+    </.link>
     """
   end
 

@@ -11,7 +11,8 @@ defmodule QuickSlipsWeb.LocaleMenuTest do
 
       assert has_element?(view, "#locale-menu-trigger")
 
-      for code <- ["en-in", "hi-in", "es-es"] do
+      for code <-
+            ~w(en-in hi-in es-es en-us zh-cn de-de ja-jp en-gb fr-fr it-it pt-br en-ca fr-ca) do
         assert has_element?(
                  view,
                  ~s(#locale-menu-#{code}[type=submit][form=locale-menu-form][name=locale][value=#{code}])
@@ -23,7 +24,7 @@ defmodule QuickSlipsWeb.LocaleMenuTest do
                )
       end
 
-      for code <- ["es-mx", "en-us", "en-gb"] do
+      for code <- ["es-mx", "xx-yy"] do
         refute has_element?(view, "#locale-menu-#{code}")
         refute has_element?(view, "#footer-locale-#{code}")
       end

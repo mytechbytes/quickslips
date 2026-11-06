@@ -1,0 +1,190 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "can't be blank"
+msgstr "不能为空"
+
+msgid "has already been taken"
+msgstr "已被占用"
+
+msgid "is invalid"
+msgstr "无效"
+
+msgid "must be accepted"
+msgstr "必须接受"
+
+#: lib/quickslips_web/error_messages.ex:31
+#, elixir-autogen
+msgid "has invalid format"
+msgstr "格式无效"
+
+msgid "has an invalid entry"
+msgstr "包含无效条目"
+
+msgid "is reserved"
+msgstr "为保留字"
+
+msgid "does not match confirmation"
+msgstr "与确认内容不一致"
+
+msgid "is still associated with this entry"
+msgstr "仍与此条目关联"
+
+msgid "are still associated with this entry"
+msgstr "仍与此条目关联"
+
+msgid "should have %{count} item(s)"
+msgid_plural "should have %{count} item(s)"
+msgstr[0] "应包含 %{count} 个元素"
+
+msgid "should be %{count} character(s)"
+msgid_plural "should be %{count} character(s)"
+msgstr[0] "应为 %{count} 个字符"
+
+msgid "should be %{count} byte(s)"
+msgid_plural "should be %{count} byte(s)"
+msgstr[0] "应为 %{count} 字节"
+
+msgid "should have at least %{count} item(s)"
+msgid_plural "should have at least %{count} item(s)"
+msgstr[0] "应至少包含 %{count} 个元素"
+
+msgid "should be at least %{count} character(s)"
+msgid_plural "should be at least %{count} character(s)"
+msgstr[0] "应至少为 %{count} 个字符"
+
+msgid "should be at least %{count} byte(s)"
+msgid_plural "should be at least %{count} byte(s)"
+msgstr[0] "应至少为 %{count} 字节"
+
+msgid "should have at most %{count} item(s)"
+msgid_plural "should have at most %{count} item(s)"
+msgstr[0] "应最多包含 %{count} 个元素"
+
+msgid "should be at most %{count} character(s)"
+msgid_plural "should be at most %{count} character(s)"
+msgstr[0] "应最多为 %{count} 个字符"
+
+msgid "should be at most %{count} byte(s)"
+msgid_plural "should be at most %{count} byte(s)"
+msgstr[0] "应最多为 %{count} 字节"
+
+msgid "must be less than %{number}"
+msgstr "必须小于 %{number}"
+
+msgid "must be greater than %{number}"
+msgstr "必须大于 %{number}"
+
+msgid "must be less than or equal to %{number}"
+msgstr "必须小于或等于 %{number}"
+
+msgid "must be greater than or equal to %{number}"
+msgstr "必须大于或等于 %{number}"
+
+msgid "must be equal to %{number}"
+msgstr "必须等于 %{number}"
+
+#: lib/quickslips_web/error_messages.ex:70
+#, elixir-autogen, elixir-format
+msgid "at least one digit or punctuation character"
+msgstr "至少一个数字或标点符号"
+
+#: lib/quickslips_web/error_messages.ex:68
+#, elixir-autogen, elixir-format
+msgid "at least one lower case character"
+msgstr "至少一个小写字母"
+
+#: lib/quickslips_web/error_messages.ex:69
+#, elixir-autogen, elixir-format
+msgid "at least one upper case character"
+msgstr "至少一个大写字母"
+
+#: lib/quickslips_web/error_messages.ex:66
+#, elixir-autogen, elixir-format
+msgid "did not change"
+msgstr "没有变化"
+
+#: lib/quickslips_web/error_messages.ex:67
+#, elixir-autogen, elixir-format
+msgid "does not match password"
+msgstr "与密码不一致"
+
+#: lib/quickslips_web/error_messages.ex:32
+#, elixir-autogen, elixir-format
+msgid "has an unsupported type"
+msgstr "类型不受支持"
+
+#: lib/quickslips_web/error_messages.ex:26
+#, elixir-autogen, elixir-format
+msgid "is required"
+msgstr "必填"
+
+#: lib/quickslips_web/error_messages.ex:35
+#, elixir-autogen, elixir-format
+msgid "must be a date like 2026-10-31"
+msgstr "必须是日期，如 2026-10-31"
+
+#: lib/quickslips_web/error_messages.ex:38
+#, elixir-autogen, elixir-format
+msgid "must be a month like 2026-10"
+msgstr "必须是月份，如 2026-10"
+
+#: lib/quickslips_web/error_messages.ex:28
+#, elixir-autogen, elixir-format
+msgid "must be a number"
+msgstr "必须是数字"
+
+#: lib/quickslips_web/error_messages.ex:29
+#, elixir-autogen, elixir-format
+msgid "must be an object"
+msgstr "必须是对象"
+
+#: lib/quickslips_web/error_messages.ex:52
+#, elixir-autogen, elixir-format
+msgid "must be at least %{min}"
+msgstr "不得小于 %{min}"
+
+#: lib/quickslips_web/error_messages.ex:49
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max}"
+msgstr "不得大于 %{max}"
+
+#: lib/quickslips_web/error_messages.ex:43
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max} characters"
+msgstr "最多 %{max} 个字符"
+
+#: lib/quickslips_web/error_messages.ex:55
+#, elixir-autogen, elixir-format
+msgid "must be one of: %{options}"
+msgstr "必须是以下之一：%{options}"
+
+#: lib/quickslips_web/error_messages.ex:27
+#, elixir-autogen, elixir-format
+msgid "must be text"
+msgstr "必须是文本"
+
+#: lib/quickslips_web/error_messages.ex:65
+#, elixir-autogen, elixir-format
+msgid "must have the @ sign and no spaces"
+msgstr "必须包含 @ 符号且不含空格"
+
+#: lib/quickslips_web/error_messages.ex:30
+#, elixir-autogen, elixir-format
+msgid "must be a list"
+msgstr "必须是列表"
+
+#: lib/quickslips_web/error_messages.ex:46
+#, elixir-autogen, elixir-format
+msgid "must have at most %{max} rows"
+msgstr "最多 %{max} 行"

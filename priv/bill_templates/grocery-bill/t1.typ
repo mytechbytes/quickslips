@@ -33,4 +33,4 @@
 #v(3mm)
 #totals((([Subtotal], subtotal), ([Discount], -discount)), total)
 
-#footnote[Prices include GST where it applies. Thank you for shopping with us.]
+#footnote[Prices include tax where it applies. Thank you for shopping with us.]

@@ -35,7 +35,7 @@
   (
     ([Fare for #data.distance_km km], data.base_fare),
     ([Toll and parking], toll),
-    ([GST (#tax-rate%)], tax),
+    ([#tax-name (#tax-rate%)], tax),
   ),
   total,
 )

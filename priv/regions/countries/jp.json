@@ -14,6 +14,10 @@
     "order": "ymd",
     "separator": "/"
   },
+  "example": {
+    "address": "東京都新宿区西新宿2-8-1",
+    "tax_id": "T1234567890123"
+  },
   "tax": {
     "name": {
       "en": "Consumption tax",

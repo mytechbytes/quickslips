@@ -78,23 +78,9 @@ defmodule QuickSlipsWeb.Router do
 
   ## Authentication routes
 
+  # Everything that is not a LiveView and needs a login: a controller route is guarded by the plug.
   scope "/", QuickSlipsWeb do
     pipe_through [:browser, :require_authenticated_user]
-
-    live_session :require_authenticated_user,
-      on_mount: [
-        {QuickSlipsWeb.Plugs.Locale, :default},
-        {QuickSlipsWeb.UserAuth, :require_authenticated}
-      ] do
-      live "/users/settings", UserLive.Settings, :edit
-      live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
-      live "/dashboard", DashboardLive, :index
-      live "/businesses", BusinessLive.Index, :index
-      live "/businesses/new", BusinessLive.Form, :new
-      live "/businesses/:id", BusinessLive.Show, :show
-      live "/businesses/:id/edit", BusinessLive.Form, :edit
-      live "/history", HistoryLive, :index
-    end
 
     post "/users/update-password", UserSessionController, :update_password
     get "/uploads/:user_id/:file", UploadController, :show
@@ -107,7 +93,8 @@ defmodule QuickSlipsWeb.Router do
   scope "/", QuickSlipsWeb do
     pipe_through [:browser]
 
-    # `/` has no page: it leads to the home page of the visitor's locale.
+    # `/` has no page: it leads to the home page of the visitor's locale. Links inside the site go to the
+    # home page of the locale directly.
     get "/", RootController, :index
 
     # The language and country switch: remembers the choice, then goes to the same page in the new locale.
@@ -118,11 +105,28 @@ defmodule QuickSlipsWeb.Router do
     get "/source/:slug/:template", TemplateSourceController, :show
     get "/healthz", HealthController, :show
 
+    # One live session for every page of the site, so that a click on a link is a live navigation (no new
+    # page) wherever it goes: the catalogue, a bill, the dashboard. A live navigation only works inside one
+    # live session, and it does not run the plugs again; so each LiveView that needs a login says so with
+    # `on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}`, and its first load is guarded by the plug.
     live_session :current_user,
       on_mount: [
         {QuickSlipsWeb.Plugs.Locale, :default},
         {QuickSlipsWeb.UserAuth, :mount_current_scope}
       ] do
+      scope "/" do
+        pipe_through [:require_authenticated_user]
+
+        live "/users/settings", UserLive.Settings, :edit
+        live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
+        live "/dashboard", DashboardLive, :index
+        live "/businesses", BusinessLive.Index, :index
+        live "/businesses/new", BusinessLive.Form, :new
+        live "/businesses/:id", BusinessLive.Show, :show
+        live "/businesses/:id/edit", BusinessLive.Form, :edit
+        live "/history", HistoryLive, :index
+      end
+
       live "/users/register", UserLive.Registration, :new
       live "/users/log-in", UserLive.Login, :new
       live "/users/log-in/:token", UserLive.Confirmation, :new
@@ -130,10 +134,10 @@ defmodule QuickSlipsWeb.Router do
       # The catalogue of a locale: /en-in, /hi-in, /es-es. An old template address (/fuel-bill) also arrives
       # here, and the locale plug moves it to its new page.
       live "/:locale", HomeLive, :index
-    end
 
-    # A bill under its locale: /en-in/fuel-bill-generator. The slug is the public one, which can differ per
-    # language; the controller finds the template through the locale.
-    get "/:locale/:slug", TemplateController, :show
+      # A bill under its locale: /en-in/fuel-bill-generator. The slug is the public one, which can differ per
+      # language; the LiveView finds the template through the locale.
+      live "/:locale/:slug", TemplateLive, :show
+    end
   end
 end

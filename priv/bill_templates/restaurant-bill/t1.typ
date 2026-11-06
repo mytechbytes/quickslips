@@ -39,7 +39,7 @@
   (
     ([Subtotal], subtotal),
     ([Service charge (#service-rate%)], service),
-    ([GST (#tax-rate%)], tax),
+    ([#tax-name (#tax-rate%)], tax),
   ),
   total,
 )
