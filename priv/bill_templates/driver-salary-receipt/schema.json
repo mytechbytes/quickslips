@@ -1,5 +1,6 @@
 {
   "slug": "driver-salary-receipt",
+  "public_slug": "driver-salary-receipt-generator",
   "title": "Driver Salary Receipt Generator",
   "category": "Work",
   "icon": "hero-identification",

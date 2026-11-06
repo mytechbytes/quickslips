@@ -5,6 +5,10 @@ defmodule QuickSlipsWeb.FallbackController do
     conn |> put_status(:bad_request) |> json(%{error: "expected slug, template and data"})
   end
 
+  def call(conn, {:error, :unknown_locale}) do
+    conn |> put_status(:bad_request) |> json(%{error: "unknown language or country"})
+  end
+
   def call(conn, {:error, reason}) when reason in [:not_found, :unknown_template] do
     conn |> put_status(:not_found) |> json(%{error: "unknown template"})
   end

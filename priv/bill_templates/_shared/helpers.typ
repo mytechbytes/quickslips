@@ -8,10 +8,31 @@
 // calls it, which for a helper would be `_shared/`, not the template's folder. For the same reason a
 // picture is named with a leading "/" (the root of the project): `image("/logo.png")` finds the logo
 // wherever the call is made.
+//
+// Two more files sit at the root of the project, next to `data.json`. The server and the browser preview
+// both write them, so every template can read them:
+//
+//   text.json    the words of the document's language: `lang`, `months`, `print` (what the template prints)
+//                and `options` (the names of the options of its select fields)
+//   region.json  what the country and the currency of the document decide: the currency sign, how numbers
+//                are grouped and which way round a date is written
 
 #let preview = sys.inputs.at("mode", default: "final") == "preview"
 #let muted = luma(110)
 #let hairline = luma(180)
+
+#let text-data = json("/text.json")
+#let region = json("/region.json")
+
+// The words a template prints, like `t.total`. A template that has none prints its own English.
+#let t = text-data.at("print", default: (:))
+
+// The name of an option of a select field in the language of the document: the data holds the option itself
+// ("Petrol"), the page shows its name ("पेट्रोल"). An option without a name shows as it is.
+#let option-label(field, value) = {
+  let names = text-data.at("options", default: (:)).at(field, default: (:))
+  names.at(value, default: value)
+}
 
 // The page: size, margins, font, and the watermark of the preview. Use it with `#show: base.with(...)`.
 #let base(paper: "a5", margin: 14mm, size: 10pt, body) = {
@@ -22,7 +43,7 @@
       rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[QUICK SLIPS])
     },
   )
-  set text(font: "Noto Sans", size: size)
+  set text(font: "Noto Sans", size: size, lang: text-data.at("lang", default: "en"))
   body
 }
 
@@ -42,15 +63,27 @@
 
 /// Dates
 
-#let months = ("January", "February", "March", "April", "May", "June", "July",
-  "August", "September", "October", "November", "December")
+// The names of the months in the language of the document.
+#let months = text-data.months
 
 #let to-date(iso) = {
   let (y, m, d) = iso.split("-").map(int)
   datetime(year: y, month: m, day: d)
 }
 
-#let fmt-date(iso) = to-date(iso).display("[day]/[month]/[year]")
+// "2026-10-12" as 12/10/2026, or 10/12/2026 where the month comes first. The order and the separator
+// are the country's.
+#let fmt-date(iso) = {
+  let sep = region.date.separator
+  let parts = if region.date.order == "mdy" {
+    ("[month]", "[day]", "[year]")
+  } else if region.date.order == "ymd" {
+    ("[year]", "[month]", "[day]")
+  } else {
+    ("[day]", "[month]", "[year]")
+  }
+  to-date(iso).display(parts.join(sep))
+}
 
 #let month-label(ym) = {
   let (y, m) = ym.split("-").map(int)
@@ -63,7 +96,7 @@
 /// Money
 
 // "1234567" -> "12,34,567": Indian grouping, the last three digits and then pairs.
-#let group-indian(digits) = {
+#let group-indian(digits, sep: ",") = {
   let n = digits.len()
   if n <= 3 { return digits }
   let rest = digits.slice(0, n - 3)
@@ -73,17 +106,52 @@
     rest = rest.slice(0, rest.len() - 2)
   }
   if rest.len() > 0 { groups.insert(0, rest) }
-  groups.join(",")
+  groups.join(sep)
 }
 
-// 105000 -> "₹ 1,05,000.00". Works on paise, so there is no float noise in the cents.
-#let money(n) = {
-  let paise = int(calc.round(n * 100))
-  let sign = if paise < 0 { "-" } else { "" }
-  paise = calc.abs(paise)
-  let frac = calc.rem(paise, 100)
-  "₹ " + sign + group-indian(str(calc.quo(paise, 100))) + "." + (if frac < 10 { "0" } else { "" }) + str(frac)
+// "1234567" -> "1,234,567": groups of three.
+#let group-standard(digits, sep: ",") = {
+  let groups = ()
+  let rest = digits
+  while rest.len() > 3 {
+    groups.insert(0, rest.slice(rest.len() - 3))
+    rest = rest.slice(0, rest.len() - 3)
+  }
+  groups.insert(0, rest)
+  groups.join(sep)
 }
+
+// The whole part of a number with the grouping of the country.
+#let group-digits(digits) = if region.number.grouping == "indian" {
+  group-indian(digits, sep: region.number.group)
+} else {
+  group-standard(digits, sep: region.number.group)
+}
+
+// 105000 -> "₹ 1,05,000.00" in India and "105.000,00 €" in Spain: the sign, the grouping, the decimal mark and
+// the number of decimals follow the country and the currency. It works on the smallest unit (paise, cents), so
+// there is no float noise in the decimals.
+#let money(n) = {
+  let decimals = region.currency.decimals
+  let scale = int(calc.pow(10, decimals))
+  let minor = int(calc.round(n * scale))
+  let sign = if minor < 0 { "-" } else { "" }
+  minor = calc.abs(minor)
+  let fraction = str(calc.rem(minor, scale))
+  let decimals-text = if decimals == 0 { "" } else {
+    region.number.decimal + "0" * (decimals - fraction.len()) + fraction
+  }
+  let amount = group-digits(str(calc.quo(minor, scale))) + decimals-text
+  let gap = if region.money.space { "\u{a0}" } else { "" }
+  if region.money.position == "after" {
+    sign + amount + gap + region.currency.symbol
+  } else {
+    region.currency.symbol + gap + sign + amount
+  }
+}
+
+// A plain number (a quantity, a distance) with the decimal mark of the country: 28.5 -> "28,5" in Spain.
+#let fmt-number(n, digits: 3) = str(calc.round(n, digits: digits)).replace(".", region.number.decimal)
 
 // A percentage of an amount, rounded to paise.
 #let percent(amount, rate) = calc.round(amount * rate / 100, digits: 2)

@@ -7,6 +7,10 @@ defmodule QuickSlips.Documents.Document do
     field :template, :string
     field :title, :string
     field :data, :map
+
+    # The language the document was made in, and what else shaped it: `%{"country" => "in", "currency" => "INR"}`.
+    field :language, :string, default: "en"
+    field :options, :map, default: %{}
     field :user_id, :id
     field :business_id, :id
 
@@ -16,8 +20,9 @@ defmodule QuickSlips.Documents.Document do
   @doc false
   def changeset(document, attrs, user_scope) do
     document
-    |> cast(attrs, [:slug, :template, :title, :data])
-    |> validate_required([:slug, :template, :title, :data])
+    |> cast(attrs, [:slug, :template, :title, :data, :language, :options])
+    |> validate_required([:slug, :template, :title, :data, :language])
+    |> validate_inclusion(:language, QuickSlips.Locales.languages())
     |> validate_length(:title, max: 255)
     |> put_change(:user_id, user_scope.user.id)
   end

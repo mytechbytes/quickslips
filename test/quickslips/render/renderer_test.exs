@@ -3,6 +3,7 @@ defmodule QuickSlips.Render.RendererTest do
 
   import QuickSlips.UploadsFixtures
 
+  alias QuickSlips.Locales
   alias QuickSlips.Render.Renderer
   alias QuickSlips.Templates
   alias QuickSlips.Templates.Validator
@@ -152,6 +153,50 @@ defmodule QuickSlips.Render.RendererTest do
       )
 
       refute File.exists?(marker)
+    end
+  end
+
+  describe "languages" do
+    for code <- ["en-in", "hi-in", "es-es"] do
+      test "fuel-bill/t1 compiles its sample in #{code}" do
+        code = unquote(code)
+        {:ok, sample} = Templates.sample("fuel-bill", Locales.fetch!(code))
+
+        assert {:ok, "%PDF" <> _ = pdf} = Renderer.render("fuel-bill", "t1", sample, locale: code)
+        assert byte_size(pdf) > 1_000
+      end
+    end
+
+    test "the language and the country make a different document" do
+      render = fn code ->
+        {:ok, sample} = Templates.sample("fuel-bill", Locales.fetch!(code))
+        {:ok, pdf} = Renderer.render("fuel-bill", "t1", sample, locale: code)
+        byte_size(pdf)
+      end
+
+      assert render.("en-in") != render.("hi-in")
+      assert render.("en-in") != render.("es-es")
+    end
+
+    test "a document may use another currency than its country's" do
+      {:ok, sample} = Templates.sample("fuel-bill")
+
+      assert {:ok, "%PDF" <> _} = Renderer.render("fuel-bill", "t1", sample, currency: "EUR")
+    end
+
+    test "a locale that is not live is refused" do
+      assert {:error, :unknown_locale} = Renderer.render("fuel-bill", "t1", %{}, locale: "es-mx")
+      assert {:error, :unknown_locale} = Renderer.render("fuel-bill", "t1", %{}, locale: "nope")
+    end
+
+    test "a template that is not in the language is refused" do
+      assert {:error, :unsupported_language} =
+               Renderer.render("rent-receipt", "t1", sample("rent-receipt"), locale: "hi-in")
+    end
+
+    test "a currency that does not exist is refused" do
+      assert {:error, :unknown_currency} =
+               Renderer.render("fuel-bill", "t1", sample("fuel-bill"), currency: "XXX")
     end
   end
 

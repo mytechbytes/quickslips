@@ -29,6 +29,7 @@ defmodule QuickSlipsWeb.DashboardLive do
     <Layouts.app
       flash={@flash}
       current_scope={@current_scope}
+      locale={@locale}
       active={:dashboard}
       title="Dashboard"
       subtitle={"Welcome back, #{first_name(@current_scope.user)}."}

@@ -1,5 +1,6 @@
 {
   "slug": "internet-bill",
+  "public_slug": "internet-bill-generator",
   "title": "Internet Bill Generator",
   "category": "Home & utilities",
   "icon": "hero-wifi",

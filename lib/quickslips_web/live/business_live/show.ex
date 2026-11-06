@@ -7,7 +7,7 @@ defmodule QuickSlipsWeb.BusinessLive.Show do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope} active={:businesses}>
+    <Layouts.app flash={@flash} current_scope={@current_scope} locale={@locale} active={:businesses}>
       <.header>
         {@business.name}
         <:subtitle>Saved once, then filled into any bill with one click.</:subtitle>

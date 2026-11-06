@@ -1,5 +1,6 @@
 {
   "slug": "rent-receipt",
+  "public_slug": "rent-receipt-generator",
   "title": "Rent Receipt Generator",
   "category": "Home & utilities",
   "icon": "hero-home",

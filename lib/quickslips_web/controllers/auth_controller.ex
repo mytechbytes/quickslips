@@ -17,7 +17,7 @@ defmodule QuickSlipsWeb.AuthController do
 
   def callback(%{assigns: %{ueberauth_failure: _failure}} = conn, _params) do
     conn
-    |> put_flash(:error, "Google sign-in didn't complete. Please try again.")
+    |> put_flash(:error, gettext("Google sign-in didn't complete. Please try again."))
     |> redirect(to: ~p"/users/log-in")
   end
 
@@ -25,17 +25,17 @@ defmodule QuickSlipsWeb.AuthController do
     case Accounts.get_or_register_google_user(google_info(auth)) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Welcome!")
+        |> put_flash(:info, gettext("Welcome!"))
         |> UserAuth.log_in_user(user, %{"remember_me" => "true"})
 
       {:error, :email_not_verified} ->
         conn
-        |> put_flash(:error, "Google says that email address isn't verified.")
+        |> put_flash(:error, gettext("Google says that email address isn't verified."))
         |> redirect(to: ~p"/users/log-in")
 
       {:error, _changeset} ->
         conn
-        |> put_flash(:error, "We couldn't sign you in with Google. Please try again.")
+        |> put_flash(:error, gettext("We couldn't sign you in with Google. Please try again."))
         |> redirect(to: ~p"/users/log-in")
     end
   end

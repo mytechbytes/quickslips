@@ -110,3 +110,89 @@ msgstr ""
 
 msgid "must be equal to %{number}"
 msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:65
+#, elixir-autogen, elixir-format
+msgid "at least one digit or punctuation character"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:63
+#, elixir-autogen, elixir-format
+msgid "at least one lower case character"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:64
+#, elixir-autogen, elixir-format
+msgid "at least one upper case character"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:61
+#, elixir-autogen, elixir-format
+msgid "did not change"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:62
+#, elixir-autogen, elixir-format
+msgid "does not match password"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:30
+#, elixir-autogen, elixir-format
+msgid "has an unsupported type"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:26
+#, elixir-autogen, elixir-format
+msgid "is required"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:33
+#, elixir-autogen, elixir-format
+msgid "must be a date like 2026-10-31"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:36
+#, elixir-autogen, elixir-format
+msgid "must be a month like 2026-10"
+msgstr ""
+
+## From Ecto.Changeset.validate_number/3
+#: lib/quickslips_web/error_messages.ex:28
+#, elixir-autogen, elixir-format
+msgid "must be a number"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:29
+#, elixir-autogen, elixir-format
+msgid "must be an object"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:47
+#, elixir-autogen, elixir-format
+msgid "must be at least %{min}"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:44
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max}"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:41
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max} characters"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:50
+#, elixir-autogen, elixir-format
+msgid "must be one of: %{options}"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:27
+#, elixir-autogen, elixir-format
+msgid "must be text"
+msgstr ""
+
+#: lib/quickslips_web/error_messages.ex:60
+#, elixir-autogen, elixir-format
+msgid "must have the @ sign and no spaces"
+msgstr ""

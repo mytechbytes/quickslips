@@ -1,5 +1,6 @@
 {
   "slug": "electricity-bill",
+  "public_slug": "electricity-bill-generator",
   "title": "Electricity Bill Generator",
   "category": "Home & utilities",
   "icon": "hero-bolt",

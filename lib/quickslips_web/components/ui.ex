@@ -22,6 +22,7 @@ defmodule QuickSlipsWeb.UI do
   import QuickSlipsWeb.CoreComponents, only: [icon: 1]
 
   alias Phoenix.LiveView.JS
+  alias QuickSlips.Locales
 
   @doc "True when the scope carries a logged-in user."
   def signed_in?(%{user: %{}}), do: true
@@ -341,7 +342,7 @@ defmodule QuickSlipsWeb.UI do
       href={~p"/auth/google"}
       class="flex min-h-11 w-full items-center justify-center gap-3 rounded-button border border-line-strong bg-surface px-3 text-sm font-semibold text-ink shadow-card hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
     >
-      <img src={~p"/images/google.svg"} alt="" class="size-5" /> Continue with Google
+      <img src={~p"/images/google.svg"} alt="" class="size-5" /> {gettext("Continue with Google")}
     </.link>
     """
   end
@@ -490,7 +491,7 @@ defmodule QuickSlipsWeb.UI do
             "text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-on-sidebar"
         ]}
       >
-        <span class="sr-only">Theme</span>
+        <span class="sr-only">{gettext("Theme")}</span>
         <span class="hero-sun size-5 dark:hidden" aria-hidden="true"></span>
         <span class="hero-moon hidden size-5 dark:block" aria-hidden="true"></span>
       </button>
@@ -498,9 +499,9 @@ defmodule QuickSlipsWeb.UI do
         <button
           :for={
             {theme, label, ic} <- [
-              {"system", "System", "hero-computer-desktop"},
-              {"light", "Light", "hero-sun"},
-              {"dark", "Dark", "hero-moon"}
+              {"system", gettext("System"), "hero-computer-desktop"},
+              {"light", gettext("Light"), "hero-sun"},
+              {"dark", gettext("Dark"), "hero-moon"}
             ]
           }
           id={"#{@id}-#{theme}"}
@@ -526,6 +527,142 @@ defmodule QuickSlipsWeb.UI do
   defp theme_check("light"), do: "[[data-theme-source=user][data-theme=light]_&]:opacity-100"
   defp theme_check("dark"), do: "[[data-theme-source=user][data-theme=dark]_&]:opacity-100"
 
+  @doc """
+  The name of a country in the language of the page (the names are translated like any other text).
+  """
+  def country_name("in"), do: gettext("India")
+  def country_name("es"), do: gettext("Spain")
+  def country_name("mx"), do: gettext("Mexico")
+  def country_name("us"), do: gettext("United States")
+  def country_name("gb"), do: gettext("United Kingdom")
+  def country_name(code), do: String.upcase(code)
+
+  @doc """
+  The language and country switch for a header: a globe, the current choice, and a menu that lists the countries
+  and, under each, its languages. A choice posts to `/locale`, which remembers it and goes to the same page in
+  the new locale (see `QuickSlipsWeb.LocaleController`).
+
+  The buttons of the menu are not inside the form: they name it with `form=`, which keeps the menu made of plain
+  buttons, like the theme menu. The form takes the address of the page when it is submitted
+  (`assets/js/locale.ts`); without scripts the server reads the `Referer`.
+  """
+  attr :id, :string, default: "locale-menu"
+  attr :locale, :map, required: true, doc: "the locale of the page, from `QuickSlips.Locales`"
+  attr :on_dark, :boolean, default: false
+
+  def locale_menu(assigns) do
+    assigns = assign(assigns, :groups, Locales.by_country())
+
+    ~H"""
+    <el-dropdown id={@id} class="relative">
+      <button
+        id={"#{@id}-trigger"}
+        type="button"
+        class={[
+          "relative flex min-h-11 items-center gap-x-1.5 rounded-full px-3 focus-visible:outline-2 focus-visible:outline-offset-2",
+          !@on_dark &&
+            "text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-focus",
+          @on_dark &&
+            "text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-on-sidebar"
+        ]}
+      >
+        <span class="sr-only">{gettext("Language and country")}</span>
+        <.icon name="hero-globe-alt" class="size-5" />
+        <span class="hidden text-sm/6 font-medium sm:inline">
+          <span lang={@locale.language}>{@locale.name}</span> · {country_name(@locale.country)}
+        </span>
+        <.icon name="hero-chevron-down" class="hidden size-4 opacity-70 sm:block" />
+      </button>
+      <el-menu anchor="bottom end" popover class={["w-64", menu_class()]}>
+        <p class="px-3 pt-1 pb-1 text-xs/5 font-semibold text-ink-muted">
+          {gettext("Language and country")}
+        </p>
+        <div
+          :for={{country, locales} <- @groups}
+          role="group"
+          aria-label={country_name(country)}
+          class="border-t border-line py-1"
+        >
+          <p class="px-3 py-1 text-xs/5 text-ink-faint">{country_name(country)}</p>
+          <button
+            :for={locale <- locales}
+            id={"#{@id}-#{locale.code}"}
+            type="submit"
+            form={"#{@id}-form"}
+            name="locale"
+            value={locale.code}
+            lang={locale.language}
+            aria-current={locale.code == @locale.code && "true"}
+            class={["group", menu_item_class()]}
+          >
+            {locale.name}
+            <.icon
+              name="hero-check"
+              class={["ml-auto size-4 text-primary", locale.code != @locale.code && "opacity-0"]}
+            />
+          </button>
+        </div>
+      </el-menu>
+    </el-dropdown>
+    <.locale_form id={"#{@id}-form"} />
+    """
+  end
+
+  @doc """
+  The same choice as a list for the footer: each country with its languages, the current one marked. It posts like
+  `locale_menu/1`.
+  """
+  attr :id, :string, default: "footer-locale"
+  attr :locale, :map, required: true
+
+  def locale_picker(assigns) do
+    assigns = assign(assigns, :groups, Locales.by_country())
+
+    ~H"""
+    <div id={@id}>
+      <p class="flex items-center gap-x-2 text-sm/6 font-medium text-ink">
+        <.icon name="hero-globe-alt" class="size-5 text-ink-muted" />
+        {gettext("Language and country")}
+      </p>
+      <div class="mt-1 flex flex-wrap gap-x-8 gap-y-1">
+        <div
+          :for={{country, locales} <- @groups}
+          role="group"
+          aria-label={country_name(country)}
+          class="flex flex-wrap items-center gap-x-1"
+        >
+          <span class="text-sm/6 text-ink-muted">{country_name(country)}</span>
+          <button
+            :for={locale <- locales}
+            id={"#{@id}-#{locale.code}"}
+            type="submit"
+            form={"#{@id}-form"}
+            name="locale"
+            value={locale.code}
+            lang={locale.language}
+            aria-current={locale.code == @locale.code && "true"}
+            class="inline-flex min-h-11 items-center rounded-field px-2 text-sm/6 text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus aria-[current=true]:font-semibold aria-[current=true]:text-primary sm:min-h-9"
+          >
+            {locale.name}
+          </button>
+        </div>
+      </div>
+    </div>
+    <.locale_form id={"#{@id}-form"} />
+    """
+  end
+
+  # The form that the locale buttons submit (see `locale_menu/1`). It has nothing to show.
+  attr :id, :string, required: true
+
+  defp locale_form(assigns) do
+    ~H"""
+    <.form for={%{}} id={@id} action={~p"/locale"} method="post" data-locale-form class="hidden">
+      <input type="hidden" name="from" value="" />
+    </.form>
+    """
+  end
+
   @doc "The avatar menu in the app header: who you are, Settings, Log out."
   attr :id, :string, default: "user-menu"
   attr :user, :map, required: true
@@ -538,7 +675,7 @@ defmodule QuickSlipsWeb.UI do
         type="button"
         class="relative flex min-h-11 items-center gap-3 rounded-full pr-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
       >
-        <span class="sr-only">Open user menu</span>
+        <span class="sr-only">{gettext("Open user menu")}</span>
         <.avatar initials={initials(@user)} />
         <span class="hidden lg:flex lg:items-center">
           <span class="text-sm/6 font-semibold text-ink">{display_name(@user)}</span>
@@ -552,7 +689,7 @@ defmodule QuickSlipsWeb.UI do
         </div>
         <div class="border-t border-line pt-1">
           <.link id={"#{@id}-settings"} navigate={~p"/users/settings"} class={menu_item_class()}>
-            <.icon name="hero-cog-6-tooth" class="size-5 text-ink-muted" /> Settings
+            <.icon name="hero-cog-6-tooth" class="size-5 text-ink-muted" /> {gettext("Settings")}
           </.link>
           <.link
             id={"#{@id}-logout"}
@@ -560,7 +697,9 @@ defmodule QuickSlipsWeb.UI do
             method="delete"
             class={menu_item_class()}
           >
-            <.icon name="hero-arrow-right-start-on-rectangle" class="size-5 text-ink-muted" /> Log out
+            <.icon name="hero-arrow-right-start-on-rectangle" class="size-5 text-ink-muted" /> {gettext(
+              "Log out"
+            )}
           </.link>
         </div>
       </el-menu>

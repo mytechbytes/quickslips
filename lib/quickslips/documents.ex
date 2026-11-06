@@ -143,12 +143,18 @@ defmodule QuickSlips.Documents do
     )
   end
 
+  @english_months ~w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
+
   @doc """
   A title for the history list, like `"Fuel Bill · FB-10482 · Sunrise Fuel Station · 12 Oct 2026"`: the name of
   the template, the document's number (the field the schema names in `"number_field"`), the seller (the
   field that is filled from a saved business's name) and the first date. What the data does not have is left out.
+
+  The name is the template's `"name"` in the language of the document (the schema comes from
+  `Templates.get/2`), and `months` are the short names of the months in that language.
   """
-  def build_title(schema, data) do
+  def build_title(schema, data, months \\ nil) do
+    months = months || @english_months
     fields = schema["fields"]
     number = present(data[schema["number_field"]])
 
@@ -158,9 +164,9 @@ defmodule QuickSlips.Documents do
       end)
 
     date = first_value(fields, data, "date") || first_value(fields, data, "month")
-    name = String.replace_suffix(schema["title"], " Generator", "")
+    name = schema["name"] || String.replace_suffix(schema["title"], " Generator", "")
 
-    [name, number, seller, date && format_date(date)]
+    [name, number, seller, date && format_date(date, months)]
     |> Enum.reject(&(&1 in [nil, false]))
     |> Enum.join(" · ")
   end
@@ -174,19 +180,24 @@ defmodule QuickSlips.Documents do
   end
 
   # "2026-10-12" -> "12 Oct 2026", "2026-10" -> "Oct 2026". Anything else is shown as it is.
-  defp format_date(<<_::binary-size(7)>> = month) do
+  defp format_date(<<_::binary-size(7)>> = month, months) do
     case Date.from_iso8601(month <> "-01") do
-      {:ok, date} -> Calendar.strftime(date, "%b %Y")
+      {:ok, date} -> "#{month_name(date, months)} #{date.year}"
       _ -> month
     end
   end
 
-  defp format_date(value) do
+  defp format_date(value, months) do
     case Date.from_iso8601(value) do
-      {:ok, date} -> Calendar.strftime(date, "%d %b %Y")
-      _ -> value
+      {:ok, date} ->
+        "#{String.pad_leading(Integer.to_string(date.day), 2, "0")} #{month_name(date, months)} #{date.year}"
+
+      _ ->
+        value
     end
   end
+
+  defp month_name(date, months), do: Enum.at(months, date.month - 1)
 
   @doc """
   Updates a document.

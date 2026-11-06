@@ -92,7 +92,10 @@ defmodule QuickSlips.MixProject do
         "esbuild.install --if-missing",
         "cmd mkdir -p priv/static/wasm",
         "cmd cp assets/node_modules/@myriaddreamin/typst-ts-web-compiler/pkg/typst_ts_web_compiler_bg.wasm priv/static/wasm/",
-        "cmd cp assets/node_modules/@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm priv/static/wasm/"
+        "cmd cp assets/node_modules/@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm priv/static/wasm/",
+        # The preview draws with the same two fonts as the PDF. One copy lives in git (priv/fonts), the browser's is made here.
+        "cmd mkdir -p priv/static/fonts",
+        "cmd cp priv/fonts/NotoSans-Regular.ttf priv/fonts/NotoSans-Bold.ttf priv/static/fonts/"
       ],
       "assets.build": ["compile", "tailwind quickslips", "esbuild quickslips"],
       "assets.deploy": [

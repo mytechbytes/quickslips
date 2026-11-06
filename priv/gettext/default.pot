@@ -1,0 +1,566 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new messages manually only if they're dynamic
+## messages that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+#
+msgid ""
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:16
+#, elixir-autogen, elixir-format
+msgid "%{remaining} of %{limit} downloads left today"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:11
+#, elixir-autogen, elixir-format
+msgid "%{remaining} of %{limit} free downloads left today"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/registration.ex:34
+#, elixir-autogen, elixir-format
+msgid "6 to 72 characters, with a lower-case letter, an upper-case letter and a number or symbol."
+msgstr ""
+
+#: lib/quickslips_web/components/core_components.ex:512
+#, elixir-autogen, elixir-format
+msgid "Actions"
+msgstr ""
+
+#: lib/quickslips_web/components/catalogue_components.ex:66
+#, elixir-autogen, elixir-format
+msgid "All"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/registration.ex:62
+#, elixir-autogen, elixir-format
+msgid "Already have an account?"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:387
+#: lib/quickslips_web/components/layouts.ex:402
+#, elixir-autogen, elixir-format
+msgid "Attempting to reconnect"
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:86
+#, elixir-autogen, elixir-format
+msgid "Bills and receipts, ready in seconds"
+msgstr ""
+
+#: lib/quickslips_web/components/catalogue_components.ex:62
+#, elixir-autogen, elixir-format
+msgid "Categories"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:30
+#, elixir-autogen, elixir-format
+msgid "Choose a saved business…"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:140
+#, elixir-autogen, elixir-format
+msgid "Close menu"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:39
+#, elixir-autogen, elixir-format
+msgid "Confirm and log in only this time"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:36
+#, elixir-autogen, elixir-format
+msgid "Confirm and stay logged in"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:11
+#, elixir-autogen, elixir-format
+msgid "Confirm it is you"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/registration.ex:43
+#, elixir-autogen, elixir-format
+msgid "Confirm password"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:33
+#: lib/quickslips_web/live/user_live/confirmation.ex:38
+#, elixir-autogen, elixir-format
+msgid "Confirming..."
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:345
+#, elixir-autogen, elixir-format
+msgid "Continue with Google"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts/root.html.heex:9
+#, elixir-autogen, elixir-format
+msgid "Create bills and receipts as PDF in seconds."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/registration.ex:12
+#, elixir-autogen, elixir-format
+msgid "Create your account"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/registration.ex:50
+#, elixir-autogen, elixir-format
+msgid "Creating account..."
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:20
+#, elixir-autogen, elixir-format
+msgid "Creating your PDF…"
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:504
+#, elixir-autogen, elixir-format
+msgid "Dark"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:71
+#, elixir-autogen, elixir-format
+msgid "Dashboard"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:29
+#, elixir-autogen, elixir-format
+msgid "Document preview"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:72
+#, elixir-autogen, elixir-format
+msgid "Documents"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html/show.html.heex:48
+#, elixir-autogen, elixir-format
+msgid "Download PDF"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:21
+#, elixir-autogen, elixir-format
+msgid "Downloaded."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:41
+#: lib/quickslips_web/live/user_live/login.ex:75
+#: lib/quickslips_web/live/user_live/registration.ex:19
+#, elixir-autogen, elixir-format
+msgid "Email address"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:63
+#, elixir-autogen, elixir-format
+msgid "Email link"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:82
+#, elixir-autogen, elixir-format
+msgid "Email me a link"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:31
+#, elixir-autogen, elixir-format
+msgid "Fill from a saved business"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:53
+#, elixir-autogen, elixir-format
+msgid "Forgot it? Use the Email link tab, then set a new password in Settings."
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:24
+#, elixir-autogen, elixir-format
+msgid "Free bill and receipt generator"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/registration.ex:13
+#, elixir-autogen, elixir-format
+msgid "Free to start. You will confirm your email next."
+msgstr ""
+
+#: lib/quickslips_web/controllers/auth_controller.ex:33
+#, elixir-autogen, elixir-format
+msgid "Google says that email address isn't verified."
+msgstr ""
+
+#: lib/quickslips_web/controllers/auth_controller.ex:20
+#, elixir-autogen, elixir-format
+msgid "Google sign-in didn't complete. Please try again."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:132
+#, elixir-autogen, elixir-format
+msgid "If your email is in our system, you will receive instructions for logging in shortly."
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:533
+#, elixir-autogen, elixir-format
+msgid "India"
+msgstr ""
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:64
+#, elixir-autogen, elixir-format
+msgid "Invalid email or password"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:66
+#, elixir-autogen, elixir-format
+msgid "Keep me logged in on this device"
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:569
+#: lib/quickslips_web/components/ui.ex:578
+#: lib/quickslips_web/components/ui.ex:625
+#, elixir-autogen, elixir-format
+msgid "Language and country"
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:503
+#, elixir-autogen, elixir-format
+msgid "Light"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:104
+#: lib/quickslips_web/components/layouts.ex:157
+#: lib/quickslips_web/controllers/template_html/show.html.heex:40
+#: lib/quickslips_web/live/home_live.ex:144
+#: lib/quickslips_web/live/user_live/confirmation.ex:57
+#: lib/quickslips_web/live/user_live/login.ex:115
+#: lib/quickslips_web/live/user_live/registration.ex:67
+#, elixir-autogen, elixir-format
+msgid "Log in"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:57
+#, elixir-autogen, elixir-format
+msgid "Log in and stay logged in"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:59
+#, elixir-autogen, elixir-format
+msgid "Log in only this time"
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:139
+#, elixir-autogen, elixir-format
+msgid "Log in or sign up to make more documents."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:11
+#, elixir-autogen, elixir-format
+msgid "Log in to QuickSlips"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:69
+#, elixir-autogen, elixir-format
+msgid "Log me in only this time"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:260
+#: lib/quickslips_web/components/ui.ex:700
+#, elixir-autogen, elixir-format
+msgid "Log out"
+msgstr ""
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:85
+#, elixir-autogen, elixir-format
+msgid "Logged out successfully."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:56
+#: lib/quickslips_web/live/user_live/confirmation.ex:63
+#: lib/quickslips_web/live/user_live/confirmation.ex:68
+#, elixir-autogen, elixir-format
+msgid "Logging in..."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:98
+#, elixir-autogen, elixir-format
+msgid "Magic link is invalid or it has expired."
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:84
+#: lib/quickslips_web/components/layouts.ex:199
+#: lib/quickslips_web/components/layouts.ex:272
+#, elixir-autogen, elixir-format
+msgid "Main"
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:535
+#, elixir-autogen, elixir-format
+msgid "Mexico"
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:136
+#, elixir-autogen, elixir-format
+msgid "Need more than 2 downloads a day?"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:223
+#: lib/quickslips_web/components/layouts.ex:280
+#, elixir-autogen, elixir-format
+msgid "New document"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:94
+#, elixir-autogen, elixir-format
+msgid "New here?"
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:125
+#, elixir-autogen, elixir-format
+msgid "No template matches your search."
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:117
+#: lib/quickslips_web/components/layouts.ex:213
+#, elixir-autogen, elixir-format
+msgid "Open main menu"
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:678
+#, elixir-autogen, elixir-format
+msgid "Open user menu"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:28
+#: lib/quickslips_web/live/user_live/login.ex:50
+#: lib/quickslips_web/live/user_live/registration.ex:29
+#, elixir-autogen, elixir-format
+msgid "Password"
+msgstr ""
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:80
+#, elixir-autogen, elixir-format
+msgid "Password updated successfully!"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:25
+#, elixir-autogen, elixir-format
+msgid "Password you chose at sign-up"
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:89
+#, elixir-autogen, elixir-format
+msgid "Pick a template, fill in the form and download the PDF. No account needed."
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:75
+#, elixir-autogen, elixir-format
+msgid "Pick one to start a new document."
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:22
+#, elixir-autogen, elixir-format
+msgid "Please fix the highlighted fields."
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:28
+#, elixir-autogen, elixir-format
+msgid "Preview could not be rendered."
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html/show.html.heex:29
+#, elixir-autogen, elixir-format
+msgid "Preview loads here…"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:73
+#, elixir-autogen, elixir-format
+msgid "Saved businesses"
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:106
+#, elixir-autogen, elixir-format
+msgid "Search templates"
+msgstr ""
+
+#: lib/quickslips_web/live/home_live.ex:107
+#, elixir-autogen, elixir-format
+msgid "Search templates, like fuel or rent"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:252
+#: lib/quickslips_web/components/layouts.ex:307
+#: lib/quickslips_web/components/ui.ex:692
+#, elixir-autogen, elixir-format
+msgid "Settings"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:107
+#: lib/quickslips_web/components/layouts.ex:160
+#: lib/quickslips_web/controllers/template_html/show.html.heex:42
+#: lib/quickslips_web/live/home_live.ex:147
+#: lib/quickslips_web/live/user_live/login.ex:99
+#: lib/quickslips_web/live/user_live/registration.ex:51
+#: lib/quickslips_web/live/user_live/registration.ex:91
+#, elixir-autogen, elixir-format
+msgid "Sign up"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:394
+#, elixir-autogen, elixir-format
+msgid "Something went wrong!"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:26
+#, elixir-autogen, elixir-format
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:534
+#, elixir-autogen, elixir-format
+msgid "Spain"
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:502
+#, elixir-autogen, elixir-format
+msgid "System"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:95
+#: lib/quickslips_web/components/layouts.ex:152
+#: lib/quickslips_web/live/home_live.ex:74
+#, elixir-autogen, elixir-format
+msgid "Templates"
+msgstr ""
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:31
+#, elixir-autogen, elixir-format
+msgid "That link or password is not valid."
+msgstr ""
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:48
+#, elixir-autogen, elixir-format
+msgid "The link is invalid or it has expired."
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:494
+#, elixir-autogen, elixir-format
+msgid "Theme"
+msgstr ""
+
+#: lib/quickslips_web/controllers/locale_controller.ex:49
+#, elixir-autogen, elixir-format
+msgid "This page is not available in this language yet. Here are the templates that are."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:76
+#, elixir-autogen, elixir-format
+msgid "Tip: If you prefer passwords, you can enable them in the user settings."
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:537
+#, elixir-autogen, elixir-format
+msgid "United Kingdom"
+msgstr ""
+
+#: lib/quickslips_web/components/ui.ex:536
+#, elixir-autogen, elixir-format
+msgid "United States"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:27
+#, elixir-autogen, elixir-format
+msgid "Updating preview…"
+msgstr ""
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:8
+#, elixir-autogen, elixir-format
+msgid "User confirmed successfully."
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:379
+#, elixir-autogen, elixir-format
+msgid "We can't find the internet"
+msgstr ""
+
+#: lib/quickslips_web/controllers/auth_controller.ex:38
+#, elixir-autogen, elixir-format
+msgid "We couldn't sign you in with Google. Please try again."
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:25
+#, elixir-autogen, elixir-format
+msgid "We couldn't verify your browser. Turn off your ad blocker, or log in."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:79
+#, elixir-autogen, elixir-format
+msgid "We email you a link that logs you in. No password needed."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/confirmation.ex:10
+#: lib/quickslips_web/live/user_live/confirmation.ex:93
+#, elixir-autogen, elixir-format
+msgid "Welcome"
+msgstr ""
+
+#: lib/quickslips_web/controllers/user_session_controller.ex:12
+#, elixir-autogen, elixir-format
+msgid "Welcome back!"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:15
+#, elixir-autogen, elixir-format
+msgid "Welcome back."
+msgstr ""
+
+#: lib/quickslips_web/controllers/auth_controller.ex:28
+#, elixir-autogen, elixir-format
+msgid "Welcome!"
+msgstr ""
+
+#: lib/quickslips_web/user_auth.ex:231
+#: lib/quickslips_web/user_auth.ex:294
+#, elixir-autogen, elixir-format
+msgid "You must log in to access this page."
+msgstr ""
+
+#: lib/quickslips_web/user_auth.ex:248
+#, elixir-autogen, elixir-format
+msgid "You must re-authenticate to access this page."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:14
+#, elixir-autogen, elixir-format
+msgid "You need to reauthenticate to perform sensitive actions on your account."
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:23
+#, elixir-autogen, elixir-format
+msgid "You've used today's free downloads."
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html/show.html.heex:35
+#, elixir-autogen, elixir-format
+msgid "You've used your free downloads for today. Log in or sign up to keep going, and come back tomorrow for more."
+msgstr ""
+
+#: lib/quickslips_web/components/core_components.ex:81
+#, elixir-autogen, elixir-format
+msgid "close"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:89
+#: lib/quickslips_web/live/user_live/registration.ex:57
+#, elixir-autogen, elixir-format
+msgid "or"
+msgstr ""
+
+#: lib/quickslips_web/components/layouts.ex:178
+#, elixir-autogen, elixir-format
+msgid "© %{year} QuickSlips. We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/registration.ex:111
+#, elixir-autogen, elixir-format
+msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account."
+msgstr ""

@@ -6,7 +6,7 @@ defmodule QuickSlipsWeb.BusinessLive.Index do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope} active={:businesses}>
+    <Layouts.app flash={@flash} current_scope={@current_scope} locale={@locale} active={:businesses}>
       <.header>
         Listing Businesses
         <:actions>

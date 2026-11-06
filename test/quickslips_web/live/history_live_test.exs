@@ -55,7 +55,43 @@ defmodule QuickSlipsWeb.HistoryLiveTest do
       {:ok, view, _html} = live(conn, ~p"/history")
 
       assert has_element?(view, ~s(#download-#{doc.id}[href="/history/#{doc.id}/download"]))
-      assert has_element?(view, ~s(#edit-#{doc.id}[href="/rent-receipt?from=#{doc.id}"]))
+
+      assert has_element?(
+               view,
+               ~s(#edit-#{doc.id}[href="/en-in/rent-receipt-generator?from=#{doc.id}"])
+             )
+    end
+
+    test "the edit link opens the page of the language the document was made in", %{
+      conn: conn,
+      scope: scope
+    } do
+      hindi = document_fixture(scope, %{language: "hi", options: %{"country" => "in"}})
+      spanish = document_fixture(scope, %{language: "es", options: %{"country" => "es"}})
+      # A template that has no Spanish page opens in English.
+      rent =
+        document_fixture(scope, %{
+          slug: "rent-receipt",
+          language: "es",
+          options: %{"country" => "es"}
+        })
+
+      {:ok, view, _html} = live(conn, ~p"/history")
+
+      assert has_element?(
+               view,
+               ~s(#edit-#{hindi.id}[href="/hi-in/fuel-bill-generator?from=#{hindi.id}"])
+             )
+
+      assert has_element?(
+               view,
+               ~s(#edit-#{spanish.id}[href="/es-es/generador-de-factura-de-gasolina?from=#{spanish.id}"])
+             )
+
+      assert has_element?(
+               view,
+               ~s(#edit-#{rent.id}[href="/en-in/rent-receipt-generator?from=#{rent.id}"])
+             )
     end
 
     test "a search keeps the documents whose title matches", %{conn: conn, scope: scope} do

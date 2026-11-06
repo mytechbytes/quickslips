@@ -1,11 +1,12 @@
 {
   "slug": "hotel-invoice",
-  "title": "Hotel Invoice Generator",
+  "public_slug": "hotel-bill-generator",
+  "title": "Hotel Bill Generator",
   "category": "Travel",
   "icon": "hero-building-office-2",
   "number_field": "invoice_number",
-  "summary": "Room stay invoice with tariff, extras and GST.",
-  "description": "Create a hotel invoice with guest, room, check-in and check-out, tariff per night, extra charges and GST. Preview instantly and download as PDF.",
+  "summary": "Room stay bill with tariff, extras and GST.",
+  "description": "Create a hotel bill with guest, room, check-in and check-out, tariff per night, extra charges and GST. Preview instantly and download as PDF.",
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
     { "key": "hotel_name", "label": "Hotel name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },

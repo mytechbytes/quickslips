@@ -26,6 +26,7 @@ import {hooks as colocatedHooks} from "phoenix-colocated/quickslips"
 import topbar from "../vendor/topbar"
 import "@tailwindplus/elements";
 import "./bill/main"
+import "./locale"
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 const liveSocket = new LiveSocket("/live", Socket, {

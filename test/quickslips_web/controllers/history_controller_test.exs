@@ -30,6 +30,46 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
       assert disposition =~ ~s(filename="fuel-bill.pdf")
     end
 
+    test "makes it in the language and for the country it was made for", %{
+      conn: conn,
+      scope: scope
+    } do
+      for {language, country, currency, code} <- [
+            {"hi", "in", "INR", "hi-in"},
+            {"es", "es", "EUR", "es-es"}
+          ] do
+        {:ok, sample} = QuickSlips.Templates.sample("fuel-bill", QuickSlips.Locales.fetch!(code))
+
+        doc =
+          document_fixture(scope, %{
+            data: sample,
+            language: language,
+            options: %{"country" => country, "currency" => currency}
+          })
+
+        conn = get(conn, ~p"/history/#{doc.id}/download")
+
+        assert "%PDF" <> _ = response(conn, 200)
+      end
+    end
+
+    test "goes back to the list when the template is not in the language of the document", %{
+      conn: conn,
+      scope: scope
+    } do
+      doc =
+        document_fixture(scope, %{
+          slug: "rent-receipt",
+          data: sample("rent-receipt"),
+          language: "hi",
+          options: %{"country" => "in"}
+        })
+
+      conn = get(conn, ~p"/history/#{doc.id}/download")
+
+      assert redirected_to(conn) == ~p"/history"
+    end
+
     test "does not use up a download of the day", %{conn: conn, user: user, scope: scope} do
       doc = document_fixture(scope, %{data: sample("fuel-bill")})
       before = QuickSlips.Downloads.status(%{user: user})
