@@ -27,6 +27,10 @@ defmodule QuickSlipsWeb.TemplateHTML do
       "preview_updating" => gettext("Updating preview…"),
       "preview_failed" => gettext("Preview could not be rendered."),
       "preview_alt" => gettext("Document preview"),
+      "add_item" => gettext("Add item"),
+      "remove_item" => gettext("Remove item %{number}", number: "{number}"),
+      "subtotal" => gettext("Subtotal"),
+      "amount" => gettext("Amount"),
       "pick_business" => gettext("Choose a saved business…"),
       "fill_business" => gettext("Fill from a saved business")
     }

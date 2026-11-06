@@ -3,5 +3,15 @@
   "currency": "EUR",
   "number": { "decimal": ",", "group": ".", "grouping": "standard" },
   "money": { "position": "after", "space": true },
-  "date": { "order": "dmy", "separator": "/" }
+  "date": { "order": "dmy", "separator": "/" },
+  "tax": {
+    "name": "IVA",
+    "rates": [0, 4, 10, 21],
+    "id": { "label": "NIF", "pattern": "^([0-9]{8}[A-Z]|[XYZ][0-9]{7}[A-Z]|[ABCDEFGHJNPQRSUVW][0-9]{7}[0-9A-J])$" },
+    "checked": "2026-11-06",
+    "note": "General 21%, reduced 10%, super-reduced 4% (Ley 37/1992, arts. 90 and 91); 0% for exempt. The NIF check accepts the three shapes (DNI, NIE, CIF) and does not verify the control character.",
+    "sources": [
+      "https://sede.agenciatributaria.gob.es/static_files/Sede/Tema/IVA/IVA_reperc/Tipos_IVA_2025.pdf"
+    ]
+  }
 }

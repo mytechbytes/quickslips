@@ -27,7 +27,15 @@ function init() {
   const form = root.querySelector<HTMLFormElement>("#bill-form")!
   // The language and country of the page ("hi-in"), and the sign of its currency for the labels.
   const locale = root.dataset.locale!
-  const currencySign: string = JSON.parse(root.dataset.region!).currency.symbol
+  const region = JSON.parse(root.dataset.region!)
+  const currencySign: string = region.currency.symbol
+  // Amounts as the country writes them: ₹1,23,456.00 in India, 1.234,56 € in Spain.
+  const money = new Intl.NumberFormat(locale.replace(/-(\w+)$/, (_, country: string) => "-" + country.toUpperCase()), {
+    style: "currency",
+    currency: region.currency.code,
+    minimumFractionDigits: region.currency.decimals,
+    maximumFractionDigits: region.currency.decimals,
+  })
   const preview = createPreview({
     workerUrl: root.dataset.worker!,
     slug: schema.slug,
@@ -44,7 +52,7 @@ function init() {
     business = picked
     preview.setBusiness(picked)
   }
-  const ui = buildForm(form, schema, sample, (data) => preview.schedule(data), businesses, useBusiness, currencySign)
+  const ui = buildForm(form, schema, sample, (data) => preview.schedule(data), businesses, useBusiness, { currency: currencySign, tax: region.tax?.name, tax_id: region.tax?.id?.label }, (amount) => money.format(amount))
 
   // "Edit and regenerate": the document was made with this business, so it is selected again. Its fields
   // already hold what the document had, so nothing is filled in.

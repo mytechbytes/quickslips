@@ -120,4 +120,46 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
       assert redirected_to(conn) == ~p"/history"
     end
   end
+
+  describe "a document made before the table of items" do
+    setup :register_and_log_in_user
+
+    test "is made again from its numbered fields", %{conn: conn, scope: scope} do
+      old = %{
+        "store_name" => "Mehta",
+        "bill_number" => "1",
+        "date" => "2026-10-18",
+        "payment_mode" => "Cash",
+        "item_1" => "Rice",
+        "qty_1" => 1,
+        "price_1" => 640,
+        "item_2" => "Dal",
+        "qty_2" => 2,
+        "price_2" => 165
+      }
+
+      doc = document_fixture(scope, %{slug: "grocery-bill", data: old})
+
+      assert "%PDF" <> _ = conn |> get(~p"/history/#{doc.id}/download") |> response(200)
+    end
+
+    test "opens in the form with its rows", %{conn: conn, scope: scope} do
+      old = %{
+        "store_name" => "Mehta",
+        "bill_number" => "1",
+        "date" => "2026-10-18",
+        "payment_mode" => "Cash",
+        "item_1" => "Rice",
+        "qty_1" => 1,
+        "price_1" => 640
+      }
+
+      doc = document_fixture(scope, %{slug: "grocery-bill", data: old})
+
+      html = conn |> get("/en-in/grocery-bill-generator?from=#{doc.id}") |> html_response(200)
+
+      assert html =~ "&quot;items&quot;:[{&quot;name&quot;:&quot;Rice&quot;"
+      refute html =~ "item_1"
+    end
+  end
 end

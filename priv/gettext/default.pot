@@ -57,7 +57,7 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: lib/quickslips_web/controllers/template_html.ex:30
+#: lib/quickslips_web/controllers/template_html.ex:34
 #, elixir-autogen, elixir-format
 msgid "Choose a saved business…"
 msgstr ""
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Confirm and stay logged in"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:11
+#: lib/quickslips_web/live/user_live/login.ex:12
 #, elixir-autogen, elixir-format
 msgid "Confirm it is you"
 msgstr ""
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Continue with Google"
 msgstr ""
 
-#: lib/quickslips_web/components/layouts/root.html.heex:9
+#: lib/quickslips_web/components/layouts/root.html.heex:10
 #, elixir-autogen, elixir-format
 msgid "Create bills and receipts as PDF in seconds."
 msgstr ""
@@ -148,29 +148,29 @@ msgstr ""
 msgid "Downloaded."
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:41
-#: lib/quickslips_web/live/user_live/login.ex:75
+#: lib/quickslips_web/live/user_live/login.ex:43
+#: lib/quickslips_web/live/user_live/login.ex:79
 #: lib/quickslips_web/live/user_live/registration.ex:19
 #, elixir-autogen, elixir-format
 msgid "Email address"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:63
+#: lib/quickslips_web/live/user_live/login.ex:67
 #, elixir-autogen, elixir-format
 msgid "Email link"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:82
+#: lib/quickslips_web/live/user_live/login.ex:86
 #, elixir-autogen, elixir-format
 msgid "Email me a link"
 msgstr ""
 
-#: lib/quickslips_web/controllers/template_html.ex:31
+#: lib/quickslips_web/controllers/template_html.ex:35
 #, elixir-autogen, elixir-format
 msgid "Fill from a saved business"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:53
+#: lib/quickslips_web/live/user_live/login.ex:56
 #, elixir-autogen, elixir-format
 msgid "Forgot it? Use the Email link tab, then set a new password in Settings."
 msgstr ""
@@ -195,7 +195,7 @@ msgstr ""
 msgid "Google sign-in didn't complete. Please try again."
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:132
+#: lib/quickslips_web/live/user_live/login.ex:136
 #, elixir-autogen, elixir-format
 msgid "If your email is in our system, you will receive instructions for logging in shortly."
 msgstr ""
@@ -232,18 +232,18 @@ msgstr ""
 #: lib/quickslips_web/controllers/template_html/show.html.heex:40
 #: lib/quickslips_web/live/home_live.ex:144
 #: lib/quickslips_web/live/user_live/confirmation.ex:57
-#: lib/quickslips_web/live/user_live/login.ex:115
+#: lib/quickslips_web/live/user_live/login.ex:119
 #: lib/quickslips_web/live/user_live/registration.ex:67
 #, elixir-autogen, elixir-format
 msgid "Log in"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:57
+#: lib/quickslips_web/live/user_live/login.ex:61
 #, elixir-autogen, elixir-format
 msgid "Log in and stay logged in"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:59
+#: lib/quickslips_web/live/user_live/login.ex:63
 #, elixir-autogen, elixir-format
 msgid "Log in only this time"
 msgstr ""
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Log in or sign up to make more documents."
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:11
+#: lib/quickslips_web/live/user_live/login.ex:12
 #, elixir-autogen, elixir-format
 msgid "Log in to QuickSlips"
 msgstr ""
@@ -309,7 +309,7 @@ msgstr ""
 msgid "New document"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:94
+#: lib/quickslips_web/live/user_live/login.ex:98
 #, elixir-autogen, elixir-format
 msgid "New here?"
 msgstr ""
@@ -330,8 +330,8 @@ msgstr ""
 msgid "Open user menu"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:28
-#: lib/quickslips_web/live/user_live/login.ex:50
+#: lib/quickslips_web/live/user_live/login.ex:30
+#: lib/quickslips_web/live/user_live/login.ex:52
 #: lib/quickslips_web/live/user_live/registration.ex:29
 #, elixir-autogen, elixir-format
 msgid "Password"
@@ -398,7 +398,7 @@ msgstr ""
 #: lib/quickslips_web/components/layouts.ex:160
 #: lib/quickslips_web/controllers/template_html/show.html.heex:42
 #: lib/quickslips_web/live/home_live.ex:147
-#: lib/quickslips_web/live/user_live/login.ex:99
+#: lib/quickslips_web/live/user_live/login.ex:103
 #: lib/quickslips_web/live/user_live/registration.ex:51
 #: lib/quickslips_web/live/user_live/registration.ex:91
 #, elixir-autogen, elixir-format
@@ -492,7 +492,7 @@ msgstr ""
 msgid "We couldn't verify your browser. Turn off your ad blocker, or log in."
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:79
+#: lib/quickslips_web/live/user_live/login.ex:83
 #, elixir-autogen, elixir-format
 msgid "We email you a link that logs you in. No password needed."
 msgstr ""
@@ -508,7 +508,7 @@ msgstr ""
 msgid "Welcome back!"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:15
+#: lib/quickslips_web/live/user_live/login.ex:17
 #, elixir-autogen, elixir-format
 msgid "Welcome back."
 msgstr ""
@@ -529,7 +529,7 @@ msgstr ""
 msgid "You must re-authenticate to access this page."
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:14
+#: lib/quickslips_web/live/user_live/login.ex:16
 #, elixir-autogen, elixir-format
 msgid "You need to reauthenticate to perform sensitive actions on your account."
 msgstr ""
@@ -549,7 +549,7 @@ msgstr ""
 msgid "close"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:89
+#: lib/quickslips_web/live/user_live/login.ex:93
 #: lib/quickslips_web/live/user_live/registration.ex:57
 #, elixir-autogen, elixir-format
 msgid "or"
@@ -563,4 +563,24 @@ msgstr ""
 #: lib/quickslips_web/live/user_live/registration.ex:111
 #, elixir-autogen, elixir-format
 msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account."
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:30
+#, elixir-autogen, elixir-format
+msgid "Add item"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:33
+#, elixir-autogen, elixir-format
+msgid "Amount"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:31
+#, elixir-autogen, elixir-format
+msgid "Remove item %{number}"
+msgstr ""
+
+#: lib/quickslips_web/controllers/template_html.ex:32
+#, elixir-autogen, elixir-format
+msgid "Subtotal"
 msgstr ""

@@ -24,6 +24,6 @@
     { "key": "plan_charge", "label": "Plan charge (₹)", "type": "number", "required": true, "min": 0 },
     { "key": "other_charges", "label": "Installation or other charges (₹) (optional)", "type": "number", "required": false, "min": 0 },
     { "key": "discount", "label": "Discount (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "gst_percent", "label": "GST (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 }
+    { "key": "gst_percent", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false }
   ]
 }

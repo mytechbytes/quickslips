@@ -22,6 +22,6 @@
     { "key": "check_out", "label": "Check-out", "type": "date", "required": true },
     { "key": "tariff_per_night", "label": "Tariff per night (₹)", "type": "number", "required": true, "min": 0 },
     { "key": "extra_charges", "label": "Food and other charges (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "gst_percent", "label": "GST (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 }
+    { "key": "gst_percent", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false }
   ]
 }

@@ -17,7 +17,7 @@
       data-sample={Jason.encode!(@sample)}
       data-worker={~p"/assets/js/preview_worker.js"}
       data-turnstile-site-key={turnstile_site_key(@current_scope)}
-      class="mt-8 grid gap-8 lg:grid-cols-2"
+      class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
     >
       <form id="bill-form" class="space-y-4" novalidate></form>
 

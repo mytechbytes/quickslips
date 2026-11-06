@@ -5,7 +5,9 @@ defmodule QuickSlips.Regions do
   language (see `QuickSlips.Templates`). The language, the country and the currency are chosen apart, so a
   Spanish document for India is allowed.
 
-  The data is in `priv/regions`: one file per country in `countries/` and `currencies.json`. It is read
+  The data is in `priv/regions`: one file per country in `countries/` and `currencies.json`. A country's `tax` says
+  how its tax is called, which rates a bill offers, and how a tax-registration number looks; each carries the
+  date it was checked and where (take rates from the tax authority, not from memory). It is read
   when this module compiles, and a new country file makes it compile again.
   """
 
@@ -59,7 +61,8 @@ defmodule QuickSlips.Regions do
          "currency" => Map.put(money, "code", code),
          "number" => data["number"],
          "money" => data["money"],
-         "date" => data["date"]
+         "date" => data["date"],
+         "tax" => data["tax"]
        }}
     end
   end

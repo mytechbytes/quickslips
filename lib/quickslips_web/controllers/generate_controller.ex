@@ -8,6 +8,7 @@ defmodule QuickSlipsWeb.GenerateController do
   alias QuickSlips.Downloads
   alias QuickSlips.Locales
   alias QuickSlips.Regions
+  alias QuickSlips.Templates.Items
   alias QuickSlips.Templates.Validator
   alias QuickSlips.Templates
   alias QuickSlips.Render.Renderer
@@ -42,7 +43,8 @@ defmodule QuickSlipsWeb.GenerateController do
 
   # What is wrong with the data is told in the language of the page the visitor is on.
   defp validate(schema, data, locale) do
-    case Validator.validate(schema, data) do
+    # A page that was open before a bill had a table of items still sends the numbered fields.
+    case Validator.validate(schema, Items.upgrade(schema, data)) do
       {:ok, clean} ->
         {:ok, clean}
 

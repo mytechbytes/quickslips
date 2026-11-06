@@ -100,7 +100,7 @@ defmodule QuickSlipsWeb.TranslationTest do
         strings = Jason.decode!(json)
 
         assert Map.keys(strings) |> Enum.sort() ==
-                 ~w(creating downloaded error fill_business fix_fields limit_reached pick_business preview_alt preview_failed preview_updating quota_anonymous quota_user verify_failed)
+                 ~w(add_item amount creating downloaded error fill_business fix_fields limit_reached pick_business preview_alt preview_failed preview_updating quota_anonymous quota_user remove_item subtotal verify_failed)
 
         # The script fills `{remaining}` and `{limit}` in, so they must survive the translation.
         for key <- ["quota_anonymous", "quota_user"] do
