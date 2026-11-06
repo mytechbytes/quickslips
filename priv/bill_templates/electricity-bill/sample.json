@@ -1,0 +1,16 @@
+{
+  "issuer_name": "Sunrise Power Distribution",
+  "issuer_address": "Power House Road, Pune, Maharashtra 411001",
+  "bill_number": "EB-2026-10-3391",
+  "bill_date": "2026-11-02",
+  "due_date": "2026-11-16",
+  "consumer_name": "Rajesh Kulkarni",
+  "consumer_number": "PN-4410-9821",
+  "service_address": "Flat 12, Shivaji Nagar, Pune, Maharashtra 411005",
+  "billing_month": "2026-10",
+  "previous_reading": 4120,
+  "current_reading": 4388,
+  "rate_per_unit": 7.5,
+  "fixed_charge": 120,
+  "tax_percent": 5
+}

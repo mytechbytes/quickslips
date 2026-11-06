@@ -1,66 +1,40 @@
-// Tinymist: Fuel bill, design t1. Reads data.json (next to this file).
+// Fuel bill, design t1. Reads data.json (next to this file).
+#import "_shared/helpers.typ": *
 #let data = json("data.json")
-#let preview = sys.inputs.at("mode", default: "final") == "preview"
+#show: base.with(paper: "a5", margin: (x: 14mm, y: 14mm))
 
-#set page(
-  paper: "a5",
-  margin: (x: 14mm, y: 14mm),
-  background: if preview {
-    rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[QUICK SLIPS])
-  },
-)
-#set text(font: "Noto Sans", size: 10pt)
-
-// Optional fields may be missing or empty.
-#let opt(key) = {
-  let value = data.at(key, default: none)
-  if value == none or value == "" { none } else { value }
-}
-
-#let fmt-date(iso) = {
-  let (y, m, d) = iso.split("-").map(int)
-  datetime(year: y, month: m, day: d).display("[day]/[month]/[year]")
-}
-
-// Display money as ₹ 1234.50 from a number of rupees.
-#let money(n) = {
-  let paise = int(calc.round(n * 100))
-  let frac = calc.rem(paise, 100)
-  "₹ " + str(calc.quo(paise, 100)) + "." + (if frac < 10 { "0" } else { "" }) + str(frac)
-}
-
+// The server adds `logo` and `signature` to the data when the user picked a saved business that has them.
 #align(center)[
+  #picture(data, "logo", 14mm)
   #text(size: 14pt, weight: "bold")[#data.station_name]
-  #if opt("station_address") != none [ \ #opt("station_address")]
+  #if opt(data, "station_address") != none [ \ #lines(opt(data, "station_address"))]
 ]
 
 #v(2mm)
-#line(length: 100%, stroke: 0.5pt + luma(180))
+#rule()
 #v(3mm)
 
 #grid(
   columns: (1fr, 1fr),
   row-gutter: 3mm,
   [*Bill no.* #data.bill_number], align(right)[*Date* #fmt-date(data.date)],
-  [*Vehicle* #if opt("vehicle_number") != none [#opt("vehicle_number")] else [-]],
+  [*Vehicle* #if opt(data, "vehicle_number") != none [#opt(data, "vehicle_number")] else [-]],
   align(right)[*Fuel* #data.fuel_type],
 )
 
 #v(4mm)
 
-#table(
-  columns: (1fr, auto, auto, auto),
-  align: (left, right, right, right),
-  stroke: none,
-  inset: (x: 2mm, y: 3mm),
-  table.hline(stroke: 0.5pt),
-  [*Item*], [*Qty (L)*], [*Rate*], [*Amount*],
-  table.hline(stroke: 0.5pt),
-  [#data.fuel_type], [#data.quantity], [#money(data.rate)], [#money(data.quantity * data.rate)],
-  table.hline(stroke: 0.5pt),
+#bill-table(
+  ([Item], [Qty (L)], [Rate], [Amount]),
+  (([#data.fuel_type], [#data.quantity], [#money(data.rate)], [#money(data.quantity * data.rate)]),),
 )
 
 #v(2mm)
 #align(right)[#text(size: 12pt, weight: "bold")[Total: #money(data.quantity * data.rate)]]
 
-#place(bottom + center, text(size: 8pt, fill: luma(120))[Thank you. Visit again.])
+#if opt(data, "signature") != none [
+  #v(8mm)
+  #signature-block(data, [Authorised signatory])
+]
+
+#footnote[Thank you. Visit again.]

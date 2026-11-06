@@ -8,6 +8,7 @@
       data-slug={@schema["slug"]}
       data-template="t1"
       data-businesses={Jason.encode!(@businesses)}
+      data-business-id={@document && @document.business_id}
       data-schema={Jason.encode!(@schema)}
       data-sample={Jason.encode!(@sample)}
       data-worker={~p"/assets/js/preview_worker.js"}

@@ -54,11 +54,12 @@ defmodule QuickSlipsWeb.Layouts do
     if signed_in?(assigns.current_scope), do: app_shell(assigns), else: public_shell(assigns)
   end
 
-  # The sidebar items. Add one when its page exists (Milestones 8 and 9), for example:
-  #   {:documents, "Documents", "hero-document-text", ~p"/documents"}
+  # The sidebar items. Add one when its page exists (Milestone 9 adds Credits and Bulk import), for example:
+  #   {:credits, "Credits", "hero-banknotes", ~p"/credits"}
   defp nav_items do
     [
       {:dashboard, "Dashboard", "hero-squares-2x2", ~p"/dashboard"},
+      {:history, "Documents", "hero-document-text", ~p"/history"},
       {:businesses, "Saved businesses", "hero-building-storefront", ~p"/businesses"}
     ]
   end

@@ -2,14 +2,15 @@ defmodule QuickSlipsWeb.BusinessLive.Show do
   use QuickSlipsWeb, :live_view
 
   alias QuickSlips.Businesses
+  alias QuickSlipsWeb.UploadController
 
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope}>
+    <Layouts.app flash={@flash} current_scope={@current_scope} active={:businesses}>
       <.header>
-        Business {@business.id}
-        <:subtitle>This is a business record from your database.</:subtitle>
+        {@business.name}
+        <:subtitle>Saved once, then filled into any bill with one click.</:subtitle>
         <:actions>
           <.button navigate={~p"/businesses"}>
             <.icon name="hero-arrow-left" />
@@ -23,7 +24,23 @@ defmodule QuickSlipsWeb.BusinessLive.Show do
       <.list>
         <:item title="Name">{@business.name}</:item>
         <:item title="Address">{@business.address}</:item>
-        <:item title="Gstin">{@business.gstin}</:item>
+        <:item title="GSTIN">{@business.gstin}</:item>
+        <:item :if={@business.logo_path} title="Logo">
+          <img
+            id="business-logo"
+            src={UploadController.path(@business.logo_path)}
+            alt="Logo"
+            class="h-16 max-w-full object-contain"
+          />
+        </:item>
+        <:item :if={@business.signature_path} title="Signature">
+          <img
+            id="business-signature"
+            src={UploadController.path(@business.signature_path)}
+            alt="Signature"
+            class="h-16 max-w-full object-contain"
+          />
+        </:item>
       </.list>
     </Layouts.app>
     """

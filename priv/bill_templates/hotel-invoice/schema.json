@@ -1,0 +1,26 @@
+{
+  "slug": "hotel-invoice",
+  "title": "Hotel Invoice Generator",
+  "category": "Travel",
+  "icon": "hero-building-office-2",
+  "number_field": "invoice_number",
+  "summary": "Room stay invoice with tariff, extras and GST.",
+  "description": "Create a hotel invoice with guest, room, check-in and check-out, tariff per night, extra charges and GST. Preview instantly and download as PDF.",
+  "templates": [{ "id": "t1", "name": "Classic" }],
+  "fields": [
+    { "key": "hotel_name", "label": "Hotel name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "hotel_address", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "gstin", "label": "GSTIN (optional)", "type": "text", "required": false, "max_length": 15, "prefill": "business.gstin" },
+    { "key": "invoice_number", "label": "Invoice number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "invoice_date", "label": "Invoice date", "type": "date", "required": true },
+    { "key": "guest_name", "label": "Guest name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "guest_address", "label": "Guest address (optional)", "type": "textarea", "required": false, "max_length": 200 },
+    { "key": "room_type", "label": "Room type", "type": "select", "options": ["Standard", "Deluxe", "Suite", "Dormitory"], "required": true },
+    { "key": "room_number", "label": "Room number (optional)", "type": "text", "required": false, "max_length": 10 },
+    { "key": "check_in", "label": "Check-in", "type": "date", "required": true },
+    { "key": "check_out", "label": "Check-out", "type": "date", "required": true },
+    { "key": "tariff_per_night", "label": "Tariff per night (₹)", "type": "number", "required": true, "min": 0 },
+    { "key": "extra_charges", "label": "Food and other charges (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "gst_percent", "label": "GST (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 }
+  ]
+}

@@ -1,0 +1,202 @@
+// Helpers shared by every template (Task 8.4). A template starts with
+//
+//   #import "_shared/helpers.typ": *
+//   #let data = json("data.json")
+//   #show: base.with(paper: "a5")
+//
+// The helpers get `data` as an argument. `json("data.json")` is read from the folder of the file that
+// calls it, which for a helper would be `_shared/`, not the template's folder. For the same reason a
+// picture is named with a leading "/" (the root of the project): `image("/logo.png")` finds the logo
+// wherever the call is made.
+
+#let preview = sys.inputs.at("mode", default: "final") == "preview"
+#let muted = luma(110)
+#let hairline = luma(180)
+
+// The page: size, margins, font, and the watermark of the preview. Use it with `#show: base.with(...)`.
+#let base(paper: "a5", margin: 14mm, size: 10pt, body) = {
+  set page(
+    paper: paper,
+    margin: margin,
+    background: if preview {
+      rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[QUICK SLIPS])
+    },
+  )
+  set text(font: "Noto Sans", size: size)
+  body
+}
+
+/// Data
+
+// An optional field may be missing or empty: `none` then.
+#let opt(data, key) = {
+  let value = data.at(key, default: none)
+  if value == none or value == "" { none } else { value }
+}
+
+// An optional number: 0 when it is missing.
+#let num(data, key) = data.at(key, default: 0)
+
+// Text of a textarea: a new line in it is a line break on the page.
+#let lines(text-with-breaks) = text-with-breaks.split("\n").join(linebreak())
+
+/// Dates
+
+#let months = ("January", "February", "March", "April", "May", "June", "July",
+  "August", "September", "October", "November", "December")
+
+#let to-date(iso) = {
+  let (y, m, d) = iso.split("-").map(int)
+  datetime(year: y, month: m, day: d)
+}
+
+#let fmt-date(iso) = to-date(iso).display("[day]/[month]/[year]")
+
+#let month-label(ym) = {
+  let (y, m) = ym.split("-").map(int)
+  months.at(m - 1) + " " + str(y)
+}
+
+// Whole days from one date to another, at least 1 (for nights in a hotel, days in a plan).
+#let days-between(from, to) = calc.max(1, (to-date(to) - to-date(from)).days())
+
+/// Money
+
+// "1234567" -> "12,34,567": Indian grouping, the last three digits and then pairs.
+#let group-indian(digits) = {
+  let n = digits.len()
+  if n <= 3 { return digits }
+  let rest = digits.slice(0, n - 3)
+  let groups = (digits.slice(n - 3),)
+  while rest.len() > 2 {
+    groups.insert(0, rest.slice(rest.len() - 2))
+    rest = rest.slice(0, rest.len() - 2)
+  }
+  if rest.len() > 0 { groups.insert(0, rest) }
+  groups.join(",")
+}
+
+// 105000 -> "₹ 1,05,000.00". Works on paise, so there is no float noise in the cents.
+#let money(n) = {
+  let paise = int(calc.round(n * 100))
+  let sign = if paise < 0 { "-" } else { "" }
+  paise = calc.abs(paise)
+  let frac = calc.rem(paise, 100)
+  "₹ " + sign + group-indian(str(calc.quo(paise, 100))) + "." + (if frac < 10 { "0" } else { "" }) + str(frac)
+}
+
+// A percentage of an amount, rounded to paise.
+#let percent(amount, rate) = calc.round(amount * rate / 100, digits: 2)
+
+// The filled-in rows of a bill whose fields are numbered (item_1, qty_1, price_1, item_2, ...). A row
+// without a name is skipped, and a missing quantity counts as 1. Each row is a dictionary with `name`,
+// `qty`, `rate` and `amount`.
+#let line-items(data, count, name: "item", qty: "qty", rate: "price") = {
+  range(1, count + 1)
+    .map(i => (
+      name: opt(data, name + "_" + str(i)),
+      qty: data.at(qty + "_" + str(i), default: 1),
+      rate: data.at(rate + "_" + str(i), default: 0),
+    ))
+    .filter(row => row.name != none)
+    .map(row => (..row, amount: row.qty * row.rate))
+}
+
+#let sum-of(values) = values.sum(default: 0)
+
+/// Pieces of a page
+
+#let rule() = line(length: 100%, stroke: 0.5pt + hairline)
+
+// The picture of a saved business: the server (and the browser preview) put the file name in the data
+// under `key`, "logo" or "signature". Nothing is drawn when there is none.
+#let picture(data, key, height) = {
+  let name = data.at(key, default: none)
+  if name != none { image("/" + name, height: height) }
+}
+
+// The top of a document: the logo, the seller and the kind of document, then a line.
+#let letterhead(data, seller, address: none, gstin: none, title: none) = {
+  grid(
+    columns: (1fr, auto),
+    column-gutter: 6mm,
+    {
+      let logo = picture(data, "logo", 14mm)
+      if logo != none { logo; v(1.5mm) }
+      text(size: 14pt, weight: "bold", seller)
+      if address != none { linebreak(); text(size: 9pt, fill: muted, lines(address)) }
+      if gstin != none { linebreak(); text(size: 9pt, fill: muted)[GSTIN: #gstin] }
+    },
+    if title != none { align(right + top, text(size: 12pt, weight: "bold", fill: muted, upper(title))) },
+  )
+  v(2mm)
+  rule()
+  v(3mm)
+}
+
+// Small labels over values, in `columns` columns. `items` is an array of (label, value); an item whose
+// value is `none` is left out.
+#let details(items, columns: 2) = {
+  let shown = items.filter(item => item.at(1) != none)
+  grid(
+    columns: (1fr,) * columns,
+    row-gutter: 4.5mm,
+    column-gutter: 6mm,
+    ..shown.map(((label, value)) => [#text(size: 7.5pt, fill: muted)[#upper(label)] \ #value]),
+  )
+}
+
+// A table with a head row. `rows` is an array of arrays of content; `align` has one entry per column.
+#let bill-table(head, rows, columns: none, align: none) = {
+  let columns = if columns == none { (1fr,) + (auto,) * (head.len() - 1) } else { columns }
+  let align = if align == none { (left,) + (right,) * (head.len() - 1) } else { align }
+  table(
+    columns: columns,
+    align: align,
+    stroke: none,
+    inset: (x: 2mm, y: 2.6mm),
+    table.hline(stroke: 0.5pt),
+    ..head.map(cell => strong(cell)),
+    table.hline(stroke: 0.5pt),
+    ..rows.flatten(),
+    table.hline(stroke: 0.5pt),
+  )
+}
+
+// The sums under a table: `rows` is an array of (label, amount), then the total in bold. A row whose
+// amount is 0 is left out, so a bill without a toll or a tax doesn't print empty lines.
+#let totals(rows, total, label: "Total") = align(right, block(width: 86mm, {
+  set align(left)
+  grid(
+    columns: (1fr, auto),
+    row-gutter: 2.2mm,
+    column-gutter: 6mm,
+    ..rows
+      .filter(row => row.at(1) != 0)
+      .map(((name, amount)) => (text(fill: muted)[#name], align(right)[#money(amount)]))
+      .flatten(),
+  )
+  v(1.5mm)
+  line(length: 100%, stroke: 0.5pt)
+  v(1.5mm)
+  grid(
+    columns: (1fr, auto),
+    column-gutter: 6mm,
+    text(weight: "bold")[#label],
+    align(right, text(size: 12pt, weight: "bold")[#money(total)]),
+  )
+}))
+
+// The signature of a saved business above a line, with who it is. With no picture the space is left to
+// sign by hand.
+#let signature-block(data, label, name: none) = align(right, block(width: 52mm, {
+  let signature = picture(data, "signature", 13mm)
+  if signature != none { signature } else { v(13mm) }
+  line(length: 100%, stroke: 0.5pt)
+  v(-1mm)
+  if name != none { strong(name); linebreak() }
+  text(size: 9pt, fill: muted, label)
+}))
+
+// A line of small print at the bottom of the page.
+#let footnote(content) = place(bottom + center, text(size: 8pt, fill: muted, content))

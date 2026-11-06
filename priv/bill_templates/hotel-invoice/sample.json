@@ -1,0 +1,16 @@
+{
+  "hotel_name": "Lotus Residency",
+  "hotel_address": "4, Beach Road, Candolim, Goa 403515",
+  "gstin": "30ABCDE1234F1Z5",
+  "invoice_number": "HI-000457",
+  "invoice_date": "2026-10-14",
+  "guest_name": "Rohan Mehta",
+  "guest_address": "22, Hill Road, Bandra West, Mumbai 400050",
+  "room_type": "Deluxe",
+  "room_number": "204",
+  "check_in": "2026-10-11",
+  "check_out": "2026-10-14",
+  "tariff_per_night": 4000,
+  "extra_charges": 1200,
+  "gst_percent": 12
+}

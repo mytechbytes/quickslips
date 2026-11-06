@@ -1,0 +1,26 @@
+{
+  "slug": "medical-bill",
+  "title": "Medical Bill Generator",
+  "category": "Health & learning",
+  "icon": "hero-heart",
+  "number_field": "bill_number",
+  "summary": "Clinic, pharmacy or lab charges.",
+  "description": "Create a medical bill with patient, doctor, consultation, medicines and test charges. Preview instantly and download as PDF.",
+  "templates": [{ "id": "t1", "name": "Classic" }],
+  "fields": [
+    { "key": "clinic_name", "label": "Clinic, pharmacy or lab", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "clinic_address", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "registration_number", "label": "Registration number (optional)", "type": "text", "required": false, "max_length": 30 },
+    { "key": "bill_number", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "label": "Date", "type": "date", "required": true },
+    { "key": "patient_name", "label": "Patient name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "patient_details", "label": "Age and sex (optional)", "type": "text", "required": false, "max_length": 20 },
+    { "key": "doctor_name", "label": "Doctor (optional)", "type": "text", "required": false, "max_length": 80 },
+    { "key": "consultation_fee", "label": "Consultation (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "medicines_cost", "label": "Medicines (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "tests_cost", "label": "Tests and procedures (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "other_charges", "label": "Other charges (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "discount", "label": "Discount (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "payment_mode", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
+  ]
+}

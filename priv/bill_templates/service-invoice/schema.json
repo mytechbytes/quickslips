@@ -1,0 +1,32 @@
+{
+  "slug": "service-invoice",
+  "title": "Service Invoice Generator",
+  "category": "Work",
+  "icon": "hero-wrench-screwdriver",
+  "number_field": "invoice_number",
+  "summary": "Charges for work or a service, with GST.",
+  "description": "Generate a service invoice with client details, up to three service lines, GST and payment notes. Preview instantly and download as PDF.",
+  "templates": [{ "id": "t1", "name": "Classic" }],
+  "fields": [
+    { "key": "seller_name", "label": "Your business name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "seller_address", "label": "Your address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "gstin", "label": "GSTIN (optional)", "type": "text", "required": false, "max_length": 15, "prefill": "business.gstin" },
+    { "key": "invoice_number", "label": "Invoice number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "invoice_date", "label": "Invoice date", "type": "date", "required": true },
+    { "key": "due_date", "label": "Due date (optional)", "type": "date", "required": false },
+    { "key": "client_name", "label": "Client name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "client_address", "label": "Client address (optional)", "type": "textarea", "required": false, "max_length": 200 },
+    { "key": "client_gstin", "label": "Client GSTIN (optional)", "type": "text", "required": false, "max_length": 15 },
+    { "key": "service_1", "label": "Service 1", "type": "text", "required": true, "max_length": 120 },
+    { "key": "qty_1", "label": "Quantity 1", "type": "number", "required": true, "min": 0.01 },
+    { "key": "rate_1", "label": "Rate 1 (₹)", "type": "number", "required": true, "min": 0 },
+    { "key": "service_2", "label": "Service 2 (optional)", "type": "text", "required": false, "max_length": 120 },
+    { "key": "qty_2", "label": "Quantity 2 (optional)", "type": "number", "required": false, "min": 0.01 },
+    { "key": "rate_2", "label": "Rate 2 (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "service_3", "label": "Service 3 (optional)", "type": "text", "required": false, "max_length": 120 },
+    { "key": "qty_3", "label": "Quantity 3 (optional)", "type": "number", "required": false, "min": 0.01 },
+    { "key": "rate_3", "label": "Rate 3 (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "gst_percent", "label": "GST (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 },
+    { "key": "notes", "label": "Payment details or notes (optional)", "type": "textarea", "required": false, "max_length": 300 }
+  ]
+}

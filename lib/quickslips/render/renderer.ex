@@ -12,16 +12,22 @@ defmodule QuickSlips.Render.Renderer do
   @doc """
   Renders `slug`/`template_id` with `data` (a map decoded from JSON).
 
-  Options: `mode: :final | :preview` (preview adds the watermark).
+  Options:
+
+    * `mode: :final | :preview` (preview adds the watermark).
+    * `assets: %{"logo.png" => "/abs/path/to/the/file"}`: pictures to copy next to the template, so it can
+      draw them with `#image("logo.png")`. The names come from our code, never from a user.
+
   Returns `{:ok, pdf_binary}` or `{:error, reason}`.
   """
   def render(slug, template_id, data, opts \\ []) when is_map(data) do
     mode = Keyword.get(opts, :mode, :final)
+    assets = Keyword.get(opts, :assets, %{})
 
     with {:ok, schema} <- Templates.get(slug),
          :ok <- ensure_template(schema, template_id),
          {:ok, typst} <- typst_executable() do
-      run_in_tmp_dir(typst, slug, template_id, data, mode)
+      run_in_tmp_dir(typst, slug, template_id, data, mode, assets)
     end
   end
 
@@ -42,7 +48,7 @@ defmodule QuickSlips.Render.Renderer do
     end
   end
 
-  defp run_in_tmp_dir(typst, slug, template_id, data, mode) do
+  defp run_in_tmp_dir(typst, slug, template_id, data, mode, assets) do
     tmp = Path.join(System.tmp_dir!(), "quickslips-" <> random_id())
     File.mkdir_p!(tmp)
 
@@ -53,6 +59,11 @@ defmodule QuickSlips.Render.Renderer do
       )
 
       File.write!(Path.join(tmp, "data.json"), Jason.encode!(data))
+      # The helpers every template imports (`#import "_shared/helpers.typ": *`).
+      File.cp_r!(Path.join(Templates.root_dir(), "_shared"), Path.join(tmp, "_shared"))
+
+      for {name, source} <- assets, do: File.cp!(source, Path.join(tmp, Path.basename(name)))
+
       compile(typst, tmp, mode)
     after
       File.rm_rf(tmp)

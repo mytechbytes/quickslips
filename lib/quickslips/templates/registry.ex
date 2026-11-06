@@ -10,6 +10,9 @@ defmodule QuickSlips.Templates.Registry do
                history documents businesses credits bulk bulk-import templates
                healthz sitemap.xml sw.js favicon.ico robots.txt admin)
 
+  # Field keys the server fills in itself (the names of a business's pictures), so a template can't use them.
+  @reserved_keys ~w(logo signature)
+
   ## Client API
 
   def start_link(opts \\ []) do
@@ -67,6 +70,10 @@ defmodule QuickSlips.Templates.Registry do
 
       if folder in @reserved or not Regex.match?(~r/^[a-z0-9-]+$/, folder) do
         raise "#{path}: #{inspect(folder)} is reserved or not a valid slug"
+      end
+
+      for %{"key" => key} <- schema["fields"], key in @reserved_keys do
+        raise "#{path}: the field key #{inspect(key)} is reserved for business pictures"
       end
 
       {folder, schema}

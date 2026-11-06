@@ -1,0 +1,16 @@
+{
+  "courier_name": "Swift Couriers",
+  "courier_address": "Shop 7, Transport Nagar, Jaipur, Rajasthan 302001",
+  "tracking_number": "SC4829105",
+  "booking_date": "2026-10-18",
+  "sender_name": "Anil Sharma",
+  "sender_city": "Jaipur",
+  "receiver_name": "Priya Singh",
+  "receiver_city": "Pune",
+  "service": "Express",
+  "weight_kg": 2.5,
+  "parcels": 1,
+  "freight_charge": 420,
+  "gst_percent": 18,
+  "payment_type": "Paid"
+}

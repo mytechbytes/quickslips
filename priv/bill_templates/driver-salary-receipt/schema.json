@@ -1,0 +1,22 @@
+{
+  "slug": "driver-salary-receipt",
+  "title": "Driver Salary Receipt Generator",
+  "category": "Work",
+  "icon": "hero-identification",
+  "summary": "Monthly pay receipt for a driver.",
+  "description": "Create a salary receipt for a driver with monthly pay, overtime, allowances and deductions. Preview instantly and download as PDF.",
+  "templates": [{ "id": "t1", "name": "Classic" }],
+  "fields": [
+    { "key": "employer_name", "label": "Employer name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "employer_address", "label": "Employer address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "driver_name", "label": "Driver name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "vehicle_number", "label": "Vehicle number (optional)", "type": "text", "required": false, "max_length": 20 },
+    { "key": "month", "label": "Salary for month", "type": "month", "required": true },
+    { "key": "basic_salary", "label": "Monthly salary (₹)", "type": "number", "required": true, "min": 0 },
+    { "key": "overtime", "label": "Overtime (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "allowance", "label": "Fuel and other allowance (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "deductions", "label": "Advance or deductions (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "payment_mode", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Bank transfer", "Cheque"], "required": true },
+    { "key": "receipt_date", "label": "Receipt date", "type": "date", "required": true }
+  ]
+}
