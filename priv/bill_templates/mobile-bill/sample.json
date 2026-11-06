@@ -1,0 +1,15 @@
+{
+  "operator_name": "Nova Mobile Services",
+  "operator_address": "Shop 3, Main Bazaar, Nashik, Maharashtra 422001",
+  "gstin": "27ABCDE1234F1Z5",
+  "bill_number": "MB-001189",
+  "bill_date": "2026-10-05",
+  "customer_name": "Sunita Patil",
+  "mobile_number": "98765 43210",
+  "plan_type": "Prepaid recharge",
+  "plan_name": "Unlimited 5G, 2 GB per day",
+  "validity": "28 days",
+  "plan_charge": 299,
+  "gst_percent": 18,
+  "payment_mode": "UPI"
+}

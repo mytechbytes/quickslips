@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="QuickSlips">
+  <title>QuickSlips</title>
+  <rect width="64" height="64" rx="15" fill="#187a60"/>
+  <path fill="#f7fefb" fill-rule="evenodd" d="M15.5 13A3.5 3.5 0 0 1 19 9.5H45A3.5 3.5 0 0 1 48.5 13V51.3L45.75 54.5L43 51.3L40.25 54.5L37.5 51.3L34.75 54.5L32 51.3L29.25 54.5L26.5 51.3L23.75 54.5L21 51.3L18.25 54.5L15.5 51.3ZM33.84 19.34 25.1 30.38 31.08 30.38 29.7 38.66 38.9 27.16 32.92 27.16Z"/>
+</svg>

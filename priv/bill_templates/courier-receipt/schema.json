@@ -1,0 +1,27 @@
+{
+  "slug": "courier-receipt",
+  "title": "Courier Receipt Generator",
+  "category": "Travel",
+  "icon": "hero-truck",
+  "number_field": "tracking_number",
+  "summary": "Parcel booking receipt with weight and freight.",
+  "description": "Make a courier booking receipt with tracking number, sender, receiver, weight, service and freight charge. Preview instantly and download as PDF.",
+  "templates": [{ "id": "t1", "name": "Classic" }],
+  "fields": [
+    { "key": "courier_name", "label": "Courier company", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "courier_address", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "tracking_number", "label": "Tracking number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "booking_date", "label": "Booking date", "type": "date", "required": true },
+    { "key": "sender_name", "label": "Sender name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "sender_city", "label": "From (city)", "type": "text", "required": true, "max_length": 60 },
+    { "key": "receiver_name", "label": "Receiver name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "receiver_city", "label": "To (city)", "type": "text", "required": true, "max_length": 60 },
+    { "key": "service", "label": "Service", "type": "select", "options": ["Standard", "Express", "Same day", "Surface"], "required": true },
+    { "key": "weight_kg", "label": "Weight (kg)", "type": "number", "required": true, "min": 0.01 },
+    { "key": "parcels", "label": "Number of parcels", "type": "number", "required": true, "min": 1 },
+    { "key": "freight_charge", "label": "Freight charge (₹)", "type": "number", "required": true, "min": 0 },
+    { "key": "insurance", "label": "Insurance (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "gst_percent", "label": "GST (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 },
+    { "key": "payment_type", "label": "Payment", "type": "select", "options": ["Paid", "To pay", "Account"], "required": true }
+  ]
+}

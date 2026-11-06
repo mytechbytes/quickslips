@@ -1,0 +1,26 @@
+{
+  "slug": "mobile-bill",
+  "title": "Mobile Bill Generator",
+  "category": "Home & utilities",
+  "icon": "hero-device-phone-mobile",
+  "number_field": "bill_number",
+  "summary": "Prepaid recharge or postpaid plan bill.",
+  "description": "Generate a mobile bill or recharge receipt with number, plan, validity, charges and GST. Preview instantly and download as PDF.",
+  "templates": [{ "id": "t1", "name": "Classic" }],
+  "fields": [
+    { "key": "operator_name", "label": "Operator or retailer", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "operator_address", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "gstin", "label": "GSTIN (optional)", "type": "text", "required": false, "max_length": 15, "prefill": "business.gstin" },
+    { "key": "bill_number", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "bill_date", "label": "Bill date", "type": "date", "required": true },
+    { "key": "customer_name", "label": "Customer name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "mobile_number", "label": "Mobile number", "type": "text", "required": true, "max_length": 15 },
+    { "key": "plan_type", "label": "Plan type", "type": "select", "options": ["Prepaid recharge", "Postpaid plan"], "required": true },
+    { "key": "plan_name", "label": "Plan name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "validity", "label": "Validity or billing period (optional)", "type": "text", "required": false, "max_length": 60 },
+    { "key": "plan_charge", "label": "Plan charge (₹)", "type": "number", "required": true, "min": 0 },
+    { "key": "other_charges", "label": "Other charges (₹) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "gst_percent", "label": "GST (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 },
+    { "key": "payment_mode", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
+  ]
+}

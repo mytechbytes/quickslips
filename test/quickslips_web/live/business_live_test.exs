@@ -126,4 +126,183 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
       assert html =~ "some updated name"
     end
   end
+
+  describe "Form pictures" do
+    import QuickSlips.UploadsFixtures
+
+    alias QuickSlips.Businesses
+    alias QuickSlips.Uploads
+
+    setup %{user: user} do
+      on_exit(fn -> File.rm_rf(Path.join(Uploads.root(), Integer.to_string(user.id))) end)
+    end
+
+    defp stored_files(user),
+      do: Path.wildcard(Path.join([Uploads.root(), Integer.to_string(user.id), "*"]))
+
+    defp choose(live, upload, name, content, type) do
+      live
+      |> file_input("#business-form", upload, [%{name: name, content: content, type: type}])
+      |> render_upload(name)
+    end
+
+    test "saves a new business with a logo and a signature", %{
+      conn: conn,
+      user: user,
+      scope: scope
+    } do
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      choose(form_live, :logo, "logo.png", png_bytes(), "image/png")
+      choose(form_live, :signature, "sign.jpg", jpg_bytes(), "image/jpeg")
+
+      assert {:ok, _index_live, html} =
+               form_live
+               |> form("#business-form", business: @create_attrs)
+               |> render_submit()
+               |> follow_redirect(conn, ~p"/businesses")
+
+      assert html =~ "Business created successfully"
+
+      [business] = Businesses.list_businesses(scope)
+      assert business.logo_path =~ ~r/^#{user.id}\/[a-f0-9]{16}\.png$/
+      assert business.signature_path =~ ~r/^#{user.id}\/[a-f0-9]{16}\.jpg$/
+      assert File.read!(Uploads.path(business.logo_path)) == png_bytes()
+      assert File.read!(Uploads.path(business.signature_path)) == jpg_bytes()
+    end
+
+    test "a file that is not really a picture is turned down, and nothing is saved", %{
+      conn: conn,
+      scope: scope
+    } do
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      choose(form_live, :logo, "logo.png", "this is only text", "image/png")
+
+      html = form_live |> form("#business-form", business: @create_attrs) |> render_submit()
+
+      assert html =~ "The logo is not a real PNG or JPG picture."
+      assert Businesses.list_businesses(scope) == []
+    end
+
+    test "a second picture is not kept when the first one is turned down", %{
+      conn: conn,
+      user: user,
+      scope: scope
+    } do
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      choose(form_live, :logo, "logo.png", png_bytes(), "image/png")
+      choose(form_live, :signature, "sign.png", "this is only text", "image/png")
+
+      html = form_live |> form("#business-form", business: @create_attrs) |> render_submit()
+
+      assert html =~ "The signature is not a real PNG or JPG picture."
+      assert Businesses.list_businesses(scope) == []
+      assert stored_files(user) == []
+    end
+
+    test "a file over 1 MB is refused", %{conn: conn} do
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      big = :binary.copy("a", 1_000_001)
+
+      logo =
+        file_input(form_live, "#business-form", :logo, [
+          %{name: "big.png", content: big, type: "image/png"}
+        ])
+
+      assert {:error, [[_ref, :too_large]]} = render_upload(logo, "big.png")
+      assert render(form_live) =~ "This file is too big. The limit is 1 MB."
+    end
+
+    test "a wrong file type is refused", %{conn: conn} do
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      logo =
+        file_input(form_live, "#business-form", :logo, [
+          %{name: "logo.svg", content: "<svg></svg>", type: "image/svg+xml"}
+        ])
+
+      assert {:error, [[_ref, :not_accepted]]} = render_upload(logo, "logo.svg")
+      assert render(form_live) =~ "Only PNG and JPG files can be used."
+    end
+
+    test "text fields with errors keep the chosen file and store nothing yet", %{
+      conn: conn,
+      user: user
+    } do
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      choose(form_live, :logo, "logo.png", png_bytes(), "image/png")
+
+      html = form_live |> form("#business-form", business: @invalid_attrs) |> render_submit()
+
+      assert html =~ "can&#39;t be blank"
+      assert html =~ "logo.png"
+      assert stored_files(user) == []
+    end
+
+    test "a new picture replaces the saved one and its file is deleted", %{
+      conn: conn,
+      user: user,
+      scope: scope
+    } do
+      old = stored_image(user.id)
+      business = business_fixture(scope, %{}, %{logo_path: old})
+      {:ok, form_live, html} = live(conn, ~p"/businesses/#{business}/edit")
+
+      assert html =~ ~s(src="/uploads/#{old}")
+
+      choose(form_live, :logo, "new.jpg", jpg_bytes(), "image/jpeg")
+
+      assert {:ok, _index_live, _html} =
+               form_live
+               |> form("#business-form", business: %{name: "Renamed"})
+               |> render_submit()
+               |> follow_redirect(conn, ~p"/businesses")
+
+      updated = Businesses.get_business!(scope, business.id)
+      assert updated.logo_path =~ ~r/\.jpg$/
+      refute File.exists?(Uploads.path(old))
+      assert File.exists?(Uploads.path(updated.logo_path))
+    end
+
+    test "the saved picture can be removed", %{conn: conn, user: user, scope: scope} do
+      logo = stored_image(user.id)
+      signature = stored_image(user.id)
+      business = business_fixture(scope, %{}, %{logo_path: logo, signature_path: signature})
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/#{business}/edit")
+
+      html = form_live |> element("#logo-field button", "Remove the saved logo") |> render_click()
+
+      refute html =~ ~s(src="/uploads/#{logo}")
+      assert html =~ ~s(src="/uploads/#{signature}")
+
+      assert %{logo_path: nil, signature_path: ^signature} =
+               Businesses.get_business!(scope, business.id)
+
+      refute File.exists?(Uploads.path(logo))
+    end
+
+    test "the show page draws the pictures", %{conn: conn, user: user, scope: scope} do
+      logo = stored_image(user.id)
+      business = business_fixture(scope, %{}, %{logo_path: logo})
+
+      {:ok, show_live, _html} = live(conn, ~p"/businesses/#{business}")
+
+      assert has_element?(show_live, ~s(#business-logo[src="/uploads/#{logo}"]))
+      refute has_element?(show_live, "#business-signature")
+    end
+
+    test "deleting a business deletes its pictures", %{conn: conn, user: user, scope: scope} do
+      logo = stored_image(user.id)
+      business = business_fixture(scope, %{}, %{logo_path: logo})
+      {:ok, index_live, _html} = live(conn, ~p"/businesses")
+
+      index_live |> element("#businesses-#{business.id} a", "Delete") |> render_click()
+
+      refute File.exists?(Uploads.path(logo))
+    end
+  end
 end

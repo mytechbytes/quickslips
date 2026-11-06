@@ -1,0 +1,15 @@
+{
+  "operator_name": "Kaveri City Cabs",
+  "operator_address": "12, MG Road, Bengaluru, Karnataka 560001",
+  "receipt_number": "TX-007731",
+  "date": "2026-10-22",
+  "passenger_name": "Meera Nair",
+  "pickup": "Indiranagar Metro Station, Bengaluru",
+  "drop": "Kempegowda International Airport, Devanahalli",
+  "vehicle_number": "KA 01 AB 4521",
+  "distance_km": 36.4,
+  "base_fare": 842,
+  "toll": 105,
+  "tax_percent": 5,
+  "payment_mode": "UPI"
+}

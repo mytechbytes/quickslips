@@ -86,9 +86,12 @@ defmodule QuickSlipsWeb.Router do
       live "/businesses/new", BusinessLive.Form, :new
       live "/businesses/:id", BusinessLive.Show, :show
       live "/businesses/:id/edit", BusinessLive.Form, :edit
+      live "/history", HistoryLive, :index
     end
 
     post "/users/update-password", UserSessionController, :update_password
+    get "/uploads/:user_id/:file", UploadController, :show
+    get "/history/:id/download", HistoryController, :download
   end
 
   scope "/", QuickSlipsWeb do

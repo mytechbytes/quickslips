@@ -6,7 +6,7 @@ defmodule QuickSlipsWeb.BusinessLive.Index do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope}>
+    <Layouts.app flash={@flash} current_scope={@current_scope} active={:businesses}>
       <.header>
         Listing Businesses
         <:actions>
@@ -23,7 +23,7 @@ defmodule QuickSlipsWeb.BusinessLive.Index do
       >
         <:col :let={{_id, business}} label="Name">{business.name}</:col>
         <:col :let={{_id, business}} label="Address">{business.address}</:col>
-        <:col :let={{_id, business}} label="Gstin">{business.gstin}</:col>
+        <:col :let={{_id, business}} label="GSTIN">{business.gstin}</:col>
         <:action :let={{_id, business}}>
           <div class="sr-only">
             <.link navigate={~p"/businesses/#{business}"}>Show</.link>

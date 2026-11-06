@@ -51,11 +51,13 @@ defmodule QuickSlipsWeb.UI do
       id={@id}
       navigate={@navigate}
       class={[
-        "rounded-field font-display text-xl font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-2",
+        "inline-flex items-center gap-2.5 rounded-field font-display text-xl font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-2",
         @tone == :ink && "text-ink focus-visible:outline-focus",
         @tone == :sidebar && "text-on-sidebar focus-visible:outline-on-sidebar"
       ]}
     >
+      <%!-- The mark is a picture with its own colours, the same in both themes. The name beside it is text. --%>
+      <img src={~p"/images/logo-mark.svg"} alt="" width="28" height="28" class="size-7 shrink-0" />
       QuickSlips
     </.link>
     """
@@ -214,11 +216,12 @@ defmodule QuickSlipsWeb.UI do
   attr :value, :string, required: true
   attr :icon, :string, default: nil
   attr :class, :any, default: nil
+  attr :rest, :global, doc: "for example an `id`"
   slot :footer
 
   def stat(assigns) do
     ~H"""
-    <div class={["rounded-card border border-line bg-surface p-5 shadow-card", @class]}>
+    <div class={["rounded-card border border-line bg-surface p-5 shadow-card", @class]} {@rest}>
       <dt class="flex items-center gap-x-2 text-sm/6 font-medium text-ink-muted">
         <.icon :if={@icon} name={@icon} class="size-5 text-ink-faint" />{@label}
       </dt>

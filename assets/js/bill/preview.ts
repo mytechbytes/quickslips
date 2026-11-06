@@ -1,4 +1,4 @@
-import type { BillData } from "./form"
+import type { BillData, Business } from "./form"
 
 type Reply = { id: number; svg?: string; error?: string }
 
@@ -11,9 +11,15 @@ export function createPreview(opts: {
 }) {
   const worker = new Worker(opts.workerUrl)
   let source: string | null = null
+  let helpers: string | null = null
   let latest = 0
   let timer: number | undefined
   let currentUrl: string | null = null
+  let lastData: BillData | null = null
+  // The pictures of the chosen business: the bytes by file name, and the names to put in the data.
+  let images: Record<string, Uint8Array> = {}
+  let imageNames: Record<string, string> = {}
+  let businessToken = 0
 
   const img = document.createElement("img")
   img.alt = "Document preview"
@@ -46,14 +52,56 @@ export function createPreview(opts: {
     return source
   }
 
+  // The helpers every template imports (`_shared/helpers.typ`). They sit next to main.typ, as on the server.
+  async function loadHelpers() {
+    if (helpers) return helpers
+    const res = await fetch("/source/_shared/helpers")
+    helpers = await res.text()
+    return helpers
+  }
+
   async function renderNow(data: BillData) {
+    lastData = data
     opts.status.textContent = "Updating preview…"
     const id = ++latest
-    worker.postMessage({ id, source: await loadSource(), data })
+    // The templates draw "logo" and "signature" when the data names a file, as the server does.
+    worker.postMessage({
+      id,
+      source: await loadSource(),
+      helpers: await loadHelpers(),
+      data: { ...data, ...imageNames },
+      images,
+    })
+  }
+
+  /** Use the logo and signature of this business (or none) in the preview. */
+  async function setBusiness(business: Business | null) {
+    const token = ++businessToken
+    const wanted: Record<string, string | null> = {
+      logo: business?.logo_url ?? null,
+      signature: business?.signature_url ?? null,
+    }
+    const nextImages: Record<string, Uint8Array> = {}
+    const nextNames: Record<string, string> = {}
+
+    for (const [key, url] of Object.entries(wanted)) {
+      if (!url) continue
+      const response = await fetch(url).catch(() => null)
+      if (!response?.ok) continue // no picture is better than no preview
+      const name = key + url.slice(url.lastIndexOf(".")) // "logo.png"
+      nextImages[name] = new Uint8Array(await response.arrayBuffer())
+      nextNames[key] = name
+    }
+
+    if (token !== businessToken) return // the user chose another business meanwhile
+    images = nextImages
+    imageNames = nextNames
+    if (lastData) renderNow(lastData)
   }
 
   return {
     renderNow,
+    setBusiness,
     /** Re-render after the user stops typing for `delay` ms (Task 6.3). */
     schedule(data: BillData, delay = 300) {
       window.clearTimeout(timer)

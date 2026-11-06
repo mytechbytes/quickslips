@@ -5,9 +5,9 @@ defmodule QuickSlips.BusinessesFixtures do
   """
 
   @doc """
-  Generate a business.
+  Generate a business. `images` are stored paths: `%{logo_path: "12/ab12.png"}`.
   """
-  def business_fixture(scope, attrs \\ %{}) do
+  def business_fixture(scope, attrs \\ %{}, images \\ %{}) do
     attrs =
       Enum.into(attrs, %{
         address: "some address",
@@ -15,7 +15,7 @@ defmodule QuickSlips.BusinessesFixtures do
         name: "some name"
       })
 
-    {:ok, business} = QuickSlips.Businesses.create_business(scope, attrs)
+    {:ok, business} = QuickSlips.Businesses.create_business(scope, attrs, images)
     business
   end
 end

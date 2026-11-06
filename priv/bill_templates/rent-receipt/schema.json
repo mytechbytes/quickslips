@@ -8,7 +8,7 @@
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
     { "key": "tenant_name", "label": "Tenant name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "landlord_name", "label": "Landlord name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "landlord_name", "label": "Landlord name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
     { "key": "landlord_pan", "label": "Landlord PAN (optional)", "type": "text", "required": false, "max_length": 10 },
     { "key": "property_address", "label": "Rented property address", "type": "textarea", "required": true, "max_length": 250 },
     { "key": "month", "label": "Rent for month", "type": "month", "required": true },

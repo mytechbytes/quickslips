@@ -1,0 +1,14 @@
+{
+  "clinic_name": "Nair Family Clinic",
+  "clinic_address": "Shop 2, Lake View Road, Kochi, Kerala 682016",
+  "registration_number": "KMC/2019/4411",
+  "bill_number": "MB-0412",
+  "date": "2026-10-05",
+  "patient_name": "Anitha Nair",
+  "patient_details": "42 / F",
+  "doctor_name": "Dr. Suresh Nair",
+  "consultation_fee": 500,
+  "medicines_cost": 430,
+  "tests_cost": 320,
+  "payment_mode": "UPI"
+}

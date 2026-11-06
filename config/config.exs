@@ -92,6 +92,9 @@ config :quickslips, :typst_bin, "typst"
 # limits of quota for downloads PDF
 config :quickslips, :quota, anonymous: 2, user: 10, ip: 20
 
+# Upload directory
+config :quickslips, :uploads_dir, Path.expand("../priv/uploads", __DIR__)
+
 # Error tracking (Task 7.8). Errors are kept in our own Postgres, with no third party. What may be stored
 # and what is not worth storing are decided by QuickSlips.ErrorFilter and QuickSlips.ErrorIgnorer.
 config :error_tracker,

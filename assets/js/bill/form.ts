@@ -10,20 +10,32 @@ export type Field = {
 }
 export type Schema = { slug: string; title: string; fields: Field[] }
 export type BillData = Record<string, string | number>
-export type Business = { id: number; name: string; address: string | null; gstin: string | null }
+export type Business = {
+  id: number
+  name: string
+  address: string | null
+  gstin: string | null
+  logo_url: string | null
+  signature_url: string | null
+}
 
 type Control = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
 const INPUT_CLASS =
   "block w-full rounded-field border border-line-strong bg-surface px-3 py-2.5 text-base text-ink placeholder:text-ink-faint focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:text-sm/6"
 
-/** A "Fill from a saved business" picker above the first field. Choosing a business fills every field whose `prefill` is `business.<attribute>`. */
+/**
+ * A "Fill from a saved business" picker above the first field. Choosing a business fills every field whose
+ * `prefill` is `business.<attribute>`, and tells `picked` which business it is (`null` for the "Choose…" line),
+ * because its logo and signature belong on the document too.
+ */
 function addBusinessPicker(
   form: HTMLFormElement,
   schema: Schema,
   businesses: Business[],
   controls: Map<string, Control>,
   notify: () => void,
+  picked: (business: Business | null) => void,
 ) {
   if (businesses.length === 0) return // visitors, and users who have not saved a business yet
 
@@ -39,8 +51,9 @@ function addBusinessPicker(
   label.textContent = "Fill from a saved business"
 
   select.addEventListener("change", () => {
-    const business = businesses.find((b) => String(b.id) === select.value)
-    if (!business) return // the "Choose…" line
+    const business = businesses.find((b) => String(b.id) === select.value) ?? null
+    picked(business)
+    if (!business) return // the "Choose…" line: nothing to fill
 
     for (const field of schema.fields) {
       if (!field.prefill?.startsWith("business.")) continue
@@ -89,6 +102,7 @@ export function buildForm(
   initial: BillData,
   onChange: (data: BillData) => void,
   businesses: Business[] = [],
+  onBusiness: (business: Business | null) => void = () => {},
 ) {
   const controls = new Map<string, Control>()
   const errorEls = new Map<string, HTMLElement>()
@@ -129,7 +143,7 @@ export function buildForm(
 
   form.addEventListener("input", () => onChange(read()))
 
-  addBusinessPicker(form, schema, businesses, controls, () => onChange(read()))
+  addBusinessPicker(form, schema, businesses, controls, () => onChange(read()), onBusiness)
 
   return {
     read,

@@ -1,0 +1,16 @@
+{
+  "gym_name": "IronWorks Fitness",
+  "gym_address": "2nd Floor, City Mall, Sector 18, Noida, Uttar Pradesh 201301",
+  "gstin": "09ABCDE1234F1Z5",
+  "receipt_number": "GM-002041",
+  "date": "2026-10-01",
+  "member_name": "Vikram Rao",
+  "member_phone": "98100 22334",
+  "plan": "Quarterly",
+  "start_date": "2026-10-01",
+  "end_date": "2026-12-31",
+  "fee": 6000,
+  "joining_fee": 500,
+  "gst_percent": 18,
+  "payment_mode": "UPI"
+}

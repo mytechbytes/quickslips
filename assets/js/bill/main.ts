@@ -30,7 +30,21 @@ function init() {
     status: root.querySelector<HTMLElement>("#bill-status")!,
   })
   preview.renderNow(sample)
-  const ui = buildForm(form, schema, sample, (data) => preview.schedule(data), businesses)
+  // The saved business the user picked, if any: its logo and signature go on the preview and the PDF.
+  let business: Business | null = null
+  function useBusiness(picked: Business | null) {
+    business = picked
+    preview.setBusiness(picked)
+  }
+  const ui = buildForm(form, schema, sample, (data) => preview.schedule(data), businesses, useBusiness)
+
+  // "Edit and regenerate": the document was made with this business, so it is selected again. Its fields
+  // already hold what the document had, so nothing is filled in.
+  const earlier = businesses.find((b) => b.id === Number(root.dataset.businessId))
+  if (earlier) {
+    form.querySelector<HTMLSelectElement>("#business-select")!.value = String(earlier.id)
+    useBusiness(earlier)
+  }
   // const ui = buildForm(form, schema, sample, (data) => console.log("changed", data))
   // console.log("initial", ui.read())
 
@@ -64,7 +78,7 @@ function init() {
       }
       turnstileToken = await widget.token()
     }
-    const result = await downloadPdf(schema.slug, root.dataset.template!, ui.read(), turnstileToken)
+    const result = await downloadPdf(schema.slug, root.dataset.template!, ui.read(), turnstileToken, business?.id)
     button.disabled = false
 
     if (result.ok) {
