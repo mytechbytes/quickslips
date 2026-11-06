@@ -6,13 +6,15 @@ defmodule QuickSlipsWeb.UserLive.Login do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope}>
+    <Layouts.app flash={@flash} current_scope={@current_scope} locale={@locale}>
       <.auth_card
-        title={if @current_scope, do: "Confirm it is you", else: "Log in to QuickSlips"}
+        title={
+          if @current_scope, do: gettext("Confirm it is you"), else: gettext("Log in to QuickSlips")
+        }
         subtitle={
           if @current_scope,
-            do: "You need to reauthenticate to perform sensitive actions on your account.",
-            else: "Welcome back."
+            do: gettext("You need to reauthenticate to perform sensitive actions on your account."),
+            else: gettext("Welcome back.")
         }
       >
         <.alert
@@ -25,7 +27,7 @@ defmodule QuickSlipsWeb.UserLive.Login do
         </.alert>
 
         <.tabs id="login-tabs" variant="pills">
-          <:tab id="password" label="Password">
+          <:tab id="password" label={gettext("Password")}>
             <.form
               :let={f}
               for={@form}
@@ -38,7 +40,7 @@ defmodule QuickSlipsWeb.UserLive.Login do
                 readonly={!!@current_scope}
                 field={f[:email]}
                 type="email"
-                label="Email address"
+                label={gettext("Email address")}
                 autocomplete="username"
                 spellcheck="false"
                 required
@@ -47,20 +49,22 @@ defmodule QuickSlipsWeb.UserLive.Login do
               <.input
                 field={@form[:password]}
                 type="password"
-                label="Password"
+                label={gettext("Password")}
                 autocomplete="current-password"
                 spellcheck="false"
-                help="Forgot it? Use the Email link tab, then set a new password in Settings."
+                help={
+                  gettext("Forgot it? Use the Email link tab, then set a new password in Settings.")
+                }
               />
               <div class="mt-4 space-y-3">
                 <.button name={@form[:remember_me].name} value="true" block>
-                  Log in and stay logged in
+                  {gettext("Log in and stay logged in")}
                 </.button>
-                <.button variant="secondary" block>Log in only this time</.button>
+                <.button variant="secondary" block>{gettext("Log in only this time")}</.button>
               </div>
             </.form>
           </:tab>
-          <:tab id="link" label="Email link">
+          <:tab id="link" label={gettext("Email link")}>
             <.form
               :let={f}
               for={@form}
@@ -72,31 +76,31 @@ defmodule QuickSlipsWeb.UserLive.Login do
                 readonly={!!@current_scope}
                 field={f[:email]}
                 type="email"
-                label="Email address"
+                label={gettext("Email address")}
                 autocomplete="username"
                 spellcheck="false"
                 required
-                help="We email you a link that logs you in. No password needed."
+                help={gettext("We email you a link that logs you in. No password needed.")}
               />
               <.button block class="mt-4">
-                <.icon name="hero-envelope" class="size-5" /> Email me a link
+                <.icon name="hero-envelope" class="size-5" /> {gettext("Email me a link")}
               </.button>
             </.form>
           </:tab>
         </.tabs>
 
         <div class="mt-6">
-          <.divider>or</.divider>
+          <.divider>{gettext("or")}</.divider>
           <div class="mt-6"><.google_button /></div>
         </div>
 
         <:footer :if={!@current_scope}>
-          New here?
+          {gettext("New here?")}
           <.link
             navigate={~p"/users/register"}
             class="font-semibold text-primary hover:text-primary-hover hover:underline"
           >
-            Sign up
+            {gettext("Sign up")}
           </.link>
         </:footer>
       </.auth_card>
@@ -112,7 +116,7 @@ defmodule QuickSlipsWeb.UserLive.Login do
 
     form = to_form(%{"email" => email}, as: "user")
 
-    {:ok, assign(socket, form: form, trigger_submit: false, page_title: "Log in")}
+    {:ok, assign(socket, form: form, trigger_submit: false, page_title: gettext("Log in"))}
   end
 
   @impl true
@@ -129,7 +133,9 @@ defmodule QuickSlipsWeb.UserLive.Login do
     end
 
     info =
-      "If your email is in our system, you will receive instructions for logging in shortly."
+      gettext(
+        "If your email is in our system, you will receive instructions for logging in shortly."
+      )
 
     {:noreply,
      socket

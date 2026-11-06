@@ -1,3 +1,5 @@
+import { t } from "./i18n"
+
 export type Field = {
   key: string
   label: string
@@ -6,6 +8,8 @@ export type Field = {
   max_length?: number
   min?: number
   options?: string[]
+  // What each option is called in the language of the page: the data holds the option, the form shows this.
+  option_labels?: Record<string, string>
   prefill?: string
 }
 export type Schema = { slug: string; title: string; fields: Field[] }
@@ -42,13 +46,13 @@ function addBusinessPicker(
   const select = document.createElement("select")
   select.id = "business-select"
   select.className = INPUT_CLASS
-  select.append(new Option("Choose a saved business…", ""))
+  select.append(new Option(t("pick_business"), ""))
   for (const business of businesses) select.append(new Option(business.name, String(business.id)))
 
   const label = document.createElement("label")
   label.htmlFor = select.id
   label.className = "mb-1 block text-sm/6 font-medium text-ink"
-  label.textContent = "Fill from a saved business"
+  label.textContent = t("fill_business")
 
   select.addEventListener("change", () => {
     const business = businesses.find((b) => String(b.id) === select.value) ?? null
@@ -79,7 +83,7 @@ function createControl(field: Field, id: string): Control {
     for (const option of field.options ?? []) {
       const el = document.createElement("option")
       el.value = option
-      el.textContent = option
+      el.textContent = field.option_labels?.[option] ?? option
       control.append(el)
     }
   } else {
@@ -95,7 +99,10 @@ function createControl(field: Field, id: string): Control {
   return control
 }
 
-/** Builds the form inside `form` and calls `onChange` with the current data after every edit. */
+/**
+ * Builds the form inside `form` and calls `onChange` with the current data after every edit. `currency` is the
+ * sign of the document's currency: it takes the place of `{currency}` in a label ("Rate per litre ({currency})").
+ */
 export function buildForm(
   form: HTMLFormElement,
   schema: Schema,
@@ -103,6 +110,7 @@ export function buildForm(
   onChange: (data: BillData) => void,
   businesses: Business[] = [],
   onBusiness: (business: Business | null) => void = () => {},
+  currency = "",
 ) {
   const controls = new Map<string, Control>()
   const errorEls = new Map<string, HTMLElement>()
@@ -114,7 +122,7 @@ export function buildForm(
     const label = document.createElement("label")
     label.htmlFor = id
     label.className = "mb-1 block text-sm/6 font-medium text-ink"
-    label.textContent = field.label + (field.required ? " *" : "")
+    label.textContent = field.label.replace("{currency}", currency) + (field.required ? " *" : "")
 
     const control = createControl(field, id)
     const initialValue = initial[field.key]

@@ -1,5 +1,6 @@
 {
   "slug": "courier-receipt",
+  "public_slug": "courier-receipt-generator",
   "title": "Courier Receipt Generator",
   "category": "Travel",
   "icon": "hero-truck",

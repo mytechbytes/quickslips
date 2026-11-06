@@ -13,6 +13,9 @@ defmodule QuickSlipsWeb.Router do
     plug :put_secure_browser_headers
     plug :fetch_current_scope_for_user
     plug QuickSlipsWeb.Plugs.VisitorId
+
+    # Reads `:locale` of `/:locale` and `/:locale/:slug` (the last routes below); other routes pass through.
+    plug QuickSlipsWeb.Plugs.Locale
   end
 
   pipeline :api do
@@ -78,7 +81,10 @@ defmodule QuickSlipsWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     live_session :require_authenticated_user,
-      on_mount: [{QuickSlipsWeb.UserAuth, :require_authenticated}] do
+      on_mount: [
+        {QuickSlipsWeb.Plugs.Locale, :default},
+        {QuickSlipsWeb.UserAuth, :require_authenticated}
+      ] do
       live "/users/settings", UserLive.Settings, :edit
       live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
       live "/dashboard", DashboardLive, :index
@@ -94,22 +100,39 @@ defmodule QuickSlipsWeb.Router do
     get "/history/:id/download", HistoryController, :download
   end
 
+  # Everything that works with or without a login, in the `:browser` pipeline. The order matters at the end:
+  # `/:locale` and `/:locale/:slug` match any one and any two segments, so they come after every route that
+  # has a fixed first segment, and a new single-segment route (like /healthz) goes above them.
   scope "/", QuickSlipsWeb do
     pipe_through [:browser]
 
-    live_session :current_user,
-      on_mount: [{QuickSlipsWeb.UserAuth, :mount_current_scope}] do
-      live "/", HomeLive, :index
-      live "/users/register", UserLive.Registration, :new
-      live "/users/log-in", UserLive.Login, :new
-      live "/users/log-in/:token", UserLive.Confirmation, :new
-    end
+    # `/` has no page: it leads to the home page of the visitor's locale.
+    get "/", RootController, :index
 
+    # The language and country switch: remembers the choice, then goes to the same page in the new locale.
+    post "/locale", LocaleController, :update
     post "/users/log-in", UserSessionController, :create
     delete "/users/log-out", UserSessionController, :delete
 
     get "/source/:slug/:template", TemplateSourceController, :show
     get "/healthz", HealthController, :show
-    get "/:slug", TemplateController, :show
+
+    live_session :current_user,
+      on_mount: [
+        {QuickSlipsWeb.Plugs.Locale, :default},
+        {QuickSlipsWeb.UserAuth, :mount_current_scope}
+      ] do
+      live "/users/register", UserLive.Registration, :new
+      live "/users/log-in", UserLive.Login, :new
+      live "/users/log-in/:token", UserLive.Confirmation, :new
+
+      # The catalogue of a locale: /en-in, /hi-in, /es-es. An old template address (/fuel-bill) also arrives
+      # here, and the locale plug moves it to its new page.
+      live "/:locale", HomeLive, :index
+    end
+
+    # A bill under its locale: /en-in/fuel-bill-generator. The slug is the public one, which can differ per
+    # language; the controller finds the template through the locale.
+    get "/:locale/:slug", TemplateController, :show
   end
 end

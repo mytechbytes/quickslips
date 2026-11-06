@@ -1,0 +1,36 @@
+{
+  "title": "पेट्रोल बिल जनरेटर",
+  "name": "पेट्रोल बिल",
+  "public_slug": "fuel-bill-generator",
+  "summary": "पेट्रोल या डीज़ल का फ्यूल बिल PDF के रूप में बनाएं।",
+  "description": "पेट्रोल पंप का नाम, तारीख, ईंधन का प्रकार, मात्रा और दर के साथ साफ़-सुथरा फ्यूल बिल बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": { "t1": "क्लासिक" },
+  "fields": {
+    "station_name": { "label": "पेट्रोल पंप का नाम" },
+    "station_address": { "label": "पेट्रोल पंप का पता" },
+    "bill_number": { "label": "बिल नंबर" },
+    "date": { "label": "तारीख" },
+    "vehicle_number": { "label": "वाहन नंबर" },
+    "fuel_type": { "label": "ईंधन का प्रकार", "options": { "Petrol": "पेट्रोल", "Diesel": "डीज़ल", "CNG": "सीएनजी" } },
+    "quantity": { "label": "मात्रा (लीटर)" },
+    "rate": { "label": "प्रति लीटर दर ({currency})" }
+  },
+  "print": {
+    "bill_no": "बिल नं.",
+    "date": "तारीख",
+    "vehicle": "वाहन",
+    "fuel": "ईंधन",
+    "item": "विवरण",
+    "quantity": "मात्रा (ली.)",
+    "rate": "दर",
+    "amount": "राशि",
+    "total": "कुल",
+    "signatory": "अधिकृत हस्ताक्षरकर्ता",
+    "thanks": "धन्यवाद। फिर पधारें।"
+  },
+  "sample": {
+    "station_name": "सनराइज़ फ्यूल स्टेशन",
+    "station_address": "एनएच-48, सेक्टर 12, गुरुग्राम, हरियाणा",
+    "vehicle_number": "HR 26 AB 1234"
+  }
+}

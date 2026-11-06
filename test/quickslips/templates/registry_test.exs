@@ -5,10 +5,36 @@ defmodule QuickSlips.Templates.RegistryTest do
 
   @moduletag :tmp_dir
 
-  defp write_schema(dir, slug, fields) do
+  defp write_schema(dir, slug, fields, extra \\ %{}) do
     File.mkdir_p!(Path.join(dir, slug))
-    schema = %{slug: slug, title: "Test", category: "Work", templates: [], fields: fields}
+
+    schema =
+      Map.merge(
+        %{slug: slug, title: "Test", category: "Work", templates: [], fields: fields},
+        extra
+      )
+
     File.write!(Path.join([dir, slug, "schema.json"]), Jason.encode!(schema))
+  end
+
+  defp write_text(dir, slug, name, text) do
+    File.mkdir_p!(Path.join([dir, slug, "text"]))
+    File.write!(Path.join([dir, slug, "text", name <> ".json"]), Jason.encode!(text))
+  end
+
+  defp write_shared(dir, name, text) do
+    File.mkdir_p!(Path.join([dir, "_shared", "text"]))
+    File.write!(Path.join([dir, "_shared", "text", name <> ".json"]), Jason.encode!(text))
+  end
+
+  # Starts a registry that is expected to refuse the folder, and returns what it says.
+  defp start_error(dir) do
+    Process.flag(:trap_exit, true)
+
+    assert {:error, {%RuntimeError{message: message}, _stacktrace}} =
+             Registry.start_link(dir: dir, name: :registry_bad)
+
+    message
   end
 
   test "loads every folder that has a schema, and ignores folders that have none", %{tmp_dir: dir} do
@@ -21,15 +47,154 @@ defmodule QuickSlips.Templates.RegistryTest do
   end
 
   test "refuses a field named like a business picture", %{tmp_dir: dir} do
-    Process.flag(:trap_exit, true)
-
     for key <- ["logo", "signature"] do
       write_schema(dir, "bad", [%{key: key, label: "Picture", type: "text"}])
 
-      assert {:error, {%RuntimeError{message: message}, _stacktrace}} =
-               Registry.start_link(dir: dir, name: :registry_bad)
+      assert start_error(dir) =~ "reserved for business pictures"
+    end
+  end
 
-      assert message =~ "reserved for business pictures"
+  test "refuses a slug that is a locale, since that address is a catalogue", %{tmp_dir: dir} do
+    write_schema(dir, "en-in", [])
+
+    assert start_error(dir) =~ "reserved or not a valid slug"
+  end
+
+  describe "words" do
+    test "a template without text files is in English, with its schema's own words", %{
+      tmp_dir: dir
+    } do
+      write_schema(dir, "old", [], %{
+        public_slug: "old-bill-generator",
+        title: "Old Bill Generator"
+      })
+
+      registry = start_supervised!({Registry, dir: dir, name: :registry_old})
+
+      assert {:ok, %{schema: schema}} = Registry.view("old", "en-in", registry)
+      assert schema["title"] == "Old Bill Generator"
+      assert schema["name"] == "Old Bill"
+      assert schema["public_slug"] == "old-bill-generator"
+
+      # ...and nothing else: a Hindi page of it would only be English under another address.
+      assert {:error, :not_found} = Registry.view("old", "hi-in", registry)
+      assert Registry.list_for("hi-in", registry) == []
+    end
+
+    test "the public slug defaults to the slug", %{tmp_dir: dir} do
+      write_schema(dir, "plain", [])
+      registry = start_supervised!({Registry, dir: dir, name: :registry_plain})
+
+      assert {:ok, "plain"} = Registry.fetch_by_public_slug("en-in", "plain", registry)
+    end
+
+    test "text files are laid over the schema, the most specific last", %{tmp_dir: dir} do
+      write_schema(
+        dir,
+        "bill",
+        [%{key: "kind", label: "Kind", type: "select", options: ["A", "B"]}],
+        %{languages: ["en", "hi"], templates: [%{id: "t1"}]}
+      )
+
+      write_text(dir, "bill", "en", %{
+        title: "Bill Generator",
+        public_slug: "bill-generator",
+        designs: %{t1: "Classic"},
+        fields: %{kind: %{label: "Kind of bill", options: %{A: "Type A"}}},
+        print: %{total: "Total"}
+      })
+
+      write_text(dir, "bill", "hi", %{
+        title: "बिल जनरेटर",
+        public_slug: "bill-generator",
+        designs: %{t1: "क्लासिक"},
+        fields: %{kind: %{label: "बिल का प्रकार", options: %{A: "प्रकार क"}}},
+        print: %{total: "कुल"}
+      })
+
+      write_shared(dir, "en", %{months: ["Jan"], categories: %{Work: "Work"}})
+      write_shared(dir, "hi", %{months: ["जन."], categories: %{Work: "कार्य"}})
+
+      registry = start_supervised!({Registry, dir: dir, name: :registry_words})
+
+      assert {:ok, %{schema: english, print: print}} = Registry.view("bill", "en-in", registry)
+      assert english["title"] == "Bill Generator"
+      assert [%{"id" => "t1", "name" => "Classic"}] = english["templates"]
+      assert [%{"label" => "Kind of bill", "option_labels" => labels}] = english["fields"]
+      assert labels == %{"A" => "Type A", "B" => "B"}
+      assert print["print"] == %{"total" => "Total"}
+      assert print["lang"] == "en"
+
+      assert {:ok, %{schema: hindi, print: print}} = Registry.view("bill", "hi-in", registry)
+      assert hindi["title"] == "बिल जनरेटर"
+      assert hindi["category_name"] == "कार्य"
+      assert print["print"] == %{"total" => "कुल"}
+      assert print["options"] == %{"kind" => %{"A" => "प्रकार क", "B" => "B"}}
+      assert print["months"] == ["जन."]
+      assert print["lang"] == "hi"
+    end
+
+    test "a declared language that is not translated completely stops the start", %{tmp_dir: dir} do
+      write_schema(dir, "bill", [], %{languages: ["en", "hi"]})
+      write_text(dir, "bill", "en", %{title: "Bill", fields: %{rate: %{label: "Rate"}}})
+      write_text(dir, "bill", "hi", %{title: "बिल"})
+
+      assert start_error(dir) =~ "text/hi.json is missing fields"
+    end
+
+    test "a declared language with no file at all stops the start", %{tmp_dir: dir} do
+      write_schema(dir, "bill", [], %{languages: ["en", "es"]})
+      write_text(dir, "bill", "en", %{title: "Bill"})
+
+      assert start_error(dir) =~ "text/es.json is missing title"
+    end
+
+    test "shared words must be in every language a template is in", %{tmp_dir: dir} do
+      write_schema(dir, "bill", [], %{languages: ["en", "es"]})
+      write_text(dir, "bill", "en", %{title: "Bill"})
+      write_text(dir, "bill", "es", %{title: "Factura"})
+      write_shared(dir, "en", %{months: ["Jan"]})
+      write_shared(dir, "es", %{})
+
+      assert start_error(dir) =~ "_shared/text/es.json is missing months"
+    end
+  end
+
+  describe "public slugs" do
+    test "two templates can't have the same one in a locale", %{tmp_dir: dir} do
+      write_schema(dir, "one", [], %{public_slug: "same-generator"})
+      write_schema(dir, "two", [], %{public_slug: "same-generator"})
+
+      assert start_error(dir) =~ ~s(have the same public slug "same-generator" in en-in)
+    end
+
+    test "must be lowercase letters, digits and hyphens", %{tmp_dir: dir} do
+      write_schema(dir, "one", [], %{public_slug: "Not A Slug"})
+
+      assert start_error(dir) =~ "must be lowercase letters, digits and hyphens"
+    end
+
+    test "lead to the template, and a template lists its own in each locale", %{tmp_dir: dir} do
+      write_schema(dir, "one", [], %{public_slug: "one-generator", languages: ["en", "hi"]})
+      write_text(dir, "one", "en", %{title: "One"})
+      write_text(dir, "one", "hi", %{title: "एक", public_slug: "ek-generator"})
+      write_shared(dir, "en", %{})
+      write_shared(dir, "hi", %{})
+      registry = start_supervised!({Registry, dir: dir, name: :registry_slugs})
+
+      assert {:ok, "one"} = Registry.fetch_by_public_slug("en-in", "one-generator", registry)
+      assert {:ok, "one"} = Registry.fetch_by_public_slug("hi-in", "ek-generator", registry)
+
+      assert {:error, :not_found} =
+               Registry.fetch_by_public_slug("hi-in", "one-generator", registry)
+
+      assert {:error, :not_found} =
+               Registry.fetch_by_public_slug("es-es", "one-generator", registry)
+
+      assert Registry.public_slugs("one", registry) ==
+               %{"en-in" => "one-generator", "hi-in" => "ek-generator"}
+
+      assert Registry.public_slugs("nope", registry) == %{}
     end
   end
 end
