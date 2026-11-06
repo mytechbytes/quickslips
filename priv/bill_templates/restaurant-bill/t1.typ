@@ -3,7 +3,7 @@
 #let data = json("data.json")
 #show: base.with(paper: "a5")
 
-#let items = line-items(data, 5)
+#let items = item-rows(data)
 #let subtotal = sum-of(items.map(row => row.amount))
 #let service-rate = num(data, "service_percent")
 #let service = percent(subtotal, service-rate)
@@ -16,6 +16,7 @@
   data.restaurant_name,
   address: opt(data, "restaurant_address"),
   gstin: opt(data, "gstin"),
+  ids: if opt(data, "fssai_number") != none { ([FSSAI Lic. No.: #opt(data, "fssai_number")],) } else { () },
   title: "Bill",
 )
 
@@ -30,7 +31,7 @@
 #v(4mm)
 #bill-table(
   ([Item], [Qty], [Rate], [Amount]),
-  items.map(row => ([#row.name], [#row.qty], [#money(row.rate)], [#money(row.amount)])),
+  items.map(row => ([#row.name], [#fmt-number(row.qty)], [#money(row.rate)], [#money(row.amount)])),
 )
 
 #v(3mm)

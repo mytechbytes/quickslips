@@ -72,6 +72,16 @@ defmodule QuickSlips.Render.RendererTest do
     for field <- schema["fields"], into: %{} do
       value =
         case field do
+          # a number that has a fixed shape (a licence number, a tax id) is the sample's own
+          %{"type" => "tax_id"} ->
+            sample[field["key"]]
+
+          %{"type" => "text", "pattern" => _} ->
+            sample[field["key"]]
+
+          %{"type" => "tax_rate"} ->
+            List.last(field["rates"])
+
           %{"type" => type} when type in ["text", "textarea"] ->
             "Lorem ipsum dolor sit amet "
             |> String.duplicate(12)
@@ -82,6 +92,15 @@ defmodule QuickSlips.Render.RendererTest do
 
           %{"type" => "select", "options" => options} ->
             List.last(options)
+
+          %{"type" => "items"} ->
+            # as many rows as the table may have, with the longest name and the biggest numbers
+            long = String.duplicate("x", field["name_max_length"] || 80)
+
+            List.duplicate(
+              %{"name" => long, "qty" => 9_999.99, "rate" => 9_999_999.99},
+              field["max_rows"] || 30
+            )
 
           %{"type" => "month"} ->
             sample[field["key"]] || "2026-12"

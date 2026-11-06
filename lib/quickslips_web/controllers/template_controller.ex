@@ -5,6 +5,7 @@ defmodule QuickSlipsWeb.TemplateController do
   alias QuickSlips.Documents
   alias QuickSlips.Regions
   alias QuickSlips.Templates
+  alias QuickSlips.Templates.Items
   alias QuickSlipsWeb.Seo
   alias QuickSlipsWeb.UploadController
 
@@ -27,7 +28,7 @@ defmodule QuickSlipsWeb.TemplateController do
         |> merge_assigns(Seo.bill(locale, slug))
         |> render(:show,
           schema: schema,
-          sample: if(document, do: document.data, else: sample),
+          sample: if(document, do: Items.upgrade(schema, document.data), else: sample),
           document: document,
           locale: locale,
           region: region,

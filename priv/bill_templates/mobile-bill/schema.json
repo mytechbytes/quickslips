@@ -21,7 +21,7 @@
     { "key": "validity", "label": "Validity or billing period (optional)", "type": "text", "required": false, "max_length": 60 },
     { "key": "plan_charge", "label": "Plan charge (₹)", "type": "number", "required": true, "min": 0 },
     { "key": "other_charges", "label": "Other charges (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "gst_percent", "label": "GST (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 },
+    { "key": "gst_percent", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
     { "key": "payment_mode", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
   ]
 }

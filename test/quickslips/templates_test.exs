@@ -53,7 +53,18 @@ defmodule QuickSlips.TemplatesTest do
       assert Enum.any?(schema["fields"], & &1["required"]), "#{slug} has no required field"
 
       for field <- schema["fields"] do
-        assert field["type"] in ["text", "textarea", "number", "date", "month", "select"]
+        assert field["type"] in [
+                 "text",
+                 "textarea",
+                 "number",
+                 "date",
+                 "month",
+                 "select",
+                 "items",
+                 "tax_rate",
+                 "tax_id"
+               ]
+
         assert is_binary(field["label"]) and field["label"] != ""
 
         if field["type"] in ["text", "textarea"],
@@ -236,7 +247,12 @@ defmodule QuickSlips.TemplatesTest do
       english = Templates.get("fuel-bill") |> elem(1)
 
       for locale <- Locales.live(), {:ok, schema} = Templates.get("fuel-bill", locale) do
-        assert Enum.map(schema["fields"], & &1["key"]) == Enum.map(english["fields"], & &1["key"])
+        # a field that only some countries have (a Spanish tax rate) is not in every locale
+        everywhere = fn fields ->
+          for %{"key" => key} = f <- fields, not is_map_key(f, "countries"), do: key
+        end
+
+        assert everywhere.(schema["fields"]) == everywhere.(english["fields"])
 
         for {field, english_field} <- Enum.zip(schema["fields"], english["fields"]) do
           assert field["label"] not in [nil, ""], "#{locale.code} #{field["key"]} has no label"

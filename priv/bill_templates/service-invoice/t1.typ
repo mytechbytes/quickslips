@@ -3,7 +3,7 @@
 #let data = json("data.json")
 #show: base.with(paper: "a4", margin: 18mm, size: 10.5pt)
 
-#let items = line-items(data, 3, name: "service", rate: "rate")
+#let items = item-rows(data)
 #let subtotal = sum-of(items.map(row => row.amount))
 #let tax-rate = num(data, "gst_percent")
 #let tax = percent(subtotal, tax-rate)
@@ -43,7 +43,7 @@
 #v(8mm)
 #bill-table(
   ([Description], [Qty], [Rate], [Amount]),
-  items.map(row => ([#row.name], [#row.qty], [#money(row.rate)], [#money(row.amount)])),
+  items.map(row => ([#row.name], [#fmt-number(row.qty)], [#money(row.rate)], [#money(row.amount)])),
 )
 
 #v(3mm)

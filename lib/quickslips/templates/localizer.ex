@@ -24,6 +24,7 @@ defmodule QuickSlips.Templates.Localizer do
   """
 
   alias QuickSlips.Locales
+  alias QuickSlips.Regions
 
   @doc "The text files of a template (or the shared ones) as one map for `locale`: the most specific file wins."
   def merged(texts, locale) do
@@ -53,7 +54,10 @@ defmodule QuickSlips.Templates.Localizer do
       "category_name" => category_name(schema, shared, locale),
       "languages" => schema["languages"] || ["en"],
       "templates" => Enum.map(schema["templates"], &localize_design(&1, text["designs"] || %{})),
-      "fields" => Enum.map(schema["fields"], &localize_field(&1, text["fields"] || %{}))
+      "fields" =>
+        schema["fields"]
+        |> Enum.filter(&in_country?(&1, locale.country))
+        |> Enum.map(&localize_field(&1, text["fields"] || %{}, tax(locale)))
     })
   end
 
@@ -66,14 +70,36 @@ defmodule QuickSlips.Templates.Localizer do
     Map.put(design, "name", names[design["id"]] || design["name"] || design["id"])
   end
 
-  defp localize_field(field, texts) do
+  # A field with `"countries": ["in"]` (a registration number only India has) is only in the pages of those countries.
+  defp in_country?(%{"countries" => countries}, country), do: country in countries
+  defp in_country?(_field, _country), do: true
+
+  defp tax(locale) do
+    case Regions.build(locale.country) do
+      {:ok, %{"tax" => %{} = tax}} -> tax
+      _ -> %{}
+    end
+  end
+
+  defp localize_field(field, texts, tax) do
     words = Map.get(texts, field["key"], %{})
     field = Map.put(field, "label", words["label"] || field["label"])
 
     case field do
+      # The rates the country offers, and how its tax-registration number looks.
+      %{"type" => "tax_rate"} ->
+        Map.put(field, "rates", tax["rates"] || [])
+
+      %{"type" => "tax_id"} ->
+        Map.put_new(field, "pattern", get_in(tax, ["id", "pattern"]))
+
       %{"type" => "select", "options" => options} ->
         names = words["options"] || field["option_labels"] || %{}
         Map.put(field, "option_labels", Map.new(options, &{&1, names[&1] || &1}))
+
+      # The heads of the columns of a table of items: `{"name": "Item", "qty": "Qty", "rate": "Price ({currency})"}`.
+      %{"type" => "items"} ->
+        Map.put(field, "columns", Map.merge(field["columns"] || %{}, words["columns"] || %{}))
 
       _ ->
         field

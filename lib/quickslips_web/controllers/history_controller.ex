@@ -6,6 +6,7 @@ defmodule QuickSlipsWeb.HistoryController do
   alias QuickSlips.Locales
   alias QuickSlips.Render.Renderer
   alias QuickSlips.Templates
+  alias QuickSlips.Templates.Items
   alias QuickSlips.Templates.Validator
 
   @doc """
@@ -24,7 +25,7 @@ defmodule QuickSlipsWeb.HistoryController do
 
     # The template may have changed since the document was saved, so the data is checked again.
     with {:ok, schema} <- Templates.get(document.slug, locale),
-         {:ok, clean} <- Validator.validate(schema, document.data),
+         {:ok, clean} <- Validator.validate(schema, Items.upgrade(schema, document.data)),
          {:ok, pdf} <-
            Renderer.render(document.slug, document.template, Map.merge(clean, image_names),
              assets: files,

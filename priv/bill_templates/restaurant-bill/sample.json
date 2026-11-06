@@ -2,24 +2,37 @@
   "restaurant_name": "Green Leaf Café",
   "restaurant_address": "14, Church Street, Bengaluru, Karnataka 560001",
   "gstin": "29ABCDE1234F1Z5",
+  "fssai_number": "11224999000123",
   "bill_number": "RB-002208",
   "date": "2026-10-19",
   "table_number": "T-7",
-  "item_1": "Masala Dosa",
-  "qty_1": 2,
-  "price_1": 120,
-  "item_2": "Filter Coffee",
-  "qty_2": 3,
-  "price_2": 60,
-  "item_3": "Veg Thali",
-  "qty_3": 1,
-  "price_3": 280,
-  "item_4": "Paneer Tikka",
-  "qty_4": 1,
-  "price_4": 320,
-  "item_5": "Gulab Jamun",
-  "qty_5": 2,
-  "price_5": 90,
+  "items": [
+    {
+      "name": "Masala Dosa",
+      "qty": 2,
+      "rate": 120
+    },
+    {
+      "name": "Filter Coffee",
+      "qty": 3,
+      "rate": 60
+    },
+    {
+      "name": "Veg Thali",
+      "qty": 1,
+      "rate": 280
+    },
+    {
+      "name": "Paneer Tikka",
+      "qty": 1,
+      "rate": 320
+    },
+    {
+      "name": "Gulab Jamun",
+      "qty": 2,
+      "rate": 90
+    }
+  ],
   "gst_percent": 5,
   "payment_mode": "UPI"
 }

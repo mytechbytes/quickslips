@@ -156,18 +156,16 @@
 // A percentage of an amount, rounded to paise.
 #let percent(amount, rate) = calc.round(amount * rate / 100, digits: 2)
 
-// The filled-in rows of a bill whose fields are numbered (item_1, qty_1, price_1, item_2, ...). A row
-// without a name is skipped, and a missing quantity counts as 1. Each row is a dictionary with `name`,
-// `qty`, `rate` and `amount`.
-#let line-items(data, count, name: "item", qty: "qty", rate: "price") = {
-  range(1, count + 1)
-    .map(i => (
-      name: opt(data, name + "_" + str(i)),
-      qty: data.at(qty + "_" + str(i), default: 1),
-      rate: data.at(rate + "_" + str(i), default: 0),
-    ))
-    .filter(row => row.name != none)
-    .map(row => (..row, amount: row.qty * row.rate))
+// The rows of a table of items (a field of type `items`): each is a dictionary with `name`, `qty`, `rate` and
+// `amount` (quantity times rate). A cell that is missing counts as empty, so a row that is half typed in the
+// browser preview still draws.
+#let item-rows(data, key: "items") = {
+  let rows = data.at(key, default: ())
+  rows.map(row => {
+    let qty = row.at("qty", default: 0)
+    let rate = row.at("rate", default: 0)
+    (name: row.at("name", default: ""), qty: qty, rate: rate, amount: qty * rate)
+  })
 }
 
 #let sum-of(values) = values.sum(default: 0)
@@ -183,8 +181,14 @@
   if name != none { image("/" + name, height: height) }
 }
 
-// The top of a document: the logo, the seller and the kind of document, then a line.
-#let letterhead(data, seller, address: none, gstin: none, title: none) = {
+// How the tax of the country is called ("GST", "IVA") and what its registration number is called ("GSTIN", "NIF").
+#let tax-data = region.at("tax", default: (:))
+#let tax-name = tax-data.at("name", default: "")
+#let tax-id-label = tax-data.at("id", default: (:)).at("label", default: "GSTIN")
+
+// The top of a document: the logo, the seller and the kind of document, then a line. `gstin` is the tax-registration
+// number, `ids` other registration numbers to print under it (an array of content, like `([FSSAI Lic. No.: 1234],)`).
+#let letterhead(data, seller, address: none, gstin: none, ids: (), title: none) = {
   grid(
     columns: (1fr, auto),
     column-gutter: 6mm,
@@ -193,7 +197,8 @@
       if logo != none { logo; v(1.5mm) }
       text(size: 14pt, weight: "bold", seller)
       if address != none { linebreak(); text(size: 9pt, fill: muted, lines(address)) }
-      if gstin != none { linebreak(); text(size: 9pt, fill: muted)[GSTIN: #gstin] }
+      if gstin != none { linebreak(); text(size: 9pt, fill: muted)[#tax-id-label: #gstin] }
+      for id in ids { linebreak(); text(size: 9pt, fill: muted, id) }
     },
     if title != none { align(right + top, text(size: 12pt, weight: "bold", fill: muted, upper(title))) },
   )
@@ -218,14 +223,13 @@
 #let bill-table(head, rows, columns: none, align: none) = {
   let columns = if columns == none { (1fr,) + (auto,) * (head.len() - 1) } else { columns }
   let align = if align == none { (left,) + (right,) * (head.len() - 1) } else { align }
+  // The head is repeated on the next page when a long table runs over.
   table(
     columns: columns,
     align: align,
     stroke: none,
     inset: (x: 2mm, y: 2.6mm),
-    table.hline(stroke: 0.5pt),
-    ..head.map(cell => strong(cell)),
-    table.hline(stroke: 0.5pt),
+    table.header(table.hline(stroke: 0.5pt), ..head.map(cell => strong(cell)), table.hline(stroke: 0.5pt)),
     ..rows.flatten(),
     table.hline(stroke: 0.5pt),
   )

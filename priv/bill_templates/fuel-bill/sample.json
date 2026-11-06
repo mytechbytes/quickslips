@@ -6,5 +6,6 @@
   "vehicle_number": "HR 26 AB 1234",
   "fuel_type": "Petrol",
   "quantity": 28.5,
-  "rate": 102.45
+  "rate": 102.45,
+  "seller_tax_id": "06ABCDE1234F1Z5"
 }
