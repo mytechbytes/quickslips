@@ -1,0 +1,226 @@
+{
+  "title": "Generatore di fattura sanitaria",
+  "name": "Fattura sanitaria",
+  "public_slug": "generatore-fattura-sanitaria",
+  "summary": "Fattura di ospedale, clinica o laboratorio con {tax}.",
+  "description": "Genera una fattura di ospedale, clinica o laboratorio con paziente, medico, camera, visita, farmaci, esami e addebiti dettagliati. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Fattura ospedaliera",
+    "t2": "Fattura provvisoria"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "Ospedale, clinica o laboratorio"
+    },
+    "clinic_address": {
+      "label": "Indirizzo (facoltativo)"
+    },
+    "clinic_phone": {
+      "label": "Telefono di contatto (facoltativo)"
+    },
+    "hospital_details": {
+      "label": "Dati della struttura (facoltativo)"
+    },
+    "registration_number": {
+      "label": "Numero di registrazione (facoltativo)"
+    },
+    "bill_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Ora (facoltativo)"
+    },
+    "admit_date": {
+      "label": "Data di ricovero (facoltativo)"
+    },
+    "discharge_date": {
+      "label": "Data di dimissione (facoltativo)"
+    },
+    "patient_name": {
+      "label": "Nome del paziente"
+    },
+    "patient_details": {
+      "label": "Età e sesso (facoltativo)"
+    },
+    "patient_issue": {
+      "label": "Motivo della visita (facoltativo)"
+    },
+    "guardian_name": {
+      "label": "Nome del tutore (facoltativo)"
+    },
+    "patient_phone": {
+      "label": "Cellulare del paziente (facoltativo)"
+    },
+    "patient_address": {
+      "label": "Indirizzo del paziente (facoltativo)"
+    },
+    "payer_name": {
+      "label": "Nome del pagatore (facoltativo)"
+    },
+    "payer_address": {
+      "label": "Indirizzo del pagatore (facoltativo)"
+    },
+    "doctor_name": {
+      "label": "Medico (facoltativo)"
+    },
+    "doctor_designation": {
+      "label": "Qualifica (facoltativo)"
+    },
+    "room": {
+      "label": "Categoria di camera (facoltativo)",
+      "options": {
+        "Single": "Singola",
+        "Semi-private": "Semiprivata",
+        "Private": "Privata",
+        "General": "Generale",
+        "ICU": "Terapia intensiva"
+      }
+    },
+    "insurance": {
+      "label": "Assicurazione (facoltativo)",
+      "options": {
+        "Yes": "Sì",
+        "No": "No"
+      }
+    },
+    "remark": {
+      "label": "Note (facoltativo)"
+    },
+    "consultation_fee": {
+      "label": "Visita ({currency}) (facoltativo)"
+    },
+    "medicines_cost": {
+      "label": "Farmaci ({currency}) (facoltativo)"
+    },
+    "tests_cost": {
+      "label": "Esami e procedure ({currency}) (facoltativo)"
+    },
+    "other_charges": {
+      "label": "Altri addebiti ({currency}) (facoltativo)"
+    },
+    "discount": {
+      "label": "Sconto ({currency}) (facoltativo)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "amount_paid": {
+      "label": "Importo pagato ({currency}) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Pagato con",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Addebiti dettagliati",
+      "columns": {
+        "name": "Descrizione",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "N. fattura",
+    "contact": "Contatto",
+    "reg_no": "N. di registrazione",
+    "discharge_date": "Data di dimissione",
+    "admit_date": "Data di ricovero",
+    "patient_info": "Dati del paziente",
+    "patient_name": "Nome del paziente",
+    "patient_issue": "Motivo della visita",
+    "address": "Indirizzo",
+    "guardian": "Nome del tutore",
+    "mobile": "Cellulare",
+    "insurance": "Assicurazione disponibile",
+    "age": "Età",
+    "consultant": "Medico consulente",
+    "room": "Categoria di camera",
+    "details": "Dettagli",
+    "price": "Prezzo",
+    "amount": "Importo",
+    "units": "Q.tà",
+    "pay_by": "Metodo di pagamento",
+    "amount_paid": "Importo pagato",
+    "tax": "Imposta",
+    "taxable": "Imponibile",
+    "net": "Importo netto",
+    "total_amount": "Importo totale",
+    "remark": "Note",
+    "computer": "* Fattura generata al computer; firma non richiesta.",
+    "created": "Creata il {when}",
+    "phone": "Tel.",
+    "timing": "Ora",
+    "patient_uid": "ID paziente",
+    "name": "Nome",
+    "payer": "Dati del pagatore",
+    "consulting_doctors": "Medici consulenti",
+    "date": "Data",
+    "admission_no": "N. di ricovero",
+    "admission_date": "Data di ricovero",
+    "bed": "Letto/i",
+    "provisional": "Fattura provvisoria",
+    "room_type": "Tipo di camera",
+    "particulars": "Descrizione",
+    "total_bill": "Importo totale",
+    "discount": "Sconto",
+    "payable": "Importo da pagare",
+    "balance": "Saldo",
+    "breakup": "Dettaglio",
+    "date_time": "Data e ora",
+    "rate": "Tariffa",
+    "payment_mode": "Modalità di pagamento",
+    "gst_type": "Tipo di GST",
+    "intra": "Intrastatale (CGST + SGST)",
+    "gst_pct": "Aliquota",
+    "notes": "Note",
+    "consultation": "Visita",
+    "medicines": "Farmaci",
+    "tests": "Esami e procedure",
+    "other": "Altri addebiti",
+    "itemised": "Addebiti dettagliati"
+  },
+  "sample": {
+    "clinic_name": "Clinica Familiare Bella",
+    "doctor_name": "Dott. Luca Bianchi",
+    "doctor_designation": "Medico internista",
+    "patient_name": "Marco Rossi",
+    "guardian_name": "Giulia Rossi",
+    "payer_name": "Giulia Rossi",
+    "patient_issue": "Febbre e tosse",
+    "items": [
+      {
+        "name": "Camera (al giorno)",
+        "qty": 2,
+        "rate": 140
+      },
+      {
+        "name": "Assistenza infermieristica (al giorno)",
+        "qty": 2,
+        "rate": 38
+      }
+    ],
+    "consultation_fee": 65,
+    "medicines_cost": 25,
+    "tests_cost": 42,
+    "discount": 10,
+    "amount_paid": 170,
+    "tax_percent": 10,
+    "hospital_details": "Pronto soccorso 24 ore su 24, farmacia e laboratorio",
+    "registration_number": "Aut. San. 2019/4411",
+    "patient_address": "Via dei Mille 12, interno 5, 40121 Bologna",
+    "payer_address": "Via dei Mille 12, interno 5, 40121 Bologna",
+    "clinic_phone": "06 1234567",
+    "patient_details": "42 / M",
+    "remark": "In caso di emergenza, consultare subito se compaiono dolore, movimenti dolorosi, arrossamento, pus o sanguinamento. Controllo dopo 5 giorni."
+  }
+}

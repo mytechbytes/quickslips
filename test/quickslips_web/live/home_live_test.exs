@@ -74,9 +74,10 @@ defmodule QuickSlipsWeb.HomeLiveTest do
       refute has_element?(view, "#template-grocery-bill")
       assert has_element?(view, "#chip-travel", "यात्रा")
 
-      # The categories of the bills that are in Hindi: Travel, Home & utilities and Work, not the rest.
+      # The categories of the bills that are in Hindi: Travel, Home & utilities, Work, Food & shopping and Health &
+      # learning (the medical bill), all five.
       assert has_element?(view, "#chip-work")
-      refute has_element?(view, "#chip-health-learning")
+      assert has_element?(view, "#chip-health-learning")
     end
 
     test "the Spanish catalogue links to the Spanish address", %{conn: conn} do

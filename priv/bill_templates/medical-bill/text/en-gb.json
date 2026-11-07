@@ -1,0 +1,35 @@
+{
+  "sample": {
+    "clinic_name": "Thames Family Clinic",
+    "doctor_name": "Dr. Oliver Smith",
+    "doctor_designation": "Consultant physician",
+    "patient_name": "James Taylor",
+    "guardian_name": "Emma Taylor",
+    "payer_name": "Emma Taylor",
+    "patient_issue": "Fever and cough",
+    "items": [
+      {
+        "name": "Room (per day)",
+        "qty": 2,
+        "rate": 220
+      },
+      {
+        "name": "Nursing care (per day)",
+        "qty": 2,
+        "rate": 60
+      }
+    ],
+    "consultation_fee": 90,
+    "medicines_cost": 30,
+    "tests_cost": 70,
+    "discount": 20,
+    "amount_paid": 250,
+    "tax_percent": 20,
+    "hospital_details": "24-hour emergency care, pharmacy and laboratory",
+    "registration_number": "CQC 1-123456789",
+    "patient_address": "12 Baker Street, Flat 3, London NW1 6XE",
+    "payer_address": "12 Baker Street, Flat 3, London NW1 6XE",
+    "clinic_phone": "0118 496 0123",
+    "patient_details": "42 / M"
+  }
+}

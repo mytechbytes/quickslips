@@ -1,0 +1,226 @@
+{
+  "title": "Générateur de facture médicale",
+  "name": "Facture médicale",
+  "public_slug": "generateur-de-facture-medicale",
+  "summary": "Facture d'hôpital, de clinique ou de laboratoire avec {tax}.",
+  "description": "Générez une facture d'hôpital, de clinique ou de laboratoire avec patient, médecin, chambre, consultation, médicaments, examens et frais détaillés. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Facture d'hôpital",
+    "t2": "Facture provisoire"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "Hôpital, clinique ou laboratoire"
+    },
+    "clinic_address": {
+      "label": "Adresse (facultatif)"
+    },
+    "clinic_phone": {
+      "label": "Téléphone de contact (facultatif)"
+    },
+    "hospital_details": {
+      "label": "Détails de l'établissement (facultatif)"
+    },
+    "registration_number": {
+      "label": "Numéro d'enregistrement (facultatif)"
+    },
+    "bill_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Heure (facultatif)"
+    },
+    "admit_date": {
+      "label": "Date d'admission (facultatif)"
+    },
+    "discharge_date": {
+      "label": "Date de sortie (facultatif)"
+    },
+    "patient_name": {
+      "label": "Nom du patient"
+    },
+    "patient_details": {
+      "label": "Âge et sexe (facultatif)"
+    },
+    "patient_issue": {
+      "label": "Motif de consultation (facultatif)"
+    },
+    "guardian_name": {
+      "label": "Nom du tuteur (facultatif)"
+    },
+    "patient_phone": {
+      "label": "Mobile du patient (facultatif)"
+    },
+    "patient_address": {
+      "label": "Adresse du patient (facultatif)"
+    },
+    "payer_name": {
+      "label": "Nom du payeur (facultatif)"
+    },
+    "payer_address": {
+      "label": "Adresse du payeur (facultatif)"
+    },
+    "doctor_name": {
+      "label": "Médecin (facultatif)"
+    },
+    "doctor_designation": {
+      "label": "Fonction (facultatif)"
+    },
+    "room": {
+      "label": "Catégorie de chambre (facultatif)",
+      "options": {
+        "Single": "Individuelle",
+        "Semi-private": "Semi-privée",
+        "Private": "Privée",
+        "General": "Commune",
+        "ICU": "Soins intensifs"
+      }
+    },
+    "insurance": {
+      "label": "Assurance (facultatif)",
+      "options": {
+        "Yes": "Oui",
+        "No": "Non"
+      }
+    },
+    "remark": {
+      "label": "Remarque (facultatif)"
+    },
+    "consultation_fee": {
+      "label": "Consultation ({currency}) (facultatif)"
+    },
+    "medicines_cost": {
+      "label": "Médicaments ({currency}) (facultatif)"
+    },
+    "tests_cost": {
+      "label": "Examens et actes ({currency}) (facultatif)"
+    },
+    "other_charges": {
+      "label": "Autres frais ({currency}) (facultatif)"
+    },
+    "discount": {
+      "label": "Remise ({currency}) (facultatif)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "amount_paid": {
+      "label": "Montant payé ({currency}) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Payé par",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "items": {
+      "label": "Frais détaillés",
+      "columns": {
+        "name": "Désignation",
+        "qty": "Qté",
+        "rate": "Prix ({currency})"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "N° de facture",
+    "contact": "Contact",
+    "reg_no": "N° d'enregistrement",
+    "discharge_date": "Date de sortie",
+    "admit_date": "Date d'admission",
+    "patient_info": "Informations sur le patient",
+    "patient_name": "Nom du patient",
+    "patient_issue": "Motif de consultation",
+    "address": "Adresse",
+    "guardian": "Nom du tuteur",
+    "mobile": "Mobile",
+    "insurance": "Assurance disponible",
+    "age": "Âge",
+    "consultant": "Médecin consultant",
+    "room": "Catégorie de chambre",
+    "details": "Détails",
+    "price": "Prix",
+    "amount": "Montant",
+    "units": "Qté",
+    "pay_by": "Mode de paiement",
+    "amount_paid": "Montant payé",
+    "tax": "Taxe",
+    "taxable": "Base HT",
+    "net": "Montant net",
+    "total_amount": "Montant total",
+    "remark": "Remarque",
+    "computer": "* Facture générée par ordinateur ; signature non requise.",
+    "created": "Créée le {when}",
+    "phone": "Tél.",
+    "timing": "Heure",
+    "patient_uid": "ID patient",
+    "name": "Nom",
+    "payer": "Détails du payeur",
+    "consulting_doctors": "Médecins consultants",
+    "date": "Date",
+    "admission_no": "N° d'admission",
+    "admission_date": "Date d'admission",
+    "bed": "Lit(s)",
+    "provisional": "Facture provisoire",
+    "room_type": "Type de chambre",
+    "particulars": "Désignation",
+    "total_bill": "Montant total de la facture",
+    "discount": "Remise",
+    "payable": "Montant à payer",
+    "balance": "Solde",
+    "breakup": "Détail",
+    "date_time": "Date et heure",
+    "rate": "Tarif",
+    "payment_mode": "Mode de paiement",
+    "gst_type": "Type de GST",
+    "intra": "Intra-État (CGST + SGST)",
+    "gst_pct": "Taux de taxe",
+    "notes": "Remarques",
+    "consultation": "Consultation",
+    "medicines": "Médicaments",
+    "tests": "Examens et actes",
+    "other": "Autres frais",
+    "itemised": "Frais détaillés"
+  },
+  "sample": {
+    "clinic_name": "Clinique du Marché",
+    "doctor_name": "Dr Pierre Dubois",
+    "doctor_designation": "Médecin interniste",
+    "patient_name": "Camille Martin",
+    "guardian_name": "Paul Martin",
+    "payer_name": "Paul Martin",
+    "patient_issue": "Fièvre et toux",
+    "items": [
+      {
+        "name": "Chambre (par jour)",
+        "qty": 2,
+        "rate": 150
+      },
+      {
+        "name": "Soins infirmiers (par jour)",
+        "qty": 2,
+        "rate": 40
+      }
+    ],
+    "consultation_fee": 70,
+    "medicines_cost": 28,
+    "tests_cost": 45,
+    "discount": 12,
+    "amount_paid": 180,
+    "tax_percent": 10,
+    "hospital_details": "Urgences 24 h/24, pharmacie et laboratoire",
+    "registration_number": "FINESS 750012345",
+    "patient_address": "8 rue des Lilas, 2e étage, 69003 Lyon",
+    "payer_address": "8 rue des Lilas, 2e étage, 69003 Lyon",
+    "clinic_phone": "01 23 45 67 89",
+    "patient_details": "42 / F",
+    "remark": "En cas d'urgence, consultez immédiatement en cas de douleur, de mouvements douloureux, de rougeur, de pus ou de saignement. Contrôle après 5 jours."
+  }
+}
