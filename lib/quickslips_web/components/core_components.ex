@@ -396,7 +396,7 @@ defmodule QuickSlipsWeb.CoreComponents do
     """
   end
 
-  defp label_class, do: "mb-0.5 block text-sm/5 font-medium text-ink"
+  defp label_class, do: "mb-1 block text-sm/5 font-medium text-ink"
 
   defp control_class do
     "block w-full rounded-field border bg-surface px-3 py-2 text-base text-ink placeholder:text-ink-faint " <>

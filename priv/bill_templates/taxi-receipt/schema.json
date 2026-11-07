@@ -20,7 +20,7 @@
     { "key": "distance_km", "group": "charges", "label": "Distance (km)", "type": "number", "required": true, "min": 0.1 },
     { "key": "base_fare", "group": "charges", "label": "Fare ({currency})", "type": "number", "required": true, "min": 0 },
     { "key": "toll", "group": "charges", "label": "Toll and parking ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "tax_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 },
+    { "key": "tax_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
     { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
   ]
 }

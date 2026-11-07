@@ -23,6 +23,7 @@ defmodule QuickSlipsWeb.UI do
 
   alias Phoenix.LiveView.JS
   alias QuickSlips.Locales
+  alias QuickSlips.Regions
 
   @doc "True when the scope carries a logged-in user."
   def signed_in?(%{user: %{}}), do: true
@@ -578,10 +579,11 @@ defmodule QuickSlipsWeb.UI do
           "text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-on-sidebar"
       ]}
     >
-      <span class="sr-only">{gettext("Language and country")}</span>
+      <span class="sr-only">{gettext("Language, Country & Currency")}</span>
       <.icon name="hero-globe-alt" class="size-5" />
       <span class="hidden text-sm/6 font-medium sm:inline">
-        <span lang={@locale.language}>{@locale.name}</span> · {country_name(@locale.country)}
+        <span lang={@locale.language}>{@locale.name}</span>
+        · {country_name(@locale.country)} · <.currency_label locale={@locale} />
       </span>
       <.icon name="hero-chevron-down" class="hidden size-4 opacity-70 sm:block" />
     </button>
@@ -610,8 +612,9 @@ defmodule QuickSlipsWeb.UI do
         class="inline-flex min-h-10 items-center gap-x-2 rounded-field px-2 text-sm/6 font-medium text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus sm:min-h-9"
       >
         <.icon name="hero-globe-alt" class="size-5 text-ink-muted" />
-        <span class="sr-only">{gettext("Language and country")}:</span>
-        <span lang={@locale.language}>{@locale.name}</span> · {country_name(@locale.country)}
+        <span class="sr-only">{gettext("Language, Country & Currency")}:</span>
+        <span lang={@locale.language}>{@locale.name}</span>
+        · {country_name(@locale.country)} · <.currency_label locale={@locale} />
       </button>
       <.locale_dialog id={@id} locale={@locale} />
     </div>
@@ -624,20 +627,24 @@ defmodule QuickSlipsWeb.UI do
   attr :locale, :map, required: true
 
   defp locale_dialog(assigns) do
-    assigns = assign(assigns, :groups, Locales.by_country())
+    assigns =
+      assigns
+      |> assign(:groups, Locales.by_country())
+      |> assign(:currencies, Regions.currencies())
 
     ~H"""
     <dialog
       id={"#{@id}-dialog"}
       aria-labelledby={"#{@id}-title"}
       data-backdrop-close
+      data-locale-dialog
       class="m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-3xl overflow-hidden rounded-card border border-line bg-surface p-0 text-ink shadow-pop backdrop:bg-overlay"
     >
       <div class="flex max-h-[90vh] flex-col">
         <div class="flex items-center justify-between gap-x-3 border-b border-line px-5 py-3">
           <h2 id={"#{@id}-title"} class="flex items-center gap-x-2 text-base/6 font-semibold">
             <.icon name="hero-globe-alt" class="size-5 text-ink-muted" />
-            {gettext("Language and country")}
+            {gettext("Language, Country & Currency")}
           </h2>
           <button
             type="button"
@@ -648,44 +655,99 @@ defmodule QuickSlipsWeb.UI do
             <.icon name="hero-x-mark" class="size-5" />
           </button>
         </div>
-        <div class="grid gap-3 overflow-y-auto p-4 grid-cols-2 sm:p-5 lg:grid-cols-3">
-          <div
-            :for={{country, locales} <- @groups}
-            role="group"
-            aria-label={country_name(country)}
-            class={[
-              "rounded-card border p-2",
-              if(country == @locale.country,
-                do: "border-primary bg-surface-muted",
-                else: "border-line"
-              )
-            ]}
-          >
-            <p class="flex items-center gap-x-2 px-2 pt-1 pb-1.5 text-sm/6 font-semibold">
-              <span aria-hidden="true" class="text-lg/6">{flag(country)}</span>
-              {country_name(country)}
-            </p>
-            <button
-              :for={locale <- locales}
-              id={"#{@id}-#{locale.code}"}
-              type="submit"
-              form={"#{@id}-form"}
-              name="locale"
-              value={locale.code}
-              lang={locale.language}
-              aria-current={locale.code == @locale.code && "true"}
-              class="flex min-h-10 w-full cursor-pointer items-center gap-x-2 rounded-field px-2 text-left text-sm/6 text-ink transition-colors hover:bg-primary hover:text-on-primary focus-visible:bg-primary focus-visible:text-on-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus aria-[current=true]:font-semibold aria-[current=true]:text-primary aria-[current=true]:hover:text-on-primary sm:min-h-9"
+        <div class="space-y-5 overflow-y-auto p-4 sm:p-5">
+          <section data-group="currency">
+            <.dialog_heading id={"#{@id}-currency-heading"}>{gettext("Currency")}</.dialog_heading>
+            <select
+              id={"#{@id}-currency"}
+              aria-labelledby={"#{@id}-currency-heading"}
+              data-currency-select
+              data-default={Regions.default_currency(@locale.country)}
+              class="block w-full rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:max-w-xs"
             >
-              {locale.name}
-              <.icon
-                name="hero-check"
-                class={["ml-auto size-4", locale.code != @locale.code && "opacity-0"]}
-              />
-            </button>
-          </div>
+              <option
+                :for={currency <- @currencies}
+                value={currency["code"]}
+                selected={currency["code"] == Regions.default_currency(@locale.country)}
+              >
+                {currency["code"]} {currency["symbol"]}
+              </option>
+            </select>
+          </section>
+          <section data-group="country-language">
+            <.dialog_heading id={"#{@id}-countries-heading"}>
+              {gettext("Country & Language")}
+            </.dialog_heading>
+            <div class="grid grid-cols-2 gap-3 lg:grid-cols-3">
+              <div
+                :for={{country, locales} <- @groups}
+                role="group"
+                aria-label={country_name(country)}
+                class={[
+                  "rounded-card border p-2",
+                  if(country == @locale.country,
+                    do: "border-primary bg-surface-muted",
+                    else: "border-line"
+                  )
+                ]}
+              >
+                <p class="flex items-center gap-x-2 px-2 pt-1 pb-1.5 text-sm/6 font-semibold">
+                  <span aria-hidden="true" class="text-lg/6">{flag(country)}</span>
+                  {country_name(country)}
+                </p>
+                <button
+                  :for={locale <- locales}
+                  id={"#{@id}-#{locale.code}"}
+                  type="submit"
+                  form={"#{@id}-form"}
+                  name="locale"
+                  value={locale.code}
+                  lang={locale.language}
+                  aria-current={locale.code == @locale.code && "true"}
+                  class="flex min-h-10 w-full cursor-pointer items-center gap-x-2 rounded-field px-2 text-left text-sm/6 text-ink transition-colors hover:bg-primary hover:text-on-primary focus-visible:bg-primary focus-visible:text-on-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus aria-[current=true]:font-semibold aria-[current=true]:text-primary aria-[current=true]:hover:text-on-primary sm:min-h-9"
+                >
+                  {locale.name}
+                  <.icon
+                    name="hero-check"
+                    class={["ml-auto size-4", locale.code != @locale.code && "opacity-0"]}
+                  />
+                </button>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </dialog>
+    """
+  end
+
+  # A section heading of the dialog: the bar, the title and a hairline, as in the forms (`assets/js/bill/form.ts`).
+  attr :id, :string, required: true
+  slot :inner_block, required: true
+
+  defp dialog_heading(assigns) do
+    ~H"""
+    <div class="mb-2.5 flex items-center gap-3">
+      <h3
+        id={@id}
+        class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
+      >
+        {render_slot(@inner_block)}
+      </h3>
+      <span class="h-px flex-1 bg-line"></span>
+    </div>
+    """
+  end
+
+  # The code of the currency in the switch. The server writes the country's own; the script of the page writes the
+  # one the visitor chose (`locale.ts`), which is only in their browser.
+  attr :locale, :map, required: true
+
+  defp currency_label(assigns) do
+    ~H"""
+    <span data-currency-label data-default={Regions.default_currency(@locale.country)}>
+      {Regions.default_currency(@locale.country)}
+    </span>
     """
   end
 

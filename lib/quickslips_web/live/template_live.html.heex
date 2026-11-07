@@ -20,6 +20,8 @@
       data-fonts={Jason.encode!(@fonts)}
       data-i18n={Jason.encode!(ui_strings())}
       data-region={Jason.encode!(@region)}
+      data-own-currency={Regions.default_currency(@region["country"])}
+      data-edit={to_string(@document != nil)}
       data-text={Jason.encode!(@text)}
       data-businesses={Jason.encode!(@businesses)}
       data-business-id={@document && @document.business_id}
@@ -32,7 +34,7 @@
       <div class="space-y-5 rounded-card border border-line bg-surface p-4">
         <%!-- Always there, even when a bill has one template: the place where more will show up. --%>
         <section data-group="template">
-          <div class="mb-2.5 flex items-center gap-3">
+          <div class="mb-3 flex items-center gap-3">
             <label
               for="template-select"
               class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
@@ -56,49 +58,6 @@
         </section>
         <form id="bill-form" class="space-y-5" novalidate></form>
       </div>
-
-      <dialog
-        id="region-dialog"
-        aria-labelledby="region-title"
-        class="m-auto w-full max-w-sm rounded-card border border-line bg-surface p-4 text-ink shadow-pop backdrop:bg-overlay"
-      >
-        <form method="dialog" class="space-y-3">
-          <h2 id="region-title" class="text-base/6 font-semibold">{gettext("Region & tax")}</h2>
-          <label class="block text-sm/5 text-ink-muted">
-            {gettext("Country")}
-            <select
-              id="region-country"
-              class="mt-1 block w-full rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink"
-            >
-              <option
-                :for={country <- @countries}
-                value={country.code}
-                selected={country.code == @region["country"]}
-              >
-                {country.name}
-              </option>
-            </select>
-          </label>
-          <label class="block text-sm/5 text-ink-muted">
-            {gettext("Currency")}
-            <select
-              id="region-currency"
-              class="mt-1 block w-full rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink"
-            >
-              <option
-                :for={currency <- @currencies}
-                value={currency["code"]}
-                selected={currency["code"] == @region["currency"]["code"]}
-              >
-                {currency["code"]} {currency["symbol"]}
-              </option>
-            </select>
-          </label>
-          <div class="flex justify-end">
-            <.button id="region-done" size="sm">{gettext("Done")}</.button>
-          </div>
-        </form>
-      </dialog>
 
       <%!-- On a wide screen the preview stays in view while the long form scrolls past it. --%>
       <div class="lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:self-start lg:overflow-y-auto">

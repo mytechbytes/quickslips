@@ -58,9 +58,9 @@ defmodule QuickSlipsWeb.LocaleMenuTest do
 
     test "says what is chosen, in the language of the page", %{conn: conn} do
       for {path, text} <- [
-            {"/en-in", "English · India"},
-            {"/hi-in", "हिन्दी · भारत"},
-            {"/es-es", "Español · España"}
+            {"/en-in", "English · India · INR"},
+            {"/hi-in", "हिन्दी · भारत · INR"},
+            {"/es-es", "Español · España · EUR"}
           ] do
         {:ok, view, _html} = live(conn, path)
 
@@ -68,7 +68,8 @@ defmodule QuickSlipsWeb.LocaleMenuTest do
                |> element("#locale-menu-trigger")
                |> render()
                |> LazyHTML.from_fragment()
-               |> LazyHTML.text() =~
+               |> LazyHTML.text()
+               |> String.replace(~r/\s+/, " ") =~
                  text
       end
     end

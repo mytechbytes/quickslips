@@ -11,7 +11,7 @@ export async function downloadPdf(
   turnstileToken?: string,
   businessId?: number | null,
   locale?: string,
-  // The country and currency the document is made for (the "Region & tax" panel).
+  // The country and currency the document is made for (the site switch).
   region?: { country: string; currency: string },
 ): Promise<DownloadResult> {
   const csrf = document.querySelector<HTMLMetaElement>("meta[name='csrf-token']")?.content ?? ""
