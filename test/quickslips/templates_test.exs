@@ -150,10 +150,10 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary and Daily Helper are in every language; the other templates only in English" do
+    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper and Restaurant are in every language; the other templates only in English" do
       for locale <- Locales.live(),
           slug <-
-            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt) do
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill) do
         assert Templates.supports?(slug, locale)
       end
 
@@ -171,6 +171,7 @@ defmodule QuickSlips.TemplatesTest do
                  "maintenance-bill",
                  "parking-receipt",
                  "rent-receipt",
+                 "restaurant-bill",
                  "taxi-receipt",
                  "transport-bill"
                ]
@@ -351,7 +352,10 @@ defmodule QuickSlips.TemplatesTest do
       assert american["gstin"] == example["tax_id"]
       refute Map.has_key?(american, "fssai_number")
       assert american["payment_mode"] == "Cash"
-      assert american["restaurant_name"] == indian["restaurant_name"]
+
+      # The menu and the name are the country's own too (the text file of English in the United States).
+      assert american["restaurant_name"] == "Green Leaf Diner"
+      refute Map.has_key?(american, "gst_percent")
     end
 
     test "Chinese and Japanese: the fuel bill is translated, its sample is valid and they print with their fonts" do

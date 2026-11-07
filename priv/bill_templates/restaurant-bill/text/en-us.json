@@ -1,0 +1,35 @@
+{
+  "sample": {
+    "restaurant_name": "Green Leaf Diner",
+    "items": [
+      {
+        "name": "Cheeseburger",
+        "qty": 2,
+        "rate": 11.5
+      },
+      {
+        "name": "Iced tea",
+        "qty": 3,
+        "rate": 3.5
+      },
+      {
+        "name": "Caesar salad",
+        "qty": 1,
+        "rate": 9.5
+      },
+      {
+        "name": "Fries",
+        "qty": 1,
+        "rate": 4.5
+      },
+      {
+        "name": "Apple pie",
+        "qty": 2,
+        "rate": 6
+      }
+    ],
+    "customer_name": "John Smith",
+    "table_number": "T-7",
+    "gst_percent": null
+  }
+}

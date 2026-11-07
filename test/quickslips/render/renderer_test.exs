@@ -308,6 +308,26 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "restaurant-bill" => %{
+      designs: ~w(t1 t2 t3 t4),
+      optional:
+        ~w(restaurant_address gstin fssai_number time table_number customer_name service_percent gst_percent),
+      long: %{
+        "restaurant_name" => String.duplicate("Green Leaf Café ", 5),
+        "restaurant_address" => String.duplicate("14, Church Street, Bengaluru, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "service_percent" => 30,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Masala Dosa with chutney ", 3),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99
+            },
+            15
+          )
+      }
+    },
     "daily-helper-receipt" => %{
       designs: ~w(t1 t2 t3),
       optional: ~w(employer_address declaration),

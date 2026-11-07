@@ -1,0 +1,126 @@
+{
+  "title": "レストラン伝票作成",
+  "name": "レストラン伝票",
+  "public_slug": "restaurant-bill-generator",
+  "summary": "品目と{tax}を記載した店内飲食・持ち帰りの伝票。",
+  "description": "任意の数の品目、数量、サービス料、{tax}を記載したレストランの伝票を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "ピクセルレシート",
+    "t2": "点線レシート",
+    "t3": "コンパクト伝票",
+    "t4": "タイプライター伝票"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "店名"
+    },
+    "restaurant_address": {
+      "label": "住所（任意）"
+    },
+    "gstin": {
+      "label": "{tax_id}（任意）"
+    },
+    "fssai_number": {
+      "label": "FSSAI ライセンス番号（任意）"
+    },
+    "bill_number": {
+      "label": "伝票番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "time": {
+      "label": "時刻（任意）"
+    },
+    "table_number": {
+      "label": "テーブル（任意）"
+    },
+    "customer_name": {
+      "label": "お客様名（任意）"
+    },
+    "service_percent": {
+      "label": "サービス料（%）（任意）"
+    },
+    "gst_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "items": {
+      "label": "品目",
+      "columns": {
+        "name": "品目",
+        "qty": "数量",
+        "rate": "単価（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "welcome": "いらっしゃいませ",
+    "original": "領収書原本",
+    "date": "日付",
+    "time": "時刻",
+    "customer": "お客様名",
+    "table": "テーブル",
+    "receipt_no": "レシート番号",
+    "bill_no": "伝票番号",
+    "description": "品名",
+    "item": "品目",
+    "qty": "数量",
+    "price": "単価",
+    "subtotal": "小計",
+    "total": "合計",
+    "service": "サービス料",
+    "paid_by": "支払方法",
+    "save_paper": "紙を節約して自然を守ろう",
+    "thanks_meal": "お食事ありがとうございました。",
+    "receipt": "レシート",
+    "support_local": "地元のお店を応援していただきありがとうございます！",
+    "thanks_visit": "ご来店ありがとうございました。お気をつけて。",
+    "round_off": "端数処理",
+    "above_incl": "上記価格は税込です",
+    "total_tax": "税額合計",
+    "amount": "金額"
+  },
+  "sample": {
+    "restaurant_name": "グリーンリーフ食堂",
+    "items": [
+      {
+        "name": "親子丼",
+        "qty": 2,
+        "rate": 980
+      },
+      {
+        "name": "緑茶",
+        "qty": 3,
+        "rate": 250
+      },
+      {
+        "name": "天ぷら定食",
+        "qty": 1,
+        "rate": 1500
+      },
+      {
+        "name": "焼き鳥盛り合わせ",
+        "qty": 1,
+        "rate": 1200
+      },
+      {
+        "name": "抹茶アイス",
+        "qty": 2,
+        "rate": 450
+      }
+    ],
+    "customer_name": "田中 太郎",
+    "table_number": "T-7",
+    "gst_percent": 10
+  }
+}

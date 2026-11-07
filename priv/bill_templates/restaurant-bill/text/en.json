@@ -1,0 +1,96 @@
+{
+  "title": "Restaurant Bill Generator",
+  "name": "Restaurant Bill",
+  "public_slug": "restaurant-bill-generator",
+  "summary": "Dine-in or takeaway bill with items and {tax}.",
+  "description": "Generate a restaurant bill with any number of items, quantities, service charge and {tax}. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Pixel slip",
+    "t2": "Dashed receipt",
+    "t3": "Compact bill",
+    "t4": "Typewriter bill"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "Restaurant name"
+    },
+    "restaurant_address": {
+      "label": "Address (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "fssai_number": {
+      "label": "FSSAI licence no. (optional)"
+    },
+    "bill_number": {
+      "label": "Bill number"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Time (optional)"
+    },
+    "table_number": {
+      "label": "Table (optional)"
+    },
+    "customer_name": {
+      "label": "Customer name (optional)"
+    },
+    "service_percent": {
+      "label": "Service charge (%) (optional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Paid by",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Items",
+      "columns": {
+        "name": "Item",
+        "qty": "Qty",
+        "rate": "Rate ({currency})"
+      }
+    }
+  },
+  "print": {
+    "welcome": "Welcome!",
+    "original": "Original receipt",
+    "date": "Date",
+    "time": "Time",
+    "customer": "Customer name",
+    "table": "Table",
+    "receipt_no": "Receipt no.",
+    "bill_no": "Bill no.",
+    "description": "Description",
+    "item": "Item",
+    "qty": "Qty",
+    "price": "Price",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "service": "Service charge",
+    "paid_by": "Paid by",
+    "save_paper": "Save paper, save nature!",
+    "thanks_meal": "Thank you for a delicious meal.",
+    "receipt": "Receipt",
+    "support_local": "Thank you for supporting local business!",
+    "thanks_visit": "Thanks for your visit! Happy journey.",
+    "round_off": "Round off",
+    "above_incl": "Prices above include taxes",
+    "total_tax": "Total tax",
+    "amount": "Amount"
+  },
+  "sample": {
+    "gst_percent": 5
+  }
+}

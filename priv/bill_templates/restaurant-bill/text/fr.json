@@ -1,0 +1,126 @@
+{
+  "title": "Générateur de note de restaurant",
+  "name": "Note de restaurant",
+  "public_slug": "generateur-de-note-de-restaurant",
+  "summary": "Note de restaurant sur place ou à emporter avec articles et {tax}.",
+  "description": "Générez une note de restaurant avec autant d'articles que vous voulez, les quantités, le service et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Ticket pixel",
+    "t2": "Reçu pointillé",
+    "t3": "Note compacte",
+    "t4": "Note dactylographiée"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "Nom du restaurant"
+    },
+    "restaurant_address": {
+      "label": "Adresse (facultatif)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "fssai_number": {
+      "label": "N° de licence FSSAI (facultatif)"
+    },
+    "bill_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Heure (facultatif)"
+    },
+    "table_number": {
+      "label": "Table (facultatif)"
+    },
+    "customer_name": {
+      "label": "Nom du client (facultatif)"
+    },
+    "service_percent": {
+      "label": "Service (%) (facultatif)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Payé par",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "items": {
+      "label": "Articles",
+      "columns": {
+        "name": "Article",
+        "qty": "Qté",
+        "rate": "Prix ({currency})"
+      }
+    }
+  },
+  "print": {
+    "welcome": "Bienvenue !",
+    "original": "Reçu original",
+    "date": "Date",
+    "time": "Heure",
+    "customer": "Nom du client",
+    "table": "Table",
+    "receipt_no": "Reçu n°",
+    "bill_no": "Facture n°",
+    "description": "Désignation",
+    "item": "Article",
+    "qty": "Qté",
+    "price": "Prix",
+    "subtotal": "Sous-total",
+    "total": "Total",
+    "service": "Service",
+    "paid_by": "Payé par",
+    "save_paper": "Économisez le papier, protégez la nature !",
+    "thanks_meal": "Merci pour ce délicieux repas.",
+    "receipt": "Reçu",
+    "support_local": "Merci de soutenir le commerce local !",
+    "thanks_visit": "Merci de votre visite ! Bon voyage.",
+    "round_off": "Arrondi",
+    "above_incl": "Prix toutes taxes comprises",
+    "total_tax": "Total des taxes",
+    "amount": "Montant"
+  },
+  "sample": {
+    "restaurant_name": "Café du Marché",
+    "items": [
+      {
+        "name": "Croque-monsieur",
+        "qty": 2,
+        "rate": 9
+      },
+      {
+        "name": "Café crème",
+        "qty": 3,
+        "rate": 3
+      },
+      {
+        "name": "Soupe à l'oignon",
+        "qty": 1,
+        "rate": 8.5
+      },
+      {
+        "name": "Steak frites",
+        "qty": 1,
+        "rate": 18
+      },
+      {
+        "name": "Crème brûlée",
+        "qty": 2,
+        "rate": 7
+      }
+    ],
+    "customer_name": "Camille Martin",
+    "table_number": "T-7",
+    "gst_percent": 10
+  }
+}
