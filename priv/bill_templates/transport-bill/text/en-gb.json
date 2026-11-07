@@ -1,0 +1,22 @@
+{
+  "sample": {
+    "company_name": "Thames Haulage",
+    "company_phone": "0118 496 0123",
+    "from_place": "Reading",
+    "to_place": "Manchester",
+    "from_phone": "0118 496 0123",
+    "to_phone": "0161 496 0123",
+    "from_address": "Unit 4, Trade Park, Reading RG2 0AB",
+    "to_address": "12 Logistics Way, Manchester M17 1AA",
+    "company_address": "Unit 4, Trade Park, Reading RG2 0AB",
+    "consignor": "Taylor Wholesale\n5 High Street, Reading",
+    "consignee": "Smith Electricals\n20 Market Street, Manchester",
+    "description": "Appliances - 20 cartons",
+    "remarks": "Handle with care",
+    "delivery_at": "Manchester depot",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 320,
+    "signatory_name": "O. Smith"
+  }
+}

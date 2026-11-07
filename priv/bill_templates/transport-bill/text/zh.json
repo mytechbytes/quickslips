@@ -1,0 +1,137 @@
+{
+  "title": "货运单生成器",
+  "name": "货运单",
+  "public_slug": "transport-bill-generator",
+  "summary": "生成包含发货人、收货人、重量和运费的货物运单。",
+  "description": "生成包含起运地和目的地、发货人和收货人、件数、重量以及到付或预付运费的货物运单。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "货运单"
+  },
+  "fields": {
+    "company_name": {
+      "label": "运输公司名称"
+    },
+    "company_address": {
+      "label": "公司地址（选填）"
+    },
+    "company_phone": {
+      "label": "办公电话（选填）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "gc_number": {
+      "label": "运单编号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "booking_date": {
+      "label": "托运日期（选填）"
+    },
+    "eta_date": {
+      "label": "预计送达日期（选填）"
+    },
+    "pm_number": {
+      "label": "PM 编号（选填）"
+    },
+    "consignor": {
+      "label": "发货人姓名及地址"
+    },
+    "consignee": {
+      "label": "收货人姓名及地址"
+    },
+    "description": {
+      "label": "货物描述（选填）"
+    },
+    "articles": {
+      "label": "件数（选填）"
+    },
+    "actual_weight": {
+      "label": "实际重量（选填）"
+    },
+    "charged_weight": {
+      "label": "计费重量（选填）"
+    },
+    "remarks": {
+      "label": "备注（选填）"
+    },
+    "from_place": {
+      "label": "起运地"
+    },
+    "from_phone": {
+      "label": "起运地电话（选填）"
+    },
+    "from_address": {
+      "label": "起运地地址"
+    },
+    "to_place": {
+      "label": "目的地"
+    },
+    "to_phone": {
+      "label": "目的地电话（选填）"
+    },
+    "to_address": {
+      "label": "目的地地址"
+    },
+    "delivery_at": {
+      "label": "送货地点（选填）"
+    },
+    "signatory_name": {
+      "label": "签字人姓名（选填）"
+    },
+    "to_pay": {
+      "label": "到付运费（{currency}）（选填）"
+    },
+    "paid": {
+      "label": "预付运费（{currency}）（选填）"
+    }
+  },
+  "print": {
+    "heading": "货物运单",
+    "title": "客户联（原件）",
+    "gc_no": "运单号",
+    "from": "起运地",
+    "to": "目的地",
+    "consignor": "发货人姓名及地址",
+    "consignee": "收货人姓名及地址",
+    "description": "货物描述 / 据称内容",
+    "date": "日期",
+    "booking": "托运日期",
+    "eta": "预计送达",
+    "articles": "件数",
+    "pm_no": "PM 编号",
+    "actual_weight": "实际重量",
+    "charged_weight": "计费重量",
+    "remarks": "备注",
+    "to_pay": "到付",
+    "paid": "预付",
+    "signature": "签字",
+    "delivery_at": "送货地点",
+    "tel": "电话",
+    "note_labour": "注：送货点将另行收取装卸费和送货费，不含在运费内。",
+    "note_insurance": "贵重货物请足额投保，丢失承运人不承担责任。",
+    "note_validity": "本运单自托运之日起仅 5 天内有效，请按时到仓库提货。",
+    "note_docs": "法律要求的运输单证（如印度的电子运单）须由发货人提供，因单证缺失造成的损失由发货人承担。"
+  },
+  "sample": {
+    "company_name": "顺达货运",
+    "company_phone": "021-12345678",
+    "from_place": "上海",
+    "to_place": "北京",
+    "from_phone": "021-12345678",
+    "to_phone": "010-12345678",
+    "from_address": "上海市宝山区物流路88号",
+    "to_address": "北京市大兴区物流园区16号",
+    "company_address": "上海市宝山区物流路88号",
+    "consignor": "上海恒通贸易有限公司\n浦东新区世纪大道100号",
+    "consignee": "北京明辉电器商行\n朝阳区建国路88号",
+    "description": "家用电器 - 20 箱",
+    "remarks": "轻拿轻放",
+    "delivery_at": "北京仓库",
+    "actual_weight": "480 公斤",
+    "charged_weight": "500 公斤",
+    "to_pay": 2800,
+    "signatory_name": "李强"
+  }
+}

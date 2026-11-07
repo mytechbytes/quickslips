@@ -1,0 +1,137 @@
+{
+  "title": "Générateur de lettre de voiture",
+  "name": "Lettre de voiture",
+  "public_slug": "generateur-de-lettre-de-voiture",
+  "summary": "Lettre de voiture avec expéditeur, destinataire, poids et port.",
+  "description": "Générez une lettre de voiture pour le transport de marchandises avec départ et arrivée, expéditeur et destinataire, nombre de colis, poids et port payé ou dû. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Lettre de voiture"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Nom de la société de transport"
+    },
+    "company_address": {
+      "label": "Adresse de la société (facultatif)"
+    },
+    "company_phone": {
+      "label": "Téléphones du bureau (facultatif)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "gc_number": {
+      "label": "Numéro de lettre de voiture"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "booking_date": {
+      "label": "Date de réservation (facultatif)"
+    },
+    "eta_date": {
+      "label": "Date de livraison prévue (facultatif)"
+    },
+    "pm_number": {
+      "label": "N° PM (facultatif)"
+    },
+    "consignor": {
+      "label": "Nom et adresse de l'expéditeur"
+    },
+    "consignee": {
+      "label": "Nom et adresse du destinataire"
+    },
+    "description": {
+      "label": "Désignation des marchandises (facultatif)"
+    },
+    "articles": {
+      "label": "Nombre de colis (facultatif)"
+    },
+    "actual_weight": {
+      "label": "Poids réel (facultatif)"
+    },
+    "charged_weight": {
+      "label": "Poids taxé (facultatif)"
+    },
+    "remarks": {
+      "label": "Remarques (facultatif)"
+    },
+    "from_place": {
+      "label": "De (lieu)"
+    },
+    "from_phone": {
+      "label": "Téléphone du départ (facultatif)"
+    },
+    "from_address": {
+      "label": "Adresse du départ"
+    },
+    "to_place": {
+      "label": "À (lieu)"
+    },
+    "to_phone": {
+      "label": "Téléphone de l'arrivée (facultatif)"
+    },
+    "to_address": {
+      "label": "Adresse de l'arrivée"
+    },
+    "delivery_at": {
+      "label": "Livraison à (facultatif)"
+    },
+    "signatory_name": {
+      "label": "Nom du signataire (facultatif)"
+    },
+    "to_pay": {
+      "label": "Port dû ({currency}) (facultatif)"
+    },
+    "paid": {
+      "label": "Port payé ({currency}) (facultatif)"
+    }
+  },
+  "print": {
+    "heading": "Lettre de voiture",
+    "title": "Exemplaire du client (original)",
+    "gc_no": "N° lettre de voiture",
+    "from": "De",
+    "to": "À",
+    "consignor": "Nom et adresse de l'expéditeur",
+    "consignee": "Nom et adresse du destinataire",
+    "description": "Désignation / contenu déclaré",
+    "date": "Date",
+    "booking": "Date de réservation",
+    "eta": "Date prévue",
+    "articles": "Nb de colis",
+    "pm_no": "N° PM",
+    "actual_weight": "Poids réel",
+    "charged_weight": "Poids taxé",
+    "remarks": "Remarques",
+    "to_pay": "Port dû",
+    "paid": "Port payé",
+    "signature": "Signature",
+    "delivery_at": "Livraison à",
+    "tel": "Tél.",
+    "note_labour": "Remarque : le bureau de livraison facturera la manutention et les frais de livraison en plus du port.",
+    "note_insurance": "Veuillez assurer les marchandises de valeur ; le transporteur n'est pas responsable des pertes.",
+    "note_validity": "Ce reçu n'est valable que 5 jours à compter de la date de réservation. Veuillez retirer la marchandise à temps à l'entrepôt.",
+    "note_docs": "Les documents de transport exigés par la loi (comme l'e-way bill en Inde) sont fournis par l'expéditeur, qui répond des pertes dues à leur absence."
+  },
+  "sample": {
+    "company_name": "Transports Rhône",
+    "company_phone": "04 12 34 56 78",
+    "from_place": "Lyon",
+    "to_place": "Paris",
+    "from_phone": "04 12 34 56 78",
+    "to_phone": "01 23 45 67 89",
+    "from_address": "12 rue de la Gare, 69007 Lyon",
+    "to_address": "45 avenue des Gobelins, 75013 Paris",
+    "company_address": "12 rue de la Gare, 69007 Lyon",
+    "consignor": "Établissements Martin\n8 rue Victor Hugo, Lyon",
+    "consignee": "Électro Dupont\n22 rue de Rivoli, Paris",
+    "description": "Appareils électriques - 20 cartons",
+    "remarks": "Manipuler avec précaution",
+    "delivery_at": "Entrepôt de Paris",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 290,
+    "signatory_name": "P. Dubois"
+  }
+}

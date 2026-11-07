@@ -288,6 +288,26 @@ defmodule QuickSlips.Render.RendererTest do
           )
       }
     },
+    "transport-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(company_address company_phone seller_tax_id booking_date eta_date pm_number description articles
+           actual_weight charged_weight remarks from_phone to_phone delivery_at signatory_name to_pay paid),
+      long: %{
+        "company_name" => String.duplicate("Shree Ganesh Transport ", 4),
+        "company_address" => String.duplicate("Plot 14, Transport Nagar, ", 7),
+        "consignor" => String.duplicate("Mehra Traders, Karol Bagh, ", 7),
+        "consignee" => String.duplicate("Gupta Electricals, MI Road, ", 7),
+        "description" => String.duplicate("Electrical goods in cartons, ", 10),
+        "remarks" => String.duplicate("Handle with care, ", 10),
+        "from_place" => String.duplicate("Delhi ", 10),
+        "to_place" => String.duplicate("Jaipur ", 8),
+        "actual_weight" => "12345678901234567890",
+        "articles" => 99_999_999,
+        "to_pay" => 99_999_999.99,
+        "paid" => 99_999_999.99
+      }
+    },
     "taxi-receipt" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:

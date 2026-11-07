@@ -1,0 +1,137 @@
+{
+  "title": "Generador de Carta de Porte",
+  "name": "Carta de Porte",
+  "public_slug": "generador-de-carta-de-porte",
+  "summary": "Carta de porte con remitente, destinatario, peso y porte.",
+  "description": "Genera una carta de porte o factura de transporte de mercancías con origen y destino, remitente y destinatario, número de bultos, peso y porte pagado o debido. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Carta de porte"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Nombre de la empresa de transporte"
+    },
+    "company_address": {
+      "label": "Dirección de la empresa (opcional)"
+    },
+    "company_phone": {
+      "label": "Teléfonos de la oficina (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "gc_number": {
+      "label": "Número de carta de porte"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "booking_date": {
+      "label": "Fecha de reserva (opcional)"
+    },
+    "eta_date": {
+      "label": "Fecha estimada de entrega (opcional)"
+    },
+    "pm_number": {
+      "label": "N.º de PM (opcional)"
+    },
+    "consignor": {
+      "label": "Nombre y dirección del remitente"
+    },
+    "consignee": {
+      "label": "Nombre y dirección del destinatario"
+    },
+    "description": {
+      "label": "Descripción de la mercancía (opcional)"
+    },
+    "articles": {
+      "label": "Número de bultos (opcional)"
+    },
+    "actual_weight": {
+      "label": "Peso real (opcional)"
+    },
+    "charged_weight": {
+      "label": "Peso facturado (opcional)"
+    },
+    "remarks": {
+      "label": "Observaciones (opcional)"
+    },
+    "from_place": {
+      "label": "Origen (lugar)"
+    },
+    "from_phone": {
+      "label": "Teléfono de origen (opcional)"
+    },
+    "from_address": {
+      "label": "Dirección de origen"
+    },
+    "to_place": {
+      "label": "Destino (lugar)"
+    },
+    "to_phone": {
+      "label": "Teléfono de destino (opcional)"
+    },
+    "to_address": {
+      "label": "Dirección de destino"
+    },
+    "delivery_at": {
+      "label": "Entrega en (opcional)"
+    },
+    "signatory_name": {
+      "label": "Nombre del firmante (opcional)"
+    },
+    "to_pay": {
+      "label": "Porte debido ({currency}) (opcional)"
+    },
+    "paid": {
+      "label": "Porte pagado ({currency}) (opcional)"
+    }
+  },
+  "print": {
+    "heading": "Carta de porte de mercancías",
+    "title": "Copia del cliente (original)",
+    "gc_no": "N.º carta de porte",
+    "from": "Origen",
+    "to": "Destino",
+    "consignor": "Nombre y dirección del remitente",
+    "consignee": "Nombre y dirección del destinatario",
+    "description": "Descripción / dice contener",
+    "date": "Fecha",
+    "booking": "Fecha de reserva",
+    "eta": "Fecha estimada",
+    "articles": "N.º de bultos",
+    "pm_no": "N.º PM",
+    "actual_weight": "Peso real",
+    "charged_weight": "Peso facturado",
+    "remarks": "Observaciones",
+    "to_pay": "Porte debido",
+    "paid": "Porte pagado",
+    "signature": "Firma",
+    "delivery_at": "Entrega en",
+    "tel": "Tel.",
+    "note_labour": "Nota: la oficina de entrega cobrará aparte la mano de obra y los gastos de entrega, además del porte.",
+    "note_insurance": "Asegure la mercancía de valor; el transportista no responde de las pérdidas.",
+    "note_validity": "Este recibo es válido solo 5 días desde la fecha de reserva. Recoja la mercancía a tiempo en el almacén.",
+    "note_docs": "Los documentos de transporte exigidos por ley (como la e-way bill en la India) los debe aportar el remitente, que responde de las pérdidas por falta de documentación."
+  },
+  "sample": {
+    "company_name": "Transportes Giralda",
+    "company_phone": "954 123 456",
+    "from_place": "Sevilla",
+    "to_place": "Madrid",
+    "from_phone": "954 123 456",
+    "to_phone": "91 234 56 78",
+    "from_address": "Polígono Calonge, nave 12, 41007 Sevilla",
+    "to_address": "Calle de Méndez Álvaro 20, 28045 Madrid",
+    "company_address": "Polígono Calonge, nave 12, 41007 Sevilla",
+    "consignor": "Distribuciones Martín\nCalle Sierpes 15, Sevilla",
+    "consignee": "Electrodomésticos López\nCalle Alcalá 120, Madrid",
+    "description": "Electrodomésticos - 20 cajas",
+    "remarks": "Manipular con cuidado",
+    "delivery_at": "Almacén de Madrid",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 185,
+    "signatory_name": "J. Ortiz"
+  }
+}
