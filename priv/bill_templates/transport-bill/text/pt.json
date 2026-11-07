@@ -1,0 +1,137 @@
+{
+  "title": "Gerador de conhecimento de transporte",
+  "name": "Conhecimento de transporte",
+  "public_slug": "gerador-de-conhecimento-de-transporte",
+  "summary": "Conhecimento de transporte com remetente, destinatário, peso e frete.",
+  "description": "Gere um conhecimento de transporte de cargas com origem e destino, remetente e destinatário, número de volumes, peso e frete pago ou a pagar. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Conhecimento"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Nome da transportadora"
+    },
+    "company_address": {
+      "label": "Endereço da empresa (opcional)"
+    },
+    "company_phone": {
+      "label": "Telefones do escritório (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "gc_number": {
+      "label": "Número do conhecimento de transporte"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "booking_date": {
+      "label": "Data da reserva (opcional)"
+    },
+    "eta_date": {
+      "label": "Data prevista de entrega (opcional)"
+    },
+    "pm_number": {
+      "label": "N.º do PM (opcional)"
+    },
+    "consignor": {
+      "label": "Nome e endereço do remetente"
+    },
+    "consignee": {
+      "label": "Nome e endereço do destinatário"
+    },
+    "description": {
+      "label": "Descrição da mercadoria (opcional)"
+    },
+    "articles": {
+      "label": "Número de volumes (opcional)"
+    },
+    "actual_weight": {
+      "label": "Peso real (opcional)"
+    },
+    "charged_weight": {
+      "label": "Peso cobrado (opcional)"
+    },
+    "remarks": {
+      "label": "Observações (opcional)"
+    },
+    "from_place": {
+      "label": "De (local)"
+    },
+    "from_phone": {
+      "label": "Telefone de origem (opcional)"
+    },
+    "from_address": {
+      "label": "Endereço de origem"
+    },
+    "to_place": {
+      "label": "Para (local)"
+    },
+    "to_phone": {
+      "label": "Telefone de destino (opcional)"
+    },
+    "to_address": {
+      "label": "Endereço de destino"
+    },
+    "delivery_at": {
+      "label": "Entrega em (opcional)"
+    },
+    "signatory_name": {
+      "label": "Nome do signatário (opcional)"
+    },
+    "to_pay": {
+      "label": "Frete a pagar ({currency}) (opcional)"
+    },
+    "paid": {
+      "label": "Frete pago ({currency}) (opcional)"
+    }
+  },
+  "print": {
+    "heading": "Conhecimento de transporte de cargas",
+    "title": "Via do cliente (original)",
+    "gc_no": "N.º conhecimento",
+    "from": "De",
+    "to": "Para",
+    "consignor": "Nome e endereço do remetente",
+    "consignee": "Nome e endereço do destinatário",
+    "description": "Descrição / diz conter",
+    "date": "Data",
+    "booking": "Data da reserva",
+    "eta": "Data prevista",
+    "articles": "N.º de volumes",
+    "pm_no": "N.º PM",
+    "actual_weight": "Peso real",
+    "charged_weight": "Peso cobrado",
+    "remarks": "Observações",
+    "to_pay": "Frete a pagar",
+    "paid": "Frete pago",
+    "signature": "Assinatura",
+    "delivery_at": "Entrega em",
+    "tel": "Tel.",
+    "note_labour": "Observação: o escritório de entrega cobrará à parte a mão de obra e as taxas de entrega, além do frete.",
+    "note_insurance": "Segure integralmente as mercadorias de valor; a transportadora não responde por extravios.",
+    "note_validity": "Este recibo é válido por apenas 5 dias a partir da data da reserva. Retire a mercadoria a tempo no armazém.",
+    "note_docs": "Os documentos de transporte exigidos por lei (como a e-way bill na Índia) devem ser fornecidos pelo remetente, responsável por perdas causadas pela falta deles."
+  },
+  "sample": {
+    "company_name": "Transportes Paulista",
+    "company_phone": "(11) 3456-7890",
+    "from_place": "São Paulo",
+    "to_place": "Rio de Janeiro",
+    "from_phone": "(11) 3456-7890",
+    "to_phone": "(21) 2345-6789",
+    "from_address": "Rua da Mooca, 1200, São Paulo - SP",
+    "to_address": "Av. Brasil, 5000, Rio de Janeiro - RJ",
+    "company_address": "Rua da Mooca, 1200, São Paulo - SP",
+    "consignor": "Distribuidora Souza\nAv. Paulista, 900, São Paulo",
+    "consignee": "Eletro Lima\nRua da Carioca, 45, Rio de Janeiro",
+    "description": "Eletrodomésticos - 20 caixas",
+    "remarks": "Manusear com cuidado",
+    "delivery_at": "Armazém do Rio de Janeiro",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 850,
+    "signatory_name": "C. Lima"
+  }
+}

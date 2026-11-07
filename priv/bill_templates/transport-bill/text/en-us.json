@@ -1,0 +1,22 @@
+{
+  "sample": {
+    "company_name": "Lone Star Freight",
+    "company_phone": "(512) 555-0142",
+    "from_place": "Austin",
+    "to_place": "Dallas",
+    "from_phone": "(512) 555-0142",
+    "to_phone": "(214) 555-0143",
+    "from_address": "1450 Industrial Blvd, Austin, TX 78702",
+    "to_address": "2200 Commerce St, Dallas, TX 75201",
+    "company_address": "1450 Industrial Blvd, Austin, TX 78702",
+    "consignor": "Smith Wholesale\n500 Congress Ave, Austin, TX",
+    "consignee": "Brown Appliances\n900 Main St, Dallas, TX",
+    "description": "Appliances - 20 cartons",
+    "remarks": "Handle with care",
+    "delivery_at": "Dallas terminal",
+    "actual_weight": "1,060 lb",
+    "charged_weight": "1,100 lb",
+    "to_pay": 650,
+    "signatory_name": "M. Brown"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "sample": {
+    "company_name": "Maple Freight",
+    "company_phone": "(416) 555-0187",
+    "from_place": "Toronto",
+    "to_place": "Montréal",
+    "from_phone": "(416) 555-0187",
+    "to_phone": "(514) 555-0187",
+    "from_address": "250 Industrial Pkwy, Toronto, ON M4B 1B3",
+    "to_address": "1200 rue Notre-Dame, Montréal, QC H3C 1K4",
+    "company_address": "250 Industrial Pkwy, Toronto, ON M4B 1B3",
+    "consignor": "Wilson Wholesale\n100 King St W, Toronto",
+    "consignee": "Tremblay Appliances\n45 rue Sainte-Catherine, Montréal",
+    "description": "Appliances - 20 cartons",
+    "remarks": "Handle with care",
+    "delivery_at": "Montréal terminal",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 780,
+    "signatory_name": "D. Tremblay"
+  }
+}

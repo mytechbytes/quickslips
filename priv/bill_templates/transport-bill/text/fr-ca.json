@@ -1,0 +1,22 @@
+{
+  "sample": {
+    "company_name": "Transport Érable",
+    "company_phone": "(514) 555-0123",
+    "from_place": "Montréal",
+    "to_place": "Toronto",
+    "from_phone": "(514) 555-0123",
+    "to_phone": "(416) 555-0123",
+    "from_address": "1200 rue Notre-Dame, Montréal, QC H3C 1K4",
+    "to_address": "250 Industrial Pkwy, Toronto, ON M4B 1B3",
+    "company_address": "1200 rue Notre-Dame, Montréal, QC H3C 1K4",
+    "consignor": "Gestion Tremblay\n45 rue Sainte-Catherine, Montréal",
+    "consignee": "Wilson Appliances\n100 King St W, Toronto",
+    "description": "Appareils électroménagers - 20 cartons",
+    "remarks": "Manipuler avec précaution",
+    "delivery_at": "Terminal de Toronto",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 780,
+    "signatory_name": "M. Gagnon"
+  }
+}
