@@ -671,3 +671,8 @@ msgstr "言語・国・通貨"
 #, elixir-autogen, elixir-format
 msgid "Item Details"
 msgstr "品目の詳細"
+
+#: lib/quickslips_web/components/catalogue_components.ex:127
+#, elixir-autogen, elixir-format
+msgid "Generate Now"
+msgstr "今すぐ作成"

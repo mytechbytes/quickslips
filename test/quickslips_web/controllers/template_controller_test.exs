@@ -344,17 +344,26 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
   end
 
   describe "the template select" do
-    test "is there even when a bill has one template", %{conn: conn} do
+    test "lists the designs of a bill, the first one chosen", %{conn: conn} do
       html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
       document = LazyHTML.from_document(html)
 
       assert document |> LazyHTML.query("#template-select option") |> LazyHTML.attribute("value") ==
-               ["t1"]
+               ~w(t1 t2 t3 t4 t5 t6)
 
       assert document |> LazyHTML.query("#template-select option[selected]") |> LazyHTML.text() =~
-               "Classic"
+               "Receipt"
 
       assert attrs(html, "#bill-app", "data-template") == ["t1"]
+    end
+
+    test "is there even when a bill has one template", %{conn: conn} do
+      html = conn |> get(~p"/en-in/rent-receipt-generator") |> html_response(200)
+
+      assert html
+             |> LazyHTML.from_document()
+             |> LazyHTML.query("#template-select option")
+             |> LazyHTML.attribute("value") == ["t1"]
     end
 
     test "has the names in the language of the page", %{conn: conn} do
@@ -363,7 +372,7 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       assert html
              |> LazyHTML.from_document()
              |> LazyHTML.query("#template-select option")
-             |> LazyHTML.text() =~ "क्लासिक"
+             |> LazyHTML.text() =~ "पंप स्लिप"
     end
   end
 

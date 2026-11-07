@@ -5,7 +5,12 @@
   "summary": "Crea una factura de gasolina o diésel en PDF.",
   "description": "Genera una factura de combustible con el nombre de la gasolinera, la fecha, el tipo de combustible, la cantidad y el precio. Previsualízala al instante y descarga el PDF.",
   "designs": {
-    "t1": "Clásico"
+    "t1": "Recibo",
+    "t2": "Ticket de surtidor",
+    "t3": "Térmico",
+    "t4": "Térmico detallado",
+    "t5": "Recibo de caja",
+    "t6": "Matricial"
   },
   "fields": {
     "station_name": {
@@ -42,6 +47,40 @@
     },
     "tax_percent": {
       "label": "{tax} (%) (opcional)"
+    },
+    "station_phone": {
+      "label": "Teléfono de la gasolinera (opcional)"
+    },
+    "dealer_name": {
+      "label": "Nombre del distribuidor (opcional)"
+    },
+    "fcc_id": {
+      "label": "ID FCC (opcional)"
+    },
+    "fip_no": {
+      "label": "N.º FIP (opcional)"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente (opcional)"
+    },
+    "nozzle_number": {
+      "label": "N.º de manguera (opcional)"
+    },
+    "density": {
+      "label": "Densidad (kg/m³) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "Card": "Tarjeta",
+        "UPI": "UPI",
+        "Net banking": "Banca en línea",
+        "Online": "En línea"
+      }
     }
   },
   "print": {
@@ -57,7 +96,45 @@
     "signatory": "Firma autorizada",
     "thanks": "Gracias por su visita.",
     "taxable": "Base imponible",
-    "tax_included": "IVA incluido."
+    "tax_included": "IVA incluido.",
+    "receipt_title": "Recibo de combustible",
+    "receipt_details": "Datos del recibo",
+    "receipt_no": "Recibo n.º",
+    "time": "Hora",
+    "billed_to": "Facturado a",
+    "customer": "Cliente",
+    "vehicle_no": "Matrícula",
+    "fuel_type": "Combustible",
+    "station": "Gasolinera",
+    "payment": "Forma de pago",
+    "summary": "Resumen del recibo",
+    "fuel_rate": "Precio del combustible",
+    "total_amount": "Importe total",
+    "thanks_fuelling": "¡Gracias por repostar con nosotros!",
+    "queries": "Para cualquier consulta o reclamación, contacte con atención al cliente.",
+    "save_fuel": "Ahorra combustible, cuida el futuro.",
+    "save_money": "Ahorra combustible, ahorra dinero. Gracias por repostar con nosotros.",
+    "welcome": "¡Bienvenido!",
+    "product": "Producto",
+    "volume": "Volumen",
+    "unit": "L",
+    "tel": "Tel.",
+    "fcc": "ID FCC",
+    "fip": "N.º FIP",
+    "nozzle": "Manguera n.º",
+    "dealer": "Distribuidor",
+    "density": "Densidad",
+    "original": "Original",
+    "cash_memo": "Recibo de caja",
+    "no": "N.º",
+    "dated": "Fecha",
+    "particulars": "Concepto",
+    "all_tax_included": "Impuestos incluidos",
+    "eoe": "Salvo error u omisión",
+    "happy_journey": "Le deseamos un buen viaje",
+    "pump": "Surtidor n.º",
+    "grade": "Tipo",
+    "unit_price": "Precio unitario"
   },
   "sample": {
     "station_name": "Gasolinera El Sol",
@@ -66,6 +143,8 @@
     "vehicle_number": "5821 KDH",
     "rate": 1.58,
     "seller_tax_id": "B41234567",
-    "tax_percent": 21
+    "tax_percent": 21,
+    "customer_name": "Carlos Gómez",
+    "station_phone": "954 123 456"
   }
 }

@@ -5,17 +5,26 @@
   "number_field": "bill_number",
   "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
   "tax": { "default": "none", "es": "included", "de": "included", "fr": "included", "it": "included", "gb": "included", "jp": "included", "cn": "included", "ca": "included" },
-  "templates": [{ "id": "t1" }],
+  "templates": [{ "id": "t1" }, { "id": "t2" }, { "id": "t3" }, { "id": "t4" }, { "id": "t5" }, { "id": "t6" }],
   "fields": [
     { "key": "station_name", "group": "business", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
     { "key": "station_address", "group": "business", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "station_phone", "group": "business", "type": "text", "required": false, "max_length": 20 },
+    { "key": "dealer_name", "group": "business", "type": "text", "required": false, "max_length": 80 },
+    { "key": "seller_tax_id", "group": "registration", "type": "tax_id", "required": false, "max_length": 20 },
+    { "key": "fcc_id", "group": "registration", "type": "text", "required": false, "max_length": 20, "countries": ["in"] },
+    { "key": "fip_no", "group": "registration", "type": "text", "required": false, "max_length": 20, "countries": ["in"] },
     { "key": "bill_number", "group": "document", "type": "text", "required": true, "max_length": 30 },
     { "key": "date", "group": "document", "type": "date", "required": true },
-    { "key": "seller_tax_id", "group": "registration", "type": "tax_id", "required": false, "max_length": 20 },
+    { "key": "time", "group": "document", "type": "time", "required": false },
+    { "key": "customer_name", "group": "customer", "type": "text", "required": false, "max_length": 80 },
     { "key": "vehicle_number", "group": "details", "type": "text", "required": false, "max_length": 20 },
     { "key": "fuel_type", "group": "details", "type": "select", "options": ["Petrol", "Diesel", "CNG"], "required": true },
+    { "key": "nozzle_number", "group": "details", "type": "text", "required": false, "max_length": 10 },
+    { "key": "density", "group": "details", "type": "number", "required": false, "min": 0 },
     { "key": "quantity", "group": "charges", "type": "number", "required": true, "min": 0.01 },
     { "key": "rate", "group": "charges", "type": "number", "required": true, "min": 0.01 },
-    { "key": "tax_percent", "group": "charges", "type": "tax_rate", "required": false }
+    { "key": "tax_percent", "group": "charges", "type": "tax_rate", "required": false },
+    { "key": "payment_mode", "group": "payment", "type": "select", "options": ["Cash", "Card", "UPI", "Net banking", "Online"], "required": true }
   ]
 }

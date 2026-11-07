@@ -35,12 +35,14 @@
 }
 
 // The page: size, margins, font, and the watermark of the preview. Use it with `#show: base.with(...)`.
-#let base(paper: "a5", margin: 14mm, size: 10pt, body) = {
+// A slip (a till receipt) has its own `width`, and a `height` that is `auto`: the paper is as long as the text.
+#let base(paper: "a5", width: none, height: auto, margin: 14mm, size: 10pt, body) = {
+  let slip = width != none
   set page(
-    paper: paper,
+    ..if slip { (width: width, height: height) } else { (paper: paper) },
     margin: margin,
     background: if preview {
-      rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[QUICK SLIPS])
+      rotate(-30deg, text(size: if slip and width < 100mm { 22pt } else { 54pt }, weight: "bold", fill: luma(225))[QUICK SLIPS])
     },
   )
   set text(font: text-data.at("fonts", default: ("Noto Sans",)), size: size, lang: text-data.at("lang", default: "en"))
@@ -83,6 +85,15 @@
     ("[day]", "[month]", "[year]")
   }
   to-date(iso).display(parts.join(sep))
+}
+
+// "14:30" as it is written in the country: 24 hours, or "2:30 PM" where the month comes first (the United States).
+#let fmt-time(hhmm) = {
+  if region.date.order != "mdy" { return hhmm }
+  let (h, m) = hhmm.split(":").map(int)
+  let suffix = if h < 12 { "AM" } else { "PM" }
+  let hour = calc.rem(h, 12)
+  str(if hour == 0 { 12 } else { hour }) + ":" + (if m < 10 { "0" } else { "" }) + str(m) + " " + suffix
 }
 
 #let month-label(ym) = {
@@ -645,6 +656,12 @@
 
 #let rule() = line(length: 100%, stroke: 0.5pt + hairline)
 
+// The line of a till receipt that separates its parts.
+#let dashed() = line(length: 100%, stroke: (paint: luma(60), thickness: 0.6pt, dash: "dashed"))
+
+// Dots that fill the rest of the line, for a form to write on: `Dated #leader[...]`.
+#let leader() = box(width: 1fr, repeat[.])
+
 // The picture of a saved business: the server (and the browser preview) put the file name in the data
 // under `key`, "logo" or "signature". Nothing is drawn when there is none.
 #let picture(data, key, height) = {
@@ -670,6 +687,22 @@
 #let tax-data = region.at("tax", default: (:))
 #let tax-name = tax-data.at("name", default: "")
 #let tax-id-label = tax-data.at("id", default: (:)).at("label", default: "GSTIN")
+
+// The two lines a bill with a tax rate shows over its total: the amount without tax and the tax. `none` for no rate.
+// An array of (label, amount), so that every design draws them in its own way.
+#let tax-lines(amount, rate) = {
+  if rate == none { return () }
+  let split = tax-split(amount, rate)
+  ((t.taxable, split.base), (tax-name + " (" + fmt-number(rate) + "%)", split.tax))
+}
+
+// The head of the small-change column of a cash memo ("P." for paise, "c" for cents), or `none` for a currency
+// that has none (the yen). It is the first letter of what the currency calls its small change.
+#let minor-head = {
+  let names = if in-words == none { (:) } else { in-words.currencies.at(region.currency.code, default: (:)) }
+  let name = names.at("minor_other", default: none)
+  if region.currency.decimals == 0 or name == none { none } else { upper(name.first()) + "." }
+}
 
 // The top of a document: the logo, the seller and the kind of document, then a line. `gstin` is the tax-registration
 // number, `ids` other registration numbers to print under it (an array of content, like `([FSSAI Lic. No.: 1234],)`).

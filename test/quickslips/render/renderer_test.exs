@@ -63,7 +63,10 @@ defmodule QuickSlips.Render.RendererTest do
       data = filled_up(schema, sample(slug))
 
       assert {:ok, _clean} = Validator.validate(schema, data)
-      assert {:ok, "%PDF" <> _} = Renderer.render(slug, "t1", data)
+
+      for %{"id" => design} <- schema["templates"] do
+        assert {:ok, "%PDF" <> _} = Renderer.render(slug, design, data), "#{slug}/#{design}"
+      end
     end
   end
 
@@ -107,6 +110,9 @@ defmodule QuickSlips.Render.RendererTest do
 
           %{"type" => "date"} ->
             sample[field["key"]] || "2026-12-31"
+
+          %{"type" => "time"} ->
+            sample[field["key"]] || "23:59"
         end
 
       {field["key"], value}
@@ -216,6 +222,64 @@ defmodule QuickSlips.Render.RendererTest do
     test "a currency that does not exist is refused" do
       assert {:error, :unknown_currency} =
                Renderer.render("fuel-bill", "t1", sample("fuel-bill"), currency: "XXX")
+    end
+  end
+
+  describe "the designs of the fuel bill" do
+    @designs ~w(t1 t2 t3 t4 t5 t6)
+    @optional ~w(station_address station_phone dealer_name seller_tax_id fcc_id fip_no time customer_name
+                 vehicle_number nozzle_number density)
+
+    defp pages(pdf), do: length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf))
+
+    for design <- @designs do
+      test "#{design} is one page in every live locale" do
+        for locale <- Locales.live() do
+          {:ok, sample} = Templates.sample("fuel-bill", locale)
+
+          assert {:ok, pdf} =
+                   Renderer.render("fuel-bill", unquote(design), sample, locale: locale.code)
+
+          assert pages(pdf) == 1, "#{unquote(design)} in #{locale.code}"
+        end
+      end
+
+      test "#{design} compiles with only the required fields, a logo and a signature" do
+        required = Map.drop(sample("fuel-bill"), @optional)
+        logo = tmp_file(png_bytes())
+        signature = tmp_file(jpg_bytes())
+
+        assert {:ok, "%PDF" <> _} = Renderer.render("fuel-bill", unquote(design), required)
+
+        with_pictures =
+          Map.merge(sample("fuel-bill"), %{"logo" => "logo.png", "signature" => "signature.jpg"})
+
+        assert {:ok, "%PDF" <> _} =
+                 Renderer.render("fuel-bill", unquote(design), with_pictures,
+                   assets: %{"logo.png" => logo, "signature.jpg" => signature},
+                   mode: :preview
+                 )
+      end
+
+      test "#{design} holds a very long name and very big numbers on one page" do
+        data =
+          Map.merge(sample("fuel-bill"), %{
+            "station_name" => String.duplicate("Petroleum Retail Services ", 3),
+            "station_address" => String.duplicate("Plot 12, Industrial Area, ", 6),
+            "customer_name" => String.duplicate("Ramakrishnan ", 5),
+            "quantity" => 99_999.999,
+            "rate" => 9_999.99
+          })
+
+        assert {:ok, pdf} = Renderer.render("fuel-bill", unquote(design), data)
+        assert pages(pdf) == 1
+      end
+    end
+
+    test "the cash memo has no column for small change in a currency that has none" do
+      {:ok, sample} = Templates.sample("fuel-bill", Locales.fetch!("ja-jp"))
+
+      assert {:ok, "%PDF" <> _} = Renderer.render("fuel-bill", "t5", sample, locale: "ja-jp")
     end
   end
 

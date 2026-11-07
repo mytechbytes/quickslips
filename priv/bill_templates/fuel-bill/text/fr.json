@@ -5,7 +5,12 @@
   "summary": "Créez une facture de carburant (essence ou gazole) en PDF.",
   "description": "Générez une facture de carburant claire avec le nom de la station, la date, le type de carburant, la quantité et le prix. Aperçu instantané et téléchargement en PDF.",
   "designs": {
-    "t1": "Classique"
+    "t1": "Reçu",
+    "t2": "Ticket de pompe",
+    "t3": "Thermique",
+    "t4": "Thermique détaillé",
+    "t5": "Reçu de caisse",
+    "t6": "Matriciel"
   },
   "fields": {
     "station_name": {
@@ -42,6 +47,40 @@
     },
     "tax_percent": {
       "label": "{tax} (%) (facultatif)"
+    },
+    "station_phone": {
+      "label": "Téléphone de la station (facultatif)"
+    },
+    "dealer_name": {
+      "label": "Nom de l'exploitant (facultatif)"
+    },
+    "fcc_id": {
+      "label": "ID FCC (facultatif)"
+    },
+    "fip_no": {
+      "label": "N° FIP (facultatif)"
+    },
+    "time": {
+      "label": "Heure (facultatif)"
+    },
+    "customer_name": {
+      "label": "Nom du client (facultatif)"
+    },
+    "nozzle_number": {
+      "label": "N° du pistolet (facultatif)"
+    },
+    "density": {
+      "label": "Densité (kg/m³) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "Card": "Carte",
+        "UPI": "UPI",
+        "Net banking": "Banque en ligne",
+        "Online": "En ligne"
+      }
     }
   },
   "print": {
@@ -57,7 +96,45 @@
     "signatory": "Signature autorisée",
     "thanks": "Merci de votre visite.",
     "taxable": "Base HT",
-    "tax_included": "Taxe incluse dans le prix."
+    "tax_included": "Taxe incluse dans le prix.",
+    "receipt_title": "Ticket carburant",
+    "receipt_details": "Détails du ticket",
+    "receipt_no": "Ticket n°",
+    "time": "Heure",
+    "billed_to": "Facturé à",
+    "customer": "Client",
+    "vehicle_no": "Immatriculation",
+    "fuel_type": "Carburant",
+    "station": "Station-service",
+    "payment": "Mode de paiement",
+    "summary": "Récapitulatif",
+    "fuel_rate": "Prix du carburant",
+    "total_amount": "Montant total",
+    "thanks_fuelling": "Merci d'avoir fait le plein chez nous !",
+    "queries": "Pour toute question ou réclamation, contactez notre service client.",
+    "save_fuel": "Économisez le carburant, préservez l'avenir !",
+    "save_money": "Économisez le carburant, économisez de l'argent. Merci de votre visite !",
+    "welcome": "Bienvenue !",
+    "product": "Produit",
+    "volume": "Volume",
+    "unit": "L",
+    "tel": "Tél.",
+    "fcc": "ID FCC",
+    "fip": "N° FIP",
+    "nozzle": "Pistolet n°",
+    "dealer": "Exploitant",
+    "density": "Densité",
+    "original": "Original",
+    "cash_memo": "Reçu de caisse",
+    "no": "N°",
+    "dated": "Date",
+    "particulars": "Désignation",
+    "all_tax_included": "Toutes taxes comprises",
+    "eoe": "Sauf erreur ou omission",
+    "happy_journey": "Bonne route !",
+    "pump": "Pompe n°",
+    "grade": "Qualité",
+    "unit_price": "Prix unitaire"
   },
   "sample": {
     "station_name": "Station Soleil",
@@ -66,6 +143,8 @@
     "vehicle_number": "AB-123-CD",
     "rate": 1.85,
     "seller_tax_id": "FR12345678901",
-    "tax_percent": 20
+    "tax_percent": 20,
+    "customer_name": "Camille Martin",
+    "station_phone": "01 23 45 67 89"
   }
 }

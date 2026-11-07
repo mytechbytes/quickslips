@@ -19,7 +19,8 @@
     }
   },
   "print": {
-    "quantity": "Qty (gal)"
+    "quantity": "Qty (gal)",
+    "unit": "gal"
   },
   "sample": {
     "station_name": "Sunrise Gas Station",
@@ -27,6 +28,8 @@
     "vehicle_number": "7ABC123",
     "quantity": 11.5,
     "rate": 3.49,
-    "seller_tax_id": "12-3456789"
+    "seller_tax_id": "12-3456789",
+    "customer_name": "John Smith",
+    "station_phone": "(512) 555-0142"
   }
 }

@@ -58,6 +58,7 @@ defmodule QuickSlips.TemplatesTest do
                  "textarea",
                  "number",
                  "date",
+                 "time",
                  "month",
                  "select",
                  "items",
@@ -276,7 +277,8 @@ defmodule QuickSlips.TemplatesTest do
 
         assert everywhere.(schema["fields"]) == everywhere.(english["fields"])
 
-        for {field, english_field} <- Enum.zip(schema["fields"], english["fields"]) do
+        for field <- schema["fields"],
+            english_field = Enum.find(english["fields"], &(&1["key"] == field["key"])) do
           assert field["label"] not in [nil, ""], "#{locale.code} #{field["key"]} has no label"
           # A label that names the currency does so in every language.
           assert String.contains?(field["label"], "{currency}") ==

@@ -37,6 +37,9 @@ defmodule QuickSlipsWeb.ErrorMessages do
   defp translate("must be a month like 2026-10"),
     do: dgettext("errors", "must be a month like 2026-10")
 
+  defp translate("must be a time like 14:30"),
+    do: dgettext("errors", "must be a time like 14:30")
+
   defp translate(message) do
     cond do
       match = Regex.run(~r/^must be at most (\d+) characters$/, message) ->
