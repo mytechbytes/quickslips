@@ -1,0 +1,66 @@
+{
+  "brand_name": "WellCare Pharmacy",
+  "brand_subtitle": "Your health, our priority",
+  "branch_name": "Koramangala Branch",
+  "branch_address": "21, 80 Feet Road, Koramangala, Bengaluru, Karnataka 560034",
+  "toll_free": "1800 123 4567",
+  "website": "www.wellcare.example",
+  "dl_number": "KA/BNG/20-1234, KA/BNG/21-5678",
+  "seller_tax_id": "29ABCDE1234F1Z5",
+  "fssai": "11224999000123",
+  "registered_office": "WellCare Retail Pvt. Ltd., 5th Floor, Brigade Gateway, Bengaluru, Karnataka 560055",
+  "admin_office": "WellCare Retail Pvt. Ltd., Admin Office, Whitefield, Bengaluru, Karnataka 560066",
+  "bill_number": "716805",
+  "date": "2026-10-19",
+  "time": "10:38",
+  "terminal_number": "T-02",
+  "customer_name": "Rohan Mehta",
+  "ref_number": "R-5521",
+  "doctor_name": "Dr. Meera Iyer",
+  "items": [
+    {
+      "name": "Paracetamol 500 mg (strip of 15)",
+      "hsn": "3004",
+      "mfr": "Alpha Pharma",
+      "batch": "PCM2407",
+      "expiry": "08/27",
+      "qty": 2,
+      "rate": 30,
+      "tax": 5
+    },
+    {
+      "name": "Amoxicillin 500 mg (strip of 10)",
+      "hsn": "3004",
+      "mfr": "Beta Labs",
+      "batch": "AMX2311",
+      "expiry": "03/27",
+      "schedule": "H",
+      "qty": 1,
+      "rate": 110,
+      "tax": 5
+    },
+    {
+      "name": "Cough syrup 100 ml",
+      "hsn": "3004",
+      "mfr": "Gamma Health",
+      "batch": "CS2402",
+      "expiry": "01/28",
+      "qty": 1,
+      "rate": 95,
+      "tax": 5
+    },
+    {
+      "name": "Digital thermometer",
+      "hsn": "9025",
+      "mfr": "Delta Devices",
+      "batch": "TH2405",
+      "qty": 1,
+      "rate": 250,
+      "tax": 18
+    }
+  ],
+  "discount": 20,
+  "payment_mode": "Cash",
+  "signatory_name": "R. Nair",
+  "signatory_line": "Pharmacist"
+}

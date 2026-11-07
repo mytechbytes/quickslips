@@ -1,0 +1,180 @@
+{
+  "title": "Generatore di scontrino di farmacia",
+  "name": "Scontrino di farmacia",
+  "public_slug": "generatore-scontrino-farmacia",
+  "summary": "Scontrino di farmacia con lotto, scadenza e prezzo.",
+  "description": "Genera uno scontrino di farmacia con farmaci, produttore, lotto, scadenza e prezzo, {tax} inclusa nel prezzo, sconto e dati di autorizzazione della filiale. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Fattura"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Nome della farmacia"
+    },
+    "brand_subtitle": {
+      "label": "Slogan (facoltativo)"
+    },
+    "branch_name": {
+      "label": "Filiale (facoltativo)"
+    },
+    "branch_address": {
+      "label": "Indirizzo della filiale (facoltativo)"
+    },
+    "toll_free": {
+      "label": "Telefono (facoltativo)"
+    },
+    "website": {
+      "label": "Sito web (facoltativo)"
+    },
+    "dl_number": {
+      "label": "N. autorizzazione farmacia (facoltativo)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "fssai": {
+      "label": "N. FSSAI (facoltativo)"
+    },
+    "registered_office": {
+      "label": "Sede legale (facoltativo)"
+    },
+    "admin_office": {
+      "label": "Ufficio amministrativo (facoltativo)"
+    },
+    "bill_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Ora (facoltativo)"
+    },
+    "terminal_number": {
+      "label": "N. terminale (facoltativo)"
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "ref_number": {
+      "label": "N. rif. (facoltativo)"
+    },
+    "doctor_name": {
+      "label": "Medico / prescrittore (facoltativo)"
+    },
+    "discount": {
+      "label": "Sconto sul totale ({currency}) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "signatory_name": {
+      "label": "Nome del firmatario (facoltativo)"
+    },
+    "signatory_line": {
+      "label": "Qualifica del firmatario (facoltativo)"
+    },
+    "items": {
+      "label": "Farmaci",
+      "columns": {
+        "name": "Articolo",
+        "hsn": "Codice HSN",
+        "mfr": "Produttore",
+        "batch": "Lotto",
+        "expiry": "Scadenza",
+        "schedule": "Tab.",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})",
+        "tax": "Imposta %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "Fattura",
+    "bill_no": "Fattura n.",
+    "date_time": "Data / ora",
+    "terminal": "N. terminale",
+    "name": "Nome",
+    "ref_no": "N. rif.",
+    "doctor": "Medico",
+    "payment": "Pagamento",
+    "tel": "Tel.",
+    "dl_no": "N. licenza",
+    "item": "Articolo",
+    "hsn": "Codice HSN",
+    "mfr": "Produttore",
+    "batch": "Lotto",
+    "expiry": "Scadenza",
+    "sch": "Tab.",
+    "qty": "Q.tà",
+    "mrp": "Prezzo",
+    "tax_rate": "Imposta %",
+    "taxable": "Imponibile",
+    "total_amount": "Importo totale",
+    "total": "Totale",
+    "discount": "Sconto",
+    "net_total": "Totale netto",
+    "authorised": "Firma autorizzata",
+    "registered": "Sede legale",
+    "admin": "Ufficio amministrativo",
+    "taxable_value": "Imponibile"
+  },
+  "sample": {
+    "brand_name": "Farmacia Centrale",
+    "brand_subtitle": "La tua salute, la nostra priorità",
+    "branch_name": "Filiale Centro",
+    "doctor_name": "Dott. Luca Bianchi",
+    "customer_name": "Marco Rossi",
+    "items": [
+      {
+        "name": "Paracetamolo 500 mg (20 compresse)",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 3,
+        "tax": 10
+      },
+      {
+        "name": "Amoxicillina 500 mg (12 capsule)",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 7,
+        "tax": 10
+      },
+      {
+        "name": "Sciroppo per la tosse 100 ml",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 7.5,
+        "tax": 10
+      },
+      {
+        "name": "Termometro digitale",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 10,
+        "tax": 22
+      }
+    ],
+    "discount": 1,
+    "toll_free": "06 1234567",
+    "dl_number": "Aut. n. 1234/FA",
+    "registered_office": "Farmacia Centrale S.r.l., Via Torino 20, 20123 Milano",
+    "admin_office": "Farmacia Centrale S.r.l., Via Roma 12, 00184 Roma",
+    "signatory_line": "Farmacista"
+  }
+}

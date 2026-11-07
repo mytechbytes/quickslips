@@ -1,0 +1,185 @@
+{
+  "title": "फ़ार्मेसी बिल जनरेटर",
+  "name": "फ़ार्मेसी बिल",
+  "public_slug": "pharmacy-bill-generator",
+  "summary": "बैच, एक्सपायरी और एमआरपी के साथ मेडिकल स्टोर का बिल।",
+  "description": "दवाइयों, निर्माता, बैच, एक्सपायरी और एमआरपी, कीमत में शामिल {tax}, छूट और शाखा के लाइसेंस विवरण के साथ फ़ार्मेसी या मेडिकल स्टोर का बिल बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "चालान"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "फ़ार्मेसी का नाम"
+    },
+    "brand_subtitle": {
+      "label": "टैगलाइन (वैकल्पिक)"
+    },
+    "branch_name": {
+      "label": "शाखा (वैकल्पिक)"
+    },
+    "branch_address": {
+      "label": "शाखा का पता (वैकल्पिक)"
+    },
+    "toll_free": {
+      "label": "फ़ोन (वैकल्पिक)"
+    },
+    "website": {
+      "label": "वेबसाइट (वैकल्पिक)"
+    },
+    "dl_number": {
+      "label": "औषधि लाइसेंस नं. (वैकल्पिक)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "fssai": {
+      "label": "FSSAI नं. (वैकल्पिक)"
+    },
+    "registered_office": {
+      "label": "पंजीकृत कार्यालय (वैकल्पिक)"
+    },
+    "admin_office": {
+      "label": "प्रशासनिक कार्यालय (वैकल्पिक)"
+    },
+    "bill_number": {
+      "label": "बिल नंबर"
+    },
+    "date": {
+      "label": "तारीख"
+    },
+    "time": {
+      "label": "समय (वैकल्पिक)"
+    },
+    "terminal_number": {
+      "label": "टर्मिनल नं. (वैकल्पिक)"
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम"
+    },
+    "ref_number": {
+      "label": "संदर्भ नं. (वैकल्पिक)"
+    },
+    "doctor_name": {
+      "label": "डॉक्टर / प्रिस्क्राइबर (वैकल्पिक)"
+    },
+    "discount": {
+      "label": "कुल पर छूट ({currency}) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "signatory_name": {
+      "label": "हस्ताक्षरकर्ता का नाम (वैकल्पिक)"
+    },
+    "signatory_line": {
+      "label": "हस्ताक्षरकर्ता का पद (वैकल्पिक)"
+    },
+    "items": {
+      "label": "दवाइयाँ",
+      "columns": {
+        "name": "वस्तु का नाम",
+        "hsn": "HSN कोड",
+        "mfr": "निर्माता",
+        "batch": "बैच नं.",
+        "expiry": "समाप्ति",
+        "schedule": "अनुसूची",
+        "qty": "मात्रा",
+        "rate": "एमआरपी ({currency})",
+        "tax": "कर %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "चालान",
+    "bill_no": "बिल नं.",
+    "date_time": "तारीख / समय",
+    "terminal": "टर्मिनल नं.",
+    "name": "नाम",
+    "ref_no": "संदर्भ नं.",
+    "doctor": "डॉक्टर",
+    "payment": "भुगतान",
+    "tel": "फ़ोन",
+    "dl_no": "डीएल नं.",
+    "item": "वस्तु का नाम",
+    "hsn": "HSN कोड",
+    "mfr": "निर्माता",
+    "batch": "बैच नं.",
+    "expiry": "समाप्ति",
+    "sch": "अनुसूची",
+    "qty": "मात्रा",
+    "mrp": "एमआरपी",
+    "tax_rate": "कर %",
+    "taxable": "कर योग्य",
+    "total_amount": "कुल राशि",
+    "total": "कुल",
+    "discount": "छूट",
+    "net_total": "शुद्ध कुल",
+    "authorised": "अधिकृत हस्ताक्षरकर्ता",
+    "registered": "पंजीकृत कार्यालय",
+    "admin": "प्रशासनिक कार्यालय",
+    "taxable_value": "कर योग्य मूल्य"
+  },
+  "sample": {
+    "brand_name": "वेलकेयर फ़ार्मेसी",
+    "brand_subtitle": "आपकी सेहत, हमारी प्राथमिकता",
+    "branch_name": "कोरमंगला शाखा",
+    "doctor_name": "डॉ. मीरा अय्यर",
+    "customer_name": "रोहन मेहता",
+    "items": [
+      {
+        "name": "पैरासिटामोल 500 मिग्रा (15 की पट्टी)",
+        "hsn": "3004",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 30,
+        "tax": 5
+      },
+      {
+        "name": "एमोक्सिसिलिन 500 मिग्रा (10 की पट्टी)",
+        "hsn": "3004",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "H",
+        "qty": 1,
+        "rate": 110,
+        "tax": 5
+      },
+      {
+        "name": "खाँसी का सिरप 100 मिली",
+        "hsn": "3004",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 95,
+        "tax": 5
+      },
+      {
+        "name": "डिजिटल थर्मामीटर",
+        "hsn": "9025",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 250,
+        "tax": 18
+      }
+    ],
+    "discount": 20,
+    "dl_number": "KA/BNG/20-1234, KA/BNG/21-5678",
+    "registered_office": "वेलकेयर रिटेल प्रा. लि., 5वीं मंज़िल, ब्रिगेड गेटवे, बेंगलुरु, कर्नाटक 560055",
+    "admin_office": "वेलकेयर रिटेल प्रा. लि., प्रशासनिक कार्यालय, व्हाइटफ़ील्ड, बेंगलुरु 560066",
+    "signatory_line": "फ़ार्मासिस्ट",
+    "branch_address": "21, 80 फ़ीट रोड, कोरमंगला, बेंगलुरु, कर्नाटक 560034",
+    "signatory_name": "आर. नायर"
+  }
+}

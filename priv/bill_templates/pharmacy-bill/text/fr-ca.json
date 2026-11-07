@@ -1,0 +1,54 @@
+{
+  "sample": {
+    "brand_name": "Pharmacie Érable",
+    "brand_subtitle": "Votre santé, notre priorité",
+    "branch_name": "Succursale Centre-ville",
+    "doctor_name": "Dr Marc Gagnon",
+    "customer_name": "Julie Tremblay",
+    "items": [
+      {
+        "name": "Acétaminophène 500 mg (24 comprimés)",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 8,
+        "tax": 5
+      },
+      {
+        "name": "Amoxicilline 500 mg (20 capsules)",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 14,
+        "tax": 5
+      },
+      {
+        "name": "Sirop contre la toux 100 ml",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 9.5,
+        "tax": 5
+      },
+      {
+        "name": "Thermomètre numérique",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 16,
+        "tax": 5
+      }
+    ],
+    "discount": 2,
+    "toll_free": "(514) 555-0123",
+    "dl_number": "OPQ 12345",
+    "registered_office": "Pharmacie Érable inc., 500 rue Notre-Dame, Montréal, QC H2Y 1T2",
+    "admin_office": "Pharmacie Érable inc., Administration, 250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "signatory_line": "Pharmacien(ne)",
+    "branch_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

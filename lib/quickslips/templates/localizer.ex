@@ -181,7 +181,7 @@ defmodule QuickSlips.Templates.Localizer do
     sample
     |> Map.new(fn {key, value} -> {key, adapt_value(key, value, example)} end)
     |> Map.drop(
-      ~w(fssai_number landlord_pan restaurant_fssai platform_pan platform_cin platform_fssai place_of_supply hsn_code reverse_charge)
+      ~w(fssai_number fssai landlord_pan restaurant_fssai platform_pan platform_cin platform_fssai place_of_supply hsn_code reverse_charge)
     )
   end
 

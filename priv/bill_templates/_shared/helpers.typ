@@ -221,6 +221,11 @@
       rate: rate,
       discount: discount,
       tax: row.at("tax", default: 0),
+      hsn: row.at("hsn", default: ""),
+      mfr: row.at("mfr", default: ""),
+      batch: row.at("batch", default: ""),
+      expiry: row.at("expiry", default: ""),
+      schedule: row.at("schedule", default: ""),
       amount: qty * rate * (1 - discount / 100),
     )
   })

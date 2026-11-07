@@ -1,0 +1,180 @@
+{
+  "title": "薬局レシート作成",
+  "name": "薬局レシート",
+  "public_slug": "pharmacy-bill-generator",
+  "summary": "ロット・使用期限・定価つきの薬局のレシート。",
+  "description": "薬剤、製造元、ロット番号、使用期限、定価、価格に含まれる{tax}、割引、店舗の許可情報を記載した薬局のレシートを作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "請求書"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "薬局名"
+    },
+    "brand_subtitle": {
+      "label": "キャッチコピー（任意）"
+    },
+    "branch_name": {
+      "label": "店舗名（任意）"
+    },
+    "branch_address": {
+      "label": "店舗の住所（任意）"
+    },
+    "toll_free": {
+      "label": "電話番号（任意）"
+    },
+    "website": {
+      "label": "ウェブサイト（任意）"
+    },
+    "dl_number": {
+      "label": "薬局開設許可番号（任意）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "fssai": {
+      "label": "FSSAI 番号（任意）"
+    },
+    "registered_office": {
+      "label": "登記上の本店（任意）"
+    },
+    "admin_office": {
+      "label": "管理事務所（任意）"
+    },
+    "bill_number": {
+      "label": "伝票番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "time": {
+      "label": "時刻（任意）"
+    },
+    "terminal_number": {
+      "label": "端末番号（任意）"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "ref_number": {
+      "label": "参照番号（任意）"
+    },
+    "doctor_name": {
+      "label": "医師 / 処方者（任意）"
+    },
+    "discount": {
+      "label": "合計への割引（{currency}）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "signatory_name": {
+      "label": "署名者名（任意）"
+    },
+    "signatory_line": {
+      "label": "署名者の役職（任意）"
+    },
+    "items": {
+      "label": "薬剤",
+      "columns": {
+        "name": "品名",
+        "hsn": "HSNコード",
+        "mfr": "製造元",
+        "batch": "ロット番号",
+        "expiry": "使用期限",
+        "schedule": "区分",
+        "qty": "数量",
+        "rate": "定価（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "請求書",
+    "bill_no": "伝票番号",
+    "date_time": "日付 / 時刻",
+    "terminal": "端末番号",
+    "name": "氏名",
+    "ref_no": "参照番号",
+    "doctor": "医師",
+    "payment": "支払",
+    "tel": "電話",
+    "dl_no": "医薬品許可番号",
+    "item": "品名",
+    "hsn": "HSNコード",
+    "mfr": "製造元",
+    "batch": "ロット番号",
+    "expiry": "使用期限",
+    "sch": "区分",
+    "qty": "数量",
+    "mrp": "定価",
+    "tax_rate": "税率 %",
+    "taxable": "課税額",
+    "total_amount": "合計金額",
+    "total": "合計",
+    "discount": "割引",
+    "net_total": "正味合計",
+    "authorised": "承認者署名",
+    "registered": "登記上の本店",
+    "admin": "管理事務所",
+    "taxable_value": "課税対象額"
+  },
+  "sample": {
+    "brand_name": "グリーン薬局",
+    "brand_subtitle": "あなたの健康を支えます",
+    "branch_name": "駅前店",
+    "doctor_name": "山田 医師",
+    "customer_name": "田中 太郎",
+    "items": [
+      {
+        "name": "パラセタモール錠 500 mg（20錠）",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 680,
+        "tax": 10
+      },
+      {
+        "name": "アモキシシリンカプセル 500 mg（12カプセル）",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 1200,
+        "tax": 10
+      },
+      {
+        "name": "せき止めシロップ 100 ml",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 980,
+        "tax": 10
+      },
+      {
+        "name": "デジタル体温計",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 2500,
+        "tax": 10
+      }
+    ],
+    "discount": 100,
+    "toll_free": "03-1234-5678",
+    "dl_number": "薬局開設許可 第1234号",
+    "registered_office": "グリーン薬局株式会社 東京都渋谷区道玄坂1-1-1",
+    "admin_office": "グリーン薬局株式会社 東京都千代田区丸の内1-1-1",
+    "signatory_line": "薬剤師"
+  }
+}
