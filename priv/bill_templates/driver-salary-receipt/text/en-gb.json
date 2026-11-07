@@ -1,0 +1,11 @@
+{
+  "sample": {
+    "employer_name": "Oliver Smith",
+    "driver_name": "Harry Jones",
+    "vehicle_number": "AB12 CDE",
+    "basic_salary": 2400,
+    "overtime": 200,
+    "allowance": 100,
+    "deductions": 80
+  }
+}

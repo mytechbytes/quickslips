@@ -308,6 +308,24 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "driver-salary-receipt" => %{
+      designs: ~w(t1 t2 t3 t4 t5 t6),
+      # t4 is a receipt for each month of the sample's period: July to September is three pages
+      pages: %{"t4" => 3},
+      optional:
+        ~w(employer_address vehicle_number declaration from_date to_date bill_by overtime allowance deductions),
+      long: %{
+        "employer_name" => String.duplicate("Venkatasubramanian ", 4),
+        "driver_name" => String.duplicate("Ramakrishnan ", 5),
+        "vehicle_number" => "ABCDEFGHIJ-0123456789",
+        "declaration" =>
+          String.duplicate("The driver is exclusively used for official purposes. ", 5),
+        "basic_salary" => 99_999_999.99,
+        "overtime" => 9_999_999.99,
+        "allowance" => 9_999_999.99,
+        "deductions" => 1_000.5
+      }
+    },
     "rent-receipt" => %{
       designs: ~w(t1 t2 t3 t4),
       # t3 is a receipt for each quarter of the sample's period: July to December is two pages

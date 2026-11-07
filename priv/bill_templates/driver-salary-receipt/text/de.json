@@ -1,0 +1,131 @@
+{
+  "title": "Gehaltsquittung-Generator für Fahrer",
+  "name": "Fahrer-Gehaltsquittung",
+  "public_slug": "fahrer-gehaltsquittung-generator",
+  "summary": "Monatliche Gehaltsquittung für einen Fahrer.",
+  "description": "Erstellen Sie eine Gehaltsquittung für einen Fahrer mit Monatsgehalt, Überstunden, Zulagen und Abzügen. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Erstattung",
+    "t2": "Mit Empfangsbestätigung",
+    "t3": "Erklärung des Arbeitgebers",
+    "t4": "Mehrere Monate",
+    "t5": "Lohnbeleg",
+    "t6": "Einfacher Nachweis"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Name des Arbeitgebers"
+    },
+    "employer_address": {
+      "label": "Adresse des Arbeitgebers (optional)"
+    },
+    "driver_name": {
+      "label": "Name des Fahrers"
+    },
+    "vehicle_number": {
+      "label": "Kfz-Kennzeichen (optional)"
+    },
+    "declaration": {
+      "label": "Erklärung (optional)"
+    },
+    "month": {
+      "label": "Gehalt für den Monat"
+    },
+    "from_date": {
+      "label": "Zeitraum von (optional)"
+    },
+    "to_date": {
+      "label": "Zeitraum bis (optional)"
+    },
+    "bill_by": {
+      "label": "Abrechnung",
+      "options": {
+        "Monthly": "Monatlich",
+        "Quarterly": "Vierteljährlich",
+        "Half-yearly": "Halbjährlich",
+        "Yearly": "Jährlich"
+      }
+    },
+    "receipt_date": {
+      "label": "Datum der Quittung"
+    },
+    "basic_salary": {
+      "label": "Monatsgehalt ({currency})"
+    },
+    "overtime": {
+      "label": "Überstunden ({currency}) (optional)"
+    },
+    "allowance": {
+      "label": "Kraftstoff und andere Zulagen ({currency}) (optional)"
+    },
+    "deductions": {
+      "label": "Vorschuss oder Abzüge ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Bezahlt mit",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Bank transfer": "Überweisung",
+        "Cheque": "Scheck",
+        "Card": "Karte",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Gehaltsquittung für den Fahrer",
+    "date": "Datum",
+    "certify": "Hiermit wird bestätigt, dass {employer} an den Fahrer {driver} für den Monat {month} ein Gehalt von {amount} gezahlt hat (Empfangsbestätigung liegt bei).",
+    "certify_period": "Hiermit wird bestätigt, dass {employer} an den Fahrer {driver} für den Zeitraum {period} ein Gehalt von {amount} gezahlt hat (Empfangsbestätigung liegt bei).",
+    "certify_self": "Ich bestätige, dass ich an den Fahrer {driver} für den Monat {month} {amount} gezahlt habe (Empfangsbestätigung liegt bei).",
+    "reimburse": "Bitte erstatten Sie den obigen Betrag. Ich erkläre außerdem, dass die obigen Angaben richtig und wahr sind.",
+    "vehicle_no": "Kennzeichen",
+    "driver_name": "Name des Fahrers",
+    "employer_name": "Name des Arbeitgebers",
+    "employer_signature": "Unterschrift des Arbeitgebers",
+    "revenue_stamp": "Stempelmarke",
+    "salary_month": "Gehalt für den Monat",
+    "amount_paid": "Gezahlter Betrag",
+    "received_text": "Erhalten von {employer}: {amount} durch den Fahrer {driver} als Gehalt für den Monat {month}.",
+    "ack_title": "Empfangsbestätigung",
+    "receipt_date_of": "Empfangsdatum",
+    "for_month": "Für den Monat",
+    "received_sum": "Betrag von {amount} für den Monat {month} von {employer} erhalten.",
+    "period": "Zeitraum",
+    "receipt_of": "Quittung {number} von {total}",
+    "payroll_voucher": "Lohnbeleg",
+    "voucher_sub": "Zahlungsbeleg für das Fahrergehalt",
+    "payer": "Zahler",
+    "driver": "Fahrer",
+    "acknowledgement": "Bestätigung",
+    "ack_voucher": "Erhalten von {driver} von {employer} als Gehalt für {month}.",
+    "received_by": "Empfangen durch",
+    "prepared_by": "Erstellt von",
+    "name": "Name",
+    "record_title": "Gehaltsnachweis Fahrer",
+    "record_sub": "Einfaches Bestätigungsformular",
+    "payer_name": "Name des Zahlers",
+    "declaration_label": "Erklärung",
+    "confirm": "Ich bestätige den Erhalt des oben genannten Gehalts vom Zahler für den in diesem Nachweis genannten Monat.",
+    "notes": "Hinweise",
+    "note_1": "Das Gehalt gilt nur für den genannten Monat.",
+    "note_2": "Überstunden und Zulagen sind nur enthalten, wenn sie aufgeführt sind.",
+    "payer_details": "Angaben zum Zahler",
+    "driver_signature": "Unterschrift des Fahrers",
+    "monthly_salary": "Monatsgehalt",
+    "overtime": "Überstunden",
+    "allowance": "Zulagen",
+    "deductions": "Vorschuss oder Abzüge"
+  },
+  "sample": {
+    "employer_name": "Thomas Müller",
+    "driver_name": "Klaus Weber",
+    "vehicle_number": "B WK 4521",
+    "basic_salary": 2600,
+    "overtime": 200,
+    "allowance": 100,
+    "deductions": 80,
+    "declaration": "Ich erkläre außerdem, dass der Fahrer ausschließlich dienstlich eingesetzt wird."
+  }
+}

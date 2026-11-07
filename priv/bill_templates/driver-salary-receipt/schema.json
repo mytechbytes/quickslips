@@ -6,18 +6,23 @@
   "icon": "hero-identification",
   "summary": "Monthly pay receipt for a driver.",
   "description": "Create a salary receipt for a driver with monthly pay, overtime, allowances and deductions. Preview instantly and download as PDF.",
-  "templates": [{ "id": "t1", "name": "Classic" }],
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "templates": [{ "id": "t1" }, { "id": "t2" }, { "id": "t3" }, { "id": "t4" }, { "id": "t5" }, { "id": "t6" }],
   "fields": [
     { "key": "employer_name", "group": "business", "label": "Employer name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
     { "key": "employer_address", "group": "business", "label": "Employer address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
     { "key": "driver_name", "group": "customer", "label": "Driver name", "type": "text", "required": true, "max_length": 80 },
     { "key": "vehicle_number", "group": "details", "label": "Vehicle number (optional)", "type": "text", "required": false, "max_length": 20 },
+    { "key": "declaration", "group": "details", "label": "Declaration (optional)", "type": "textarea", "required": false, "max_length": 300 },
     { "key": "month", "group": "document", "label": "Salary for month", "type": "month", "required": true },
+    { "key": "from_date", "group": "document", "label": "Period from (optional)", "type": "date", "required": false },
+    { "key": "to_date", "group": "document", "label": "Period to (optional)", "type": "date", "required": false },
+    { "key": "bill_by", "group": "document", "label": "Bill by", "type": "select", "options": ["Monthly", "Quarterly", "Half-yearly", "Yearly"], "required": false },
+    { "key": "receipt_date", "group": "document", "label": "Receipt date", "type": "date", "required": true },
     { "key": "basic_salary", "group": "charges", "label": "Monthly salary ({currency})", "type": "number", "required": true, "min": 0 },
     { "key": "overtime", "group": "charges", "label": "Overtime ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
     { "key": "allowance", "group": "charges", "label": "Fuel and other allowance ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
     { "key": "deductions", "group": "charges", "label": "Advance or deductions ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Bank transfer", "Cheque"], "required": true },
-    { "key": "receipt_date", "group": "document", "label": "Receipt date", "type": "date", "required": true }
+    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Bank transfer", "Cheque", "Card", "Online"], "required": true }
   ]
 }

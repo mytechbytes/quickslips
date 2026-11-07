@@ -6,31 +6,17 @@
 #set par(leading: 0.75em)
 
 #let rent = data.monthly_rent
-// A month as a whole number of months (year times twelve), and back to "2026-10".
-#let ym-int(ym) = {
-  let (y, m) = ym.split("-").map(int)
-  y * 12 + m - 1
-}
-#let ym-str(n) = {
-  let m = calc.rem(n, 12) + 1
-  str(calc.quo(n, 12)) + "-" + (if m < 10 { "0" } else { "" }) + str(m)
-}
-#let first = if opt(data, "from_date") != none { opt(data, "from_date").slice(0, 7) } else { data.month }
-#let last = if opt(data, "to_date") != none { opt(data, "to_date").slice(0, 7) } else { first }
-#let step = (Monthly: 1, Quarterly: 3, "Half-yearly": 6, Yearly: 12).at(data.at("bill_by", default: "Monthly"), default: 1)
-// The months of the period, at most a year of them, and how many receipts that makes.
-#let months = calc.min(calc.max(ym-int(last) - ym-int(first) + 1, 1), 12)
-#let count = calc.ceil(months / step)
+// A receipt for each month, quarter, half-year or year of the period (see `receipt-periods` of the helpers).
+#let periods = receipt-periods(data)
+#let count = periods.len()
 #let stamp = if region.country == "in" {
   box(width: 24mm, height: 28mm, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"), inset: 2mm, align(center + horizon, text(size: 7.5pt, fill: muted, t.revenue_stamp)))
 }
 
-#for i in range(count) {
+#for (i, receipt) in periods.enumerate() {
   if i > 0 { pagebreak() }
-  let start = ym-int(first) + i * step
-  let length = calc.min(step, months - i * step)
-  let period = if length == 1 { month-label(ym-str(start)) } else { month-label(ym-str(start)) + " – " + month-label(ym-str(start + length - 1)) }
-  let amount = rent * length
+  let period = receipt.label
+  let amount = rent * receipt.months
 
   align(right)[#t.date: #fmt-date(data.receipt_date)]
   v(1mm)
