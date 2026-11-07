@@ -59,8 +59,8 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
     } do
       doc =
         document_fixture(scope, %{
-          slug: "rent-receipt",
-          data: sample("rent-receipt"),
+          slug: "grocery-bill",
+          data: sample("grocery-bill"),
           language: "hi",
           options: %{"country" => "in"}
         })

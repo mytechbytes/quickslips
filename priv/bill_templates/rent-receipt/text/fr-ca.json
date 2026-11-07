@@ -1,0 +1,9 @@
+{
+  "sample": {
+    "tenant_name": "Julie Tremblay",
+    "landlord_name": "Marc Gagnon",
+    "receiver_name": "Marc Gagnon",
+    "monthly_rent": 1500,
+    "property_address": "5, rue Sherbrooke Ouest, Montréal, QC H2X 1X7"
+  }
+}

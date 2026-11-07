@@ -71,7 +71,7 @@ defmodule QuickSlipsWeb.HomeLiveTest do
                "पेट्रोल बिल जनरेटर"
              )
 
-      refute has_element?(view, "#template-rent-receipt")
+      refute has_element?(view, "#template-grocery-bill")
       assert has_element?(view, "#chip-travel", "यात्रा")
       refute has_element?(view, "#chip-work")
     end
