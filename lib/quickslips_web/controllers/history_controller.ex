@@ -5,6 +5,7 @@ defmodule QuickSlipsWeb.HistoryController do
   alias QuickSlips.Documents
   alias QuickSlips.Locales
   alias QuickSlips.Render.Renderer
+  alias QuickSlips.Signatures
   alias QuickSlips.Templates
   alias QuickSlips.Templates.Items
   alias QuickSlips.Templates.Validator
@@ -18,7 +19,11 @@ defmodule QuickSlipsWeb.HistoryController do
     # Looked up through the scope: somebody else's document raises, which is a 404.
     document = Documents.get_document!(scope, id)
     business = document.business_id && Businesses.get_business!(scope, document.business_id)
-    %{data: image_names, files: files} = Businesses.render_assets(business)
+
+    # The signature that was chosen when the document was made. If it has been deleted since, the column is empty
+    # (the database does that), and the document is made with the place to sign by hand.
+    signature = Signatures.get_signature(scope, document.signature_id)
+    %{data: image_names, files: files} = Businesses.render_assets(business, signature)
 
     # The document is made again in the language and for the country it was made for.
     locale = Locales.for_document(document.language, document.options)

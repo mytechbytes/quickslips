@@ -14,6 +14,9 @@ defmodule QuickSlips.Documents.Document do
     field :user_id, :id
     field :business_id, :id
 
+    # The signature that was drawn on the document (a saved one, or none: the place to sign by hand).
+    field :signature_id, :id
+
     timestamps(type: :utc_datetime)
   end
 
@@ -33,4 +36,8 @@ defmodule QuickSlips.Documents.Document do
   """
   def put_business(changeset, nil), do: changeset
   def put_business(changeset, %{id: id}), do: put_change(changeset, :business_id, id)
+
+  @doc "Sets the signature that was drawn on the document, found through the user's scope like the business."
+  def put_signature(changeset, nil), do: changeset
+  def put_signature(changeset, %{id: id}), do: put_change(changeset, :signature_id, id)
 end

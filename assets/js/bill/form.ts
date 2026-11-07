@@ -1,6 +1,6 @@
 import { t } from "./i18n"
 import { createItemsField, type ItemRow } from "./items"
-import { INPUT_CLASS } from "./styles"
+import { INPUT_CLASS, SECONDARY_BUTTON_CLASS } from "./styles"
 
 export type Field = {
   key: string
@@ -28,7 +28,9 @@ export type Field = {
   max_rows?: number
   name_max_length?: number
 }
-export type Schema = { slug: string; title: string; fields: Field[] }
+// A design of the bill; `signature` says whether its layout has a place for a signature.
+export type Design = { id: string; name?: string; signature?: boolean }
+export type Schema = { slug: string; title: string; fields: Field[]; templates?: Design[] }
 export type BillData = Record<string, string | number | ItemRow[]>
 export type Business = {
   id: number
@@ -36,8 +38,19 @@ export type Business = {
   address: string | null
   gstin: string | null
   logo_url: string | null
-  signature_url: string | null
+  // The signature that is chosen for a bill when this business is (the id of a saved signature).
+  signature_id: number | null
 }
+
+/**
+ * Saves the seller details of the form (the server updates the business of that name, or makes one). Tells the form
+ * the saved business and the sentence to show, or the sentence to show when it did not work.
+ */
+export type SaveSeller = (details: {
+  name: string
+  address: string
+  gstin: string
+}) => Promise<{ business: Business; message: string } | { error: string }>
 
 // The sections of the form, in the order they appear; a field says which one it is in. The titles are ui strings
 // (`group_business`, ...), so every language has them.
@@ -46,25 +59,34 @@ const GROUPS = ["business", "registration", "document", "customer", "items", "de
 type Control = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
 /**
- * A "Fill from a saved business" picker above the first field. Choosing a business fills every field whose
- * `prefill` is `business.<attribute>`, and tells `picked` which business it is (`null` for the "Choose…" line),
- * because its logo and signature belong on the document too.
+ * What a logged-in user sees above the first field: a "Fill from a saved business" picker, and a button that saves
+ * the seller details of the form. Choosing a business fills every field whose `prefill` is `business.<attribute>`,
+ * and tells `picked` which business it is (`null` for the "Choose…" line), because its logo and signature belong
+ * on the document too. A visitor who has nothing saved, and cannot save, sees neither.
  */
-function addBusinessPicker(
+function addSavedDetails(
   form: HTMLFormElement,
   schema: Schema,
   businesses: Business[],
   controls: Map<string, Control>,
   notify: () => void,
   picked: (business: Business | null) => void,
+  saveSeller: SaveSeller | null,
 ) {
-  if (businesses.length === 0) return // visitors, and users who have not saved a business yet
+  const sellerFields = schema.fields.filter((field) => field.prefill?.startsWith("business."))
+  const canSave = saveSeller !== null && sellerFields.some((field) => field.prefill === "business.name")
+  if (businesses.length === 0 && !canSave) return // a visitor, or a bill with no seller
 
   const select = document.createElement("select")
   select.id = "business-select"
   select.className = INPUT_CLASS
-  select.append(new Option(t("pick_business"), ""))
-  for (const business of businesses) select.append(new Option(business.name, String(business.id)))
+  // The "Choose…" line and a line for each saved business; the list changes when the seller details are saved.
+  const showBusinesses = (selected?: number) => {
+    select.replaceChildren(new Option(t("pick_business"), ""))
+    for (const business of businesses) select.append(new Option(business.name, String(business.id)))
+    if (selected !== undefined) select.value = String(selected)
+  }
+  showBusinesses()
 
   const label = document.createElement("label")
   label.htmlFor = select.id
@@ -85,8 +107,48 @@ function addBusinessPicker(
     notify() // update the preview
   })
 
+  const picker = document.createElement("div")
+  picker.hidden = businesses.length === 0 // nothing to choose from until one is saved
+  picker.append(label, select)
+
   const wrapper = document.createElement("div")
-  wrapper.append(label, select)
+  wrapper.className = "space-y-2"
+  wrapper.append(picker)
+
+  if (canSave) {
+    const button = document.createElement("button")
+    button.type = "button"
+    button.id = "save-seller"
+    button.className = SECONDARY_BUTTON_CLASS
+    button.textContent = t("save_seller")
+
+    const message = document.createElement("p")
+    message.id = "save-seller-message"
+    message.setAttribute("role", "status")
+
+    button.addEventListener("click", async () => {
+      const details = { name: "", address: "", gstin: "" }
+      for (const field of sellerFields) {
+        const key = field.prefill!.slice("business.".length) as keyof typeof details
+        const control = controls.get(field.key)
+        if (control && key in details && details[key] === "") details[key] = control.value.trim()
+      }
+
+      button.disabled = true
+      const result = await saveSeller!(details)
+      button.disabled = false
+
+      message.className = "text-sm/6 " + ("error" in result ? "text-danger" : "text-ink-muted")
+      message.textContent = "error" in result ? result.error : result.message
+      if ("error" in result) return
+
+      picker.hidden = false
+      showBusinesses(result.business.id)
+      picked(result.business)
+    })
+    wrapper.append(button, message)
+  }
+
   form.prepend(wrapper)
 }
 
@@ -149,6 +211,7 @@ export function buildForm(
   onBusiness: (business: Business | null) => void = () => {},
   vars: { currency?: string; tax?: string; tax_id?: string } = {},
   formatMoney: (amount: number) => string = String,
+  saveSeller: SaveSeller | null = null,
 ) {
   const controls = new Map<string, Control>()
   const typedRates = new Map<string, HTMLInputElement>() // the box of "Other rate…", by field key
@@ -266,7 +329,7 @@ export function buildForm(
   const onInput = () => onChange(read())
   form.addEventListener("input", onInput)
 
-  addBusinessPicker(form, schema, businesses, controls, () => onChange(read()), onBusiness)
+  addSavedDetails(form, schema, businesses, controls, () => onChange(read()), onBusiness, saveSeller)
 
   return {
     read,

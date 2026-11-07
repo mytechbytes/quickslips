@@ -132,6 +132,19 @@ defmodule QuickSlips.TemplatesTest do
     "transport-bill" => "transport-bill-generator"
   }
 
+  test "the designs that have a place to sign are marked, the others are not" do
+    signs = fn slug ->
+      {:ok, schema} = Templates.get(slug)
+      Map.new(schema["templates"], &{&1["id"], &1["signature"]})
+    end
+
+    assert signs.("rent-receipt") |> Map.values() == [true, true, true, true]
+    assert signs.("grocery-bill") |> Map.values() == [false, false]
+    assert %{"t1" => true, "t2" => false, "t5" => true} = signs.("fuel-bill")
+    # A layout that only says "no signature required" has no place for one.
+    assert %{"t2" => false} = signs.("internet-bill")
+  end
+
   describe "public slugs" do
     test "are the confirmed ones" do
       assert Map.new(Templates.list(), &{&1["slug"], &1["public_slug"]}) == @public_slugs

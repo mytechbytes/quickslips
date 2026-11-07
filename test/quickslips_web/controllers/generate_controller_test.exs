@@ -9,6 +9,7 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
   end
 
   import QuickSlips.BusinessesFixtures
+  import QuickSlips.SignaturesFixtures
   import QuickSlips.UploadsFixtures
 
   defp sample, do: "priv/bill_templates/fuel-bill/sample.json" |> File.read!() |> Jason.decode!()
@@ -53,13 +54,8 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
       )
     end
 
-    test "draws its logo and signature on the PDF", %{conn: conn, user: user, scope: scope} do
-      images = %{
-        logo_path: stored_image(user.id),
-        signature_path: stored_image(user.id, jpg_bytes())
-      }
-
-      business = business_fixture(scope, %{}, images)
+    test "draws its logo on the PDF", %{conn: conn, user: user, scope: scope} do
+      business = business_fixture(scope, %{}, %{logo_path: stored_image(user.id)})
 
       plain = conn |> generate() |> response(200)
       branded = conn |> generate(%{business_id: business.id}) |> response(200)
@@ -85,6 +81,45 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
       assert %{remaining: 3} = QuickSlips.Downloads.status(%{user: user})
     end
 
+    test "draws the signature that was chosen", %{conn: conn, scope: scope} do
+      signature = signature_fixture(scope, %{}, jpg_bytes())
+
+      plain = conn |> generate() |> response(200)
+      signed = conn |> generate(%{signature_id: signature.id}) |> response(200)
+
+      assert "%PDF" <> _ = signed
+      assert byte_size(signed) > byte_size(plain)
+    end
+
+    test "the default signature of a business is drawn only when it is the one chosen", %{
+      conn: conn,
+      scope: scope
+    } do
+      signature = signature_fixture(scope, %{}, jpg_bytes())
+      business = business_fixture(scope, %{signature_id: signature.id})
+
+      without = conn |> generate(%{business_id: business.id}) |> response(200)
+
+      chosen =
+        conn |> generate(%{business_id: business.id, signature_id: signature.id}) |> response(200)
+
+      none = conn |> generate(%{business_id: business.id, signature_id: ""}) |> response(200)
+
+      assert byte_size(chosen) > byte_size(without)
+      assert byte_size(none) == byte_size(without)
+    end
+
+    test "a signature of somebody else is a 404, and costs no download", %{conn: conn, user: user} do
+      other = QuickSlips.AccountsFixtures.user_scope_fixture()
+      signature = signature_fixture(other)
+
+      assert {404, _headers, body} =
+               assert_error_sent(404, fn -> generate(conn, %{signature_id: signature.id}) end)
+
+      assert %{"errors" => %{"detail" => "Not Found"}} = Jason.decode!(body)
+      assert %{remaining: 3} = QuickSlips.Downloads.status(%{user: user})
+    end
+
     test "a name for a picture in the data is ignored", %{conn: conn} do
       data = Map.merge(sample(), %{"logo" => "../../etc/passwd", "signature" => "data.json"})
 
@@ -92,14 +127,15 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
     end
   end
 
-  test "a visitor's business_id is ignored", %{conn: conn} do
+  test "a visitor's business_id and signature_id are ignored", %{conn: conn} do
     conn =
       post(conn, ~p"/api/generate", %{
         slug: "fuel-bill",
         template: "t1",
         data: sample(),
         turnstile_token: "test",
-        business_id: 1
+        business_id: 1,
+        signature_id: 1
       })
 
     assert "%PDF" <> _ = response(conn, 200)
@@ -117,6 +153,19 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
       assert doc.title == "Fuel Bill · FB-10482 · Sunrise Fuel Station · 12 Oct 2026"
       assert doc.data["station_name"] == "Sunrise Fuel Station"
       assert doc.business_id == nil
+      assert doc.signature_id == nil
+    end
+
+    test "remembers the signature that was drawn, so the history can draw it again", %{
+      conn: conn,
+      scope: scope
+    } do
+      signature = signature_fixture(scope)
+
+      conn |> generate(%{signature_id: signature.id}) |> response(200)
+
+      assert [doc] = QuickSlips.Documents.list_documents(scope)
+      assert doc.signature_id == signature.id
     end
 
     test "the data kept is the clean data, not whatever was sent", %{conn: conn, scope: scope} do

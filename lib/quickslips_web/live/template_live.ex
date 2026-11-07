@@ -13,9 +13,11 @@ defmodule QuickSlipsWeb.TemplateLive do
   alias QuickSlips.Documents
   alias QuickSlips.Locales
   alias QuickSlips.Regions
+  alias QuickSlips.Signatures
   alias QuickSlips.Templates
   alias QuickSlips.Templates.Items
-  alias QuickSlipsWeb.UploadController
+  alias QuickSlipsWeb.BusinessController
+  alias QuickSlipsWeb.SignatureController
 
   @impl true
   def mount(%{"locale" => code, "slug" => public_slug} = params, _session, socket) do
@@ -52,7 +54,9 @@ defmodule QuickSlipsWeb.TemplateLive do
             template: chosen_template(schema, document),
             text: Templates.print_text(slug, view_locale),
             fonts: QuickSlips.Fonts.urls(locale.language),
-            businesses: saved_businesses(scope)
+            signed_in?: signed_in?(scope),
+            businesses: saved_businesses(scope),
+            signatures: saved_signatures(scope)
           )
 
         {:ok, tell_locale(socket, locale)}
@@ -91,19 +95,22 @@ defmodule QuickSlipsWeb.TemplateLive do
     scope
     |> Businesses.list_businesses()
     |> Enum.sort_by(&String.downcase(&1.name))
-    |> Enum.map(
-      &%{
-        id: &1.id,
-        name: &1.name,
-        address: &1.address,
-        gstin: &1.gstin,
-        logo_url: UploadController.path(&1.logo_path),
-        signature_url: UploadController.path(&1.signature_path)
-      }
-    )
+    |> Enum.map(&BusinessController.payload/1)
   end
 
   defp saved_businesses(_visitor), do: []
+
+  # The signatures to choose from. Only a logged-in user has any.
+  defp saved_signatures(%{user: %{}} = scope) do
+    scope |> Signatures.list_signatures() |> Enum.map(&SignatureController.payload/1)
+  end
+
+  defp saved_signatures(_visitor), do: []
+
+  # Whether the chosen design of the bill has a place for a signature (see `Templates.Registry`).
+  defp signature_design?(schema, template) do
+    Enum.any?(schema["templates"], &(&1["id"] == template and &1["signature"] == true))
+  end
 
   # What the form's script says to the visitor (`assets/js/bill/i18n.ts`), in the language of the page. A
   # `{name}` in a text is filled in by the script.
@@ -144,7 +151,25 @@ defmodule QuickSlipsWeb.TemplateLive do
       "pick_business" => gettext("Choose a saved business…"),
       "fill_business" => gettext("Fill from a saved business"),
       "other_rate" => gettext("Other rate…"),
-      "type_rate" => gettext("Type the rate in %")
+      "type_rate" => gettext("Type the rate in %"),
+      "signature_saved" => gettext("Signature saved."),
+      "signature_error_name_blank" => gettext("Give the signature a name."),
+      "signature_error_name_taken" => gettext("You already have a signature with this name."),
+      "signature_error_limit_reached" =>
+        gettext("You can keep up to %{max} signatures. Delete one on the Signatures page first.",
+          max: Signatures.max_per_user()
+        ),
+      "signature_error_unsupported_type" => gettext("This is not a real PNG or JPG picture."),
+      "signature_error_too_large" =>
+        gettext("This picture is too big: at most 4000 pixels on a side."),
+      "signature_error_file_too_large" => gettext("This file is too big. The limit is 1 MB."),
+      "signature_error_no_file" => gettext("Choose a picture first."),
+      "save_seller" => gettext("Save seller details"),
+      "seller_created" => gettext("Seller details saved."),
+      "seller_updated" => gettext("Seller details updated."),
+      "seller_error_name_blank" => gettext("Fill in the seller's name first."),
+      "seller_error_tax_id_invalid" =>
+        gettext("The %{label} is not valid. Check it, or leave it empty.", label: "{label}")
     }
   end
 

@@ -4,15 +4,16 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
   # A live navigation does not run the router's plugs, so the login is checked here too.
   on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}
 
+  import QuickSlipsWeb.ImageComponents
+
   alias QuickSlips.Businesses
   alias QuickSlips.Businesses.Business
+  alias QuickSlips.Signatures
   alias QuickSlips.Uploads
-  alias QuickSlipsWeb.UploadController
 
-  @max_file_size 1_000_000
-
-  # The two uploads on this page, and the column of `businesses` each one fills.
-  @images [logo: :logo_path, signature: :signature_path]
+  # The uploads on this page, and the column of `businesses` each one fills. The signature is not one of them:
+  # it is chosen from the library on the Signatures page.
+  @images [logo: :logo_path]
 
   @impl true
   def render(assigns) do
@@ -21,7 +22,7 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
       <.header>
         {@page_title}
         <:subtitle>
-          Saved once, then filled into any bill with one click. The logo and the signature are drawn on the PDF.
+          Saved once, then filled into any bill with one click. The logo and the default signature are drawn on the PDF.
         </:subtitle>
       </.header>
 
@@ -36,13 +37,21 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
           upload={@uploads.logo}
           path={@business.logo_path}
         />
-        <.image_field
-          id="signature-field"
-          kind="signature"
-          label="Signature"
-          upload={@uploads.signature}
-          path={@business.signature_path}
+        <.input
+          field={@form[:signature_id]}
+          type="select"
+          label="Default signature"
+          prompt="No default signature"
+          options={Enum.map(@signatures, &{&1.name, &1.id})}
+          help="Chosen for you when this business is picked on a bill. You can still change it there."
         />
+        <p :if={@signatures == []} id="no-signatures" class="mb-4 text-sm/6 text-ink-muted">
+          You have no saved signatures yet.
+          <.link navigate={~p"/signatures"} class="font-medium text-primary hover:underline">
+            Add one on the Signatures page
+          </.link>
+          or from any bill.
+        </p>
         <footer>
           <.button phx-disable-with="Saving..." variant="primary">Save Business</.button>
           <.button navigate={return_path(@current_scope, @return_to, @business)}>Cancel</.button>
@@ -52,92 +61,6 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
     """
   end
 
-  attr :id, :string, required: true
-  attr :kind, :string, required: true, values: ~w(logo signature)
-  attr :label, :string, required: true
-  attr :upload, Phoenix.LiveView.UploadConfig, required: true
-  attr :path, :string, default: nil, doc: "the stored image, when the business has one"
-
-  # The drop zone from design/components/forms/uploads. The picture on the left is the file the
-  # user just chose, else the one that is saved.
-  defp image_field(assigns) do
-    ~H"""
-    <div id={@id} class="mb-4">
-      <span class="mb-1 block text-sm/6 font-medium text-ink">{@label}</span>
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-stretch">
-        <div class="flex h-24 shrink-0 items-center justify-center rounded-card border border-line bg-surface-muted px-4 sm:w-36">
-          <.live_img_preview
-            :for={entry <- @upload.entries}
-            entry={entry}
-            class="max-h-16 max-w-full object-contain"
-          />
-          <img
-            :if={@path && @upload.entries == []}
-            src={UploadController.path(@path)}
-            alt={@label}
-            class="max-h-16 max-w-full object-contain"
-          />
-          <span :if={is_nil(@path) && @upload.entries == []} class="text-xs/5 text-ink-muted">
-            None yet
-          </span>
-        </div>
-        <label
-          for={@upload.ref}
-          phx-drop-target={@upload.ref}
-          class="relative flex min-h-24 grow cursor-pointer flex-col items-center justify-center rounded-card border-2 border-dashed border-line-strong px-4 py-4 text-center motion-safe:transition motion-safe:duration-150 hover:border-primary hover:bg-primary-soft focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-focus"
-        >
-          <.icon name="hero-arrow-up-tray" class="size-6 text-ink-faint" />
-          <span class="mt-2 text-sm/6 text-ink-muted">
-            <span class="font-semibold text-primary">
-              {if @path, do: "Replace file", else: "Upload a file"}
-            </span>
-            or drag and drop
-          </span>
-          <span class="text-xs/5 text-ink-muted">PNG or JPG, up to 1 MB</span>
-          <.live_file_input upload={@upload} class="sr-only" />
-        </label>
-      </div>
-
-      <div
-        :for={entry <- @upload.entries}
-        class="mt-2 flex flex-wrap items-center justify-between gap-x-3 text-sm/6"
-      >
-        <span class="truncate text-ink-muted">{entry.client_name}</span>
-        <button
-          type="button"
-          phx-click="cancel_upload"
-          phx-value-upload={@kind}
-          phx-value-ref={entry.ref}
-          class="font-medium text-primary hover:underline"
-        >
-          Remove
-        </button>
-        <p :for={error <- upload_errors(@upload, entry)} class="basis-full text-danger">
-          {upload_error(error)}
-        </p>
-      </div>
-      <p :for={error <- upload_errors(@upload)} class="mt-2 text-sm/6 text-danger">
-        {upload_error(error)}
-      </p>
-      <button
-        :if={@path && @upload.entries == []}
-        type="button"
-        phx-click="remove_image"
-        phx-value-kind={@kind}
-        data-confirm={"Remove the saved #{@kind}?"}
-        class="mt-2 text-sm/6 font-medium text-primary hover:underline"
-      >
-        Remove the saved {@kind}
-      </button>
-    </div>
-    """
-  end
-
-  defp upload_error(:too_large), do: "This file is too big. The limit is 1 MB."
-  defp upload_error(:not_accepted), do: "Only PNG and JPG files can be used."
-  defp upload_error(:too_many_files), do: "Choose one file only."
-  defp upload_error(_other), do: "This file can't be uploaded."
-
   @impl true
   def mount(params, _session, socket) do
     {:ok,
@@ -145,13 +68,9 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
      |> allow_upload(:logo,
        accept: ~w(.png .jpg .jpeg),
        max_entries: 1,
-       max_file_size: @max_file_size
+       max_file_size: Uploads.max_file_size()
      )
-     |> allow_upload(:signature,
-       accept: ~w(.png .jpg .jpeg),
-       max_entries: 1,
-       max_file_size: @max_file_size
-     )
+     |> assign(:signatures, Signatures.list_signatures(socket.assigns.current_scope))
      |> assign(:return_to, return_to(params["return_to"]))
      |> apply_action(socket.assigns.live_action, params)}
   end
@@ -216,20 +135,18 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
     {:noreply, cancel_upload(socket, upload_name(upload), ref)}
   end
 
-  def handle_event("remove_image", %{"kind" => kind}, %{assigns: %{live_action: :edit}} = socket)
-      when kind in ["logo", "signature"] do
+  def handle_event(
+        "remove_image",
+        %{"kind" => "logo"},
+        %{assigns: %{live_action: :edit}} = socket
+      ) do
     {:ok, business} =
-      Businesses.remove_image(
-        socket.assigns.current_scope,
-        socket.assigns.business,
-        String.to_existing_atom(kind)
-      )
+      Businesses.remove_image(socket.assigns.current_scope, socket.assigns.business, :logo)
 
     {:noreply, assign(socket, :business, business)}
   end
 
   defp upload_name("logo"), do: :logo
-  defp upload_name("signature"), do: :signature
 
   defp save_business(socket, :edit, business_params, images) do
     case Businesses.update_business(
@@ -304,12 +221,6 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
   defp rejected_entry?(socket, upload) do
     Enum.any?(socket.assigns.uploads[upload].entries, &(not &1.valid?))
   end
-
-  defp rejection_message(upload, :unsupported_type),
-    do: "The #{upload} is not a real PNG or JPG picture."
-
-  defp rejection_message(upload, :too_large),
-    do: "The #{upload} is too big: it may have at most 4000 pixels on a side."
 
   defp delete_stored(images), do: images |> Map.values() |> Enum.each(&Uploads.delete/1)
 end

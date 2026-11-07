@@ -43,6 +43,10 @@ defmodule QuickSlipsWeb.Router do
     post "/generate", GenerateController, :create
     get "/quota", QuotaController, :show
     get "/bill/:slug/view", BillViewController, :show
+
+    # Saved from a bill's page without leaving it. A logged-in user only: the controllers say 401 otherwise.
+    post "/signatures", SignatureController, :create
+    post "/businesses", BusinessController, :create
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
@@ -124,6 +128,7 @@ defmodule QuickSlipsWeb.Router do
         live "/businesses/new", BusinessLive.Form, :new
         live "/businesses/:id", BusinessLive.Show, :show
         live "/businesses/:id/edit", BusinessLive.Form, :edit
+        live "/signatures", SignatureLive.Index, :index
         live "/history", HistoryLive, :index
       end
 

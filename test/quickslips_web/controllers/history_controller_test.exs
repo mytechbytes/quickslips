@@ -4,6 +4,7 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
   import QuickSlips.AccountsFixtures
   import QuickSlips.BusinessesFixtures
   import QuickSlips.DocumentsFixtures
+  import QuickSlips.SignaturesFixtures
   import QuickSlips.UploadsFixtures
 
   @moduletag :typst
@@ -92,6 +93,48 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
       branded_pdf = conn |> get(~p"/history/#{branded.id}/download") |> response(200)
 
       assert byte_size(branded_pdf) > byte_size(plain_pdf)
+    end
+
+    test "draws the signature the document was made with", %{conn: conn, scope: scope} do
+      signature = signature_fixture(scope, %{}, jpg_bytes())
+      plain = document_fixture(scope, %{data: sample("fuel-bill")})
+      signed = document_fixture(scope, %{data: sample("fuel-bill")}, nil, signature)
+
+      plain_pdf = conn |> get(~p"/history/#{plain.id}/download") |> response(200)
+      signed_pdf = conn |> get(~p"/history/#{signed.id}/download") |> response(200)
+
+      assert byte_size(signed_pdf) > byte_size(plain_pdf)
+    end
+
+    test "draws that signature and not the default one of the business", %{
+      conn: conn,
+      scope: scope
+    } do
+      default = signature_fixture(scope, %{name: "Default"}, jpg_bytes())
+      business = business_fixture(scope, %{signature_id: default.id})
+      doc = document_fixture(scope, %{data: sample("fuel-bill")}, business)
+      bare = document_fixture(scope, %{data: sample("fuel-bill")})
+
+      # The document was made without a signature, so it is made again without one.
+      assert byte_size(conn |> get(~p"/history/#{doc.id}/download") |> response(200)) ==
+               byte_size(conn |> get(~p"/history/#{bare.id}/download") |> response(200))
+    end
+
+    test "still works after the signature was deleted, without the picture", %{
+      conn: conn,
+      scope: scope
+    } do
+      signature = signature_fixture(scope, %{}, jpg_bytes())
+      doc = document_fixture(scope, %{data: sample("fuel-bill")}, nil, signature)
+      bare = document_fixture(scope, %{data: sample("fuel-bill")})
+
+      {:ok, _} = QuickSlips.Signatures.delete_signature(scope, signature)
+
+      pdf = conn |> get(~p"/history/#{doc.id}/download") |> response(200)
+      assert "%PDF" <> _ = pdf
+
+      assert byte_size(pdf) ==
+               byte_size(conn |> get(~p"/history/#{bare.id}/download") |> response(200))
     end
 
     test "is a 404 for somebody else's document", %{conn: conn} do

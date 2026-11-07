@@ -5,9 +5,10 @@ defmodule QuickSlips.DocumentsFixtures do
   """
 
   @doc """
-  Generate a document. `business` is the saved business it was made with, if any.
+  Generate a document. `business` is the saved business it was made with, if any, and `signature` the saved
+  signature that was drawn on it.
   """
-  def document_fixture(scope, attrs \\ %{}, business \\ nil) do
+  def document_fixture(scope, attrs \\ %{}, business \\ nil, signature \\ nil) do
     attrs =
       Enum.into(attrs, %{
         data: %{},
@@ -16,7 +17,7 @@ defmodule QuickSlips.DocumentsFixtures do
         title: "some title"
       })
 
-    {:ok, document} = QuickSlips.Documents.create_document(scope, attrs, business)
+    {:ok, document} = QuickSlips.Documents.create_document(scope, attrs, business, signature)
     document
   end
 end

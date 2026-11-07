@@ -195,7 +195,33 @@ defmodule QuickSlips.Templates.Registry do
     languages = schema["languages"] || ["en"]
     check_translations!(path, texts, languages)
 
+    schema =
+      Map.update!(
+        schema,
+        "templates",
+        &Enum.map(&1, fn design -> mark_signature(design, dir) end)
+      )
+
     {folder, %{schema: schema, texts: texts, sample: read_sample(dir)}}
+  end
+
+  # Whether a design has a place for a signature, as `"signature": true` on it: the page offers the choice of a
+  # saved signature only for those. A layout has one when it uses the `signature-block` helper, which leaves room
+  # to sign by hand when there is no picture, or reads the `"signature"` picture itself.
+  defp mark_signature(%{"id" => id} = design, dir) do
+    file = Path.join(dir, id <> ".typ")
+
+    case File.read(file) do
+      {:ok, source} ->
+        Map.put(
+          design,
+          "signature",
+          String.contains?(source, ["signature-block(", ~s("signature")])
+        )
+
+      {:error, reason} ->
+        raise "#{file}: the layout of the design #{inspect(id)} can't be read (#{:file.format_error(reason)})"
+    end
   end
 
   # A template that declares a language must be translated into it completely: every key of its English text

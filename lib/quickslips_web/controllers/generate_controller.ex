@@ -8,6 +8,7 @@ defmodule QuickSlipsWeb.GenerateController do
   alias QuickSlips.Downloads
   alias QuickSlips.Locales
   alias QuickSlips.Regions
+  alias QuickSlips.Signatures
   alias QuickSlips.Templates.Items
   alias QuickSlips.Templates.Validator
   alias QuickSlips.Templates
@@ -25,10 +26,12 @@ defmodule QuickSlipsWeb.GenerateController do
          {:ok, schema} <- Templates.get(slug, locale),
          {:ok, clean} <- validate(schema, data, locale),
          {:ok, business} <- load_business(conn, params),
+         {:ok, signature} <- load_signature(conn, params),
          :ok <- verify_human(conn, params),
          {:ok, grant} <- Downloads.reserve(caller(conn)),
-         {:ok, pdf} <- render_or_refund(slug, template, clean, business, locale, currency, grant) do
-      remember(conn, schema, template, clean, business, locale, currency)
+         pictures = Businesses.render_assets(business, signature),
+         {:ok, pdf} <- render_or_refund(slug, template, clean, pictures, locale, currency, grant) do
+      remember(conn, schema, template, clean, {business, signature}, locale, currency)
 
       conn
       |> put_resp_header("x-downloads-remaining", Integer.to_string(grant.remaining))
@@ -72,6 +75,17 @@ defmodule QuickSlipsWeb.GenerateController do
 
   defp load_business(_conn, _params), do: {:ok, nil}
 
+  # The signature is chosen apart from the business: one of the user's saved ones, or none (the place to sign by
+  # hand). Looked up through the scope in the same way, so somebody else's signature is a 404.
+  defp load_signature(conn, %{"signature_id" => id}) when id not in [nil, ""] do
+    case conn.assigns[:current_scope] do
+      %{user: %{}} = scope -> {:ok, Signatures.get_signature!(scope, id)}
+      _anonymous -> {:ok, nil}
+    end
+  end
+
+  defp load_signature(_conn, _params), do: {:ok, nil}
+
   # The page's locale decides the language; the document may be for another country (and currency), chosen in the
   # "Region & tax" panel of the page.
   defp document_region(locale, params) do
@@ -84,9 +98,9 @@ defmodule QuickSlipsWeb.GenerateController do
     end
   end
 
-  defp render_or_refund(slug, template, clean, business, locale, currency, grant) do
+  defp render_or_refund(slug, template, clean, pictures, locale, currency, grant) do
     # The names of the pictures are added here, after validation, so a user can never choose them.
-    %{data: image_names, files: files} = Businesses.render_assets(business)
+    %{data: image_names, files: files} = pictures
 
     case Renderer.render(slug, template, Map.merge(clean, image_names),
            assets: files,
@@ -120,7 +134,7 @@ defmodule QuickSlipsWeb.GenerateController do
     end
   end
 
-  defp remember(conn, schema, template, clean, business, locale, currency) do
+  defp remember(conn, schema, template, clean, {business, signature}, locale, currency) do
     with %{user: %{}} = scope <- conn.assigns[:current_scope],
          attrs = %{
            "slug" => schema["slug"],
@@ -130,7 +144,7 @@ defmodule QuickSlipsWeb.GenerateController do
            "language" => locale.language,
            "options" => %{"country" => locale.country, "currency" => currency}
          },
-         {:error, changeset} <- Documents.create_document(scope, attrs, business) do
+         {:error, changeset} <- Documents.create_document(scope, attrs, business, signature) do
       Logger.warning("could not save a document in the history: #{inspect(changeset.errors)}")
     end
 

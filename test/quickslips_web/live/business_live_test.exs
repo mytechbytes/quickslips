@@ -128,6 +128,7 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
   end
 
   describe "Form pictures" do
+    import QuickSlips.SignaturesFixtures
     import QuickSlips.UploadsFixtures
 
     alias QuickSlips.Businesses
@@ -146,19 +147,21 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
       |> render_upload(name)
     end
 
-    test "saves a new business with a logo and a signature", %{
+    test "saves a new business with a logo and a default signature", %{
       conn: conn,
       user: user,
       scope: scope
     } do
+      signature = signature_fixture(scope, %{name: "Owner"})
       {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
 
       choose(form_live, :logo, "logo.png", png_bytes(), "image/png")
-      choose(form_live, :signature, "sign.jpg", jpg_bytes(), "image/jpeg")
 
       assert {:ok, _index_live, html} =
                form_live
-               |> form("#business-form", business: @create_attrs)
+               |> form("#business-form",
+                 business: Map.put(@create_attrs, :signature_id, signature.id)
+               )
                |> render_submit()
                |> follow_redirect(conn, ~p"/businesses")
 
@@ -166,9 +169,64 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
 
       [business] = Businesses.list_businesses(scope)
       assert business.logo_path =~ ~r/^#{user.id}\/[a-f0-9]{16}\.png$/
-      assert business.signature_path =~ ~r/^#{user.id}\/[a-f0-9]{16}\.jpg$/
+      assert business.signature_id == signature.id
       assert File.read!(Uploads.path(business.logo_path)) == png_bytes()
-      assert File.read!(Uploads.path(business.signature_path)) == jpg_bytes()
+    end
+
+    test "the form has no upload for a signature: it is chosen from the library", %{
+      conn: conn,
+      scope: scope
+    } do
+      signature_fixture(scope, %{name: "Owner"})
+      signature_fixture(scope, %{name: "Manager"})
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      refute has_element?(form_live, "#signature-field")
+      assert has_element?(form_live, "#logo-field")
+
+      assert has_element?(form_live, "#business_signature_id option", "No default signature")
+      assert has_element?(form_live, "#business_signature_id option", "Owner")
+      assert has_element?(form_live, "#business_signature_id option", "Manager")
+      refute has_element?(form_live, "#no-signatures")
+    end
+
+    test "points to the Signatures page when there are none yet", %{conn: conn} do
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      assert has_element?(form_live, "#no-signatures a[href='/signatures']")
+    end
+
+    test "somebody else's signature can't be the default", %{conn: conn, scope: scope} do
+      theirs = signature_fixture(QuickSlips.AccountsFixtures.user_scope_fixture())
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
+
+      html =
+        render_submit(form_live, "save", %{
+          "business" =>
+            Map.put(
+              Map.new(@create_attrs, fn {k, v} -> {Atom.to_string(k), v} end),
+              "signature_id",
+              theirs.id
+            )
+        })
+
+      assert html =~ "is not one of your signatures"
+      assert Businesses.list_businesses(scope) == []
+    end
+
+    test "the default signature of a saved business is chosen in the select", %{
+      conn: conn,
+      scope: scope
+    } do
+      signature = signature_fixture(scope, %{name: "Owner"})
+      business = business_fixture(scope, %{signature_id: signature.id})
+
+      {:ok, form_live, _html} = live(conn, ~p"/businesses/#{business}/edit")
+
+      assert has_element?(
+               form_live,
+               ~s(#business_signature_id option[selected][value="#{signature.id}"])
+             )
     end
 
     test "a file that is not really a picture is turned down, and nothing is saved", %{
@@ -183,23 +241,6 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
 
       assert html =~ "The logo is not a real PNG or JPG picture."
       assert Businesses.list_businesses(scope) == []
-    end
-
-    test "a second picture is not kept when the first one is turned down", %{
-      conn: conn,
-      user: user,
-      scope: scope
-    } do
-      {:ok, form_live, _html} = live(conn, ~p"/businesses/new")
-
-      choose(form_live, :logo, "logo.png", png_bytes(), "image/png")
-      choose(form_live, :signature, "sign.png", "this is only text", "image/png")
-
-      html = form_live |> form("#business-form", business: @create_attrs) |> render_submit()
-
-      assert html =~ "The signature is not a real PNG or JPG picture."
-      assert Businesses.list_businesses(scope) == []
-      assert stored_files(user) == []
     end
 
     test "a file over 1 MB is refused", %{conn: conn} do
@@ -268,30 +309,52 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
       assert File.exists?(Uploads.path(updated.logo_path))
     end
 
-    test "the saved picture can be removed", %{conn: conn, user: user, scope: scope} do
+    test "the saved logo can be removed, and the default signature stays", %{
+      conn: conn,
+      user: user,
+      scope: scope
+    } do
       logo = stored_image(user.id)
-      signature = stored_image(user.id)
-      business = business_fixture(scope, %{}, %{logo_path: logo, signature_path: signature})
+      signature = signature_fixture(scope)
+      business = business_fixture(scope, %{signature_id: signature.id}, %{logo_path: logo})
       {:ok, form_live, _html} = live(conn, ~p"/businesses/#{business}/edit")
 
       html = form_live |> element("#logo-field button", "Remove the saved logo") |> render_click()
 
       refute html =~ ~s(src="/uploads/#{logo}")
-      assert html =~ ~s(src="/uploads/#{signature}")
 
-      assert %{logo_path: nil, signature_path: ^signature} =
+      assert %{logo_path: nil, signature_id: signature_id} =
                Businesses.get_business!(scope, business.id)
 
+      assert signature_id == signature.id
       refute File.exists?(Uploads.path(logo))
+      assert File.exists?(Uploads.path(signature.path))
     end
 
-    test "the show page draws the pictures", %{conn: conn, user: user, scope: scope} do
+    test "the show page draws the logo and the default signature", %{
+      conn: conn,
+      user: user,
+      scope: scope
+    } do
       logo = stored_image(user.id)
-      business = business_fixture(scope, %{}, %{logo_path: logo})
+      signature = signature_fixture(scope, %{name: "Owner"})
+      business = business_fixture(scope, %{signature_id: signature.id}, %{logo_path: logo})
 
       {:ok, show_live, _html} = live(conn, ~p"/businesses/#{business}")
 
       assert has_element?(show_live, ~s(#business-logo[src="/uploads/#{logo}"]))
+      assert has_element?(show_live, ~s(#business-signature[src="/uploads/#{signature.path}"]))
+    end
+
+    test "the show page has no signature to draw when there is no default", %{
+      conn: conn,
+      user: user,
+      scope: scope
+    } do
+      business = business_fixture(scope, %{}, %{logo_path: stored_image(user.id)})
+
+      {:ok, show_live, _html} = live(conn, ~p"/businesses/#{business}")
+
       refute has_element?(show_live, "#business-signature")
     end
 

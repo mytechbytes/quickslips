@@ -15,6 +15,13 @@ defmodule QuickSlips.Templates.RegistryTest do
       )
 
     File.write!(Path.join([dir, slug, "schema.json"]), Jason.encode!(schema))
+
+    # Every design has a layout file, as in a real folder (the registry reads it to see if there is a place to sign).
+    for %{id: id} <- schema.templates, do: write_layout(dir, slug, id, "#text[Hello]")
+  end
+
+  defp write_layout(dir, slug, id, source) do
+    File.write!(Path.join([dir, slug, id <> ".typ"]), source)
   end
 
   defp write_text(dir, slug, name, text) do
@@ -157,6 +164,55 @@ defmodule QuickSlips.Templates.RegistryTest do
       write_shared(dir, "es", %{})
 
       assert start_error(dir) =~ "_shared/text/es.json is missing months"
+    end
+  end
+
+  describe "a place to sign" do
+    test "a design has one when its layout uses the signature block or the signature picture",
+         %{tmp_dir: dir} do
+      write_schema(dir, "bill", [], %{
+        templates: [%{id: "t1"}, %{id: "t2"}, %{id: "t3"}, %{id: "t4"}]
+      })
+
+      write_layout(dir, "bill", "t1", ~S|#signature-block(data, "Signatory")|)
+      write_layout(dir, "bill", "t2", ~S|#let mark = picture(data, "signature", 8mm)|)
+
+      write_layout(
+        dir,
+        "bill",
+        "t3",
+        "// the server adds `signature` to the data, but this layout never draws it"
+      )
+
+      write_layout(dir, "bill", "t4", "#text[Thank you]")
+      registry = start_supervised!({Registry, dir: dir, name: :registry_signature})
+
+      assert {:ok, schema} = Registry.fetch("bill", registry)
+
+      assert Map.new(schema["templates"], &{&1["id"], &1["signature"]}) ==
+               %{"t1" => true, "t2" => true, "t3" => false, "t4" => false}
+    end
+
+    test "is said in every locale the template is in", %{tmp_dir: dir} do
+      write_schema(dir, "bill", [], %{templates: [%{id: "t1"}], languages: ["en", "hi"]})
+      write_layout(dir, "bill", "t1", ~S|#signature-block(data, t.signatory)|)
+      write_text(dir, "bill", "en", %{title: "Bill"})
+      write_text(dir, "bill", "hi", %{title: "बिल"})
+      write_shared(dir, "en", %{})
+      write_shared(dir, "hi", %{})
+      registry = start_supervised!({Registry, dir: dir, name: :registry_signature_locales})
+
+      for code <- ["en-in", "hi-in"] do
+        assert {:ok, %{schema: %{"templates" => [%{"signature" => true}]}}} =
+                 Registry.view("bill", code, registry)
+      end
+    end
+
+    test "a design whose layout file is missing stops the start", %{tmp_dir: dir} do
+      write_schema(dir, "bill", [], %{templates: [%{id: "t1"}]})
+      File.rm!(Path.join([dir, "bill", "t1.typ"]))
+
+      assert start_error(dir) =~ ~s(the layout of the design "t1" can't be read)
     end
   end
 

@@ -5,15 +5,23 @@ defmodule QuickSlips.Uploads do
   # use all the memory it can get. No logo or signature needs more than this on a side.
   @max_side 4_000
 
+  # The size of the file itself. The upload forms (LiveView) stop a bigger file before it gets here; a request that
+  # does not come from them (the quick save on a bill's page) is checked here.
+  @max_bytes 1_000_000
+
   def root, do: Application.fetch_env!(:quickslips, :uploads_dir)
+
+  @doc "The largest picture file we keep, in bytes."
+  def max_file_size, do: @max_bytes
 
   @doc "Absolute path for a stored relative path like \"12/a1b2c3d4e5f60718.png\"."
   def path(relative), do: Path.join(root(), relative)
 
   @doc """
   Copies the uploaded temp file into the user's folder.
-  Returns `{:ok, relative_path}`, `{:error, :unsupported_type}` (not a PNG or JPEG) or
-  `{:error, :too_large}` (more than #{@max_side} pixels on a side).
+  Returns `{:ok, relative_path}`, `{:error, :unsupported_type}` (not a PNG or JPEG),
+  `{:error, :too_large}` (more than #{@max_side} pixels on a side) or `{:error, :file_too_large}` (the file is
+  over #{@max_bytes} bytes).
   """
   def store(user_id, tmp_path) do
     with {:ok, ext} <- detect(tmp_path) do
@@ -34,8 +42,11 @@ defmodule QuickSlips.Uploads do
   end
 
   defp detect(file) do
-    case File.read(file) do
-      {:ok, bytes} -> check(bytes)
+    with {:ok, %File.Stat{size: size}} when size <= @max_bytes <- File.stat(file),
+         {:ok, bytes} <- File.read(file) do
+      check(bytes)
+    else
+      {:ok, %File.Stat{}} -> {:error, :file_too_large}
       {:error, _reason} -> {:error, :unsupported_type}
     end
   end

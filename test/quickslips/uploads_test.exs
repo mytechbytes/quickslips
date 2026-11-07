@@ -58,6 +58,13 @@ defmodule QuickSlips.UploadsTest do
       assert {:error, :too_large} = Uploads.store(@user_id, tmp_file(jpg_header(20_000)))
     end
 
+    test "refuses a file over 1 MB, however good the picture" do
+      big = png_bytes() <> :binary.copy(<<0>>, Uploads.max_file_size())
+
+      assert {:error, :file_too_large} = Uploads.store(@user_id, tmp_file(big))
+      refute File.exists?(Path.join(Uploads.root(), Integer.to_string(@user_id)))
+    end
+
     test "stores nothing when it refuses" do
       assert {:error, :unsupported_type} = Uploads.store(@user_id, tmp_file("text"))
       refute File.exists?(Path.join(Uploads.root(), Integer.to_string(@user_id)))

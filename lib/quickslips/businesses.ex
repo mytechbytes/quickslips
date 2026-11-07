@@ -8,10 +8,12 @@ defmodule QuickSlips.Businesses do
 
   alias QuickSlips.Businesses.Business
   alias QuickSlips.Accounts.Scope
+  alias QuickSlips.Signatures
   alias QuickSlips.Uploads
 
-  # The columns that hold a stored image (a path inside the uploads folder).
-  @image_columns [:logo_path, :signature_path]
+  # The columns that hold a stored image (a path inside the uploads folder). The signature is not one of them: it
+  # lives in the library of `QuickSlips.Signatures`, and the business only says which one is its default.
+  @image_columns [:logo_path]
 
   @doc """
   Subscribes to scoped notifications about any business changes.
@@ -74,9 +76,12 @@ defmodule QuickSlips.Businesses do
   @doc """
   Creates a business.
 
-  `images` is what the upload code stored: `%{logo_path: "12/ab12.png", signature_path: "12/cd34.jpg"}`,
-  with either key left out when there is no such image. It is a separate argument, and not part of
-  `attrs`, because `attrs` comes from the browser and the paths must not.
+  `images` is what the upload code stored: `%{logo_path: "12/ab12.png"}`, with the key left out when there is
+  no logo. It is a separate argument, and not part of `attrs`, because `attrs` comes from the browser and the
+  paths must not. `attrs` may hold the id of a `signature_id` to use by default, which has to be one of the
+  user's own.
+
+  `opts` may hold `tax_id: {pattern, label}` (see `Business.changeset/4`).
 
   ## Examples
 
@@ -87,10 +92,11 @@ defmodule QuickSlips.Businesses do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_business(%Scope{} = scope, attrs, images \\ %{}) do
+  def create_business(%Scope{} = scope, attrs, images \\ %{}, opts \\ []) do
     with {:ok, business = %Business{}} <-
            %Business{}
-           |> Business.changeset(attrs, scope)
+           |> Business.changeset(attrs, scope, opts)
+           |> validate_signature_owner(scope)
            |> Business.put_images(images)
            |> Repo.insert() do
       broadcast_business(scope, {:created, business})
@@ -110,12 +116,13 @@ defmodule QuickSlips.Businesses do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_business(%Scope{} = scope, %Business{} = business, attrs, images \\ %{}) do
+  def update_business(%Scope{} = scope, %Business{} = business, attrs, images \\ %{}, opts \\ []) do
     true = business.user_id == scope.user.id
 
     with {:ok, updated = %Business{}} <-
            business
-           |> Business.changeset(attrs, scope)
+           |> Business.changeset(attrs, scope, opts)
+           |> validate_signature_owner(scope)
            |> Business.put_images(images)
            |> Repo.update() do
       delete_replaced_images(business, updated)
@@ -125,24 +132,21 @@ defmodule QuickSlips.Businesses do
   end
 
   @doc """
-  Removes the logo or the signature (`kind` is `:logo` or `:signature`) and deletes its file.
+  Removes the logo (`kind` is `:logo`) and deletes its file. A signature is not removed here: it belongs to the
+  library of `QuickSlips.Signatures`, and the business only stops using it (`signature_id: nil` in `update_business/4`).
   """
-  def remove_image(%Scope{} = scope, %Business{} = business, kind)
-      when kind in [:logo, :signature] do
+  def remove_image(%Scope{} = scope, %Business{} = business, :logo) do
     true = business.user_id == scope.user.id
 
     with {:ok, updated = %Business{}} <-
            business
-           |> Ecto.Changeset.change(%{image_column(kind) => nil})
+           |> Ecto.Changeset.change(%{logo_path: nil})
            |> Repo.update() do
       delete_replaced_images(business, updated)
       broadcast_business(scope, {:updated, updated})
       {:ok, updated}
     end
   end
-
-  defp image_column(:logo), do: :logo_path
-  defp image_column(:signature), do: :signature_path
 
   # The old file of an image that was replaced or removed is not needed any more.
   defp delete_replaced_images(old, new) do
@@ -189,31 +193,85 @@ defmodule QuickSlips.Businesses do
   def change_business(%Scope{} = scope, %Business{} = business, attrs \\ %{}) do
     true = business.user_id == scope.user.id
 
-    Business.changeset(business, attrs, scope)
+    business
+    |> Business.changeset(attrs, scope)
+    |> validate_signature_owner(scope)
+  end
+
+  # The default signature comes from a select of the form, so its id is only as good as the browser that sent it:
+  # it has to be one of this user's signatures.
+  defp validate_signature_owner(changeset, scope) do
+    case Ecto.Changeset.get_change(changeset, :signature_id) do
+      nil ->
+        changeset
+
+      id ->
+        if Signatures.owned?(scope, id),
+          do: changeset,
+          else:
+            Ecto.Changeset.add_error(changeset, :signature_id, "is not one of your signatures")
+    end
   end
 
   @doc """
-  What the renderer needs to draw the logo and the signature of a business:
+  Saves the seller details typed on a bill's page, the quick way. `attrs` are the form's `"name"`, `"address"` and
+  `"gstin"`. The business that already has this name (capital letters do not count) gets the new address and
+  registration number; a name that is new makes a business. Its logo and default signature are not touched.
 
-    * `data`, the file names to add to the document's data (`%{"logo" => "logo.png"}`), and
-    * `files`, a map from each of those names to the stored file, to copy next to the template.
-
-  An image whose file has gone missing is left out, so the document is made without it. `nil` (no business)
-  has no pictures at all.
+  Returns `{:ok, business, :created | :updated}` or `{:error, changeset}`. `opts` as in `create_business/4`.
   """
-  def render_assets(nil), do: %{data: %{}, files: %{}}
+  def save_details(%Scope{} = scope, attrs, opts \\ []) do
+    attrs = Map.take(attrs, ["name", "address", "gstin"])
 
-  def render_assets(%Business{} = business) do
-    for {key, relative} <- [logo: business.logo_path, signature: business.signature_path],
-        relative != nil and File.regular?(Uploads.path(relative)),
-        reduce: %{data: %{}, files: %{}} do
-      %{data: data, files: files} ->
-        name = Atom.to_string(key) <> Path.extname(relative)
+    case find_by_name(scope, attrs["name"]) do
+      nil ->
+        with {:ok, business} <- create_business(scope, attrs, %{}, opts),
+             do: {:ok, business, :created}
 
-        %{
-          data: Map.put(data, Atom.to_string(key), name),
-          files: Map.put(files, name, Uploads.path(relative))
-        }
+      business ->
+        with {:ok, business} <- update_business(scope, business, attrs, %{}, opts),
+             do: {:ok, business, :updated}
     end
   end
+
+  defp find_by_name(scope, name) when is_binary(name) do
+    wanted = name |> String.trim() |> String.downcase()
+
+    Repo.one(
+      from b in Business,
+        where: b.user_id == ^scope.user.id and fragment("lower(?)", b.name) == ^wanted,
+        order_by: b.id,
+        limit: 1
+    )
+  end
+
+  defp find_by_name(_scope, _no_name), do: nil
+
+  @doc """
+  What the renderer needs to draw the logo of a business and the signature that was chosen for the document
+  (a `%QuickSlips.Signatures.Signature{}` or `nil`, which leaves the place to sign by hand):
+
+    * `data`, the file names to add to the document's data (`%{"logo" => "logo.png", "signature" => "signature.jpg"}`), and
+    * `files`, a map from each of those names to the stored file, to copy next to the template.
+
+  An image whose file has gone missing is left out, so the document is made without it. `nil` for the business
+  has no logo.
+  """
+  def render_assets(business, signature \\ nil) do
+    logo = logo_assets(business)
+    picture = Signatures.render_assets(signature)
+
+    %{data: Map.merge(logo.data, picture.data), files: Map.merge(logo.files, picture.files)}
+  end
+
+  defp logo_assets(%Business{logo_path: relative}) when is_binary(relative) do
+    if File.regular?(Uploads.path(relative)) do
+      name = "logo" <> Path.extname(relative)
+      %{data: %{"logo" => name}, files: %{name => Uploads.path(relative)}}
+    else
+      %{data: %{}, files: %{}}
+    end
+  end
+
+  defp logo_assets(_no_logo), do: %{data: %{}, files: %{}}
 end

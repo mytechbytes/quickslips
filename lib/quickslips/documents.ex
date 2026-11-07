@@ -107,7 +107,8 @@ defmodule QuickSlips.Documents do
   end
 
   @doc """
-  Creates a document. `business` is the saved business whose logo and signature were drawn on it, or `nil`.
+  Creates a document. `business` is the saved business whose logo was drawn on it, or `nil`, and `signature` the
+  saved signature that was drawn on it, or `nil` for none. Both are remembered, so the history can draw them again.
 
   ## Examples
 
@@ -118,11 +119,12 @@ defmodule QuickSlips.Documents do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_document(%Scope{} = scope, attrs, business \\ nil) do
+  def create_document(%Scope{} = scope, attrs, business \\ nil, signature \\ nil) do
     with {:ok, document = %Document{}} <-
            %Document{}
            |> Document.changeset(attrs, scope)
            |> Document.put_business(business)
+           |> Document.put_signature(signature)
            |> Repo.insert() do
       delete_oldest(scope)
       broadcast_document(scope, {:created, document})

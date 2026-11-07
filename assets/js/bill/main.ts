@@ -1,6 +1,8 @@
-import { buildForm, type Business, type BillData, type Schema } from "./form"
+import { buildForm, type Business, type BillData, type SaveSeller, type Schema } from "./form"
 import { createPreview } from "./preview"
 import { downloadPdf } from "./download"
+import { saveSeller } from "./saved"
+import { createSignaturePicker } from "./signatures"
 import { createTurnstile } from "./turnstile"
 import { loadStrings, t } from "./i18n"
 import { chosenCurrency } from "../locale"
@@ -52,12 +54,35 @@ export function mountBillApp(root: HTMLElement): () => void {
     fonts: JSON.parse(root.dataset.fonts ?? "[]"),
   })
   preview.renderNow(sample)
-  // The saved business the user picked, if any: its logo and signature go on the preview and the PDF.
+  // The signature of the bill: one of the saved ones or none, chosen apart from the business.
+  const signature = createSignaturePicker(root, (url) => preview.setSignature(url))
+  // The saved business the user picked, if any: its logo goes on the preview and the PDF, and its default signature
+  // is chosen for the bill (the visitor can choose another).
   let business: Business | null = null
   function useBusiness(picked: Business | null) {
+    const changed = picked?.id !== business?.id
     business = picked
     preview.setBusiness(picked)
+    if (changed && picked?.signature_id) signature.use(picked.signature_id)
   }
+
+  // Saves the seller details of the form as a business of the user (the sentences are in the language of the page).
+  const saveSellerDetails: SaveSeller | null =
+    root.dataset.signedIn === "true"
+      ? async (details) => {
+          if (!details.name) return { error: t("seller_error_name_blank") }
+          const result = await saveSeller(details, region.country)
+          if (!result.ok) {
+            if (result.code === "tax_id_invalid") return { error: t("seller_error_tax_id_invalid", { label: region.tax?.id?.label ?? "" }) }
+            return { error: result.code === "name_blank" ? t("seller_error_name_blank") : t("error") }
+          }
+          const at = businesses.findIndex((b) => b.id === result.business.id)
+          if (at >= 0) businesses[at] = result.business
+          else businesses.push(result.business)
+          businesses.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
+          return { business: result.business, message: t(result.created ? "seller_created" : "seller_updated") }
+        }
+      : null
   // The country and the currency are chosen in the switch of the site (language, country and currency:
   // `UI.locale_dialog/1`), for every page. The country is the page's; the currency is the visitor's choice, or the
   // country's own (see `followChoice` below).
@@ -72,6 +97,7 @@ export function mountBillApp(root: HTMLElement): () => void {
       useBusiness,
       { currency: region.currency.symbol, tax: region.tax?.name, tax_id: region.tax?.id?.label },
       (amount) => money.format(amount),
+      saveSellerDetails,
     )
     return built
   }
@@ -83,6 +109,7 @@ export function mountBillApp(root: HTMLElement): () => void {
   templateSelect.addEventListener("change", () => {
     template = templateSelect.value
     preview.setTemplate(template)
+    signature.showFor(schema.templates?.find((design) => design.id === template))
   })
 
   // Another currency: the money of the form, the preview and the PDF is written in it. The server says what the
@@ -120,6 +147,8 @@ export function mountBillApp(root: HTMLElement): () => void {
     form.querySelector<HTMLSelectElement>("#business-select")!.value = String(earlier.id)
     useBusiness(earlier)
   }
+  // ... and with the signature it had (or none), which is not always the default of its business.
+  if (root.dataset.edit === "true") signature.use(root.dataset.signatureId ? Number(root.dataset.signatureId) : null)
   // const ui = buildForm(form, schema, sample, (data) => console.log("changed", data))
   // console.log("initial", ui.read())
 
@@ -156,7 +185,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     const result = await downloadPdf(schema.slug, template, ui.read(), turnstileToken, business?.id, locale, {
       country: region.country,
       currency: region.currency.code,
-    })
+    }, signature.id)
     button.disabled = false
 
     if (result.ok) {

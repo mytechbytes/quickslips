@@ -27,10 +27,12 @@ export function createPreview(opts: {
   let timer: number | undefined
   let currentUrl: string | null = null
   let lastData: BillData | null = null
-  // The pictures of the chosen business: the bytes by file name, and the names to put in the data.
+  // The pictures on the document: where the logo (of the chosen business) and the signature (the chosen one) are,
+  // then their bytes by file name, and the names to put in the data.
+  const urls: Record<"logo" | "signature", string | null> = { logo: null, signature: null }
   let images: Record<string, Uint8Array> = {}
   let imageNames: Record<string, string> = {}
-  let businessToken = 0
+  let pictureToken = 0
 
   const img = document.createElement("img")
   img.alt = t("preview_alt")
@@ -88,17 +90,13 @@ export function createPreview(opts: {
     })
   }
 
-  /** Use the logo and signature of this business (or none) in the preview. */
-  async function setBusiness(business: Business | null) {
-    const token = ++businessToken
-    const wanted: Record<string, string | null> = {
-      logo: business?.logo_url ?? null,
-      signature: business?.signature_url ?? null,
-    }
+  // Fetches the pictures that are chosen and draws the preview with them.
+  async function loadPictures() {
+    const token = ++pictureToken
     const nextImages: Record<string, Uint8Array> = {}
     const nextNames: Record<string, string> = {}
 
-    for (const [key, url] of Object.entries(wanted)) {
+    for (const [key, url] of Object.entries(urls)) {
       if (!url) continue
       const response = await fetch(url).catch(() => null)
       if (!response?.ok) continue // no picture is better than no preview
@@ -107,7 +105,7 @@ export function createPreview(opts: {
       nextNames[key] = name
     }
 
-    if (token !== businessToken) return // the user chose another business meanwhile
+    if (token !== pictureToken) return // the user chose something else meanwhile
     images = nextImages
     imageNames = nextNames
     if (lastData) renderNow(lastData)
@@ -127,7 +125,16 @@ export function createPreview(opts: {
       region = newRegion
       if (lastData) renderNow(lastData)
     },
-    setBusiness,
+    /** Use the logo of this business (or none) in the preview. */
+    setBusiness(business: Business | null) {
+      urls.logo = business?.logo_url ?? null
+      return loadPictures()
+    },
+    /** Use the signature at this address (or the empty place to sign) in the preview. */
+    setSignature(url: string | null) {
+      urls.signature = url
+      return loadPictures()
+    },
     /** The page is going away: stop the worker and let go of the last picture. */
     destroy() {
       window.clearTimeout(timer)

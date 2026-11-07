@@ -201,6 +201,18 @@ defmodule QuickSlips.DocumentsTest do
                })
     end
 
+    test "create_document/4 remembers the signature, and the form can't choose it" do
+      scope = user_scope_fixture()
+      signature = QuickSlips.SignaturesFixtures.signature_fixture(scope)
+      attrs = %{slug: "fuel-bill", template: "t1", title: "t", data: %{}, signature_id: 999}
+
+      assert {:ok, %Document{signature_id: signature_id}} =
+               Documents.create_document(scope, attrs, nil, signature)
+
+      assert signature_id == signature.id
+      assert {:ok, %Document{signature_id: nil}} = Documents.create_document(scope, attrs)
+    end
+
     test "a deleted business only takes the pictures away, not the document" do
       scope = user_scope_fixture()
       business = business_fixture(scope)

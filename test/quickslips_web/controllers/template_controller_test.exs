@@ -4,6 +4,7 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
   import QuickSlips.AccountsFixtures
   import QuickSlips.BusinessesFixtures
   import QuickSlips.DocumentsFixtures
+  import QuickSlips.SignaturesFixtures
 
   test "shows a template", %{conn: conn} do
     conn = get(conn, ~p"/en-in/fuel-bill-generator")
@@ -207,7 +208,22 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
 
       assert html =~ "/uploads/#{logo}"
-      assert html =~ "&quot;signature_url&quot;:null"
+      assert html =~ "&quot;signature_id&quot;:null"
+    end
+
+    test "a business names its default signature by id, and the picture is not part of it", %{
+      conn: conn
+    } do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      signature = signature_fixture(scope)
+      business_fixture(scope, %{name: "Sunrise Fuel Station", signature_id: signature.id})
+
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      [businesses] = html |> attrs("#bill-app", "data-businesses") |> Enum.map(&Jason.decode!/1)
+
+      assert [%{"signature_id" => id} = business] = businesses
+      assert id == signature.id
+      refute Map.has_key?(business, "signature_url")
     end
 
     test "a visitor gets an empty list", %{conn: conn} do
@@ -216,11 +232,96 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
     end
   end
 
+  describe "saved signatures" do
+    test "a logged-in user's own signatures are on the page, with their web address, and nobody else's",
+         %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      mine = signature_fixture(scope, %{name: "Owner"})
+      signature_fixture(user_scope_fixture(), %{name: "Somebody Else's"})
+
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      [signatures] = html |> attrs("#bill-app", "data-signatures") |> Enum.map(&Jason.decode!/1)
+
+      assert [%{"id" => id, "name" => "Owner", "url" => url} = signature] = signatures
+      assert id == mine.id
+      assert url == "/uploads/#{mine.path}"
+      assert Map.keys(signature) |> Enum.sort() == ["id", "name", "url"]
+      refute html =~ "Somebody Else"
+    end
+
+    test "the select offers no signature first, then the saved ones", %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      signature_fixture(scope, %{name: "Manager"})
+      signature_fixture(scope, %{name: "Owner"})
+
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      options = html |> LazyHTML.from_document() |> LazyHTML.query("#signature-select option")
+
+      assert LazyHTML.attribute(options, "value") |> hd() == ""
+      assert LazyHTML.text(options) =~ "No signature (placeholder only)"
+      assert options |> LazyHTML.text() |> String.split() |> Enum.take(-2) == ["Manager", "Owner"]
+      assert [_] = attrs(html, "#signature-name", "maxlength")
+      assert [_] = attrs(html, "#signature-file", "accept")
+      assert [_] = attrs(html, "#signature-save", "id")
+    end
+
+    test "is in the language of the page", %{conn: conn} do
+      %{conn: conn} = register_and_log_in_user(%{conn: conn})
+
+      html = conn |> get(~p"/es-es/generador-de-factura-de-gasolina") |> html_response(200)
+
+      assert html =~ "Sin firma (solo el espacio para firmar)"
+      assert html =~ "Guardar una firma nueva"
+    end
+
+    test "the choice is shown for a design that has a place to sign, and hidden for one that has not",
+         %{conn: conn} do
+      %{conn: conn} = register_and_log_in_user(%{conn: conn})
+
+      fuel = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      grocery = conn |> get(~p"/en-in/grocery-bill-generator") |> html_response(200)
+
+      refute hd(attrs(fuel, "#signature-section", "class")) =~ "hidden"
+      assert hd(attrs(grocery, "#signature-section", "class")) =~ "hidden"
+    end
+
+    test "the script learns which designs have a place to sign", %{conn: conn} do
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      [schema] = html |> attrs("#bill-app", "data-schema") |> Enum.map(&Jason.decode!/1)
+
+      signs = Map.new(schema["templates"], &{&1["id"], &1["signature"]})
+
+      assert signs == %{
+               "t1" => true,
+               "t2" => false,
+               "t3" => false,
+               "t4" => false,
+               "t5" => true,
+               "t6" => false
+             }
+    end
+
+    test "a visitor has none: no choice, and an empty list", %{conn: conn} do
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+
+      assert attrs(html, "#signature-section", "id") == []
+      assert html =~ ~s(data-signatures="[]")
+      assert attrs(html, "#bill-app", "data-signed-in") == ["false"]
+    end
+
+    test "a logged-in user is told so", %{conn: conn} do
+      %{conn: conn} = register_and_log_in_user(%{conn: conn})
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+
+      assert attrs(html, "#bill-app", "data-signed-in") == ["true"]
+    end
+  end
+
   describe "edit and regenerate" do
-    defp earlier(scope, attrs \\ %{}, business \\ nil) do
+    defp earlier(scope, attrs \\ %{}, business \\ nil, signature \\ nil) do
       sample = "priv/bill_templates/fuel-bill/sample.json" |> File.read!() |> Jason.decode!()
       data = Map.put(sample, "station_name", "Edited Station")
-      document_fixture(scope, Map.merge(%{data: data}, attrs), business)
+      document_fixture(scope, Map.merge(%{data: data}, attrs), business, signature)
     end
 
     test "the form starts with the data of the earlier document", %{conn: conn} do
@@ -243,6 +344,31 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       html = conn |> get(~p"/en-in/fuel-bill-generator?from=#{doc.id}") |> html_response(200)
 
       assert html =~ ~s(data-business-id="#{business.id}")
+    end
+
+    test "the signature of the earlier document is named, and chosen in the select", %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      signature = signature_fixture(scope, %{name: "Owner"})
+      signature_fixture(scope, %{name: "Manager"})
+      doc = earlier(scope, %{}, nil, signature)
+
+      html = conn |> get(~p"/en-in/fuel-bill-generator?from=#{doc.id}") |> html_response(200)
+
+      assert attrs(html, "#bill-app", "data-signature-id") == [Integer.to_string(signature.id)]
+
+      selected =
+        html |> LazyHTML.from_document() |> LazyHTML.query("#signature-select option[selected]")
+
+      assert LazyHTML.text(selected) =~ "Owner"
+    end
+
+    test "without a signature, there is no signature id on the page", %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      doc = earlier(scope)
+
+      html = conn |> get(~p"/en-in/fuel-bill-generator?from=#{doc.id}") |> html_response(200)
+
+      assert attrs(html, "#bill-app", "data-signature-id") == []
     end
 
     test "without a business, there is no business id on the page", %{conn: conn} do

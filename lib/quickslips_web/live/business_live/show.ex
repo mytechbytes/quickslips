@@ -5,6 +5,7 @@ defmodule QuickSlipsWeb.BusinessLive.Show do
   on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}
 
   alias QuickSlips.Businesses
+  alias QuickSlips.Signatures
   alias QuickSlipsWeb.UploadController
 
   @impl true
@@ -36,13 +37,14 @@ defmodule QuickSlipsWeb.BusinessLive.Show do
             class="h-16 max-w-full object-contain"
           />
         </:item>
-        <:item :if={@business.signature_path} title="Signature">
+        <:item :if={@signature} title="Default signature">
           <img
             id="business-signature"
-            src={UploadController.path(@business.signature_path)}
-            alt="Signature"
+            src={UploadController.path(@signature.path)}
+            alt={@signature.name}
             class="h-16 max-w-full object-contain"
           />
+          <span class="text-ink-muted">{@signature.name}</span>
         </:item>
       </.list>
     </Layouts.app>
@@ -58,7 +60,17 @@ defmodule QuickSlipsWeb.BusinessLive.Show do
     {:ok,
      socket
      |> assign(:page_title, "Show Business")
-     |> assign(:business, Businesses.get_business!(socket.assigns.current_scope, id))}
+     |> assign_business(Businesses.get_business!(socket.assigns.current_scope, id))}
+  end
+
+  # The business and its default signature, which is another record: the library of signatures.
+  defp assign_business(socket, business) do
+    socket
+    |> assign(:business, business)
+    |> assign(
+      :signature,
+      Signatures.get_signature(socket.assigns.current_scope, business.signature_id)
+    )
   end
 
   @impl true
@@ -66,7 +78,7 @@ defmodule QuickSlipsWeb.BusinessLive.Show do
         {:updated, %QuickSlips.Businesses.Business{id: id} = business},
         %{assigns: %{business: %{id: id}}} = socket
       ) do
-    {:noreply, assign(socket, :business, business)}
+    {:noreply, assign_business(socket, business)}
   end
 
   def handle_info(

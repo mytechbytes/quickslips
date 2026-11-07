@@ -13,6 +13,8 @@ export async function downloadPdf(
   locale?: string,
   // The country and currency the document is made for (the site switch).
   region?: { country: string; currency: string },
+  // The saved signature to draw (none: the place to sign by hand).
+  signatureId?: number | null,
 ): Promise<DownloadResult> {
   const csrf = document.querySelector<HTMLMetaElement>("meta[name='csrf-token']")?.content ?? ""
 
@@ -25,6 +27,7 @@ export async function downloadPdf(
       currency: region?.currency,
       turnstile_token: turnstileToken,
       business_id: businessId,
+      signature_id: signatureId,
     }),
   })
 

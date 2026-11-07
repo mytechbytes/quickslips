@@ -25,6 +25,9 @@
       data-text={Jason.encode!(@text)}
       data-businesses={Jason.encode!(@businesses)}
       data-business-id={@document && @document.business_id}
+      data-signed-in={to_string(@signed_in?)}
+      data-signatures={Jason.encode!(@signatures)}
+      data-signature-id={@document && @document.signature_id}
       data-schema={Jason.encode!(@schema)}
       data-sample={Jason.encode!(@sample)}
       data-worker={~p"/assets/js/preview_worker.js"}
@@ -55,6 +58,62 @@
               {design["name"]}
             </option>
           </select>
+        </section>
+        <%!-- The signature: one of the saved ones, or none. Only for a logged-in user, and only while the chosen design has a place to sign. --%>
+        <section
+          :if={@signed_in?}
+          id="signature-section"
+          data-group="signature"
+          class={[!signature_design?(@schema, @template) && "hidden"]}
+        >
+          <div class="mb-3 flex items-center gap-3">
+            <label
+              for="signature-select"
+              class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
+            >
+              {gettext("Signature")}
+            </label>
+            <span class="h-px flex-1 bg-line"></span>
+          </div>
+          <select
+            id="signature-select"
+            class="block w-full rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:max-w-xs"
+          >
+            <option value="">{gettext("No signature (placeholder only)")}</option>
+            <option
+              :for={signature <- @signatures}
+              value={signature.id}
+              selected={@document && @document.signature_id == signature.id}
+            >
+              {signature.name}
+            </option>
+          </select>
+          <details id="signature-new" class="mt-3 sm:max-w-xs">
+            <summary class="cursor-pointer text-sm/6 font-medium text-primary hover:underline">
+              {gettext("Save a new signature")}
+            </summary>
+            <div class="mt-2 space-y-2">
+              <input
+                id="signature-name"
+                type="text"
+                maxlength={QuickSlips.Signatures.Signature.max_name_length()}
+                autocomplete="off"
+                placeholder={gettext("Name, like Owner")}
+                aria-label={gettext("Name, like Owner")}
+                class="block w-full rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink placeholder:text-ink-faint focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus"
+              />
+              <input
+                id="signature-file"
+                type="file"
+                accept="image/png,image/jpeg"
+                aria-label={gettext("PNG or JPG picture, up to 1 MB")}
+                class="block w-full text-sm text-ink-muted file:mr-3 file:rounded-button file:border file:border-line-strong file:bg-surface file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-ink hover:file:bg-surface-muted"
+              />
+              <p class="text-xs/5 text-ink-muted">{gettext("PNG or JPG picture, up to 1 MB")}</p>
+              <.button id="signature-save" type="button">{gettext("Save signature")}</.button>
+              <p id="signature-message" role="status" class="text-sm/6"></p>
+            </div>
+          </details>
         </section>
         <form id="bill-form" class="space-y-5" novalidate></form>
       </div>

@@ -11,12 +11,12 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: lib/quickslips_web/live/template_live.ex:118
+#: lib/quickslips_web/live/template_live.ex:125
 #, elixir-autogen, elixir-format
 msgid "%{remaining} of %{limit} downloads left today"
 msgstr "今天还剩 %{remaining} 次下载（共 %{limit} 次）"
 
-#: lib/quickslips_web/live/template_live.ex:113
+#: lib/quickslips_web/live/template_live.ex:120
 #, elixir-autogen, elixir-format
 msgid "%{remaining} of %{limit} free downloads left today"
 msgstr "今天还剩 %{remaining} 次免费下载（共 %{limit} 次）"
@@ -41,8 +41,8 @@ msgstr "全部"
 msgid "Already have an account?"
 msgstr "已有账号？"
 
-#: lib/quickslips_web/components/layouts.ex:387
-#: lib/quickslips_web/components/layouts.ex:402
+#: lib/quickslips_web/components/layouts.ex:388
+#: lib/quickslips_web/components/layouts.ex:403
 #, elixir-autogen, elixir-format
 msgid "Attempting to reconnect"
 msgstr "正在尝试重新连接"
@@ -57,12 +57,12 @@ msgstr "账单和收据，几秒钟即可生成"
 msgid "Categories"
 msgstr "分类"
 
-#: lib/quickslips_web/live/template_live.ex:144
+#: lib/quickslips_web/live/template_live.ex:151
 #, elixir-autogen, elixir-format
 msgid "Choose a saved business…"
 msgstr "选择已保存的企业…"
 
-#: lib/quickslips_web/components/layouts.ex:140
+#: lib/quickslips_web/components/layouts.ex:141
 #, elixir-autogen, elixir-format
 msgid "Close menu"
 msgstr "关闭菜单"
@@ -113,7 +113,7 @@ msgstr "创建你的账号"
 msgid "Creating account..."
 msgstr "正在创建账号..."
 
-#: lib/quickslips_web/live/template_live.ex:122
+#: lib/quickslips_web/live/template_live.ex:129
 #, elixir-autogen, elixir-format
 msgid "Creating your PDF…"
 msgstr "正在生成你的 PDF…"
@@ -128,7 +128,7 @@ msgstr "深色"
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: lib/quickslips_web/live/template_live.ex:131
+#: lib/quickslips_web/live/template_live.ex:138
 #, elixir-autogen, elixir-format
 msgid "Document preview"
 msgstr "文档预览"
@@ -138,12 +138,12 @@ msgstr "文档预览"
 msgid "Documents"
 msgstr "文档"
 
-#: lib/quickslips_web/live/template_live.html.heex:87
+#: lib/quickslips_web/live/template_live.html.heex:146
 #, elixir-autogen, elixir-format
 msgid "Download PDF"
 msgstr "下载 PDF"
 
-#: lib/quickslips_web/live/template_live.ex:123
+#: lib/quickslips_web/live/template_live.ex:130
 #, elixir-autogen, elixir-format
 msgid "Downloaded."
 msgstr "已下载。"
@@ -165,7 +165,7 @@ msgstr "邮件链接"
 msgid "Email me a link"
 msgstr "给我发送邮件链接"
 
-#: lib/quickslips_web/live/template_live.ex:145
+#: lib/quickslips_web/live/template_live.ex:152
 #, elixir-autogen, elixir-format
 msgid "Fill from a saved business"
 msgstr "从已保存的企业填写"
@@ -220,10 +220,10 @@ msgstr "在此设备上保持登录"
 msgid "Light"
 msgstr "浅色"
 
-#: lib/quickslips_web/components/layouts.ex:104
-#: lib/quickslips_web/components/layouts.ex:157
+#: lib/quickslips_web/components/layouts.ex:105
+#: lib/quickslips_web/components/layouts.ex:158
 #: lib/quickslips_web/live/home_live.ex:151
-#: lib/quickslips_web/live/template_live.html.heex:79
+#: lib/quickslips_web/live/template_live.html.heex:138
 #: lib/quickslips_web/live/user_live/confirmation.ex:57
 #: lib/quickslips_web/live/user_live/login.ex:119
 #: lib/quickslips_web/live/user_live/registration.ex:67
@@ -256,7 +256,7 @@ msgstr "登录 QuickSlips"
 msgid "Log me in only this time"
 msgstr "仅本次登录"
 
-#: lib/quickslips_web/components/layouts.ex:260
+#: lib/quickslips_web/components/layouts.ex:261
 #: lib/quickslips_web/components/ui.ex:799
 #, elixir-autogen, elixir-format
 msgid "Log out"
@@ -279,9 +279,9 @@ msgstr "正在登录..."
 msgid "Magic link is invalid or it has expired."
 msgstr "魔法链接无效或已过期。"
 
-#: lib/quickslips_web/components/layouts.ex:84
-#: lib/quickslips_web/components/layouts.ex:199
-#: lib/quickslips_web/components/layouts.ex:272
+#: lib/quickslips_web/components/layouts.ex:85
+#: lib/quickslips_web/components/layouts.ex:200
+#: lib/quickslips_web/components/layouts.ex:273
 #, elixir-autogen, elixir-format
 msgid "Main"
 msgstr "主要"
@@ -291,8 +291,8 @@ msgstr "主要"
 msgid "Need more than 2 downloads a day?"
 msgstr "每天需要下载超过 2 次？"
 
-#: lib/quickslips_web/components/layouts.ex:223
-#: lib/quickslips_web/components/layouts.ex:280
+#: lib/quickslips_web/components/layouts.ex:224
+#: lib/quickslips_web/components/layouts.ex:281
 #, elixir-autogen, elixir-format
 msgid "New document"
 msgstr "新建文档"
@@ -307,8 +307,8 @@ msgstr "第一次来？"
 msgid "No template matches your search."
 msgstr "没有符合搜索条件的模板。"
 
-#: lib/quickslips_web/components/layouts.ex:117
-#: lib/quickslips_web/components/layouts.ex:213
+#: lib/quickslips_web/components/layouts.ex:118
+#: lib/quickslips_web/components/layouts.ex:214
 #, elixir-autogen, elixir-format
 msgid "Open main menu"
 msgstr "打开主菜单"
@@ -345,17 +345,17 @@ msgstr "选择模板，填写表单，下载 PDF。无需账号。"
 msgid "Pick one to start a new document."
 msgstr "选择一个以新建文档。"
 
-#: lib/quickslips_web/live/template_live.ex:124
+#: lib/quickslips_web/live/template_live.ex:131
 #, elixir-autogen, elixir-format
 msgid "Please fix the highlighted fields."
 msgstr "请修正标出的字段。"
 
-#: lib/quickslips_web/live/template_live.ex:130
+#: lib/quickslips_web/live/template_live.ex:137
 #, elixir-autogen, elixir-format
 msgid "Preview could not be rendered."
 msgstr "无法生成预览。"
 
-#: lib/quickslips_web/live/template_live.html.heex:68
+#: lib/quickslips_web/live/template_live.html.heex:127
 #, elixir-autogen, elixir-format
 msgid "Preview loads here…"
 msgstr "预览将显示在这里…"
@@ -375,17 +375,17 @@ msgstr "搜索模板"
 msgid "Search templates, like fuel or rent"
 msgstr "搜索模板，如加油或房租"
 
-#: lib/quickslips_web/components/layouts.ex:252
-#: lib/quickslips_web/components/layouts.ex:307
+#: lib/quickslips_web/components/layouts.ex:253
+#: lib/quickslips_web/components/layouts.ex:308
 #: lib/quickslips_web/components/ui.ex:791
 #, elixir-autogen, elixir-format
 msgid "Settings"
 msgstr "设置"
 
-#: lib/quickslips_web/components/layouts.ex:107
-#: lib/quickslips_web/components/layouts.ex:160
+#: lib/quickslips_web/components/layouts.ex:108
+#: lib/quickslips_web/components/layouts.ex:161
 #: lib/quickslips_web/live/home_live.ex:154
-#: lib/quickslips_web/live/template_live.html.heex:81
+#: lib/quickslips_web/live/template_live.html.heex:140
 #: lib/quickslips_web/live/user_live/login.ex:103
 #: lib/quickslips_web/live/user_live/registration.ex:51
 #: lib/quickslips_web/live/user_live/registration.ex:91
@@ -393,12 +393,12 @@ msgstr "设置"
 msgid "Sign up"
 msgstr "注册"
 
-#: lib/quickslips_web/components/layouts.ex:394
+#: lib/quickslips_web/components/layouts.ex:395
 #, elixir-autogen, elixir-format
 msgid "Something went wrong!"
 msgstr "出错了！"
 
-#: lib/quickslips_web/live/template_live.ex:128
+#: lib/quickslips_web/live/template_live.ex:135
 #, elixir-autogen, elixir-format
 msgid "Something went wrong. Please try again."
 msgstr "出错了，请重试。"
@@ -413,8 +413,8 @@ msgstr "西班牙"
 msgid "System"
 msgstr "系统"
 
-#: lib/quickslips_web/components/layouts.ex:95
-#: lib/quickslips_web/components/layouts.ex:152
+#: lib/quickslips_web/components/layouts.ex:96
+#: lib/quickslips_web/components/layouts.ex:153
 #: lib/quickslips_web/live/home_live.ex:81
 #: lib/quickslips_web/live/template_live.html.heex:8
 #, elixir-autogen, elixir-format
@@ -456,7 +456,7 @@ msgstr "英国"
 msgid "United States"
 msgstr "美国"
 
-#: lib/quickslips_web/live/template_live.ex:129
+#: lib/quickslips_web/live/template_live.ex:136
 #, elixir-autogen, elixir-format
 msgid "Updating preview…"
 msgstr "正在更新预览…"
@@ -466,7 +466,7 @@ msgstr "正在更新预览…"
 msgid "User confirmed successfully."
 msgstr "用户已成功确认。"
 
-#: lib/quickslips_web/components/layouts.ex:379
+#: lib/quickslips_web/components/layouts.ex:380
 #, elixir-autogen, elixir-format
 msgid "We can't find the internet"
 msgstr "无法连接到互联网"
@@ -476,7 +476,7 @@ msgstr "无法连接到互联网"
 msgid "We couldn't sign you in with Google. Please try again."
 msgstr "无法使用 Google 登录，请重试。"
 
-#: lib/quickslips_web/live/template_live.ex:127
+#: lib/quickslips_web/live/template_live.ex:134
 #, elixir-autogen, elixir-format
 msgid "We couldn't verify your browser. Turn off your ad blocker, or log in."
 msgstr "无法验证你的浏览器。请关闭广告拦截器或登录。"
@@ -523,12 +523,12 @@ msgstr "请重新验证身份后再访问此页面。"
 msgid "You need to reauthenticate to perform sensitive actions on your account."
 msgstr "执行账号敏感操作前，需要重新验证身份。"
 
-#: lib/quickslips_web/live/template_live.ex:125
+#: lib/quickslips_web/live/template_live.ex:132
 #, elixir-autogen, elixir-format
 msgid "You've used today's free downloads."
 msgstr "你今天的免费下载次数已用完。"
 
-#: lib/quickslips_web/live/template_live.html.heex:74
+#: lib/quickslips_web/live/template_live.html.heex:133
 #, elixir-autogen, elixir-format
 msgid "You've used your free downloads for today. Log in or sign up to keep going, and come back tomorrow for more."
 msgstr "你今天的免费下载次数已用完。登录或注册后可继续使用，明天也会有新的次数。"
@@ -545,7 +545,7 @@ msgstr "关闭"
 msgid "or"
 msgstr "或"
 
-#: lib/quickslips_web/components/layouts.ex:178
+#: lib/quickslips_web/components/layouts.ex:179
 #, elixir-autogen, elixir-format
 msgid "© %{year} QuickSlips. We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
 msgstr "© %{year} QuickSlips。我们根据你输入的信息生成文档。你需对信息的准确性及合法使用负责。"
@@ -555,22 +555,22 @@ msgstr "© %{year} QuickSlips。我们根据你输入的信息生成文档。你
 msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account."
 msgstr "已向 %{email} 发送邮件，请打开邮件并使用你刚设置的密码确认账号。"
 
-#: lib/quickslips_web/live/template_live.ex:140
+#: lib/quickslips_web/live/template_live.ex:147
 #, elixir-autogen, elixir-format
 msgid "Add item"
 msgstr "添加项目"
 
-#: lib/quickslips_web/live/template_live.ex:143
+#: lib/quickslips_web/live/template_live.ex:150
 #, elixir-autogen, elixir-format
 msgid "Amount"
 msgstr "金额"
 
-#: lib/quickslips_web/live/template_live.ex:141
+#: lib/quickslips_web/live/template_live.ex:148
 #, elixir-autogen, elixir-format
 msgid "Remove item %{number}"
 msgstr "删除第 %{number} 项"
 
-#: lib/quickslips_web/live/template_live.ex:142
+#: lib/quickslips_web/live/template_live.ex:149
 #, elixir-autogen, elixir-format
 msgid "Subtotal"
 msgstr "小计"
@@ -615,42 +615,42 @@ msgstr "日本"
 msgid "Currency"
 msgstr "币种"
 
-#: lib/quickslips_web/live/template_live.html.heex:42
+#: lib/quickslips_web/live/template_live.html.heex:45
 #, elixir-autogen, elixir-format
 msgid "Template"
 msgstr "模板"
 
-#: lib/quickslips_web/live/template_live.ex:132
+#: lib/quickslips_web/live/template_live.ex:139
 #, elixir-autogen, elixir-format
 msgid "Business"
 msgstr "企业"
 
-#: lib/quickslips_web/live/template_live.ex:138
+#: lib/quickslips_web/live/template_live.ex:145
 #, elixir-autogen, elixir-format
 msgid "Charges"
 msgstr "费用"
 
-#: lib/quickslips_web/live/template_live.ex:135
+#: lib/quickslips_web/live/template_live.ex:142
 #, elixir-autogen, elixir-format
 msgid "Customer"
 msgstr "客户"
 
-#: lib/quickslips_web/live/template_live.ex:137
+#: lib/quickslips_web/live/template_live.ex:144
 #, elixir-autogen, elixir-format
 msgid "Details"
 msgstr "明细"
 
-#: lib/quickslips_web/live/template_live.ex:134
+#: lib/quickslips_web/live/template_live.ex:141
 #, elixir-autogen, elixir-format
 msgid "Document"
 msgstr "单据"
 
-#: lib/quickslips_web/live/template_live.ex:139
+#: lib/quickslips_web/live/template_live.ex:146
 #, elixir-autogen, elixir-format
 msgid "Payment"
 msgstr "付款"
 
-#: lib/quickslips_web/live/template_live.ex:133
+#: lib/quickslips_web/live/template_live.ex:140
 #, elixir-autogen, elixir-format
 msgid "Registration"
 msgstr "登记信息"
@@ -667,7 +667,7 @@ msgstr "国家/地区与语言"
 msgid "Language, Country & Currency"
 msgstr "语言、国家/地区和币种"
 
-#: lib/quickslips_web/live/template_live.ex:136
+#: lib/quickslips_web/live/template_live.ex:143
 #, elixir-autogen, elixir-format
 msgid "Item Details"
 msgstr "项目明细"
@@ -677,12 +677,114 @@ msgstr "项目明细"
 msgid "Generate Now"
 msgstr "立即生成"
 
-#: lib/quickslips_web/live/template_live.ex:146
+#: lib/quickslips_web/live/template_live.ex:153
 #, elixir-autogen, elixir-format
 msgid "Other rate…"
 msgstr "其他税率…"
 
-#: lib/quickslips_web/live/template_live.ex:147
+#: lib/quickslips_web/live/template_live.ex:154
 #, elixir-autogen, elixir-format
 msgid "Type the rate in %"
 msgstr "输入税率（%）"
+
+#: lib/quickslips_web/live/template_live.ex:166
+#, elixir-autogen, elixir-format
+msgid "Choose a picture first."
+msgstr "请先选择一张图片。"
+
+#: lib/quickslips_web/live/template_live.ex:170
+#, elixir-autogen, elixir-format
+msgid "Fill in the seller's name first."
+msgstr "请先填写卖方名称。"
+
+#: lib/quickslips_web/live/template_live.ex:156
+#, elixir-autogen, elixir-format
+msgid "Give the signature a name."
+msgstr "请为签名起个名称。"
+
+#: lib/quickslips_web/live/template_live.html.heex:101
+#: lib/quickslips_web/live/template_live.html.heex:102
+#, elixir-autogen, elixir-format
+msgid "Name, like Owner"
+msgstr "名称，例如负责人"
+
+#: lib/quickslips_web/live/template_live.html.heex:82
+#, elixir-autogen, elixir-format
+msgid "No signature (placeholder only)"
+msgstr "无签名（仅留空位）"
+
+#: lib/quickslips_web/live/template_live.html.heex:109
+#: lib/quickslips_web/live/template_live.html.heex:112
+#, elixir-autogen, elixir-format
+msgid "PNG or JPG picture, up to 1 MB"
+msgstr "PNG 或 JPG 图片，最大 1 MB"
+
+#: lib/quickslips_web/live/template_live.html.heex:93
+#, elixir-autogen, elixir-format
+msgid "Save a new signature"
+msgstr "保存新签名"
+
+#: lib/quickslips_web/live/template_live.ex:167
+#, elixir-autogen, elixir-format
+msgid "Save seller details"
+msgstr "保存卖方信息"
+
+#: lib/quickslips_web/live/template_live.html.heex:113
+#, elixir-autogen, elixir-format
+msgid "Save signature"
+msgstr "保存签名"
+
+#: lib/quickslips_web/live/template_live.ex:168
+#, elixir-autogen, elixir-format
+msgid "Seller details saved."
+msgstr "卖方信息已保存。"
+
+#: lib/quickslips_web/live/template_live.ex:169
+#, elixir-autogen, elixir-format
+msgid "Seller details updated."
+msgstr "卖方信息已更新。"
+
+#: lib/quickslips_web/live/template_live.html.heex:74
+#, elixir-autogen, elixir-format
+msgid "Signature"
+msgstr "签名"
+
+#: lib/quickslips_web/live/template_live.ex:155
+#, elixir-autogen, elixir-format
+msgid "Signature saved."
+msgstr "签名已保存。"
+
+#: lib/quickslips_web/components/layouts.ex:74
+#, elixir-autogen, elixir-format
+msgid "Signatures"
+msgstr "签名"
+
+#: lib/quickslips_web/live/template_live.ex:172
+#, elixir-autogen, elixir-format
+msgid "The %{label} is not valid. Check it, or leave it empty."
+msgstr "%{label}无效。请检查，或留空。"
+
+#: lib/quickslips_web/live/template_live.ex:165
+#, elixir-autogen, elixir-format
+msgid "This file is too big. The limit is 1 MB."
+msgstr "文件太大，上限为 1 MB。"
+
+#: lib/quickslips_web/live/template_live.ex:162
+#, elixir-autogen, elixir-format
+msgid "This is not a real PNG or JPG picture."
+msgstr "这不是有效的 PNG 或 JPG 图片。"
+
+#: lib/quickslips_web/live/template_live.ex:164
+#, elixir-autogen, elixir-format
+msgid "This picture is too big: at most 4000 pixels on a side."
+msgstr "图片太大：每边最多 4000 像素。"
+
+#: lib/quickslips_web/live/template_live.ex:157
+#, elixir-autogen, elixir-format
+msgid "You already have a signature with this name."
+msgstr "您已有同名的签名。"
+
+#: lib/quickslips_web/live/template_live.ex:159
+#, elixir-autogen, elixir-format
+msgid "You can keep up to %{max} signatures. Delete one on the Signatures page first."
+msgstr "最多可保存 %{max} 个签名。请先在“签名”页面删除一个。"
