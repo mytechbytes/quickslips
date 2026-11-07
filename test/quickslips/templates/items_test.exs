@@ -176,6 +176,24 @@ defmodule QuickSlips.Templates.ItemsTest do
              }
     end
 
+    test "a table can have a tax rate for each line, 0 to 100" do
+      schema = %{
+        "fields" => [
+          %{"key" => "lines", "type" => "items", "cells" => ["name", "rate", "discount", "tax"]}
+        ]
+      }
+
+      good = %{"lines" => [%{"name" => "Dosa", "rate" => 240, "discount" => 10, "tax" => 5}]}
+
+      assert {:ok, %{"lines" => [%{"tax" => 5, "discount" => 10}]}} =
+               Validator.validate(schema, good)
+
+      bad = %{"lines" => [%{"name" => "Dosa", "rate" => 240, "tax" => 101}]}
+
+      assert {:error, {:validation, %{"lines.0.tax" => ["must be at most 100"]}}} =
+               Validator.validate(schema, bad)
+    end
+
     test "the billing types are named in the language of the page and of the document" do
       {:ok, schema} = Templates.get("maintenance-bill", QuickSlips.Locales.fetch!("es-es"))
       parts = Enum.find(schema["fields"], &(&1["key"] == "parts"))

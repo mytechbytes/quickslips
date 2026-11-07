@@ -1,0 +1,153 @@
+{
+  "title": "Générateur de facture de livraison de repas",
+  "name": "Facture de livraison de repas",
+  "public_slug": "generateur-de-facture-de-livraison-de-repas",
+  "summary": "Facture de livraison de repas avec {tax} sur chaque ligne.",
+  "description": "Générez une facture de livraison de repas au nom d'un restaurant, avec l'adresse de livraison, la taxe par ligne, les mentions légales de la plateforme et un signataire. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Facture de livraison"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Plateforme ou marque (facultatif)"
+    },
+    "legal_name": {
+      "label": "Raison sociale (facultatif)"
+    },
+    "restaurant_name": {
+      "label": "Nom du restaurant"
+    },
+    "restaurant_address": {
+      "label": "Adresse du restaurant (facultatif)"
+    },
+    "restaurant_gstin": {
+      "label": "Restaurant {tax_id} (facultatif)"
+    },
+    "restaurant_fssai": {
+      "label": "N° FSSAI du restaurant (facultatif)"
+    },
+    "invoice_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date de facture"
+    },
+    "order_id": {
+      "label": "ID de commande (facultatif)"
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "delivery_address": {
+      "label": "Adresse de livraison (facultatif)"
+    },
+    "place_of_supply": {
+      "label": "État et lieu de fourniture (facultatif)"
+    },
+    "hsn_code": {
+      "label": "Code HSN (facultatif)"
+    },
+    "service_description": {
+      "label": "Description du service (facultatif)"
+    },
+    "reverse_charge": {
+      "label": "Autoliquidation (facultatif)",
+      "options": {
+        "No": "Non",
+        "Yes": "Oui"
+      }
+    },
+    "payment_note": {
+      "label": "Note de paiement (facultatif)"
+    },
+    "platform_company": {
+      "label": "Nom et adresse de la plateforme (facultatif)"
+    },
+    "platform_pan": {
+      "label": "PAN de la plateforme (facultatif)"
+    },
+    "platform_cin": {
+      "label": "CIN de la plateforme (facultatif)"
+    },
+    "platform_tax_id": {
+      "label": "Plateforme {tax_id} (facultatif)"
+    },
+    "platform_fssai": {
+      "label": "N° FSSAI de la plateforme (facultatif)"
+    },
+    "signatory_name": {
+      "label": "Nom du signataire (facultatif)"
+    },
+    "items": {
+      "label": "Lignes de facturation",
+      "columns": {
+        "name": "Désignation",
+        "rate": "Valeur brute ({currency})",
+        "discount": "Remise %",
+        "tax": "Taxe %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Facture",
+    "original": "Original pour le destinataire",
+    "on_behalf": "Facture au nom de",
+    "restaurant": "Restaurant",
+    "invoice_no": "N° de facture",
+    "invoice_date": "Date de facture",
+    "customer": "Nom du client",
+    "delivery_address": "Adresse de livraison",
+    "place": "État et lieu de fourniture",
+    "hsn": "Code HSN",
+    "service": "Description du service",
+    "order_id": "ID de commande",
+    "particulars": "Désignation",
+    "gross": "Valeur brute",
+    "discount": "Remise",
+    "net": "Valeur nette",
+    "rate": "Taux",
+    "tax": "Taxe",
+    "total": "Total",
+    "reverse": "La fourniture est soumise à l'autoliquidation",
+    "payment_note": "Note de paiement",
+    "for": "Pour",
+    "authorised": "Signature autorisée"
+  },
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Technologies SAS\n10 rue de Rivoli, 75004 Paris",
+    "legal_name": "Café du Marché SARL",
+    "restaurant_name": "Café du Marché",
+    "items": [
+      {
+        "name": "Croque-monsieur x 2",
+        "rate": 18,
+        "discount": 0,
+        "tax": 10
+      },
+      {
+        "name": "Café crème x 3",
+        "rate": 9,
+        "discount": 10,
+        "tax": 10
+      },
+      {
+        "name": "Steak frites",
+        "rate": 18,
+        "discount": 0,
+        "tax": 10
+      },
+      {
+        "name": "Emballage et livraison",
+        "rate": 2.5,
+        "discount": 0,
+        "tax": 20
+      }
+    ],
+    "customer_name": "Camille Martin",
+    "delivery_address": "8 rue des Lilas, 2e étage, 69003 Lyon",
+    "service_description": "Prestation de restauration",
+    "payment_note": "Payé en ligne",
+    "signatory_name": "A. Bernard"
+  }
+}

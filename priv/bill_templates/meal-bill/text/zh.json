@@ -1,0 +1,153 @@
+{
+  "title": "外卖订单发票生成器",
+  "name": "外卖订单发票",
+  "public_slug": "meal-bill-generator",
+  "summary": "每行含{tax}的外卖餐饮发票。",
+  "description": "生成代餐厅开具的外卖餐饮发票，包含配送地址、每行税额、平台的法律信息和签字人。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "外卖发票"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "平台或品牌名称（选填）"
+    },
+    "legal_name": {
+      "label": "法人名称（选填）"
+    },
+    "restaurant_name": {
+      "label": "餐厅名称"
+    },
+    "restaurant_address": {
+      "label": "餐厅地址（选填）"
+    },
+    "restaurant_gstin": {
+      "label": "餐厅 {tax_id}（选填）"
+    },
+    "restaurant_fssai": {
+      "label": "餐厅 FSSAI 编号（选填）"
+    },
+    "invoice_number": {
+      "label": "发票号码"
+    },
+    "date": {
+      "label": "开票日期"
+    },
+    "order_id": {
+      "label": "订单号（选填）"
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "delivery_address": {
+      "label": "配送地址（选填）"
+    },
+    "place_of_supply": {
+      "label": "州及供应地（选填）"
+    },
+    "hsn_code": {
+      "label": "HSN 编码（选填）"
+    },
+    "service_description": {
+      "label": "服务说明（选填）"
+    },
+    "reverse_charge": {
+      "label": "反向征税（选填）",
+      "options": {
+        "No": "否",
+        "Yes": "是"
+      }
+    },
+    "payment_note": {
+      "label": "付款备注（选填）"
+    },
+    "platform_company": {
+      "label": "平台公司名称及地址（选填）"
+    },
+    "platform_pan": {
+      "label": "平台 PAN（选填）"
+    },
+    "platform_cin": {
+      "label": "平台 CIN（选填）"
+    },
+    "platform_tax_id": {
+      "label": "平台 {tax_id}（选填）"
+    },
+    "platform_fssai": {
+      "label": "平台 FSSAI 编号（选填）"
+    },
+    "signatory_name": {
+      "label": "签字人姓名（选填）"
+    },
+    "items": {
+      "label": "计费明细",
+      "columns": {
+        "name": "项目",
+        "rate": "总价（{currency}）",
+        "discount": "折扣 %",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "税务发票",
+    "original": "原件（收件人联）",
+    "on_behalf": "代以下商户开具发票",
+    "restaurant": "餐厅",
+    "invoice_no": "发票号码",
+    "invoice_date": "开票日期",
+    "customer": "客户姓名",
+    "delivery_address": "配送地址",
+    "place": "州及供应地",
+    "hsn": "HSN 编码",
+    "service": "服务说明",
+    "order_id": "订单号",
+    "particulars": "项目",
+    "gross": "总价",
+    "discount": "折扣",
+    "net": "净额",
+    "rate": "税率",
+    "tax": "税",
+    "total": "合计",
+    "reverse": "本项供应适用反向征税",
+    "payment_note": "付款备注",
+    "for": "代表",
+    "authorised": "授权签字人"
+  },
+  "sample": {
+    "brand_name": "快点外卖",
+    "platform_company": "快点网络科技有限公司\n北京市朝阳区建国路100号",
+    "legal_name": "绿叶餐饮有限公司",
+    "restaurant_name": "绿叶茶餐厅",
+    "items": [
+      {
+        "name": "麻婆豆腐 x 2",
+        "rate": 56,
+        "discount": 0,
+        "tax": 6
+      },
+      {
+        "name": "绿茶 x 3",
+        "rate": 24,
+        "discount": 10,
+        "tax": 6
+      },
+      {
+        "name": "宫保鸡丁",
+        "rate": 38,
+        "discount": 0,
+        "tax": 6
+      },
+      {
+        "name": "包装与配送",
+        "rate": 6,
+        "discount": 0,
+        "tax": 6
+      }
+    ],
+    "customer_name": "王伟",
+    "delivery_address": "上海市浦东新区世纪大道200号 3栋502室",
+    "service_description": "餐饮服务",
+    "payment_note": "在线支付",
+    "signatory_name": "李明"
+  }
+}

@@ -308,6 +308,33 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "meal-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(brand_name legal_name restaurant_address restaurant_gstin restaurant_fssai order_id delivery_address
+           place_of_supply hsn_code service_description reverse_charge payment_note platform_company
+           platform_pan platform_cin platform_tax_id platform_fssai signatory_name),
+      long: %{
+        "brand_name" => "QuickEatsQuickEatsQuickEats",
+        "legal_name" => String.duplicate("Green Leaf Hospitality ", 5),
+        "restaurant_name" => String.duplicate("Green Leaf Café ", 5),
+        "restaurant_address" => String.duplicate("14, Church Street, Bengaluru, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "delivery_address" => String.duplicate("Flat 12, Lotus Apartments, HSR Layout, ", 6),
+        "platform_company" => String.duplicate("QuickEats Technologies Pvt. Ltd., ", 6),
+        "payment_note" => String.duplicate("Paid online by card. ", 8),
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Masala Dosa with chutney ", 3),
+              "rate" => 9_999_999.99,
+              "discount" => 12.5,
+              "tax" => 18
+            },
+            12
+          )
+      }
+    },
     "restaurant-bill" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:

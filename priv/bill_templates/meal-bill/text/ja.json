@@ -1,0 +1,153 @@
+{
+  "title": "デリバリー請求書作成",
+  "name": "デリバリー請求書",
+  "public_slug": "meal-bill-generator",
+  "summary": "各行に{tax}を記載した食事デリバリーの請求書。",
+  "description": "店舗に代わって発行する食事デリバリーの請求書を、配達先住所、行ごとの税、プラットフォームの法的情報、署名者つきで作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "デリバリー請求書"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "プラットフォーム・ブランド名（任意）"
+    },
+    "legal_name": {
+      "label": "法人名（任意）"
+    },
+    "restaurant_name": {
+      "label": "店名"
+    },
+    "restaurant_address": {
+      "label": "店舗の住所（任意）"
+    },
+    "restaurant_gstin": {
+      "label": "店舗 {tax_id}（任意）"
+    },
+    "restaurant_fssai": {
+      "label": "店舗 FSSAI 番号（任意）"
+    },
+    "invoice_number": {
+      "label": "請求書番号"
+    },
+    "date": {
+      "label": "請求日"
+    },
+    "order_id": {
+      "label": "注文ID（任意）"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "delivery_address": {
+      "label": "配達先住所（任意）"
+    },
+    "place_of_supply": {
+      "label": "州・提供地（任意）"
+    },
+    "hsn_code": {
+      "label": "HSNコード（任意）"
+    },
+    "service_description": {
+      "label": "サービス内容（任意）"
+    },
+    "reverse_charge": {
+      "label": "リバースチャージ（任意）",
+      "options": {
+        "No": "いいえ",
+        "Yes": "はい"
+      }
+    },
+    "payment_note": {
+      "label": "支払メモ（任意）"
+    },
+    "platform_company": {
+      "label": "プラットフォーム会社名・住所（任意）"
+    },
+    "platform_pan": {
+      "label": "プラットフォーム PAN（任意）"
+    },
+    "platform_cin": {
+      "label": "プラットフォーム CIN（任意）"
+    },
+    "platform_tax_id": {
+      "label": "プラットフォーム {tax_id}（任意）"
+    },
+    "platform_fssai": {
+      "label": "プラットフォーム FSSAI 番号（任意）"
+    },
+    "signatory_name": {
+      "label": "署名者名（任意）"
+    },
+    "items": {
+      "label": "請求明細",
+      "columns": {
+        "name": "品目",
+        "rate": "総額（{currency}）",
+        "discount": "割引 %",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "税務請求書",
+    "original": "原本（受取人用）",
+    "on_behalf": "以下の店舗に代わって発行",
+    "restaurant": "店舗",
+    "invoice_no": "請求書番号",
+    "invoice_date": "請求日",
+    "customer": "お客様名",
+    "delivery_address": "配達先住所",
+    "place": "州・提供地",
+    "hsn": "HSNコード",
+    "service": "サービス内容",
+    "order_id": "注文ID",
+    "particulars": "品目",
+    "gross": "総額",
+    "discount": "割引",
+    "net": "正味額",
+    "rate": "税率",
+    "tax": "税",
+    "total": "合計",
+    "reverse": "この取引はリバースチャージの対象",
+    "payment_note": "支払メモ",
+    "for": "代表",
+    "authorised": "承認者署名"
+  },
+  "sample": {
+    "brand_name": "クイックイーツ",
+    "platform_company": "クイックイーツ株式会社\n東京都渋谷区道玄坂1-1-1",
+    "legal_name": "グリーンリーフ株式会社",
+    "restaurant_name": "グリーンリーフ食堂",
+    "items": [
+      {
+        "name": "親子丼 x 2",
+        "rate": 1960,
+        "discount": 0,
+        "tax": 10
+      },
+      {
+        "name": "緑茶 x 3",
+        "rate": 750,
+        "discount": 10,
+        "tax": 10
+      },
+      {
+        "name": "天ぷら定食",
+        "rate": 1500,
+        "discount": 0,
+        "tax": 10
+      },
+      {
+        "name": "容器代・配達料",
+        "rate": 300,
+        "discount": 0,
+        "tax": 10
+      }
+    ],
+    "customer_name": "田中 太郎",
+    "delivery_address": "東京都世田谷区三軒茶屋2-2-2 305号室",
+    "service_description": "飲食サービス",
+    "payment_note": "オンライン決済",
+    "signatory_name": "山本 一郎"
+  }
+}

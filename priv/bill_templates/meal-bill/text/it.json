@@ -1,0 +1,153 @@
+{
+  "title": "Generatore di fattura per consegna pasti",
+  "name": "Fattura consegna pasti",
+  "public_slug": "generatore-fattura-consegna-pasti",
+  "summary": "Fattura di consegna pasti con {tax} su ogni riga.",
+  "description": "Genera una fattura di consegna pasti per conto di un ristorante, con indirizzo di consegna, imposta per riga, dati legali della piattaforma e un firmatario. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Fattura di consegna"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Piattaforma o marchio (facoltativo)"
+    },
+    "legal_name": {
+      "label": "Ragione sociale (facoltativo)"
+    },
+    "restaurant_name": {
+      "label": "Nome del ristorante"
+    },
+    "restaurant_address": {
+      "label": "Indirizzo del ristorante (facoltativo)"
+    },
+    "restaurant_gstin": {
+      "label": "Ristorante {tax_id} (facoltativo)"
+    },
+    "restaurant_fssai": {
+      "label": "N. FSSAI del ristorante (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data fattura"
+    },
+    "order_id": {
+      "label": "ID ordine (facoltativo)"
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "delivery_address": {
+      "label": "Indirizzo di consegna (facoltativo)"
+    },
+    "place_of_supply": {
+      "label": "Stato e luogo di fornitura (facoltativo)"
+    },
+    "hsn_code": {
+      "label": "Codice HSN (facoltativo)"
+    },
+    "service_description": {
+      "label": "Descrizione del servizio (facoltativo)"
+    },
+    "reverse_charge": {
+      "label": "Inversione contabile (facoltativo)",
+      "options": {
+        "No": "No",
+        "Yes": "Sì"
+      }
+    },
+    "payment_note": {
+      "label": "Nota di pagamento (facoltativo)"
+    },
+    "platform_company": {
+      "label": "Ragione sociale e indirizzo della piattaforma (facoltativo)"
+    },
+    "platform_pan": {
+      "label": "PAN della piattaforma (facoltativo)"
+    },
+    "platform_cin": {
+      "label": "CIN della piattaforma (facoltativo)"
+    },
+    "platform_tax_id": {
+      "label": "Piattaforma {tax_id} (facoltativo)"
+    },
+    "platform_fssai": {
+      "label": "N. FSSAI della piattaforma (facoltativo)"
+    },
+    "signatory_name": {
+      "label": "Nome del firmatario (facoltativo)"
+    },
+    "items": {
+      "label": "Righe di fatturazione",
+      "columns": {
+        "name": "Descrizione",
+        "rate": "Valore lordo ({currency})",
+        "discount": "Sconto %",
+        "tax": "Imposta %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Fattura",
+    "original": "Originale per il destinatario",
+    "on_behalf": "Fattura per conto di",
+    "restaurant": "Ristorante",
+    "invoice_no": "N. fattura",
+    "invoice_date": "Data fattura",
+    "customer": "Nome del cliente",
+    "delivery_address": "Indirizzo di consegna",
+    "place": "Stato e luogo di fornitura",
+    "hsn": "Codice HSN",
+    "service": "Descrizione del servizio",
+    "order_id": "ID ordine",
+    "particulars": "Descrizione",
+    "gross": "Valore lordo",
+    "discount": "Sconto",
+    "net": "Valore netto",
+    "rate": "Aliquota",
+    "tax": "Imposta",
+    "total": "Totale",
+    "reverse": "La fornitura è soggetta a inversione contabile",
+    "payment_note": "Nota di pagamento",
+    "for": "Per",
+    "authorised": "Firma autorizzata"
+  },
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Technologies S.r.l.\nVia Torino 20, 20123 Milano",
+    "legal_name": "Trattoria Bella S.r.l.",
+    "restaurant_name": "Trattoria Bella",
+    "items": [
+      {
+        "name": "Pizza margherita x 2",
+        "rate": 16,
+        "discount": 0,
+        "tax": 10
+      },
+      {
+        "name": "Caffè x 3",
+        "rate": 4.5,
+        "discount": 10,
+        "tax": 10
+      },
+      {
+        "name": "Tagliata",
+        "rate": 18,
+        "discount": 0,
+        "tax": 10
+      },
+      {
+        "name": "Imballaggio e consegna",
+        "rate": 2.5,
+        "discount": 0,
+        "tax": 22
+      }
+    ],
+    "customer_name": "Marco Rossi",
+    "delivery_address": "Via dei Mille 12, interno 5, 40121 Bologna",
+    "service_description": "Servizio di ristorazione",
+    "payment_note": "Pagato online",
+    "signatory_name": "A. Ferrari"
+  }
+}

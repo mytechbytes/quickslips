@@ -7,7 +7,7 @@ defmodule QuickSlips.Templates.Validator do
 
   A field of type `items` is a list of rows. A row has the cells the field names in `"cells"` (`["name", "qty",
   "rate"]` unless it says otherwise): `name`, `qty`, `rate`, and for a table of parts or jobs a `code`, a `billing`
-  type (one of the field's `"billing_options"`) and a `discount` in percent. A row with nothing in it is left out
+  type (one of the field's `"billing_options"`), a `discount` and a `tax` rate in percent. A row with nothing in it is left out
   (a choice that has a default, like `billing`, is not something); a row with something in it is checked cell by
   cell, and an error is named after the cell: `"items.2.qty"` is the quantity of the third row of the list that
   was sent. The amount of a row is not kept: it is quantity times rate less the discount, worked out where the
@@ -100,6 +100,9 @@ defmodule QuickSlips.Templates.Validator do
 
         "discount" ->
           {"discount", %{"type" => "number", "min" => 0, "max" => 100}, false}
+
+        "tax" ->
+          {"tax", %{"type" => "number", "min" => 0, "max" => 100}, false}
       end
     end
   end

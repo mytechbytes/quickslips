@@ -204,7 +204,7 @@
 #let percent(amount, rate) = calc.round(amount * rate / 100, digits: 2)
 
 // The rows of a table of items (a field of type `items`): each is a dictionary with `name`, `qty`, `rate` and
-// `amount` (quantity times rate, less the discount), and the `code`, `billing` type and `discount` (percent) of a
+// `amount` (quantity times rate, less the discount), and the `code`, `billing` type, `discount` and `tax` rate (percent) of a
 // table that has them. A cell that is missing counts as empty, so a row that is half typed in the browser preview
 // still draws. A table without a quantity cell (labour) has one of each: `qty: 1`.
 #let item-rows(data, key: "items", quantity: true) = {
@@ -220,6 +220,7 @@
       qty: qty,
       rate: rate,
       discount: discount,
+      tax: row.at("tax", default: 0),
       amount: qty * rate * (1 - discount / 100),
     )
   })
