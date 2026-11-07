@@ -340,6 +340,27 @@ defmodule QuickSlips.Render.RendererTest do
           )
       }
     },
+    "stationery-bill" => %{
+      designs: ~w(t1),
+      optional: ~w(seller_tax_id tax_percent remarks),
+      long: %{
+        "shop_name" => String.duplicate("Quill & Co. Stationers ", 4),
+        "shop_address" => String.duplicate("Shop 6, College Road, Pune, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "customer_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "remarks" => String.duplicate("Please keep the receipt for exchanges. ", 5),
+        "tax_percent" => 18,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Spiral notebook 200 pages ", 4),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99
+            },
+            16
+          )
+      }
+    },
     "ecommerce-bill" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:

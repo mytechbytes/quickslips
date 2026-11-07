@@ -1,0 +1,105 @@
+{
+  "title": "文具店小票生成器",
+  "name": "文具店小票",
+  "public_slug": "stationery-bill-generator",
+  "summary": "含商品、单价和合计的文具店小票。",
+  "description": "生成包含钢笔、纸张等文具、数量、单价和{tax}的文具店小票。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "小票"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "店铺名称"
+    },
+    "shop_address": {
+      "label": "店铺地址"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "invoice_number": {
+      "label": "小票编号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "customer_address": {
+      "label": "客户地址"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "remarks": {
+      "label": "备注 / 说明（选填）"
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "商品",
+        "qty": "数量",
+        "rate": "单价（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "receipt_no": "小票号",
+    "date": "日期",
+    "billed_to": "购买人",
+    "address": "地址",
+    "item": "商品",
+    "rate": "单价",
+    "quantity": "数量",
+    "amount": "金额",
+    "remarks": "备注 / 说明",
+    "subtotal": "小计",
+    "total_amount": "合计金额",
+    "payment_method": "支付方式",
+    "save_paper": "节约用纸，保护自然！感谢您的惠顾。"
+  },
+  "sample": {
+    "shop_name": "墨香文具店",
+    "customer_name": "王伟",
+    "items": [
+      {
+        "name": "螺旋笔记本（200页）",
+        "qty": 4,
+        "rate": 12
+      },
+      {
+        "name": "蓝色圆珠笔（10支装）",
+        "qty": 2,
+        "rate": 15
+      },
+      {
+        "name": "荧光笔套装（4色）",
+        "qty": 1,
+        "rate": 22
+      },
+      {
+        "name": "A4复印纸（500张）",
+        "qty": 1,
+        "rate": 28
+      },
+      {
+        "name": "固体胶（2支）",
+        "qty": 2,
+        "rate": 8
+      }
+    ],
+    "tax_percent": 13,
+    "remarks": "7 天内换货请保留小票。"
+  }
+}
