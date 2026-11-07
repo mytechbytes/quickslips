@@ -1,0 +1,175 @@
+{
+  "title": "大卖场发票生成器",
+  "name": "大卖场发票",
+  "public_slug": "hypermarket-bill-generator",
+  "summary": "每件商品单独税率的大卖场税务发票。",
+  "description": "生成大卖场或超市税务发票，包含商品编码、每件商品的{tax}税率、按税率汇总的税额、订单与配送信息以及节省金额。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "税务发票"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "门店品牌"
+    },
+    "company_name": {
+      "label": "公司名称"
+    },
+    "company_address": {
+      "label": "公司地址（选填）"
+    },
+    "phone": {
+      "label": "客服电话（选填）"
+    },
+    "email": {
+      "label": "客服邮箱（选填）"
+    },
+    "website": {
+      "label": "条款网址（选填）"
+    },
+    "cin": {
+      "label": "CIN（选填）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "fssai": {
+      "label": "FSSAI 编号（选填）"
+    },
+    "invoice_number": {
+      "label": "发票号码"
+    },
+    "date": {
+      "label": "开票日期"
+    },
+    "order_number": {
+      "label": "订单编号（选填）"
+    },
+    "order_date": {
+      "label": "下单日期（选填）"
+    },
+    "delivery_date": {
+      "label": "配送日期（选填）"
+    },
+    "delivery_time": {
+      "label": "配送时间（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "customer_name": {
+      "label": "客户姓名（选填）"
+    },
+    "customer_phone": {
+      "label": "手机号码（选填）"
+    },
+    "delivery_mode": {
+      "label": "配送方式",
+      "options": {
+        "Self pick-up": "到店自提",
+        "Home delivery": "送货上门"
+      }
+    },
+    "delivery_address": {
+      "label": "自提 / 配送地址（选填）"
+    },
+    "savings": {
+      "label": "相比标价节省（{currency}）（选填）"
+    },
+    "payment_note": {
+      "label": "付款说明（选填）"
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "商品",
+        "hsn": "商品编码",
+        "qty": "数量",
+        "rate": "单价（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "税务发票",
+    "invoice_no": "发票号码",
+    "invoice_date": "开票日期",
+    "hsn": "编码",
+    "particulars": "品名",
+    "qty": "数量",
+    "rate": "单价",
+    "value": "金额",
+    "items": "品项",
+    "amt": "合计",
+    "your_savings": "您节省了",
+    "on_list": "相比标价",
+    "breakup": "税额明细",
+    "amount_in": "金额单位",
+    "rate_col": "税率",
+    "taxable": "计税额",
+    "total": "合计",
+    "order_details": "订单信息",
+    "order_number": "订单编号",
+    "order_date": "下单日期",
+    "delivery_date": "配送日期",
+    "delivery_time": "配送时间",
+    "payment_mode": "支付方式",
+    "customer_delivery": "客户与配送信息",
+    "customer_name": "客户姓名",
+    "mobile": "手机号码",
+    "delivery_mode": "配送方式",
+    "address": "自提 / 配送地址",
+    "collect": "送货时收取 {amount}",
+    "computer_generated": "本发票由电脑生成。",
+    "exempt": "免税"
+  },
+  "sample": {
+    "brand_name": "绿叶超市",
+    "company_name": "绿叶商贸有限公司",
+    "phone": "400-123-4567",
+    "delivery_time": "18:00-21:00",
+    "payment_note": "货到付款（现金或刷卡）",
+    "customer_name": "王伟",
+    "customer_phone": "138 0013 8000",
+    "items": [
+      {
+        "name": "香米 (5 公斤)",
+        "qty": 1,
+        "rate": 42,
+        "tax": 9
+      },
+      {
+        "name": "葵花籽油 (1 升)",
+        "qty": 2,
+        "rate": 36,
+        "tax": 9
+      },
+      {
+        "name": "奶油饼干 (300 克)",
+        "qty": 3,
+        "rate": 12,
+        "tax": 13
+      },
+      {
+        "name": "洗洁精 (500 毫升)",
+        "qty": 1,
+        "rate": 9.9,
+        "tax": 13
+      },
+      {
+        "name": "新鲜番茄 (1 公斤)",
+        "qty": 2,
+        "rate": 8.5,
+        "tax": 0
+      }
+    ],
+    "savings": 6,
+    "delivery_mode": "Home delivery"
+  }
+}

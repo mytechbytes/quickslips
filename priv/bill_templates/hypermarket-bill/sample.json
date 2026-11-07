@@ -1,0 +1,31 @@
+{
+  "brand_name": "FreshMart Ready",
+  "company_name": "FreshMart Retail Private Limited",
+  "company_address": "Building 2, Corporate Park, Andheri East, Mumbai, Maharashtra 400093",
+  "phone": "1800 123 4567",
+  "email": "care@freshmart.example",
+  "website": "www.freshmart.example/terms",
+  "cin": "U74120MH2014PTC259234",
+  "seller_tax_id": "27ABCDE1234F1Z5",
+  "fssai": "11516013000245",
+  "invoice_number": "FM26-0049305",
+  "date": "2026-11-07",
+  "order_number": "6264771",
+  "order_date": "2026-11-07",
+  "delivery_date": "2026-11-07",
+  "delivery_time": "6:00 PM - 9:00 PM",
+  "payment_mode": "Cash",
+  "customer_name": "Rohan Mehta",
+  "customer_phone": "98200 12345",
+  "delivery_mode": "Home delivery",
+  "delivery_address": "Flat 12, Sunrise Apartments, Station Road, Mumbai 400093",
+  "items": [
+    { "name": "Basmati rice (5 kg)", "hsn": "1006", "qty": 1, "rate": 640, "tax": 5 },
+    { "name": "Sunflower oil (1 L)", "hsn": "1512", "qty": 2, "rate": 142, "tax": 5 },
+    { "name": "Cream biscuits (300 g)", "hsn": "1905", "qty": 3, "rate": 40, "tax": 18 },
+    { "name": "Dish wash liquid (500 ml)", "hsn": "3402", "qty": 1, "rate": 129, "tax": 18 },
+    { "name": "Fresh tomatoes (1 kg)", "hsn": "0702", "qty": 2, "rate": 38, "tax": 0 }
+  ],
+  "savings": 86,
+  "payment_note": "Pay on delivery (cash or card)"
+}

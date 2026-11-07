@@ -310,6 +310,34 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "hypermarket-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(company_address phone email website cin seller_tax_id fssai order_number order_date delivery_date
+           delivery_time customer_name customer_phone delivery_address savings payment_note),
+      long: %{
+        "brand_name" => String.duplicate("FreshMart Ready ", 4),
+        "company_name" => String.duplicate("FreshMart Retail Private Limited ", 3),
+        "company_address" => String.duplicate("Building 2, Corporate Park, Andheri East, ", 5),
+        "website" => String.duplicate("www.freshmart.example/terms/", 4),
+        "delivery_time" => String.duplicate("6:00 PM - 9:00 PM ", 2),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "delivery_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 5),
+        "payment_note" => String.duplicate("Pay on delivery ", 3),
+        "savings" => 99_999_999.99,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Basmati rice premium pack ", 3),
+              "hsn" => "ABCDEFGHIJ01",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            16
+          )
+      }
+    },
     "grocery-bill" => %{
       designs: ~w(t1 t2),
       optional:

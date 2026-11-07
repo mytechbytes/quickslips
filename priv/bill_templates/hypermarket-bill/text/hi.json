@@ -1,0 +1,182 @@
+{
+  "title": "हाइपरमार्केट बिल जनरेटर",
+  "name": "हाइपरमार्केट बिल",
+  "public_slug": "hypermarket-bill-generator",
+  "summary": "हर वस्तु पर अलग कर दर वाला हाइपरमार्केट टैक्स इनवॉइस।",
+  "description": "HSN कोड, हर वस्तु की कर दर, दर के अनुसार {tax} विवरण, ऑर्डर और डिलीवरी की जानकारी और बचत के साथ हाइपरमार्केट टैक्स इनवॉइस बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "टैक्स इनवॉइस"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "स्टोर का ब्रांड"
+    },
+    "company_name": {
+      "label": "कंपनी का नाम"
+    },
+    "company_address": {
+      "label": "कंपनी का पता (वैकल्पिक)"
+    },
+    "phone": {
+      "label": "ग्राहक सेवा फ़ोन (वैकल्पिक)"
+    },
+    "email": {
+      "label": "ग्राहक सेवा ईमेल (वैकल्पिक)"
+    },
+    "website": {
+      "label": "शर्तों का वेब पता (वैकल्पिक)"
+    },
+    "cin": {
+      "label": "CIN (वैकल्पिक)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "fssai": {
+      "label": "FSSAI नं. (वैकल्पिक)"
+    },
+    "invoice_number": {
+      "label": "इनवॉइस नंबर"
+    },
+    "date": {
+      "label": "इनवॉइस की तारीख"
+    },
+    "order_number": {
+      "label": "ऑर्डर नंबर (वैकल्पिक)"
+    },
+    "order_date": {
+      "label": "ऑर्डर की तारीख (वैकल्पिक)"
+    },
+    "delivery_date": {
+      "label": "डिलीवरी की तारीख (वैकल्पिक)"
+    },
+    "delivery_time": {
+      "label": "डिलीवरी का समय (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का माध्यम",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम (वैकल्पिक)"
+    },
+    "customer_phone": {
+      "label": "मोबाइल नंबर (वैकल्पिक)"
+    },
+    "delivery_mode": {
+      "label": "डिलीवरी का तरीका",
+      "options": {
+        "Self pick-up": "स्वयं पिकअप",
+        "Home delivery": "होम डिलीवरी"
+      }
+    },
+    "delivery_address": {
+      "label": "पिकअप / डिलीवरी का पता (वैकल्पिक)"
+    },
+    "savings": {
+      "label": "सूची मूल्य पर बचत ({currency}) (वैकल्पिक)"
+    },
+    "payment_note": {
+      "label": "भुगतान निर्देश (वैकल्पिक)"
+    },
+    "items": {
+      "label": "वस्तुएँ",
+      "columns": {
+        "name": "वस्तु",
+        "hsn": "HSN कोड",
+        "qty": "मात्रा",
+        "rate": "मूल्य ({currency})",
+        "tax": "कर %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "टैक्स इनवॉइस",
+    "invoice_no": "इनवॉइस नं.",
+    "invoice_date": "इनवॉइस की तारीख",
+    "hsn": "HSN",
+    "particulars": "विवरण",
+    "qty": "मात्रा",
+    "rate": "दर",
+    "value": "मूल्य",
+    "items": "वस्तुएँ",
+    "amt": "राशि",
+    "your_savings": "आपकी बचत",
+    "on_list": "सूची मूल्य पर",
+    "breakup": "कर विवरण",
+    "amount_in": "राशि",
+    "rate_col": "दर",
+    "taxable": "कर योग्य",
+    "total": "कुल",
+    "order_details": "ऑर्डर विवरण",
+    "order_number": "ऑर्डर नंबर",
+    "order_date": "ऑर्डर की तारीख",
+    "delivery_date": "डिलीवरी की तारीख",
+    "delivery_time": "डिलीवरी का समय",
+    "payment_mode": "भुगतान का माध्यम",
+    "customer_delivery": "ग्राहक और डिलीवरी विवरण",
+    "customer_name": "ग्राहक का नाम",
+    "mobile": "मोबाइल नंबर",
+    "delivery_mode": "डिलीवरी का तरीका",
+    "address": "पिकअप / डिलीवरी का पता",
+    "collect": "डिलीवरी के समय {amount} लिए जाएँगे",
+    "computer_generated": "यह कंप्यूटर द्वारा तैयार किया गया इनवॉइस है।",
+    "exempt": "छूट प्राप्त"
+  },
+  "sample": {
+    "brand_name": "फ्रेशमार्ट रेडी",
+    "company_name": "फ्रेशमार्ट रिटेल प्राइवेट लिमिटेड",
+    "phone": "1800 123 4567",
+    "delivery_time": "शाम 6:00 - 9:00 बजे",
+    "payment_note": "डिलीवरी पर भुगतान (नकद या कार्ड)",
+    "customer_name": "रोहन मेहता",
+    "customer_phone": "98200 12345",
+    "items": [
+      {
+        "name": "बासमती चावल (5 किग्रा)",
+        "qty": 1,
+        "rate": 640,
+        "tax": 5,
+        "hsn": "1006"
+      },
+      {
+        "name": "सूरजमुखी तेल (1 लीटर)",
+        "qty": 2,
+        "rate": 142,
+        "tax": 5,
+        "hsn": "1512"
+      },
+      {
+        "name": "क्रीम बिस्कुट (300 ग्राम)",
+        "qty": 3,
+        "rate": 40,
+        "tax": 18,
+        "hsn": "1905"
+      },
+      {
+        "name": "बर्तन धोने का लिक्विड (500 मिली)",
+        "qty": 1,
+        "rate": 129,
+        "tax": 18,
+        "hsn": "3402"
+      },
+      {
+        "name": "ताज़े टमाटर (1 किग्रा)",
+        "qty": 2,
+        "rate": 38,
+        "tax": 0,
+        "hsn": "0702"
+      }
+    ],
+    "savings": 86,
+    "delivery_mode": "Home delivery",
+    "company_address": "इमारत 2, कॉर्पोरेट पार्क, अंधेरी ईस्ट, मुंबई, महाराष्ट्र 400093",
+    "delivery_address": "फ्लैट 12, सनराइज़ अपार्टमेंट्स, स्टेशन रोड, मुंबई 400093"
+  }
+}

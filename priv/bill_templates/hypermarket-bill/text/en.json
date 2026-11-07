@@ -1,0 +1,133 @@
+{
+  "title": "Hypermarket Bill Generator",
+  "name": "Hypermarket Bill",
+  "public_slug": "hypermarket-bill-generator",
+  "summary": "Hypermarket tax invoice with a tax rate per item.",
+  "description": "Create a hypermarket or supermarket tax invoice with HSN codes, a tax rate for each item, the {tax} breakup by rate, order and delivery details and your savings. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Tax invoice"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Store brand"
+    },
+    "company_name": {
+      "label": "Company name"
+    },
+    "company_address": {
+      "label": "Company address (optional)"
+    },
+    "phone": {
+      "label": "Customer care phone (optional)"
+    },
+    "email": {
+      "label": "Customer care email (optional)"
+    },
+    "website": {
+      "label": "Terms web address (optional)"
+    },
+    "cin": {
+      "label": "CIN (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "fssai": {
+      "label": "FSSAI no. (optional)"
+    },
+    "invoice_number": {
+      "label": "Invoice number"
+    },
+    "date": {
+      "label": "Invoice date"
+    },
+    "order_number": {
+      "label": "Order number (optional)"
+    },
+    "order_date": {
+      "label": "Order date (optional)"
+    },
+    "delivery_date": {
+      "label": "Delivery date (optional)"
+    },
+    "delivery_time": {
+      "label": "Delivery time (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment mode",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "customer_name": {
+      "label": "Customer name (optional)"
+    },
+    "customer_phone": {
+      "label": "Mobile number (optional)"
+    },
+    "delivery_mode": {
+      "label": "Delivery mode",
+      "options": {
+        "Self pick-up": "Self pick-up",
+        "Home delivery": "Home delivery"
+      }
+    },
+    "delivery_address": {
+      "label": "Pick-up / delivery address (optional)"
+    },
+    "savings": {
+      "label": "Savings on the list price ({currency}) (optional)"
+    },
+    "payment_note": {
+      "label": "Payment instruction (optional)"
+    },
+    "items": {
+      "label": "Items",
+      "columns": {
+        "name": "Item",
+        "hsn": "HSN code",
+        "qty": "Qty",
+        "rate": "Price ({currency})",
+        "tax": "Tax %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Tax invoice",
+    "invoice_no": "Invoice no.",
+    "invoice_date": "Invoice date",
+    "hsn": "HSN",
+    "particulars": "Particulars",
+    "qty": "Qty",
+    "rate": "Rate",
+    "value": "Value",
+    "items": "Items",
+    "amt": "Amt",
+    "your_savings": "Your savings",
+    "on_list": "on list price",
+    "breakup": "Tax breakup",
+    "amount_in": "Amount in",
+    "rate_col": "Rate",
+    "taxable": "Taxable",
+    "total": "Total",
+    "order_details": "Order details",
+    "order_number": "Order number",
+    "order_date": "Order date",
+    "delivery_date": "Delivery date",
+    "delivery_time": "Delivery time",
+    "payment_mode": "Payment mode",
+    "customer_delivery": "Customer & delivery details",
+    "customer_name": "Customer name",
+    "mobile": "Mobile number",
+    "delivery_mode": "Delivery mode",
+    "address": "Pick-up / delivery address",
+    "collect": "{amount} to be collected at the time of delivery",
+    "computer_generated": "This is a computer generated invoice.",
+    "exempt": "Exempt"
+  },
+  "sample": {}
+}

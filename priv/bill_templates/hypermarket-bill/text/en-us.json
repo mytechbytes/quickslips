@@ -1,0 +1,45 @@
+{
+  "sample": {
+    "brand_name": "FreshMart Online",
+    "company_name": "FreshMart Retail Inc.",
+    "phone": "1-800-555-0142",
+    "delivery_time": "6:00 PM - 9:00 PM",
+    "payment_note": "Pay on delivery (cash or card)",
+    "customer_name": "John Smith",
+    "customer_phone": "(512) 555-0188",
+    "items": [
+      {
+        "name": "Basmati rice (2 lb)",
+        "qty": 1,
+        "rate": 4.5,
+        "tax": 0
+      },
+      {
+        "name": "Sunflower oil (1 L)",
+        "qty": 2,
+        "rate": 6,
+        "tax": 0
+      },
+      {
+        "name": "Cream biscuits (10 oz)",
+        "qty": 3,
+        "rate": 2.5,
+        "tax": 0
+      },
+      {
+        "name": "Dish soap (16 oz)",
+        "qty": 1,
+        "rate": 3.5,
+        "tax": 8.25
+      },
+      {
+        "name": "Fresh tomatoes (1 lb)",
+        "qty": 2,
+        "rate": 2,
+        "tax": 0
+      }
+    ],
+    "savings": 1.2,
+    "delivery_mode": "Home delivery"
+  }
+}
