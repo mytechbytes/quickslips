@@ -1,0 +1,53 @@
+{
+  "sample": {
+    "brand_name": "WellCare Pharmacy",
+    "brand_subtitle": "Your health, our priority",
+    "branch_name": "Downtown Branch",
+    "doctor_name": "Dr. Michael Brown",
+    "customer_name": "John Smith",
+    "items": [
+      {
+        "name": "Acetaminophen 500 mg (24 tablets)",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 6.5,
+        "tax": 0
+      },
+      {
+        "name": "Amoxicillin 500 mg (20 capsules)",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 12,
+        "tax": 0
+      },
+      {
+        "name": "Cough syrup 4 fl oz",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 8.5,
+        "tax": 0
+      },
+      {
+        "name": "Digital thermometer",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 14,
+        "tax": 0
+      }
+    ],
+    "discount": 2,
+    "toll_free": "(512) 555-0142",
+    "dl_number": "NABP 1234567",
+    "registered_office": "WellCare Retail Inc., 100 Main Street, Austin, TX 78701",
+    "admin_office": "WellCare Retail Inc., 200 Congress Avenue, Austin, TX 78701",
+    "signatory_line": "Pharmacist"
+  }
+}

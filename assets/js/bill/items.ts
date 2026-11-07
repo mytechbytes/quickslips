@@ -10,6 +10,11 @@ export type ItemRow = {
   billing?: string
   discount?: number
   tax?: number
+  hsn?: string
+  mfr?: string
+  batch?: string
+  expiry?: string
+  schedule?: string
 }
 
 type Cell = keyof ItemRow
@@ -24,11 +29,16 @@ const DEFAULT_HEADS: Record<Cell, string> = {
   rate: "Rate ({currency})",
   discount: "Disc. %",
   tax: "Tax %",
+  hsn: "HSN",
+  mfr: "Mfr",
+  batch: "Batch",
+  expiry: "Expiry",
+  schedule: "Sch",
 }
 // The widths of the cells in rem (the classes below), to tell how wide a table with many cells must be.
-const CELL_REM: Record<string, number> = { code: 7, billing: 7, qty: 5, rate: 7, discount: 5, tax: 5, amount: 7, remove: 2.5, name: 14 }
+const CELL_REM: Record<string, number> = { code: 7, billing: 7, qty: 5, rate: 7, discount: 5, tax: 5, hsn: 6, mfr: 7, batch: 6, expiry: 5.5, schedule: 4, amount: 7, remove: 2.5, name: 14 }
 // In a table with many cells the widths are the same on every screen, because it scrolls.
-const WIDE_WIDTH: Partial<Record<Cell, string>> = { code: "w-28", billing: "w-28", qty: "w-20", rate: "w-28", discount: "w-20", tax: "w-20" }
+const WIDE_WIDTH: Partial<Record<Cell, string>> = { code: "w-28", billing: "w-28", qty: "w-20", rate: "w-28", discount: "w-20", tax: "w-20", hsn: "w-24", mfr: "w-28", batch: "w-24", expiry: "w-22", schedule: "w-16" }
 // The widths of the narrow cells; the name takes what is left.
 const CELL_WIDTH: Partial<Record<Cell, string>> = {
   code: "w-28",
@@ -37,6 +47,11 @@ const CELL_WIDTH: Partial<Record<Cell, string>> = {
   rate: "w-20 sm:w-28",
   discount: "w-20",
   tax: "w-20",
+  hsn: "w-24",
+  mfr: "w-28",
+  batch: "w-24",
+  expiry: "w-22",
+  schedule: "w-16",
 }
 
 // The table: heads on top, a row per item, the amount of the row and a remove icon at its end. The amount is left out
@@ -153,7 +168,7 @@ export function createItemsField(
       const raw = cellValue(row, cell)
       if (raw === "") continue
       if (isNumeric(cell)) item[cell as "qty" | "rate" | "discount" | "tax"] = Number(raw)
-      else item[cell as "name" | "code" | "billing"] = raw
+      else item[cell as "name" | "code" | "billing" | "hsn" | "mfr" | "batch" | "expiry" | "schedule"] = raw
     }
     return item
   }
@@ -194,9 +209,9 @@ export function createItemsField(
     el.dataset.column = column
     el.setAttribute("aria-label", heads[column])
     el.className = CELL_INPUT_CLASS + (isNumeric(column) ? " text-right" : "")
-    if (column === "name" || column === "code") {
+    if (!isNumeric(column)) {
       el.type = "text"
-      el.maxLength = column === "name" ? (field.name_max_length ?? 80) : (field.code_max_length ?? 30)
+      el.maxLength = column === "name" ? (field.name_max_length ?? 80) : (field.cell_max_length ?? field.code_max_length ?? 30)
       el.autocomplete = "off"
     } else {
       el.type = "number"

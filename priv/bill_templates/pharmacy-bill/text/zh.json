@@ -1,0 +1,180 @@
+{
+  "title": "药店账单生成器",
+  "name": "药店账单",
+  "public_slug": "pharmacy-bill-generator",
+  "summary": "含批号、有效期和零售价的药店账单。",
+  "description": "生成包含药品、厂家、批号、有效期和零售价的药店账单，含价内{tax}、折扣和分店的许可证信息。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "发票"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "药房名称"
+    },
+    "brand_subtitle": {
+      "label": "标语（选填）"
+    },
+    "branch_name": {
+      "label": "分店（选填）"
+    },
+    "branch_address": {
+      "label": "分店地址（选填）"
+    },
+    "toll_free": {
+      "label": "电话（选填）"
+    },
+    "website": {
+      "label": "网站（选填）"
+    },
+    "dl_number": {
+      "label": "药品经营许可证号（选填）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "fssai": {
+      "label": "FSSAI 编号（选填）"
+    },
+    "registered_office": {
+      "label": "注册地址（选填）"
+    },
+    "admin_office": {
+      "label": "行政办公室（选填）"
+    },
+    "bill_number": {
+      "label": "账单编号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "time": {
+      "label": "时间（选填）"
+    },
+    "terminal_number": {
+      "label": "终端号（选填）"
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "ref_number": {
+      "label": "参考号（选填）"
+    },
+    "doctor_name": {
+      "label": "医生 / 开方人（选填）"
+    },
+    "discount": {
+      "label": "整单折扣（{currency}）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "signatory_name": {
+      "label": "签字人姓名（选填）"
+    },
+    "signatory_line": {
+      "label": "签字人职务（选填）"
+    },
+    "items": {
+      "label": "药品",
+      "columns": {
+        "name": "品名",
+        "hsn": "HSN 编码",
+        "mfr": "厂家",
+        "batch": "批号",
+        "expiry": "有效期",
+        "schedule": "类别",
+        "qty": "数量",
+        "rate": "零售价（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "发票",
+    "bill_no": "账单号",
+    "date_time": "日期 / 时间",
+    "terminal": "终端号",
+    "name": "姓名",
+    "ref_no": "参考号",
+    "doctor": "医生",
+    "payment": "支付",
+    "tel": "电话",
+    "dl_no": "药品许可证号",
+    "item": "品名",
+    "hsn": "HSN 编码",
+    "mfr": "厂家",
+    "batch": "批号",
+    "expiry": "有效期",
+    "sch": "类别",
+    "qty": "数量",
+    "mrp": "零售价",
+    "tax_rate": "税率 %",
+    "taxable": "计税额",
+    "total_amount": "总金额",
+    "total": "合计",
+    "discount": "折扣",
+    "net_total": "实付合计",
+    "authorised": "授权签字人",
+    "registered": "注册地址",
+    "admin": "行政办公室",
+    "taxable_value": "计税金额"
+  },
+  "sample": {
+    "brand_name": "绿叶大药房",
+    "brand_subtitle": "您的健康，我们的责任",
+    "branch_name": "朝阳分店",
+    "doctor_name": "李医生",
+    "customer_name": "王伟",
+    "items": [
+      {
+        "name": "对乙酰氨基酚片 500 mg（20 片）",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 12,
+        "tax": 13
+      },
+      {
+        "name": "阿莫西林胶囊 500 mg（24 粒）",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 22,
+        "tax": 13
+      },
+      {
+        "name": "止咳糖浆 100 ml",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 28,
+        "tax": 13
+      },
+      {
+        "name": "电子体温计",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 39,
+        "tax": 13
+      }
+    ],
+    "discount": 3,
+    "toll_free": "010-12345678",
+    "dl_number": "京药监械经营许可 1234 号",
+    "registered_office": "绿叶大药房连锁有限公司，北京市朝阳区建国路100号",
+    "admin_office": "绿叶大药房连锁有限公司，北京市海淀区中关村大街1号",
+    "signatory_line": "执业药师"
+  }
+}

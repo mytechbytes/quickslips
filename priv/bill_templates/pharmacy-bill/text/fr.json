@@ -1,0 +1,180 @@
+{
+  "title": "Générateur de ticket de pharmacie",
+  "name": "Ticket de pharmacie",
+  "public_slug": "generateur-de-ticket-de-pharmacie",
+  "summary": "Ticket de pharmacie avec lot, péremption et prix.",
+  "description": "Générez un ticket de pharmacie avec médicaments, fabricant, lot, péremption et prix public, {tax} incluse dans le prix, une remise et les informations d'autorisation de la succursale. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Facture"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Nom de la pharmacie"
+    },
+    "brand_subtitle": {
+      "label": "Slogan (facultatif)"
+    },
+    "branch_name": {
+      "label": "Succursale (facultatif)"
+    },
+    "branch_address": {
+      "label": "Adresse de la succursale (facultatif)"
+    },
+    "toll_free": {
+      "label": "Téléphone (facultatif)"
+    },
+    "website": {
+      "label": "Site web (facultatif)"
+    },
+    "dl_number": {
+      "label": "N° d'autorisation de pharmacie (facultatif)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "fssai": {
+      "label": "N° FSSAI (facultatif)"
+    },
+    "registered_office": {
+      "label": "Siège social (facultatif)"
+    },
+    "admin_office": {
+      "label": "Bureau administratif (facultatif)"
+    },
+    "bill_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Heure (facultatif)"
+    },
+    "terminal_number": {
+      "label": "N° de terminal (facultatif)"
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "ref_number": {
+      "label": "N° de réf. (facultatif)"
+    },
+    "doctor_name": {
+      "label": "Médecin / prescripteur (facultatif)"
+    },
+    "discount": {
+      "label": "Remise sur le total ({currency}) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "signatory_name": {
+      "label": "Nom du signataire (facultatif)"
+    },
+    "signatory_line": {
+      "label": "Fonction du signataire (facultatif)"
+    },
+    "items": {
+      "label": "Médicaments",
+      "columns": {
+        "name": "Article",
+        "hsn": "Code HSN",
+        "mfr": "Fabricant",
+        "batch": "Lot",
+        "expiry": "Péremption",
+        "schedule": "Tableau",
+        "qty": "Qté",
+        "rate": "Prix ({currency})",
+        "tax": "Taxe %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "Facture",
+    "bill_no": "Facture n°",
+    "date_time": "Date / heure",
+    "terminal": "N° de terminal",
+    "name": "Nom",
+    "ref_no": "N° de réf.",
+    "doctor": "Médecin",
+    "payment": "Paiement",
+    "tel": "Tél.",
+    "dl_no": "N° de licence",
+    "item": "Article",
+    "hsn": "Code HSN",
+    "mfr": "Fabricant",
+    "batch": "Lot",
+    "expiry": "Péremption",
+    "sch": "Tableau",
+    "qty": "Qté",
+    "mrp": "Prix",
+    "tax_rate": "Taxe %",
+    "taxable": "Base HT",
+    "total_amount": "Montant total",
+    "total": "Total",
+    "discount": "Remise",
+    "net_total": "Total net",
+    "authorised": "Signature autorisée",
+    "registered": "Siège social",
+    "admin": "Bureau administratif",
+    "taxable_value": "Base HT"
+  },
+  "sample": {
+    "brand_name": "Pharmacie du Marché",
+    "brand_subtitle": "Votre santé, notre priorité",
+    "branch_name": "Succursale Centre",
+    "doctor_name": "Dr Pierre Dubois",
+    "customer_name": "Camille Martin",
+    "items": [
+      {
+        "name": "Paracétamol 500 mg (16 comprimés)",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 2.2,
+        "tax": 10
+      },
+      {
+        "name": "Amoxicilline 500 mg (12 gélules)",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 6.5,
+        "tax": 10
+      },
+      {
+        "name": "Sirop contre la toux 100 ml",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 6.9,
+        "tax": 10
+      },
+      {
+        "name": "Thermomètre numérique",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 9.9,
+        "tax": 20
+      }
+    ],
+    "discount": 1,
+    "toll_free": "01 23 45 67 89",
+    "dl_number": "Licence n° 75-P-1234",
+    "registered_office": "Pharmacie du Marché SAS, 10 rue de Rivoli, 75004 Paris",
+    "admin_office": "Pharmacie du Marché SAS, 12 avenue de la République, 75011 Paris",
+    "signatory_line": "Pharmacien(ne)"
+  }
+}

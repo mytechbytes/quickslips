@@ -308,6 +308,36 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "pharmacy-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(brand_subtitle branch_name branch_address toll_free website dl_number seller_tax_id fssai
+           registered_office admin_office time terminal_number ref_number doctor_name discount signatory_name
+           signatory_line),
+      long: %{
+        "brand_name" => String.duplicate("WellCare Pharmacy ", 3),
+        "branch_address" => String.duplicate("21, 80 Feet Road, Koramangala, ", 6),
+        "dl_number" => String.duplicate("KA/BNG/20-1234, ", 8),
+        "registered_office" => String.duplicate("WellCare Retail Pvt. Ltd., ", 8),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "discount" => 1.5,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Paracetamol 500 mg strip ", 4),
+              "hsn" => "ABCDEFGHIJ0123456789",
+              "mfr" => String.duplicate("Alpha Pharma ", 2),
+              "batch" => "ABCDEFGHIJ0123456789",
+              "expiry" => "ABCDEFGHIJ",
+              "schedule" => "ABCDEFGHIJ",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            14
+          )
+      }
+    },
     "medical-bill" => %{
       designs: ~w(t1 t2),
       optional:

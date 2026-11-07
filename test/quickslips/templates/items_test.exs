@@ -194,6 +194,43 @@ defmodule QuickSlips.Templates.ItemsTest do
                Validator.validate(schema, bad)
     end
 
+    test "a table of goods has short text cells: HSN, manufacturer, batch, expiry and schedule" do
+      schema = %{
+        "fields" => [
+          %{
+            "key" => "meds",
+            "type" => "items",
+            "cell_max_length" => 8,
+            "cells" => ["name", "hsn", "mfr", "batch", "expiry", "schedule", "qty", "rate", "tax"]
+          }
+        ]
+      }
+
+      row = %{
+        "name" => "Paracetamol",
+        "hsn" => " 3004 ",
+        "mfr" => "Alpha",
+        "batch" => "PCM2407",
+        "expiry" => "08/27",
+        "schedule" => "H",
+        "qty" => 2,
+        "rate" => 30,
+        "tax" => 5
+      }
+
+      assert {:ok, %{"meds" => [clean]}} = Validator.validate(schema, %{"meds" => [row]})
+      assert clean["hsn"] == "3004" and clean["batch"] == "PCM2407" and clean["schedule"] == "H"
+
+      assert {:error, {:validation, %{"meds.0.batch" => ["must be at most 8 characters"]}}} =
+               Validator.validate(schema, %{"meds" => [%{row | "batch" => "123456789"}]})
+
+      # a row that has none of them still passes; they are optional
+      bare = %{"name" => "Gauze", "qty" => 1, "rate" => 5}
+
+      assert {:ok, %{"meds" => [%{"name" => "Gauze"}]}} =
+               Validator.validate(schema, %{"meds" => [bare]})
+    end
+
     test "the billing types are named in the language of the page and of the document" do
       {:ok, schema} = Templates.get("maintenance-bill", QuickSlips.Locales.fetch!("es-es"))
       parts = Enum.find(schema["fields"], &(&1["key"] == "parts"))
