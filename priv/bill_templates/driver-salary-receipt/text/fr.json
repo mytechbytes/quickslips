@@ -1,0 +1,131 @@
+{
+  "title": "Générateur de reçu de salaire de chauffeur",
+  "name": "Reçu de salaire de chauffeur",
+  "public_slug": "generateur-de-recu-de-salaire-de-chauffeur",
+  "summary": "Reçu de salaire mensuel pour un chauffeur.",
+  "description": "Créez un reçu de salaire pour un chauffeur avec salaire mensuel, heures supplémentaires, indemnités et retenues. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Remboursement",
+    "t2": "Avec accusé de réception",
+    "t3": "Déclaration de l'employeur",
+    "t4": "Plusieurs mois",
+    "t5": "Bon de paie",
+    "t6": "Relevé simple"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Nom de l'employeur"
+    },
+    "employer_address": {
+      "label": "Adresse de l'employeur (facultatif)"
+    },
+    "driver_name": {
+      "label": "Nom du chauffeur"
+    },
+    "vehicle_number": {
+      "label": "Immatriculation du véhicule (facultatif)"
+    },
+    "declaration": {
+      "label": "Déclaration (facultatif)"
+    },
+    "month": {
+      "label": "Salaire du mois"
+    },
+    "from_date": {
+      "label": "Période du (facultatif)"
+    },
+    "to_date": {
+      "label": "Période au (facultatif)"
+    },
+    "bill_by": {
+      "label": "Facturer par",
+      "options": {
+        "Monthly": "Mensuel",
+        "Quarterly": "Trimestriel",
+        "Half-yearly": "Semestriel",
+        "Yearly": "Annuel"
+      }
+    },
+    "receipt_date": {
+      "label": "Date de la quittance"
+    },
+    "basic_salary": {
+      "label": "Salaire mensuel ({currency})"
+    },
+    "overtime": {
+      "label": "Heures supplémentaires ({currency}) (facultatif)"
+    },
+    "allowance": {
+      "label": "Carburant et autres indemnités ({currency}) (facultatif)"
+    },
+    "deductions": {
+      "label": "Acompte ou retenues ({currency}) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Payé par",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Bank transfer": "Virement bancaire",
+        "Cheque": "Chèque",
+        "Card": "Carte",
+        "Online": "En ligne"
+      }
+    }
+  },
+  "print": {
+    "title": "Reçu de salaire du chauffeur",
+    "date": "Date",
+    "certify": "Il est certifié que {employer} a versé {amount} au chauffeur {driver} au titre du salaire du mois de {month} (reçu joint).",
+    "certify_period": "Il est certifié que {employer} a versé {amount} au chauffeur {driver} au titre du salaire de la période {period} (reçu joint).",
+    "certify_self": "Je certifie avoir versé {amount} au chauffeur {driver} pour le mois de {month} (reçu joint).",
+    "reimburse": "Veuillez rembourser le montant ci-dessus. Je déclare en outre que ce qui précède est exact et sincère.",
+    "vehicle_no": "Immatriculation",
+    "driver_name": "Nom du chauffeur",
+    "employer_name": "Nom de l'employeur",
+    "employer_signature": "Signature de l'employeur",
+    "revenue_stamp": "Timbre fiscal",
+    "salary_month": "Salaire du mois",
+    "amount_paid": "Montant versé",
+    "received_text": "Reçu de {employer} la somme de {amount} par le chauffeur {driver} au titre du salaire du mois de {month}.",
+    "ack_title": "Accusé de réception",
+    "receipt_date_of": "Date de réception",
+    "for_month": "Pour le mois de",
+    "received_sum": "Somme de {amount} reçue de {employer} pour le mois de {month}.",
+    "period": "Période",
+    "receipt_of": "Quittance {number} sur {total}",
+    "payroll_voucher": "Bon de paie",
+    "voucher_sub": "Bordereau de paiement du salaire du chauffeur",
+    "payer": "Payeur",
+    "driver": "Chauffeur",
+    "acknowledgement": "Accusé de réception",
+    "ack_voucher": "Reçu par {driver} de la part de {employer} au titre du salaire de {month}.",
+    "received_by": "Reçu par",
+    "prepared_by": "Préparé par",
+    "name": "Nom",
+    "record_title": "Relevé de salaire du chauffeur",
+    "record_sub": "Format simple d'accusé de réception",
+    "payer_name": "Nom du payeur",
+    "declaration_label": "Déclaration",
+    "confirm": "Je confirme avoir reçu du payeur le montant du salaire indiqué ci-dessus pour le mois mentionné dans ce relevé.",
+    "notes": "Remarques",
+    "note_1": "Le salaire ne couvre que le mois indiqué.",
+    "note_2": "Les heures supplémentaires et indemnités ne sont incluses que si elles sont indiquées.",
+    "payer_details": "Détails du payeur",
+    "driver_signature": "Signature du chauffeur",
+    "monthly_salary": "Salaire mensuel",
+    "overtime": "Heures supplémentaires",
+    "allowance": "Indemnités",
+    "deductions": "Acompte ou retenues"
+  },
+  "sample": {
+    "employer_name": "Pierre Dubois",
+    "driver_name": "Antoine Moreau",
+    "vehicle_number": "AB-452-CD",
+    "basic_salary": 2000,
+    "overtime": 150,
+    "allowance": 90,
+    "deductions": 60,
+    "declaration": "Je déclare en outre que le chauffeur est utilisé exclusivement à des fins professionnelles."
+  }
+}

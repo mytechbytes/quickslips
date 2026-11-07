@@ -106,6 +106,37 @@
   }
 }
 
+// A month as a whole number of months (the year times twelve plus the month), and back to "2026-10".
+#let ym-int(ym) = {
+  let (y, m) = ym.split("-").map(int)
+  y * 12 + m - 1
+}
+#let ym-str(n) = {
+  let m = calc.rem(n, 12) + 1
+  str(calc.quo(n, 12)) + "-" + (if m < 10 { "0" } else { "" }) + str(m)
+}
+
+// The receipts of a period, for a document with a `month` and perhaps a `from_date`, a `to_date` and a `bill_by`
+// (Monthly, Quarterly, Half-yearly or Yearly): an array of `(label: "October 2026 – December 2026", months: 3)`, one
+// for each month, quarter, half-year or year, and at most 12 months in all. Without a period it is the one month, and a
+// period that runs backwards is one month.
+#let receipt-periods(data) = {
+  let first = if opt(data, "from_date") != none { opt(data, "from_date").slice(0, 7) } else { data.month }
+  let last = if opt(data, "to_date") != none { opt(data, "to_date").slice(0, 7) } else { first }
+  let step = (Monthly: 1, Quarterly: 3, "Half-yearly": 6, Yearly: 12).at(data.at("bill_by", default: "Monthly"), default: 1)
+  let months = calc.min(calc.max(ym-int(last) - ym-int(first) + 1, 1), 12)
+  range(calc.ceil(months / step)).map(i => {
+    let start = ym-int(first) + i * step
+    let length = calc.min(step, months - i * step)
+    let label = if length == 1 {
+      month-label(ym-str(start))
+    } else {
+      month-label(ym-str(start)) + " – " + month-label(ym-str(start + length - 1))
+    }
+    (label: label, months: length)
+  })
+}
+
 // Whole days from one date to another, at least 1 (for nights in a hotel, days in a plan).
 #let days-between(from, to) = calc.max(1, (to-date(to) - to-date(from)).days())
 

@@ -149,10 +149,10 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel, Cab, Parking, Maintenance, Transport and Rent are in every language; the other templates only in English" do
+    test "Fuel, Cab, Parking, Maintenance, Transport, Rent and Driver Salary are in every language; the other templates only in English" do
       for locale <- Locales.live(),
           slug <-
-            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt) do
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt) do
         assert Templates.supports?(slug, locale)
       end
 
@@ -164,6 +164,7 @@ defmodule QuickSlips.TemplatesTest do
         slugs = Locales.fetch!(code) |> Templates.list() |> Enum.map(& &1["slug"])
 
         assert Enum.sort(slugs) == [
+                 "driver-salary-receipt",
                  "fuel-bill",
                  "maintenance-bill",
                  "parking-receipt",
