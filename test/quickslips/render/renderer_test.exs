@@ -310,6 +310,36 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "electronics-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(branch seller_address seller_state seller_phone seller_email seller_tax_id seller_pan cin copy_label
+           place_of_supply supply reverse_charge do_number financier bill_care_of bill_address bill_state bill_pin
+           bill_phone bill_tax_id ship_code ship_auth_code ship_address ship_state ship_phone ship_tax_id
+           payment_reference payment_date amount_paid remarks bank_details bank_account bank_ifsc customer_care
+           delivery_helpline signatory_for thank_you),
+      long: %{
+        "company_name" => String.duplicate("Vision Electronics Retail ", 4),
+        "seller_address" => String.duplicate("Shop 3, Corporate Park, Andheri East, ", 6),
+        "bill_name" => String.duplicate("Ramakrishnan ", 5),
+        "bill_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "ship_address" => String.duplicate("Warehouse 9, Logistics Park, Bhiwandi, ", 6),
+        "remarks" => String.duplicate("Keep this invoice for the warranty. ", 8),
+        "amount_paid" => 99_999_999.99,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Smartphone 128 GB midnight black ", 3),
+              "code" => "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123",
+              "hsn" => "ABCDEFGHIJ01",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            14
+          )
+      }
+    },
     "ecommerce-bill" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:

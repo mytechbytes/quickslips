@@ -1,0 +1,206 @@
+{
+  "title": "Electronics Bill Generator",
+  "name": "Electronics Bill",
+  "public_slug": "electronics-bill-generator",
+  "summary": "Tax invoice for electronics with serial numbers and the tax breakup.",
+  "description": "Generate a tax invoice for phones, appliances and other electronics with serial numbers, HSN codes, {tax} in the price, the bill-to and ship-to parties, payment details and the amount in words. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Tax invoice"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Company name"
+    },
+    "branch": {
+      "label": "Branch (optional)"
+    },
+    "seller_address": {
+      "label": "Address (optional)"
+    },
+    "seller_state": {
+      "label": "State (optional)"
+    },
+    "seller_phone": {
+      "label": "Telephone (optional)"
+    },
+    "seller_email": {
+      "label": "Email (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "seller_pan": {
+      "label": "PAN (optional)"
+    },
+    "cin": {
+      "label": "CIN (optional)"
+    },
+    "copy_label": {
+      "label": "Copy label (optional)"
+    },
+    "place_of_supply": {
+      "label": "Place of supply (optional)"
+    },
+    "supply": {
+      "label": "Supply",
+      "options": {
+        "Same state": "Same state",
+        "Other state": "Other state"
+      }
+    },
+    "reverse_charge": {
+      "label": "Reverse charge (optional)"
+    },
+    "invoice_number": {
+      "label": "Invoice number"
+    },
+    "date": {
+      "label": "Invoice date"
+    },
+    "do_number": {
+      "label": "Delivery order no. (optional)"
+    },
+    "financier": {
+      "label": "Financier (optional)"
+    },
+    "bill_name": {
+      "label": "Bill to: name"
+    },
+    "bill_care_of": {
+      "label": "Bill to: c/o name (optional)"
+    },
+    "bill_address": {
+      "label": "Bill to: address (optional)"
+    },
+    "bill_state": {
+      "label": "Bill to: state (optional)"
+    },
+    "bill_pin": {
+      "label": "Bill to: PIN / postal code (optional)"
+    },
+    "bill_phone": {
+      "label": "Bill to: contact no. (optional)"
+    },
+    "bill_tax_id": {
+      "label": "Bill to: {tax_id} (optional)"
+    },
+    "ship_code": {
+      "label": "Ship to: code (optional)"
+    },
+    "ship_auth_code": {
+      "label": "Ship to: authorization code (optional)"
+    },
+    "ship_address": {
+      "label": "Ship to: address (optional)"
+    },
+    "ship_state": {
+      "label": "Ship to: state (optional)"
+    },
+    "ship_phone": {
+      "label": "Ship to: contact no. (optional)"
+    },
+    "ship_tax_id": {
+      "label": "Ship to: {tax_id} (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment mode",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Cheque": "Cheque",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "payment_reference": {
+      "label": "Card approval / cheque / OTP no. (optional)"
+    },
+    "payment_date": {
+      "label": "Payment date (optional)"
+    },
+    "amount_paid": {
+      "label": "Amount paid ({currency}) (the whole total when empty) (optional)"
+    },
+    "remarks": {
+      "label": "Remarks (optional)"
+    },
+    "bank_details": {
+      "label": "Bank (optional)"
+    },
+    "bank_account": {
+      "label": "Bank account (optional)"
+    },
+    "bank_ifsc": {
+      "label": "IFSC (optional)"
+    },
+    "customer_care": {
+      "label": "Customer care no. (optional)"
+    },
+    "delivery_helpline": {
+      "label": "Delivery helpline no. (optional)"
+    },
+    "signatory_for": {
+      "label": "Signatory for (optional)"
+    },
+    "thank_you": {
+      "label": "Thank-you message (optional)"
+    },
+    "items": {
+      "label": "Items",
+      "columns": {
+        "name": "Item",
+        "code": "Serial no.",
+        "hsn": "HSN / SAC",
+        "qty": "Qty",
+        "rate": "Rate ({currency})",
+        "tax": "Tax %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Tax invoice",
+    "state": "State",
+    "tel_no": "Tel no.",
+    "email": "Email",
+    "place_of_supply": "Place of supply",
+    "invoice_number": "Invoice number",
+    "invoice_date": "Invoice date",
+    "do_number": "DO number",
+    "bill_to_party": "Bill to party",
+    "ship_to_party": "Ship to party",
+    "financier": "Financier",
+    "name": "Name",
+    "care_of": "C/o name",
+    "address": "Address",
+    "pin": "PIN",
+    "contact": "Contact no.",
+    "code": "Code",
+    "auth_code": "Authorization code",
+    "serial_no": "Serial no.",
+    "item_name": "Item name",
+    "hsn": "HSN / SAC",
+    "qty": "Qty",
+    "rate": "Rate",
+    "taxable_value": "Taxable value",
+    "amount": "Amount",
+    "totals": "Totals",
+    "amount_in_words": "Amount in words",
+    "payment_mode": "Mode",
+    "reference": "Card app. / chq. / OTP",
+    "date": "Date",
+    "total": "Total",
+    "payments": "Payments",
+    "balance": "Balance",
+    "amt": "Amt",
+    "remarks": "Remarks",
+    "bank_details": "Bank",
+    "bank_account": "Bank A/C",
+    "ifsc": "IFSC",
+    "customer_care": "Customer care no.",
+    "delivery_helpline": "Delivery helpline no.",
+    "for": "for",
+    "authorised": "Authorised signatory"
+  },
+  "sample": {}
+}

@@ -1,0 +1,45 @@
+{
+  "sample": {
+    "company_name": "Vision Electronics Ltd",
+    "branch": "High Street Store",
+    "signatory_for": "Vision Electronics Ltd",
+    "seller_state": "England",
+    "seller_phone": "020 7946 0123",
+    "bill_name": "James Taylor",
+    "bill_state": "England",
+    "bill_pin": "SW1A 1AA",
+    "bill_phone": "07700 900123",
+    "ship_state": "England",
+    "customer_care": "0800 123 4567",
+    "delivery_helpline": "0800 765 4321",
+    "bank_details": "Example Bank, London",
+    "bank_account": "GB29 NWBK 6016 1331 9268 19",
+    "items": [
+      {
+        "name": "Smartphone 128 GB (Midnight Black)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 399,
+        "tax": 20
+      },
+      {
+        "name": "Wireless earbuds",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 49,
+        "tax": 20
+      },
+      {
+        "name": "Power bank 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 24.99,
+        "tax": 20
+      }
+    ],
+    "ship_phone": "07700 900123"
+  },
+  "print": {
+    "pin": "Postcode"
+  }
+}

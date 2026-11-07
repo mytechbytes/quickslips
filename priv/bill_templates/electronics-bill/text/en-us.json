@@ -1,0 +1,45 @@
+{
+  "sample": {
+    "company_name": "Vision Electronics Inc.",
+    "branch": "Downtown Store",
+    "signatory_for": "Vision Electronics Inc.",
+    "seller_state": "TX",
+    "seller_phone": "(512) 555-0142",
+    "bill_name": "John Smith",
+    "bill_state": "TX",
+    "bill_pin": "78701",
+    "bill_phone": "(512) 555-0188",
+    "ship_state": "TX",
+    "customer_care": "1-800-555-0142",
+    "delivery_helpline": "1-800-555-0143",
+    "bank_details": "Example Bank, Austin",
+    "bank_account": "Acct 000123456789 · Routing 021000021",
+    "items": [
+      {
+        "name": "Smartphone 128 GB (Midnight Black)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 599,
+        "tax": 8.25
+      },
+      {
+        "name": "Wireless earbuds",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 79,
+        "tax": 8.25
+      },
+      {
+        "name": "Power bank 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 39.99,
+        "tax": 8.25
+      }
+    ],
+    "ship_phone": "(512) 555-0188"
+  },
+  "print": {
+    "pin": "ZIP code"
+  }
+}

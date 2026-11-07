@@ -1,0 +1,45 @@
+{
+  "sample": {
+    "company_name": "Vision Electronics Ltd.",
+    "branch": "Downtown Store",
+    "signatory_for": "Vision Electronics Ltd.",
+    "seller_state": "ON",
+    "seller_phone": "(416) 555-0142",
+    "bill_name": "Emma Wilson",
+    "bill_state": "ON",
+    "bill_pin": "M5V 2T6",
+    "bill_phone": "(416) 555-0199",
+    "ship_state": "ON",
+    "customer_care": "1-800-555-0187",
+    "delivery_helpline": "1-800-555-0188",
+    "bank_details": "Example Bank, Toronto",
+    "bank_account": "Transit 12345 · Acct 0012345",
+    "items": [
+      {
+        "name": "Smartphone 128 GB (Midnight Black)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 649,
+        "tax": 5
+      },
+      {
+        "name": "Wireless earbuds",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 89,
+        "tax": 5
+      },
+      {
+        "name": "Power bank 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 44.99,
+        "tax": 5
+      }
+    ],
+    "ship_phone": "(416) 555-0199"
+  },
+  "print": {
+    "pin": "Postal code"
+  }
+}

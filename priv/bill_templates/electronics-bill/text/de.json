@@ -1,0 +1,248 @@
+{
+  "title": "Elektronik-Rechnung-Generator",
+  "name": "Elektronik-Rechnung",
+  "public_slug": "elektronik-rechnung-generator",
+  "summary": "Rechnung für Elektronik mit Seriennummern und Steueraufschlüsselung.",
+  "description": "Erstellen Sie eine Rechnung für Handys, Haushaltsgeräte und andere Elektronik mit Seriennummern, HS-Codes, {tax} im Preis, Rechnungs- und Lieferpartei, Zahlungsdaten und dem Betrag in Worten. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Rechnung"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Firmenname"
+    },
+    "branch": {
+      "label": "Filiale (optional)"
+    },
+    "seller_address": {
+      "label": "Adresse (optional)"
+    },
+    "seller_state": {
+      "label": "Bundesland (optional)"
+    },
+    "seller_phone": {
+      "label": "Telefon (optional)"
+    },
+    "seller_email": {
+      "label": "E-Mail (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "seller_pan": {
+      "label": "PAN (optional)"
+    },
+    "cin": {
+      "label": "CIN (optional)"
+    },
+    "copy_label": {
+      "label": "Kopiehinweis (optional)"
+    },
+    "place_of_supply": {
+      "label": "Leistungsort (optional)"
+    },
+    "supply": {
+      "label": "Lieferung",
+      "options": {
+        "Same state": "Gleiches Bundesland",
+        "Other state": "Anderes Bundesland"
+      }
+    },
+    "reverse_charge": {
+      "label": "Reverse Charge (optional)"
+    },
+    "invoice_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Rechnungsdatum"
+    },
+    "do_number": {
+      "label": "Lieferschein-Nr. (optional)"
+    },
+    "financier": {
+      "label": "Finanzierer (optional)"
+    },
+    "bill_name": {
+      "label": "Rechnung an: Name"
+    },
+    "bill_care_of": {
+      "label": "Rechnung an: c/o (optional)"
+    },
+    "bill_address": {
+      "label": "Rechnung an: Adresse (optional)"
+    },
+    "bill_state": {
+      "label": "Rechnung an: Bundesland (optional)"
+    },
+    "bill_pin": {
+      "label": "Rechnung an: PLZ (optional)"
+    },
+    "bill_phone": {
+      "label": "Rechnung an: Telefon (optional)"
+    },
+    "bill_tax_id": {
+      "label": "Rechnung an: {tax_id} (optional)"
+    },
+    "ship_code": {
+      "label": "Lieferung an: Code (optional)"
+    },
+    "ship_auth_code": {
+      "label": "Lieferung an: Autorisierungscode (optional)"
+    },
+    "ship_address": {
+      "label": "Lieferung an: Adresse (optional)"
+    },
+    "ship_state": {
+      "label": "Lieferung an: Bundesland (optional)"
+    },
+    "ship_phone": {
+      "label": "Lieferung an: Telefon (optional)"
+    },
+    "ship_tax_id": {
+      "label": "Lieferung an: {tax_id} (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Cheque": "Scheck",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "payment_reference": {
+      "label": "Karten-Genehmigung / Scheck / OTP (optional)"
+    },
+    "payment_date": {
+      "label": "Zahlungsdatum (optional)"
+    },
+    "amount_paid": {
+      "label": "Bezahlter Betrag ({currency}) (bei Leerlassen die Gesamtsumme) (optional)"
+    },
+    "remarks": {
+      "label": "Anmerkungen (optional)"
+    },
+    "bank_details": {
+      "label": "Bank (optional)"
+    },
+    "bank_account": {
+      "label": "Bankkonto (optional)"
+    },
+    "bank_ifsc": {
+      "label": "IFSC (optional)"
+    },
+    "customer_care": {
+      "label": "Kundenservice-Nr. (optional)"
+    },
+    "delivery_helpline": {
+      "label": "Liefer-Hotline (optional)"
+    },
+    "signatory_for": {
+      "label": "Unterzeichner für (optional)"
+    },
+    "thank_you": {
+      "label": "Dankesnachricht (optional)"
+    },
+    "items": {
+      "label": "Artikel",
+      "columns": {
+        "name": "Artikel",
+        "code": "Seriennr.",
+        "hsn": "HS-Code",
+        "qty": "Menge",
+        "rate": "Preis ({currency})",
+        "tax": "Steuer %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Rechnung",
+    "state": "Bundesland",
+    "tel_no": "Tel.",
+    "email": "E-Mail",
+    "place_of_supply": "Leistungsort",
+    "invoice_number": "Rechnungsnummer",
+    "invoice_date": "Rechnungsdatum",
+    "do_number": "Lieferschein-Nr.",
+    "bill_to_party": "Rechnungsempfänger",
+    "ship_to_party": "Lieferempfänger",
+    "financier": "Finanzierer",
+    "name": "Name",
+    "care_of": "c/o",
+    "address": "Adresse",
+    "pin": "PLZ",
+    "contact": "Telefon",
+    "code": "Code",
+    "auth_code": "Autorisierungscode",
+    "serial_no": "Seriennr.",
+    "item_name": "Artikel",
+    "hsn": "HS-Code",
+    "qty": "Menge",
+    "rate": "Preis",
+    "taxable_value": "Steuerbasis",
+    "amount": "Betrag",
+    "totals": "Summen",
+    "amount_in_words": "Betrag in Worten",
+    "payment_mode": "Art",
+    "reference": "Genehm. / Scheck / OTP",
+    "date": "Datum",
+    "total": "Gesamt",
+    "payments": "Zahlungen",
+    "balance": "Restbetrag",
+    "amt": "Betrag",
+    "remarks": "Anmerkungen",
+    "bank_details": "Bank",
+    "bank_account": "Konto",
+    "ifsc": "IFSC",
+    "customer_care": "Kundenservice",
+    "delivery_helpline": "Liefer-Hotline",
+    "for": "für",
+    "authorised": "Unterschriftsberechtigter"
+  },
+  "sample": {
+    "company_name": "Vision Elektronik GmbH",
+    "branch": "Filiale Mitte",
+    "signatory_for": "Vision Elektronik GmbH",
+    "seller_state": "Berlin",
+    "seller_phone": "030 1234567",
+    "bill_name": "Anna Becker",
+    "bill_state": "Berlin",
+    "bill_pin": "10115",
+    "bill_phone": "0151 2345678",
+    "ship_state": "Berlin",
+    "customer_care": "0800 1234567",
+    "delivery_helpline": "0800 7654321",
+    "bank_details": "Beispielbank, Berlin",
+    "bank_account": "DE89 3704 0044 0532 0130 00",
+    "items": [
+      {
+        "name": "Smartphone 128 GB (Mitternachtsschwarz)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 429,
+        "tax": 19
+      },
+      {
+        "name": "Kabellose Ohrhörer",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 49,
+        "tax": 19
+      },
+      {
+        "name": "Powerbank 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 24.9,
+        "tax": 19
+      }
+    ],
+    "ship_phone": "0151 2345678",
+    "copy_label": "(Original für den Empfänger)",
+    "remarks": "Bewahren Sie diese Rechnung für die Garantie auf. Displayschutz im Geschäft kostenlos angebracht.",
+    "thank_you": "Danke. Bis bald."
+  }
+}
