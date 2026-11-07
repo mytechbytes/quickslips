@@ -7,8 +7,9 @@
   "number_field": "bill_number",
   "summary": "Dine-in or takeaway bill with items and {tax}.",
   "description": "Generate a restaurant bill with any number of items, quantities, service charge and {tax}. Preview instantly and download as PDF.",
-  "tax": { "default": "added" },
-  "templates": [{ "id": "t1", "name": "Classic" }],
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "tax": { "default": "added", "es": "included", "de": "included", "fr": "included", "it": "included", "gb": "included", "jp": "included", "cn": "included" },
+  "templates": [{ "id": "t1" }, { "id": "t2" }, { "id": "t3" }, { "id": "t4" }],
   "fields": [
     { "key": "restaurant_name", "group": "business", "label": "Restaurant name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
     { "key": "restaurant_address", "group": "business", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
@@ -16,6 +17,7 @@
     { "key": "fssai_number", "group": "registration", "label": "FSSAI licence no. (optional)", "type": "text", "required": false, "max_length": 14, "pattern": "^[0-9]{14}$", "countries": ["in"] },
     { "key": "bill_number", "group": "document", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
     { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "time", "group": "document", "label": "Time (optional)", "type": "time", "required": false },
     { "key": "table_number", "group": "document", "label": "Table (optional)", "type": "text", "required": false, "max_length": 10 },
     { "key": "customer_name", "group": "customer", "label": "Customer name (optional)", "type": "text", "required": false, "max_length": 80 },
     { "key": "items", "group": "items", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 80,
@@ -23,6 +25,6 @@
       "legacy": { "name": "item", "qty": "qty", "rate": "price", "count": 5 } },
     { "key": "service_percent", "group": "charges", "label": "Service charge (%) (optional)", "type": "number", "required": false, "min": 0, "max": 30 },
     { "key": "gst_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
-    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
+    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true }
   ]
 }

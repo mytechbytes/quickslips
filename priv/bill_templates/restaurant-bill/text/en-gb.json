@@ -1,0 +1,35 @@
+{
+  "sample": {
+    "restaurant_name": "Green Leaf Café",
+    "items": [
+      {
+        "name": "Fish and chips",
+        "qty": 2,
+        "rate": 13.5
+      },
+      {
+        "name": "Tea",
+        "qty": 3,
+        "rate": 2.8
+      },
+      {
+        "name": "Soup of the day",
+        "qty": 1,
+        "rate": 6.5
+      },
+      {
+        "name": "Sausage and mash",
+        "qty": 1,
+        "rate": 12.5
+      },
+      {
+        "name": "Sticky toffee pudding",
+        "qty": 2,
+        "rate": 6.5
+      }
+    ],
+    "customer_name": "James Taylor",
+    "table_number": "T-7",
+    "gst_percent": 20
+  }
+}

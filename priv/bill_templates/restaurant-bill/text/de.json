@@ -1,0 +1,126 @@
+{
+  "title": "Restaurantrechnung-Generator",
+  "name": "Restaurantrechnung",
+  "public_slug": "restaurantrechnung-generator",
+  "summary": "Rechnung für Essen im Haus oder zum Mitnehmen mit Positionen und {tax}.",
+  "description": "Erstellen Sie eine Restaurantrechnung mit beliebig vielen Positionen, Mengen, Bedienungsgeld und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Pixelbon",
+    "t2": "Beleg mit Strichlinien",
+    "t3": "Kompakter Beleg",
+    "t4": "Schreibmaschinenbeleg"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "Name des Restaurants"
+    },
+    "restaurant_address": {
+      "label": "Adresse (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "fssai_number": {
+      "label": "FSSAI-Lizenznr. (optional)"
+    },
+    "bill_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "time": {
+      "label": "Uhrzeit (optional)"
+    },
+    "table_number": {
+      "label": "Tisch (optional)"
+    },
+    "customer_name": {
+      "label": "Kundenname (optional)"
+    },
+    "service_percent": {
+      "label": "Bedienung (%) (optional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Bezahlt mit",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Positionen",
+      "columns": {
+        "name": "Artikel",
+        "qty": "Menge",
+        "rate": "Preis ({currency})"
+      }
+    }
+  },
+  "print": {
+    "welcome": "Willkommen!",
+    "original": "Originalbeleg",
+    "date": "Datum",
+    "time": "Uhrzeit",
+    "customer": "Kundenname",
+    "table": "Tisch",
+    "receipt_no": "Beleg-Nr.",
+    "bill_no": "Rechnungs-Nr.",
+    "description": "Beschreibung",
+    "item": "Artikel",
+    "qty": "Menge",
+    "price": "Preis",
+    "subtotal": "Zwischensumme",
+    "total": "Gesamt",
+    "service": "Bedienung",
+    "paid_by": "Bezahlt mit",
+    "save_paper": "Papier sparen, Natur schützen!",
+    "thanks_meal": "Danke für eine köstliche Mahlzeit.",
+    "receipt": "Quittung",
+    "support_local": "Danke, dass Sie lokale Betriebe unterstützen!",
+    "thanks_visit": "Danke für Ihren Besuch! Gute Reise.",
+    "round_off": "Rundung",
+    "above_incl": "Preise inkl. Steuern",
+    "total_tax": "Steuern gesamt",
+    "amount": "Betrag"
+  },
+  "sample": {
+    "restaurant_name": "Café Linde",
+    "items": [
+      {
+        "name": "Schnitzel",
+        "qty": 2,
+        "rate": 14.5
+      },
+      {
+        "name": "Apfelschorle",
+        "qty": 3,
+        "rate": 3.2
+      },
+      {
+        "name": "Gulaschsuppe",
+        "qty": 1,
+        "rate": 7.5
+      },
+      {
+        "name": "Bratwurst",
+        "qty": 1,
+        "rate": 9.8
+      },
+      {
+        "name": "Apfelstrudel",
+        "qty": 2,
+        "rate": 5.5
+      }
+    ],
+    "customer_name": "Anna Becker",
+    "table_number": "T-7",
+    "gst_percent": 19
+  }
+}

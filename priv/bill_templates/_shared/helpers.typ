@@ -754,6 +754,18 @@
 #let tax-name = tax-data.at("name", default: "")
 #let tax-id-label = tax-data.at("id", default: (:)).at("label", default: "GSTIN")
 
+// The rows of the tax of a bill, as `(label, rate, amount)`: where India splits it, CGST and SGST with half the rate and
+// half the tax each (the two halves add up to the tax); elsewhere one row with the name of the tax. Nothing without a rate.
+#let tax-parts(rate, tax) = {
+  if rate == none { return () }
+  if region.country == "in" {
+    let first = calc.round(tax / 2, digits: 2)
+    (("CGST", rate / 2, first), ("SGST", rate / 2, tax - first))
+  } else {
+    ((tax-name, rate, tax),)
+  }
+}
+
 // The two lines a bill with a tax rate shows over its total: the amount without tax and the tax. `none` for no rate.
 // An array of (label, amount), so that every design draws them in its own way.
 #let tax-lines(amount, rate) = {

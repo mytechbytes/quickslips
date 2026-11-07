@@ -1,0 +1,126 @@
+{
+  "title": "Gerador de conta de restaurante",
+  "name": "Conta de restaurante",
+  "public_slug": "gerador-de-conta-de-restaurante",
+  "summary": "Conta de restaurante no local ou para viagem com itens e {tax}.",
+  "description": "Gere uma conta de restaurante com qualquer número de itens, quantidades, taxa de serviço e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Cupom pixel",
+    "t2": "Recibo tracejado",
+    "t3": "Conta compacta",
+    "t4": "Conta datilografada"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "Nome do restaurante"
+    },
+    "restaurant_address": {
+      "label": "Endereço (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "fssai_number": {
+      "label": "N.º da licença FSSAI (opcional)"
+    },
+    "bill_number": {
+      "label": "Número da fatura"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "table_number": {
+      "label": "Mesa (opcional)"
+    },
+    "customer_name": {
+      "label": "Nome do cliente (opcional)"
+    },
+    "service_percent": {
+      "label": "Serviço (%) (opcional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pago com",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Itens",
+      "columns": {
+        "name": "Item",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})"
+      }
+    }
+  },
+  "print": {
+    "welcome": "Bem-vindo!",
+    "original": "Recibo original",
+    "date": "Data",
+    "time": "Hora",
+    "customer": "Nome do cliente",
+    "table": "Mesa",
+    "receipt_no": "Recibo n.º",
+    "bill_no": "Fatura n.º",
+    "description": "Descrição",
+    "item": "Item",
+    "qty": "Qtd.",
+    "price": "Preço",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "service": "Serviço",
+    "paid_by": "Pago com",
+    "save_paper": "Economize papel, proteja a natureza!",
+    "thanks_meal": "Obrigado pela deliciosa refeição.",
+    "receipt": "Recibo",
+    "support_local": "Obrigado por apoiar o comércio local!",
+    "thanks_visit": "Obrigado pela visita! Boa viagem.",
+    "round_off": "Arredondamento",
+    "above_incl": "Preços com impostos incluídos",
+    "total_tax": "Total de impostos",
+    "amount": "Valor"
+  },
+  "sample": {
+    "restaurant_name": "Café Verde",
+    "items": [
+      {
+        "name": "Feijoada",
+        "qty": 2,
+        "rate": 38
+      },
+      {
+        "name": "Suco de laranja",
+        "qty": 3,
+        "rate": 9
+      },
+      {
+        "name": "Pão de queijo",
+        "qty": 1,
+        "rate": 14
+      },
+      {
+        "name": "Picanha",
+        "qty": 1,
+        "rate": 68
+      },
+      {
+        "name": "Pudim",
+        "qty": 2,
+        "rate": 14
+      }
+    ],
+    "customer_name": "Ana Souza",
+    "table_number": "T-7",
+    "gst_percent": null
+  }
+}
