@@ -1,0 +1,115 @@
+{
+  "title": "Générateur de quittance de loyer",
+  "name": "Quittance de loyer",
+  "public_slug": "generateur-de-quittance-de-loyer",
+  "summary": "Quittances de loyer mensuelles, prêtes à présenter.",
+  "description": "Créez une quittance de loyer, ou jusqu'à 12 quittances pour une période, avec locataire, propriétaire, logement et montant. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Remboursement",
+    "t2": "Avec accusé de réception",
+    "t3": "Plusieurs mois",
+    "t4": "Quittance formelle"
+  },
+  "fields": {
+    "tenant_name": {
+      "label": "Nom du locataire"
+    },
+    "landlord_name": {
+      "label": "Nom du propriétaire"
+    },
+    "landlord_pan": {
+      "label": "PAN du propriétaire (facultatif)"
+    },
+    "property_address": {
+      "label": "Adresse du logement loué"
+    },
+    "month": {
+      "label": "Loyer du mois"
+    },
+    "from_date": {
+      "label": "Période du (facultatif)"
+    },
+    "to_date": {
+      "label": "Période au (facultatif)"
+    },
+    "bill_by": {
+      "label": "Facturer par",
+      "options": {
+        "Monthly": "Mensuel",
+        "Quarterly": "Trimestriel",
+        "Half-yearly": "Semestriel",
+        "Yearly": "Annuel"
+      }
+    },
+    "receipt_date": {
+      "label": "Date de la quittance"
+    },
+    "monthly_rent": {
+      "label": "Loyer mensuel ({currency})"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Bank transfer": "Virement bancaire",
+        "UPI": "UPI",
+        "Cash": "Espèces",
+        "Cheque": "Chèque",
+        "Card": "Carte",
+        "Online": "En ligne"
+      }
+    },
+    "received_by": {
+      "label": "Reçu par",
+      "options": {
+        "Landlord": "Propriétaire",
+        "Manager": "Gestionnaire"
+      }
+    },
+    "receiver_name": {
+      "label": "Nom du receveur (facultatif)"
+    }
+  },
+  "print": {
+    "title": "Quittance de loyer",
+    "date": "Date",
+    "certify": "Il est certifié que {tenant} a payé {amount} au propriétaire {landlord} au titre du loyer du mois de {month} (quittance jointe).",
+    "certify_period": "Il est certifié que {tenant} a payé {amount} au propriétaire {landlord} au titre du loyer de la période {period} (quittance jointe).",
+    "reimburse": "Veuillez rembourser le montant ci-dessus. Je déclare en outre que ce qui précède est exact et sincère.",
+    "address": "Adresse",
+    "payment_method": "Mode de paiement",
+    "landlord_name": "Nom du propriétaire",
+    "tenant_name": "Nom du locataire",
+    "revenue_stamp": "Timbre fiscal",
+    "landlord_signature": "Signature du propriétaire",
+    "rent_month": "Loyer du mois",
+    "rental_address": "Adresse du logement",
+    "received_text": "Reçu de {tenant} la somme de {amount} au titre du loyer du mois de {month}. Reçu par {role} {receiver}.",
+    "ack_title": "Accusé de réception",
+    "amount": "Montant",
+    "received_from": "Reçu de",
+    "landlord": "Propriétaire",
+    "receivers_name": "Nom du receveur",
+    "received_by": "Reçu par",
+    "subtitle": "Accusé de réception du loyer mensuel",
+    "tenant": "Locataire",
+    "property": "Adresse du bien",
+    "rental_period": "Période de location",
+    "amount_received": "Montant reçu",
+    "mode": "Mode de paiement",
+    "ack": "Je soussigné(e) {landlord} reconnais avoir reçu de {tenant} la somme de {amount} au titre du loyer de la période {period}.",
+    "premises": "Le loyer concerne les locaux situés à {address} ; cette quittance est établie comme preuve de paiement à des fins comptables, fiscales et de remboursement.",
+    "term_1": "Cette quittance atteste uniquement le paiement de la période indiquée ci-dessus.",
+    "term_2": "Les charges, pénalités ou frais d'entretien sont exclus sauf mention distincte.",
+    "term_3": "Les parties affirment que les informations de cette quittance sont vraies et exactes.",
+    "name": "Nom",
+    "period": "Période",
+    "month": "Mois",
+    "receipt_of": "Quittance {number} sur {total}"
+  },
+  "sample": {
+    "tenant_name": "Camille Martin",
+    "landlord_name": "Pierre Dubois",
+    "receiver_name": "Pierre Dubois",
+    "monthly_rent": 950
+  }
+}

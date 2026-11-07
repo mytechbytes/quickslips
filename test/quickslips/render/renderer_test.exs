@@ -216,7 +216,7 @@ defmodule QuickSlips.Render.RendererTest do
 
     test "a template that is not in the language is refused" do
       assert {:error, :unsupported_language} =
-               Renderer.render("rent-receipt", "t1", sample("rent-receipt"), locale: "hi-in")
+               Renderer.render("grocery-bill", "t1", sample("grocery-bill"), locale: "hi-in")
     end
 
     test "a currency that does not exist is refused" do
@@ -308,6 +308,19 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "rent-receipt" => %{
+      designs: ~w(t1 t2 t3 t4),
+      # t3 is a receipt for each quarter of the sample's period: July to December is two pages
+      pages: %{"t3" => 2},
+      optional: ~w(landlord_pan from_date to_date bill_by received_by receiver_name),
+      long: %{
+        "tenant_name" => String.duplicate("Ramakrishnan ", 5),
+        "landlord_name" => String.duplicate("Venkatasubramanian ", 4),
+        "property_address" => String.duplicate("Flat 402, Lotus Heights, Sector 21, ", 7),
+        "receiver_name" => String.duplicate("Venkatasubramanian ", 4),
+        "monthly_rent" => 99_999_999.99
+      }
+    },
     "taxi-receipt" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:
@@ -334,16 +347,20 @@ defmodule QuickSlips.Render.RendererTest do
   describe "the designs of a bill that has several" do
     defp pages(pdf), do: length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf))
 
-    for {slug, %{designs: designs, optional: optional, long: long}} <- @multi_design,
+    for {slug, %{designs: designs, optional: optional, long: long} = config} <- @multi_design,
         design <- designs do
-      test "#{slug}/#{design} is one page in every live locale" do
+      # A design that makes several receipts has a page for each; the others are one page.
+      pages = Map.get(config, :pages, %{}) |> Map.get(design, 1)
+
+      test "#{slug}/#{design} is #{pages} page(s) in every live locale" do
         for locale <- Locales.live() do
           {:ok, sample} = Templates.sample(unquote(slug), locale)
 
           assert {:ok, pdf} =
                    Renderer.render(unquote(slug), unquote(design), sample, locale: locale.code)
 
-          assert pages(pdf) == 1, "#{unquote(slug)}/#{unquote(design)} in #{locale.code}"
+          assert pages(pdf) == unquote(pages),
+                 "#{unquote(slug)}/#{unquote(design)} in #{locale.code}"
         end
       end
 
@@ -365,12 +382,40 @@ defmodule QuickSlips.Render.RendererTest do
                  )
       end
 
-      test "#{slug}/#{design} holds a very long text and very big numbers on one page" do
+      test "#{slug}/#{design} holds a very long text and very big numbers on its pages" do
         data = Map.merge(sample(unquote(slug)), unquote(Macro.escape(long)))
 
         assert {:ok, pdf} = Renderer.render(unquote(slug), unquote(design), data)
-        assert pages(pdf) == 1
+        assert pages(pdf) == unquote(pages)
       end
+    end
+
+    test "rent-receipt/t3 makes a receipt for each month, quarter, half-year or year of the period, at most 12 months" do
+      sample = sample("rent-receipt")
+
+      receipts = fn from, to, bill_by ->
+        data =
+          Map.merge(sample, %{"from_date" => from, "to_date" => to, "bill_by" => bill_by})
+
+        {:ok, pdf} = Renderer.render("rent-receipt", "t3", data)
+        pages(pdf)
+      end
+
+      assert receipts.("2026-01-05", "2026-06-30", "Monthly") == 6
+      assert receipts.("2026-01-05", "2026-12-31", "Quarterly") == 4
+      assert receipts.("2026-01-05", "2026-12-31", "Half-yearly") == 2
+      assert receipts.("2026-01-05", "2026-12-31", "Yearly") == 1
+      # Five months by quarters: a quarter and a part of one.
+      assert receipts.("2026-01-05", "2026-05-31", "Quarterly") == 2
+      # More than a year is cut at 12 months.
+      assert receipts.("2024-01-05", "2026-12-31", "Monthly") == 12
+      assert receipts.("2024-01-05", "2026-12-31", "Quarterly") == 4
+
+      # Without a period it is the receipt of the month; a period that runs backwards is one month.
+      without = Map.drop(sample, ["from_date", "to_date", "bill_by"])
+      assert {:ok, pdf} = Renderer.render("rent-receipt", "t3", without)
+      assert pages(pdf) == 1
+      assert receipts.("2026-06-05", "2026-01-31", "Monthly") == 1
     end
 
     test "the cash memo has no column for small change in a currency that has none" do

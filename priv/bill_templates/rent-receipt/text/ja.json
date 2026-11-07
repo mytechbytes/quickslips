@@ -1,0 +1,115 @@
+{
+  "title": "家賃領収書作成",
+  "name": "家賃領収書",
+  "public_slug": "rent-receipt-generator",
+  "summary": "月ごとの家賃領収書。精算にそのまま使えます。",
+  "description": "借主、家主、物件、金額を記載した家賃領収書、または期間内で最大12枚の領収書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "精算用",
+    "t2": "受領確認付き",
+    "t3": "複数月",
+    "t4": "正式な領収書"
+  },
+  "fields": {
+    "tenant_name": {
+      "label": "借主の氏名"
+    },
+    "landlord_name": {
+      "label": "家主の氏名"
+    },
+    "landlord_pan": {
+      "label": "家主の PAN（任意）"
+    },
+    "property_address": {
+      "label": "賃貸物件の住所"
+    },
+    "month": {
+      "label": "家賃の対象月"
+    },
+    "from_date": {
+      "label": "期間の開始（任意）"
+    },
+    "to_date": {
+      "label": "期間の終了（任意）"
+    },
+    "bill_by": {
+      "label": "発行単位",
+      "options": {
+        "Monthly": "毎月",
+        "Quarterly": "四半期ごと",
+        "Half-yearly": "半年ごと",
+        "Yearly": "毎年"
+      }
+    },
+    "receipt_date": {
+      "label": "領収日"
+    },
+    "monthly_rent": {
+      "label": "月額家賃（{currency}）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Bank transfer": "銀行振込",
+        "UPI": "UPI",
+        "Cash": "現金",
+        "Cheque": "小切手",
+        "Card": "カード",
+        "Online": "オンライン"
+      }
+    },
+    "received_by": {
+      "label": "受領者",
+      "options": {
+        "Landlord": "家主",
+        "Manager": "管理人"
+      }
+    },
+    "receiver_name": {
+      "label": "受領者名（任意）"
+    }
+  },
+  "print": {
+    "title": "家賃領収書",
+    "date": "日付",
+    "certify": "{tenant} が家主 {landlord} に {month} 分の家賃として {amount} を支払ったことを証明します（受領書を添付）。",
+    "certify_period": "{tenant} が家主 {landlord} に {period} 分の家賃として {amount} を支払ったことを証明します（受領書を添付）。",
+    "reimburse": "上記金額の精算をお願いします。上記の内容が正確かつ真実であることを申し添えます。",
+    "address": "住所",
+    "payment_method": "支払方法",
+    "landlord_name": "家主の氏名",
+    "tenant_name": "借主の氏名",
+    "revenue_stamp": "収入印紙",
+    "landlord_signature": "家主の署名",
+    "rent_month": "家賃の対象月",
+    "rental_address": "賃貸物件の住所",
+    "received_text": "{tenant} 様より {month} 分の家賃として {amount} を受領しました。受領者：{role} {receiver}。",
+    "ack_title": "受領確認",
+    "amount": "金額",
+    "received_from": "受領元",
+    "landlord": "家主",
+    "receivers_name": "受領者名",
+    "received_by": "受領者",
+    "subtitle": "月額家賃の受領証",
+    "tenant": "借主",
+    "property": "物件の住所",
+    "rental_period": "賃貸期間",
+    "amount_received": "受領金額",
+    "mode": "支払方法",
+    "ack": "私、{landlord} は、{tenant} から {period} 分の家賃 {amount} を受領したことを確認します。",
+    "premises": "この家賃は {address} 所在の物件に関するもので、本領収書は経理・税務・精算のための支払証明として発行します。",
+    "term_1": "本領収書は上記の期間の支払のみを証明します。",
+    "term_2": "光熱費・違約金・修繕費は、別途記載がない限り含まれません。",
+    "term_3": "両当事者は、本領収書の記載が真実かつ正確であることを確認します。",
+    "name": "氏名",
+    "period": "期間",
+    "month": "対象月",
+    "receipt_of": "{total} 枚中 {number} 枚目"
+  },
+  "sample": {
+    "tenant_name": "田中 太郎",
+    "landlord_name": "鈴木 一郎",
+    "receiver_name": "鈴木 一郎",
+    "monthly_rent": 85000
+  }
+}

@@ -95,11 +95,11 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
 
     test "a bill with one language only names that one, and the query is not part of the canonical",
          %{conn: conn} do
-      html = conn |> get(~p"/en-in/rent-receipt-generator?from=3") |> html_response(200)
+      html = conn |> get(~p"/en-in/grocery-bill-generator?from=3") |> html_response(200)
       base = QuickSlipsWeb.Endpoint.url()
 
       assert attrs(html, "link[rel=canonical]", "href") == [
-               "#{base}/en-in/rent-receipt-generator"
+               "#{base}/en-in/grocery-bill-generator"
              ]
 
       assert attrs(html, "link[rel=alternate]", "hreflang") ==
@@ -108,8 +108,8 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
 
     test "a bill that is not in the language of the locale is a 404, not English under another address",
          %{conn: conn} do
-      assert_error_sent 404, fn -> get(conn, ~p"/hi-in/rent-receipt-generator") end
-      assert_error_sent 404, fn -> get(conn, ~p"/es-es/rent-receipt-generator") end
+      assert_error_sent 404, fn -> get(conn, ~p"/hi-in/grocery-bill-generator") end
+      assert_error_sent 404, fn -> get(conn, ~p"/es-es/grocery-bill-generator") end
     end
 
     test "the slug of one locale is not an address in another", %{conn: conn} do
@@ -358,7 +358,7 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
     end
 
     test "is there even when a bill has one template", %{conn: conn} do
-      html = conn |> get(~p"/en-in/rent-receipt-generator") |> html_response(200)
+      html = conn |> get(~p"/en-in/grocery-bill-generator") |> html_response(200)
 
       assert html
              |> LazyHTML.from_document()

@@ -1,0 +1,110 @@
+{
+  "title": "Rent Receipt Generator",
+  "name": "Rent Receipt",
+  "public_slug": "rent-receipt-generator",
+  "summary": "Monthly rent receipts, ready to submit for HRA.",
+  "description": "Create a rent receipt, or a set of up to 12 for a period, with tenant, landlord, property and amount. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Reimbursement",
+    "t2": "With acknowledgement",
+    "t3": "Several months",
+    "t4": "Formal receipt"
+  },
+  "fields": {
+    "tenant_name": {
+      "label": "Tenant name"
+    },
+    "landlord_name": {
+      "label": "Landlord name"
+    },
+    "landlord_pan": {
+      "label": "Landlord PAN (optional)"
+    },
+    "property_address": {
+      "label": "Rented property address"
+    },
+    "month": {
+      "label": "Rent for month"
+    },
+    "from_date": {
+      "label": "Period from (optional)"
+    },
+    "to_date": {
+      "label": "Period to (optional)"
+    },
+    "bill_by": {
+      "label": "Bill by",
+      "options": {
+        "Monthly": "Monthly",
+        "Quarterly": "Quarterly",
+        "Half-yearly": "Half-yearly",
+        "Yearly": "Yearly"
+      }
+    },
+    "receipt_date": {
+      "label": "Receipt date"
+    },
+    "monthly_rent": {
+      "label": "Monthly rent ({currency})"
+    },
+    "payment_mode": {
+      "label": "Payment mode",
+      "options": {
+        "Bank transfer": "Bank transfer",
+        "UPI": "UPI",
+        "Cash": "Cash",
+        "Cheque": "Cheque",
+        "Card": "Card",
+        "Online": "Online"
+      }
+    },
+    "received_by": {
+      "label": "Received by",
+      "options": {
+        "Landlord": "Landlord",
+        "Manager": "Manager"
+      }
+    },
+    "receiver_name": {
+      "label": "Receiver's name (optional)"
+    }
+  },
+  "print": {
+    "title": "Rent Receipt",
+    "date": "Date",
+    "certify": "This is to certify that {tenant} has paid {amount} to landlord {landlord} towards rent for the month of {month} (acknowledged receipt enclosed).",
+    "certify_period": "This is to certify that {tenant} has paid {amount} to landlord {landlord} towards rent for the period {period} (acknowledged receipt enclosed).",
+    "reimburse": "Please reimburse the above amount. I further declare that what is stated above is correct and true.",
+    "address": "Address",
+    "payment_method": "Payment method",
+    "landlord_name": "Landlord name",
+    "tenant_name": "Tenant name",
+    "revenue_stamp": "Revenue stamp",
+    "landlord_signature": "Landlord signature",
+    "rent_month": "Rent of the month",
+    "rental_address": "Rental address",
+    "received_text": "Received from {tenant} the sum of {amount} towards rent for the month of {month}. Received by {role} {receiver}.",
+    "ack_title": "Receipt acknowledgement",
+    "amount": "Amount",
+    "received_from": "Received from",
+    "landlord": "Landlord",
+    "receivers_name": "Receiver's name",
+    "received_by": "Received by",
+    "subtitle": "Monthly tenancy payment acknowledgement",
+    "tenant": "Tenant",
+    "property": "Property address",
+    "rental_period": "Rental period",
+    "amount_received": "Amount received",
+    "mode": "Mode of payment",
+    "ack": "I, {landlord}, hereby acknowledge receipt of rent amounting to {amount} from {tenant} for the tenancy period of {period}.",
+    "premises": "The rent pertains to the premises situated at {address}, and this receipt is issued as proof of payment for accounting, tax and reimbursement purposes.",
+    "term_1": "This receipt confirms payment only for the period mentioned above.",
+    "term_2": "Utility charges, penalties or maintenance are excluded unless stated separately.",
+    "term_3": "The parties affirm that the details in this receipt are true and correct.",
+    "name": "Name",
+    "period": "Period",
+    "month": "Month",
+    "receipt_of": "Receipt {number} of {total}"
+  },
+  "sample": {}
+}

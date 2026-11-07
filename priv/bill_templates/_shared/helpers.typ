@@ -96,9 +96,14 @@
   str(if hour == 0 { 12 } else { hour }) + ":" + (if m < 10 { "0" } else { "" }) + str(m) + " " + suffix
 }
 
+// "October 2026"; in Chinese and Japanese the year comes first, "2026年10月".
 #let month-label(ym) = {
   let (y, m) = ym.split("-").map(int)
-  months.at(m - 1) + " " + str(y)
+  if text-data.at("lang", default: "en") in ("zh", "ja") {
+    str(y) + "年" + months.at(m - 1)
+  } else {
+    months.at(m - 1) + " " + str(y)
+  }
 }
 
 // Whole days from one date to another, at least 1 (for nights in a hotel, days in a plan).
@@ -660,6 +665,26 @@
   let words = amount-words(amount)
   if words == none { return none }
   align(right, text(size: 8.5pt)[#text(fill: muted)[#in-words.label:] #words])
+}
+
+/// Sentences
+
+// A sentence of a text file with `{name}` in it, filled in with the values and set in bold: `say(t.certify, (tenant:
+// "Asha", amount: money(25000)))`. A word that has no value is left empty.
+#let say(sentence, values) = {
+  let out = ()
+  let rest = sentence
+  while true {
+    let found = rest.match(regex("[{]([a-z_]+)[}]"))
+    if found == none {
+      out.push(rest)
+      break
+    }
+    out.push(rest.slice(0, found.start))
+    out.push(strong(values.at(found.captures.first(), default: "")))
+    rest = rest.slice(found.end)
+  }
+  out.join()
 }
 
 /// Pieces of a page
