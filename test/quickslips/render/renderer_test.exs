@@ -225,53 +225,82 @@ defmodule QuickSlips.Render.RendererTest do
     end
   end
 
-  describe "the designs of the fuel bill" do
-    @designs ~w(t1 t2 t3 t4 t5 t6)
-    @optional ~w(station_address station_phone dealer_name seller_tax_id fcc_id fip_no time customer_name
-                 vehicle_number nozzle_number density)
+  # The bills that have several designs: every design in every live locale, with little data and with a lot.
+  @multi_design %{
+    "fuel-bill" => %{
+      designs: ~w(t1 t2 t3 t4 t5 t6),
+      optional:
+        ~w(station_address station_phone dealer_name seller_tax_id fcc_id fip_no time customer_name
+           vehicle_number nozzle_number density),
+      long: %{
+        "station_name" => String.duplicate("Petroleum Retail Services ", 3),
+        "station_address" => String.duplicate("Plot 12, Industrial Area, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "quantity" => 99_999.999,
+        "rate" => 9_999.99
+      }
+    },
+    "taxi-receipt" => %{
+      designs: ~w(t1 t2 t3 t4),
+      optional:
+        ~w(operator_address seller_tax_id drop_date passenger_name customer_phone customer_address
+           driver_name vehicle_number vehicle_model pickup_time drop_time toll airport_charge
+           advance_paid tax_percent),
+      long: %{
+        "operator_name" => String.duplicate("Kaveri City Cabs ", 4),
+        "operator_address" => String.duplicate("12, MG Road, Bengaluru, ", 8),
+        "passenger_name" => String.duplicate("Ramakrishnan ", 5),
+        "driver_name" => String.duplicate("Venkatasubramanian ", 4),
+        "pickup" => String.duplicate("Indiranagar Metro Station ", 6),
+        "drop" => String.duplicate("International Airport ", 7),
+        "vehicle_model" => String.duplicate("Maruti Dzire ", 4),
+        "distance_km" => 9_999.9,
+        "base_fare" => 99_999_999.99,
+        "toll" => 9_999_999.99,
+        "airport_charge" => 9_999_999.99,
+        "advance_paid" => 9_999_999.99
+      }
+    }
+  }
 
+  describe "the designs of a bill that has several" do
     defp pages(pdf), do: length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf))
 
-    for design <- @designs do
-      test "#{design} is one page in every live locale" do
+    for {slug, %{designs: designs, optional: optional, long: long}} <- @multi_design,
+        design <- designs do
+      test "#{slug}/#{design} is one page in every live locale" do
         for locale <- Locales.live() do
-          {:ok, sample} = Templates.sample("fuel-bill", locale)
+          {:ok, sample} = Templates.sample(unquote(slug), locale)
 
           assert {:ok, pdf} =
-                   Renderer.render("fuel-bill", unquote(design), sample, locale: locale.code)
+                   Renderer.render(unquote(slug), unquote(design), sample, locale: locale.code)
 
-          assert pages(pdf) == 1, "#{unquote(design)} in #{locale.code}"
+          assert pages(pdf) == 1, "#{unquote(slug)}/#{unquote(design)} in #{locale.code}"
         end
       end
 
-      test "#{design} compiles with only the required fields, a logo and a signature" do
-        required = Map.drop(sample("fuel-bill"), @optional)
+      test "#{slug}/#{design} compiles with only the required fields, a logo and a signature" do
+        slug = unquote(slug)
+        required = Map.drop(sample(slug), unquote(optional))
         logo = tmp_file(png_bytes())
         signature = tmp_file(jpg_bytes())
 
-        assert {:ok, "%PDF" <> _} = Renderer.render("fuel-bill", unquote(design), required)
+        assert {:ok, "%PDF" <> _} = Renderer.render(slug, unquote(design), required)
 
         with_pictures =
-          Map.merge(sample("fuel-bill"), %{"logo" => "logo.png", "signature" => "signature.jpg"})
+          Map.merge(sample(slug), %{"logo" => "logo.png", "signature" => "signature.jpg"})
 
         assert {:ok, "%PDF" <> _} =
-                 Renderer.render("fuel-bill", unquote(design), with_pictures,
+                 Renderer.render(slug, unquote(design), with_pictures,
                    assets: %{"logo.png" => logo, "signature.jpg" => signature},
                    mode: :preview
                  )
       end
 
-      test "#{design} holds a very long name and very big numbers on one page" do
-        data =
-          Map.merge(sample("fuel-bill"), %{
-            "station_name" => String.duplicate("Petroleum Retail Services ", 3),
-            "station_address" => String.duplicate("Plot 12, Industrial Area, ", 6),
-            "customer_name" => String.duplicate("Ramakrishnan ", 5),
-            "quantity" => 99_999.999,
-            "rate" => 9_999.99
-          })
+      test "#{slug}/#{design} holds a very long text and very big numbers on one page" do
+        data = Map.merge(sample(unquote(slug)), unquote(Macro.escape(long)))
 
-        assert {:ok, pdf} = Renderer.render("fuel-bill", unquote(design), data)
+        assert {:ok, pdf} = Renderer.render(unquote(slug), unquote(design), data)
         assert pages(pdf) == 1
       end
     end

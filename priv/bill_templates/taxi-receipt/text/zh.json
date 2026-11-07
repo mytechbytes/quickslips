@@ -1,0 +1,174 @@
+{
+  "title": "出租车费用单生成器",
+  "name": "出租车费用单",
+  "public_slug": "cab-bill-generator",
+  "summary": "生成包含车费、过路费和{tax}的出租车行程账单。",
+  "description": "生成包含上下车地点、里程、车费、过路费和{tax}的出租车或网约车账单。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "行程收据",
+    "t2": "行程与发票",
+    "t3": "税务发票",
+    "t4": "简洁收据"
+  },
+  "fields": {
+    "operator_name": {
+      "label": "出租车公司或司机名称"
+    },
+    "operator_address": {
+      "label": "地址（选填）"
+    },
+    "receipt_number": {
+      "label": "单据编号"
+    },
+    "date": {
+      "label": "行程日期"
+    },
+    "drop_date": {
+      "label": "到达日期（选填）"
+    },
+    "passenger_name": {
+      "label": "乘客姓名（选填）"
+    },
+    "customer_phone": {
+      "label": "乘客手机（选填）"
+    },
+    "customer_address": {
+      "label": "乘客地址（选填）"
+    },
+    "driver_name": {
+      "label": "司机姓名（选填）"
+    },
+    "vehicle_number": {
+      "label": "车牌号（选填）"
+    },
+    "vehicle_model": {
+      "label": "车型（选填）"
+    },
+    "pickup": {
+      "label": "上车地点"
+    },
+    "pickup_time": {
+      "label": "上车时间（选填）"
+    },
+    "drop": {
+      "label": "下车地点"
+    },
+    "drop_time": {
+      "label": "下车时间（选填）"
+    },
+    "distance_km": {
+      "label": "里程（公里）"
+    },
+    "base_fare": {
+      "label": "车费（{currency}）"
+    },
+    "toll": {
+      "label": "过路费及服务费（{currency}）（选填）"
+    },
+    "airport_charge": {
+      "label": "机场接客费（{currency}）（选填）"
+    },
+    "advance_paid": {
+      "label": "已付预付款（{currency}）（选填）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    }
+  },
+  "print": {
+    "receipt_title": "这是您本次行程的收据，",
+    "enjoyed": "希望您乘车愉快。",
+    "trip_total": "行程总费用",
+    "trip_fare": "行程费用",
+    "subtotal": "小计",
+    "toll": "过路费及服务费",
+    "airport": "机场接客费",
+    "payments": "付款",
+    "includes": "总计 {total} 中含{tax} {amount}。",
+    "rode_with": "您的乘车信息",
+    "plate": "车牌",
+    "fares_incl": "费用含税。",
+    "pickup": "上车地点",
+    "drop": "下车地点",
+    "thanks_travel": "感谢您选择我们出行，",
+    "ride_details": "行程详情",
+    "bill_details": "费用明细",
+    "total_bill": "应付总额",
+    "includes_taxes": "含税 {amount}",
+    "promise": "我们已按事先约定的总价将您送达目的地。更改下车地点或路线可能会改变费用。",
+    "complaint": "如对本发票有任何投诉或异议，请联系：",
+    "payment": "支付",
+    "paid_by": "支付方式",
+    "original": "发票原件",
+    "driver_invoice": "司机行程发票",
+    "service": "服务：出租车服务",
+    "invoice_id": "发票编号",
+    "invoice_date": "开票日期",
+    "customer": "客户姓名",
+    "mobile": "手机号码",
+    "pickup_address": "上车地址",
+    "description": "项目",
+    "amount": "金额",
+    "ride_fee": "行程费",
+    "note": "请注意：1. 本发票由运输服务提供方开具。2. 本发票为电子生成，无需签字。",
+    "tax_invoice": "税务发票",
+    "invoice_no": "发票号码",
+    "date": "日期",
+    "billed_to": "开票对象",
+    "trip_details": "行程信息",
+    "driver": "司机",
+    "vehicle_no": "车牌号",
+    "vehicle": "车型",
+    "date_time": "日期和时间",
+    "particulars": "项目",
+    "period": "行程期间",
+    "until": "至",
+    "distance": "里程",
+    "rate": "单价",
+    "pick_point": "上车点",
+    "drop_point": "下车点",
+    "advance": "减：已付预付款",
+    "balance": "应付余额",
+    "total_amount": "账单总额",
+    "signatory": "授权签字人",
+    "thanks_riding": "感谢乘坐，",
+    "before_tax": "税前",
+    "fees": "过路费、机场费及其他费用",
+    "trip_id": "行程编号",
+    "cab_no": "车牌号",
+    "time": "行程时间",
+    "paid": "已付",
+    "total": "合计",
+    "unit": "km"
+  },
+  "sample": {
+    "operator_name": "朝阳出租车",
+    "passenger_name": "王伟",
+    "driver_name": "李强",
+    "pickup": "北京南站",
+    "drop": "首都国际机场",
+    "vehicle_number": "京A·12345",
+    "vehicle_model": "大众帕萨特",
+    "customer_phone": "138 0013 8000",
+    "receipt_number": "T-007731",
+    "distance_km": 32.5,
+    "base_fare": 98,
+    "toll": 15,
+    "airport_charge": 0,
+    "advance_paid": 0,
+    "tax_percent": 3
+  }
+}

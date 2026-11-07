@@ -146,16 +146,20 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel Bill is in English, Hindi and Spanish; the other templates only in English" do
-      for locale <- Locales.live() do
-        assert Templates.supports?("fuel-bill", locale)
+    test "Fuel Bill and Cab Bill are in every language; the other templates only in English" do
+      for locale <- Locales.live(), slug <- ["fuel-bill", "taxi-receipt"] do
+        assert Templates.supports?(slug, locale)
       end
 
       hindi = Locales.fetch!("hi-in")
       assert Templates.supports?("rent-receipt", Locales.fetch!("en-in"))
       refute Templates.supports?("rent-receipt", hindi)
-      assert [%{"slug" => "fuel-bill"}] = Templates.list(hindi)
-      assert [%{"slug" => "fuel-bill"}] = Templates.list(Locales.fetch!("es-es"))
+
+      for code <- ["hi-in", "es-es", "ja-jp"] do
+        slugs = Locales.fetch!(code) |> Templates.list() |> Enum.map(& &1["slug"])
+        assert Enum.sort(slugs) == ["fuel-bill", "taxi-receipt"]
+      end
+
       assert length(Templates.list(Locales.fetch!("en-in"))) == 15
     end
 

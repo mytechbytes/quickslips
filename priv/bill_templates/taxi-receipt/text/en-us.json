@@ -1,0 +1,26 @@
+{
+  "sample": {
+    "operator_name": "Lone Star Cab",
+    "passenger_name": "John Smith",
+    "driver_name": "Michael Brown",
+    "pickup": "Downtown Austin, TX",
+    "drop": "Austin-Bergstrom International Airport",
+    "vehicle_number": "7ABC123",
+    "vehicle_model": "Toyota Camry",
+    "customer_phone": "(512) 555-0142",
+    "receipt_number": "T-007731",
+    "distance_km": 9.8,
+    "base_fare": 38.5,
+    "toll": 2.5,
+    "airport_charge": 5,
+    "advance_paid": 0
+  },
+  "print": {
+    "unit": "mi"
+  },
+  "fields": {
+    "distance_km": {
+      "label": "Distance (miles)"
+    }
+  }
+}
