@@ -29,10 +29,10 @@ defmodule QuickSlips.TemplatesTest do
 
   @categories ["Travel", "Home & utilities", "Health & learning", "Food & shopping", "Work"]
 
-  test "the catalogue has sixteen templates in five categories" do
+  test "the catalogue has seventeen templates in five categories" do
     templates = Templates.list()
 
-    assert length(templates) == 16
+    assert length(templates) == 17
 
     assert templates |> Enum.map(& &1["category"]) |> Enum.uniq() |> Enum.sort() ==
              Enum.sort(@categories)
@@ -104,6 +104,7 @@ defmodule QuickSlips.TemplatesTest do
     "gym-membership-receipt" => "gym-membership-receipt-generator",
     "hotel-invoice" => "hotel-bill-generator",
     "internet-bill" => "internet-bill-generator",
+    "maintenance-bill" => "maintenance-bill-generator",
     "medical-bill" => "medical-bill-generator",
     "mobile-bill" => "mobile-bill-generator",
     "parking-receipt" => "parking-receipt-generator",
@@ -147,7 +148,7 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel, Cab and Parking are in every language; the other templates only in English" do
+    test "Fuel, Cab, Parking and Maintenance are in every language; the other templates only in English" do
       for locale <- Locales.live(), slug <- ["fuel-bill", "taxi-receipt", "parking-receipt"] do
         assert Templates.supports?(slug, locale)
       end
@@ -158,10 +159,16 @@ defmodule QuickSlips.TemplatesTest do
 
       for code <- ["hi-in", "es-es", "ja-jp"] do
         slugs = Locales.fetch!(code) |> Templates.list() |> Enum.map(& &1["slug"])
-        assert Enum.sort(slugs) == ["fuel-bill", "parking-receipt", "taxi-receipt"]
+
+        assert Enum.sort(slugs) == [
+                 "fuel-bill",
+                 "maintenance-bill",
+                 "parking-receipt",
+                 "taxi-receipt"
+               ]
       end
 
-      assert length(Templates.list(Locales.fetch!("en-in"))) == 16
+      assert length(Templates.list(Locales.fetch!("en-in"))) == 17
     end
 
     test "get/2 gives the words of the language and keeps the internal slug" do
@@ -297,6 +304,20 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "samples" do
+    test "a country without a standard tax rate has none in the sample, whatever the English file says" do
+      for slug <- ["taxi-receipt", "maintenance-bill"] do
+        {:ok, india} = Templates.sample(slug, Locales.fetch!("en-in"))
+        {:ok, america} = Templates.sample(slug, Locales.fetch!("en-us"))
+        {:ok, brazil} = Templates.sample(slug, Locales.fetch!("pt-br"))
+        {:ok, spain} = Templates.sample(slug, Locales.fetch!("es-es"))
+
+        assert is_number(india["tax_percent"]), slug
+        assert is_number(spain["tax_percent"]), slug
+        refute Map.has_key?(america, "tax_percent"), slug
+        refute Map.has_key?(brazil, "tax_percent"), slug
+      end
+    end
+
     test "sample/2 puts the words of the language over the English sample" do
       {:ok, english} = Templates.sample("fuel-bill")
       {:ok, hindi} = Templates.sample("fuel-bill", Locales.fetch!("hi-in"))

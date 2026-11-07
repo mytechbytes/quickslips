@@ -1,0 +1,185 @@
+{
+  "title": "Maintenance Bill Generator",
+  "name": "Maintenance Bill",
+  "public_slug": "maintenance-bill-generator",
+  "summary": "Workshop estimate or invoice with parts, labour and {tax}.",
+  "description": "Generate a car or bike workshop estimate, invoice or job card with the customer and vehicle, spare parts with discounts, labour jobs and {tax}. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Workshop sheet"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "Workshop name"
+    },
+    "workshop_address": {
+      "label": "Workshop address"
+    },
+    "workshop_phone": {
+      "label": "Contact (optional)"
+    },
+    "dealer_name": {
+      "label": "Authorised dealer (optional)"
+    },
+    "document_type": {
+      "label": "Document",
+      "options": {
+        "Estimate": "Estimate",
+        "Invoice": "Invoice",
+        "Job card": "Job card"
+      }
+    },
+    "document_number": {
+      "label": "Document number"
+    },
+    "reference_number": {
+      "label": "Reference number (optional)"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "workshop_section": {
+      "label": "Workshop section (optional)",
+      "options": {
+        "Main workshop": "Main workshop",
+        "Service bay": "Service bay",
+        "Body shop": "Body shop",
+        "Spare counter": "Spare counter",
+        "Express lane": "Express lane",
+        "PDI bay": "PDI bay"
+      }
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "customer_phone": {
+      "label": "Customer contact (optional)"
+    },
+    "vehicle_model": {
+      "label": "Model"
+    },
+    "registration_number": {
+      "label": "Registration number"
+    },
+    "vin": {
+      "label": "VIN (optional)"
+    },
+    "insurance_company": {
+      "label": "Insurance company (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "terms": {
+      "label": "Terms, one per line (optional)"
+    },
+    "parts": {
+      "label": "Parts",
+      "options": {
+        "PAID": "Paid",
+        "Warranty": "Warranty",
+        "Insurance": "Insurance"
+      },
+      "columns": {
+        "code": "Part no.",
+        "name": "Description",
+        "billing": "Billing",
+        "qty": "Qty",
+        "rate": "Rate ({currency})",
+        "discount": "Disc. %"
+      }
+    },
+    "labour": {
+      "label": "Labour",
+      "options": {
+        "PAID": "Paid",
+        "Warranty": "Warranty",
+        "Insurance": "Insurance"
+      },
+      "columns": {
+        "code": "Job code",
+        "name": "Job",
+        "billing": "Billing",
+        "rate": "Amount ({currency})",
+        "discount": "Disc. %"
+      }
+    }
+  },
+  "print": {
+    "contact": "Contact",
+    "dealer": "Authorised dealer",
+    "no": "no.",
+    "customer": "Customer name",
+    "vin": "VIN",
+    "insurance": "Insurance company",
+    "reference": "Reference no.",
+    "date": "Date",
+    "model": "Model",
+    "reg_no": "Reg. no.",
+    "section": "Section",
+    "parts": "Part details",
+    "labour": "Labour details",
+    "parts_total": "Parts total",
+    "jobs_total": "Labour total",
+    "tax_details": "Tax details",
+    "taxable": "Taxable amount",
+    "summary": "Invoice summary",
+    "total": "Total",
+    "signatory": "Authorised signatory",
+    "code": "Code",
+    "description": "Description",
+    "billing": "Billing",
+    "qty": "Qty",
+    "rate": "Rate",
+    "discount": "Disc.",
+    "net": "Net amount"
+  },
+  "sample": {
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "Engine oil filter",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 450,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "Front brake pads (set)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 2400,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "Air filter",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 650,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "Regular service",
+        "billing": "PAID",
+        "rate": 1200,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "Brake inspection and fitting",
+        "billing": "PAID",
+        "rate": 800,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 18,
+    "terms": "Payment to be made within 7 days from the date of invoice.\nEstimate valid for 15 days only.\nLabour charges as per company policy.\nInsurance claims subject to surveyor approval.\nThe workshop is not responsible for items left in the vehicle.\nPlease check all details before leaving the workshop."
+  }
+}

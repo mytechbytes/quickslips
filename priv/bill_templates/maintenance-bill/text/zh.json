@@ -1,0 +1,192 @@
+{
+  "title": "汽车/摩托车维修单生成器",
+  "name": "维修单",
+  "public_slug": "maintenance-bill-generator",
+  "summary": "生成包含零件、工时和{tax}的维修估价单或发票。",
+  "description": "生成汽车或摩托车维修厂的估价单、发票或维修工单，包含客户和车辆信息、带折扣的零件、工时项目和{tax}。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "维修单"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "维修厂名称"
+    },
+    "workshop_address": {
+      "label": "维修厂地址"
+    },
+    "workshop_phone": {
+      "label": "联系电话（选填）"
+    },
+    "dealer_name": {
+      "label": "授权经销商（选填）"
+    },
+    "document_type": {
+      "label": "单据类型",
+      "options": {
+        "Estimate": "估价单",
+        "Invoice": "发票",
+        "Job card": "维修工单"
+      }
+    },
+    "document_number": {
+      "label": "单据编号"
+    },
+    "reference_number": {
+      "label": "参考编号（选填）"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "workshop_section": {
+      "label": "维修车间（选填）",
+      "options": {
+        "Main workshop": "主车间",
+        "Service bay": "服务工位",
+        "Body shop": "钣喷车间",
+        "Spare counter": "配件柜台",
+        "Express lane": "快修通道",
+        "PDI bay": "PDI 工位"
+      }
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "customer_phone": {
+      "label": "客户联系方式（选填）"
+    },
+    "vehicle_model": {
+      "label": "车型"
+    },
+    "registration_number": {
+      "label": "车牌号"
+    },
+    "vin": {
+      "label": "车架号 (VIN)（选填）"
+    },
+    "insurance_company": {
+      "label": "保险公司（选填）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "terms": {
+      "label": "条款（每行一条）（选填）"
+    },
+    "parts": {
+      "label": "零件",
+      "options": {
+        "PAID": "自费",
+        "Warranty": "保修",
+        "Insurance": "保险"
+      },
+      "columns": {
+        "code": "零件号",
+        "name": "描述",
+        "billing": "计费方式",
+        "qty": "数量",
+        "rate": "单价（{currency}）",
+        "discount": "折扣 %"
+      }
+    },
+    "labour": {
+      "label": "工时",
+      "options": {
+        "PAID": "自费",
+        "Warranty": "保修",
+        "Insurance": "保险"
+      },
+      "columns": {
+        "code": "工项代码",
+        "name": "工项",
+        "billing": "计费方式",
+        "rate": "金额（{currency}）",
+        "discount": "折扣 %"
+      }
+    }
+  },
+  "print": {
+    "contact": "联系方式",
+    "dealer": "授权经销商",
+    "no": "编号",
+    "customer": "客户姓名",
+    "vin": "车架号",
+    "insurance": "保险公司",
+    "reference": "参考编号",
+    "date": "日期",
+    "model": "车型",
+    "reg_no": "车牌号",
+    "section": "车间",
+    "parts": "零件明细",
+    "labour": "工时明细",
+    "parts_total": "零件合计",
+    "jobs_total": "工时合计",
+    "tax_details": "税务明细",
+    "taxable": "计税金额",
+    "summary": "费用汇总",
+    "total": "合计",
+    "signatory": "授权签字人",
+    "code": "编号",
+    "description": "描述",
+    "billing": "计费方式",
+    "qty": "数量",
+    "rate": "单价",
+    "discount": "折扣",
+    "net": "净额"
+  },
+  "sample": {
+    "workshop_name": "朝阳汽车维修中心",
+    "workshop_phone": "010-12345678",
+    "customer_name": "王伟",
+    "customer_phone": "138 0013 8000",
+    "vehicle_model": "大众朗逸",
+    "registration_number": "京A·12345",
+    "insurance_company": "国家保险",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "机油滤清器",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 35,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "前刹车片（一套）",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 260,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "空气滤清器",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 80,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "定期保养",
+        "billing": "PAID",
+        "rate": 120,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "刹车检查与更换",
+        "billing": "PAID",
+        "rate": 90,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 13,
+    "terms": "请在开票日起 7 天内付款。\n估价单有效期 15 天。\n工时费按本厂规定计收。\n保险理赔须经定损员确认。\n车内遗留物品，本厂概不负责。\n离厂前请核对所有信息。"
+  }
+}

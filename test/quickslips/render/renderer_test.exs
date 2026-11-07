@@ -251,6 +251,43 @@ defmodule QuickSlips.Render.RendererTest do
         "amount" => 99_999_999.99
       }
     },
+    "maintenance-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(workshop_phone dealer_name seller_tax_id reference_number workshop_section customer_phone vin
+           insurance_company parts labour tax_percent terms),
+      long: %{
+        "workshop_name" => String.duplicate("Sunrise Motors Workshop ", 4),
+        "workshop_address" => String.duplicate("Plot 21, Industrial Area, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "vehicle_model" => String.duplicate("Honda City ", 6),
+        "terms" =>
+          String.duplicate("The workshop is not responsible for items left in the vehicle.\n", 8),
+        "parts" =>
+          List.duplicate(
+            %{
+              "code" => String.duplicate("A", 30),
+              "name" => String.duplicate("Front brake pads ", 5),
+              "billing" => "Insurance",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "discount" => 12.5
+            },
+            12
+          ),
+        "labour" =>
+          List.duplicate(
+            %{
+              "code" => String.duplicate("B", 30),
+              "name" => String.duplicate("Brake inspection ", 5),
+              "billing" => "Warranty",
+              "rate" => 9_999_999.99,
+              "discount" => 100
+            },
+            8
+          )
+      }
+    },
     "taxi-receipt" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:

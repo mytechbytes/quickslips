@@ -1,0 +1,192 @@
+{
+  "title": "Generador de Factura de Taller",
+  "name": "Factura de Taller",
+  "public_slug": "generador-de-factura-de-taller",
+  "summary": "Presupuesto o factura de taller con recambios, mano de obra y {tax}.",
+  "description": "Genera un presupuesto, factura u orden de trabajo de taller de coche o moto con el cliente y el vehículo, recambios con descuento, mano de obra y {tax}. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Hoja de taller"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "Nombre del taller"
+    },
+    "workshop_address": {
+      "label": "Dirección del taller"
+    },
+    "workshop_phone": {
+      "label": "Teléfono (opcional)"
+    },
+    "dealer_name": {
+      "label": "Concesionario autorizado (opcional)"
+    },
+    "document_type": {
+      "label": "Documento",
+      "options": {
+        "Estimate": "Presupuesto",
+        "Invoice": "Factura",
+        "Job card": "Orden de trabajo"
+      }
+    },
+    "document_number": {
+      "label": "Número de documento"
+    },
+    "reference_number": {
+      "label": "Número de referencia (opcional)"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "workshop_section": {
+      "label": "Sección del taller (opcional)",
+      "options": {
+        "Main workshop": "Taller principal",
+        "Service bay": "Zona de servicio",
+        "Body shop": "Chapa y pintura",
+        "Spare counter": "Mostrador de recambios",
+        "Express lane": "Servicio rápido",
+        "PDI bay": "Zona PDI"
+      }
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "customer_phone": {
+      "label": "Contacto del cliente (opcional)"
+    },
+    "vehicle_model": {
+      "label": "Modelo"
+    },
+    "registration_number": {
+      "label": "Matrícula"
+    },
+    "vin": {
+      "label": "VIN (bastidor) (opcional)"
+    },
+    "insurance_company": {
+      "label": "Aseguradora (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "terms": {
+      "label": "Condiciones, una por línea (opcional)"
+    },
+    "parts": {
+      "label": "Recambios",
+      "options": {
+        "PAID": "Pagado",
+        "Warranty": "Garantía",
+        "Insurance": "Seguro"
+      },
+      "columns": {
+        "code": "N.º de pieza",
+        "name": "Descripción",
+        "billing": "Facturación",
+        "qty": "Cant.",
+        "rate": "Precio ({currency})",
+        "discount": "Dto. %"
+      }
+    },
+    "labour": {
+      "label": "Mano de obra",
+      "options": {
+        "PAID": "Pagado",
+        "Warranty": "Garantía",
+        "Insurance": "Seguro"
+      },
+      "columns": {
+        "code": "Cód. de trabajo",
+        "name": "Trabajo",
+        "billing": "Facturación",
+        "rate": "Importe ({currency})",
+        "discount": "Dto. %"
+      }
+    }
+  },
+  "print": {
+    "contact": "Contacto",
+    "dealer": "Concesionario autorizado",
+    "no": "n.º",
+    "customer": "Nombre del cliente",
+    "vin": "VIN (bastidor)",
+    "insurance": "Aseguradora",
+    "reference": "N.º de referencia",
+    "date": "Fecha",
+    "model": "Modelo",
+    "reg_no": "Matrícula",
+    "section": "Sección",
+    "parts": "Recambios",
+    "labour": "Mano de obra",
+    "parts_total": "Total de recambios",
+    "jobs_total": "Total de mano de obra",
+    "tax_details": "Detalle de impuestos",
+    "taxable": "Base imponible",
+    "summary": "Resumen",
+    "total": "Total",
+    "signatory": "Firma autorizada",
+    "code": "Código",
+    "description": "Descripción",
+    "billing": "Facturación",
+    "qty": "Cant.",
+    "rate": "Precio",
+    "discount": "Dto.",
+    "net": "Importe neto"
+  },
+  "sample": {
+    "workshop_name": "Taller Giralda",
+    "workshop_phone": "954 123 456",
+    "customer_name": "Carlos Gómez",
+    "customer_phone": "612 345 678",
+    "vehicle_model": "Seat León",
+    "registration_number": "4521 LMN",
+    "insurance_company": "Seguros Nacional",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "Filtro de aceite",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 12,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "Pastillas de freno delanteras (juego)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 48,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "Filtro de aire",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 18,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "Revisión periódica",
+        "billing": "PAID",
+        "rate": 60,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "Revisión y montaje de frenos",
+        "billing": "PAID",
+        "rate": 40,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 21,
+    "terms": "El pago debe realizarse en un plazo de 7 días desde la fecha de la factura.\nPresupuesto válido durante 15 días.\nLa mano de obra se factura según la política del taller.\nLas reclamaciones al seguro están sujetas a la aprobación del perito.\nEl taller no se responsabiliza de los objetos dejados en el vehículo.\nCompruebe todos los datos antes de salir del taller."
+  }
+}
