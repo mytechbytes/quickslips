@@ -1,0 +1,175 @@
+{
+  "title": "宽带账单生成器",
+  "name": "宽带账单",
+  "public_slug": "internet-bill-generator",
+  "summary": "含套餐、账期和{tax}的宽带或光纤账单。",
+  "description": "生成包含套餐、速率、计费周期、费用和{tax}的宽带或光纤账单。四种样式；即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "经典",
+    "t2": "宽带发票",
+    "t3": "详细发票",
+    "t4": "对账单"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "宽带运营商"
+    },
+    "provider_address": {
+      "label": "地址（选填）"
+    },
+    "provider_email": {
+      "label": "邮箱（选填）"
+    },
+    "registered_office": {
+      "label": "注册地址（选填）"
+    },
+    "gstin": {
+      "label": "{tax_id}（选填）"
+    },
+    "bill_number": {
+      "label": "账单编号"
+    },
+    "account_number": {
+      "label": "客户账号"
+    },
+    "bill_date": {
+      "label": "账单日期"
+    },
+    "due_date": {
+      "label": "到期日（选填）"
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "customer_address": {
+      "label": "客户地址（选填）"
+    },
+    "user_name": {
+      "label": "用户名（选填）"
+    },
+    "period_start": {
+      "label": "计费周期起"
+    },
+    "period_end": {
+      "label": "计费周期止"
+    },
+    "plan_name": {
+      "label": "套餐"
+    },
+    "plan_speed": {
+      "label": "套餐速率（选填）"
+    },
+    "plan_package": {
+      "label": "套餐类型（选填）",
+      "options": {
+        "Limited": "限量",
+        "Unlimited": "不限量",
+        "FUP": "合理使用"
+      }
+    },
+    "plan_validity": {
+      "label": "套餐有效期（选填）",
+      "options": {
+        "Monthly": "月付",
+        "Quarterly": "季付",
+        "Half-yearly": "半年付",
+        "Annual": "年付"
+      }
+    },
+    "service_description": {
+      "label": "服务说明（选填）"
+    },
+    "plan_charge": {
+      "label": "套餐费用（{currency}）"
+    },
+    "other_charges": {
+      "label": "安装或其他费用（{currency}）（选填）"
+    },
+    "discount": {
+      "label": "折扣（{currency}）（选填）"
+    },
+    "gst_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "payments_received": {
+      "label": "已收款项（{currency}）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式（选填）",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "terms": {
+      "label": "条款和条件（每行一条）（选填）"
+    }
+  },
+  "print": {
+    "title": "宽带账单",
+    "bill_no": "账单号",
+    "bill_date": "账单日期",
+    "due_date": "到期日",
+    "account_no": "客户账号",
+    "billing_period": "计费周期",
+    "billed_to": "购买人",
+    "description": "说明",
+    "amount": "金额",
+    "installation": "安装及其他费用",
+    "discount": "折扣",
+    "subtotal": "小计",
+    "amount_due": "应付金额",
+    "pay_by": "请在 {date} 前付款，以免连接中断。",
+    "computer_generated": "本账单由电脑生成。",
+    "invoice_title": "宽带发票",
+    "customer_name": "客户姓名",
+    "customer_address": "客户地址",
+    "bill_account": "账单账号",
+    "receipt_details": "收据信息",
+    "receipt_no": "收据编号",
+    "date": "日期",
+    "payment_method": "支付方式",
+    "provider_details": "运营商信息",
+    "billing_cycle": "计费周期",
+    "plan_summary": "套餐明细",
+    "plan": "套餐",
+    "plan_speed": "速率",
+    "plan_package": "类型",
+    "plan_validity": "有效期",
+    "plan_amount": "套餐金额",
+    "total": "合计",
+    "payable_to": "所有款项请支付给",
+    "no_signature": "本发票由电脑生成，无需签字",
+    "receipt_for_recipient": "（客户联）",
+    "name": "姓名",
+    "invoice_no": "发票号码",
+    "taxable_amount": "计税金额",
+    "rate_pct": "税率 %",
+    "payments_received": "已收款项",
+    "user_name": "用户名",
+    "service_description": "宽带服务说明",
+    "amount_incl_tax": "含税金额",
+    "registered_office": "注册地址",
+    "terms_title": "条款和条件",
+    "acknowledgement": "付款回执",
+    "subscriber_name": "用户姓名",
+    "hello": "您好",
+    "invoice_total": "发票总额",
+    "currency": "币种",
+    "invoice_amount": "发票金额",
+    "mailing_address": "我们的联系邮箱为"
+  },
+  "sample": {
+    "provider_name": "天际宽带",
+    "registered_office": "天际宽带有限公司，北京市朝阳区建国路88号",
+    "customer_name": "王伟",
+    "plan_name": "光纤 200 Mbps，不限流量",
+    "service_description": "光纤宽带服务",
+    "plan_charge": 99,
+    "gst_percent": 9,
+    "terms": "支票请开具给天际宽带。\n支票退票将收取 ¥50 的罚金。\n逾期付款将收取滞纳金。\n如逾期未付，我们保留停止服务的权利。\n本发票由系统生成，无需签字盖章。"
+  }
+}

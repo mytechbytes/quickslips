@@ -1,0 +1,131 @@
+{
+  "title": "Gerador de recibo de salário de motorista",
+  "name": "Recibo de salário de motorista",
+  "public_slug": "gerador-de-recibo-de-salario-de-motorista",
+  "summary": "Recibo mensal de salário para um motorista.",
+  "description": "Crie um recibo de salário para um motorista com salário mensal, horas extras, adicionais e descontos. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Reembolso",
+    "t2": "Com confirmação de recebimento",
+    "t3": "Declaração do empregador",
+    "t4": "Vários meses",
+    "t5": "Comprovante de folha",
+    "t6": "Registro simples"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Nome do empregador"
+    },
+    "employer_address": {
+      "label": "Endereço do empregador (opcional)"
+    },
+    "driver_name": {
+      "label": "Nome do motorista"
+    },
+    "vehicle_number": {
+      "label": "Placa do veículo (opcional)"
+    },
+    "declaration": {
+      "label": "Declaração (opcional)"
+    },
+    "month": {
+      "label": "Salário do mês"
+    },
+    "from_date": {
+      "label": "Período de (opcional)"
+    },
+    "to_date": {
+      "label": "Período até (opcional)"
+    },
+    "bill_by": {
+      "label": "Cobrar por",
+      "options": {
+        "Monthly": "Mensal",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
+    },
+    "receipt_date": {
+      "label": "Data do recibo"
+    },
+    "basic_salary": {
+      "label": "Salário mensal ({currency})"
+    },
+    "overtime": {
+      "label": "Horas extras ({currency}) (opcional)"
+    },
+    "allowance": {
+      "label": "Combustível e outros adicionais ({currency}) (opcional)"
+    },
+    "deductions": {
+      "label": "Adiantamento ou descontos ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pago com",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Bank transfer": "Transferência bancária",
+        "Cheque": "Cheque",
+        "Card": "Cartão",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Recibo de salário do motorista",
+    "date": "Data",
+    "certify": "Certifica-se que {employer} pagou {amount} ao motorista {driver} referente ao salário do mês de {month} (recibo de quitação anexo).",
+    "certify_period": "Certifica-se que {employer} pagou {amount} ao motorista {driver} referente ao salário do período {period} (recibo de quitação anexo).",
+    "certify_self": "Certifico que paguei {amount} ao motorista {driver} pelo mês de {month} (recibo de quitação anexo).",
+    "reimburse": "Solicito o reembolso do valor acima. Declaro ainda que o que consta acima é correto e verdadeiro.",
+    "vehicle_no": "Placa",
+    "driver_name": "Nome do motorista",
+    "employer_name": "Nome do empregador",
+    "employer_signature": "Assinatura do empregador",
+    "revenue_stamp": "Selo fiscal",
+    "salary_month": "Salário do mês",
+    "amount_paid": "Valor pago",
+    "received_text": "Recebido de {employer} a quantia de {amount} pelo motorista {driver} referente ao salário do mês de {month}.",
+    "ack_title": "Confirmação de recebimento",
+    "receipt_date_of": "Data de recebimento",
+    "for_month": "Pelo mês de",
+    "received_sum": "Recebida a quantia de {amount} pelo mês de {month} de {employer}.",
+    "period": "Período",
+    "receipt_of": "Recibo {number} de {total}",
+    "payroll_voucher": "Comprovante de folha",
+    "voucher_sub": "Comprovante de pagamento do salário do motorista",
+    "payer": "Pagador",
+    "driver": "Motorista",
+    "acknowledgement": "Confirmação",
+    "ack_voucher": "Recebido por {driver} de {employer} referente ao salário de {month}.",
+    "received_by": "Recebido por",
+    "prepared_by": "Preparado por",
+    "name": "Nome",
+    "record_title": "Registro de salário do motorista",
+    "record_sub": "Formato simples de confirmação",
+    "payer_name": "Nome do pagador",
+    "declaration_label": "Declaração",
+    "confirm": "Confirmo o recebimento do valor do salário indicado acima, pago pelo pagador, referente ao mês deste registro.",
+    "notes": "Observações",
+    "note_1": "O salário cobre apenas o mês indicado.",
+    "note_2": "Horas extras e adicionais estão incluídos apenas quando listados.",
+    "payer_details": "Dados do pagador",
+    "driver_signature": "Assinatura do motorista",
+    "monthly_salary": "Salário mensal",
+    "overtime": "Horas extras",
+    "allowance": "Adicionais",
+    "deductions": "Adiantamento ou descontos"
+  },
+  "sample": {
+    "employer_name": "Carlos Lima",
+    "driver_name": "João Santos",
+    "vehicle_number": "ABC-1D23",
+    "basic_salary": 3200,
+    "overtime": 300,
+    "allowance": 200,
+    "deductions": 100,
+    "declaration": "Declaro ainda que o motorista é utilizado exclusivamente para fins profissionais."
+  }
+}

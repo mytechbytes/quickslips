@@ -1,0 +1,36 @@
+{
+  "sample": {
+    "seller_name": "Bright Cart Retail Ltd",
+    "seller_phone": "0800 123 4567",
+    "customer_name": "James Taylor",
+    "signatory_name": "Oliver Smith",
+    "items": [
+      {
+        "name": "Wireless earbuds with charging case",
+        "qty": 1,
+        "rate": 39.99,
+        "tax": 20
+      },
+      {
+        "name": "Silicone phone case",
+        "qty": 2,
+        "rate": 9.99,
+        "tax": 20
+      },
+      {
+        "name": "Cotton crew-neck T-shirt",
+        "qty": 2,
+        "rate": 14.99,
+        "tax": 20
+      },
+      {
+        "name": "Stainless steel water bottle (750 ml)",
+        "qty": 1,
+        "rate": 17.5,
+        "tax": 20
+      }
+    ],
+    "shipping_charge": 3.99,
+    "customer_phone": "07700 900123"
+  }
+}

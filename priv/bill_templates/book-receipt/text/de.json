@@ -1,0 +1,92 @@
+{
+  "title": "Buchhandlungs-Quittung-Generator",
+  "name": "Buchquittung",
+  "public_slug": "buchquittung-generator",
+  "summary": "Quittung der Buchhandlung mit Titel, Autor und Zahlung.",
+  "description": "Erstellen Sie eine Buchhandlungs-Quittung mit Titel, Autor und Verlag des Buches, Menge, Preis und Zahlungsart. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Klassisch",
+    "t2": "Mit Verkäufer"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Name der Buchhandlung"
+    },
+    "store_address": {
+      "label": "Adresse der Buchhandlung (optional)"
+    },
+    "receipt_number": {
+      "label": "Quittungsnummer"
+    },
+    "date": {
+      "label": "Kaufdatum"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "book_name": {
+      "label": "Buchtitel"
+    },
+    "author": {
+      "label": "Autor (optional)"
+    },
+    "publisher": {
+      "label": "Verlag"
+    },
+    "description": {
+      "label": "Beschreibung (optional)"
+    },
+    "quantity": {
+      "label": "Menge"
+    },
+    "book_price": {
+      "label": "Preis pro Buch ({currency})"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Buchquittung",
+    "bill_to": "Rechnung an",
+    "receipt_details": "Quittungsdaten",
+    "receipt_no": "Quittungs-Nr.",
+    "receipt_date": "Datum",
+    "customer_name": "Kundenname",
+    "book_name": "Buchtitel",
+    "author": "Autor",
+    "publisher": "Verlag",
+    "payment_method": "Zahlungsart",
+    "receipt_summary": "Zusammenfassung",
+    "item": "Artikel",
+    "description": "Beschreibung",
+    "qty": "Menge",
+    "price": "Preis",
+    "total": "Gesamt",
+    "sold_by": "Verkauft von",
+    "store_name": "Name",
+    "store_address": "Adresse",
+    "thanks": "Danke! Besuchen Sie uns bald wieder.",
+    "quote_1": "Ein Zimmer ohne Bücher ist wie ein Körper ohne Seele.",
+    "quote_2": "Nehmen Sie ein gutes Buch mit ins Bett – Bücher schnarchen nicht.",
+    "quote_3": "Bücher sind die stillsten und beständigsten Freunde; sie sind die zugänglichsten und weisesten Ratgeber und die geduldigsten Lehrer.",
+    "quote_4": "Bücher sind gute Gesellschaft, in traurigen wie in glücklichen Zeiten, denn Bücher sind Menschen – Menschen, die überlebt haben, indem sie sich zwischen Buchdeckeln versteckten."
+  },
+  "sample": {
+    "store_name": "Buchhandlung Seitenblick",
+    "customer_name": "Anna Becker",
+    "book_name": "Die Verwandlung",
+    "author": "Franz Kafka",
+    "publisher": "Sonnenverlag",
+    "description": "Taschenbuch",
+    "quantity": 2,
+    "book_price": 8.9
+  }
+}

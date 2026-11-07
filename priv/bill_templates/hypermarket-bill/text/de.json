@@ -1,0 +1,175 @@
+{
+  "title": "Hypermarkt-Rechnung-Generator",
+  "name": "Hypermarkt-Rechnung",
+  "public_slug": "hypermarkt-rechnung-generator",
+  "summary": "Hypermarkt-Rechnung mit Steuersatz je Artikel.",
+  "description": "Erstellen Sie eine Hypermarkt- oder Supermarkt-Rechnung mit einem {tax}-Satz für jeden Artikel, der Steueraufschlüsselung nach Satz, Bestell- und Lieferdaten und Ihrer Ersparnis. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Rechnung"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Marke des Geschäfts"
+    },
+    "company_name": {
+      "label": "Firmenname"
+    },
+    "company_address": {
+      "label": "Firmenadresse (optional)"
+    },
+    "phone": {
+      "label": "Kundenservice-Telefon (optional)"
+    },
+    "email": {
+      "label": "Kundenservice-E-Mail (optional)"
+    },
+    "website": {
+      "label": "Webadresse der Bedingungen (optional)"
+    },
+    "cin": {
+      "label": "CIN (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "fssai": {
+      "label": "FSSAI-Nr. (optional)"
+    },
+    "invoice_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Rechnungsdatum"
+    },
+    "order_number": {
+      "label": "Bestellnummer (optional)"
+    },
+    "order_date": {
+      "label": "Bestelldatum (optional)"
+    },
+    "delivery_date": {
+      "label": "Lieferdatum (optional)"
+    },
+    "delivery_time": {
+      "label": "Lieferzeit (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "customer_name": {
+      "label": "Kundenname (optional)"
+    },
+    "customer_phone": {
+      "label": "Mobilnummer (optional)"
+    },
+    "delivery_mode": {
+      "label": "Lieferart",
+      "options": {
+        "Self pick-up": "Selbstabholung",
+        "Home delivery": "Lieferung nach Hause"
+      }
+    },
+    "delivery_address": {
+      "label": "Abhol- / Lieferadresse (optional)"
+    },
+    "savings": {
+      "label": "Ersparnis gegenüber dem Listenpreis ({currency}) (optional)"
+    },
+    "payment_note": {
+      "label": "Zahlungshinweis (optional)"
+    },
+    "items": {
+      "label": "Artikel",
+      "columns": {
+        "name": "Artikel",
+        "hsn": "HS-Code",
+        "qty": "Menge",
+        "rate": "Preis ({currency})",
+        "tax": "Steuer %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Rechnung",
+    "invoice_no": "Rechnungs-Nr.",
+    "invoice_date": "Datum",
+    "hsn": "HS",
+    "particulars": "Position",
+    "qty": "Menge",
+    "rate": "Preis",
+    "value": "Betrag",
+    "items": "Artikel",
+    "amt": "Summe",
+    "your_savings": "Ihre Ersparnis",
+    "on_list": "gegenüber Listenpreis",
+    "breakup": "Steueraufschlüsselung",
+    "amount_in": "Beträge in",
+    "rate_col": "Satz",
+    "taxable": "Netto",
+    "total": "Gesamt",
+    "order_details": "Bestelldaten",
+    "order_number": "Bestellnummer",
+    "order_date": "Bestelldatum",
+    "delivery_date": "Lieferdatum",
+    "delivery_time": "Lieferzeit",
+    "payment_mode": "Zahlungsart",
+    "customer_delivery": "Kunde und Lieferung",
+    "customer_name": "Kundenname",
+    "mobile": "Mobilnummer",
+    "delivery_mode": "Lieferart",
+    "address": "Abhol- / Lieferadresse",
+    "collect": "{amount} werden bei der Lieferung kassiert",
+    "computer_generated": "Dies ist eine maschinell erstellte Rechnung.",
+    "exempt": "Steuerfrei"
+  },
+  "sample": {
+    "brand_name": "Markthalle Nord",
+    "company_name": "Markthalle Nord GmbH",
+    "phone": "0800 1234567",
+    "delivery_time": "18:00 – 21:00 Uhr",
+    "payment_note": "Zahlung bei Lieferung (bar oder Karte)",
+    "customer_name": "Anna Becker",
+    "customer_phone": "0151 2345678",
+    "items": [
+      {
+        "name": "Reis (1 kg)",
+        "qty": 1,
+        "rate": 2.9,
+        "tax": 7
+      },
+      {
+        "name": "Sonnenblumenöl (1 L)",
+        "qty": 2,
+        "rate": 2.5,
+        "tax": 7
+      },
+      {
+        "name": "Butterkekse (300 g)",
+        "qty": 3,
+        "rate": 1.5,
+        "tax": 7
+      },
+      {
+        "name": "Spülmittel (500 ml)",
+        "qty": 1,
+        "rate": 1.9,
+        "tax": 19
+      },
+      {
+        "name": "Frische Tomaten (1 kg)",
+        "qty": 2,
+        "rate": 2.4,
+        "tax": 7
+      }
+    ],
+    "savings": 1.2,
+    "delivery_mode": "Home delivery"
+  }
+}

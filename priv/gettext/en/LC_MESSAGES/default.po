@@ -671,3 +671,8 @@ msgstr ""
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Item Details"
 msgstr ""
+
+#: lib/quickslips_web/components/catalogue_components.ex:127
+#, elixir-autogen, elixir-format
+msgid "Generate Now"
+msgstr ""

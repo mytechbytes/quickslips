@@ -1,0 +1,180 @@
+{
+  "title": "Generador de Ticket de Farmacia",
+  "name": "Ticket de Farmacia",
+  "public_slug": "generador-de-ticket-de-farmacia",
+  "summary": "Ticket de farmacia con lote, caducidad y PVP.",
+  "description": "Genera un ticket de farmacia con medicamentos, fabricante, lote, caducidad y PVP, el {tax} incluido en el precio, un descuento y los datos de licencia de la sucursal. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Nombre de la farmacia"
+    },
+    "brand_subtitle": {
+      "label": "Lema (opcional)"
+    },
+    "branch_name": {
+      "label": "Sucursal (opcional)"
+    },
+    "branch_address": {
+      "label": "Dirección de la sucursal (opcional)"
+    },
+    "toll_free": {
+      "label": "Teléfono (opcional)"
+    },
+    "website": {
+      "label": "Sitio web (opcional)"
+    },
+    "dl_number": {
+      "label": "N.º de licencia de farmacia (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "fssai": {
+      "label": "N.º FSSAI (opcional)"
+    },
+    "registered_office": {
+      "label": "Domicilio social (opcional)"
+    },
+    "admin_office": {
+      "label": "Oficina administrativa (opcional)"
+    },
+    "bill_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "terminal_number": {
+      "label": "Terminal n.º (opcional)"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "ref_number": {
+      "label": "N.º de ref. (opcional)"
+    },
+    "doctor_name": {
+      "label": "Médico / prescriptor (opcional)"
+    },
+    "discount": {
+      "label": "Descuento sobre el total ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "signatory_name": {
+      "label": "Nombre del firmante (opcional)"
+    },
+    "signatory_line": {
+      "label": "Cargo del firmante (opcional)"
+    },
+    "items": {
+      "label": "Medicamentos",
+      "columns": {
+        "name": "Artículo",
+        "hsn": "Código HSN",
+        "mfr": "Fabricante",
+        "batch": "Lote",
+        "expiry": "Caducidad",
+        "schedule": "Lista",
+        "qty": "Cant.",
+        "rate": "PVP ({currency})",
+        "tax": "Impuesto %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "Factura",
+    "bill_no": "Factura n.º",
+    "date_time": "Fecha / hora",
+    "terminal": "Terminal n.º",
+    "name": "Nombre",
+    "ref_no": "N.º de ref.",
+    "doctor": "Médico",
+    "payment": "Pago",
+    "tel": "Tel.",
+    "dl_no": "N.º de licencia",
+    "item": "Artículo",
+    "hsn": "Código HSN",
+    "mfr": "Fabricante",
+    "batch": "Lote",
+    "expiry": "Caducidad",
+    "sch": "Lista",
+    "qty": "Cant.",
+    "mrp": "PVP",
+    "tax_rate": "Impuesto %",
+    "taxable": "Base",
+    "total_amount": "Importe total",
+    "total": "Total",
+    "discount": "Descuento",
+    "net_total": "Total neto",
+    "authorised": "Firma autorizada",
+    "registered": "Domicilio social",
+    "admin": "Oficina administrativa",
+    "taxable_value": "Base imponible"
+  },
+  "sample": {
+    "brand_name": "Farmacia Giralda",
+    "brand_subtitle": "Su salud, nuestra prioridad",
+    "branch_name": "Sucursal Centro",
+    "doctor_name": "Dra. Lucía Fernández",
+    "customer_name": "Carlos Gómez",
+    "items": [
+      {
+        "name": "Paracetamol 500 mg (20 comprimidos)",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 2.5,
+        "tax": 4
+      },
+      {
+        "name": "Amoxicilina 500 mg (12 cápsulas)",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 5.2,
+        "tax": 4
+      },
+      {
+        "name": "Jarabe para la tos 100 ml",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 6.5,
+        "tax": 4
+      },
+      {
+        "name": "Termómetro digital",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 9,
+        "tax": 21
+      }
+    ],
+    "discount": 1,
+    "toll_free": "954 123 456",
+    "dl_number": "N.º autorización SE-F-1234",
+    "registered_office": "Farmacia Giralda S.L., Calle Serrano 10, 28001 Madrid",
+    "admin_office": "Farmacia Giralda S.L., Av. de la Constitución 45, 41001 Sevilla",
+    "signatory_line": "Farmacéutico/a"
+  }
+}

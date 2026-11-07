@@ -1,0 +1,226 @@
+{
+  "title": "Gerador de nota médica",
+  "name": "Nota médica",
+  "public_slug": "gerador-de-nota-medica",
+  "summary": "Nota de hospital, clínica ou laboratório com {tax}.",
+  "description": "Gere uma nota de hospital, clínica ou laboratório com paciente, médico, quarto, consulta, medicamentos, exames e cobranças detalhadas. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota hospitalar",
+    "t2": "Nota provisória"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "Hospital, clínica ou laboratório"
+    },
+    "clinic_address": {
+      "label": "Endereço (opcional)"
+    },
+    "clinic_phone": {
+      "label": "Telefone de contato (opcional)"
+    },
+    "hospital_details": {
+      "label": "Dados do estabelecimento (opcional)"
+    },
+    "registration_number": {
+      "label": "Número de registro (opcional)"
+    },
+    "bill_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "admit_date": {
+      "label": "Data de internação (opcional)"
+    },
+    "discharge_date": {
+      "label": "Data de alta (opcional)"
+    },
+    "patient_name": {
+      "label": "Nome do paciente"
+    },
+    "patient_details": {
+      "label": "Idade e sexo (opcional)"
+    },
+    "patient_issue": {
+      "label": "Motivo da consulta (opcional)"
+    },
+    "guardian_name": {
+      "label": "Nome do responsável (opcional)"
+    },
+    "patient_phone": {
+      "label": "Celular do paciente (opcional)"
+    },
+    "patient_address": {
+      "label": "Endereço do paciente (opcional)"
+    },
+    "payer_name": {
+      "label": "Nome do pagador (opcional)"
+    },
+    "payer_address": {
+      "label": "Endereço do pagador (opcional)"
+    },
+    "doctor_name": {
+      "label": "Médico (opcional)"
+    },
+    "doctor_designation": {
+      "label": "Cargo (opcional)"
+    },
+    "room": {
+      "label": "Categoria do quarto (opcional)",
+      "options": {
+        "Single": "Individual",
+        "Semi-private": "Semiprivativo",
+        "Private": "Particular",
+        "General": "Enfermaria",
+        "ICU": "UTI"
+      }
+    },
+    "insurance": {
+      "label": "Seguro (opcional)",
+      "options": {
+        "Yes": "Sim",
+        "No": "Não"
+      }
+    },
+    "remark": {
+      "label": "Observação (opcional)"
+    },
+    "consultation_fee": {
+      "label": "Consulta ({currency}) (opcional)"
+    },
+    "medicines_cost": {
+      "label": "Medicamentos ({currency}) (opcional)"
+    },
+    "tests_cost": {
+      "label": "Exames e procedimentos ({currency}) (opcional)"
+    },
+    "other_charges": {
+      "label": "Outros custos ({currency}) (opcional)"
+    },
+    "discount": {
+      "label": "Desconto ({currency}) (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "amount_paid": {
+      "label": "Valor pago ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pago com",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Cobranças detalhadas",
+      "columns": {
+        "name": "Descrição",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "N.º da nota",
+    "contact": "Contato",
+    "reg_no": "N.º de registro",
+    "discharge_date": "Data de alta",
+    "admit_date": "Data de internação",
+    "patient_info": "Dados do paciente",
+    "patient_name": "Nome do paciente",
+    "patient_issue": "Motivo da consulta",
+    "address": "Endereço",
+    "guardian": "Nome do responsável",
+    "mobile": "Celular",
+    "insurance": "Seguro disponível",
+    "age": "Idade",
+    "consultant": "Médico responsável",
+    "room": "Categoria do quarto",
+    "details": "Detalhes",
+    "price": "Preço",
+    "amount": "Valor",
+    "units": "Qtd.",
+    "pay_by": "Forma de pagamento",
+    "amount_paid": "Valor pago",
+    "tax": "Imposto",
+    "taxable": "Base de cálculo",
+    "net": "Valor líquido",
+    "total_amount": "Valor total",
+    "remark": "Observação",
+    "computer": "* Fatura gerada por computador; assinatura dispensada.",
+    "created": "Criada em {when}",
+    "phone": "Tel.",
+    "timing": "Hora",
+    "patient_uid": "ID do paciente",
+    "name": "Nome",
+    "payer": "Dados do pagador",
+    "consulting_doctors": "Médicos consultores",
+    "date": "Data",
+    "admission_no": "N.º de internação",
+    "admission_date": "Data de internação",
+    "bed": "Leito(s)",
+    "provisional": "Fatura provisória",
+    "room_type": "Tipo de quarto",
+    "particulars": "Descrição",
+    "total_bill": "Valor total da nota",
+    "discount": "Desconto",
+    "payable": "Valor a pagar",
+    "balance": "Saldo",
+    "breakup": "Detalhamento",
+    "date_time": "Data e hora",
+    "rate": "Tarifa",
+    "payment_mode": "Forma de pagamento",
+    "gst_type": "Tipo de GST",
+    "intra": "Intraestadual (CGST + SGST)",
+    "gst_pct": "Alíquota",
+    "notes": "Observações",
+    "consultation": "Consulta",
+    "medicines": "Medicamentos",
+    "tests": "Exames e procedimentos",
+    "other": "Outros custos",
+    "itemised": "Cobranças detalhadas"
+  },
+  "sample": {
+    "clinic_name": "Clínica da Família Verde",
+    "doctor_name": "Dra. Ana Souza",
+    "doctor_designation": "Médica clínica geral",
+    "patient_name": "Carlos Lima",
+    "guardian_name": "Maria Lima",
+    "payer_name": "Maria Lima",
+    "patient_issue": "Febre e tosse",
+    "items": [
+      {
+        "name": "Quarto (por dia)",
+        "qty": 2,
+        "rate": 450
+      },
+      {
+        "name": "Enfermagem (por dia)",
+        "qty": 2,
+        "rate": 120
+      }
+    ],
+    "consultation_fee": 250,
+    "medicines_cost": 120,
+    "tests_cost": 180,
+    "discount": 50,
+    "amount_paid": 600,
+    "tax_percent": null,
+    "hospital_details": "Pronto atendimento 24 horas, farmácia e laboratório",
+    "registration_number": "CNES 2077485",
+    "patient_address": "Rua das Flores, 45, apto 12, São Paulo - SP",
+    "payer_address": "Rua das Flores, 45, apto 12, São Paulo - SP",
+    "clinic_phone": "(11) 3456-7890",
+    "patient_details": "42 / M",
+    "remark": "Em caso de emergência, procure atendimento imediatamente se houver dor, movimentos dolorosos, vermelhidão, pus ou sangramento. Retorno após 5 dias."
+  }
+}

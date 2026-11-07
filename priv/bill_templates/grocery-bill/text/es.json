@@ -1,0 +1,127 @@
+{
+  "title": "Generador de Ticket de Supermercado",
+  "name": "Ticket de Supermercado",
+  "public_slug": "generador-de-ticket-de-supermercado",
+  "summary": "Artículos, cantidades y totales.",
+  "description": "Crea un ticket de supermercado con los artículos que necesites, cantidades, precios, descuento y {tax}. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura minorista",
+    "t2": "Ticket con ahorro"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Nombre de la tienda"
+    },
+    "store_address": {
+      "label": "Dirección (opcional)"
+    },
+    "store_phone": {
+      "label": "Teléfono (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "fssai_number": {
+      "label": "N.º de licencia FSSAI (opcional)"
+    },
+    "bill_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "transaction_id": {
+      "label": "ID de transacción (opcional)"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente (opcional)"
+    },
+    "discount": {
+      "label": "Descuento ({currency}) (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pagado con",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "items": {
+      "label": "Artículos",
+      "columns": {
+        "name": "Artículo",
+        "qty": "Cant.",
+        "rate": "Precio ({currency})",
+        "discount": "Dto. %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tel.",
+    "retail_invoice": "Factura minorista",
+    "bill_no": "Factura n.º",
+    "bill_date": "Fecha",
+    "time": "Hora",
+    "particulars": "Concepto",
+    "rate": "Precio",
+    "qty": "Cant.",
+    "amount": "Importe",
+    "total": "Total",
+    "net_amount": "Importe neto",
+    "payment_method": "Forma de pago",
+    "transaction": "ID de transacción",
+    "customer": "Nombre del cliente",
+    "thanks": "¡Gracias! Vuelva pronto.",
+    "sn": "N.º",
+    "item_name": "Artículo",
+    "unit_price": "Precio neto",
+    "sub_total": "Subtotal",
+    "saving": "Ahorro total",
+    "saving_pct": "Ahorro total (%)",
+    "discount": "Descuento"
+  },
+  "sample": {
+    "store_name": "Supermercado Giralda",
+    "items": [
+      {
+        "name": "Arroz basmati (1 kg)",
+        "qty": 1,
+        "rate": 2.4
+      },
+      {
+        "name": "Lentejas (500 g)",
+        "qty": 2,
+        "rate": 1.5
+      },
+      {
+        "name": "Aceite de girasol (1 L)",
+        "qty": 2,
+        "rate": 2.2,
+        "discount": 5
+      },
+      {
+        "name": "Azúcar (1 kg)",
+        "qty": 3,
+        "rate": 1.3
+      },
+      {
+        "name": "Café molido (250 g)",
+        "qty": 1,
+        "rate": 3.8,
+        "discount": 10
+      }
+    ],
+    "customer_name": "Carlos Gómez",
+    "tax_percent": 4,
+    "store_phone": "954 123 456"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "sample": {
+    "store_name": "Page & Leaf Books",
+    "customer_name": "Emma Wilson",
+    "book_name": "Anne of Green Gables",
+    "author": "L. M. Montgomery",
+    "publisher": "Sunrise Press",
+    "description": "Paperback, 2nd edition",
+    "quantity": 2,
+    "book_price": 12.99
+  }
+}

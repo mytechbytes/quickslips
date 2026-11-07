@@ -1,0 +1,166 @@
+{
+  "title": "Recharge Bill Generator",
+  "name": "Recharge Bill",
+  "public_slug": "recharge-bill-generator",
+  "summary": "Mobile, phone or DTH recharge invoice with account summary.",
+  "description": "Create a recharge invoice for a mobile, phone or DTH connection with the operator, plan, billing cycle, account summary, {tax} and an acknowledgement slip, in four colour themes. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Tax invoice"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Operator or retailer"
+    },
+    "provider_address": {
+      "label": "Operator address (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "invoice_number": {
+      "label": "Invoice number"
+    },
+    "bill_date": {
+      "label": "Bill date"
+    },
+    "time": {
+      "label": "Time (optional)"
+    },
+    "period_start": {
+      "label": "Bill period from"
+    },
+    "period_end": {
+      "label": "Bill period to"
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "customer_address": {
+      "label": "Customer address (optional)"
+    },
+    "landmark": {
+      "label": "Landmark (optional)"
+    },
+    "customer_id": {
+      "label": "Customer ID"
+    },
+    "mobile_number": {
+      "label": "Mobile number"
+    },
+    "alternative_number": {
+      "label": "Alternative number (optional)"
+    },
+    "email": {
+      "label": "Email (optional)"
+    },
+    "service": {
+      "label": "Service",
+      "options": {
+        "Prepaid": "Prepaid",
+        "Postpaid": "Postpaid"
+      }
+    },
+    "payment_in": {
+      "label": "Payment in",
+      "options": {
+        "Advance": "Advance",
+        "Immediate": "Immediate"
+      }
+    },
+    "bill_cycle": {
+      "label": "Billing cycle",
+      "options": {
+        "Monthly": "Monthly",
+        "Quarterly": "Quarterly",
+        "Half-yearly": "Half-yearly",
+        "Annual": "Annual"
+      }
+    },
+    "theme": {
+      "label": "Colour theme",
+      "options": {
+        "Red": "Red",
+        "Blue": "Blue",
+        "Yellow": "Yellow",
+        "Green": "Green"
+      }
+    },
+    "email_banner": {
+      "label": "Banner message (optional)"
+    },
+    "offer_title": {
+      "label": "Offer headline (optional)"
+    },
+    "offer_text": {
+      "label": "Offer text (optional)"
+    },
+    "pay_options": {
+      "label": "Ways to pay (one per line) (optional)"
+    },
+    "previous_balance": {
+      "label": "Previous bill ({currency}) (optional)"
+    },
+    "adjustment": {
+      "label": "Adjustment amount ({currency}) (optional)"
+    },
+    "amount": {
+      "label": "Recharge or plan amount ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "amount_after_due": {
+      "label": "Amount after the due date ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "original_copy": "Original copy for recipient — Tax invoice",
+    "invoice_no": "Invoice no",
+    "billed_to": "Billed to",
+    "customer_id": "Customer ID",
+    "mobile_no": "Mobile no",
+    "bill_no": "Bill no",
+    "bill_date": "Bill date",
+    "bill_cycle": "Bill cycle",
+    "bill_period": "Bill period",
+    "to": "to",
+    "pay_by": "Pay by",
+    "alt_no": "Alternative no",
+    "email": "Email",
+    "account_summary": "Your account summary",
+    "previous_bill": "Previous bill",
+    "adjustment": "Adjustment amount",
+    "this_month": "This month",
+    "service": "Service",
+    "after_due": "Amount after due date",
+    "payment_method": "Payment method",
+    "month_charge": "This month's charge",
+    "monthly_charges": "Monthly charges",
+    "tax": "Tax",
+    "taxable_amount": "Taxable amount",
+    "bill_from": "Bill from",
+    "total_amount": "Total amount",
+    "tax_note": "As per the applicable rules, the effective {tax} on this invoice is {rate}%.",
+    "detach": "Please detach this slip and return it with your payment",
+    "pay_on_go": "Pay on the go",
+    "provider_details": "Provider details",
+    "acknowledgement": "Acknowledgement slip",
+    "customer_name": "Customer name",
+    "amount": "Amount",
+    "computer_generated": "* This is a computer generated invoice, signature not required. Created on {date} at {time}.",
+    "computer_generated_date": "* This is a computer generated invoice, signature not required. Created on {date}."
+  },
+  "sample": {
+    "tax_percent": 18
+  }
+}

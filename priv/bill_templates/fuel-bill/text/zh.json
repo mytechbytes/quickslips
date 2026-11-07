@@ -5,7 +5,12 @@
   "summary": "生成汽油或柴油加油小票的 PDF。",
   "description": "生成清晰的加油小票，包含加油站名称、日期、油品类型、数量和单价。即时预览，并可下载为 PDF。",
   "designs": {
-    "t1": "经典"
+    "t1": "收据",
+    "t2": "加油机小票",
+    "t3": "热敏小票",
+    "t4": "热敏小票（详细）",
+    "t5": "现金收据",
+    "t6": "针式打印"
   },
   "fields": {
     "station_name": {
@@ -42,6 +47,40 @@
     },
     "tax_percent": {
       "label": "{tax}（%）（选填）"
+    },
+    "station_phone": {
+      "label": "加油站电话（选填）"
+    },
+    "dealer_name": {
+      "label": "经销商名称（选填）"
+    },
+    "fcc_id": {
+      "label": "FCC 编号（选填）"
+    },
+    "fip_no": {
+      "label": "FIP 编号（选填）"
+    },
+    "time": {
+      "label": "时间（选填）"
+    },
+    "customer_name": {
+      "label": "客户姓名（选填）"
+    },
+    "nozzle_number": {
+      "label": "油枪号（选填）"
+    },
+    "density": {
+      "label": "密度（kg/m³）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "Card": "银行卡",
+        "UPI": "UPI",
+        "Net banking": "网银",
+        "Online": "在线支付"
+      }
     }
   },
   "print": {
@@ -57,7 +96,45 @@
     "signatory": "授权签字",
     "thanks": "谢谢惠顾，欢迎再次光临。",
     "taxable": "不含税金额",
-    "tax_included": "价格含税。"
+    "tax_included": "价格含税。",
+    "receipt_title": "加油小票",
+    "receipt_details": "小票信息",
+    "receipt_no": "小票编号",
+    "time": "时间",
+    "billed_to": "客户信息",
+    "customer": "客户姓名",
+    "vehicle_no": "车牌号",
+    "fuel_type": "油品",
+    "station": "加油站",
+    "payment": "支付方式",
+    "summary": "消费汇总",
+    "fuel_rate": "油价",
+    "total_amount": "总金额",
+    "thanks_fuelling": "感谢您在本站加油！",
+    "queries": "如有疑问或投诉，请联系客服。",
+    "save_fuel": "节约用油，守护未来！",
+    "save_money": "节约用油就是节约金钱，感谢您的惠顾！",
+    "welcome": "欢迎光临！",
+    "product": "油品",
+    "volume": "加油量",
+    "unit": "升",
+    "tel": "电话",
+    "fcc": "FCC 编号",
+    "fip": "FIP 编号",
+    "nozzle": "油枪号",
+    "dealer": "经销商",
+    "density": "密度",
+    "original": "原件",
+    "cash_memo": "现金收据",
+    "no": "编号",
+    "dated": "日期",
+    "particulars": "品名",
+    "all_tax_included": "含税",
+    "eoe": "如有错漏，以更正为准",
+    "happy_journey": "祝您一路平安",
+    "pump": "油机号",
+    "grade": "牌号",
+    "unit_price": "单价"
   },
   "sample": {
     "station_name": "朝阳加油站",
@@ -66,6 +143,8 @@
     "vehicle_number": "京A·12345",
     "rate": 7.85,
     "seller_tax_id": "91110000600037341L",
-    "tax_percent": 13
+    "tax_percent": 13,
+    "customer_name": "王伟",
+    "station_phone": "010-12345678"
   }
 }

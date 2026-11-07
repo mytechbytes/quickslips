@@ -1,0 +1,174 @@
+{
+  "title": "Generatore di ricevuta taxi",
+  "name": "Ricevuta taxi",
+  "public_slug": "generatore-ricevuta-taxi",
+  "summary": "Ricevuta di una corsa in taxi con tariffa, pedaggio e {tax}.",
+  "description": "Genera una ricevuta di taxi o NCC con punto di ritiro e di arrivo, distanza, tariffa, pedaggio e {tax}. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Ricevuta della corsa",
+    "t2": "Corsa e fattura",
+    "t3": "Fattura",
+    "t4": "Ricevuta semplice"
+  },
+  "fields": {
+    "operator_name": {
+      "label": "Nome della società di taxi o dell'autista"
+    },
+    "operator_address": {
+      "label": "Indirizzo (facoltativo)"
+    },
+    "receipt_number": {
+      "label": "Numero di ricevuta"
+    },
+    "date": {
+      "label": "Data della corsa"
+    },
+    "drop_date": {
+      "label": "Data di arrivo (facoltativo)"
+    },
+    "passenger_name": {
+      "label": "Nome del passeggero (facoltativo)"
+    },
+    "customer_phone": {
+      "label": "Cellulare del passeggero (facoltativo)"
+    },
+    "customer_address": {
+      "label": "Indirizzo del passeggero (facoltativo)"
+    },
+    "driver_name": {
+      "label": "Nome dell'autista (facoltativo)"
+    },
+    "vehicle_number": {
+      "label": "Targa del veicolo (facoltativo)"
+    },
+    "vehicle_model": {
+      "label": "Modello del veicolo (facoltativo)"
+    },
+    "pickup": {
+      "label": "Luogo di ritiro"
+    },
+    "pickup_time": {
+      "label": "Ora di ritiro (facoltativo)"
+    },
+    "drop": {
+      "label": "Luogo di arrivo"
+    },
+    "drop_time": {
+      "label": "Ora di arrivo (facoltativo)"
+    },
+    "distance_km": {
+      "label": "Distanza (km)"
+    },
+    "base_fare": {
+      "label": "Tariffa ({currency})"
+    },
+    "toll": {
+      "label": "Pedaggio e costi di servizio ({currency}) (facoltativo)"
+    },
+    "airport_charge": {
+      "label": "Supplemento aeroporto ({currency}) (facoltativo)"
+    },
+    "advance_paid": {
+      "label": "Anticipo versato ({currency}) (facoltativo)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Pagato con",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "receipt_title": "Ecco la ricevuta della tua corsa,",
+    "enjoyed": "Speriamo che il viaggio ti sia piaciuto.",
+    "trip_total": "Tariffa totale della corsa",
+    "trip_fare": "Tariffa della corsa",
+    "subtotal": "Subtotale",
+    "toll": "Pedaggio e costi di servizio",
+    "airport": "Supplemento aeroporto",
+    "payments": "Pagamenti",
+    "includes": "Il totale di {total} comprende {tax} per {amount}.",
+    "rode_with": "Hai viaggiato con",
+    "plate": "Targa",
+    "fares_incl": "Le tariffe includono le imposte.",
+    "pickup": "Ritiro",
+    "drop": "Destinazione",
+    "thanks_travel": "Grazie per aver viaggiato con noi,",
+    "ride_details": "Dettagli della corsa",
+    "bill_details": "Dettagli del conto",
+    "total_bill": "Totale da pagare",
+    "includes_taxes": "Include {amount} di imposte",
+    "promise": "Abbiamo mantenuto la promessa di portarti a destinazione alla tariffa totale concordata. Modificare la destinazione o il percorso può cambiare la tariffa.",
+    "complaint": "Per qualsiasi reclamo su questa fattura, scrivici a",
+    "payment": "Pagamento",
+    "paid_by": "Pagato con",
+    "original": "Fattura originale",
+    "driver_invoice": "Fattura dell'autista",
+    "service": "Servizio: corsa in taxi",
+    "invoice_id": "N. fattura",
+    "invoice_date": "Data fattura",
+    "customer": "Nome del cliente",
+    "mobile": "Cellulare",
+    "pickup_address": "Indirizzo di ritiro",
+    "description": "Descrizione",
+    "amount": "Importo",
+    "ride_fee": "Tariffa della corsa",
+    "note": "Nota: 1. Questa fattura è emessa per conto del fornitore del servizio di trasporto. 2. È generata elettronicamente e non richiede firma.",
+    "tax_invoice": "Fattura",
+    "invoice_no": "N. fattura",
+    "date": "Data",
+    "billed_to": "Intestata a",
+    "trip_details": "Dati del viaggio",
+    "driver": "Autista",
+    "vehicle_no": "Targa",
+    "vehicle": "Veicolo",
+    "date_time": "Data e ora",
+    "particulars": "Descrizione",
+    "period": "Periodo di viaggio",
+    "until": "al",
+    "distance": "Distanza",
+    "rate": "Tariffa",
+    "pick_point": "Punto di ritiro",
+    "drop_point": "Punto di arrivo",
+    "advance": "Meno: anticipo versato",
+    "balance": "Saldo da pagare",
+    "total_amount": "Importo totale",
+    "signatory": "Firma autorizzata",
+    "thanks_riding": "Grazie per aver viaggiato,",
+    "before_tax": "Prima delle imposte",
+    "fees": "Pedaggi, aeroporto e costi",
+    "trip_id": "ID corsa",
+    "cab_no": "N. taxi",
+    "time": "Orario della corsa",
+    "paid": "Pagato",
+    "total": "Totale",
+    "unit": "km"
+  },
+  "sample": {
+    "operator_name": "Taxi Tevere",
+    "passenger_name": "Marco Rossi",
+    "driver_name": "Luca Bianchi",
+    "pickup": "Stazione Termini, Roma",
+    "drop": "Aeroporto di Fiumicino",
+    "vehicle_number": "AB 452 CD",
+    "vehicle_model": "Fiat Tipo",
+    "customer_phone": "333 123 4567",
+    "receipt_number": "T-007731",
+    "distance_km": 30,
+    "base_fare": 48,
+    "toll": 0,
+    "airport_charge": 3,
+    "advance_paid": 0,
+    "tax_percent": 10
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "title": "Generador de Factura Médica",
+  "name": "Factura Médica",
+  "public_slug": "generador-de-factura-medica",
+  "summary": "Factura de hospital, clínica o laboratorio con {tax}.",
+  "description": "Crea una factura de hospital, clínica o laboratorio con paciente, médico, habitación, consulta, medicamentos, pruebas y cargos detallados. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura de hospital",
+    "t2": "Factura provisional"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "Hospital, clínica o laboratorio"
+    },
+    "clinic_address": {
+      "label": "Dirección (opcional)"
+    },
+    "clinic_phone": {
+      "label": "Teléfono de contacto (opcional)"
+    },
+    "hospital_details": {
+      "label": "Datos del centro (opcional)"
+    },
+    "registration_number": {
+      "label": "Número de registro (opcional)"
+    },
+    "bill_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "admit_date": {
+      "label": "Fecha de ingreso (opcional)"
+    },
+    "discharge_date": {
+      "label": "Fecha de alta (opcional)"
+    },
+    "patient_name": {
+      "label": "Nombre del paciente"
+    },
+    "patient_details": {
+      "label": "Edad y sexo (opcional)"
+    },
+    "patient_issue": {
+      "label": "Motivo de consulta (opcional)"
+    },
+    "guardian_name": {
+      "label": "Nombre del tutor (opcional)"
+    },
+    "patient_phone": {
+      "label": "Móvil del paciente (opcional)"
+    },
+    "patient_address": {
+      "label": "Dirección del paciente (opcional)"
+    },
+    "payer_name": {
+      "label": "Nombre del pagador (opcional)"
+    },
+    "payer_address": {
+      "label": "Dirección del pagador (opcional)"
+    },
+    "doctor_name": {
+      "label": "Médico (opcional)"
+    },
+    "doctor_designation": {
+      "label": "Cargo (opcional)"
+    },
+    "room": {
+      "label": "Categoría de habitación (opcional)",
+      "options": {
+        "Single": "Individual",
+        "Semi-private": "Semiprivada",
+        "Private": "Privada",
+        "General": "General",
+        "ICU": "UCI"
+      }
+    },
+    "insurance": {
+      "label": "Seguro (opcional)",
+      "options": {
+        "Yes": "Sí",
+        "No": "No"
+      }
+    },
+    "remark": {
+      "label": "Observaciones (opcional)"
+    },
+    "consultation_fee": {
+      "label": "Consulta ({currency}) (opcional)"
+    },
+    "medicines_cost": {
+      "label": "Medicamentos ({currency}) (opcional)"
+    },
+    "tests_cost": {
+      "label": "Pruebas y procedimientos ({currency}) (opcional)"
+    },
+    "other_charges": {
+      "label": "Otros cargos ({currency}) (opcional)"
+    },
+    "discount": {
+      "label": "Descuento ({currency}) (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "amount_paid": {
+      "label": "Importe pagado ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pagado con",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "items": {
+      "label": "Cargos detallados",
+      "columns": {
+        "name": "Descripción",
+        "qty": "Uds.",
+        "rate": "Precio ({currency})"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "N.º de factura",
+    "contact": "Contacto",
+    "reg_no": "N.º de registro",
+    "discharge_date": "Fecha de alta",
+    "admit_date": "Fecha de ingreso",
+    "patient_info": "Datos del paciente",
+    "patient_name": "Nombre del paciente",
+    "patient_issue": "Motivo de consulta",
+    "address": "Dirección",
+    "guardian": "Nombre del tutor",
+    "mobile": "Móvil",
+    "insurance": "Seguro disponible",
+    "age": "Edad",
+    "consultant": "Médico responsable",
+    "room": "Categoría de habitación",
+    "details": "Detalles",
+    "price": "Precio",
+    "amount": "Importe",
+    "units": "Uds.",
+    "pay_by": "Forma de pago",
+    "amount_paid": "Importe pagado",
+    "tax": "Impuesto",
+    "taxable": "Base imponible",
+    "net": "Importe neto",
+    "total_amount": "Importe total",
+    "remark": "Observaciones",
+    "computer": "* Factura generada por ordenador; no requiere firma.",
+    "created": "Creada el {when}",
+    "phone": "Tel.",
+    "timing": "Hora",
+    "patient_uid": "ID del paciente",
+    "name": "Nombre",
+    "payer": "Datos del pagador",
+    "consulting_doctors": "Médicos consultores",
+    "date": "Fecha",
+    "admission_no": "N.º de ingreso",
+    "admission_date": "Fecha de ingreso",
+    "bed": "Cama(s)",
+    "provisional": "Factura provisional",
+    "room_type": "Tipo de habitación",
+    "particulars": "Concepto",
+    "total_bill": "Importe total de la factura",
+    "discount": "Descuento",
+    "payable": "Importe a pagar",
+    "balance": "Saldo",
+    "breakup": "Desglose detallado",
+    "date_time": "Fecha y hora",
+    "rate": "Tarifa",
+    "payment_mode": "Forma de pago",
+    "gst_type": "Tipo de GST",
+    "intra": "Intraestatal (CGST + SGST)",
+    "gst_pct": "Tipo impositivo",
+    "notes": "Notas",
+    "consultation": "Consulta",
+    "medicines": "Medicamentos",
+    "tests": "Pruebas y procedimientos",
+    "other": "Otros cargos",
+    "itemised": "Cargos detallados"
+  },
+  "sample": {
+    "clinic_name": "Clínica Familiar Giralda",
+    "doctor_name": "Dra. Lucía Fernández",
+    "doctor_designation": "Médica internista",
+    "patient_name": "Carlos Gómez",
+    "guardian_name": "Ana Gómez",
+    "payer_name": "Ana Gómez",
+    "patient_issue": "Fiebre y tos",
+    "items": [
+      {
+        "name": "Habitación (por día)",
+        "qty": 2,
+        "rate": 120
+      },
+      {
+        "name": "Cuidados de enfermería (por día)",
+        "qty": 2,
+        "rate": 35
+      }
+    ],
+    "consultation_fee": 60,
+    "medicines_cost": 25,
+    "tests_cost": 40,
+    "discount": 10,
+    "amount_paid": 150,
+    "tax_percent": 10,
+    "hospital_details": "Urgencias 24 horas, farmacia y laboratorio",
+    "registration_number": "Reg. San. 41/2019/4411",
+    "patient_address": "Calle Feria 25, 3.º B, 41003 Sevilla",
+    "payer_address": "Calle Feria 25, 3.º B, 41003 Sevilla",
+    "clinic_phone": "954 123 456",
+    "patient_details": "42 / M",
+    "remark": "En caso de urgencia, consulte de inmediato si tiene dolor, movimientos dolorosos, enrojecimiento, pus o sangrado. Revisión a los 5 días."
+  }
+}

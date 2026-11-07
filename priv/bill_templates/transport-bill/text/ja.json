@@ -1,0 +1,137 @@
+{
+  "title": "貨物送り状作成",
+  "name": "貨物送り状",
+  "public_slug": "transport-bill-generator",
+  "summary": "荷送人・荷受人・重量・運賃を記載した貨物送り状。",
+  "description": "発地と着地、荷送人と荷受人、個数、重量、着払いまたは元払いの運賃を記載した貨物送り状を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "送り状"
+  },
+  "fields": {
+    "company_name": {
+      "label": "運送会社名"
+    },
+    "company_address": {
+      "label": "会社の住所（任意）"
+    },
+    "company_phone": {
+      "label": "事務所の電話番号（任意）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "gc_number": {
+      "label": "送り状番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "booking_date": {
+      "label": "受付日（任意）"
+    },
+    "eta_date": {
+      "label": "配達予定日（任意）"
+    },
+    "pm_number": {
+      "label": "PM番号（任意）"
+    },
+    "consignor": {
+      "label": "荷送人の氏名・住所"
+    },
+    "consignee": {
+      "label": "荷受人の氏名・住所"
+    },
+    "description": {
+      "label": "貨物の内容（任意）"
+    },
+    "articles": {
+      "label": "個数（任意）"
+    },
+    "actual_weight": {
+      "label": "実重量（任意）"
+    },
+    "charged_weight": {
+      "label": "請求重量（任意）"
+    },
+    "remarks": {
+      "label": "備考（任意）"
+    },
+    "from_place": {
+      "label": "発地"
+    },
+    "from_phone": {
+      "label": "発地の電話番号（任意）"
+    },
+    "from_address": {
+      "label": "発地の住所"
+    },
+    "to_place": {
+      "label": "着地"
+    },
+    "to_phone": {
+      "label": "着地の電話番号（任意）"
+    },
+    "to_address": {
+      "label": "着地の住所"
+    },
+    "delivery_at": {
+      "label": "配達先（任意）"
+    },
+    "signatory_name": {
+      "label": "署名者名（任意）"
+    },
+    "to_pay": {
+      "label": "着払い運賃（{currency}）（任意）"
+    },
+    "paid": {
+      "label": "元払い運賃（{currency}）（任意）"
+    }
+  },
+  "print": {
+    "heading": "貨物送り状",
+    "title": "お客様控え（原本）",
+    "gc_no": "送り状番号",
+    "from": "発地",
+    "to": "着地",
+    "consignor": "荷送人の氏名・住所",
+    "consignee": "荷受人の氏名・住所",
+    "description": "品名／申告内容",
+    "date": "日付",
+    "booking": "受付日",
+    "eta": "配達予定日",
+    "articles": "個数",
+    "pm_no": "PM番号",
+    "actual_weight": "実重量",
+    "charged_weight": "請求重量",
+    "remarks": "備考",
+    "to_pay": "着払い",
+    "paid": "元払い",
+    "signature": "署名",
+    "delivery_at": "配達先",
+    "tel": "電話",
+    "note_labour": "注：配達営業所では、運賃とは別に荷役料と配達料がかかります。",
+    "note_insurance": "貴重品は必ず保険をおかけください。紛失について運送会社は責任を負いません。",
+    "note_validity": "この控えは受付日から5日間のみ有効です。期限内に営業所で荷物をお受け取りください。",
+    "note_docs": "法令で必要な運送書類（インドの電子運送状など）は荷送人が用意し、書類不備による損害は荷送人の負担とします。"
+  },
+  "sample": {
+    "company_name": "東京運輸",
+    "company_phone": "03-1234-5678",
+    "from_place": "東京",
+    "to_place": "大阪",
+    "from_phone": "03-1234-5678",
+    "to_phone": "06-1234-5678",
+    "from_address": "東京都江東区物流センター1-2-3",
+    "to_address": "大阪府大阪市住之江区南港4-5-6",
+    "company_address": "東京都江東区物流センター1-2-3",
+    "consignor": "田中商事株式会社\n東京都千代田区丸の内1-1-1",
+    "consignee": "鈴木電器株式会社\n大阪府大阪市北区梅田2-2-2",
+    "description": "家電製品 - 20箱",
+    "remarks": "取扱注意",
+    "delivery_at": "大阪営業所",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 48000,
+    "signatory_name": "鈴木 一郎"
+  }
+}

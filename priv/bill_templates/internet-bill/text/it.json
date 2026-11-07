@@ -1,0 +1,175 @@
+{
+  "title": "Generatore di fattura internet",
+  "name": "Fattura internet",
+  "public_slug": "generatore-fattura-internet",
+  "summary": "Fattura di banda larga o fibra con piano, periodo e {tax}.",
+  "description": "Crea una fattura internet per banda larga o fibra con piano, velocità, periodo di fatturazione, costi e {tax}. Quattro modelli; anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Classico",
+    "t2": "Fattura internet",
+    "t3": "Fattura dettagliata",
+    "t4": "Estratto"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Fornitore internet"
+    },
+    "provider_address": {
+      "label": "Indirizzo (facoltativo)"
+    },
+    "provider_email": {
+      "label": "Email (facoltativo)"
+    },
+    "registered_office": {
+      "label": "Sede legale (facoltativo)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "bill_number": {
+      "label": "Numero di fattura"
+    },
+    "account_number": {
+      "label": "Numero cliente"
+    },
+    "bill_date": {
+      "label": "Data della fattura"
+    },
+    "due_date": {
+      "label": "Data di scadenza (facoltativo)"
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "customer_address": {
+      "label": "Indirizzo del cliente (facoltativo)"
+    },
+    "user_name": {
+      "label": "Nome utente (facoltativo)"
+    },
+    "period_start": {
+      "label": "Periodo di fatturazione dal"
+    },
+    "period_end": {
+      "label": "Periodo di fatturazione al"
+    },
+    "plan_name": {
+      "label": "Piano"
+    },
+    "plan_speed": {
+      "label": "Velocità (facoltativo)"
+    },
+    "plan_package": {
+      "label": "Tipo di pacchetto (facoltativo)",
+      "options": {
+        "Limited": "Limitato",
+        "Unlimited": "Illimitato",
+        "FUP": "Uso equo"
+      }
+    },
+    "plan_validity": {
+      "label": "Validità del piano (facoltativo)",
+      "options": {
+        "Monthly": "Mensile",
+        "Quarterly": "Trimestrale",
+        "Half-yearly": "Semestrale",
+        "Annual": "Annuale"
+      }
+    },
+    "service_description": {
+      "label": "Descrizione del servizio (facoltativo)"
+    },
+    "plan_charge": {
+      "label": "Importo del piano ({currency})"
+    },
+    "other_charges": {
+      "label": "Installazione o altri costi ({currency}) (facoltativo)"
+    },
+    "discount": {
+      "label": "Sconto ({currency}) (facoltativo)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "payments_received": {
+      "label": "Pagamenti ricevuti ({currency}) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento (facoltativo)",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "terms": {
+      "label": "Termini e condizioni (uno per riga) (facoltativo)"
+    }
+  },
+  "print": {
+    "title": "Fattura internet",
+    "bill_no": "Fattura n.",
+    "bill_date": "Data fattura",
+    "due_date": "Scadenza",
+    "account_no": "N. cliente",
+    "billing_period": "Periodo di fatturazione",
+    "billed_to": "Intestato a",
+    "description": "Descrizione",
+    "amount": "Importo",
+    "installation": "Installazione e altri costi",
+    "discount": "Sconto",
+    "subtotal": "Subtotale",
+    "amount_due": "Importo dovuto",
+    "pay_by": "Paghi entro il {date} per mantenere attiva la connessione.",
+    "computer_generated": "Fattura generata al computer.",
+    "invoice_title": "Fattura internet",
+    "customer_name": "Nome del cliente",
+    "customer_address": "Indirizzo del cliente",
+    "bill_account": "Numero cliente",
+    "receipt_details": "Dati della ricevuta",
+    "receipt_no": "Numero di ricevuta",
+    "date": "Data",
+    "payment_method": "Metodo di pagamento",
+    "provider_details": "Dati del fornitore",
+    "billing_cycle": "Ciclo di fatturazione",
+    "plan_summary": "Riepilogo del piano",
+    "plan": "Piano",
+    "plan_speed": "Velocità",
+    "plan_package": "Pacchetto",
+    "plan_validity": "Validità",
+    "plan_amount": "Importo",
+    "total": "Totale",
+    "payable_to": "Tutti i pagamenti vanno intestati a",
+    "no_signature": "Questa fattura è generata al computer e non richiede firma",
+    "receipt_for_recipient": "(Ricevuta per il destinatario)",
+    "name": "Nome",
+    "invoice_no": "Fattura n.",
+    "taxable_amount": "Imponibile",
+    "rate_pct": "aliquota %",
+    "payments_received": "Pagamenti ricevuti",
+    "user_name": "Nome utente",
+    "service_description": "Descrizione del servizio internet",
+    "amount_incl_tax": "Importo con imposte",
+    "registered_office": "Sede legale",
+    "terms_title": "Termini e condizioni",
+    "acknowledgement": "Ricevuta di pagamento",
+    "subscriber_name": "Nome dell'intestatario",
+    "hello": "Ciao",
+    "invoice_total": "Totale fattura",
+    "currency": "Valuta",
+    "invoice_amount": "Importo fattura",
+    "mailing_address": "Il nostro indirizzo di contatto è"
+  },
+  "sample": {
+    "provider_name": "Cielo Fibra",
+    "registered_office": "Cielo Fibra S.r.l., Via Roma 12, 00184 Roma",
+    "customer_name": "Marco Rossi",
+    "plan_name": "Fibra 200 Mbps, dati illimitati",
+    "service_description": "Abbonamento internet in fibra",
+    "plan_charge": 27.9,
+    "gst_percent": 22,
+    "terms": "Gli assegni vanno intestati a Cielo Fibra.\nIn caso di assegno insoluto sarà applicata una penale di 10 €.\nSe la fattura viene pagata dopo la scadenza sarà addebitata una mora.\nIn caso di mancato pagamento ci riserviamo il diritto di disattivare il servizio.\nQuesta fattura è generata dal sistema; firma e timbro non sono necessari."
+  }
+}

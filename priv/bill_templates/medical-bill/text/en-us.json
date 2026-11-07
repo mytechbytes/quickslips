@@ -1,0 +1,35 @@
+{
+  "sample": {
+    "clinic_name": "Lone Star Family Clinic",
+    "doctor_name": "Dr. Michael Brown",
+    "doctor_designation": "Internal medicine physician",
+    "patient_name": "John Smith",
+    "guardian_name": "Mary Smith",
+    "payer_name": "Mary Smith",
+    "patient_issue": "Fever and cough",
+    "items": [
+      {
+        "name": "Room (per day)",
+        "qty": 2,
+        "rate": 450
+      },
+      {
+        "name": "Nursing care (per day)",
+        "qty": 2,
+        "rate": 120
+      }
+    ],
+    "consultation_fee": 200,
+    "medicines_cost": 85,
+    "tests_cost": 160,
+    "discount": 50,
+    "amount_paid": 500,
+    "tax_percent": null,
+    "hospital_details": "24-hour emergency care, pharmacy and laboratory",
+    "registration_number": "NPI 1234567890",
+    "patient_address": "500 Congress Avenue, Apt 12, Austin, TX 78701",
+    "payer_address": "500 Congress Avenue, Apt 12, Austin, TX 78701",
+    "clinic_phone": "(512) 555-0142",
+    "patient_details": "42 / M"
+  }
+}

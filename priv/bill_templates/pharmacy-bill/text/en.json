@@ -1,0 +1,130 @@
+{
+  "title": "Pharmacy Bill Generator",
+  "name": "Pharmacy Bill",
+  "public_slug": "pharmacy-bill-generator",
+  "summary": "Medical store bill with batch, expiry and MRP.",
+  "description": "Generate a pharmacy or chemist bill with medicines, manufacturer, batch, expiry and MRP, {tax} included in the price, a discount and the branch's licence details. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Invoice"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Pharmacy name"
+    },
+    "brand_subtitle": {
+      "label": "Tagline (optional)"
+    },
+    "branch_name": {
+      "label": "Branch (optional)"
+    },
+    "branch_address": {
+      "label": "Branch address (optional)"
+    },
+    "toll_free": {
+      "label": "Phone (optional)"
+    },
+    "website": {
+      "label": "Website (optional)"
+    },
+    "dl_number": {
+      "label": "Drug licence no. (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "fssai": {
+      "label": "FSSAI no. (optional)"
+    },
+    "registered_office": {
+      "label": "Registered office (optional)"
+    },
+    "admin_office": {
+      "label": "Admin office (optional)"
+    },
+    "bill_number": {
+      "label": "Bill number"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Time (optional)"
+    },
+    "terminal_number": {
+      "label": "Terminal no. (optional)"
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "ref_number": {
+      "label": "Ref. no. (optional)"
+    },
+    "doctor_name": {
+      "label": "Doctor / prescriber (optional)"
+    },
+    "discount": {
+      "label": "Discount on the total ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "signatory_name": {
+      "label": "Signatory name (optional)"
+    },
+    "signatory_line": {
+      "label": "Signatory line (optional)"
+    },
+    "items": {
+      "label": "Medicines",
+      "columns": {
+        "name": "Item name",
+        "hsn": "HSN code",
+        "mfr": "Mfr",
+        "batch": "Batch no.",
+        "expiry": "Expiry",
+        "schedule": "Sch",
+        "qty": "Qty",
+        "rate": "MRP ({currency})",
+        "tax": "Tax %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "Invoice",
+    "bill_no": "Bill no.",
+    "date_time": "Date / time",
+    "terminal": "Terminal no.",
+    "name": "Name",
+    "ref_no": "Ref. no.",
+    "doctor": "Doctor",
+    "payment": "Payment",
+    "tel": "Tel.",
+    "dl_no": "DL no.",
+    "item": "Item name",
+    "hsn": "HSN code",
+    "mfr": "Mfr",
+    "batch": "Batch no.",
+    "expiry": "Expiry",
+    "sch": "Sch",
+    "qty": "Qty",
+    "mrp": "MRP",
+    "tax_rate": "Tax %",
+    "taxable": "Taxable",
+    "total_amount": "Total amount",
+    "total": "Total",
+    "discount": "Discount",
+    "net_total": "Net total",
+    "authorised": "Authorised signatory",
+    "registered": "Registered office",
+    "admin": "Admin office",
+    "taxable_value": "Taxable value"
+  },
+  "sample": {}
+}

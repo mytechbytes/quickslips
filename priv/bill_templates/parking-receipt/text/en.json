@@ -1,0 +1,46 @@
+{
+  "title": "Parking Receipt Generator",
+  "name": "Parking Receipt",
+  "public_slug": "parking-receipt-generator",
+  "summary": "Parking slip with the space, time and fee.",
+  "description": "Generate a parking receipt with the facility, address, space number, time and fee. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Receipt slip"
+  },
+  "fields": {
+    "facility_name": {
+      "label": "Parking facility name"
+    },
+    "facility_address": {
+      "label": "Facility address"
+    },
+    "facility_phone": {
+      "label": "Telephone (optional)"
+    },
+    "receipt_number": {
+      "label": "Receipt number"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Time (optional)"
+    },
+    "space_number": {
+      "label": "Parking space"
+    },
+    "thank_you": {
+      "label": "Thank-you message (optional)"
+    },
+    "amount": {
+      "label": "Total amount ({currency})"
+    }
+  },
+  "print": {
+    "title": "Parking Receipt",
+    "space": "Space",
+    "paid": "Paid",
+    "tel": "Tel."
+  },
+  "sample": {}
+}

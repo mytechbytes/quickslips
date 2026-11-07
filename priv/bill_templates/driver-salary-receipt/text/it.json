@@ -1,0 +1,131 @@
+{
+  "title": "Generatore di ricevuta di stipendio per autista",
+  "name": "Ricevuta stipendio autista",
+  "public_slug": "generatore-ricevuta-stipendio-autista",
+  "summary": "Ricevuta mensile di stipendio per un autista.",
+  "description": "Crea una ricevuta di stipendio per un autista con stipendio mensile, straordinari, indennità e trattenute. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Rimborso",
+    "t2": "Con conferma di ricevuta",
+    "t3": "Dichiarazione del datore",
+    "t4": "Più mesi",
+    "t5": "Voucher di paga",
+    "t6": "Registro semplice"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Nome del datore di lavoro"
+    },
+    "employer_address": {
+      "label": "Indirizzo del datore di lavoro (facoltativo)"
+    },
+    "driver_name": {
+      "label": "Nome dell'autista"
+    },
+    "vehicle_number": {
+      "label": "Targa del veicolo (facoltativo)"
+    },
+    "declaration": {
+      "label": "Dichiarazione (facoltativo)"
+    },
+    "month": {
+      "label": "Stipendio del mese"
+    },
+    "from_date": {
+      "label": "Periodo dal (facoltativo)"
+    },
+    "to_date": {
+      "label": "Periodo al (facoltativo)"
+    },
+    "bill_by": {
+      "label": "Fattura per",
+      "options": {
+        "Monthly": "Mensile",
+        "Quarterly": "Trimestrale",
+        "Half-yearly": "Semestrale",
+        "Yearly": "Annuale"
+      }
+    },
+    "receipt_date": {
+      "label": "Data della ricevuta"
+    },
+    "basic_salary": {
+      "label": "Stipendio mensile ({currency})"
+    },
+    "overtime": {
+      "label": "Straordinari ({currency}) (facoltativo)"
+    },
+    "allowance": {
+      "label": "Carburante e altre indennità ({currency}) (facoltativo)"
+    },
+    "deductions": {
+      "label": "Anticipo o trattenute ({currency}) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Pagato con",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Bank transfer": "Bonifico bancario",
+        "Cheque": "Assegno",
+        "Card": "Carta",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Ricevuta di stipendio dell'autista",
+    "date": "Data",
+    "certify": "Si certifica che {employer} ha versato {amount} all'autista {driver} a titolo di stipendio per il mese di {month} (ricevuta allegata).",
+    "certify_period": "Si certifica che {employer} ha versato {amount} all'autista {driver} a titolo di stipendio per il periodo {period} (ricevuta allegata).",
+    "certify_self": "Certifico di aver versato {amount} all'autista {driver} per il mese di {month} (ricevuta allegata).",
+    "reimburse": "Si prega di rimborsare l'importo indicato. Dichiaro inoltre che quanto sopra è corretto e veritiero.",
+    "vehicle_no": "Targa",
+    "driver_name": "Nome dell'autista",
+    "employer_name": "Nome del datore di lavoro",
+    "employer_signature": "Firma del datore di lavoro",
+    "revenue_stamp": "Marca da bollo",
+    "salary_month": "Stipendio del mese",
+    "amount_paid": "Importo pagato",
+    "received_text": "Ricevuto da {employer} l'importo di {amount} dall'autista {driver} a titolo di stipendio per il mese di {month}.",
+    "ack_title": "Conferma di ricevuta",
+    "receipt_date_of": "Data di ricezione",
+    "for_month": "Per il mese di",
+    "received_sum": "Ricevuta la somma di {amount} per il mese di {month} da {employer}.",
+    "period": "Periodo",
+    "receipt_of": "Ricevuta {number} di {total}",
+    "payroll_voucher": "Voucher di paga",
+    "voucher_sub": "Distinta di pagamento dello stipendio dell'autista",
+    "payer": "Pagatore",
+    "driver": "Autista",
+    "acknowledgement": "Conferma",
+    "ack_voucher": "Ricevuto da {driver} da {employer} a titolo di stipendio di {month}.",
+    "received_by": "Ricevuto da",
+    "prepared_by": "Preparato da",
+    "name": "Nome",
+    "record_title": "Registro dello stipendio dell'autista",
+    "record_sub": "Formato semplice di conferma",
+    "payer_name": "Nome del pagatore",
+    "declaration_label": "Dichiarazione",
+    "confirm": "Confermo di aver ricevuto dal pagatore l'importo dello stipendio indicato sopra per il mese riportato in questo registro.",
+    "notes": "Note",
+    "note_1": "Lo stipendio copre solo il mese indicato.",
+    "note_2": "Straordinari e indennità sono inclusi solo se elencati.",
+    "payer_details": "Dati del pagatore",
+    "driver_signature": "Firma dell'autista",
+    "monthly_salary": "Stipendio mensile",
+    "overtime": "Straordinari",
+    "allowance": "Indennità",
+    "deductions": "Anticipo o trattenute"
+  },
+  "sample": {
+    "employer_name": "Luca Bianchi",
+    "driver_name": "Giuseppe Conti",
+    "vehicle_number": "AB 452 CD",
+    "basic_salary": 1700,
+    "overtime": 150,
+    "allowance": 80,
+    "deductions": 50,
+    "declaration": "Dichiaro inoltre che l'autista è impiegato esclusivamente per scopi di lavoro."
+  }
+}

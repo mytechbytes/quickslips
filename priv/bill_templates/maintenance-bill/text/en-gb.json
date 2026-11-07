@@ -1,0 +1,53 @@
+{
+  "sample": {
+    "workshop_name": "Thames Garage",
+    "workshop_phone": "0118 496 0123",
+    "customer_name": "James Taylor",
+    "customer_phone": "07700 900456",
+    "vehicle_model": "Ford Focus",
+    "registration_number": "AB12 CDE",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "Engine oil filter",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 11,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "Front brake pads (set)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 55,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "Air filter",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 16,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "Regular service",
+        "billing": "PAID",
+        "rate": 70,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "Brake inspection and fitting",
+        "billing": "PAID",
+        "rate": 50,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 20
+  }
+}

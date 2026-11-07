@@ -1,0 +1,76 @@
+{
+  "title": "お手伝い給与領収書作成",
+  "name": "お手伝い給与領収書",
+  "public_slug": "daily-helper-receipt-generator",
+  "summary": "お手伝いさんの月ごとの給与領収書。",
+  "description": "掃除や調理などのお手伝いさんの給与領収書を、仕事の内容・月・金額・支払方法つきで作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "精算用",
+    "t2": "受領確認付き",
+    "t3": "雇用主の申告"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "雇用主の氏名"
+    },
+    "employer_address": {
+      "label": "雇用主の住所（任意）"
+    },
+    "helper_name": {
+      "label": "お手伝いの氏名"
+    },
+    "working_as": {
+      "label": "仕事の内容"
+    },
+    "declaration": {
+      "label": "申告（任意）"
+    },
+    "month": {
+      "label": "給与の対象月"
+    },
+    "receipt_date": {
+      "label": "領収日"
+    },
+    "salary": {
+      "label": "給与額（{currency}）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Bank transfer": "銀行振込",
+        "Cheque": "小切手",
+        "Card": "カード",
+        "Online": "オンライン"
+      }
+    }
+  },
+  "print": {
+    "title": "お手伝い給与領収書",
+    "date": "日付",
+    "certify": "{employer} が {role} として勤務する {helper} に {month} 分の給与として {amount} を支払ったことを証明します（受領書を添付）。",
+    "certify_self": "私は {role} として勤務する {helper} に {month} 分として {amount} を支払ったことを証明します（受領書を添付）。",
+    "reimburse": "上記金額の精算をお願いします。上記の内容が正確かつ真実であることを申し添えます。",
+    "payment_method": "支払方法",
+    "helper_name": "お手伝いの氏名",
+    "working_as": "仕事の内容",
+    "employer_name": "雇用主の氏名",
+    "employer_signature": "雇用主の署名",
+    "revenue_stamp": "収入印紙",
+    "salary_month": "給与の対象月",
+    "amount_paid": "支払金額",
+    "received_text": "{helper}（{role}）は {employer} から {month} 分の給与として {amount} を受領しました。",
+    "ack_title": "受領確認",
+    "receipt_date_of": "受領日",
+    "for_month": "対象月",
+    "received_sum": "{employer} から {month} 分として {amount} を受領しました。"
+  },
+  "sample": {
+    "employer_name": "鈴木 一郎",
+    "helper_name": "田中 花子",
+    "working_as": "家政スタッフ",
+    "salary": 80000,
+    "declaration": "なお、このお手伝いは業務のみに使用されていることを申し添えます。"
+  }
+}

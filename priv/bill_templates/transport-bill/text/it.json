@@ -1,0 +1,137 @@
+{
+  "title": "Generatore di lettera di vettura",
+  "name": "Lettera di vettura",
+  "public_slug": "generatore-lettera-di-vettura",
+  "summary": "Lettera di vettura con mittente, destinatario, peso e nolo.",
+  "description": "Genera una lettera di vettura per il trasporto di merci con partenza e arrivo, mittente e destinatario, numero di colli, peso e porto franco o assegnato. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Lettera di vettura"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Nome della società di trasporto"
+    },
+    "company_address": {
+      "label": "Indirizzo della società (facoltativo)"
+    },
+    "company_phone": {
+      "label": "Telefoni dell'ufficio (facoltativo)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "gc_number": {
+      "label": "Numero della lettera di vettura"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "booking_date": {
+      "label": "Data di prenotazione (facoltativo)"
+    },
+    "eta_date": {
+      "label": "Data di consegna prevista (facoltativo)"
+    },
+    "pm_number": {
+      "label": "N. PM (facoltativo)"
+    },
+    "consignor": {
+      "label": "Nome e indirizzo del mittente"
+    },
+    "consignee": {
+      "label": "Nome e indirizzo del destinatario"
+    },
+    "description": {
+      "label": "Descrizione della merce (facoltativo)"
+    },
+    "articles": {
+      "label": "Numero di colli (facoltativo)"
+    },
+    "actual_weight": {
+      "label": "Peso effettivo (facoltativo)"
+    },
+    "charged_weight": {
+      "label": "Peso tassabile (facoltativo)"
+    },
+    "remarks": {
+      "label": "Note (facoltativo)"
+    },
+    "from_place": {
+      "label": "Da (luogo)"
+    },
+    "from_phone": {
+      "label": "Telefono di partenza (facoltativo)"
+    },
+    "from_address": {
+      "label": "Indirizzo di partenza"
+    },
+    "to_place": {
+      "label": "A (luogo)"
+    },
+    "to_phone": {
+      "label": "Telefono di arrivo (facoltativo)"
+    },
+    "to_address": {
+      "label": "Indirizzo di arrivo"
+    },
+    "delivery_at": {
+      "label": "Consegna presso (facoltativo)"
+    },
+    "signatory_name": {
+      "label": "Nome del firmatario (facoltativo)"
+    },
+    "to_pay": {
+      "label": "Porto assegnato ({currency}) (facoltativo)"
+    },
+    "paid": {
+      "label": "Porto franco ({currency}) (facoltativo)"
+    }
+  },
+  "print": {
+    "heading": "Lettera di vettura",
+    "title": "Copia del cliente (originale)",
+    "gc_no": "N. lettera di vettura",
+    "from": "Da",
+    "to": "A",
+    "consignor": "Nome e indirizzo del mittente",
+    "consignee": "Nome e indirizzo del destinatario",
+    "description": "Descrizione / dice di contenere",
+    "date": "Data",
+    "booking": "Data di prenotazione",
+    "eta": "Data prevista",
+    "articles": "N. colli",
+    "pm_no": "N. PM",
+    "actual_weight": "Peso effettivo",
+    "charged_weight": "Peso tassabile",
+    "remarks": "Note",
+    "to_pay": "Porto assegnato",
+    "paid": "Porto franco",
+    "signature": "Firma",
+    "delivery_at": "Consegna presso",
+    "tel": "Tel.",
+    "note_labour": "Nota: l'ufficio di consegna addebiterà separatamente manodopera e spese di consegna oltre al nolo.",
+    "note_insurance": "Assicurare la merce di valore; il vettore non risponde di eventuali smarrimenti.",
+    "note_validity": "Questa ricevuta è valida solo 5 giorni dalla data di prenotazione. Ritirare la merce in tempo presso il magazzino.",
+    "note_docs": "I documenti di trasporto richiesti dalla legge (come l'e-way bill in India) devono essere forniti dal mittente, responsabile delle perdite dovute alla loro mancanza."
+  },
+  "sample": {
+    "company_name": "Trasporti Adriatica",
+    "company_phone": "051 1234567",
+    "from_place": "Bologna",
+    "to_place": "Roma",
+    "from_phone": "051 1234567",
+    "to_phone": "06 1234567",
+    "from_address": "Via Emilia 120, 40128 Bologna",
+    "to_address": "Via Tiburtina 500, 00159 Roma",
+    "company_address": "Via Emilia 120, 40128 Bologna",
+    "consignor": "Ditta Rossi\nVia Indipendenza 8, Bologna",
+    "consignee": "Elettrodomestici Bianchi\nVia Appia 90, Roma",
+    "description": "Elettrodomestici - 20 scatole",
+    "remarks": "Maneggiare con cura",
+    "delivery_at": "Magazzino di Roma",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 270,
+    "signatory_name": "L. Bianchi"
+  }
+}

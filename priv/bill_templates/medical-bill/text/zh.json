@@ -1,0 +1,226 @@
+{
+  "title": "医疗费用单生成器",
+  "name": "医疗费用单",
+  "public_slug": "medical-bill-generator",
+  "summary": "医院、诊所或检验机构的费用单，含{tax}。",
+  "description": "生成包含患者、医生、病房、诊疗费、药品、检查和明细费用的医院、诊所或检验机构费用单。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "医院账单",
+    "t2": "临时账单"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "医院、诊所或检验机构"
+    },
+    "clinic_address": {
+      "label": "地址（选填）"
+    },
+    "clinic_phone": {
+      "label": "联系电话（选填）"
+    },
+    "hospital_details": {
+      "label": "医院信息（选填）"
+    },
+    "registration_number": {
+      "label": "注册号（选填）"
+    },
+    "bill_number": {
+      "label": "账单编号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "time": {
+      "label": "时间（选填）"
+    },
+    "admit_date": {
+      "label": "入院日期（选填）"
+    },
+    "discharge_date": {
+      "label": "出院日期（选填）"
+    },
+    "patient_name": {
+      "label": "患者姓名"
+    },
+    "patient_details": {
+      "label": "年龄和性别（选填）"
+    },
+    "patient_issue": {
+      "label": "就诊原因（选填）"
+    },
+    "guardian_name": {
+      "label": "监护人姓名（选填）"
+    },
+    "patient_phone": {
+      "label": "患者手机（选填）"
+    },
+    "patient_address": {
+      "label": "患者地址（选填）"
+    },
+    "payer_name": {
+      "label": "付款人姓名（选填）"
+    },
+    "payer_address": {
+      "label": "付款人地址（选填）"
+    },
+    "doctor_name": {
+      "label": "医生（选填）"
+    },
+    "doctor_designation": {
+      "label": "职称（选填）"
+    },
+    "room": {
+      "label": "病房类别（选填）",
+      "options": {
+        "Single": "单人间",
+        "Semi-private": "双人间",
+        "Private": "私人病房",
+        "General": "普通病房",
+        "ICU": "重症监护室"
+      }
+    },
+    "insurance": {
+      "label": "保险（选填）",
+      "options": {
+        "Yes": "有",
+        "No": "无"
+      }
+    },
+    "remark": {
+      "label": "备注（选填）"
+    },
+    "consultation_fee": {
+      "label": "诊疗费（{currency}）（选填）"
+    },
+    "medicines_cost": {
+      "label": "药品（{currency}）（选填）"
+    },
+    "tests_cost": {
+      "label": "检查及处置（{currency}）（选填）"
+    },
+    "other_charges": {
+      "label": "其他费用（{currency}）（选填）"
+    },
+    "discount": {
+      "label": "折扣（{currency}）（选填）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "amount_paid": {
+      "label": "已付金额（{currency}）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "items": {
+      "label": "明细费用",
+      "columns": {
+        "name": "项目",
+        "qty": "数量",
+        "rate": "单价（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "发票号码",
+    "contact": "联系方式",
+    "reg_no": "注册号",
+    "discharge_date": "出院日期",
+    "admit_date": "入院日期",
+    "patient_info": "患者信息",
+    "patient_name": "患者姓名",
+    "patient_issue": "就诊原因",
+    "address": "地址",
+    "guardian": "监护人姓名",
+    "mobile": "手机",
+    "insurance": "有无保险",
+    "age": "年龄",
+    "consultant": "主治医生",
+    "room": "病房类别",
+    "details": "明细",
+    "price": "单价",
+    "amount": "金额",
+    "units": "数量",
+    "pay_by": "支付方式",
+    "amount_paid": "已付金额",
+    "tax": "税",
+    "taxable": "计税金额",
+    "net": "净额",
+    "total_amount": "总金额",
+    "remark": "备注",
+    "computer": "* 本发票由计算机生成，无需签字。",
+    "created": "创建于 {when}",
+    "phone": "电话",
+    "timing": "时间",
+    "patient_uid": "患者编号",
+    "name": "姓名",
+    "payer": "付款人信息",
+    "consulting_doctors": "会诊医生",
+    "date": "日期",
+    "admission_no": "住院号",
+    "admission_date": "入院日期",
+    "bed": "床位",
+    "provisional": "临时账单",
+    "room_type": "病房类型",
+    "particulars": "项目",
+    "total_bill": "账单总额",
+    "discount": "折扣",
+    "payable": "应付金额",
+    "balance": "余额",
+    "breakup": "费用明细",
+    "date_time": "日期和时间",
+    "rate": "单价",
+    "payment_mode": "支付方式",
+    "gst_type": "GST 类型",
+    "intra": "州内（CGST + SGST）",
+    "gst_pct": "税率",
+    "notes": "备注",
+    "consultation": "诊疗费",
+    "medicines": "药品",
+    "tests": "检查及处置",
+    "other": "其他费用",
+    "itemised": "明细费用"
+  },
+  "sample": {
+    "clinic_name": "绿叶家庭诊所",
+    "doctor_name": "李医生",
+    "doctor_designation": "内科主治医师",
+    "patient_name": "王伟",
+    "guardian_name": "王芳",
+    "payer_name": "王芳",
+    "patient_issue": "发热咳嗽",
+    "items": [
+      {
+        "name": "床位费（每天）",
+        "qty": 2,
+        "rate": 300
+      },
+      {
+        "name": "护理费（每天）",
+        "qty": 2,
+        "rate": 80
+      }
+    ],
+    "consultation_fee": 120,
+    "medicines_cost": 85,
+    "tests_cost": 160,
+    "discount": 30,
+    "amount_paid": 800,
+    "tax_percent": null,
+    "hospital_details": "24 小时急诊、药房和检验科",
+    "registration_number": "医疗机构执业许可证 PDJY4411",
+    "patient_address": "上海市浦东新区世纪大道200号 3栋502室",
+    "payer_address": "上海市浦东新区世纪大道200号 3栋502室",
+    "clinic_phone": "010-12345678",
+    "patient_details": "42 / 男",
+    "remark": "如出现疼痛、活动疼痛、红肿、流脓或出血，请立即就诊。5 天后复查。"
+  }
+}

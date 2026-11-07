@@ -1,0 +1,174 @@
+{
+  "title": "Generatore di fattura e-commerce",
+  "name": "Fattura e-commerce",
+  "public_slug": "generatore-fattura-e-commerce",
+  "summary": "Fattura di un ordine online con aliquota per articolo e spedizione.",
+  "description": "Crea una fattura per un ordine online con prodotti, quantità, un'aliquota {tax} per ogni articolo, spedizione, venditore, marketplace e indirizzi del cliente. Quattro modelli; anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Ricevuta di pagamento",
+    "t2": "Ordine confermato",
+    "t3": "Fattura",
+    "t4": "Fattura fiscale"
+  },
+  "fields": {
+    "seller_name": {
+      "label": "Venduto da"
+    },
+    "seller_address": {
+      "label": "Indirizzo del venditore (facoltativo)"
+    },
+    "seller_phone": {
+      "label": "Telefono del venditore (facoltativo)"
+    },
+    "platform_name": {
+      "label": "Negozio online o marketplace (facoltativo)"
+    },
+    "platform_website": {
+      "label": "Sito web (facoltativo)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data della fattura"
+    },
+    "order_number": {
+      "label": "Numero d'ordine (facoltativo)"
+    },
+    "order_date": {
+      "label": "Data dell'ordine (facoltativo)"
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "customer_phone": {
+      "label": "Numero di cellulare (facoltativo)"
+    },
+    "shipping_address": {
+      "label": "Indirizzo di spedizione"
+    },
+    "billing_address": {
+      "label": "Indirizzo di fatturazione (facoltativo)"
+    },
+    "shipping_charge": {
+      "label": "Spese di spedizione ({currency}) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "signatory_name": {
+      "label": "Nome del firmatario (facoltativo)"
+    },
+    "return_policy": {
+      "label": "Politica di reso e note (facoltativo)"
+    },
+    "items": {
+      "label": "Prodotti",
+      "columns": {
+        "name": "Descrizione",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})",
+        "tax": "Imposta %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tel.",
+    "authorised": "Firmatario autorizzato",
+    "return_policy": "Politica di reso",
+    "payment_receipt": "Ricevuta di pagamento",
+    "receipt_no": "Ricevuta n.",
+    "sold_by": "Venduto da",
+    "order_no": "Ordine n.",
+    "order_date": "Data dell'ordine",
+    "invoice_date": "Data fattura",
+    "receipt_date": "Data ricevuta",
+    "bill_to": "Intestato a",
+    "description": "Descrizione",
+    "net_amount": "Importo netto",
+    "qty": "Q.tà",
+    "total_amount": "Importo totale",
+    "total": "Totale",
+    "shipping": "Spedizione",
+    "payment_method": "Metodo di pagamento",
+    "order_confirmed": "Il tuo ordine è confermato!",
+    "hello": "Ciao",
+    "order_number": "Numero d'ordine",
+    "shipping_address": "Indirizzo di spedizione",
+    "mobile": "Numero di cellulare",
+    "receipt_summary": "Riepilogo",
+    "rate": "Prezzo",
+    "amt": "Imp.",
+    "subtotal": "Subtotale",
+    "confirmation_note": "Ti invieremo un'email di conferma quando l'articolo sarà spedito.",
+    "thanks_shopping": "Grazie per aver acquistato da noi",
+    "need_help": "Serve aiuto?",
+    "invoice": "Fattura",
+    "invoice_no": "Fattura n.",
+    "date": "Data",
+    "invoice_to": "Fattura a",
+    "pay_to": "Pagare a",
+    "price": "Prezzo",
+    "payment_info": "Informazioni di pagamento",
+    "amount": "Importo",
+    "tax_invoice": "Fattura",
+    "ship_from": "Indirizzo di spedizione",
+    "invoice_number": "Numero di fattura",
+    "order_id": "ID ordine",
+    "payment": "Pagamento",
+    "ship_to": "Spedire a",
+    "keep_invoice": "conserva questa fattura e la scatola del produttore per la garanzia",
+    "total_items": "Totale articoli",
+    "title": "Articolo",
+    "gross_amount": "Importo lordo",
+    "taxable_value": "Imponibile",
+    "grand_total": "Totale complessivo",
+    "thank_you": "Grazie!",
+    "for_shopping": "per aver acquistato da noi"
+  },
+  "sample": {
+    "seller_name": "Carrello Luminoso S.r.l.",
+    "seller_phone": "800 123 456",
+    "customer_name": "Marco Rossi",
+    "signatory_name": "Luca Bianchi",
+    "items": [
+      {
+        "name": "Auricolari wireless con custodia di ricarica",
+        "qty": 1,
+        "rate": 39.9,
+        "tax": 22
+      },
+      {
+        "name": "Cover in silicone per telefono",
+        "qty": 2,
+        "rate": 9.9,
+        "tax": 22
+      },
+      {
+        "name": "T-shirt in cotone girocollo",
+        "qty": 2,
+        "rate": 14.9,
+        "tax": 22
+      },
+      {
+        "name": "Borraccia in acciaio inox (750 ml)",
+        "qty": 1,
+        "rate": 16.9,
+        "tax": 22
+      }
+    ],
+    "shipping_charge": 4.9,
+    "return_policy": "Ci impegniamo a consegnare ogni ordine alla perfezione. Se devi restituire un articolo, fallo con la confezione o il cartellino del prezzo originali, l'imballaggio originale e la fattura; senza di essi non possiamo elaborare la tua richiesta. Si applicano termini e condizioni.\nI prodotti venduti sono destinati al consumo finale e non alla rivendita.",
+    "customer_phone": "333 123 4567"
+  }
+}

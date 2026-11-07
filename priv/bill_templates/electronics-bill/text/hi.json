@@ -1,0 +1,256 @@
+{
+  "title": "इलेक्ट्रॉनिक्स बिल जनरेटर",
+  "name": "इलेक्ट्रॉनिक्स बिल",
+  "public_slug": "electronics-bill-generator",
+  "summary": "सीरियल नंबर और कर विवरण के साथ इलेक्ट्रॉनिक्स का टैक्स इनवॉइस।",
+  "description": "सीरियल नंबर, HSN कोड, कीमत में शामिल {tax}, बिल और शिप-टू पक्ष, भुगतान विवरण और शब्दों में राशि के साथ फ़ोन, उपकरण और अन्य इलेक्ट्रॉनिक्स का टैक्स इनवॉइस बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "टैक्स इनवॉइस"
+  },
+  "fields": {
+    "company_name": {
+      "label": "कंपनी का नाम"
+    },
+    "branch": {
+      "label": "शाखा (वैकल्पिक)"
+    },
+    "seller_address": {
+      "label": "पता (वैकल्पिक)"
+    },
+    "seller_state": {
+      "label": "राज्य (वैकल्पिक)"
+    },
+    "seller_phone": {
+      "label": "टेलीफ़ोन (वैकल्पिक)"
+    },
+    "seller_email": {
+      "label": "ईमेल (वैकल्पिक)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "seller_pan": {
+      "label": "PAN (वैकल्पिक)"
+    },
+    "cin": {
+      "label": "CIN (वैकल्पिक)"
+    },
+    "copy_label": {
+      "label": "प्रति का लेबल (वैकल्पिक)"
+    },
+    "place_of_supply": {
+      "label": "आपूर्ति का स्थान (वैकल्पिक)"
+    },
+    "supply": {
+      "label": "आपूर्ति",
+      "options": {
+        "Same state": "उसी राज्य में",
+        "Other state": "दूसरे राज्य में"
+      }
+    },
+    "reverse_charge": {
+      "label": "रिवर्स चार्ज (वैकल्पिक)"
+    },
+    "invoice_number": {
+      "label": "इनवॉइस नंबर"
+    },
+    "date": {
+      "label": "इनवॉइस की तारीख"
+    },
+    "do_number": {
+      "label": "डिलीवरी ऑर्डर नं. (वैकल्पिक)"
+    },
+    "financier": {
+      "label": "फ़ाइनेंसर (वैकल्पिक)"
+    },
+    "bill_name": {
+      "label": "बिल: नाम"
+    },
+    "bill_care_of": {
+      "label": "बिल: द्वारा (c/o) (वैकल्पिक)"
+    },
+    "bill_address": {
+      "label": "बिल: पता (वैकल्पिक)"
+    },
+    "bill_state": {
+      "label": "बिल: राज्य (वैकल्पिक)"
+    },
+    "bill_pin": {
+      "label": "बिल: पिन कोड (वैकल्पिक)"
+    },
+    "bill_phone": {
+      "label": "बिल: संपर्क नं. (वैकल्पिक)"
+    },
+    "bill_tax_id": {
+      "label": "बिल: {tax_id} (वैकल्पिक)"
+    },
+    "ship_code": {
+      "label": "शिप-टू: कोड (वैकल्पिक)"
+    },
+    "ship_auth_code": {
+      "label": "शिप-टू: अधिकृत कोड (वैकल्पिक)"
+    },
+    "ship_address": {
+      "label": "शिप-टू: पता (वैकल्पिक)"
+    },
+    "ship_state": {
+      "label": "शिप-टू: राज्य (वैकल्पिक)"
+    },
+    "ship_phone": {
+      "label": "शिप-टू: संपर्क नं. (वैकल्पिक)"
+    },
+    "ship_tax_id": {
+      "label": "शिप-टू: {tax_id} (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का माध्यम",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Cheque": "चेक",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "payment_reference": {
+      "label": "कार्ड अप्रूवल / चेक / OTP नं. (वैकल्पिक)"
+    },
+    "payment_date": {
+      "label": "भुगतान की तारीख (वैकल्पिक)"
+    },
+    "amount_paid": {
+      "label": "भुगतान की गई राशि ({currency}) (खाली होने पर पूरा कुल) (वैकल्पिक)"
+    },
+    "remarks": {
+      "label": "टिप्पणियाँ (वैकल्पिक)"
+    },
+    "bank_details": {
+      "label": "बैंक (वैकल्पिक)"
+    },
+    "bank_account": {
+      "label": "बैंक खाता (वैकल्पिक)"
+    },
+    "bank_ifsc": {
+      "label": "IFSC (वैकल्पिक)"
+    },
+    "customer_care": {
+      "label": "ग्राहक सेवा नं. (वैकल्पिक)"
+    },
+    "delivery_helpline": {
+      "label": "डिलीवरी हेल्पलाइन नं. (वैकल्पिक)"
+    },
+    "signatory_for": {
+      "label": "की ओर से हस्ताक्षरकर्ता (वैकल्पिक)"
+    },
+    "thank_you": {
+      "label": "धन्यवाद संदेश (वैकल्पिक)"
+    },
+    "items": {
+      "label": "वस्तुएँ",
+      "columns": {
+        "name": "वस्तु",
+        "code": "सीरियल नं.",
+        "hsn": "HSN / SAC",
+        "qty": "मात्रा",
+        "rate": "दर ({currency})",
+        "tax": "कर %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "टैक्स इनवॉइस",
+    "state": "राज्य",
+    "tel_no": "टेलीफ़ोन नं.",
+    "email": "ईमेल",
+    "place_of_supply": "आपूर्ति का स्थान",
+    "invoice_number": "इनवॉइस नंबर",
+    "invoice_date": "इनवॉइस की तारीख",
+    "do_number": "डीओ नंबर",
+    "bill_to_party": "बिल प्राप्तकर्ता",
+    "ship_to_party": "शिप-टू पक्ष",
+    "financier": "फ़ाइनेंसर",
+    "name": "नाम",
+    "care_of": "द्वारा (c/o)",
+    "address": "पता",
+    "pin": "पिन",
+    "contact": "संपर्क नं.",
+    "code": "कोड",
+    "auth_code": "अधिकृत कोड",
+    "serial_no": "सीरियल नं.",
+    "item_name": "वस्तु का नाम",
+    "hsn": "HSN / SAC",
+    "qty": "मात्रा",
+    "rate": "दर",
+    "taxable_value": "कर योग्य मूल्य",
+    "amount": "राशि",
+    "totals": "कुल योग",
+    "amount_in_words": "शब्दों में राशि",
+    "payment_mode": "माध्यम",
+    "reference": "कार्ड/चेक/OTP",
+    "date": "तारीख",
+    "total": "कुल",
+    "payments": "भुगतान",
+    "balance": "बकाया",
+    "amt": "राशि",
+    "remarks": "टिप्पणियाँ",
+    "bank_details": "बैंक",
+    "bank_account": "बैंक खाता",
+    "ifsc": "IFSC",
+    "customer_care": "ग्राहक सेवा नं.",
+    "delivery_helpline": "डिलीवरी हेल्पलाइन नं.",
+    "for": "की ओर से",
+    "authorised": "अधिकृत हस्ताक्षरकर्ता"
+  },
+  "sample": {
+    "company_name": "विज़न इलेक्ट्रॉनिक्स रिटेल प्रा. लि.",
+    "branch": "अंधेरी ईस्ट शोरूम",
+    "signatory_for": "विज़न इलेक्ट्रॉनिक्स रिटेल प्रा. लि.",
+    "seller_state": "महाराष्ट्र",
+    "seller_phone": "022 4000 1234",
+    "bill_name": "रोहन मेहता",
+    "bill_state": "महाराष्ट्र",
+    "bill_pin": "400093",
+    "bill_phone": "98200 12345",
+    "ship_state": "महाराष्ट्र",
+    "customer_care": "1800 123 4567",
+    "delivery_helpline": "1800 765 4321",
+    "bank_details": "एग्ज़ाम्पल बैंक, अंधेरी ईस्ट",
+    "bank_account": "00112233445566",
+    "items": [
+      {
+        "name": "स्मार्टफ़ोन 128 जीबी (मिडनाइट ब्लैक)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 24999,
+        "tax": 18,
+        "hsn": "8517"
+      },
+      {
+        "name": "वायरलेस ईयरबड्स",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 2999,
+        "tax": 18,
+        "hsn": "8518"
+      },
+      {
+        "name": "पावर बैंक 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 1799,
+        "tax": 18,
+        "hsn": "8507"
+      }
+    ],
+    "ship_phone": "98200 12345",
+    "seller_address": "शॉप 3, कॉर्पोरेट पार्क, अंधेरी ईस्ट, मुंबई, महाराष्ट्र 400093",
+    "bill_address": "फ्लैट 12, सनराइज़ अपार्टमेंट्स, स्टेशन रोड, मुंबई",
+    "ship_address": "फ्लैट 12, सनराइज़ अपार्टमेंट्स, स्टेशन रोड, मुंबई",
+    "place_of_supply": "महाराष्ट्र (27)",
+    "reverse_charge": "रिवर्स चार्ज लागू नहीं",
+    "copy_label": "(प्राप्तकर्ता के लिए मूल प्रति)",
+    "remarks": "वारंटी के लिए यह इनवॉइस संभालकर रखें। स्टोर पर स्क्रीन गार्ड मुफ़्त लगाया गया।",
+    "thank_you": "धन्यवाद। फिर पधारें।"
+  }
+}

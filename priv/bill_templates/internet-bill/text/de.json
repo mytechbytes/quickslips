@@ -1,0 +1,175 @@
+{
+  "title": "Internetrechnung-Generator",
+  "name": "Internetrechnung",
+  "public_slug": "internetrechnung-generator",
+  "summary": "Breitband- oder Glasfaserrechnung mit Tarif, Zeitraum und {tax}.",
+  "description": "Erstellen Sie eine Internetrechnung für Breitband oder Glasfaser mit Tarif, Geschwindigkeit, Abrechnungszeitraum, Entgelten und {tax}. Vier Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Klassisch",
+    "t2": "Internetrechnung",
+    "t3": "Detaillierte Rechnung",
+    "t4": "Kontoauszug"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Internetanbieter"
+    },
+    "provider_address": {
+      "label": "Adresse (optional)"
+    },
+    "provider_email": {
+      "label": "E-Mail (optional)"
+    },
+    "registered_office": {
+      "label": "Firmensitz (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "bill_number": {
+      "label": "Rechnungsnummer"
+    },
+    "account_number": {
+      "label": "Kundennummer"
+    },
+    "bill_date": {
+      "label": "Rechnungsdatum"
+    },
+    "due_date": {
+      "label": "Fälligkeitsdatum (optional)"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "customer_address": {
+      "label": "Kundenadresse (optional)"
+    },
+    "user_name": {
+      "label": "Benutzername (optional)"
+    },
+    "period_start": {
+      "label": "Abrechnungszeitraum von"
+    },
+    "period_end": {
+      "label": "Abrechnungszeitraum bis"
+    },
+    "plan_name": {
+      "label": "Tarif"
+    },
+    "plan_speed": {
+      "label": "Geschwindigkeit (optional)"
+    },
+    "plan_package": {
+      "label": "Paketart (optional)",
+      "options": {
+        "Limited": "Begrenzt",
+        "Unlimited": "Unbegrenzt",
+        "FUP": "Fair Use"
+      }
+    },
+    "plan_validity": {
+      "label": "Laufzeit (optional)",
+      "options": {
+        "Monthly": "Monatlich",
+        "Quarterly": "Vierteljährlich",
+        "Half-yearly": "Halbjährlich",
+        "Annual": "Jährlich"
+      }
+    },
+    "service_description": {
+      "label": "Leistungsbeschreibung (optional)"
+    },
+    "plan_charge": {
+      "label": "Tarifpreis ({currency})"
+    },
+    "other_charges": {
+      "label": "Installation oder sonstige Entgelte ({currency}) (optional)"
+    },
+    "discount": {
+      "label": "Rabatt ({currency}) (optional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payments_received": {
+      "label": "Erhaltene Zahlungen ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart (optional)",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "terms": {
+      "label": "Bedingungen (eine pro Zeile) (optional)"
+    }
+  },
+  "print": {
+    "title": "Internetrechnung",
+    "bill_no": "Rechnungs-Nr.",
+    "bill_date": "Rechnungsdatum",
+    "due_date": "Fälligkeit",
+    "account_no": "Kundennr.",
+    "billing_period": "Abrechnungszeitraum",
+    "billed_to": "Rechnung an",
+    "description": "Beschreibung",
+    "amount": "Betrag",
+    "installation": "Installation und sonstige Entgelte",
+    "discount": "Rabatt",
+    "subtotal": "Zwischensumme",
+    "amount_due": "Zu zahlender Betrag",
+    "pay_by": "Bitte zahlen Sie bis zum {date}, damit Ihr Anschluss aktiv bleibt.",
+    "computer_generated": "Dies ist eine maschinell erstellte Rechnung.",
+    "invoice_title": "Internetrechnung",
+    "customer_name": "Kundenname",
+    "customer_address": "Kundenadresse",
+    "bill_account": "Kundennummer",
+    "receipt_details": "Belegdaten",
+    "receipt_no": "Belegnummer",
+    "date": "Datum",
+    "payment_method": "Zahlungsart",
+    "provider_details": "Anbieterdaten",
+    "billing_cycle": "Abrechnungszyklus",
+    "plan_summary": "Tarifübersicht",
+    "plan": "Tarif",
+    "plan_speed": "Geschwindigkeit",
+    "plan_package": "Paket",
+    "plan_validity": "Laufzeit",
+    "plan_amount": "Betrag",
+    "total": "Gesamt",
+    "payable_to": "Alle Zahlungen zugunsten von",
+    "no_signature": "Diese Rechnung wurde maschinell erstellt und ist ohne Unterschrift gültig",
+    "receipt_for_recipient": "(Beleg für den Empfänger)",
+    "name": "Name",
+    "invoice_no": "Rechnungs-Nr.",
+    "taxable_amount": "Steuerbasis",
+    "rate_pct": "Satz %",
+    "payments_received": "Erhaltene Zahlungen",
+    "user_name": "Benutzername",
+    "service_description": "Beschreibung der Internetleistung",
+    "amount_incl_tax": "Betrag inkl. Steuer",
+    "registered_office": "Firmensitz",
+    "terms_title": "Bedingungen",
+    "acknowledgement": "Zahlungsbestätigung",
+    "subscriber_name": "Name des Anschlussinhabers",
+    "hello": "Hallo",
+    "invoice_total": "Rechnungssumme",
+    "currency": "Währung",
+    "invoice_amount": "Rechnungsbetrag",
+    "mailing_address": "Unsere Kontaktadresse lautet"
+  },
+  "sample": {
+    "provider_name": "Himmelsnetz",
+    "registered_office": "Himmelsnetz GmbH, Hauptstraße 12, 10115 Berlin",
+    "customer_name": "Anna Becker",
+    "plan_name": "Glasfaser 200 Mbit/s, unbegrenztes Datenvolumen",
+    "service_description": "Glasfaser-Internetanschluss",
+    "plan_charge": 34.95,
+    "gst_percent": 19,
+    "terms": "Schecks sind auf Himmelsnetz auszustellen.\nBei einem geplatzten Scheck wird eine Gebühr von 10 € fällig.\nBei Zahlung nach dem Fälligkeitsdatum wird eine Mahngebühr erhoben.\nBei Zahlungsverzug behalten wir uns vor, den Dienst zu sperren.\nDiese Rechnung wurde maschinell erstellt; Unterschrift und Stempel sind nicht erforderlich."
+  }
+}

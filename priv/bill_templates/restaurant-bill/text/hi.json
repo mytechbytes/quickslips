@@ -1,0 +1,127 @@
+{
+  "title": "रेस्टोरेंट बिल जनरेटर",
+  "name": "रेस्टोरेंट बिल",
+  "public_slug": "restaurant-bill-generator",
+  "summary": "आइटम और {tax} के साथ डाइन-इन या टेकअवे बिल।",
+  "description": "किसी भी संख्या में आइटम, मात्रा, सेवा शुल्क और {tax} के साथ रेस्टोरेंट बिल बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "पिक्सेल पर्ची",
+    "t2": "डैश वाली रसीद",
+    "t3": "कॉम्पैक्ट बिल",
+    "t4": "टाइपराइटर बिल"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "रेस्टोरेंट का नाम"
+    },
+    "restaurant_address": {
+      "label": "पता (वैकल्पिक)"
+    },
+    "gstin": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "fssai_number": {
+      "label": "FSSAI लाइसेंस नं. (वैकल्पिक)"
+    },
+    "bill_number": {
+      "label": "बिल नंबर"
+    },
+    "date": {
+      "label": "तारीख"
+    },
+    "time": {
+      "label": "समय (वैकल्पिक)"
+    },
+    "table_number": {
+      "label": "टेबल (वैकल्पिक)"
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम (वैकल्पिक)"
+    },
+    "service_percent": {
+      "label": "सेवा शुल्क (%) (वैकल्पिक)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का माध्यम",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "items": {
+      "label": "वस्तुएँ",
+      "columns": {
+        "name": "वस्तु",
+        "qty": "मात्रा",
+        "rate": "दर ({currency})"
+      }
+    }
+  },
+  "print": {
+    "welcome": "स्वागत है!",
+    "original": "मूल रसीद",
+    "date": "तारीख",
+    "time": "समय",
+    "customer": "ग्राहक का नाम",
+    "table": "टेबल",
+    "receipt_no": "रसीद नं.",
+    "bill_no": "बिल नं.",
+    "description": "विवरण",
+    "item": "वस्तु",
+    "qty": "मात्रा",
+    "price": "मूल्य",
+    "subtotal": "उप-योग",
+    "total": "कुल",
+    "service": "सेवा शुल्क",
+    "paid_by": "भुगतान",
+    "save_paper": "कागज़ बचाएँ, प्रकृति बचाएँ!",
+    "thanks_meal": "स्वादिष्ट भोजन के लिए धन्यवाद।",
+    "receipt": "रसीद",
+    "support_local": "स्थानीय व्यवसाय का साथ देने के लिए धन्यवाद!",
+    "thanks_visit": "आने के लिए धन्यवाद! शुभ यात्रा।",
+    "round_off": "राउंड ऑफ़",
+    "above_incl": "ऊपर के मूल्य करों सहित हैं",
+    "total_tax": "कुल कर",
+    "amount": "राशि"
+  },
+  "sample": {
+    "restaurant_name": "ग्रीन लीफ कैफ़े",
+    "items": [
+      {
+        "name": "मसाला डोसा",
+        "qty": 2,
+        "rate": 120
+      },
+      {
+        "name": "फ़िल्टर कॉफ़ी",
+        "qty": 3,
+        "rate": 60
+      },
+      {
+        "name": "वेज थाली",
+        "qty": 1,
+        "rate": 280
+      },
+      {
+        "name": "पनीर टिक्का",
+        "qty": 1,
+        "rate": 320
+      },
+      {
+        "name": "गुलाब जामुन",
+        "qty": 2,
+        "rate": 90
+      }
+    ],
+    "customer_name": "रोहन मेहता",
+    "table_number": "T-7",
+    "gst_percent": 5,
+    "restaurant_address": "14, चर्च स्ट्रीट, बेंगलुरु, कर्नाटक 560001"
+  }
+}

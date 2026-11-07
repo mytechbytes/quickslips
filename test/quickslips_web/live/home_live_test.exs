@@ -71,9 +71,13 @@ defmodule QuickSlipsWeb.HomeLiveTest do
                "पेट्रोल बिल जनरेटर"
              )
 
-      refute has_element?(view, "#template-rent-receipt")
+      refute has_element?(view, "#template-courier-receipt")
       assert has_element?(view, "#chip-travel", "यात्रा")
-      refute has_element?(view, "#chip-work")
+
+      # The categories of the bills that are in Hindi: Travel, Home & utilities, Work, Food & shopping and Health &
+      # learning (the medical bill), all five.
+      assert has_element?(view, "#chip-work")
+      assert has_element?(view, "#chip-health-learning")
     end
 
     test "the Spanish catalogue links to the Spanish address", %{conn: conn} do

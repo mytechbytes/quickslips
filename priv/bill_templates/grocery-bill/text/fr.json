@@ -1,0 +1,127 @@
+{
+  "title": "Générateur de ticket de supermarché",
+  "name": "Ticket de supermarché",
+  "public_slug": "generateur-de-ticket-de-supermarche",
+  "summary": "Articles, quantités et totaux.",
+  "description": "Créez un ticket de supermarché avec autant d'articles que nécessaire, les quantités, les prix, une remise et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Facture de détail",
+    "t2": "Ticket avec économies"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Nom du magasin"
+    },
+    "store_address": {
+      "label": "Adresse (facultatif)"
+    },
+    "store_phone": {
+      "label": "Téléphone (facultatif)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "fssai_number": {
+      "label": "N° de licence FSSAI (facultatif)"
+    },
+    "bill_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Heure (facultatif)"
+    },
+    "transaction_id": {
+      "label": "ID de transaction (facultatif)"
+    },
+    "customer_name": {
+      "label": "Nom du client (facultatif)"
+    },
+    "discount": {
+      "label": "Remise ({currency}) (facultatif)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Payé par",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "items": {
+      "label": "Articles",
+      "columns": {
+        "name": "Article",
+        "qty": "Qté",
+        "rate": "Prix ({currency})",
+        "discount": "Remise %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tél.",
+    "retail_invoice": "Facture de vente au détail",
+    "bill_no": "Facture n°",
+    "bill_date": "Date",
+    "time": "Heure",
+    "particulars": "Désignation",
+    "rate": "Prix",
+    "qty": "Qté",
+    "amount": "Montant",
+    "total": "Total",
+    "net_amount": "Montant net",
+    "payment_method": "Mode de paiement",
+    "transaction": "ID de transaction",
+    "customer": "Nom du client",
+    "thanks": "Merci ! À bientôt.",
+    "sn": "N°",
+    "item_name": "Article",
+    "unit_price": "Prix net",
+    "sub_total": "Sous-total",
+    "saving": "Économie totale",
+    "saving_pct": "Économie totale (%)",
+    "discount": "Remise"
+  },
+  "sample": {
+    "store_name": "Supermarché du Marché",
+    "items": [
+      {
+        "name": "Riz basmati (1 kg)",
+        "qty": 1,
+        "rate": 3.2
+      },
+      {
+        "name": "Lentilles (500 g)",
+        "qty": 2,
+        "rate": 2.1
+      },
+      {
+        "name": "Huile de tournesol (1 L)",
+        "qty": 2,
+        "rate": 2.6,
+        "discount": 5
+      },
+      {
+        "name": "Sucre (1 kg)",
+        "qty": 3,
+        "rate": 1.4
+      },
+      {
+        "name": "Café moulu (250 g)",
+        "qty": 1,
+        "rate": 4.2,
+        "discount": 10
+      }
+    ],
+    "customer_name": "Camille Martin",
+    "tax_percent": 5.5,
+    "store_phone": "01 23 45 67 89"
+  }
+}

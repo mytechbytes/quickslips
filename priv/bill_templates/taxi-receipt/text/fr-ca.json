@@ -1,0 +1,21 @@
+{
+  "sample": {
+    "operator_name": "Taxi Érable",
+    "passenger_name": "Julie Tremblay",
+    "driver_name": "Marc Gagnon",
+    "pickup": "Gare centrale, Montréal",
+    "drop": "Aéroport Montréal-Trudeau",
+    "vehicle_number": "ABC 123",
+    "vehicle_model": "Toyota Camry",
+    "customer_phone": "(514) 555-0123",
+    "receipt_number": "T-007731",
+    "distance_km": 21,
+    "base_fare": 48,
+    "toll": 0,
+    "airport_charge": 0,
+    "advance_paid": 0,
+    "tax_percent": 5,
+    "operator_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "customer_address": "1200 rue Peel, Montréal, QC H3B 2T6"
+  }
+}

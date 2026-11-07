@@ -5,16 +5,22 @@
   "category": "Home & utilities",
   "icon": "hero-home",
   "summary": "Monthly rent receipts, ready to submit for HRA.",
-  "description": "Create a rent receipt with tenant, landlord, property and amount. Preview instantly and download as PDF.",
-  "templates": [{ "id": "t1", "name": "Classic" }],
+  "description": "Create a rent receipt, or a set of up to 12 for a period, with tenant, landlord, property and amount. Preview instantly and download as PDF.",
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "templates": [{ "id": "t1" }, { "id": "t2" }, { "id": "t3" }, { "id": "t4" }],
   "fields": [
     { "key": "tenant_name", "group": "customer", "label": "Tenant name", "type": "text", "required": true, "max_length": 80 },
     { "key": "landlord_name", "group": "business", "label": "Landlord name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
     { "key": "landlord_pan", "group": "registration", "label": "Landlord PAN (optional)", "type": "text", "required": false, "max_length": 10, "countries": ["in"] },
     { "key": "property_address", "group": "customer", "label": "Rented property address", "type": "textarea", "required": true, "max_length": 250 },
     { "key": "month", "group": "document", "label": "Rent for month", "type": "month", "required": true },
+    { "key": "from_date", "group": "document", "label": "Period from (optional)", "type": "date", "required": false },
+    { "key": "to_date", "group": "document", "label": "Period to (optional)", "type": "date", "required": false },
+    { "key": "bill_by", "group": "document", "label": "Bill by", "type": "select", "options": ["Monthly", "Quarterly", "Half-yearly", "Yearly"], "required": false },
+    { "key": "receipt_date", "group": "document", "label": "Receipt date", "type": "date", "required": true },
     { "key": "monthly_rent", "group": "charges", "label": "Monthly rent ({currency})", "type": "number", "required": true, "min": 1 },
-    { "key": "payment_mode", "group": "payment", "label": "Payment mode", "type": "select", "options": ["Bank transfer", "UPI", "Cash", "Cheque"], "required": true },
-    { "key": "receipt_date", "group": "document", "label": "Receipt date", "type": "date", "required": true }
+    { "key": "payment_mode", "group": "payment", "label": "Payment mode", "type": "select", "options": ["Bank transfer", "UPI", "Cash", "Cheque", "Card", "Online"], "required": true },
+    { "key": "received_by", "group": "payment", "label": "Received by", "type": "select", "options": ["Landlord", "Manager"], "required": false },
+    { "key": "receiver_name", "group": "payment", "label": "Receiver's name (optional)", "type": "text", "required": false, "max_length": 80 }
   ]
 }

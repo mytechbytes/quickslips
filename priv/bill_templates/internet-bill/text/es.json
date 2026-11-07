@@ -1,0 +1,175 @@
+{
+  "title": "Generador de Factura de Internet",
+  "name": "Factura de Internet",
+  "public_slug": "generador-de-factura-de-internet",
+  "summary": "Factura de banda ancha o fibra con tarifa, periodo y {tax}.",
+  "description": "Crea una factura de internet de banda ancha o fibra con la tarifa, la velocidad, el periodo de facturación, los cargos y el {tax}. Cuatro diseños; previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Clásico",
+    "t2": "Factura de internet",
+    "t3": "Factura detallada",
+    "t4": "Extracto"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Proveedor de internet"
+    },
+    "provider_address": {
+      "label": "Dirección (opcional)"
+    },
+    "provider_email": {
+      "label": "Correo electrónico (opcional)"
+    },
+    "registered_office": {
+      "label": "Domicilio social (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "bill_number": {
+      "label": "Número de factura"
+    },
+    "account_number": {
+      "label": "Número de cliente"
+    },
+    "bill_date": {
+      "label": "Fecha de la factura"
+    },
+    "due_date": {
+      "label": "Fecha de vencimiento (opcional)"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "customer_address": {
+      "label": "Dirección del cliente (opcional)"
+    },
+    "user_name": {
+      "label": "Nombre de usuario (opcional)"
+    },
+    "period_start": {
+      "label": "Periodo de facturación desde"
+    },
+    "period_end": {
+      "label": "Periodo de facturación hasta"
+    },
+    "plan_name": {
+      "label": "Tarifa"
+    },
+    "plan_speed": {
+      "label": "Velocidad (opcional)"
+    },
+    "plan_package": {
+      "label": "Tipo de paquete (opcional)",
+      "options": {
+        "Limited": "Limitado",
+        "Unlimited": "Ilimitado",
+        "FUP": "Uso razonable"
+      }
+    },
+    "plan_validity": {
+      "label": "Validez del plan (opcional)",
+      "options": {
+        "Monthly": "Mensual",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Annual": "Anual"
+      }
+    },
+    "service_description": {
+      "label": "Descripción del servicio (opcional)"
+    },
+    "plan_charge": {
+      "label": "Importe de la tarifa ({currency})"
+    },
+    "other_charges": {
+      "label": "Instalación u otros cargos ({currency}) (opcional)"
+    },
+    "discount": {
+      "label": "Descuento ({currency}) (opcional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payments_received": {
+      "label": "Pagos recibidos ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago (opcional)",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "terms": {
+      "label": "Términos y condiciones (uno por línea) (opcional)"
+    }
+  },
+  "print": {
+    "title": "Factura de internet",
+    "bill_no": "Factura n.º",
+    "bill_date": "Fecha de factura",
+    "due_date": "Vencimiento",
+    "account_no": "N.º de cliente",
+    "billing_period": "Periodo de facturación",
+    "billed_to": "Facturado a",
+    "description": "Descripción",
+    "amount": "Importe",
+    "installation": "Instalación y otros cargos",
+    "discount": "Descuento",
+    "subtotal": "Subtotal",
+    "amount_due": "Importe a pagar",
+    "pay_by": "Pague antes del {date} para mantener su conexión activa.",
+    "computer_generated": "Factura generada por ordenador.",
+    "invoice_title": "Factura de internet",
+    "customer_name": "Nombre del cliente",
+    "customer_address": "Dirección del cliente",
+    "bill_account": "Número de cliente",
+    "receipt_details": "Datos del recibo",
+    "receipt_no": "Número de recibo",
+    "date": "Fecha",
+    "payment_method": "Forma de pago",
+    "provider_details": "Datos del proveedor",
+    "billing_cycle": "Ciclo de facturación",
+    "plan_summary": "Resumen del plan",
+    "plan": "Tarifa",
+    "plan_speed": "Velocidad",
+    "plan_package": "Paquete",
+    "plan_validity": "Validez",
+    "plan_amount": "Importe",
+    "total": "Total",
+    "payable_to": "Todos los pagos deben hacerse a favor de",
+    "no_signature": "Esta factura se genera por ordenador y no requiere firma",
+    "receipt_for_recipient": "(Recibo para el destinatario)",
+    "name": "Nombre",
+    "invoice_no": "Factura n.º",
+    "taxable_amount": "Base imponible",
+    "rate_pct": "tipo %",
+    "payments_received": "Pagos recibidos",
+    "user_name": "Usuario",
+    "service_description": "Descripción del servicio de internet",
+    "amount_incl_tax": "Importe con impuestos",
+    "registered_office": "Domicilio social",
+    "terms_title": "Términos y condiciones",
+    "acknowledgement": "Justificante de pago",
+    "subscriber_name": "Nombre del titular",
+    "hello": "Hola",
+    "invoice_total": "Total de la factura",
+    "currency": "Moneda",
+    "invoice_amount": "Importe de la factura",
+    "mailing_address": "Nuestra dirección de contacto es"
+  },
+  "sample": {
+    "provider_name": "Cielo Fibra",
+    "registered_office": "Cielo Fibra S.L., Calle Mayor 10, 28013 Madrid",
+    "customer_name": "Carlos Gómez",
+    "plan_name": "Fibra 200 Mbps, datos ilimitados",
+    "service_description": "Suscripción de internet por fibra",
+    "plan_charge": 29.9,
+    "gst_percent": 21,
+    "terms": "Los cheques deben extenderse a favor de Cielo Fibra.\nEn caso de devolución del cheque se aplicará una penalización de 10 €.\nSe cobrará un recargo por demora si la factura se paga después del vencimiento.\nEn caso de impago, nos reservamos el derecho de desactivar el servicio.\nEsta factura se genera por sistema; no requiere firma ni sello."
+  }
+}

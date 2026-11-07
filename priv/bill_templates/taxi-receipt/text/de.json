@@ -1,0 +1,174 @@
+{
+  "title": "Taxirechnung-Generator",
+  "name": "Taxirechnung",
+  "public_slug": "taxirechnung-generator",
+  "summary": "Taxirechnung mit Fahrpreis, Maut und {tax} als PDF.",
+  "description": "Erstellen Sie eine Taxi- oder Mietwagenrechnung mit Abhol- und Zielort, Strecke, Fahrpreis, Maut und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Fahrtbeleg",
+    "t2": "Fahrt und Rechnung",
+    "t3": "Rechnung",
+    "t4": "Einfacher Beleg"
+  },
+  "fields": {
+    "operator_name": {
+      "label": "Name des Taxiunternehmens oder Fahrers"
+    },
+    "operator_address": {
+      "label": "Adresse (optional)"
+    },
+    "receipt_number": {
+      "label": "Belegnummer"
+    },
+    "date": {
+      "label": "Fahrtdatum"
+    },
+    "drop_date": {
+      "label": "Ankunftsdatum (optional)"
+    },
+    "passenger_name": {
+      "label": "Name des Fahrgasts (optional)"
+    },
+    "customer_phone": {
+      "label": "Handynummer des Fahrgasts (optional)"
+    },
+    "customer_address": {
+      "label": "Adresse des Fahrgasts (optional)"
+    },
+    "driver_name": {
+      "label": "Name des Fahrers (optional)"
+    },
+    "vehicle_number": {
+      "label": "Kfz-Kennzeichen (optional)"
+    },
+    "vehicle_model": {
+      "label": "Fahrzeugmodell (optional)"
+    },
+    "pickup": {
+      "label": "Abholort"
+    },
+    "pickup_time": {
+      "label": "Abholzeit (optional)"
+    },
+    "drop": {
+      "label": "Zielort"
+    },
+    "drop_time": {
+      "label": "Ankunftszeit (optional)"
+    },
+    "distance_km": {
+      "label": "Strecke (km)"
+    },
+    "base_fare": {
+      "label": "Fahrpreis ({currency})"
+    },
+    "toll": {
+      "label": "Maut und Servicegebühr ({currency}) (optional)"
+    },
+    "airport_charge": {
+      "label": "Flughafenzuschlag ({currency}) (optional)"
+    },
+    "advance_paid": {
+      "label": "Anzahlung ({currency}) (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "payment_mode": {
+      "label": "Bezahlt mit",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "receipt_title": "Hier ist Ihr Beleg für Ihre Fahrt,",
+    "enjoyed": "Wir hoffen, die Fahrt hat Ihnen gefallen.",
+    "trip_total": "Gesamtpreis der Fahrt",
+    "trip_fare": "Fahrpreis",
+    "subtotal": "Zwischensumme",
+    "toll": "Maut und Servicegebühr",
+    "airport": "Flughafenzuschlag",
+    "payments": "Zahlungen",
+    "includes": "Im Gesamtbetrag von {total} sind {tax} in Höhe von {amount} enthalten.",
+    "rode_with": "Sie fuhren mit",
+    "plate": "Kennzeichen",
+    "fares_incl": "Fahrpreise enthalten Steuern.",
+    "pickup": "Abholung",
+    "drop": "Ziel",
+    "thanks_travel": "Danke, dass Sie mit uns gefahren sind,",
+    "ride_details": "Fahrtdetails",
+    "bill_details": "Rechnungsdetails",
+    "total_bill": "Gesamtbetrag",
+    "includes_taxes": "Enthält {amount} Steuern",
+    "promise": "Wir haben Sie wie versprochen zum vereinbarten Gesamtpreis ans Ziel gebracht. Eine Änderung des Ziels oder der Route kann den Preis ändern.",
+    "complaint": "Bei Beanstandungen zu dieser Rechnung schreiben Sie uns bitte an",
+    "payment": "Zahlung",
+    "paid_by": "Bezahlt mit",
+    "original": "Original-Rechnung",
+    "driver_invoice": "Fahrerrechnung",
+    "service": "Leistung: Taxifahrt",
+    "invoice_id": "Rechnungs-ID",
+    "invoice_date": "Rechnungsdatum",
+    "customer": "Name des Kunden",
+    "mobile": "Handynummer",
+    "pickup_address": "Abholadresse",
+    "description": "Beschreibung",
+    "amount": "Betrag",
+    "ride_fee": "Fahrpreis",
+    "note": "Hinweis: 1. Diese Rechnung wird im Namen des Beförderungsunternehmens ausgestellt. 2. Sie wurde elektronisch erstellt und ist ohne Unterschrift gültig.",
+    "tax_invoice": "Rechnung",
+    "invoice_no": "Rechnungs-Nr.",
+    "date": "Datum",
+    "billed_to": "Rechnung an",
+    "trip_details": "Fahrtdaten",
+    "driver": "Fahrer",
+    "vehicle_no": "Kennzeichen",
+    "vehicle": "Fahrzeug",
+    "date_time": "Datum und Uhrzeit",
+    "particulars": "Position",
+    "period": "Reisezeitraum",
+    "until": "bis",
+    "distance": "Strecke",
+    "rate": "Preis",
+    "pick_point": "Abholort",
+    "drop_point": "Zielort",
+    "advance": "Abzüglich Anzahlung",
+    "balance": "Restbetrag",
+    "total_amount": "Gesamtbetrag",
+    "signatory": "Autorisierte Unterschrift",
+    "thanks_riding": "Danke für Ihre Fahrt,",
+    "before_tax": "Vor Steuern",
+    "fees": "Maut, Flughafen und Gebühren",
+    "trip_id": "Fahrt-ID",
+    "cab_no": "Taxi-Nr.",
+    "time": "Fahrtzeit",
+    "paid": "Bezahlt",
+    "total": "Gesamt",
+    "unit": "km"
+  },
+  "sample": {
+    "operator_name": "Taxi Spree",
+    "passenger_name": "Anna Becker",
+    "driver_name": "Thomas Müller",
+    "pickup": "Hauptbahnhof, Berlin",
+    "drop": "Flughafen Berlin Brandenburg",
+    "vehicle_number": "B TX 4521",
+    "vehicle_model": "Mercedes E-Klasse",
+    "customer_phone": "0171 2345678",
+    "receipt_number": "T-007731",
+    "distance_km": 28.4,
+    "base_fare": 64.5,
+    "toll": 0,
+    "airport_charge": 5,
+    "advance_paid": 0,
+    "tax_percent": 7
+  }
+}

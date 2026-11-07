@@ -1,0 +1,35 @@
+{
+  "sample": {
+    "shop_name": "Quill & Co. Stationers",
+    "customer_name": "John Smith",
+    "items": [
+      {
+        "name": "Spiral notebook (200 pages)",
+        "qty": 4,
+        "rate": 3.5
+      },
+      {
+        "name": "Ballpoint pens, blue (10-pack)",
+        "qty": 2,
+        "rate": 5.5
+      },
+      {
+        "name": "Highlighter set (4 colors)",
+        "qty": 1,
+        "rate": 7.5
+      },
+      {
+        "name": "Copy paper (500 sheets)",
+        "qty": 1,
+        "rate": 9
+      },
+      {
+        "name": "Glue sticks (2-pack)",
+        "qty": 2,
+        "rate": 3
+      }
+    ],
+    "tax_percent": 8.25,
+    "remarks": "Please keep the receipt for exchanges within 7 days."
+  }
+}

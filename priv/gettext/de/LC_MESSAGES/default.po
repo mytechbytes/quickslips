@@ -671,3 +671,8 @@ msgstr "Sprache, Land & Währung"
 #, elixir-autogen, elixir-format
 msgid "Item Details"
 msgstr "Positionen"
+
+#: lib/quickslips_web/components/catalogue_components.ex:127
+#, elixir-autogen, elixir-format
+msgid "Generate Now"
+msgstr "Jetzt erstellen"

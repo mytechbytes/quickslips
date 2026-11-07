@@ -1,0 +1,36 @@
+{
+  "sample": {
+    "restaurant_name": "Café Érable",
+    "items": [
+      {
+        "name": "Poutine",
+        "qty": 2,
+        "rate": 11
+      },
+      {
+        "name": "Café",
+        "qty": 3,
+        "rate": 3
+      },
+      {
+        "name": "Salade César",
+        "qty": 1,
+        "rate": 10
+      },
+      {
+        "name": "Sandwich à la viande fumée",
+        "qty": 1,
+        "rate": 15
+      },
+      {
+        "name": "Tarte au beurre",
+        "qty": 2,
+        "rate": 4.5
+      }
+    ],
+    "customer_name": "Julie Tremblay",
+    "table_number": "T-7",
+    "gst_percent": 5,
+    "restaurant_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

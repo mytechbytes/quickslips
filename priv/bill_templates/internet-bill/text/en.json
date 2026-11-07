@@ -1,0 +1,166 @@
+{
+  "title": "Internet Bill Generator",
+  "name": "Internet Bill",
+  "public_slug": "internet-bill-generator",
+  "summary": "Broadband or fibre bill with plan, period and {tax}.",
+  "description": "Create a broadband or fibre internet bill with plan, speed, billing period, charges and {tax}. Four designs; preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Classic",
+    "t2": "Internet invoice",
+    "t3": "Detailed invoice",
+    "t4": "Statement"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Internet provider"
+    },
+    "provider_address": {
+      "label": "Address (optional)"
+    },
+    "provider_email": {
+      "label": "Email (optional)"
+    },
+    "registered_office": {
+      "label": "Registered office (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "bill_number": {
+      "label": "Bill number"
+    },
+    "account_number": {
+      "label": "Customer account number"
+    },
+    "bill_date": {
+      "label": "Bill date"
+    },
+    "due_date": {
+      "label": "Due date (optional)"
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "customer_address": {
+      "label": "Customer address (optional)"
+    },
+    "user_name": {
+      "label": "User name (optional)"
+    },
+    "period_start": {
+      "label": "Billing period from"
+    },
+    "period_end": {
+      "label": "Billing period to"
+    },
+    "plan_name": {
+      "label": "Plan"
+    },
+    "plan_speed": {
+      "label": "Plan speed (optional)"
+    },
+    "plan_package": {
+      "label": "Plan package (optional)",
+      "options": {
+        "Limited": "Limited",
+        "Unlimited": "Unlimited",
+        "FUP": "FUP"
+      }
+    },
+    "plan_validity": {
+      "label": "Plan validity (optional)",
+      "options": {
+        "Monthly": "Monthly",
+        "Quarterly": "Quarterly",
+        "Half-yearly": "Half-yearly",
+        "Annual": "Annual"
+      }
+    },
+    "service_description": {
+      "label": "Service description (optional)"
+    },
+    "plan_charge": {
+      "label": "Plan charge ({currency})"
+    },
+    "other_charges": {
+      "label": "Installation or other charges ({currency}) (optional)"
+    },
+    "discount": {
+      "label": "Discount ({currency}) (optional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payments_received": {
+      "label": "Payments received ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method (optional)",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "terms": {
+      "label": "Terms and conditions (one per line) (optional)"
+    }
+  },
+  "print": {
+    "title": "Internet bill",
+    "bill_no": "Bill no.",
+    "bill_date": "Bill date",
+    "due_date": "Due date",
+    "account_no": "Account no.",
+    "billing_period": "Billing period",
+    "billed_to": "Billed to",
+    "description": "Description",
+    "amount": "Amount",
+    "installation": "Installation and other charges",
+    "discount": "Discount",
+    "subtotal": "Subtotal",
+    "amount_due": "Amount due",
+    "pay_by": "Please pay by {date} to keep your connection running.",
+    "computer_generated": "This is a computer generated bill.",
+    "invoice_title": "Internet invoice",
+    "customer_name": "Customer name",
+    "customer_address": "Customer address",
+    "bill_account": "Bill account number",
+    "receipt_details": "Receipt details",
+    "receipt_no": "Receipt number",
+    "date": "Date",
+    "payment_method": "Payment method",
+    "provider_details": "Internet provider details",
+    "billing_cycle": "Billing cycle",
+    "plan_summary": "Service plan summary",
+    "plan": "Plan",
+    "plan_speed": "Plan speed",
+    "plan_package": "Plan package",
+    "plan_validity": "Plan validity",
+    "plan_amount": "Plan amount",
+    "total": "Total",
+    "payable_to": "All payments to be made in favour of",
+    "no_signature": "This is a computer generated invoice and does not require any signature",
+    "receipt_for_recipient": "(Receipt for the recipient)",
+    "name": "Name",
+    "invoice_no": "Invoice no.",
+    "taxable_amount": "Taxable amount",
+    "rate_pct": "rate %",
+    "payments_received": "Payments received",
+    "user_name": "User name",
+    "service_description": "Internet service description",
+    "amount_incl_tax": "Amount incl. tax",
+    "registered_office": "Registered office address",
+    "terms_title": "Terms and conditions",
+    "acknowledgement": "Acknowledgement slip",
+    "subscriber_name": "Subscriber name",
+    "hello": "Hello",
+    "invoice_total": "Invoice total",
+    "currency": "Currency",
+    "invoice_amount": "Invoice amount",
+    "mailing_address": "Our mailing address is"
+  },
+  "sample": {}
+}

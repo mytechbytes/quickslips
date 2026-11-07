@@ -33,7 +33,7 @@ defmodule QuickSlipsWeb.NavigationTest do
     end
 
     test "a bill that is not in the language is a 404", %{conn: conn} do
-      assert_error_sent 404, fn -> get(conn, ~p"/hi-in/rent-receipt-generator") end
+      assert_error_sent 404, fn -> get(conn, ~p"/hi-in/courier-receipt-generator") end
     end
   end
 

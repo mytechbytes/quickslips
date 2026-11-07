@@ -1,0 +1,154 @@
+{
+  "title": "मील बिल जनरेटर",
+  "name": "मील बिल",
+  "public_slug": "meal-bill-generator",
+  "summary": "भोजन डिलीवरी का कर चालान, हर पंक्ति पर {tax} के साथ।",
+  "description": "रेस्टोरेंट की ओर से भोजन डिलीवरी का कर चालान बनाएं, डिलीवरी पता, हर पंक्ति पर कर, प्लेटफ़ॉर्म का कानूनी विवरण और हस्ताक्षरकर्ता के साथ। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "डिलीवरी कर चालान"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "प्लेटफ़ॉर्म या ब्रांड का नाम (वैकल्पिक)"
+    },
+    "legal_name": {
+      "label": "कानूनी इकाई का नाम (वैकल्पिक)"
+    },
+    "restaurant_name": {
+      "label": "रेस्टोरेंट का नाम"
+    },
+    "restaurant_address": {
+      "label": "रेस्टोरेंट का पता (वैकल्पिक)"
+    },
+    "restaurant_gstin": {
+      "label": "रेस्टोरेंट {tax_id} (वैकल्पिक)"
+    },
+    "restaurant_fssai": {
+      "label": "रेस्टोरेंट FSSAI नं. (वैकल्पिक)"
+    },
+    "invoice_number": {
+      "label": "चालान नंबर"
+    },
+    "date": {
+      "label": "चालान की तारीख"
+    },
+    "order_id": {
+      "label": "ऑर्डर आईडी (वैकल्पिक)"
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम"
+    },
+    "delivery_address": {
+      "label": "डिलीवरी का पता (वैकल्पिक)"
+    },
+    "place_of_supply": {
+      "label": "राज्य और आपूर्ति का स्थान (वैकल्पिक)"
+    },
+    "hsn_code": {
+      "label": "HSN कोड (वैकल्पिक)"
+    },
+    "service_description": {
+      "label": "सेवा का विवरण (वैकल्पिक)"
+    },
+    "reverse_charge": {
+      "label": "रिवर्स चार्ज (वैकल्पिक)",
+      "options": {
+        "No": "नहीं",
+        "Yes": "हाँ"
+      }
+    },
+    "payment_note": {
+      "label": "भुगतान टिप्पणी (वैकल्पिक)"
+    },
+    "platform_company": {
+      "label": "प्लेटफ़ॉर्म कंपनी का नाम और पता (वैकल्पिक)"
+    },
+    "platform_pan": {
+      "label": "प्लेटफ़ॉर्म PAN (वैकल्पिक)"
+    },
+    "platform_cin": {
+      "label": "प्लेटफ़ॉर्म CIN (वैकल्पिक)"
+    },
+    "platform_tax_id": {
+      "label": "प्लेटफ़ॉर्म {tax_id} (वैकल्पिक)"
+    },
+    "platform_fssai": {
+      "label": "प्लेटफ़ॉर्म FSSAI नं. (वैकल्पिक)"
+    },
+    "signatory_name": {
+      "label": "हस्ताक्षरकर्ता का नाम (वैकल्पिक)"
+    },
+    "items": {
+      "label": "बिलिंग पंक्तियाँ",
+      "columns": {
+        "name": "विवरण",
+        "rate": "सकल मूल्य ({currency})",
+        "discount": "छूट %",
+        "tax": "कर %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "कर चालान",
+    "original": "मूल प्रति: प्राप्तकर्ता के लिए",
+    "on_behalf": "की ओर से कर चालान",
+    "restaurant": "रेस्टोरेंट",
+    "invoice_no": "चालान नं.",
+    "invoice_date": "चालान की तारीख",
+    "customer": "ग्राहक का नाम",
+    "delivery_address": "डिलीवरी का पता",
+    "place": "राज्य का नाम और आपूर्ति का स्थान",
+    "hsn": "HSN कोड",
+    "service": "सेवा का विवरण",
+    "order_id": "ऑर्डर आईडी",
+    "particulars": "विवरण",
+    "gross": "सकल मूल्य",
+    "discount": "छूट",
+    "net": "शुद्ध मूल्य",
+    "rate": "दर",
+    "tax": "कर",
+    "total": "कुल",
+    "reverse": "आपूर्ति पर रिवर्स चार्ज लागू",
+    "payment_note": "भुगतान टिप्पणी",
+    "for": "की ओर से",
+    "authorised": "अधिकृत हस्ताक्षरकर्ता"
+  },
+  "sample": {
+    "brand_name": "क्विकईट्स",
+    "platform_company": "क्विकईट्स टेक्नोलॉजीज प्राइवेट लिमिटेड\nतीसरी मंज़िल, टेक पार्क, गुरुग्राम, हरियाणा 122002",
+    "legal_name": "ग्रीन लीफ हॉस्पिटैलिटी प्रा. लि.",
+    "restaurant_name": "ग्रीन लीफ कैफ़े",
+    "items": [
+      {
+        "name": "मसाला डोसा x 2",
+        "rate": 240,
+        "discount": 0,
+        "tax": 5
+      },
+      {
+        "name": "फ़िल्टर कॉफ़ी x 3",
+        "rate": 180,
+        "discount": 10,
+        "tax": 5
+      },
+      {
+        "name": "पनीर टिक्का",
+        "rate": 320,
+        "discount": 0,
+        "tax": 5
+      },
+      {
+        "name": "पैकेजिंग और डिलीवरी",
+        "rate": 40,
+        "discount": 0,
+        "tax": 18
+      }
+    ],
+    "customer_name": "रोहन मेहता",
+    "delivery_address": "फ़्लैट 12, लोटस अपार्टमेंट, एचएसआर लेआउट, बेंगलुरु, कर्नाटक 560102",
+    "service_description": "रेस्टोरेंट सेवा",
+    "payment_note": "ऑनलाइन भुगतान",
+    "signatory_name": "ए. शर्मा",
+    "restaurant_address": "14, चर्च स्ट्रीट, बेंगलुरु, कर्नाटक 560001"
+  }
+}

@@ -35,12 +35,14 @@
 }
 
 // The page: size, margins, font, and the watermark of the preview. Use it with `#show: base.with(...)`.
-#let base(paper: "a5", margin: 14mm, size: 10pt, body) = {
+// A slip (a till receipt) has its own `width`, and a `height` that is `auto`: the paper is as long as the text.
+#let base(paper: "a5", width: none, height: auto, margin: 14mm, size: 10pt, body) = {
+  let slip = width != none
   set page(
-    paper: paper,
+    ..if slip { (width: width, height: height) } else { (paper: paper) },
     margin: margin,
     background: if preview {
-      rotate(-30deg, text(size: 54pt, weight: "bold", fill: luma(225))[QUICK SLIPS])
+      rotate(-30deg, text(size: if slip and width < 100mm { 22pt } else { 54pt }, weight: "bold", fill: luma(225))[QUICK SLIPS])
     },
   )
   set text(font: text-data.at("fonts", default: ("Noto Sans",)), size: size, lang: text-data.at("lang", default: "en"))
@@ -85,9 +87,54 @@
   to-date(iso).display(parts.join(sep))
 }
 
+// "14:30" as it is written in the country: 24 hours, or "2:30 PM" where the month comes first (the United States).
+#let fmt-time(hhmm) = {
+  if region.date.order != "mdy" { return hhmm }
+  let (h, m) = hhmm.split(":").map(int)
+  let suffix = if h < 12 { "AM" } else { "PM" }
+  let hour = calc.rem(h, 12)
+  str(if hour == 0 { 12 } else { hour }) + ":" + (if m < 10 { "0" } else { "" }) + str(m) + " " + suffix
+}
+
+// "October 2026"; in Chinese and Japanese the year comes first, "2026年10月".
 #let month-label(ym) = {
   let (y, m) = ym.split("-").map(int)
-  months.at(m - 1) + " " + str(y)
+  if text-data.at("lang", default: "en") in ("zh", "ja") {
+    str(y) + "年" + months.at(m - 1)
+  } else {
+    months.at(m - 1) + " " + str(y)
+  }
+}
+
+// A month as a whole number of months (the year times twelve plus the month), and back to "2026-10".
+#let ym-int(ym) = {
+  let (y, m) = ym.split("-").map(int)
+  y * 12 + m - 1
+}
+#let ym-str(n) = {
+  let m = calc.rem(n, 12) + 1
+  str(calc.quo(n, 12)) + "-" + (if m < 10 { "0" } else { "" }) + str(m)
+}
+
+// The receipts of a period, for a document with a `month` and perhaps a `from_date`, a `to_date` and a `bill_by`
+// (Monthly, Quarterly, Half-yearly or Yearly): an array of `(label: "October 2026 – December 2026", months: 3)`, one
+// for each month, quarter, half-year or year, and at most 12 months in all. Without a period it is the one month, and a
+// period that runs backwards is one month.
+#let receipt-periods(data) = {
+  let first = if opt(data, "from_date") != none { opt(data, "from_date").slice(0, 7) } else { data.month }
+  let last = if opt(data, "to_date") != none { opt(data, "to_date").slice(0, 7) } else { first }
+  let step = (Monthly: 1, Quarterly: 3, "Half-yearly": 6, Yearly: 12).at(data.at("bill_by", default: "Monthly"), default: 1)
+  let months = calc.min(calc.max(ym-int(last) - ym-int(first) + 1, 1), 12)
+  range(calc.ceil(months / step)).map(i => {
+    let start = ym-int(first) + i * step
+    let length = calc.min(step, months - i * step)
+    let label = if length == 1 {
+      month-label(ym-str(start))
+    } else {
+      month-label(ym-str(start)) + " – " + month-label(ym-str(start + length - 1))
+    }
+    (label: label, months: length)
+  })
 }
 
 // Whole days from one date to another, at least 1 (for nights in a hotel, days in a plan).
@@ -157,14 +204,30 @@
 #let percent(amount, rate) = calc.round(amount * rate / 100, digits: 2)
 
 // The rows of a table of items (a field of type `items`): each is a dictionary with `name`, `qty`, `rate` and
-// `amount` (quantity times rate). A cell that is missing counts as empty, so a row that is half typed in the
-// browser preview still draws.
-#let item-rows(data, key: "items") = {
+// `amount` (quantity times rate, less the discount), and the `code`, `billing` type, `discount` and `tax` rate (percent) of a
+// table that has them. A cell that is missing counts as empty, so a row that is half typed in the browser preview
+// still draws. A table without a quantity cell (labour) has one of each: `qty: 1`.
+#let item-rows(data, key: "items", quantity: true) = {
   let rows = data.at(key, default: ())
   rows.map(row => {
-    let qty = row.at("qty", default: 0)
+    let qty = if quantity { row.at("qty", default: 0) } else { 1 }
     let rate = row.at("rate", default: 0)
-    (name: row.at("name", default: ""), qty: qty, rate: rate, amount: qty * rate)
+    let discount = row.at("discount", default: 0)
+    (
+      name: row.at("name", default: ""),
+      code: row.at("code", default: ""),
+      billing: row.at("billing", default: none),
+      qty: qty,
+      rate: rate,
+      discount: discount,
+      tax: row.at("tax", default: 0),
+      hsn: row.at("hsn", default: ""),
+      mfr: row.at("mfr", default: ""),
+      batch: row.at("batch", default: ""),
+      expiry: row.at("expiry", default: ""),
+      schedule: row.at("schedule", default: ""),
+      amount: qty * rate * (1 - discount / 100),
+    )
   })
 }
 
@@ -641,9 +704,35 @@
   align(right, text(size: 8.5pt)[#text(fill: muted)[#in-words.label:] #words])
 }
 
+/// Sentences
+
+// A sentence of a text file with `{name}` in it, filled in with the values and set in bold: `say(t.certify, (tenant:
+// "Asha", amount: money(25000)))`. A word that has no value is left empty.
+#let say(sentence, values) = {
+  let out = ()
+  let rest = sentence
+  while true {
+    let found = rest.match(regex("[{]([a-z_]+)[}]"))
+    if found == none {
+      out.push(rest)
+      break
+    }
+    out.push(rest.slice(0, found.start))
+    out.push(strong(values.at(found.captures.first(), default: "")))
+    rest = rest.slice(found.end)
+  }
+  out.join()
+}
+
 /// Pieces of a page
 
 #let rule() = line(length: 100%, stroke: 0.5pt + hairline)
+
+// The line of a till receipt that separates its parts.
+#let dashed() = line(length: 100%, stroke: (paint: luma(60), thickness: 0.6pt, dash: "dashed"))
+
+// Dots that fill the rest of the line, for a form to write on: `Dated #leader[...]`.
+#let leader() = box(width: 1fr, repeat[.])
 
 // The picture of a saved business: the server (and the browser preview) put the file name in the data
 // under `key`, "logo" or "signature". Nothing is drawn when there is none.
@@ -670,6 +759,34 @@
 #let tax-data = region.at("tax", default: (:))
 #let tax-name = tax-data.at("name", default: "")
 #let tax-id-label = tax-data.at("id", default: (:)).at("label", default: "GSTIN")
+
+// The rows of the tax of a bill, as `(label, rate, amount)`: where India splits it, CGST and SGST with half the rate and
+// half the tax each (the two halves add up to the tax); elsewhere one row with the name of the tax. Nothing without a rate.
+#let tax-parts(rate, tax) = {
+  if rate == none { return () }
+  if region.country == "in" {
+    let first = calc.round(tax / 2, digits: 2)
+    (("CGST", rate / 2, first), ("SGST", rate / 2, tax - first))
+  } else {
+    ((tax-name, rate, tax),)
+  }
+}
+
+// The two lines a bill with a tax rate shows over its total: the amount without tax and the tax. `none` for no rate.
+// An array of (label, amount), so that every design draws them in its own way.
+#let tax-lines(amount, rate) = {
+  if rate == none { return () }
+  let split = tax-split(amount, rate)
+  ((t.taxable, split.base), (tax-name + " (" + fmt-number(rate) + "%)", split.tax))
+}
+
+// The head of the small-change column of a cash memo ("P." for paise, "c" for cents), or `none` for a currency
+// that has none (the yen). It is the first letter of what the currency calls its small change.
+#let minor-head = {
+  let names = if in-words == none { (:) } else { in-words.currencies.at(region.currency.code, default: (:)) }
+  let name = names.at("minor_other", default: none)
+  if region.currency.decimals == 0 or name == none { none } else { upper(name.first()) + "." }
+}
 
 // The top of a document: the logo, the seller and the kind of document, then a line. `gstin` is the tax-registration
 // number, `ids` other registration numbers to print under it (an array of content, like `([FSSAI Lic. No.: 1234],)`).

@@ -103,27 +103,27 @@ msgstr "doit être supérieur ou égal à %{number}"
 msgid "must be equal to %{number}"
 msgstr "doit être égal à %{number}"
 
-#: lib/quickslips_web/error_messages.ex:70
+#: lib/quickslips_web/error_messages.ex:73
 #, elixir-autogen, elixir-format
 msgid "at least one digit or punctuation character"
 msgstr "au moins un chiffre ou un signe de ponctuation"
 
-#: lib/quickslips_web/error_messages.ex:68
+#: lib/quickslips_web/error_messages.ex:71
 #, elixir-autogen, elixir-format
 msgid "at least one lower case character"
 msgstr "au moins une lettre minuscule"
 
-#: lib/quickslips_web/error_messages.ex:69
+#: lib/quickslips_web/error_messages.ex:72
 #, elixir-autogen, elixir-format
 msgid "at least one upper case character"
 msgstr "au moins une lettre majuscule"
 
-#: lib/quickslips_web/error_messages.ex:66
+#: lib/quickslips_web/error_messages.ex:69
 #, elixir-autogen, elixir-format
 msgid "did not change"
 msgstr "n'a pas changé"
 
-#: lib/quickslips_web/error_messages.ex:67
+#: lib/quickslips_web/error_messages.ex:70
 #, elixir-autogen, elixir-format
 msgid "does not match password"
 msgstr "ne correspond pas au mot de passe"
@@ -158,22 +158,22 @@ msgstr "doit être un nombre"
 msgid "must be an object"
 msgstr "doit être un objet"
 
-#: lib/quickslips_web/error_messages.ex:52
+#: lib/quickslips_web/error_messages.ex:55
 #, elixir-autogen, elixir-format
 msgid "must be at least %{min}"
 msgstr "doit être au moins %{min}"
 
-#: lib/quickslips_web/error_messages.ex:49
+#: lib/quickslips_web/error_messages.ex:52
 #, elixir-autogen, elixir-format
 msgid "must be at most %{max}"
 msgstr "doit être au plus %{max}"
 
-#: lib/quickslips_web/error_messages.ex:43
+#: lib/quickslips_web/error_messages.ex:46
 #, elixir-autogen, elixir-format
 msgid "must be at most %{max} characters"
 msgstr "doit contenir au plus %{max} caractères"
 
-#: lib/quickslips_web/error_messages.ex:55
+#: lib/quickslips_web/error_messages.ex:58
 #, elixir-autogen, elixir-format
 msgid "must be one of: %{options}"
 msgstr "doit être l'un de : %{options}"
@@ -183,7 +183,7 @@ msgstr "doit être l'un de : %{options}"
 msgid "must be text"
 msgstr "doit être du texte"
 
-#: lib/quickslips_web/error_messages.ex:65
+#: lib/quickslips_web/error_messages.ex:68
 #, elixir-autogen, elixir-format
 msgid "must have the @ sign and no spaces"
 msgstr "doit contenir le signe @ et aucun espace"
@@ -193,7 +193,12 @@ msgstr "doit contenir le signe @ et aucun espace"
 msgid "must be a list"
 msgstr "doit être une liste"
 
-#: lib/quickslips_web/error_messages.ex:46
+#: lib/quickslips_web/error_messages.ex:49
 #, elixir-autogen, elixir-format
 msgid "must have at most %{max} rows"
 msgstr "doit contenir au plus %{max} lignes"
+
+#: lib/quickslips_web/error_messages.ex:41
+#, elixir-autogen, elixir-format
+msgid "must be a time like 14:30"
+msgstr "doit être une heure, par exemple 14:30"

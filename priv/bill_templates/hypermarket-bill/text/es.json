@@ -1,0 +1,175 @@
+{
+  "title": "Generador de Factura de Hipermercado",
+  "name": "Factura de Hipermercado",
+  "public_slug": "generador-de-factura-de-hipermercado",
+  "summary": "Factura de hipermercado con un tipo de impuesto por artículo.",
+  "description": "Crea una factura de hipermercado o supermercado con un tipo de {tax} para cada artículo, el desglose del impuesto por tipo, los datos del pedido y de la entrega y tu ahorro. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Marca de la tienda"
+    },
+    "company_name": {
+      "label": "Razón social"
+    },
+    "company_address": {
+      "label": "Dirección de la empresa (opcional)"
+    },
+    "phone": {
+      "label": "Teléfono de atención al cliente (opcional)"
+    },
+    "email": {
+      "label": "Correo de atención al cliente (opcional)"
+    },
+    "website": {
+      "label": "Dirección web de las condiciones (opcional)"
+    },
+    "cin": {
+      "label": "CIN (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "fssai": {
+      "label": "N.º FSSAI (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha de la factura"
+    },
+    "order_number": {
+      "label": "Número de pedido (opcional)"
+    },
+    "order_date": {
+      "label": "Fecha del pedido (opcional)"
+    },
+    "delivery_date": {
+      "label": "Fecha de entrega (opcional)"
+    },
+    "delivery_time": {
+      "label": "Horario de entrega (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "customer_name": {
+      "label": "Nombre del cliente (opcional)"
+    },
+    "customer_phone": {
+      "label": "Teléfono móvil (opcional)"
+    },
+    "delivery_mode": {
+      "label": "Modo de entrega",
+      "options": {
+        "Self pick-up": "Recogida en tienda",
+        "Home delivery": "Entrega a domicilio"
+      }
+    },
+    "delivery_address": {
+      "label": "Dirección de recogida / entrega (opcional)"
+    },
+    "savings": {
+      "label": "Ahorro sobre el precio de lista ({currency}) (opcional)"
+    },
+    "payment_note": {
+      "label": "Instrucción de pago (opcional)"
+    },
+    "items": {
+      "label": "Artículos",
+      "columns": {
+        "name": "Artículo",
+        "hsn": "Código HSN",
+        "qty": "Cant.",
+        "rate": "Precio ({currency})",
+        "tax": "Impuesto %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Factura",
+    "invoice_no": "Factura n.º",
+    "invoice_date": "Fecha",
+    "hsn": "HSN",
+    "particulars": "Concepto",
+    "qty": "Cant.",
+    "rate": "Precio",
+    "value": "Importe",
+    "items": "Artículos",
+    "amt": "Total",
+    "your_savings": "Tu ahorro",
+    "on_list": "sobre el precio de lista",
+    "breakup": "Desglose de impuestos",
+    "amount_in": "Importes en",
+    "rate_col": "Tipo",
+    "taxable": "Base",
+    "total": "Total",
+    "order_details": "Datos del pedido",
+    "order_number": "Número de pedido",
+    "order_date": "Fecha del pedido",
+    "delivery_date": "Fecha de entrega",
+    "delivery_time": "Horario de entrega",
+    "payment_mode": "Forma de pago",
+    "customer_delivery": "Cliente y entrega",
+    "customer_name": "Nombre del cliente",
+    "mobile": "Teléfono móvil",
+    "delivery_mode": "Modo de entrega",
+    "address": "Dirección de recogida / entrega",
+    "collect": "{amount} a cobrar en el momento de la entrega",
+    "computer_generated": "Factura generada por ordenador.",
+    "exempt": "Exento"
+  },
+  "sample": {
+    "brand_name": "Hiper Sol",
+    "company_name": "Hiper Sol Retail, S.L.",
+    "phone": "900 123 456",
+    "delivery_time": "18:00 - 21:00",
+    "payment_note": "Pago contra reembolso (efectivo o tarjeta)",
+    "customer_name": "Carlos Gómez",
+    "customer_phone": "612 345 678",
+    "items": [
+      {
+        "name": "Arroz (1 kg)",
+        "qty": 1,
+        "rate": 2.2,
+        "tax": 10
+      },
+      {
+        "name": "Aceite de girasol (1 L)",
+        "qty": 2,
+        "rate": 2.6,
+        "tax": 10
+      },
+      {
+        "name": "Galletas (300 g)",
+        "qty": 3,
+        "rate": 1.4,
+        "tax": 10
+      },
+      {
+        "name": "Lavavajillas (500 ml)",
+        "qty": 1,
+        "rate": 2.8,
+        "tax": 21
+      },
+      {
+        "name": "Tomates frescos (1 kg)",
+        "qty": 2,
+        "rate": 2.1,
+        "tax": 4
+      }
+    ],
+    "savings": 1.5,
+    "delivery_mode": "Home delivery"
+  }
+}

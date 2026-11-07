@@ -1,0 +1,105 @@
+{
+  "title": "Generador de Ticket de Papelería",
+  "name": "Ticket de Papelería",
+  "public_slug": "generador-de-ticket-de-papeleria",
+  "summary": "Ticket de papelería con artículos, precios y totales.",
+  "description": "Crea un ticket de papelería con bolígrafos, papel y otros artículos, cantidades, precios y {tax}. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Ticket"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Nombre de la papelería"
+    },
+    "shop_address": {
+      "label": "Dirección de la papelería"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de ticket"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "customer_address": {
+      "label": "Dirección del cliente"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "remarks": {
+      "label": "Observaciones / instrucciones (opcional)"
+    },
+    "items": {
+      "label": "Artículos",
+      "columns": {
+        "name": "Artículo",
+        "qty": "Cantidad",
+        "rate": "Precio ({currency})"
+      }
+    }
+  },
+  "print": {
+    "receipt_no": "Ticket n.º",
+    "date": "Fecha",
+    "billed_to": "Cliente",
+    "address": "Dirección",
+    "item": "Artículo",
+    "rate": "Precio",
+    "quantity": "Cantidad",
+    "amount": "Importe",
+    "remarks": "Observaciones / instrucciones",
+    "subtotal": "Subtotal",
+    "total_amount": "Importe total",
+    "payment_method": "Forma de pago",
+    "save_paper": "¡Ahorra papel, cuida la naturaleza! Gracias por comprar con nosotros."
+  },
+  "sample": {
+    "shop_name": "Papelería La Pluma",
+    "customer_name": "Carlos Gómez",
+    "items": [
+      {
+        "name": "Cuaderno de espiral (200 páginas)",
+        "qty": 4,
+        "rate": 2.5
+      },
+      {
+        "name": "Bolígrafos azules (pack de 10)",
+        "qty": 2,
+        "rate": 3.9
+      },
+      {
+        "name": "Set de marcadores fluorescentes (4 colores)",
+        "qty": 1,
+        "rate": 5.5
+      },
+      {
+        "name": "Resma de papel A4 (500 hojas)",
+        "qty": 1,
+        "rate": 5.2
+      },
+      {
+        "name": "Barra de pegamento (2 unidades)",
+        "qty": 2,
+        "rate": 1.9
+      }
+    ],
+    "tax_percent": 21,
+    "remarks": "Conserve el ticket para cambios en un plazo de 7 días."
+  }
+}

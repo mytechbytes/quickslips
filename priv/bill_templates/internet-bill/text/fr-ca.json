@@ -1,0 +1,14 @@
+{
+  "sample": {
+    "provider_name": "Ciel Fibre",
+    "registered_office": "Ciel Fibre inc., 1200 rue Sherbrooke, Montréal, QC H3A 1H6",
+    "customer_name": "Julie Tremblay",
+    "plan_name": "Fibre 200 Mbit/s, données illimitées",
+    "service_description": "Abonnement internet fibre",
+    "plan_charge": 79.99,
+    "gst_percent": 5,
+    "terms": "Les chèques sont à libeller à l'ordre de Ciel Fibre.\nEn cas de chèque impayé, une pénalité de 10 $ sera appliquée.\nDes frais de retard seront facturés si la facture est réglée après l'échéance.\nEn cas de retard de paiement, nous nous réservons le droit de suspendre le service.\nCette facture est générée par le système ; signature et cachet non requis.",
+    "provider_address": "1200 rue Sherbrooke, Montréal, QC H3A 1H6",
+    "customer_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

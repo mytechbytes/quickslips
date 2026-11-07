@@ -1,0 +1,38 @@
+{
+  "sample": {
+    "seller_name": "Panier Lumineux Inc.",
+    "seller_phone": "1-800-555-0123",
+    "customer_name": "Julie Tremblay",
+    "signatory_name": "Marc Gagnon",
+    "items": [
+      {
+        "name": "Écouteurs sans fil avec boîtier de charge",
+        "qty": 1,
+        "rate": 59.99,
+        "tax": 5
+      },
+      {
+        "name": "Étui de téléphone en silicone",
+        "qty": 2,
+        "rate": 14.99,
+        "tax": 5
+      },
+      {
+        "name": "T-shirt en coton col rond",
+        "qty": 2,
+        "rate": 22,
+        "tax": 5
+      },
+      {
+        "name": "Bouteille en acier inoxydable (750 ml)",
+        "qty": 1,
+        "rate": 26.5,
+        "tax": 5
+      }
+    ],
+    "shipping_charge": 6.99,
+    "seller_address": "1200 rue Sherbrooke, Montréal, QC H3A 1H6",
+    "shipping_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "customer_phone": "(514) 555-0166"
+  }
+}

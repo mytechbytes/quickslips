@@ -1,0 +1,40 @@
+{
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Technologies Inc.\n500 rue Notre-Dame, Montréal, QC H2Y 1T2",
+    "legal_name": "Gestion Érable inc.",
+    "restaurant_name": "Café Érable",
+    "items": [
+      {
+        "name": "Poutine x 2",
+        "rate": 22,
+        "discount": 0,
+        "tax": 5
+      },
+      {
+        "name": "Café x 3",
+        "rate": 9,
+        "discount": 10,
+        "tax": 5
+      },
+      {
+        "name": "Salade César",
+        "rate": 10,
+        "discount": 0,
+        "tax": 5
+      },
+      {
+        "name": "Emballage et livraison",
+        "rate": 3,
+        "discount": 0,
+        "tax": 5
+      }
+    ],
+    "customer_name": "Julie Tremblay",
+    "delivery_address": "45 rue Sherbrooke Ouest, app. 12, Montréal, QC H2X 1X7",
+    "service_description": "Service de restauration",
+    "payment_note": "Payé en ligne",
+    "signatory_name": "A. Gagnon",
+    "restaurant_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

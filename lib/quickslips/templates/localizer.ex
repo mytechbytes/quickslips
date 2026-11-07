@@ -17,7 +17,7 @@ defmodule QuickSlips.Templates.Localizer do
         "designs": {"t1": "Classic"},
         "fields": {"fuel_type": {"label": "Fuel type", "options": {"Petrol": "Petrol"}}},
         "print": {"total": "Total"},      // the words the layout prints, as `t.total`
-        "sample": {"station_name": "..."} // what the sample form starts with, over `sample.json`
+        "sample": {"station_name": "..."} // what the sample form starts with, over `sample.json` (`null` removes a value)
       }
 
   Which file a word comes from is decided by `QuickSlips.Locales.chain/1`: `es-mx`, then `es`, then `en`.
@@ -110,9 +110,21 @@ defmodule QuickSlips.Templates.Localizer do
         names = words["options"] || field["option_labels"] || %{}
         Map.put(field, "option_labels", Map.new(options, &{&1, names[&1] || &1}))
 
-      # The heads of the columns of a table of items: `{"name": "Item", "qty": "Qty", "rate": "Price ({currency})"}`.
+      # The heads of the columns of a table of items: `{"name": "Item", "qty": "Qty", "rate": "Price ({currency})"}`
+      # (and `code`, `billing`, `discount` for a table that has them).
       %{"type" => "items"} ->
-        Map.put(field, "columns", Map.merge(field["columns"] || %{}, words["columns"] || %{}))
+        field =
+          Map.put(field, "columns", Map.merge(field["columns"] || %{}, words["columns"] || %{}))
+
+        # The billing types of a table of parts or jobs ("PAID", "Warranty") are named like the options of a select.
+        case field do
+          %{"billing_options" => options} ->
+            names = words["options"] || field["option_labels"] || %{}
+            Map.put(field, "option_labels", Map.new(options, &{&1, names[&1] || &1}))
+
+          _ ->
+            field
+        end
 
       _ ->
         field
@@ -129,7 +141,8 @@ defmodule QuickSlips.Templates.Localizer do
     words = merged(shared, locale)
 
     options =
-      for %{"type" => "select", "key" => key, "option_labels" => labels} <- localized["fields"],
+      for %{"type" => type, "key" => key, "option_labels" => labels} <- localized["fields"],
+          type in ["select", "items"],
           into: %{},
           do: {key, labels}
 
@@ -154,6 +167,9 @@ defmodule QuickSlips.Templates.Localizer do
     base
     |> adapt_to_country(Regions.example(locale.country))
     |> Map.merge(merged(texts, locale)["sample"] || %{})
+    # A text file says `null` for a value that its language or country does not have (an Indian tax rate in the
+    # sample of the United States, which comes through the English file).
+    |> Map.reject(fn {_key, value} -> is_nil(value) end)
   end
 
   # The sample of a template is written for India: an Indian address, a GSTIN, UPI. For another country the
@@ -162,22 +178,24 @@ defmodule QuickSlips.Templates.Localizer do
   defp adapt_to_country(sample, nil), do: sample
 
   defp adapt_to_country(sample, example) do
-    Map.new(sample, fn
-      {key, _value} when key in ~w(gstin client_gstin seller_tax_id) ->
-        {key, example["tax_id"]}
-
-      {key, value} when is_binary(value) ->
-        cond do
-          String.ends_with?(key, "_address") -> {key, example["address"]}
-          value == "UPI" -> {key, "Cash"}
-          true -> {key, value}
-        end
-
-      other ->
-        other
-    end)
-    |> Map.drop(~w(fssai_number landlord_pan))
+    sample
+    |> Map.new(fn {key, value} -> {key, adapt_value(key, value, example)} end)
+    |> Map.drop(
+      ~w(fssai_number fssai landlord_pan restaurant_fssai platform_pan platform_cin cin seller_pan bank_ifsc supply platform_fssai place_of_supply hsn_code reverse_charge)
+    )
   end
+
+  # A registration number (`gstin`, `seller_tax_id`, `platform_tax_id`...) and an address are the country's examples.
+  defp adapt_value(key, value, example) when is_binary(value) do
+    cond do
+      String.ends_with?(key, "gstin") or String.ends_with?(key, "tax_id") -> example["tax_id"]
+      String.ends_with?(key, "_address") -> example["address"]
+      value == "UPI" -> "Cash"
+      true -> value
+    end
+  end
+
+  defp adapt_value(_key, value, _example), do: value
 
   @doc """
   The dotted names of the keys that `reference` has and `candidate` has not, like `["fields.rate.label"]`. It

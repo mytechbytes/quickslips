@@ -1,0 +1,137 @@
+{
+  "title": "Frachtbrief-Generator",
+  "name": "Frachtbrief",
+  "public_slug": "frachtbrief-generator",
+  "summary": "Frachtbrief mit Absender, Empfänger, Gewicht und Fracht als PDF.",
+  "description": "Erstellen Sie einen Frachtbrief für den Gütertransport mit Abgangs- und Bestimmungsort, Absender und Empfänger, Anzahl der Packstücke, Gewicht und Fracht (bezahlt oder zu zahlen). Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Frachtbrief"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Name des Transportunternehmens"
+    },
+    "company_address": {
+      "label": "Adresse des Unternehmens (optional)"
+    },
+    "company_phone": {
+      "label": "Telefonnummern des Büros (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "gc_number": {
+      "label": "Frachtbriefnummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "booking_date": {
+      "label": "Buchungsdatum (optional)"
+    },
+    "eta_date": {
+      "label": "Voraussichtliches Lieferdatum (optional)"
+    },
+    "pm_number": {
+      "label": "PM-Nummer (optional)"
+    },
+    "consignor": {
+      "label": "Name und Adresse des Absenders"
+    },
+    "consignee": {
+      "label": "Name und Adresse des Empfängers"
+    },
+    "description": {
+      "label": "Warenbeschreibung (optional)"
+    },
+    "articles": {
+      "label": "Anzahl der Packstücke (optional)"
+    },
+    "actual_weight": {
+      "label": "Tatsächliches Gewicht (optional)"
+    },
+    "charged_weight": {
+      "label": "Berechnetes Gewicht (optional)"
+    },
+    "remarks": {
+      "label": "Bemerkungen (optional)"
+    },
+    "from_place": {
+      "label": "Von (Ort)"
+    },
+    "from_phone": {
+      "label": "Telefon am Abgangsort (optional)"
+    },
+    "from_address": {
+      "label": "Adresse des Abgangsortes"
+    },
+    "to_place": {
+      "label": "Nach (Ort)"
+    },
+    "to_phone": {
+      "label": "Telefon am Zielort (optional)"
+    },
+    "to_address": {
+      "label": "Adresse des Bestimmungsortes"
+    },
+    "delivery_at": {
+      "label": "Auslieferung in (optional)"
+    },
+    "signatory_name": {
+      "label": "Name des Unterzeichners (optional)"
+    },
+    "to_pay": {
+      "label": "Fracht zu zahlen ({currency}) (optional)"
+    },
+    "paid": {
+      "label": "Fracht bezahlt ({currency}) (optional)"
+    }
+  },
+  "print": {
+    "heading": "Frachtbrief",
+    "title": "Kundenexemplar (Original)",
+    "gc_no": "Frachtbrief-Nr.",
+    "from": "Von",
+    "to": "Nach",
+    "consignor": "Name und Adresse des Absenders",
+    "consignee": "Name und Adresse des Empfängers",
+    "description": "Beschreibung / Inhalt laut Absender",
+    "date": "Datum",
+    "booking": "Buchungsdatum",
+    "eta": "Voraussichtlich",
+    "articles": "Anzahl Packstücke",
+    "pm_no": "PM-Nr.",
+    "actual_weight": "Tatsächliches Gewicht",
+    "charged_weight": "Berechnetes Gewicht",
+    "remarks": "Bemerkungen",
+    "to_pay": "Zu zahlen",
+    "paid": "Bezahlt",
+    "signature": "Unterschrift",
+    "delivery_at": "Auslieferung in",
+    "tel": "Tel.",
+    "note_labour": "Hinweis: Die Auslieferungsstelle berechnet Ladekosten und Zustellgebühren zusätzlich zur Fracht.",
+    "note_insurance": "Wertvolle Waren bitte vollständig versichern; der Frachtführer haftet nicht für Verlust.",
+    "note_validity": "Dieser Beleg ist nur 5 Tage ab Buchungsdatum gültig. Bitte holen Sie die Ware rechtzeitig im Lager ab.",
+    "note_docs": "Gesetzlich vorgeschriebene Transportdokumente (z. B. die E-Way-Bill in Indien) stellt der Absender; er haftet für Schäden durch fehlende Dokumente."
+  },
+  "sample": {
+    "company_name": "Spedition Nordlicht",
+    "company_phone": "040 1234567",
+    "from_place": "Hamburg",
+    "to_place": "München",
+    "from_phone": "040 1234567",
+    "to_phone": "089 1234567",
+    "from_address": "Hafenstraße 12, 20457 Hamburg",
+    "to_address": "Landsberger Straße 300, 80687 München",
+    "company_address": "Hafenstraße 12, 20457 Hamburg",
+    "consignor": "Müller Großhandel\nAlsterufer 5, Hamburg",
+    "consignee": "Becker Elektro\nLeopoldstraße 40, München",
+    "description": "Elektrogeräte - 20 Kartons",
+    "remarks": "Vorsicht, zerbrechlich",
+    "delivery_at": "Lager München",
+    "actual_weight": "480 kg",
+    "charged_weight": "500 kg",
+    "to_pay": 320,
+    "signatory_name": "T. Weber"
+  }
+}

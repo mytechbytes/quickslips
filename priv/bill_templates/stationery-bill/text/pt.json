@@ -1,0 +1,105 @@
+{
+  "title": "Gerador de nota de papelaria",
+  "name": "Nota de papelaria",
+  "public_slug": "gerador-de-nota-de-papelaria",
+  "summary": "Nota de papelaria com itens, preços e totais.",
+  "description": "Crie uma nota de papelaria com canetas, papel e outros materiais, quantidades, preços e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Nome da papelaria"
+    },
+    "shop_address": {
+      "label": "Endereço da papelaria"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "customer_address": {
+      "label": "Endereço do cliente"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "remarks": {
+      "label": "Observações / instruções (opcional)"
+    },
+    "items": {
+      "label": "Itens",
+      "columns": {
+        "name": "Item",
+        "qty": "Quantidade",
+        "rate": "Preço ({currency})"
+      }
+    }
+  },
+  "print": {
+    "receipt_no": "Nota n.º",
+    "date": "Data",
+    "billed_to": "Cliente",
+    "address": "Endereço",
+    "item": "Item",
+    "rate": "Preço",
+    "quantity": "Quantidade",
+    "amount": "Valor",
+    "remarks": "Observações / instruções",
+    "subtotal": "Subtotal",
+    "total_amount": "Valor total",
+    "payment_method": "Forma de pagamento",
+    "save_paper": "Economize papel, preserve a natureza! Obrigado por comprar conosco."
+  },
+  "sample": {
+    "shop_name": "Papelaria Pena Azul",
+    "customer_name": "Ana Souza",
+    "items": [
+      {
+        "name": "Caderno espiral (200 folhas)",
+        "qty": 4,
+        "rate": 18
+      },
+      {
+        "name": "Canetas esferográficas azuis (caixa com 10)",
+        "qty": 2,
+        "rate": 16
+      },
+      {
+        "name": "Kit de marca-texto (4 cores)",
+        "qty": 1,
+        "rate": 22
+      },
+      {
+        "name": "Resma de papel A4 (500 folhas)",
+        "qty": 1,
+        "rate": 28
+      },
+      {
+        "name": "Bastão de cola (2 unidades)",
+        "qty": 2,
+        "rate": 9
+      }
+    ],
+    "tax_percent": null,
+    "remarks": "Guarde a nota para trocas em até 7 dias."
+  }
+}

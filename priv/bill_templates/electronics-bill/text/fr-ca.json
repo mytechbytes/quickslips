@@ -1,0 +1,48 @@
+{
+  "sample": {
+    "company_name": "Vision Électronique Inc.",
+    "branch": "Magasin du centre-ville",
+    "signatory_for": "Vision Électronique Inc.",
+    "seller_state": "QC",
+    "seller_phone": "(514) 555-0142",
+    "bill_name": "Julie Tremblay",
+    "bill_state": "QC",
+    "bill_pin": "H2X 1L6",
+    "bill_phone": "(514) 555-0166",
+    "ship_state": "QC",
+    "customer_care": "1-800-555-0123",
+    "delivery_helpline": "1-800-555-0124",
+    "bank_details": "Banque Exemple, Montréal",
+    "bank_account": "Transit 12345 · Compte 0012345",
+    "items": [
+      {
+        "name": "Téléphone intelligent 128 Go (noir minuit)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 649,
+        "tax": 5
+      },
+      {
+        "name": "Écouteurs sans fil",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 89,
+        "tax": 5
+      },
+      {
+        "name": "Batterie externe 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 44.99,
+        "tax": 5
+      }
+    ],
+    "ship_phone": "(514) 555-0166",
+    "seller_address": "1200 rue Sherbrooke, Montréal, QC H3A 1H6",
+    "bill_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "ship_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "copy_label": "(Original pour le destinataire)",
+    "remarks": "Conservez cette facture pour la garantie. Protège-écran posé gratuitement en magasin.",
+    "thank_you": "Merci. À bientôt."
+  }
+}

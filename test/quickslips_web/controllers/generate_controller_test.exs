@@ -215,7 +215,7 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
     test "a template that is not in the language is a 404, and costs no download", %{conn: conn} do
       conn =
         post(conn, ~p"/api/generate", %{
-          slug: "rent-receipt",
+          slug: "courier-receipt",
           template: "t1",
           locale: "hi-in",
           data: %{},

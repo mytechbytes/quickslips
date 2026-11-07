@@ -1,0 +1,153 @@
+{
+  "title": "Generador de Factura de Comida a Domicilio",
+  "name": "Factura de Comida a Domicilio",
+  "public_slug": "generador-de-factura-de-comida-a-domicilio",
+  "summary": "Factura de pedido de comida con {tax} en cada línea.",
+  "description": "Genera una factura de comida a domicilio en nombre de un restaurante, con la dirección de entrega, el impuesto por línea, los datos legales de la plataforma y un firmante. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura de entrega"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Plataforma o marca (opcional)"
+    },
+    "legal_name": {
+      "label": "Razón social (opcional)"
+    },
+    "restaurant_name": {
+      "label": "Nombre del restaurante"
+    },
+    "restaurant_address": {
+      "label": "Dirección del restaurante (opcional)"
+    },
+    "restaurant_gstin": {
+      "label": "Restaurante {tax_id} (opcional)"
+    },
+    "restaurant_fssai": {
+      "label": "N.º FSSAI del restaurante (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha de factura"
+    },
+    "order_id": {
+      "label": "ID del pedido (opcional)"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "delivery_address": {
+      "label": "Dirección de entrega (opcional)"
+    },
+    "place_of_supply": {
+      "label": "Estado y lugar de suministro (opcional)"
+    },
+    "hsn_code": {
+      "label": "Código HSN (opcional)"
+    },
+    "service_description": {
+      "label": "Descripción del servicio (opcional)"
+    },
+    "reverse_charge": {
+      "label": "Inversión del sujeto pasivo (opcional)",
+      "options": {
+        "No": "No",
+        "Yes": "Sí"
+      }
+    },
+    "payment_note": {
+      "label": "Nota de pago (opcional)"
+    },
+    "platform_company": {
+      "label": "Razón social y dirección de la plataforma (opcional)"
+    },
+    "platform_pan": {
+      "label": "PAN de la plataforma (opcional)"
+    },
+    "platform_cin": {
+      "label": "CIN de la plataforma (opcional)"
+    },
+    "platform_tax_id": {
+      "label": "Plataforma {tax_id} (opcional)"
+    },
+    "platform_fssai": {
+      "label": "N.º FSSAI de la plataforma (opcional)"
+    },
+    "signatory_name": {
+      "label": "Nombre del firmante (opcional)"
+    },
+    "items": {
+      "label": "Líneas de facturación",
+      "columns": {
+        "name": "Concepto",
+        "rate": "Valor bruto ({currency})",
+        "discount": "Dto. %",
+        "tax": "Impuesto %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Factura",
+    "original": "Original para el destinatario",
+    "on_behalf": "Factura en nombre de",
+    "restaurant": "Restaurante",
+    "invoice_no": "N.º de factura",
+    "invoice_date": "Fecha de factura",
+    "customer": "Nombre del cliente",
+    "delivery_address": "Dirección de entrega",
+    "place": "Estado y lugar de suministro",
+    "hsn": "Código HSN",
+    "service": "Descripción del servicio",
+    "order_id": "ID del pedido",
+    "particulars": "Concepto",
+    "gross": "Valor bruto",
+    "discount": "Descuento",
+    "net": "Valor neto",
+    "rate": "Tipo",
+    "tax": "Impuesto",
+    "total": "Total",
+    "reverse": "El suministro está sujeto a inversión del sujeto pasivo",
+    "payment_note": "Nota de pago",
+    "for": "Por",
+    "authorised": "Firma autorizada"
+  },
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Technologies S.L.\nCalle Serrano 10, 28001 Madrid",
+    "legal_name": "Café La Giralda S.L.",
+    "restaurant_name": "Café La Giralda",
+    "items": [
+      {
+        "name": "Tortilla española x 2",
+        "rate": 13,
+        "discount": 0,
+        "tax": 10
+      },
+      {
+        "name": "Café con leche x 3",
+        "rate": 5.4,
+        "discount": 10,
+        "tax": 10
+      },
+      {
+        "name": "Paella",
+        "rate": 14,
+        "discount": 0,
+        "tax": 10
+      },
+      {
+        "name": "Envase y entrega",
+        "rate": 2.5,
+        "discount": 0,
+        "tax": 21
+      }
+    ],
+    "customer_name": "Carlos Gómez",
+    "delivery_address": "Calle Feria 25, 3.º B, 41003 Sevilla",
+    "service_description": "Servicio de restauración",
+    "payment_note": "Pagado en línea",
+    "signatory_name": "A. Sánchez"
+  }
+}

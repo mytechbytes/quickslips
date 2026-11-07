@@ -1,0 +1,35 @@
+{
+  "sample": {
+    "clinic_name": "Maple Family Clinic",
+    "doctor_name": "Dr. David Tremblay",
+    "doctor_designation": "Internal medicine physician",
+    "patient_name": "Emma Wilson",
+    "guardian_name": "Tom Wilson",
+    "payer_name": "Tom Wilson",
+    "patient_issue": "Fever and cough",
+    "items": [
+      {
+        "name": "Room (per day)",
+        "qty": 2,
+        "rate": 300
+      },
+      {
+        "name": "Nursing care (per day)",
+        "qty": 2,
+        "rate": 90
+      }
+    ],
+    "consultation_fee": 120,
+    "medicines_cost": 45,
+    "tests_cost": 90,
+    "discount": 25,
+    "amount_paid": 300,
+    "tax_percent": 5,
+    "hospital_details": "24-hour emergency care, pharmacy and laboratory",
+    "registration_number": "OHIP 123456",
+    "patient_address": "45 King Street West, Unit 12, Toronto, ON M5H 1J8",
+    "payer_address": "45 King Street West, Unit 12, Toronto, ON M5H 1J8",
+    "clinic_phone": "(416) 555-0187",
+    "patient_details": "42 / F"
+  }
+}

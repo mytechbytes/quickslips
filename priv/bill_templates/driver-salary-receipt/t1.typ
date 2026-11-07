@@ -1,55 +1,49 @@
-// Driver salary receipt, design t1.
+// Driver salary receipt, design t1: the certificate an employee hands in to be reimbursed for the pay of the driver: who paid
+// whom, how much and for which month, with the declaration. Reads data.json (next to this file). The words come from
+// text.json (`t`), the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(paper: "a5", margin: (x: 16mm, y: 16mm), size: 10.5pt)
-#set par(leading: 0.7em)
+#show: base.with(width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
+#set par(leading: 0.75em)
 
 #let overtime = num(data, "overtime")
 #let allowance = num(data, "allowance")
 #let deductions = num(data, "deductions")
+// What the driver is paid in a month, and the revenue stamp (stuck on a receipt in India only).
 #let net = data.basic_salary + overtime + allowance - deductions
+#let stamp(width: 24mm, height: 28mm) = if region.country == "in" {
+  box(width: width, height: height, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"), inset: 2mm, align(center + horizon, text(size: 7.5pt, fill: muted, t.revenue_stamp)))
+}
+#let vehicle = opt(data, "vehicle_number")
+#let declaration = opt(data, "declaration")
+// The parts of the pay, for the designs that show them: nothing is listed that is 0.
+#let breakdown = (
+  (t.monthly_salary, data.basic_salary), (t.overtime, overtime), (t.allowance, allowance), (t.deductions, -deductions),
+).filter(row => row.at(1) != 0)
 
-#align(center)[#text(size: 15pt, weight: "bold")[SALARY RECEIPT]]
+#align(right)[#t.date: #fmt-date(data.receipt_date)]
+#v(1mm)
+#align(center, text(size: 14pt, weight: "bold", t.title))
 #v(2mm)
 #rule()
 #v(4mm)
 
-#align(right)[Date: #fmt-date(data.receipt_date)]
-#v(2mm)
+#say(t.certify, (employer: data.employer_name, amount: money(net), driver: data.driver_name, month: month-label(data.month)))
+#if declaration != none [ #declaration]
 
-Received *#money(net)* from *#data.employer_name* as salary for the month of
-*#month-label(data.month)*, for work as a driver#if opt(data, "vehicle_number") != none [ of vehicle *#opt(data, "vehicle_number")*].
-
-Payment mode: *#data.payment_mode*.
+#t.reimburse
 
 #v(2mm)
-#totals(
-  (
-    ([Monthly salary], data.basic_salary),
-    ([Overtime], overtime),
-    ([Fuel and other allowance], allowance),
-    ([Advance or deductions], -deductions),
-  ),
-  net,
-  label: "Net amount",
-)
-
-#v(8mm)
 #grid(
-  columns: (1fr, 1fr),
+  columns: (1fr, auto),
   column-gutter: 8mm,
-  block(width: 52mm, {
-    v(13mm)
-    line(length: 100%, stroke: 0.5pt)
-    v(-1mm)
-    strong(data.driver_name)
-    linebreak()
-    text(size: 9pt, fill: muted)[Driver]
-  }),
-  signature-block(data, [Employer], name: data.employer_name),
+  row-gutter: 5mm,
+  if vehicle != none [*#t.vehicle_no:* #vehicle] else [], align(right)[*#t.date:* #fmt-date(data.receipt_date)],
+  [*#t.driver_name:* #data.driver_name], align(right)[*#t.employer_name:* #data.employer_name],
 )
-
-#if opt(data, "employer_address") != none [
-  #v(4mm)
-  #text(size: 9pt, fill: muted)[Employer's address: #lines(opt(data, "employer_address"))]
-]
+#v(4mm)
+#grid(
+  columns: (1fr, auto),
+  stamp(),
+  align(bottom, signature-block(data, t.employer_signature, name: data.employer_name)),
+)

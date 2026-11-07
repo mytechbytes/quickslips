@@ -1,0 +1,83 @@
+{
+  "title": "Book Receipt Generator",
+  "name": "Book Receipt",
+  "public_slug": "book-receipt-generator",
+  "summary": "Bookstore receipt with title, author and payment.",
+  "description": "Create a bookstore receipt with the book's title, author and publisher, quantity, price and payment method. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Classic",
+    "t2": "With the seller"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Bookstore name"
+    },
+    "store_address": {
+      "label": "Bookstore address (optional)"
+    },
+    "receipt_number": {
+      "label": "Receipt number"
+    },
+    "date": {
+      "label": "Purchase date"
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "book_name": {
+      "label": "Book title"
+    },
+    "author": {
+      "label": "Author (optional)"
+    },
+    "publisher": {
+      "label": "Publisher"
+    },
+    "description": {
+      "label": "Description (optional)"
+    },
+    "quantity": {
+      "label": "Quantity"
+    },
+    "book_price": {
+      "label": "Price of one book ({currency})"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Book Receipt",
+    "bill_to": "Bill to",
+    "receipt_details": "Receipt details",
+    "receipt_no": "Receipt no.",
+    "receipt_date": "Receipt date",
+    "customer_name": "Customer name",
+    "book_name": "Book name",
+    "author": "Author",
+    "publisher": "Publisher",
+    "payment_method": "Payment method",
+    "receipt_summary": "Receipt summary",
+    "item": "Item",
+    "description": "Description",
+    "qty": "Qty",
+    "price": "Price",
+    "total": "Total",
+    "sold_by": "Sold by",
+    "store_name": "Store name",
+    "store_address": "Store address",
+    "thanks": "Thank you! Visit again.",
+    "quote_1": "A room without books is like a body without a soul.",
+    "quote_2": "Take a good book to bed with you — books do not snore.",
+    "quote_3": "Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers.",
+    "quote_4": "Books are good company, in sad times and happy times, for books are people – people who have managed to stay alive by hiding between the covers of a book."
+  },
+  "sample": {}
+}

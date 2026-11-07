@@ -1,0 +1,12 @@
+{
+  "sample": {
+    "employer_name": "Marc Gagnon",
+    "driver_name": "Luc Tremblay",
+    "vehicle_number": "ABC 123",
+    "basic_salary": 3000,
+    "overtime": 250,
+    "allowance": 150,
+    "deductions": 100,
+    "employer_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

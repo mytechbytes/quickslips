@@ -1,0 +1,105 @@
+{
+  "title": "文房具店レシート作成",
+  "name": "文房具店レシート",
+  "public_slug": "stationery-bill-generator",
+  "summary": "商品・単価・合計を記載した文房具店のレシート。",
+  "description": "ペン、紙などの文房具、数量、単価、{tax}を記載した文房具店のレシートを作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "レシート"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "店名"
+    },
+    "shop_address": {
+      "label": "店舗の住所"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "invoice_number": {
+      "label": "レシート番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "customer_address": {
+      "label": "お客様の住所"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "remarks": {
+      "label": "備考・案内（任意）"
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "商品",
+        "qty": "数量",
+        "rate": "単価（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "receipt_no": "レシート番号",
+    "date": "日付",
+    "billed_to": "お客様",
+    "address": "住所",
+    "item": "商品",
+    "rate": "単価",
+    "quantity": "数量",
+    "amount": "金額",
+    "remarks": "備考・案内",
+    "subtotal": "小計",
+    "total_amount": "合計金額",
+    "payment_method": "支払方法",
+    "save_paper": "紙を節約して自然を守りましょう。ご利用ありがとうございました。"
+  },
+  "sample": {
+    "shop_name": "ふでばこ文具店",
+    "customer_name": "田中 太郎",
+    "items": [
+      {
+        "name": "リングノート（200ページ）",
+        "qty": 4,
+        "rate": 280
+      },
+      {
+        "name": "青のボールペン（10本入り）",
+        "qty": 2,
+        "rate": 450
+      },
+      {
+        "name": "蛍光ペンセット（4色）",
+        "qty": 1,
+        "rate": 680
+      },
+      {
+        "name": "A4コピー用紙（500枚）",
+        "qty": 1,
+        "rate": 620
+      },
+      {
+        "name": "スティックのり（2本）",
+        "qty": 2,
+        "rate": 230
+      }
+    ],
+    "tax_percent": 10,
+    "remarks": "7日以内の交換にはレシートが必要です。"
+  }
+}

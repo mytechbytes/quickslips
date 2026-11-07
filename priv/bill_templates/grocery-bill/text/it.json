@@ -1,0 +1,127 @@
+{
+  "title": "Generatore di scontrino per alimentari",
+  "name": "Scontrino alimentari",
+  "public_slug": "generatore-scontrino-alimentari",
+  "summary": "Articoli, quantità e totali.",
+  "description": "Crea uno scontrino per alimentari con tutti gli articoli che servono, quantità, prezzi, sconto e {tax}. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Fattura al dettaglio",
+    "t2": "Scontrino con risparmio"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Nome del negozio"
+    },
+    "store_address": {
+      "label": "Indirizzo (facoltativo)"
+    },
+    "store_phone": {
+      "label": "Telefono (facoltativo)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "fssai_number": {
+      "label": "N. licenza FSSAI (facoltativo)"
+    },
+    "bill_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Ora (facoltativo)"
+    },
+    "transaction_id": {
+      "label": "ID transazione (facoltativo)"
+    },
+    "customer_name": {
+      "label": "Nome del cliente (facoltativo)"
+    },
+    "discount": {
+      "label": "Sconto ({currency}) (facoltativo)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Pagato con",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Articoli",
+      "columns": {
+        "name": "Articolo",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})",
+        "discount": "Sconto %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tel.",
+    "retail_invoice": "Fattura al dettaglio",
+    "bill_no": "Fattura n.",
+    "bill_date": "Data",
+    "time": "Ora",
+    "particulars": "Descrizione",
+    "rate": "Prezzo",
+    "qty": "Q.tà",
+    "amount": "Importo",
+    "total": "Totale",
+    "net_amount": "Importo netto",
+    "payment_method": "Metodo di pagamento",
+    "transaction": "ID transazione",
+    "customer": "Nome del cliente",
+    "thanks": "Grazie! Arrivederci.",
+    "sn": "N.",
+    "item_name": "Articolo",
+    "unit_price": "Prezzo netto",
+    "sub_total": "Subtotale",
+    "saving": "Risparmio totale",
+    "saving_pct": "Risparmio totale (%)",
+    "discount": "Sconto"
+  },
+  "sample": {
+    "store_name": "Supermercato Bella",
+    "items": [
+      {
+        "name": "Riso basmati (1 kg)",
+        "qty": 1,
+        "rate": 3.1
+      },
+      {
+        "name": "Lenticchie (500 g)",
+        "qty": 2,
+        "rate": 2.2
+      },
+      {
+        "name": "Olio di girasole (1 L)",
+        "qty": 2,
+        "rate": 2.4,
+        "discount": 5
+      },
+      {
+        "name": "Zucchero (1 kg)",
+        "qty": 3,
+        "rate": 1.5
+      },
+      {
+        "name": "Caffè macinato (250 g)",
+        "qty": 1,
+        "rate": 4.0,
+        "discount": 10
+      }
+    ],
+    "customer_name": "Marco Rossi",
+    "tax_percent": 4,
+    "store_phone": "06 1234567"
+  }
+}

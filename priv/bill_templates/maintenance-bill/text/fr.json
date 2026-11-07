@@ -1,0 +1,192 @@
+{
+  "title": "Générateur de facture d'atelier",
+  "name": "Facture d'atelier",
+  "public_slug": "generateur-de-facture-d-atelier",
+  "summary": "Devis ou facture d'atelier avec pièces, main-d'œuvre et {tax}.",
+  "description": "Générez un devis, une facture ou un ordre de réparation d'atelier auto ou moto avec le client et le véhicule, les pièces avec remise, la main-d'œuvre et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Fiche d'atelier"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "Nom de l'atelier"
+    },
+    "workshop_address": {
+      "label": "Adresse de l'atelier"
+    },
+    "workshop_phone": {
+      "label": "Téléphone (facultatif)"
+    },
+    "dealer_name": {
+      "label": "Concessionnaire agréé (facultatif)"
+    },
+    "document_type": {
+      "label": "Document",
+      "options": {
+        "Estimate": "Devis",
+        "Invoice": "Facture",
+        "Job card": "Ordre de réparation"
+      }
+    },
+    "document_number": {
+      "label": "Numéro du document"
+    },
+    "reference_number": {
+      "label": "Numéro de référence (facultatif)"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "workshop_section": {
+      "label": "Zone de l'atelier (facultatif)",
+      "options": {
+        "Main workshop": "Atelier principal",
+        "Service bay": "Baie de service",
+        "Body shop": "Carrosserie",
+        "Spare counter": "Comptoir pièces",
+        "Express lane": "Service rapide",
+        "PDI bay": "Zone PDI"
+      }
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "customer_phone": {
+      "label": "Contact du client (facultatif)"
+    },
+    "vehicle_model": {
+      "label": "Modèle"
+    },
+    "registration_number": {
+      "label": "Immatriculation"
+    },
+    "vin": {
+      "label": "N° de châssis (VIN) (facultatif)"
+    },
+    "insurance_company": {
+      "label": "Assureur (facultatif)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "terms": {
+      "label": "Conditions, une par ligne (facultatif)"
+    },
+    "parts": {
+      "label": "Pièces",
+      "options": {
+        "PAID": "Payant",
+        "Warranty": "Garantie",
+        "Insurance": "Assurance"
+      },
+      "columns": {
+        "code": "Réf. pièce",
+        "name": "Désignation",
+        "billing": "Facturation",
+        "qty": "Qté",
+        "rate": "Prix ({currency})",
+        "discount": "Remise %"
+      }
+    },
+    "labour": {
+      "label": "Main-d'œuvre",
+      "options": {
+        "PAID": "Payant",
+        "Warranty": "Garantie",
+        "Insurance": "Assurance"
+      },
+      "columns": {
+        "code": "Code travail",
+        "name": "Travail",
+        "billing": "Facturation",
+        "rate": "Montant ({currency})",
+        "discount": "Remise %"
+      }
+    }
+  },
+  "print": {
+    "contact": "Contact",
+    "dealer": "Concessionnaire agréé",
+    "no": "n°",
+    "customer": "Nom du client",
+    "vin": "N° de châssis",
+    "insurance": "Assureur",
+    "reference": "N° de référence",
+    "date": "Date",
+    "model": "Modèle",
+    "reg_no": "Immatriculation",
+    "section": "Zone",
+    "parts": "Pièces",
+    "labour": "Main-d'œuvre",
+    "parts_total": "Total pièces",
+    "jobs_total": "Total main-d'œuvre",
+    "tax_details": "Détail des taxes",
+    "taxable": "Base HT",
+    "summary": "Récapitulatif",
+    "total": "Total",
+    "signatory": "Signature autorisée",
+    "code": "Code",
+    "description": "Désignation",
+    "billing": "Facturation",
+    "qty": "Qté",
+    "rate": "Prix",
+    "discount": "Remise",
+    "net": "Montant net"
+  },
+  "sample": {
+    "workshop_name": "Garage du Centre",
+    "workshop_phone": "01 23 45 67 89",
+    "customer_name": "Camille Martin",
+    "customer_phone": "06 12 34 56 78",
+    "vehicle_model": "Renault Clio",
+    "registration_number": "AB-452-CD",
+    "insurance_company": "Assurance Nationale",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "Filtre à huile",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 13,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "Plaquettes de frein avant (jeu)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 55,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "Filtre à air",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 19,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "Entretien périodique",
+        "billing": "PAID",
+        "rate": 70,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "Contrôle et pose des freins",
+        "billing": "PAID",
+        "rate": 50,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 20,
+    "terms": "Paiement à effectuer sous 7 jours à compter de la date de la facture.\nDevis valable 15 jours.\nMain-d'œuvre facturée selon la politique de l'atelier.\nLes prises en charge par l'assurance sont soumises à l'accord de l'expert.\nL'atelier n'est pas responsable des objets laissés dans le véhicule.\nVeuillez vérifier tous les détails avant de quitter l'atelier."
+  }
+}

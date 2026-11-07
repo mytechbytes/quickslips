@@ -1,0 +1,192 @@
+{
+  "title": "Generatore di fattura per officina",
+  "name": "Fattura officina",
+  "public_slug": "generatore-fattura-officina",
+  "summary": "Preventivo o fattura di officina con ricambi, manodopera e {tax}.",
+  "description": "Genera un preventivo, una fattura o un ordine di lavoro per un'officina auto o moto con cliente e veicolo, ricambi con sconto, manodopera e {tax}. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Scheda officina"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "Nome dell'officina"
+    },
+    "workshop_address": {
+      "label": "Indirizzo dell'officina"
+    },
+    "workshop_phone": {
+      "label": "Telefono (facoltativo)"
+    },
+    "dealer_name": {
+      "label": "Concessionario autorizzato (facoltativo)"
+    },
+    "document_type": {
+      "label": "Documento",
+      "options": {
+        "Estimate": "Preventivo",
+        "Invoice": "Fattura",
+        "Job card": "Ordine di lavoro"
+      }
+    },
+    "document_number": {
+      "label": "Numero del documento"
+    },
+    "reference_number": {
+      "label": "Numero di riferimento (facoltativo)"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "workshop_section": {
+      "label": "Reparto dell'officina (facoltativo)",
+      "options": {
+        "Main workshop": "Officina principale",
+        "Service bay": "Postazione di servizio",
+        "Body shop": "Carrozzeria",
+        "Spare counter": "Banco ricambi",
+        "Express lane": "Corsia rapida",
+        "PDI bay": "Area PDI"
+      }
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "customer_phone": {
+      "label": "Contatto del cliente (facoltativo)"
+    },
+    "vehicle_model": {
+      "label": "Modello"
+    },
+    "registration_number": {
+      "label": "Targa"
+    },
+    "vin": {
+      "label": "Telaio (VIN) (facoltativo)"
+    },
+    "insurance_company": {
+      "label": "Assicurazione (facoltativo)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "terms": {
+      "label": "Condizioni, una per riga (facoltativo)"
+    },
+    "parts": {
+      "label": "Ricambi",
+      "options": {
+        "PAID": "A pagamento",
+        "Warranty": "Garanzia",
+        "Insurance": "Assicurazione"
+      },
+      "columns": {
+        "code": "Cod. ricambio",
+        "name": "Descrizione",
+        "billing": "Fatturazione",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})",
+        "discount": "Sconto %"
+      }
+    },
+    "labour": {
+      "label": "Manodopera",
+      "options": {
+        "PAID": "A pagamento",
+        "Warranty": "Garanzia",
+        "Insurance": "Assicurazione"
+      },
+      "columns": {
+        "code": "Cod. lavoro",
+        "name": "Lavoro",
+        "billing": "Fatturazione",
+        "rate": "Importo ({currency})",
+        "discount": "Sconto %"
+      }
+    }
+  },
+  "print": {
+    "contact": "Contatto",
+    "dealer": "Concessionario autorizzato",
+    "no": "n.",
+    "customer": "Nome del cliente",
+    "vin": "Telaio (VIN)",
+    "insurance": "Assicurazione",
+    "reference": "N. di riferimento",
+    "date": "Data",
+    "model": "Modello",
+    "reg_no": "Targa",
+    "section": "Reparto",
+    "parts": "Ricambi",
+    "labour": "Manodopera",
+    "parts_total": "Totale ricambi",
+    "jobs_total": "Totale manodopera",
+    "tax_details": "Dettaglio imposte",
+    "taxable": "Imponibile",
+    "summary": "Riepilogo",
+    "total": "Totale",
+    "signatory": "Firma autorizzata",
+    "code": "Codice",
+    "description": "Descrizione",
+    "billing": "Fatturazione",
+    "qty": "Q.tà",
+    "rate": "Prezzo",
+    "discount": "Sconto",
+    "net": "Importo netto"
+  },
+  "sample": {
+    "workshop_name": "Officina Centrale",
+    "workshop_phone": "06 1234567",
+    "customer_name": "Marco Rossi",
+    "customer_phone": "333 123 4567",
+    "vehicle_model": "Fiat Panda",
+    "registration_number": "AB 452 CD",
+    "insurance_company": "Assicurazioni Nazionali",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "Filtro olio",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 12,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "Pastiglie freno anteriori (set)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 52,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "Filtro aria",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 18,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "Tagliando",
+        "billing": "PAID",
+        "rate": 65,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "Controllo e montaggio freni",
+        "billing": "PAID",
+        "rate": 45,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 22,
+    "terms": "Pagamento entro 7 giorni dalla data della fattura.\nPreventivo valido per 15 giorni.\nManodopera secondo il listino dell'officina.\nI sinistri assicurativi sono soggetti all'approvazione del perito.\nL'officina non risponde degli oggetti lasciati nel veicolo.\nControlla tutti i dati prima di lasciare l'officina."
+  }
+}

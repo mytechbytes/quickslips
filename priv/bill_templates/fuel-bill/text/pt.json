@@ -5,7 +5,12 @@
   "summary": "Crie uma nota de abastecimento de gasolina ou diesel em PDF.",
   "description": "Gere uma nota de combustível organizada com nome do posto, data, tipo de combustível, quantidade e preço. Veja a pré-visualização na hora e baixe o PDF.",
   "designs": {
-    "t1": "Clássico"
+    "t1": "Recibo",
+    "t2": "Cupom da bomba",
+    "t3": "Térmico",
+    "t4": "Térmico detalhado",
+    "t5": "Recibo de caixa",
+    "t6": "Matricial"
   },
   "fields": {
     "station_name": {
@@ -42,6 +47,40 @@
     },
     "tax_percent": {
       "label": "{tax} (%) (opcional)"
+    },
+    "station_phone": {
+      "label": "Telefone do posto (opcional)"
+    },
+    "dealer_name": {
+      "label": "Nome do revendedor (opcional)"
+    },
+    "fcc_id": {
+      "label": "ID FCC (opcional)"
+    },
+    "fip_no": {
+      "label": "N.º FIP (opcional)"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "customer_name": {
+      "label": "Nome do cliente (opcional)"
+    },
+    "nozzle_number": {
+      "label": "N.º do bico (opcional)"
+    },
+    "density": {
+      "label": "Densidade (kg/m³) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "Card": "Cartão",
+        "UPI": "UPI",
+        "Net banking": "Internet banking",
+        "Online": "Online"
+      }
     }
   },
   "print": {
@@ -57,7 +96,45 @@
     "signatory": "Assinatura autorizada",
     "thanks": "Obrigado. Volte sempre!",
     "taxable": "Base de cálculo",
-    "tax_included": "Preço com impostos incluídos."
+    "tax_included": "Preço com impostos incluídos.",
+    "receipt_title": "Recibo de combustível",
+    "receipt_details": "Dados do recibo",
+    "receipt_no": "Recibo n.º",
+    "time": "Hora",
+    "billed_to": "Cobrado de",
+    "customer": "Cliente",
+    "vehicle_no": "Placa",
+    "fuel_type": "Combustível",
+    "station": "Posto de combustível",
+    "payment": "Forma de pagamento",
+    "summary": "Resumo do recibo",
+    "fuel_rate": "Preço do combustível",
+    "total_amount": "Valor total",
+    "thanks_fuelling": "Obrigado por abastecer conosco!",
+    "queries": "Para dúvidas ou reclamações, fale com o nosso atendimento ao cliente.",
+    "save_fuel": "Economize combustível, proteja o futuro!",
+    "save_money": "Economize combustível, economize dinheiro. Obrigado pela preferência!",
+    "welcome": "Bem-vindo!",
+    "product": "Produto",
+    "volume": "Volume",
+    "unit": "L",
+    "tel": "Tel.",
+    "fcc": "ID FCC",
+    "fip": "N.º FIP",
+    "nozzle": "Bico n.º",
+    "dealer": "Revendedor",
+    "density": "Densidade",
+    "original": "Original",
+    "cash_memo": "Recibo de caixa",
+    "no": "N.º",
+    "dated": "Data",
+    "particulars": "Descrição",
+    "all_tax_included": "Todos os impostos incluídos",
+    "eoe": "Salvo erro ou omissão",
+    "happy_journey": "Boa viagem!",
+    "pump": "Bomba n.º",
+    "grade": "Tipo",
+    "unit_price": "Preço unitário"
   },
   "sample": {
     "station_name": "Posto Sol Nascente",
@@ -65,6 +142,8 @@
     "bill_number": "NF-10482",
     "vehicle_number": "ABC-1D23",
     "rate": 6.19,
-    "seller_tax_id": "12.345.678/0001-90"
+    "seller_tax_id": "12.345.678/0001-90",
+    "customer_name": "Ana Souza",
+    "station_phone": "(11) 3456-7890"
   }
 }

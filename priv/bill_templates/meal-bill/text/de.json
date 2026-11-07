@@ -1,0 +1,153 @@
+{
+  "title": "Essenslieferung-Rechnung-Generator",
+  "name": "Rechnung Essenslieferung",
+  "public_slug": "essenslieferung-rechnung-generator",
+  "summary": "Rechnung für Essenslieferungen mit {tax} je Position.",
+  "description": "Erstellen Sie eine Rechnung für eine Essenslieferung im Namen eines Restaurants mit Lieferadresse, Steuer je Position, den rechtlichen Angaben der Plattform und einem Unterzeichner. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Lieferrechnung"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Plattform oder Marke (optional)"
+    },
+    "legal_name": {
+      "label": "Firmenname (optional)"
+    },
+    "restaurant_name": {
+      "label": "Name des Restaurants"
+    },
+    "restaurant_address": {
+      "label": "Adresse des Restaurants (optional)"
+    },
+    "restaurant_gstin": {
+      "label": "Restaurant {tax_id} (optional)"
+    },
+    "restaurant_fssai": {
+      "label": "FSSAI-Nr. des Restaurants (optional)"
+    },
+    "invoice_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Rechnungsdatum"
+    },
+    "order_id": {
+      "label": "Bestell-ID (optional)"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "delivery_address": {
+      "label": "Lieferadresse (optional)"
+    },
+    "place_of_supply": {
+      "label": "Bundesland und Ort der Leistung (optional)"
+    },
+    "hsn_code": {
+      "label": "HSN-Code (optional)"
+    },
+    "service_description": {
+      "label": "Leistungsbeschreibung (optional)"
+    },
+    "reverse_charge": {
+      "label": "Reverse-Charge (optional)",
+      "options": {
+        "No": "Nein",
+        "Yes": "Ja"
+      }
+    },
+    "payment_note": {
+      "label": "Zahlungshinweis (optional)"
+    },
+    "platform_company": {
+      "label": "Name und Adresse der Plattform (optional)"
+    },
+    "platform_pan": {
+      "label": "PAN der Plattform (optional)"
+    },
+    "platform_cin": {
+      "label": "CIN der Plattform (optional)"
+    },
+    "platform_tax_id": {
+      "label": "Plattform {tax_id} (optional)"
+    },
+    "platform_fssai": {
+      "label": "FSSAI-Nr. der Plattform (optional)"
+    },
+    "signatory_name": {
+      "label": "Name des Unterzeichners (optional)"
+    },
+    "items": {
+      "label": "Rechnungspositionen",
+      "columns": {
+        "name": "Position",
+        "rate": "Bruttowert ({currency})",
+        "discount": "Rabatt %",
+        "tax": "Steuer %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Rechnung",
+    "original": "Original für den Empfänger",
+    "on_behalf": "Rechnung im Namen von",
+    "restaurant": "Restaurant",
+    "invoice_no": "Rechnungs-Nr.",
+    "invoice_date": "Rechnungsdatum",
+    "customer": "Kundenname",
+    "delivery_address": "Lieferadresse",
+    "place": "Bundesland und Ort der Leistung",
+    "hsn": "HSN-Code",
+    "service": "Leistungsbeschreibung",
+    "order_id": "Bestell-ID",
+    "particulars": "Position",
+    "gross": "Bruttowert",
+    "discount": "Rabatt",
+    "net": "Nettowert",
+    "rate": "Satz",
+    "tax": "Steuer",
+    "total": "Gesamt",
+    "reverse": "Leistung unterliegt dem Reverse-Charge-Verfahren",
+    "payment_note": "Zahlungshinweis",
+    "for": "Für",
+    "authorised": "Autorisierte Unterschrift"
+  },
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Technologies GmbH\nFriedrichstraße 100, 10117 Berlin",
+    "legal_name": "Café Linde GmbH",
+    "restaurant_name": "Café Linde",
+    "items": [
+      {
+        "name": "Schnitzel x 2",
+        "rate": 29,
+        "discount": 0,
+        "tax": 19
+      },
+      {
+        "name": "Apfelschorle x 3",
+        "rate": 9.6,
+        "discount": 10,
+        "tax": 19
+      },
+      {
+        "name": "Bratwurst",
+        "rate": 9.8,
+        "discount": 0,
+        "tax": 19
+      },
+      {
+        "name": "Verpackung und Lieferung",
+        "rate": 2.9,
+        "discount": 0,
+        "tax": 19
+      }
+    ],
+    "customer_name": "Anna Becker",
+    "delivery_address": "Lindenstraße 8, 3. OG, 10969 Berlin",
+    "service_description": "Gastronomieleistung",
+    "payment_note": "Online bezahlt",
+    "signatory_name": "A. Schmidt"
+  }
+}

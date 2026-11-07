@@ -1,0 +1,15 @@
+{
+  "sample": {
+    "provider_name": "Zing Mobile",
+    "customer_name": "Emma Wilson",
+    "mobile_number": "(416) 555-0199",
+    "amount": 40,
+    "tax_percent": 5,
+    "amount_after_due": 5,
+    "email_banner": "To get your monthly bill by email, text STARTBILL <email> to 198.",
+    "offer_title": "Get 10 GB a month free",
+    "offer_text": "Broadband data with every prepaid and TV line",
+    "pay_options": "Pay in the app\nPay in the Zing Pay app: download from the App Store or Google Play\nPay on the official website",
+    "landmark": null
+  }
+}

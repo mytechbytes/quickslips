@@ -1,0 +1,126 @@
+{
+  "title": "Generatore di conto del ristorante",
+  "name": "Conto del ristorante",
+  "public_slug": "generatore-conto-ristorante",
+  "summary": "Conto per consumazione al tavolo o da asporto con articoli e {tax}.",
+  "description": "Genera un conto del ristorante con un numero qualsiasi di articoli, quantità, servizio e {tax}. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Scontrino pixel",
+    "t2": "Ricevuta tratteggiata",
+    "t3": "Conto compatto",
+    "t4": "Conto a macchina"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "Nome del ristorante"
+    },
+    "restaurant_address": {
+      "label": "Indirizzo (facoltativo)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "fssai_number": {
+      "label": "N. licenza FSSAI (facoltativo)"
+    },
+    "bill_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Ora (facoltativo)"
+    },
+    "table_number": {
+      "label": "Tavolo (facoltativo)"
+    },
+    "customer_name": {
+      "label": "Nome del cliente (facoltativo)"
+    },
+    "service_percent": {
+      "label": "Servizio (%) (facoltativo)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Pagato con",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Articoli",
+      "columns": {
+        "name": "Articolo",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})"
+      }
+    }
+  },
+  "print": {
+    "welcome": "Benvenuto!",
+    "original": "Ricevuta originale",
+    "date": "Data",
+    "time": "Ora",
+    "customer": "Nome del cliente",
+    "table": "Tavolo",
+    "receipt_no": "Ricevuta n.",
+    "bill_no": "Fattura n.",
+    "description": "Descrizione",
+    "item": "Articolo",
+    "qty": "Q.tà",
+    "price": "Prezzo",
+    "subtotal": "Subtotale",
+    "total": "Totale",
+    "service": "Servizio",
+    "paid_by": "Pagato con",
+    "save_paper": "Risparmia carta, rispetta la natura!",
+    "thanks_meal": "Grazie per l'ottimo pasto.",
+    "receipt": "Ricevuta",
+    "support_local": "Grazie per aver sostenuto il commercio locale!",
+    "thanks_visit": "Grazie della visita! Buon viaggio.",
+    "round_off": "Arrotondamento",
+    "above_incl": "Prezzi comprensivi di imposte",
+    "total_tax": "Totale imposte",
+    "amount": "Importo"
+  },
+  "sample": {
+    "restaurant_name": "Trattoria Bella",
+    "items": [
+      {
+        "name": "Pizza margherita",
+        "qty": 2,
+        "rate": 8
+      },
+      {
+        "name": "Caffè",
+        "qty": 3,
+        "rate": 1.5
+      },
+      {
+        "name": "Lasagna",
+        "qty": 1,
+        "rate": 11
+      },
+      {
+        "name": "Tagliata",
+        "qty": 1,
+        "rate": 18
+      },
+      {
+        "name": "Tiramisù",
+        "qty": 2,
+        "rate": 6
+      }
+    ],
+    "customer_name": "Marco Rossi",
+    "table_number": "T-7",
+    "gst_percent": 10
+  }
+}

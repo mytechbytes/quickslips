@@ -1,0 +1,224 @@
+{
+  "title": "मेडिकल बिल जनरेटर",
+  "name": "मेडिकल बिल",
+  "public_slug": "medical-bill-generator",
+  "summary": "अस्पताल, क्लिनिक या लैब का बिल, {tax} के साथ।",
+  "description": "रोगी, डॉक्टर, कमरा, परामर्श, दवाइयों, जाँच और विस्तृत शुल्कों के साथ अस्पताल, क्लिनिक या लैब का बिल बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "अस्पताल चालान",
+    "t2": "अनंतिम बिल"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "अस्पताल, क्लिनिक या लैब"
+    },
+    "clinic_address": {
+      "label": "पता (वैकल्पिक)"
+    },
+    "clinic_phone": {
+      "label": "संपर्क फ़ोन (वैकल्पिक)"
+    },
+    "hospital_details": {
+      "label": "अस्पताल का विवरण (वैकल्पिक)"
+    },
+    "registration_number": {
+      "label": "पंजीकरण नंबर (वैकल्पिक)"
+    },
+    "bill_number": {
+      "label": "बिल नंबर"
+    },
+    "date": {
+      "label": "तारीख"
+    },
+    "time": {
+      "label": "समय (वैकल्पिक)"
+    },
+    "admit_date": {
+      "label": "भर्ती की तारीख (वैकल्पिक)"
+    },
+    "discharge_date": {
+      "label": "छुट्टी की तारीख (वैकल्पिक)"
+    },
+    "patient_name": {
+      "label": "रोगी का नाम"
+    },
+    "patient_details": {
+      "label": "आयु और लिंग (वैकल्पिक)"
+    },
+    "patient_issue": {
+      "label": "रोग / समस्या (वैकल्पिक)"
+    },
+    "guardian_name": {
+      "label": "अभिभावक का नाम (वैकल्पिक)"
+    },
+    "patient_phone": {
+      "label": "रोगी का मोबाइल (वैकल्पिक)"
+    },
+    "patient_address": {
+      "label": "रोगी का पता (वैकल्पिक)"
+    },
+    "payer_name": {
+      "label": "भुगतानकर्ता का नाम (वैकल्पिक)"
+    },
+    "payer_address": {
+      "label": "भुगतानकर्ता का पता (वैकल्पिक)"
+    },
+    "doctor_name": {
+      "label": "डॉक्टर / परामर्शदाता (वैकल्पिक)"
+    },
+    "doctor_designation": {
+      "label": "पदनाम (वैकल्पिक)"
+    },
+    "room": {
+      "label": "कमरे की श्रेणी (वैकल्पिक)",
+      "options": {
+        "Single": "सिंगल",
+        "Semi-private": "सेमी-प्राइवेट",
+        "Private": "प्राइवेट",
+        "General": "जनरल",
+        "ICU": "ICU"
+      }
+    },
+    "insurance": {
+      "label": "बीमा (वैकल्पिक)",
+      "options": {
+        "Yes": "हाँ",
+        "No": "नहीं"
+      }
+    },
+    "remark": {
+      "label": "टिप्पणी (वैकल्पिक)"
+    },
+    "consultation_fee": {
+      "label": "परामर्श ({currency}) (वैकल्पिक)"
+    },
+    "medicines_cost": {
+      "label": "दवाइयाँ ({currency}) (वैकल्पिक)"
+    },
+    "tests_cost": {
+      "label": "जाँच और प्रक्रियाएँ ({currency}) (वैकल्पिक)"
+    },
+    "other_charges": {
+      "label": "अन्य शुल्क ({currency}) (वैकल्पिक)"
+    },
+    "discount": {
+      "label": "छूट ({currency}) (वैकल्पिक)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (वैकल्पिक)"
+    },
+    "amount_paid": {
+      "label": "भुगतान की गई राशि ({currency}) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का माध्यम",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "items": {
+      "label": "विस्तृत शुल्क",
+      "columns": {
+        "name": "विवरण",
+        "qty": "इकाइयाँ",
+        "rate": "मूल्य ({currency})"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "चालान नं.",
+    "contact": "संपर्क",
+    "reg_no": "पंजीकरण नं.",
+    "discharge_date": "छुट्टी की तारीख",
+    "admit_date": "भर्ती की तारीख",
+    "patient_info": "रोगी की जानकारी",
+    "patient_name": "रोगी का नाम",
+    "patient_issue": "रोग / समस्या",
+    "address": "पता",
+    "guardian": "अभिभावक का नाम",
+    "mobile": "मोबाइल",
+    "insurance": "बीमा उपलब्ध",
+    "age": "आयु",
+    "consultant": "परामर्शदाता",
+    "room": "कमरे की श्रेणी",
+    "details": "विवरण",
+    "price": "मूल्य",
+    "amount": "राशि",
+    "units": "इकाइयाँ",
+    "pay_by": "भुगतान का माध्यम",
+    "amount_paid": "भुगतान की गई राशि",
+    "tax": "कर",
+    "taxable": "कर योग्य राशि",
+    "net": "शुद्ध राशि",
+    "total_amount": "कुल राशि",
+    "remark": "टिप्पणी",
+    "computer": "* यह कंप्यूटर द्वारा बनाया गया चालान है, हस्ताक्षर आवश्यक नहीं।",
+    "created": "{when} को बनाया गया",
+    "phone": "फ़ोन",
+    "timing": "समय",
+    "patient_uid": "रोगी आईडी",
+    "name": "नाम",
+    "payer": "भुगतानकर्ता का विवरण",
+    "consulting_doctors": "परामर्श देने वाले डॉक्टर",
+    "date": "तारीख",
+    "admission_no": "भर्ती नं.",
+    "admission_date": "भर्ती की तारीख",
+    "bed": "बिस्तर",
+    "provisional": "अनंतिम बिल",
+    "room_type": "कमरे का प्रकार",
+    "particulars": "विवरण",
+    "total_bill": "कुल बिल राशि",
+    "discount": "छूट",
+    "payable": "देय राशि",
+    "balance": "शेष",
+    "breakup": "विस्तृत विवरण",
+    "date_time": "तारीख और समय",
+    "rate": "दर",
+    "payment_mode": "भुगतान का माध्यम",
+    "gst_type": "GST का प्रकार",
+    "intra": "राज्य के भीतर (CGST + SGST)",
+    "gst_pct": "कर की दर",
+    "notes": "टिप्पणियाँ",
+    "consultation": "परामर्श",
+    "medicines": "दवाइयाँ",
+    "tests": "जाँच और प्रक्रियाएँ",
+    "other": "अन्य शुल्क",
+    "itemised": "विस्तृत शुल्क"
+  },
+  "sample": {
+    "clinic_name": "नायर फ़ैमिली क्लिनिक",
+    "doctor_name": "डॉ. सुरेश नायर",
+    "doctor_designation": "परामर्श चिकित्सक",
+    "patient_name": "अनीता नायर",
+    "guardian_name": "राजन नायर",
+    "payer_name": "राजन नायर",
+    "patient_issue": "बुखार और खाँसी",
+    "items": [
+      {
+        "name": "कमरे का किराया (प्रति दिन)",
+        "qty": 2,
+        "rate": 1800
+      },
+      {
+        "name": "नर्सिंग शुल्क (प्रति दिन)",
+        "qty": 2,
+        "rate": 400
+      }
+    ],
+    "consultation_fee": 500,
+    "medicines_cost": 430,
+    "tests_cost": 320,
+    "discount": 150,
+    "amount_paid": 4000,
+    "tax_percent": 5,
+    "hospital_details": "24 घंटे आपातकालीन सेवा, फ़ार्मेसी और प्रयोगशाला",
+    "clinic_address": "शॉप 2, लेक व्यू रोड, कोच्चि, केरल 682016",
+    "patient_address": "12, मरीन ड्राइव, कोच्चि, केरल 682031",
+    "payer_address": "12, मरीन ड्राइव, कोच्चि, केरल 682031",
+    "remark": "आपातकाल में, दर्द, चलने में दर्द, लालिमा, मवाद या रक्तस्राव होने पर तुरंत परामर्श लें। 5 दिन बाद फिर दिखाएँ।"
+  }
+}

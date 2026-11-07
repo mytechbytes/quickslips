@@ -63,7 +63,10 @@ defmodule QuickSlips.Render.RendererTest do
       data = filled_up(schema, sample(slug))
 
       assert {:ok, _clean} = Validator.validate(schema, data)
-      assert {:ok, "%PDF" <> _} = Renderer.render(slug, "t1", data)
+
+      for %{"id" => design} <- schema["templates"] do
+        assert {:ok, "%PDF" <> _} = Renderer.render(slug, design, data), "#{slug}/#{design}"
+      end
     end
   end
 
@@ -107,6 +110,9 @@ defmodule QuickSlips.Render.RendererTest do
 
           %{"type" => "date"} ->
             sample[field["key"]] || "2026-12-31"
+
+          %{"type" => "time"} ->
+            sample[field["key"]] || "23:59"
         end
 
       {field["key"], value}
@@ -210,12 +216,533 @@ defmodule QuickSlips.Render.RendererTest do
 
     test "a template that is not in the language is refused" do
       assert {:error, :unsupported_language} =
-               Renderer.render("rent-receipt", "t1", sample("rent-receipt"), locale: "hi-in")
+               Renderer.render("courier-receipt", "t1", sample("courier-receipt"),
+                 locale: "hi-in"
+               )
     end
 
     test "a currency that does not exist is refused" do
       assert {:error, :unknown_currency} =
                Renderer.render("fuel-bill", "t1", sample("fuel-bill"), currency: "XXX")
+    end
+  end
+
+  # The bills that have several designs: every design in every live locale, with little data and with a lot.
+  @multi_design %{
+    "fuel-bill" => %{
+      designs: ~w(t1 t2 t3 t4 t5 t6),
+      optional:
+        ~w(station_address station_phone dealer_name seller_tax_id fcc_id fip_no time customer_name
+           vehicle_number nozzle_number density),
+      long: %{
+        "station_name" => String.duplicate("Petroleum Retail Services ", 3),
+        "station_address" => String.duplicate("Plot 12, Industrial Area, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "quantity" => 99_999.999,
+        "rate" => 9_999.99
+      }
+    },
+    "parking-receipt" => %{
+      designs: ~w(t1),
+      optional: ~w(facility_phone time thank_you),
+      long: %{
+        "facility_name" => String.duplicate("City Centre Parking ", 5),
+        "facility_address" => String.duplicate("Plot 4, MG Road, Gurugram, ", 7),
+        "space_number" => "ABCDEFGHIJ-0123456789",
+        "thank_you" => String.duplicate("THANK YOU AND DRIVE SAFELY! ", 4),
+        "amount" => 99_999_999.99
+      }
+    },
+    "maintenance-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(workshop_phone dealer_name seller_tax_id reference_number workshop_section customer_phone vin
+           insurance_company parts labour tax_percent terms),
+      long: %{
+        "workshop_name" => String.duplicate("Sunrise Motors Workshop ", 4),
+        "workshop_address" => String.duplicate("Plot 21, Industrial Area, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "vehicle_model" => String.duplicate("Honda City ", 6),
+        "terms" =>
+          String.duplicate("The workshop is not responsible for items left in the vehicle.\n", 8),
+        "parts" =>
+          List.duplicate(
+            %{
+              "code" => String.duplicate("A", 30),
+              "name" => String.duplicate("Front brake pads ", 5),
+              "billing" => "Insurance",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "discount" => 12.5
+            },
+            12
+          ),
+        "labour" =>
+          List.duplicate(
+            %{
+              "code" => String.duplicate("B", 30),
+              "name" => String.duplicate("Brake inspection ", 5),
+              "billing" => "Warranty",
+              "rate" => 9_999_999.99,
+              "discount" => 100
+            },
+            8
+          )
+      }
+    },
+    "transport-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(company_address company_phone seller_tax_id booking_date eta_date pm_number description articles
+           actual_weight charged_weight remarks from_phone to_phone delivery_at signatory_name to_pay paid),
+      long: %{
+        "company_name" => String.duplicate("Shree Ganesh Transport ", 4),
+        "company_address" => String.duplicate("Plot 14, Transport Nagar, ", 7),
+        "consignor" => String.duplicate("Mehra Traders, Karol Bagh, ", 7),
+        "consignee" => String.duplicate("Gupta Electricals, MI Road, ", 7),
+        "description" => String.duplicate("Electrical goods in cartons, ", 10),
+        "remarks" => String.duplicate("Handle with care, ", 10),
+        "from_place" => String.duplicate("Delhi ", 10),
+        "to_place" => String.duplicate("Jaipur ", 8),
+        "actual_weight" => "12345678901234567890",
+        "articles" => 99_999_999,
+        "to_pay" => 99_999_999.99,
+        "paid" => 99_999_999.99
+      }
+    },
+    "electronics-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(branch seller_address seller_state seller_phone seller_email seller_tax_id seller_pan cin copy_label
+           place_of_supply supply reverse_charge do_number financier bill_care_of bill_address bill_state bill_pin
+           bill_phone bill_tax_id ship_code ship_auth_code ship_address ship_state ship_phone ship_tax_id
+           payment_reference payment_date amount_paid remarks bank_details bank_account bank_ifsc customer_care
+           delivery_helpline signatory_for thank_you),
+      long: %{
+        "company_name" => String.duplicate("Vision Electronics Retail ", 4),
+        "seller_address" => String.duplicate("Shop 3, Corporate Park, Andheri East, ", 6),
+        "bill_name" => String.duplicate("Ramakrishnan ", 5),
+        "bill_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "ship_address" => String.duplicate("Warehouse 9, Logistics Park, Bhiwandi, ", 6),
+        "remarks" => String.duplicate("Keep this invoice for the warranty. ", 8),
+        "amount_paid" => 99_999_999.99,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Smartphone 128 GB midnight black ", 3),
+              "code" => "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123",
+              "hsn" => "ABCDEFGHIJ01",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            14
+          )
+      }
+    },
+    "recharge-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(provider_address seller_tax_id time customer_address landmark alternative_number email email_banner
+           offer_title offer_text pay_options previous_balance adjustment tax_percent amount_after_due),
+      long: %{
+        "provider_name" => String.duplicate("Zing Mobile ", 6),
+        "provider_address" => String.duplicate("Tower B, Tech Park, Andheri East, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "customer_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "email_banner" => String.duplicate("To get your monthly bill on email ", 4),
+        "offer_title" => String.duplicate("Get 10 GB ", 4),
+        "offer_text" => String.duplicate("Broadband data with every connection ", 2),
+        "pay_options" => String.duplicate("Pay using the official website\n", 8),
+        "amount" => 99_999_999.99,
+        "previous_balance" => 99_999_999.99
+      }
+    },
+    "internet-bill" => %{
+      designs: ~w(t1 t2 t3 t4),
+      optional:
+        ~w(provider_address provider_email registered_office gstin due_date customer_address user_name plan_speed
+           plan_package plan_validity service_description other_charges discount gst_percent payments_received
+           payment_mode terms),
+      long: %{
+        "provider_name" => String.duplicate("Skyline Broadband ", 4),
+        "provider_address" => String.duplicate("Plot 18, Hi-Tech City, Hyderabad, ", 6),
+        "registered_office" => String.duplicate("Skyline Broadband Pvt. Ltd., Plot 18, ", 8),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "customer_address" => String.duplicate("Flat 9B, Green Heights, Kondapur, ", 6),
+        "plan_name" => String.duplicate("Fibre 200 Mbps unlimited ", 3),
+        "service_description" => String.duplicate("Fibre broadband subscription ", 3),
+        "plan_charge" => 99_999_999.99,
+        "terms" =>
+          String.duplicate(
+            "A late fee will be charged if the bill is paid after the due date.\n",
+            12
+          )
+      }
+    },
+    "stationery-bill" => %{
+      designs: ~w(t1),
+      optional: ~w(seller_tax_id tax_percent remarks),
+      long: %{
+        "shop_name" => String.duplicate("Quill & Co. Stationers ", 4),
+        "shop_address" => String.duplicate("Shop 6, College Road, Pune, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "customer_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "remarks" => String.duplicate("Please keep the receipt for exchanges. ", 5),
+        "tax_percent" => 18,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Spiral notebook 200 pages ", 4),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99
+            },
+            16
+          )
+      }
+    },
+    "ecommerce-bill" => %{
+      designs: ~w(t1 t2 t3 t4),
+      optional:
+        ~w(seller_address seller_phone platform_name platform_website seller_tax_id order_number order_date
+           customer_phone billing_address shipping_charge signatory_name return_policy),
+      long: %{
+        "seller_name" => String.duplicate("Bright Cart Retail ", 4),
+        "seller_address" => String.duplicate("Unit 5, Logistics Park, Bhiwandi, ", 6),
+        "platform_name" => String.duplicate("BrightCart ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "shipping_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "billing_address" => String.duplicate("Office 3, Business Bay, Andheri East, ", 6),
+        "shipping_charge" => 99_999_999.99,
+        "return_policy" =>
+          String.duplicate("We strive to deliver perfectly on every order. ", 12),
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Wireless earbuds with charging case ", 3),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            16
+          )
+      }
+    },
+    "book-receipt" => %{
+      designs: ~w(t1 t2),
+      optional: ~w(store_address author description),
+      long: %{
+        "store_name" => String.duplicate("Page & Leaf Books ", 4),
+        "store_address" => String.duplicate("Shop 4, Station Road, Pune, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "book_name" => String.duplicate("The Guide to Everything ", 4),
+        "author" => String.duplicate("R. K. Narayan ", 5),
+        "publisher" => String.duplicate("Sunrise Press ", 6),
+        "description" => String.duplicate("Paperback, 2nd edition, illustrated. ", 5),
+        "quantity" => 9_999_999,
+        "book_price" => 99_999_999.99
+      }
+    },
+    "hypermarket-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(company_address phone email website cin seller_tax_id fssai order_number order_date delivery_date
+           delivery_time customer_name customer_phone delivery_address savings payment_note),
+      long: %{
+        "brand_name" => String.duplicate("FreshMart Ready ", 4),
+        "company_name" => String.duplicate("FreshMart Retail Private Limited ", 3),
+        "company_address" => String.duplicate("Building 2, Corporate Park, Andheri East, ", 5),
+        "website" => String.duplicate("www.freshmart.example/terms/", 4),
+        "delivery_time" => String.duplicate("6:00 PM - 9:00 PM ", 2),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "delivery_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 5),
+        "payment_note" => String.duplicate("Pay on delivery ", 3),
+        "savings" => 99_999_999.99,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Basmati rice premium pack ", 3),
+              "hsn" => "ABCDEFGHIJ01",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            16
+          )
+      }
+    },
+    "grocery-bill" => %{
+      designs: ~w(t1 t2),
+      optional:
+        ~w(store_address store_phone gstin fssai_number time transaction_id customer_name discount tax_percent),
+      long: %{
+        "store_name" => String.duplicate("Mehta & Sons Provisions ", 4),
+        "store_address" => String.duplicate("Shop 21, Station Road, Surat, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "transaction_id" => String.duplicate("TXN-4829173650-", 6),
+        "discount" => 1.5,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Basmati rice premium pack ", 4),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "discount" => 12.5
+            },
+            14
+          )
+      }
+    },
+    "pharmacy-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(brand_subtitle branch_name branch_address toll_free website dl_number seller_tax_id fssai
+           registered_office admin_office time terminal_number ref_number doctor_name discount signatory_name
+           signatory_line),
+      long: %{
+        "brand_name" => String.duplicate("WellCare Pharmacy ", 3),
+        "branch_address" => String.duplicate("21, 80 Feet Road, Koramangala, ", 6),
+        "dl_number" => String.duplicate("KA/BNG/20-1234, ", 8),
+        "registered_office" => String.duplicate("WellCare Retail Pvt. Ltd., ", 8),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "discount" => 1.5,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Paracetamol 500 mg strip ", 4),
+              "hsn" => "ABCDEFGHIJ0123456789",
+              "mfr" => String.duplicate("Alpha Pharma ", 2),
+              "batch" => "ABCDEFGHIJ0123456789",
+              "expiry" => "ABCDEFGHIJ",
+              "schedule" => "ABCDEFGHIJ",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            14
+          )
+      }
+    },
+    "medical-bill" => %{
+      designs: ~w(t1 t2),
+      optional:
+        ~w(clinic_address clinic_phone hospital_details registration_number time admit_date discharge_date
+           patient_details patient_issue guardian_name patient_phone patient_address payer_name payer_address
+           doctor_name doctor_designation room insurance remark items consultation_fee medicines_cost
+           tests_cost other_charges discount tax_percent amount_paid),
+      long: %{
+        "clinic_name" => String.duplicate("Sunrise Multispeciality Hospital ", 3),
+        "clinic_address" => String.duplicate("Shop 2, Lake View Road, Kochi, ", 6),
+        "hospital_details" => String.duplicate("24-hour emergency care, pharmacy, ", 5),
+        "patient_name" => String.duplicate("Ramakrishnan ", 5),
+        "patient_address" => String.duplicate("12, Marine Drive, Kochi, ", 7),
+        "payer_address" => String.duplicate("12, Marine Drive, Kochi, ", 7),
+        "doctor_name" => String.duplicate("Venkatasubramanian ", 4),
+        "remark" => String.duplicate("Follow up after 5 days. ", 12),
+        "consultation_fee" => 9_999_999.99,
+        "amount_paid" => 1.5,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Room rent per day ", 5),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99
+            },
+            14
+          )
+      }
+    },
+    "meal-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(brand_name legal_name restaurant_address restaurant_gstin restaurant_fssai order_id delivery_address
+           place_of_supply hsn_code service_description reverse_charge payment_note platform_company
+           platform_pan platform_cin platform_tax_id platform_fssai signatory_name),
+      long: %{
+        "brand_name" => "QuickEatsQuickEatsQuickEats",
+        "legal_name" => String.duplicate("Green Leaf Hospitality ", 5),
+        "restaurant_name" => String.duplicate("Green Leaf Café ", 5),
+        "restaurant_address" => String.duplicate("14, Church Street, Bengaluru, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "delivery_address" => String.duplicate("Flat 12, Lotus Apartments, HSR Layout, ", 6),
+        "platform_company" => String.duplicate("QuickEats Technologies Pvt. Ltd., ", 6),
+        "payment_note" => String.duplicate("Paid online by card. ", 8),
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Masala Dosa with chutney ", 3),
+              "rate" => 9_999_999.99,
+              "discount" => 12.5,
+              "tax" => 18
+            },
+            12
+          )
+      }
+    },
+    "restaurant-bill" => %{
+      designs: ~w(t1 t2 t3 t4),
+      optional:
+        ~w(restaurant_address gstin fssai_number time table_number customer_name service_percent gst_percent),
+      long: %{
+        "restaurant_name" => String.duplicate("Green Leaf Café ", 5),
+        "restaurant_address" => String.duplicate("14, Church Street, Bengaluru, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "service_percent" => 30,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Masala Dosa with chutney ", 3),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99
+            },
+            15
+          )
+      }
+    },
+    "daily-helper-receipt" => %{
+      designs: ~w(t1 t2 t3),
+      optional: ~w(employer_address declaration),
+      long: %{
+        "employer_name" => String.duplicate("Venkatasubramanian ", 4),
+        "helper_name" => String.duplicate("Ramakrishnan ", 5),
+        "working_as" => String.duplicate("Housekeeper ", 5),
+        "declaration" =>
+          String.duplicate("The helper is exclusively used for official purposes. ", 5),
+        "salary" => 99_999_999.99
+      }
+    },
+    "driver-salary-receipt" => %{
+      designs: ~w(t1 t2 t3 t4 t5 t6),
+      # t4 is a receipt for each month of the sample's period: July to September is three pages
+      pages: %{"t4" => 3},
+      optional:
+        ~w(employer_address vehicle_number declaration from_date to_date bill_by overtime allowance deductions),
+      long: %{
+        "employer_name" => String.duplicate("Venkatasubramanian ", 4),
+        "driver_name" => String.duplicate("Ramakrishnan ", 5),
+        "vehicle_number" => "ABCDEFGHIJ-0123456789",
+        "declaration" =>
+          String.duplicate("The driver is exclusively used for official purposes. ", 5),
+        "basic_salary" => 99_999_999.99,
+        "overtime" => 9_999_999.99,
+        "allowance" => 9_999_999.99,
+        "deductions" => 1_000.5
+      }
+    },
+    "rent-receipt" => %{
+      designs: ~w(t1 t2 t3 t4),
+      # t3 is a receipt for each quarter of the sample's period: July to December is two pages
+      pages: %{"t3" => 2},
+      optional: ~w(landlord_pan from_date to_date bill_by received_by receiver_name),
+      long: %{
+        "tenant_name" => String.duplicate("Ramakrishnan ", 5),
+        "landlord_name" => String.duplicate("Venkatasubramanian ", 4),
+        "property_address" => String.duplicate("Flat 402, Lotus Heights, Sector 21, ", 7),
+        "receiver_name" => String.duplicate("Venkatasubramanian ", 4),
+        "monthly_rent" => 99_999_999.99
+      }
+    },
+    "taxi-receipt" => %{
+      designs: ~w(t1 t2 t3 t4),
+      optional:
+        ~w(operator_address seller_tax_id drop_date passenger_name customer_phone customer_address
+           driver_name vehicle_number vehicle_model pickup_time drop_time toll airport_charge
+           advance_paid tax_percent),
+      long: %{
+        "operator_name" => String.duplicate("Kaveri City Cabs ", 4),
+        "operator_address" => String.duplicate("12, MG Road, Bengaluru, ", 8),
+        "passenger_name" => String.duplicate("Ramakrishnan ", 5),
+        "driver_name" => String.duplicate("Venkatasubramanian ", 4),
+        "pickup" => String.duplicate("Indiranagar Metro Station ", 6),
+        "drop" => String.duplicate("International Airport ", 7),
+        "vehicle_model" => String.duplicate("Maruti Dzire ", 4),
+        "distance_km" => 9_999.9,
+        "base_fare" => 99_999_999.99,
+        "toll" => 9_999_999.99,
+        "airport_charge" => 9_999_999.99,
+        "advance_paid" => 9_999_999.99
+      }
+    }
+  }
+
+  describe "the designs of a bill that has several" do
+    defp pages(pdf), do: length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf))
+
+    for {slug, %{designs: designs, optional: optional, long: long} = config} <- @multi_design,
+        design <- designs do
+      # A design that makes several receipts has a page for each; the others are one page.
+      pages = Map.get(config, :pages, %{}) |> Map.get(design, 1)
+
+      test "#{slug}/#{design} is #{pages} page(s) in every live locale" do
+        for locale <- Locales.live() do
+          {:ok, sample} = Templates.sample(unquote(slug), locale)
+
+          assert {:ok, pdf} =
+                   Renderer.render(unquote(slug), unquote(design), sample, locale: locale.code)
+
+          assert pages(pdf) == unquote(pages),
+                 "#{unquote(slug)}/#{unquote(design)} in #{locale.code}"
+        end
+      end
+
+      test "#{slug}/#{design} compiles with only the required fields, a logo and a signature" do
+        slug = unquote(slug)
+        required = Map.drop(sample(slug), unquote(optional))
+        logo = tmp_file(png_bytes())
+        signature = tmp_file(jpg_bytes())
+
+        assert {:ok, "%PDF" <> _} = Renderer.render(slug, unquote(design), required)
+
+        with_pictures =
+          Map.merge(sample(slug), %{"logo" => "logo.png", "signature" => "signature.jpg"})
+
+        assert {:ok, "%PDF" <> _} =
+                 Renderer.render(slug, unquote(design), with_pictures,
+                   assets: %{"logo.png" => logo, "signature.jpg" => signature},
+                   mode: :preview
+                 )
+      end
+
+      test "#{slug}/#{design} holds a very long text and very big numbers on its pages" do
+        data = Map.merge(sample(unquote(slug)), unquote(Macro.escape(long)))
+
+        assert {:ok, pdf} = Renderer.render(unquote(slug), unquote(design), data)
+        assert pages(pdf) == unquote(pages)
+      end
+    end
+
+    test "rent-receipt/t3 makes a receipt for each month, quarter, half-year or year of the period, at most 12 months" do
+      sample = sample("rent-receipt")
+
+      receipts = fn from, to, bill_by ->
+        data =
+          Map.merge(sample, %{"from_date" => from, "to_date" => to, "bill_by" => bill_by})
+
+        {:ok, pdf} = Renderer.render("rent-receipt", "t3", data)
+        pages(pdf)
+      end
+
+      assert receipts.("2026-01-05", "2026-06-30", "Monthly") == 6
+      assert receipts.("2026-01-05", "2026-12-31", "Quarterly") == 4
+      assert receipts.("2026-01-05", "2026-12-31", "Half-yearly") == 2
+      assert receipts.("2026-01-05", "2026-12-31", "Yearly") == 1
+      # Five months by quarters: a quarter and a part of one.
+      assert receipts.("2026-01-05", "2026-05-31", "Quarterly") == 2
+      # More than a year is cut at 12 months.
+      assert receipts.("2024-01-05", "2026-12-31", "Monthly") == 12
+      assert receipts.("2024-01-05", "2026-12-31", "Quarterly") == 4
+
+      # Without a period it is the receipt of the month; a period that runs backwards is one month.
+      without = Map.drop(sample, ["from_date", "to_date", "bill_by"])
+      assert {:ok, pdf} = Renderer.render("rent-receipt", "t3", without)
+      assert pages(pdf) == 1
+      assert receipts.("2026-06-05", "2026-01-31", "Monthly") == 1
+    end
+
+    test "the cash memo has no column for small change in a currency that has none" do
+      {:ok, sample} = Templates.sample("fuel-bill", Locales.fetch!("ja-jp"))
+
+      assert {:ok, "%PDF" <> _} = Renderer.render("fuel-bill", "t5", sample, locale: "ja-jp")
     end
   end
 

@@ -1,0 +1,176 @@
+{
+  "title": "Generador de Factura de Recarga",
+  "name": "Factura de Recarga",
+  "public_slug": "generador-de-factura-de-recarga",
+  "summary": "Factura de recarga de móvil, teléfono o TV con resumen de cuenta.",
+  "description": "Crea una factura de recarga para una línea móvil, fija o de TV con el operador, la tarifa, el ciclo de facturación, el resumen de cuenta, el {tax} y un justificante de pago, en cuatro temas de color. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Operador o tienda"
+    },
+    "provider_address": {
+      "label": "Dirección del operador (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de factura"
+    },
+    "bill_date": {
+      "label": "Fecha de la factura"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "period_start": {
+      "label": "Periodo desde"
+    },
+    "period_end": {
+      "label": "Periodo hasta"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "customer_address": {
+      "label": "Dirección del cliente (opcional)"
+    },
+    "landmark": {
+      "label": "Referencia (opcional)"
+    },
+    "customer_id": {
+      "label": "ID de cliente"
+    },
+    "mobile_number": {
+      "label": "Número de móvil"
+    },
+    "alternative_number": {
+      "label": "Número alternativo (opcional)"
+    },
+    "email": {
+      "label": "Correo electrónico (opcional)"
+    },
+    "service": {
+      "label": "Servicio",
+      "options": {
+        "Prepaid": "Prepago",
+        "Postpaid": "Pospago"
+      }
+    },
+    "payment_in": {
+      "label": "Pago",
+      "options": {
+        "Advance": "Por adelantado",
+        "Immediate": "Inmediato"
+      }
+    },
+    "bill_cycle": {
+      "label": "Ciclo de facturación",
+      "options": {
+        "Monthly": "Mensual",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Annual": "Anual"
+      }
+    },
+    "theme": {
+      "label": "Tema de color",
+      "options": {
+        "Red": "Rojo",
+        "Blue": "Azul",
+        "Yellow": "Amarillo",
+        "Green": "Verde"
+      }
+    },
+    "email_banner": {
+      "label": "Mensaje del banner (opcional)"
+    },
+    "offer_title": {
+      "label": "Titular de la oferta (opcional)"
+    },
+    "offer_text": {
+      "label": "Texto de la oferta (opcional)"
+    },
+    "pay_options": {
+      "label": "Formas de pagar (una por línea) (opcional)"
+    },
+    "previous_balance": {
+      "label": "Factura anterior ({currency}) (opcional)"
+    },
+    "adjustment": {
+      "label": "Importe de ajuste ({currency}) (opcional)"
+    },
+    "amount": {
+      "label": "Importe de la recarga o tarifa ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "amount_after_due": {
+      "label": "Importe tras el vencimiento ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    }
+  },
+  "print": {
+    "original_copy": "Original para el destinatario — Factura",
+    "invoice_no": "Factura n.º",
+    "billed_to": "Cliente",
+    "customer_id": "ID de cliente",
+    "mobile_no": "Móvil",
+    "bill_no": "Factura n.º",
+    "bill_date": "Fecha",
+    "bill_cycle": "Ciclo",
+    "bill_period": "Periodo",
+    "to": "a",
+    "pay_by": "Pago",
+    "alt_no": "Otro número",
+    "email": "Correo",
+    "account_summary": "Resumen de tu cuenta",
+    "previous_bill": "Factura anterior",
+    "adjustment": "Ajuste",
+    "this_month": "Este mes",
+    "service": "Servicio",
+    "after_due": "Importe tras vencimiento",
+    "payment_method": "Forma de pago",
+    "month_charge": "Cargo de este mes",
+    "monthly_charges": "Cargos mensuales",
+    "tax": "Impuesto",
+    "taxable_amount": "Base imponible",
+    "bill_from": "Desde",
+    "total_amount": "Importe total",
+    "tax_note": "Según la normativa aplicable, el {tax} efectivo de esta factura es del {rate} %.",
+    "detach": "Separe este justificante y devuélvalo con el pago",
+    "pay_on_go": "Paga desde donde estés",
+    "provider_details": "Datos del operador",
+    "acknowledgement": "Justificante de pago",
+    "customer_name": "Nombre del cliente",
+    "amount": "Importe",
+    "computer_generated": "* Factura generada por ordenador, no requiere firma. Creada el {date} a las {time}.",
+    "computer_generated_date": "* Factura generada por ordenador, no requiere firma. Creada el {date}."
+  },
+  "sample": {
+    "provider_name": "Zing Móvil",
+    "customer_name": "Carlos Gómez",
+    "mobile_number": "612 345 678",
+    "amount": 15,
+    "tax_percent": 21,
+    "amount_after_due": 2,
+    "email_banner": "Para recibir tu factura mensual por correo, envía un SMS: STARTBILL <correo> al 198.",
+    "offer_title": "10 GB al mes gratis",
+    "offer_text": "Datos de banda ancha con cada línea prepago y de TV",
+    "pay_options": "Paga con la app\nPaga con la app Zing Pay: descárgala en Play Store o App Store\nPaga en el sitio web oficial",
+    "landmark": null
+  }
+}

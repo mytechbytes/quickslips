@@ -1,0 +1,131 @@
+{
+  "title": "Generador de Recibo de Sueldo del Conductor",
+  "name": "Recibo de Sueldo del Conductor",
+  "public_slug": "generador-de-recibo-de-sueldo-del-conductor",
+  "summary": "Recibo mensual de sueldo para un conductor.",
+  "description": "Crea un recibo de sueldo para un conductor con sueldo mensual, horas extra, complementos y deducciones. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Reembolso",
+    "t2": "Con acuse de recibo",
+    "t3": "Declaración del empleador",
+    "t4": "Varios meses",
+    "t5": "Comprobante de nómina",
+    "t6": "Registro sencillo"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Nombre del empleador"
+    },
+    "employer_address": {
+      "label": "Dirección del empleador (opcional)"
+    },
+    "driver_name": {
+      "label": "Nombre del conductor"
+    },
+    "vehicle_number": {
+      "label": "Matrícula del vehículo (opcional)"
+    },
+    "declaration": {
+      "label": "Declaración (opcional)"
+    },
+    "month": {
+      "label": "Sueldo del mes"
+    },
+    "from_date": {
+      "label": "Periodo desde (opcional)"
+    },
+    "to_date": {
+      "label": "Periodo hasta (opcional)"
+    },
+    "bill_by": {
+      "label": "Facturar por",
+      "options": {
+        "Monthly": "Mensual",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
+    },
+    "receipt_date": {
+      "label": "Fecha del recibo"
+    },
+    "basic_salary": {
+      "label": "Sueldo mensual ({currency})"
+    },
+    "overtime": {
+      "label": "Horas extra ({currency}) (opcional)"
+    },
+    "allowance": {
+      "label": "Combustible y otros complementos ({currency}) (opcional)"
+    },
+    "deductions": {
+      "label": "Anticipo o deducciones ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pagado con",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Bank transfer": "Transferencia bancaria",
+        "Cheque": "Cheque",
+        "Card": "Tarjeta",
+        "Online": "En línea"
+      }
+    }
+  },
+  "print": {
+    "title": "Recibo de sueldo del conductor",
+    "date": "Fecha",
+    "certify": "Se certifica que {employer} ha pagado {amount} al conductor {driver} en concepto de sueldo del mes de {month} (se adjunta recibo de conformidad).",
+    "certify_period": "Se certifica que {employer} ha pagado {amount} al conductor {driver} en concepto de sueldo del periodo {period} (se adjunta recibo de conformidad).",
+    "certify_self": "Certifico que he pagado {amount} al conductor {driver} por el mes de {month} (se adjunta recibo de conformidad).",
+    "reimburse": "Solicito el reembolso del importe anterior. Declaro además que lo indicado es correcto y veraz.",
+    "vehicle_no": "Matrícula",
+    "driver_name": "Nombre del conductor",
+    "employer_name": "Nombre del empleador",
+    "employer_signature": "Firma del empleador",
+    "revenue_stamp": "Timbre fiscal",
+    "salary_month": "Sueldo del mes",
+    "amount_paid": "Importe pagado",
+    "received_text": "Recibido de {employer} la cantidad de {amount} por el conductor {driver} en concepto de sueldo del mes de {month}.",
+    "ack_title": "Acuse de recibo",
+    "receipt_date_of": "Fecha de recepción",
+    "for_month": "Por el mes de",
+    "received_sum": "Recibida la suma de {amount} por el mes de {month} de {employer}.",
+    "period": "Periodo",
+    "receipt_of": "Recibo {number} de {total}",
+    "payroll_voucher": "Comprobante de nómina",
+    "voucher_sub": "Justificante de pago del sueldo del conductor",
+    "payer": "Pagador",
+    "driver": "Conductor",
+    "acknowledgement": "Acuse de recibo",
+    "ack_voucher": "Recibido por {driver} de {employer} en concepto de sueldo de {month}.",
+    "received_by": "Recibido por",
+    "prepared_by": "Preparado por",
+    "name": "Nombre",
+    "record_title": "Registro de sueldo del conductor",
+    "record_sub": "Formato sencillo de acuse de recibo",
+    "payer_name": "Nombre del pagador",
+    "declaration_label": "Declaración",
+    "confirm": "Confirmo haber recibido del pagador el importe del sueldo indicado arriba por el mes que figura en este registro.",
+    "notes": "Notas",
+    "note_1": "El sueldo corresponde solo al mes indicado.",
+    "note_2": "Las horas extra y los complementos solo se incluyen si figuran en la lista.",
+    "payer_details": "Datos del pagador",
+    "driver_signature": "Firma del conductor",
+    "monthly_salary": "Sueldo mensual",
+    "overtime": "Horas extra",
+    "allowance": "Complementos",
+    "deductions": "Anticipo o deducciones"
+  },
+  "sample": {
+    "employer_name": "Javier Ortiz",
+    "driver_name": "Miguel Torres",
+    "vehicle_number": "4521 LMN",
+    "basic_salary": 1400,
+    "overtime": 120,
+    "allowance": 80,
+    "deductions": 50,
+    "declaration": "Declaro además que el conductor se utiliza exclusivamente para fines oficiales."
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "title": "Gerador de recibo de livraria",
+  "name": "Recibo de livraria",
+  "public_slug": "gerador-de-recibo-de-livraria",
+  "summary": "Recibo de livraria com título, autor e pagamento.",
+  "description": "Crie um recibo de livraria com o título, o autor e a editora do livro, a quantidade, o preço e a forma de pagamento. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Clássico",
+    "t2": "Com o vendedor"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Nome da livraria"
+    },
+    "store_address": {
+      "label": "Endereço da livraria (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número do recibo"
+    },
+    "date": {
+      "label": "Data da compra"
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "book_name": {
+      "label": "Título do livro"
+    },
+    "author": {
+      "label": "Autor (opcional)"
+    },
+    "publisher": {
+      "label": "Editora"
+    },
+    "description": {
+      "label": "Descrição (opcional)"
+    },
+    "quantity": {
+      "label": "Quantidade"
+    },
+    "book_price": {
+      "label": "Preço de um livro ({currency})"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Recibo de livraria",
+    "bill_to": "Cliente",
+    "receipt_details": "Dados do recibo",
+    "receipt_no": "Recibo n.º",
+    "receipt_date": "Data",
+    "customer_name": "Nome do cliente",
+    "book_name": "Título",
+    "author": "Autor",
+    "publisher": "Editora",
+    "payment_method": "Forma de pagamento",
+    "receipt_summary": "Resumo do recibo",
+    "item": "Item",
+    "description": "Descrição",
+    "qty": "Qtd.",
+    "price": "Preço",
+    "total": "Total",
+    "sold_by": "Vendido por",
+    "store_name": "Nome",
+    "store_address": "Endereço",
+    "thanks": "Obrigado! Volte sempre.",
+    "quote_1": "Um quarto sem livros é como um corpo sem alma.",
+    "quote_2": "Leve um bom livro para a cama — livros não roncam.",
+    "quote_3": "Os livros são os amigos mais silenciosos e constantes; são os conselheiros mais acessíveis e sábios, e os professores mais pacientes.",
+    "quote_4": "Os livros são boa companhia, nos momentos tristes e nos felizes, pois livros são pessoas – pessoas que conseguiram continuar vivas escondidas entre as capas de um livro."
+  },
+  "sample": {
+    "store_name": "Livraria Página Viva",
+    "customer_name": "Ana Souza",
+    "book_name": "Dom Casmurro",
+    "author": "Machado de Assis",
+    "publisher": "Editora Sol",
+    "description": "Brochura, edição de bolso",
+    "quantity": 2,
+    "book_price": 39.9
+  }
+}

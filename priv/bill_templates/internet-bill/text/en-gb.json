@@ -1,0 +1,12 @@
+{
+  "sample": {
+    "provider_name": "Skyline Broadband",
+    "registered_office": "Skyline Broadband Ltd, 1 High Street, London SW1A 1AA",
+    "customer_name": "James Taylor",
+    "plan_name": "Fibre 200 Mbps, unlimited data",
+    "service_description": "Fibre broadband subscription",
+    "plan_charge": 29.99,
+    "gst_percent": 20,
+    "terms": "Cheques to be drawn in favour of Skyline Broadband.\nIn case of a cheque bounce, a penalty of £10 will be applicable.\nA late fee will be charged if the bill is paid after the due date.\nIn case of overdue payment, the right to deactivate your services is reserved.\nThis invoice is system generated; a signature and stamp are not required."
+  }
+}
