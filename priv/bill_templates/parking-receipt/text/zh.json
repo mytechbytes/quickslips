@@ -1,0 +1,51 @@
+{
+  "title": "停车收据生成器",
+  "name": "停车收据",
+  "public_slug": "parking-receipt-generator",
+  "summary": "生成包含车位、时间和费用的停车收据。",
+  "description": "生成包含停车场名称、地址、车位、时间和费用的停车收据。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "小票"
+  },
+  "fields": {
+    "facility_name": {
+      "label": "停车场名称"
+    },
+    "facility_address": {
+      "label": "停车场地址"
+    },
+    "facility_phone": {
+      "label": "电话（选填）"
+    },
+    "receipt_number": {
+      "label": "单据编号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "time": {
+      "label": "时间（选填）"
+    },
+    "space_number": {
+      "label": "车位"
+    },
+    "thank_you": {
+      "label": "感谢语（选填）"
+    },
+    "amount": {
+      "label": "总金额（{currency}）"
+    }
+  },
+  "print": {
+    "title": "停车收据",
+    "space": "车位",
+    "paid": "已付",
+    "tel": "电话"
+  },
+  "sample": {
+    "facility_name": "市中心停车场",
+    "facility_phone": "010-12345678",
+    "amount": 20,
+    "thank_you": "感谢光临，请安全驾驶！"
+  }
+}

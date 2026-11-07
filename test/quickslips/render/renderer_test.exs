@@ -240,6 +240,17 @@ defmodule QuickSlips.Render.RendererTest do
         "rate" => 9_999.99
       }
     },
+    "parking-receipt" => %{
+      designs: ~w(t1),
+      optional: ~w(facility_phone time thank_you),
+      long: %{
+        "facility_name" => String.duplicate("City Centre Parking ", 5),
+        "facility_address" => String.duplicate("Plot 4, MG Road, Gurugram, ", 7),
+        "space_number" => "ABCDEFGHIJ-0123456789",
+        "thank_you" => String.duplicate("THANK YOU AND DRIVE SAFELY! ", 4),
+        "amount" => 99_999_999.99
+      }
+    },
     "taxi-receipt" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:

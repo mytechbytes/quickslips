@@ -1,0 +1,51 @@
+{
+  "title": "Générateur de reçu de parking",
+  "name": "Reçu de parking",
+  "public_slug": "generateur-de-recu-de-parking",
+  "summary": "Reçu de parking avec place, heure et montant.",
+  "description": "Générez un reçu de parking avec le nom, l'adresse, la place, l'heure et le montant. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Ticket"
+  },
+  "fields": {
+    "facility_name": {
+      "label": "Nom du parking"
+    },
+    "facility_address": {
+      "label": "Adresse du parking"
+    },
+    "facility_phone": {
+      "label": "Téléphone (facultatif)"
+    },
+    "receipt_number": {
+      "label": "Numéro de reçu"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Heure (facultatif)"
+    },
+    "space_number": {
+      "label": "Place"
+    },
+    "thank_you": {
+      "label": "Message de remerciement (facultatif)"
+    },
+    "amount": {
+      "label": "Montant total ({currency})"
+    }
+  },
+  "print": {
+    "title": "Reçu de parking",
+    "space": "Place",
+    "paid": "Payé",
+    "tel": "Tél."
+  },
+  "sample": {
+    "facility_name": "Parking Centre-Ville",
+    "facility_phone": "01 23 45 67 89",
+    "amount": 7.5,
+    "thank_you": "MERCI ET BONNE ROUTE !"
+  }
+}
