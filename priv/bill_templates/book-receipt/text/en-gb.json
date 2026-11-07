@@ -1,0 +1,12 @@
+{
+  "sample": {
+    "store_name": "Page & Leaf Books",
+    "customer_name": "James Taylor",
+    "book_name": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "publisher": "Sunrise Press",
+    "description": "Paperback, 2nd edition",
+    "quantity": 2,
+    "book_price": 7.99
+  }
+}

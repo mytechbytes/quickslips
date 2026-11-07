@@ -32,7 +32,7 @@ defmodule QuickSlips.TemplatesTest do
   test "the catalogue has twenty-one templates in five categories" do
     templates = Templates.list()
 
-    assert length(templates) == 22
+    assert length(templates) == 23
 
     assert templates |> Enum.map(& &1["category"]) |> Enum.uniq() |> Enum.sort() ==
              Enum.sort(@categories)
@@ -96,6 +96,7 @@ defmodule QuickSlips.TemplatesTest do
 
   # The English names and slugs the owner confirmed for search engines: internal id => public slug.
   @public_slugs %{
+    "book-receipt" => "book-receipt-generator",
     "courier-receipt" => "courier-receipt-generator",
     "daily-helper-receipt" => "daily-helper-receipt-generator",
     "driver-salary-receipt" => "driver-salary-receipt-generator",
@@ -153,10 +154,10 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper, Restaurant, Meal, Medical, Pharmacy, Grocery and Hypermarket are in every language; the other templates only in English" do
+    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper, Restaurant, Meal, Medical, Pharmacy, Grocery, Hypermarket and Book are in every language; the other templates only in English" do
       for locale <- Locales.live(),
           slug <-
-            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill hypermarket-bill) do
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill hypermarket-bill book-receipt) do
         assert Templates.supports?(slug, locale)
       end
 
@@ -168,6 +169,7 @@ defmodule QuickSlips.TemplatesTest do
         slugs = Locales.fetch!(code) |> Templates.list() |> Enum.map(& &1["slug"])
 
         assert Enum.sort(slugs) == [
+                 "book-receipt",
                  "daily-helper-receipt",
                  "driver-salary-receipt",
                  "fuel-bill",
@@ -185,7 +187,7 @@ defmodule QuickSlips.TemplatesTest do
                ]
       end
 
-      assert length(Templates.list(Locales.fetch!("en-in"))) == 22
+      assert length(Templates.list(Locales.fetch!("en-in"))) == 23
     end
 
     test "get/2 gives the words of the language and keeps the internal slug" do

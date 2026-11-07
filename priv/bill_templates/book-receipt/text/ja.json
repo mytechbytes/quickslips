@@ -1,0 +1,92 @@
+{
+  "title": "書店レシート作成",
+  "name": "書店レシート",
+  "public_slug": "book-receipt-generator",
+  "summary": "書名・著者・支払方法を記載した書店のレシート。",
+  "description": "書名、著者、出版社、数量、単価、支払方法を記載した書店のレシートを作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "クラシック",
+    "t2": "販売店つき"
+  },
+  "fields": {
+    "store_name": {
+      "label": "書店名"
+    },
+    "store_address": {
+      "label": "書店の住所（任意）"
+    },
+    "receipt_number": {
+      "label": "レシート番号"
+    },
+    "date": {
+      "label": "購入日"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "book_name": {
+      "label": "書名"
+    },
+    "author": {
+      "label": "著者（任意）"
+    },
+    "publisher": {
+      "label": "出版社"
+    },
+    "description": {
+      "label": "備考（任意）"
+    },
+    "quantity": {
+      "label": "数量"
+    },
+    "book_price": {
+      "label": "1冊の価格（{currency}）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    }
+  },
+  "print": {
+    "title": "書店レシート",
+    "bill_to": "お客様",
+    "receipt_details": "レシート情報",
+    "receipt_no": "レシート番号",
+    "receipt_date": "日付",
+    "customer_name": "お客様名",
+    "book_name": "書名",
+    "author": "著者",
+    "publisher": "出版社",
+    "payment_method": "支払方法",
+    "receipt_summary": "明細",
+    "item": "商品",
+    "description": "備考",
+    "qty": "数量",
+    "price": "単価",
+    "total": "合計",
+    "sold_by": "販売店",
+    "store_name": "店名",
+    "store_address": "住所",
+    "thanks": "ありがとうございました。またお越しください。",
+    "quote_1": "本のない部屋は、魂のない体のようなものだ。",
+    "quote_2": "良い本を持ってベッドへ。本はいびきをかかない。",
+    "quote_3": "本は最も静かで変わらぬ友であり、最も身近で賢明な相談相手であり、最も辛抱強い教師である。",
+    "quote_4": "本は良い仲間だ。悲しいときも楽しいときも。本とは、表紙の間に隠れて生き延びてきた人々なのだから。"
+  },
+  "sample": {
+    "store_name": "ことば書店",
+    "customer_name": "田中 太郎",
+    "book_name": "吾輩は猫である",
+    "author": "夏目漱石",
+    "publisher": "朝日書房",
+    "description": "文庫本",
+    "quantity": 2,
+    "book_price": 880
+  }
+}

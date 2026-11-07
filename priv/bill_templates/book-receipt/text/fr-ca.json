@@ -1,0 +1,13 @@
+{
+  "sample": {
+    "store_name": "Librairie L'Érable",
+    "customer_name": "Julie Tremblay",
+    "book_name": "Maria Chapdelaine",
+    "author": "Louis Hémon",
+    "publisher": "Éditions du Soleil",
+    "description": "Livre de poche",
+    "quantity": 1,
+    "book_price": 15.95,
+    "store_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}
