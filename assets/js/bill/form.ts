@@ -16,7 +16,12 @@ export type Field = {
   // The section of the form the field belongs to (one of GROUPS).
   group?: string
   // A table of items: the heads of its columns, how many rows it may have, how long a name may be.
-  columns?: { name?: string; qty?: string; rate?: string }
+  columns?: { name?: string; qty?: string; rate?: string; code?: string; billing?: string; discount?: string }
+  // The cells of a row of the table, in order (`["code", "billing", "name", "qty", "rate", "discount"]`), and the
+  // billing types its rows may have (the `billing` cell is a choice among them).
+  cells?: string[]
+  billing_options?: string[]
+  code_max_length?: number
   // A tax rate field: the percentages the country offers.
   rates?: number[]
   max_rows?: number

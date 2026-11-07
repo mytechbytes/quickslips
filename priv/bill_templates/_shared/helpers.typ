@@ -168,14 +168,24 @@
 #let percent(amount, rate) = calc.round(amount * rate / 100, digits: 2)
 
 // The rows of a table of items (a field of type `items`): each is a dictionary with `name`, `qty`, `rate` and
-// `amount` (quantity times rate). A cell that is missing counts as empty, so a row that is half typed in the
-// browser preview still draws.
-#let item-rows(data, key: "items") = {
+// `amount` (quantity times rate, less the discount), and the `code`, `billing` type and `discount` (percent) of a
+// table that has them. A cell that is missing counts as empty, so a row that is half typed in the browser preview
+// still draws. A table without a quantity cell (labour) has one of each: `qty: 1`.
+#let item-rows(data, key: "items", quantity: true) = {
   let rows = data.at(key, default: ())
   rows.map(row => {
-    let qty = row.at("qty", default: 0)
+    let qty = if quantity { row.at("qty", default: 0) } else { 1 }
     let rate = row.at("rate", default: 0)
-    (name: row.at("name", default: ""), qty: qty, rate: rate, amount: qty * rate)
+    let discount = row.at("discount", default: 0)
+    (
+      name: row.at("name", default: ""),
+      code: row.at("code", default: ""),
+      billing: row.at("billing", default: none),
+      qty: qty,
+      rate: rate,
+      discount: discount,
+      amount: qty * rate * (1 - discount / 100),
+    )
   })
 }
 

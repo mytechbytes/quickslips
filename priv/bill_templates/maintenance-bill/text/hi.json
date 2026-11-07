@@ -1,0 +1,189 @@
+{
+  "title": "कार/बाइक मेंटेनेंस बिल जनरेटर",
+  "name": "मेंटेनेंस बिल",
+  "public_slug": "maintenance-bill-generator",
+  "summary": "पुर्ज़ों, श्रम और {tax} के साथ वर्कशॉप का अनुमान या चालान।",
+  "description": "ग्राहक और वाहन, छूट के साथ पुर्ज़ों, श्रम के कार्यों और {tax} के साथ कार या बाइक वर्कशॉप का अनुमान, चालान या जॉब कार्ड बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "वर्कशॉप शीट"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "वर्कशॉप का नाम"
+    },
+    "workshop_address": {
+      "label": "वर्कशॉप का पता"
+    },
+    "workshop_phone": {
+      "label": "संपर्क नंबर (वैकल्पिक)"
+    },
+    "dealer_name": {
+      "label": "अधिकृत डीलर (वैकल्पिक)"
+    },
+    "document_type": {
+      "label": "दस्तावेज़",
+      "options": {
+        "Estimate": "अनुमान पत्र",
+        "Invoice": "चालान",
+        "Job card": "जॉब कार्ड"
+      }
+    },
+    "document_number": {
+      "label": "दस्तावेज़ नंबर"
+    },
+    "reference_number": {
+      "label": "संदर्भ नंबर (वैकल्पिक)"
+    },
+    "date": {
+      "label": "तारीख"
+    },
+    "workshop_section": {
+      "label": "वर्कशॉप का विभाग (वैकल्पिक)",
+      "options": {
+        "Main workshop": "मुख्य वर्कशॉप",
+        "Service bay": "सर्विस बे",
+        "Body shop": "बॉडी शॉप",
+        "Spare counter": "स्पेयर काउंटर",
+        "Express lane": "एक्सप्रेस लेन",
+        "PDI bay": "PDI बे"
+      }
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम"
+    },
+    "customer_phone": {
+      "label": "ग्राहक का संपर्क (वैकल्पिक)"
+    },
+    "vehicle_model": {
+      "label": "मॉडल"
+    },
+    "registration_number": {
+      "label": "पंजीकरण नंबर"
+    },
+    "vin": {
+      "label": "VIN (चेसिस नंबर) (वैकल्पिक)"
+    },
+    "insurance_company": {
+      "label": "बीमा कंपनी (वैकल्पिक)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (वैकल्पिक)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "terms": {
+      "label": "शर्तें, एक पंक्ति में एक (वैकल्पिक)"
+    },
+    "parts": {
+      "label": "पुर्ज़े",
+      "options": {
+        "PAID": "भुगतान",
+        "Warranty": "वारंटी",
+        "Insurance": "बीमा"
+      },
+      "columns": {
+        "code": "पार्ट नं.",
+        "name": "विवरण",
+        "billing": "बिलिंग",
+        "qty": "मात्रा",
+        "rate": "दर ({currency})",
+        "discount": "छूट %"
+      }
+    },
+    "labour": {
+      "label": "श्रम",
+      "options": {
+        "PAID": "भुगतान",
+        "Warranty": "वारंटी",
+        "Insurance": "बीमा"
+      },
+      "columns": {
+        "code": "जॉब कोड",
+        "name": "कार्य",
+        "billing": "बिलिंग",
+        "rate": "राशि ({currency})",
+        "discount": "छूट %"
+      }
+    }
+  },
+  "print": {
+    "contact": "संपर्क",
+    "dealer": "अधिकृत डीलर",
+    "no": "नं.",
+    "customer": "ग्राहक का नाम",
+    "vin": "VIN",
+    "insurance": "बीमा कंपनी",
+    "reference": "संदर्भ नं.",
+    "date": "तारीख",
+    "model": "मॉडल",
+    "reg_no": "पंजीकरण नं.",
+    "section": "विभाग",
+    "parts": "पुर्ज़ों का विवरण",
+    "labour": "श्रम का विवरण",
+    "parts_total": "पुर्ज़ों का योग",
+    "jobs_total": "श्रम का योग",
+    "tax_details": "कर विवरण",
+    "taxable": "कर योग्य राशि",
+    "summary": "चालान का सार",
+    "total": "कुल",
+    "signatory": "अधिकृत हस्ताक्षरकर्ता",
+    "code": "कोड",
+    "description": "विवरण",
+    "billing": "बिलिंग",
+    "qty": "मात्रा",
+    "rate": "दर",
+    "discount": "छूट",
+    "net": "शुद्ध राशि"
+  },
+  "sample": {
+    "workshop_name": "सनराइज़ मोटर्स वर्कशॉप",
+    "workshop_address": "प्लॉट 21, इंडस्ट्रियल एरिया, गुरुग्राम, हरियाणा",
+    "customer_name": "अमित वर्मा",
+    "insurance_company": "नेशनल इंश्योरेंस",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "इंजन ऑयल फ़िल्टर",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 450,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "फ्रंट ब्रेक पैड (सेट)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 2400,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "एयर फ़िल्टर",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 650,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "नियमित सर्विस",
+        "billing": "PAID",
+        "rate": 1200,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "ब्रेक की जाँच और फिटिंग",
+        "billing": "PAID",
+        "rate": 800,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 18,
+    "terms": "भुगतान चालान की तारीख से 7 दिनों के भीतर करना होगा।\nअनुमान केवल 15 दिनों के लिए मान्य है।\nश्रम शुल्क कंपनी की नीति के अनुसार हैं।\nबीमा दावे सर्वेयर की मंज़ूरी के अधीन हैं।\nवाहन में छूटी वस्तुओं की ज़िम्मेदारी वर्कशॉप की नहीं है।\nकृपया वर्कशॉप से जाने से पहले सभी विवरण जाँच लें।"
+  }
+}

@@ -168,6 +168,7 @@
     "base_fare": 58,
     "toll": 8.5,
     "airport_charge": 0,
-    "advance_paid": 0
+    "advance_paid": 0,
+    "tax_percent": null
   }
 }

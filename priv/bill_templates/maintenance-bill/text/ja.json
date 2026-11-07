@@ -1,0 +1,192 @@
+{
+  "title": "自動車・バイク整備請求書作成",
+  "name": "整備請求書",
+  "public_slug": "maintenance-bill-generator",
+  "summary": "部品・作業・{tax}を記載した整備工場の見積書・請求書。",
+  "description": "お客様と車両、割引付きの部品、作業内容、{tax}を記載した自動車・バイク整備工場の見積書、請求書、作業指示書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "整備シート"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "整備工場名"
+    },
+    "workshop_address": {
+      "label": "整備工場の住所"
+    },
+    "workshop_phone": {
+      "label": "電話番号（任意）"
+    },
+    "dealer_name": {
+      "label": "認定ディーラー（任意）"
+    },
+    "document_type": {
+      "label": "書類の種類",
+      "options": {
+        "Estimate": "見積書",
+        "Invoice": "請求書",
+        "Job card": "作業指示書"
+      }
+    },
+    "document_number": {
+      "label": "書類番号"
+    },
+    "reference_number": {
+      "label": "参照番号（任意）"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "workshop_section": {
+      "label": "作業区画（任意）",
+      "options": {
+        "Main workshop": "メイン工場",
+        "Service bay": "サービスベイ",
+        "Body shop": "板金工場",
+        "Spare counter": "部品カウンター",
+        "Express lane": "クイックレーン",
+        "PDI bay": "PDIベイ"
+      }
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "customer_phone": {
+      "label": "お客様の連絡先（任意）"
+    },
+    "vehicle_model": {
+      "label": "車種"
+    },
+    "registration_number": {
+      "label": "登録番号"
+    },
+    "vin": {
+      "label": "車台番号 (VIN)（任意）"
+    },
+    "insurance_company": {
+      "label": "保険会社（任意）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "terms": {
+      "label": "条件（1行に1件）（任意）"
+    },
+    "parts": {
+      "label": "部品",
+      "options": {
+        "PAID": "有償",
+        "Warranty": "保証",
+        "Insurance": "保険"
+      },
+      "columns": {
+        "code": "部品番号",
+        "name": "品名",
+        "billing": "請求区分",
+        "qty": "数量",
+        "rate": "単価（{currency}）",
+        "discount": "割引 %"
+      }
+    },
+    "labour": {
+      "label": "作業",
+      "options": {
+        "PAID": "有償",
+        "Warranty": "保証",
+        "Insurance": "保険"
+      },
+      "columns": {
+        "code": "作業コード",
+        "name": "作業内容",
+        "billing": "請求区分",
+        "rate": "金額（{currency}）",
+        "discount": "割引 %"
+      }
+    }
+  },
+  "print": {
+    "contact": "連絡先",
+    "dealer": "認定ディーラー",
+    "no": "番号",
+    "customer": "お客様名",
+    "vin": "車台番号",
+    "insurance": "保険会社",
+    "reference": "参照番号",
+    "date": "日付",
+    "model": "車種",
+    "reg_no": "登録番号",
+    "section": "区画",
+    "parts": "部品明細",
+    "labour": "作業明細",
+    "parts_total": "部品合計",
+    "jobs_total": "作業合計",
+    "tax_details": "税の内訳",
+    "taxable": "課税対象額",
+    "summary": "請求の概要",
+    "total": "合計",
+    "signatory": "承認者署名",
+    "code": "コード",
+    "description": "品名",
+    "billing": "請求区分",
+    "qty": "数量",
+    "rate": "単価",
+    "discount": "割引",
+    "net": "正味金額"
+  },
+  "sample": {
+    "workshop_name": "東京オートサービス",
+    "workshop_phone": "03-1234-5678",
+    "customer_name": "田中 太郎",
+    "customer_phone": "090-1234-5678",
+    "vehicle_model": "トヨタ プリウス",
+    "registration_number": "品川 300 あ 12-34",
+    "insurance_company": "国民保険",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "オイルフィルター",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 1500,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "フロントブレーキパッド（セット）",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 9800,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "エアフィルター",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 2400,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "定期点検",
+        "billing": "PAID",
+        "rate": 5000,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "ブレーキ点検・交換",
+        "billing": "PAID",
+        "rate": 4000,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 10,
+    "terms": "お支払いは請求日から7日以内にお願いします。\n見積書の有効期間は15日間です。\n作業料金は当工場の基準によります。\n保険請求は査定担当者の承認が必要です。\n車内に残された物品について当工場は責任を負いません。\nご出庫前にすべての内容をご確認ください。"
+  }
+}

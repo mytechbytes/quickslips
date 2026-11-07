@@ -13,7 +13,8 @@
     "base_fare": 38.5,
     "toll": 2.5,
     "airport_charge": 5,
-    "advance_paid": 0
+    "advance_paid": 0,
+    "tax_percent": null
   },
   "print": {
     "unit": "mi"

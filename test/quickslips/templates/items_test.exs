@@ -95,6 +95,105 @@ defmodule QuickSlips.Templates.ItemsTest do
     end
   end
 
+  describe "a table with a code, a billing type and a discount" do
+    @parts %{
+      "fields" => [
+        %{
+          "key" => "parts",
+          "type" => "items",
+          "cells" => ["code", "name", "billing", "qty", "rate", "discount"],
+          "billing_options" => ["PAID", "Warranty", "Insurance"],
+          "code_max_length" => 8
+        },
+        %{
+          "key" => "labour",
+          "type" => "items",
+          "cells" => ["code", "name", "billing", "rate", "discount"],
+          "billing_options" => ["PAID", "Warranty"]
+        }
+      ]
+    }
+
+    test "keeps every cell it has, and the labour has no quantity" do
+      data = %{
+        "parts" => [
+          %{
+            "code" => " A1 ",
+            "name" => "Filter",
+            "billing" => "Warranty",
+            "qty" => 2,
+            "rate" => 10,
+            "discount" => 12.5
+          }
+        ],
+        "labour" => [%{"name" => "Service", "billing" => "PAID", "rate" => 100, "qty" => 5}]
+      }
+
+      assert {:ok, clean} = Validator.validate(@parts, data)
+
+      assert clean["parts"] == [
+               %{
+                 "code" => "A1",
+                 "name" => "Filter",
+                 "billing" => "Warranty",
+                 "qty" => 2,
+                 "rate" => 10,
+                 "discount" => 12.5
+               }
+             ]
+
+      assert clean["labour"] == [%{"name" => "Service", "billing" => "PAID", "rate" => 100}]
+    end
+
+    test "a row with only the billing type, which a form has from the start, is left out" do
+      data = %{"parts" => [%{"billing" => "PAID", "name" => "", "qty" => ""}], "labour" => []}
+
+      assert {:ok, clean} = Validator.validate(@parts, data)
+      assert clean == %{}
+    end
+
+    test "checks the billing type, the discount, the length of the code and what a row needs" do
+      data = %{
+        "parts" => [
+          %{"name" => "Filter", "qty" => 1, "rate" => 5, "billing" => "Free"},
+          %{"name" => "Pad", "qty" => 1, "rate" => 5, "discount" => 101},
+          %{"name" => "Oil", "qty" => 1, "rate" => 5, "discount" => -1},
+          %{"name" => "Lamp", "qty" => 1, "rate" => 5, "code" => "123456789"},
+          %{"code" => "X1"}
+        ]
+      }
+
+      assert {:error, {:validation, errors}} = Validator.validate(@parts, data)
+
+      assert errors == %{
+               "parts.0.billing" => ["must be one of: PAID, Warranty, Insurance"],
+               "parts.1.discount" => ["must be at most 100"],
+               "parts.2.discount" => ["must be at least 0"],
+               "parts.3.code" => ["must be at most 8 characters"],
+               "parts.4.name" => ["is required"],
+               "parts.4.qty" => ["is required"],
+               "parts.4.rate" => ["is required"]
+             }
+    end
+
+    test "the billing types are named in the language of the page and of the document" do
+      {:ok, schema} = Templates.get("maintenance-bill", QuickSlips.Locales.fetch!("es-es"))
+      parts = Enum.find(schema["fields"], &(&1["key"] == "parts"))
+
+      assert parts["option_labels"] == %{
+               "PAID" => "Pagado",
+               "Warranty" => "Garantía",
+               "Insurance" => "Seguro"
+             }
+
+      assert parts["columns"]["code"] == "N.º de pieza"
+
+      text = Templates.print_text("maintenance-bill", QuickSlips.Locales.fetch!("es-es"))
+      assert text["options"]["parts"]["Warranty"] == "Garantía"
+      assert text["options"]["labour"]["Insurance"] == "Seguro"
+    end
+  end
+
   describe "upgrade/2" do
     test "makes the rows of the numbered fields of an old document" do
       old = %{

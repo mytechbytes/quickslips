@@ -5,10 +5,13 @@ defmodule QuickSlips.Templates.Validator do
   Returns `{:ok, clean}` (only known fields, trimmed, optional blanks removed) or
   `{:error, {:validation, %{"field_key" => ["message"]}}}`.
 
-  A field of type `items` is a list of rows (`name`, `qty`, `rate`). A row with nothing in it is left out; a row
-  with something in it is checked cell by cell, and an error is named after the cell: `"items.2.qty"` is the
-  quantity of the third row of the list that was sent. The amount of a row is not kept: it is quantity times rate,
-  worked out where the document is made.
+  A field of type `items` is a list of rows. A row has the cells the field names in `"cells"` (`["name", "qty",
+  "rate"]` unless it says otherwise): `name`, `qty`, `rate`, and for a table of parts or jobs a `code`, a `billing`
+  type (one of the field's `"billing_options"`) and a `discount` in percent. A row with nothing in it is left out
+  (a choice that has a default, like `billing`, is not something); a row with something in it is checked cell by
+  cell, and an error is named after the cell: `"items.2.qty"` is the quantity of the third row of the list that
+  was sent. The amount of a row is not kept: it is quantity times rate less the discount, worked out where the
+  document is made.
   """
 
   def validate(%{"fields" => fields}, data) when is_map(data) do
@@ -74,22 +77,48 @@ defmodule QuickSlips.Templates.Validator do
     end
   end
 
-  # The cells of a row, and what each may hold.
-  defp check_row(field, %{} = row) do
-    columns = [
-      {"name", %{"type" => "text", "max_length" => field["name_max_length"] || 80}},
-      {"qty", %{"type" => "number", "min" => field["qty_min"] || 0.01}},
-      {"rate", %{"type" => "number", "min" => field["rate_min"] || 0}}
-    ]
+  @default_cells ["name", "qty", "rate"]
 
-    if Enum.all?(columns, fn {column, _spec} -> blank?(Map.get(row, column)) end) do
+  # What each cell of a row may hold, in the order of the field's `"cells"`, and whether a row must have it.
+  defp cell_specs(field) do
+    for cell <- field["cells"] || @default_cells do
+      case cell do
+        "name" ->
+          {"name", %{"type" => "text", "max_length" => field["name_max_length"] || 80}, true}
+
+        "code" ->
+          {"code", %{"type" => "text", "max_length" => field["code_max_length"] || 30}, false}
+
+        "billing" ->
+          {"billing", %{"type" => "select", "options" => field["billing_options"] || []}, false}
+
+        "qty" ->
+          {"qty", %{"type" => "number", "min" => field["qty_min"] || 0.01}, true}
+
+        "rate" ->
+          {"rate", %{"type" => "number", "min" => field["rate_min"] || 0}, true}
+
+        "discount" ->
+          {"discount", %{"type" => "number", "min" => 0, "max" => 100}, false}
+      end
+    end
+  end
+
+  defp check_row(field, %{} = row) do
+    specs = cell_specs(field)
+
+    # A select has a value from the start, so a row with only that is a row nobody filled in.
+    if Enum.all?(specs, fn {cell, spec, _required} ->
+         spec["type"] == "select" or blank?(Map.get(row, cell))
+       end) do
       :blank
     else
       {clean, errors} =
-        Enum.reduce(columns, {%{}, %{}}, fn {column, spec}, {clean, errors} ->
-          case validate_field(Map.put(spec, "required", true), Map.get(row, column)) do
-            {:ok, value} -> {Map.put(clean, column, value), errors}
-            {:error, message} -> {clean, Map.put(errors, column, [message])}
+        Enum.reduce(specs, {%{}, %{}}, fn {cell, spec, required}, {clean, errors} ->
+          case validate_field(Map.put(spec, "required", required), Map.get(row, cell)) do
+            {:ok, value} -> {Map.put(clean, cell, value), errors}
+            :skip -> {clean, errors}
+            {:error, message} -> {clean, Map.put(errors, cell, [message])}
           end
         end)
 

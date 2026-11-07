@@ -1,0 +1,53 @@
+{
+  "sample": {
+    "workshop_name": "Maple Auto Service",
+    "workshop_phone": "(416) 555-0187",
+    "customer_name": "Emma Wilson",
+    "customer_phone": "(416) 555-0166",
+    "vehicle_model": "Honda Civic",
+    "registration_number": "ABCD 123",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "Engine oil filter",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 16,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "Front brake pads (set)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 90,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "Air filter",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 24,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "Regular service",
+        "billing": "PAID",
+        "rate": 100,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "Brake inspection and fitting",
+        "billing": "PAID",
+        "rate": 80,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 13
+  }
+}
