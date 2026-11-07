@@ -1,0 +1,22 @@
+{
+  "slug": "daily-helper-receipt",
+  "public_slug": "daily-helper-receipt-generator",
+  "title": "Daily Helper Receipt Generator",
+  "category": "Work",
+  "icon": "hero-user-group",
+  "summary": "Monthly pay receipt for a household helper.",
+  "description": "Create a salary receipt for a daily helper such as a maid or a cook, with the role, month, amount and payment mode. Preview instantly and download as PDF.",
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "templates": [{ "id": "t1" }, { "id": "t2" }, { "id": "t3" }],
+  "fields": [
+    { "key": "employer_name", "group": "business", "label": "Employer name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "employer_address", "group": "business", "label": "Employer address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "helper_name", "group": "customer", "label": "Helper name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "working_as", "group": "customer", "label": "Working as", "type": "text", "required": true, "max_length": 60 },
+    { "key": "declaration", "group": "details", "label": "Declaration (optional)", "type": "textarea", "required": false, "max_length": 300 },
+    { "key": "month", "group": "document", "label": "Salary for month", "type": "month", "required": true },
+    { "key": "receipt_date", "group": "document", "label": "Receipt date", "type": "date", "required": true },
+    { "key": "salary", "group": "charges", "label": "Salary amount ({currency})", "type": "number", "required": true, "min": 0 },
+    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Bank transfer", "Cheque", "Card", "Online"], "required": true }
+  ]
+}

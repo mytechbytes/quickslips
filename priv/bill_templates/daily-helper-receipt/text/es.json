@@ -1,0 +1,76 @@
+{
+  "title": "Generador de Recibo de Ayudante del Hogar",
+  "name": "Recibo de Ayudante del Hogar",
+  "public_slug": "generador-de-recibo-de-ayudante-del-hogar",
+  "summary": "Recibo mensual de sueldo para una persona empleada del hogar.",
+  "description": "Crea un recibo de sueldo para una persona empleada del hogar, como limpieza o cocina, con el puesto, el mes, el importe y la forma de pago. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Reembolso",
+    "t2": "Con acuse de recibo",
+    "t3": "Declaración del empleador"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Nombre del empleador"
+    },
+    "employer_address": {
+      "label": "Dirección del empleador (opcional)"
+    },
+    "helper_name": {
+      "label": "Nombre del ayudante"
+    },
+    "working_as": {
+      "label": "Trabaja como"
+    },
+    "declaration": {
+      "label": "Declaración (opcional)"
+    },
+    "month": {
+      "label": "Sueldo del mes"
+    },
+    "receipt_date": {
+      "label": "Fecha del recibo"
+    },
+    "salary": {
+      "label": "Importe del sueldo ({currency})"
+    },
+    "payment_mode": {
+      "label": "Pagado con",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Bank transfer": "Transferencia bancaria",
+        "Cheque": "Cheque",
+        "Card": "Tarjeta",
+        "Online": "En línea"
+      }
+    }
+  },
+  "print": {
+    "title": "Recibo de ayudante del hogar",
+    "date": "Fecha",
+    "certify": "Se certifica que {employer} ha pagado {amount} a {helper}, que trabaja como {role}, en concepto de sueldo del mes de {month} (se adjunta recibo de conformidad).",
+    "certify_self": "Certifico que he pagado {amount} a {helper}, que trabaja como {role}, por el mes de {month} (se adjunta recibo de conformidad).",
+    "reimburse": "Solicito el reembolso del importe anterior. Declaro además que lo indicado es correcto y veraz.",
+    "payment_method": "Forma de pago",
+    "helper_name": "Nombre del ayudante",
+    "working_as": "Trabaja como",
+    "employer_name": "Nombre del empleador",
+    "employer_signature": "Firma del empleador",
+    "revenue_stamp": "Timbre fiscal",
+    "salary_month": "Sueldo del mes",
+    "amount_paid": "Importe pagado",
+    "received_text": "Recibido de {employer} la cantidad de {amount} por {helper} ({role}) en concepto de sueldo del mes de {month}.",
+    "ack_title": "Acuse de recibo",
+    "receipt_date_of": "Fecha de recepción",
+    "for_month": "Por el mes de",
+    "received_sum": "Recibida la suma de {amount} por el mes de {month} de {employer}."
+  },
+  "sample": {
+    "employer_name": "Javier Ortiz",
+    "helper_name": "Rosa Martínez",
+    "working_as": "empleada de hogar",
+    "salary": 600,
+    "declaration": "Declaro además que el ayudante se utiliza exclusivamente para fines oficiales."
+  }
+}
