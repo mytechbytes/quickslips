@@ -310,6 +310,33 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "ecommerce-bill" => %{
+      designs: ~w(t1 t2 t3 t4),
+      optional:
+        ~w(seller_address seller_phone platform_name platform_website seller_tax_id order_number order_date
+           customer_phone billing_address shipping_charge signatory_name return_policy),
+      long: %{
+        "seller_name" => String.duplicate("Bright Cart Retail ", 4),
+        "seller_address" => String.duplicate("Unit 5, Logistics Park, Bhiwandi, ", 6),
+        "platform_name" => String.duplicate("BrightCart ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "shipping_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "billing_address" => String.duplicate("Office 3, Business Bay, Andheri East, ", 6),
+        "shipping_charge" => 99_999_999.99,
+        "return_policy" =>
+          String.duplicate("We strive to deliver perfectly on every order. ", 12),
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Wireless earbuds with charging case ", 3),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            16
+          )
+      }
+    },
     "book-receipt" => %{
       designs: ~w(t1 t2),
       optional: ~w(store_address author description),

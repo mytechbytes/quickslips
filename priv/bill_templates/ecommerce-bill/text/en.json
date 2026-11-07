@@ -1,0 +1,140 @@
+{
+  "title": "E-commerce Bill Generator",
+  "name": "E-commerce Bill",
+  "public_slug": "ecommerce-bill-generator",
+  "summary": "Online order invoice with a tax rate per item and shipping.",
+  "description": "Create an invoice for an online order with products, quantities, a {tax} rate for each item, shipping, the seller, the marketplace and the customer's addresses. Four designs; preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Payment receipt",
+    "t2": "Order confirmed",
+    "t3": "Invoice",
+    "t4": "Tax invoice"
+  },
+  "fields": {
+    "seller_name": {
+      "label": "Sold by"
+    },
+    "seller_address": {
+      "label": "Seller address (optional)"
+    },
+    "seller_phone": {
+      "label": "Seller phone (optional)"
+    },
+    "platform_name": {
+      "label": "Online store or marketplace (optional)"
+    },
+    "platform_website": {
+      "label": "Website (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "invoice_number": {
+      "label": "Invoice number"
+    },
+    "date": {
+      "label": "Invoice date"
+    },
+    "order_number": {
+      "label": "Order number (optional)"
+    },
+    "order_date": {
+      "label": "Order date (optional)"
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "customer_phone": {
+      "label": "Mobile number (optional)"
+    },
+    "shipping_address": {
+      "label": "Shipping address"
+    },
+    "billing_address": {
+      "label": "Billing address (optional)"
+    },
+    "shipping_charge": {
+      "label": "Shipping charges ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "signatory_name": {
+      "label": "Signatory name (optional)"
+    },
+    "return_policy": {
+      "label": "Return policy and notes (optional)"
+    },
+    "items": {
+      "label": "Products",
+      "columns": {
+        "name": "Description",
+        "qty": "Qty",
+        "rate": "Price ({currency})",
+        "tax": "Tax %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Phone",
+    "authorised": "Authorised signatory",
+    "return_policy": "Return policy",
+    "payment_receipt": "Payment receipt",
+    "receipt_no": "Receipt no.",
+    "sold_by": "Sold by",
+    "order_no": "Order no.",
+    "order_date": "Order date",
+    "invoice_date": "Invoice date",
+    "receipt_date": "Receipt date",
+    "bill_to": "Bill to",
+    "description": "Description",
+    "net_amount": "Net amount",
+    "qty": "Qty",
+    "total_amount": "Total amount",
+    "total": "Total",
+    "shipping": "Shipping",
+    "payment_method": "Payment method",
+    "order_confirmed": "Your order is confirmed!",
+    "hello": "Hello",
+    "order_number": "Order number",
+    "shipping_address": "Shipping address",
+    "mobile": "Mobile number",
+    "receipt_summary": "Receipt summary",
+    "rate": "Rate",
+    "amt": "Amt",
+    "subtotal": "Subtotal",
+    "confirmation_note": "We will send a shipping confirmation email when the item is shipped.",
+    "thanks_shopping": "Thanks for shopping with us",
+    "need_help": "Need help?",
+    "invoice": "Invoice",
+    "invoice_no": "Invoice no.",
+    "date": "Date",
+    "invoice_to": "Invoice to",
+    "pay_to": "Pay to",
+    "price": "Price",
+    "payment_info": "Payment info",
+    "amount": "Amount",
+    "tax_invoice": "Tax invoice",
+    "ship_from": "Ship-from address",
+    "invoice_number": "Invoice number",
+    "order_id": "Order ID",
+    "payment": "Payment",
+    "ship_to": "Ship to",
+    "keep_invoice": "keep this invoice and the manufacturer's box for warranty purposes",
+    "total_items": "Total items",
+    "title": "Title",
+    "gross_amount": "Gross amount",
+    "taxable_value": "Taxable value",
+    "grand_total": "Grand total",
+    "thank_you": "Thank you!",
+    "for_shopping": "for shopping with us"
+  },
+  "sample": {}
+}

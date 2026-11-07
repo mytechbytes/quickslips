@@ -1,0 +1,25 @@
+{
+  "seller_name": "Bright Cart Retail",
+  "seller_address": "Unit 5, Logistics Park, Bhiwandi, Maharashtra 421302",
+  "seller_phone": "1800 123 4567",
+  "platform_name": "BrightCart",
+  "platform_website": "www.brightcart.example",
+  "seller_tax_id": "27ABCDE1234F1Z5",
+  "invoice_number": "INV-2973",
+  "date": "2026-11-07",
+  "order_number": "ORD-44572069",
+  "order_date": "2026-11-05",
+  "customer_name": "Rohan Mehta",
+  "customer_phone": "98200 12345",
+  "shipping_address": "Flat 12, Sunrise Apartments, Station Road, Mumbai, Maharashtra 400093",
+  "items": [
+    { "name": "Wireless earbuds with charging case", "qty": 1, "rate": 1999, "tax": 18 },
+    { "name": "Silicone phone case", "qty": 2, "rate": 349, "tax": 18 },
+    { "name": "Cotton round-neck T-shirt", "qty": 2, "rate": 499, "tax": 5 },
+    { "name": "Stainless steel water bottle (750 ml)", "qty": 1, "rate": 599, "tax": 18 }
+  ],
+  "shipping_charge": 49,
+  "payment_mode": "Online",
+  "signatory_name": "Meera Iyer",
+  "return_policy": "We strive to deliver perfectly on every order. If you need to return an item, please do so with the original brand box or price tag, original packing and invoice; without these we cannot process your request. Terms and conditions apply.\nThe goods sold are intended for end-user consumption and not for resale."
+}
