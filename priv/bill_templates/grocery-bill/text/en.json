@@ -1,0 +1,95 @@
+{
+  "title": "Grocery Bill Generator",
+  "name": "Grocery Bill",
+  "public_slug": "grocery-bill-generator",
+  "summary": "Items, quantities and totals.",
+  "description": "Create a grocery bill with as many items as you need, quantities, prices, a discount and {tax}. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Retail invoice",
+    "t2": "Savings invoice"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Store name"
+    },
+    "store_address": {
+      "label": "Address (optional)"
+    },
+    "store_phone": {
+      "label": "Phone number (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "fssai_number": {
+      "label": "FSSAI licence no. (optional)"
+    },
+    "bill_number": {
+      "label": "Bill number"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Time (optional)"
+    },
+    "transaction_id": {
+      "label": "Transaction ID (optional)"
+    },
+    "customer_name": {
+      "label": "Customer name (optional)"
+    },
+    "discount": {
+      "label": "Discount ({currency}) (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Paid by",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Items",
+      "columns": {
+        "name": "Item",
+        "qty": "Qty",
+        "rate": "Price ({currency})",
+        "discount": "Disc. %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Phone no.",
+    "retail_invoice": "Retail invoice",
+    "bill_no": "Bill no.",
+    "bill_date": "Bill date",
+    "time": "Time",
+    "particulars": "Particulars",
+    "rate": "Rate",
+    "qty": "Qty",
+    "amount": "Amount",
+    "total": "Total",
+    "net_amount": "Net amount",
+    "payment_method": "Payment method",
+    "transaction": "Transaction ID",
+    "customer": "Customer name",
+    "thanks": "Thank you! Please visit again.",
+    "sn": "Sn.",
+    "item_name": "Item name",
+    "unit_price": "Net price",
+    "sub_total": "Sub total",
+    "saving": "Total saving",
+    "saving_pct": "Total saving (%)",
+    "discount": "Discount"
+  },
+  "sample": {
+    "tax_percent": 5
+  }
+}

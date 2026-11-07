@@ -71,7 +71,7 @@ defmodule QuickSlipsWeb.HistoryLiveTest do
       # A template that has no Spanish page opens in English.
       rent =
         document_fixture(scope, %{
-          slug: "grocery-bill",
+          slug: "courier-receipt",
           language: "es",
           options: %{"country" => "es"}
         })
@@ -90,7 +90,7 @@ defmodule QuickSlipsWeb.HistoryLiveTest do
 
       assert has_element?(
                view,
-               ~s(#edit-#{rent.id}[href="/en-in/grocery-bill-generator?from=#{rent.id}"])
+               ~s(#edit-#{rent.id}[href="/en-in/courier-receipt-generator?from=#{rent.id}"])
              )
     end
 

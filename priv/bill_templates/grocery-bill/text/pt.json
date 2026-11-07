@@ -1,0 +1,127 @@
+{
+  "title": "Gerador de nota de mercado",
+  "name": "Nota de mercado",
+  "public_slug": "gerador-de-nota-de-mercado",
+  "summary": "Itens, quantidades e totais.",
+  "description": "Crie uma nota de mercado com quantos itens precisar, quantidades, preços, desconto e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota de varejo",
+    "t2": "Nota com economia"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Nome da loja"
+    },
+    "store_address": {
+      "label": "Endereço (opcional)"
+    },
+    "store_phone": {
+      "label": "Telefone (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "fssai_number": {
+      "label": "N.º da licença FSSAI (opcional)"
+    },
+    "bill_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "transaction_id": {
+      "label": "ID da transação (opcional)"
+    },
+    "customer_name": {
+      "label": "Nome do cliente (opcional)"
+    },
+    "discount": {
+      "label": "Desconto ({currency}) (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pago com",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Itens",
+      "columns": {
+        "name": "Item",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})",
+        "discount": "Desc. %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tel.",
+    "retail_invoice": "Nota fiscal de varejo",
+    "bill_no": "Nota n.º",
+    "bill_date": "Data",
+    "time": "Hora",
+    "particulars": "Descrição",
+    "rate": "Preço",
+    "qty": "Qtd.",
+    "amount": "Valor",
+    "total": "Total",
+    "net_amount": "Valor líquido",
+    "payment_method": "Forma de pagamento",
+    "transaction": "ID da transação",
+    "customer": "Nome do cliente",
+    "thanks": "Obrigado! Volte sempre.",
+    "sn": "N.º",
+    "item_name": "Item",
+    "unit_price": "Preço líquido",
+    "sub_total": "Subtotal",
+    "saving": "Economia total",
+    "saving_pct": "Economia total (%)",
+    "discount": "Desconto"
+  },
+  "sample": {
+    "store_name": "Mercado Verde",
+    "items": [
+      {
+        "name": "Arroz basmati (1 kg)",
+        "qty": 1,
+        "rate": 18
+      },
+      {
+        "name": "Lentilha (500 g)",
+        "qty": 2,
+        "rate": 9
+      },
+      {
+        "name": "Óleo de girassol (900 ml)",
+        "qty": 2,
+        "rate": 8,
+        "discount": 5
+      },
+      {
+        "name": "Açúcar (1 kg)",
+        "qty": 3,
+        "rate": 5
+      },
+      {
+        "name": "Café moído (500 g)",
+        "qty": 1,
+        "rate": 22,
+        "discount": 10
+      }
+    ],
+    "customer_name": "Ana Souza",
+    "tax_percent": null,
+    "store_phone": "(11) 3456-7890"
+  }
+}

@@ -152,16 +152,16 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper, Restaurant, Meal, Medical and Pharmacy are in every language; the other templates only in English" do
+    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper, Restaurant, Meal, Medical, Pharmacy and Grocery are in every language; the other templates only in English" do
       for locale <- Locales.live(),
           slug <-
-            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill) do
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill) do
         assert Templates.supports?(slug, locale)
       end
 
       hindi = Locales.fetch!("hi-in")
-      assert Templates.supports?("grocery-bill", Locales.fetch!("en-in"))
-      refute Templates.supports?("grocery-bill", hindi)
+      assert Templates.supports?("courier-receipt", Locales.fetch!("en-in"))
+      refute Templates.supports?("courier-receipt", hindi)
 
       for code <- ["hi-in", "es-es", "ja-jp"] do
         slugs = Locales.fetch!(code) |> Templates.list() |> Enum.map(& &1["slug"])
@@ -170,6 +170,7 @@ defmodule QuickSlips.TemplatesTest do
                  "daily-helper-receipt",
                  "driver-salary-receipt",
                  "fuel-bill",
+                 "grocery-bill",
                  "maintenance-bill",
                  "meal-bill",
                  "medical-bill",
@@ -205,7 +206,7 @@ defmodule QuickSlips.TemplatesTest do
       assert fuel_type["options"] == ["Petrol", "Diesel", "CNG"]
       assert fuel_type["option_labels"]["Petrol"] == "पेट्रोल"
 
-      assert {:error, :not_found} = Templates.get("grocery-bill", Locales.fetch!("hi-in"))
+      assert {:error, :not_found} = Templates.get("courier-receipt", Locales.fetch!("hi-in"))
     end
 
     test "get/1 is still the English one" do
@@ -226,14 +227,14 @@ defmodule QuickSlips.TemplatesTest do
                Templates.get_public(Locales.fetch!("hi-in"), "fuel-bill-generator")
 
       assert {:error, :not_found} =
-               Templates.get_public(Locales.fetch!("hi-in"), "grocery-bill-generator")
+               Templates.get_public(Locales.fetch!("hi-in"), "courier-receipt-generator")
     end
 
     test "public_path/2 and alternates/1" do
       assert Templates.public_path("fuel-bill", Locales.fetch!("es-es")) ==
                "/es-es/generador-de-factura-de-gasolina"
 
-      assert Templates.public_path("grocery-bill", Locales.fetch!("hi-in")) == nil
+      assert Templates.public_path("courier-receipt", Locales.fetch!("hi-in")) == nil
 
       alternates = Templates.alternates("fuel-bill")
 
@@ -259,7 +260,7 @@ defmodule QuickSlips.TemplatesTest do
 
       # A bill that is in English only is in the English locales: India, the United States, the UK, Canada.
       assert ["en-in", "en-us", "en-gb", "en-ca"] =
-               "grocery-bill"
+               "courier-receipt"
                |> Templates.alternates()
                |> Enum.map(fn {locale, _} -> locale.code end)
 
@@ -283,11 +284,11 @@ defmodule QuickSlips.TemplatesTest do
       assert text["options"]["fuel_type"]["Petrol"] == "Gasolina"
       assert length(text["months"]) == 12
       assert length(text["months_short"]) == 12
-      assert Templates.print_text("grocery-bill", Locales.fetch!("es-es")) == nil
+      assert Templates.print_text("courier-receipt", Locales.fetch!("es-es")) == nil
 
       # A template that is not translated still has the months, for the helpers.
       assert %{"lang" => "en", "print" => %{}} =
-               Templates.print_text("grocery-bill", Locales.default())
+               Templates.print_text("courier-receipt", Locales.default())
     end
 
     test "a translation has every word the English has" do

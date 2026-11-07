@@ -71,7 +71,7 @@ defmodule QuickSlipsWeb.HomeLiveTest do
                "पेट्रोल बिल जनरेटर"
              )
 
-      refute has_element?(view, "#template-grocery-bill")
+      refute has_element?(view, "#template-courier-receipt")
       assert has_element?(view, "#chip-travel", "यात्रा")
 
       # The categories of the bills that are in Hindi: Travel, Home & utilities, Work, Food & shopping and Health &

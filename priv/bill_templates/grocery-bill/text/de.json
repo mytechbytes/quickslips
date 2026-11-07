@@ -1,0 +1,127 @@
+{
+  "title": "Kassenbon-Generator für Lebensmittel",
+  "name": "Lebensmittel-Kassenbon",
+  "public_slug": "lebensmittel-kassenbon-generator",
+  "summary": "Artikel, Mengen und Summen.",
+  "description": "Erstellen Sie einen Lebensmittel-Kassenbon mit beliebig vielen Artikeln, Mengen, Preisen, Rabatt und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Einzelhandelsrechnung",
+    "t2": "Rechnung mit Ersparnis"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Name des Geschäfts"
+    },
+    "store_address": {
+      "label": "Adresse (optional)"
+    },
+    "store_phone": {
+      "label": "Telefon (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "fssai_number": {
+      "label": "FSSAI-Lizenznr. (optional)"
+    },
+    "bill_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "time": {
+      "label": "Uhrzeit (optional)"
+    },
+    "transaction_id": {
+      "label": "Transaktions-ID (optional)"
+    },
+    "customer_name": {
+      "label": "Kundenname (optional)"
+    },
+    "discount": {
+      "label": "Rabatt ({currency}) (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Bezahlt mit",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Artikel",
+      "columns": {
+        "name": "Artikel",
+        "qty": "Menge",
+        "rate": "Preis ({currency})",
+        "discount": "Rabatt %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tel.",
+    "retail_invoice": "Einzelhandelsrechnung",
+    "bill_no": "Rechnungs-Nr.",
+    "bill_date": "Datum",
+    "time": "Uhrzeit",
+    "particulars": "Position",
+    "rate": "Preis",
+    "qty": "Menge",
+    "amount": "Betrag",
+    "total": "Gesamt",
+    "net_amount": "Nettobetrag",
+    "payment_method": "Zahlungsart",
+    "transaction": "Transaktions-ID",
+    "customer": "Kundenname",
+    "thanks": "Danke! Bis zum nächsten Mal.",
+    "sn": "Nr.",
+    "item_name": "Artikel",
+    "unit_price": "Nettopreis",
+    "sub_total": "Zwischensumme",
+    "saving": "Gesamtersparnis",
+    "saving_pct": "Gesamtersparnis (%)",
+    "discount": "Rabatt"
+  },
+  "sample": {
+    "store_name": "Supermarkt Linde",
+    "items": [
+      {
+        "name": "Basmatireis (1 kg)",
+        "qty": 1,
+        "rate": 2.9
+      },
+      {
+        "name": "Linsen (500 g)",
+        "qty": 2,
+        "rate": 1.9
+      },
+      {
+        "name": "Sonnenblumenöl (1 L)",
+        "qty": 2,
+        "rate": 2.5,
+        "discount": 5
+      },
+      {
+        "name": "Zucker (1 kg)",
+        "qty": 3,
+        "rate": 1.2
+      },
+      {
+        "name": "Kaffee gemahlen (250 g)",
+        "qty": 1,
+        "rate": 4.5,
+        "discount": 10
+      }
+    ],
+    "customer_name": "Anna Becker",
+    "tax_percent": 7,
+    "store_phone": "030 1234567"
+  }
+}
