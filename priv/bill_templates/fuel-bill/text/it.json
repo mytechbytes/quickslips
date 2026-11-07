@@ -1,0 +1,71 @@
+{
+  "title": "Generatore di ricevuta carburante",
+  "name": "Ricevuta carburante",
+  "public_slug": "generatore-ricevuta-carburante",
+  "summary": "Crea una ricevuta di rifornimento (benzina o gasolio) in PDF.",
+  "description": "Genera una ricevuta di carburante ordinata con nome del distributore, data, tipo di carburante, quantità e prezzo. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Classico"
+  },
+  "fields": {
+    "station_name": {
+      "label": "Nome del distributore"
+    },
+    "station_address": {
+      "label": "Indirizzo del distributore"
+    },
+    "bill_number": {
+      "label": "Numero ricevuta"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "vehicle_number": {
+      "label": "Targa del veicolo"
+    },
+    "fuel_type": {
+      "label": "Tipo di carburante",
+      "options": {
+        "Petrol": "Benzina",
+        "Diesel": "Gasolio",
+        "CNG": "Metano"
+      }
+    },
+    "quantity": {
+      "label": "Quantità (litri)"
+    },
+    "rate": {
+      "label": "Prezzo al litro ({currency})"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    }
+  },
+  "print": {
+    "bill_no": "N. ricevuta",
+    "date": "Data",
+    "vehicle": "Veicolo",
+    "fuel": "Carburante",
+    "item": "Descrizione",
+    "quantity": "Q.tà (L)",
+    "rate": "Prezzo",
+    "amount": "Importo",
+    "total": "Totale",
+    "signatory": "Firma autorizzata",
+    "thanks": "Grazie e arrivederci.",
+    "taxable": "Imponibile",
+    "tax_included": "IVA inclusa nel prezzo."
+  },
+  "sample": {
+    "station_name": "Distributore Sole",
+    "station_address": "Via Roma 12, 00184 Roma RM",
+    "bill_number": "FT-10482",
+    "vehicle_number": "AB 123 CD",
+    "rate": 1.82,
+    "seller_tax_id": "IT01234567890",
+    "tax_percent": 22
+  }
+}

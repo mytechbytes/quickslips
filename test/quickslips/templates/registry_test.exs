@@ -165,7 +165,7 @@ defmodule QuickSlips.Templates.RegistryTest do
       write_schema(dir, "one", [], %{public_slug: "same-generator"})
       write_schema(dir, "two", [], %{public_slug: "same-generator"})
 
-      assert start_error(dir) =~ ~s(have the same public slug "same-generator" in en-in)
+      assert start_error(dir) =~ ~r/have the same public slug "same-generator" in en-/
     end
 
     test "must be lowercase letters, digits and hyphens", %{tmp_dir: dir} do
@@ -191,8 +191,13 @@ defmodule QuickSlips.Templates.RegistryTest do
       assert {:error, :not_found} =
                Registry.fetch_by_public_slug("es-es", "one-generator", registry)
 
-      assert Registry.public_slugs("one", registry) ==
-               %{"en-in" => "one-generator", "hi-in" => "ek-generator"}
+      assert Registry.public_slugs("one", registry) == %{
+               "en-in" => "one-generator",
+               "en-us" => "one-generator",
+               "en-gb" => "one-generator",
+               "en-ca" => "one-generator",
+               "hi-in" => "ek-generator"
+             }
 
       assert Registry.public_slugs("nope", registry) == %{}
     end

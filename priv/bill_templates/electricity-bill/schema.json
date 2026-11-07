@@ -9,19 +9,19 @@
   "description": "Create an electricity bill with meter readings, units used, rate per unit, fixed charge and tax. Preview instantly and download as PDF.",
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
-    { "key": "issuer_name", "label": "Electricity provider or landlord", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "issuer_address", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
-    { "key": "bill_number", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "bill_date", "label": "Bill date", "type": "date", "required": true },
-    { "key": "due_date", "label": "Due date (optional)", "type": "date", "required": false },
-    { "key": "consumer_name", "label": "Consumer name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "consumer_number", "label": "Consumer number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "service_address", "label": "Service address", "type": "textarea", "required": true, "max_length": 200 },
-    { "key": "billing_month", "label": "Billing month", "type": "month", "required": true },
-    { "key": "previous_reading", "label": "Previous meter reading (units)", "type": "number", "required": true, "min": 0 },
-    { "key": "current_reading", "label": "Current meter reading (units)", "type": "number", "required": true, "min": 0 },
-    { "key": "rate_per_unit", "label": "Rate per unit (₹)", "type": "number", "required": true, "min": 0 },
-    { "key": "fixed_charge", "label": "Fixed charge (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "tax_percent", "label": "Duty and tax (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 }
+    { "key": "issuer_name", "group": "business", "label": "Electricity provider or landlord", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "issuer_address", "group": "business", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "bill_number", "group": "document", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "bill_date", "group": "document", "label": "Bill date", "type": "date", "required": true },
+    { "key": "due_date", "group": "document", "label": "Due date (optional)", "type": "date", "required": false },
+    { "key": "consumer_name", "group": "customer", "label": "Consumer name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "consumer_number", "group": "customer", "label": "Consumer number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "service_address", "group": "customer", "label": "Service address", "type": "textarea", "required": true, "max_length": 200 },
+    { "key": "billing_month", "group": "document", "label": "Billing month", "type": "month", "required": true },
+    { "key": "previous_reading", "group": "charges", "label": "Previous meter reading (units)", "type": "number", "required": true, "min": 0 },
+    { "key": "current_reading", "group": "charges", "label": "Current meter reading (units)", "type": "number", "required": true, "min": 0 },
+    { "key": "rate_per_unit", "group": "charges", "label": "Rate per unit ({currency})", "type": "number", "required": true, "min": 0 },
+    { "key": "fixed_charge", "group": "charges", "label": "Fixed charge ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "tax_percent", "group": "charges", "label": "Duty and tax (%) (optional)", "type": "tax_rate", "required": false }
   ]
 }

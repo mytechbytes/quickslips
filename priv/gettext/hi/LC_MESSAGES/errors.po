@@ -23,6 +23,8 @@ msgstr "मान्य नहीं है"
 msgid "must be accepted"
 msgstr "स्वीकार करना ज़रूरी है"
 
+#: lib/quickslips_web/error_messages.ex:31
+#, elixir-autogen
 msgid "has invalid format"
 msgstr "का प्रारूप सही नहीं है"
 
@@ -101,32 +103,32 @@ msgstr "%{number} या उससे ज़्यादा होना चा�
 msgid "must be equal to %{number}"
 msgstr "%{number} के बराबर होना चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:65
+#: lib/quickslips_web/error_messages.ex:70
 #, elixir-autogen, elixir-format
 msgid "at least one digit or punctuation character"
 msgstr "कम से कम एक अंक या चिह्न होना चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:63
+#: lib/quickslips_web/error_messages.ex:68
 #, elixir-autogen, elixir-format
 msgid "at least one lower case character"
 msgstr "कम से कम एक छोटा अक्षर होना चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:64
+#: lib/quickslips_web/error_messages.ex:69
 #, elixir-autogen, elixir-format
 msgid "at least one upper case character"
 msgstr "कम से कम एक बड़ा अक्षर होना चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:61
+#: lib/quickslips_web/error_messages.ex:66
 #, elixir-autogen, elixir-format
 msgid "did not change"
 msgstr "बदला नहीं है"
 
-#: lib/quickslips_web/error_messages.ex:62
+#: lib/quickslips_web/error_messages.ex:67
 #, elixir-autogen, elixir-format
 msgid "does not match password"
 msgstr "पासवर्ड से मेल नहीं खाता"
 
-#: lib/quickslips_web/error_messages.ex:30
+#: lib/quickslips_web/error_messages.ex:32
 #, elixir-autogen, elixir-format
 msgid "has an unsupported type"
 msgstr "का प्रकार समर्थित नहीं है"
@@ -136,12 +138,12 @@ msgstr "का प्रकार समर्थित नहीं है"
 msgid "is required"
 msgstr "ज़रूरी है"
 
-#: lib/quickslips_web/error_messages.ex:33
+#: lib/quickslips_web/error_messages.ex:35
 #, elixir-autogen, elixir-format
 msgid "must be a date like 2026-10-31"
 msgstr "तारीख होनी चाहिए, जैसे 2026-10-31"
 
-#: lib/quickslips_web/error_messages.ex:36
+#: lib/quickslips_web/error_messages.ex:38
 #, elixir-autogen, elixir-format
 msgid "must be a month like 2026-10"
 msgstr "महीना होना चाहिए, जैसे 2026-10"
@@ -156,22 +158,22 @@ msgstr "संख्या होनी चाहिए"
 msgid "must be an object"
 msgstr "ऑब्जेक्ट होना चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:47
+#: lib/quickslips_web/error_messages.ex:52
 #, elixir-autogen, elixir-format
 msgid "must be at least %{min}"
 msgstr "कम से कम %{min} होना चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:44
+#: lib/quickslips_web/error_messages.ex:49
 #, elixir-autogen, elixir-format
 msgid "must be at most %{max}"
 msgstr "अधिकतम %{max} होना चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:41
+#: lib/quickslips_web/error_messages.ex:43
 #, elixir-autogen, elixir-format
 msgid "must be at most %{max} characters"
 msgstr "अधिकतम %{max} अक्षर होने चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:50
+#: lib/quickslips_web/error_messages.ex:55
 #, elixir-autogen, elixir-format
 msgid "must be one of: %{options}"
 msgstr "इनमें से एक होना चाहिए: %{options}"
@@ -181,7 +183,17 @@ msgstr "इनमें से एक होना चाहिए: %{options}"
 msgid "must be text"
 msgstr "पाठ (टेक्स्ट) होना चाहिए"
 
-#: lib/quickslips_web/error_messages.ex:60
+#: lib/quickslips_web/error_messages.ex:65
 #, elixir-autogen, elixir-format
 msgid "must have the @ sign and no spaces"
 msgstr "में @ चिह्न होना चाहिए और कोई खाली जगह नहीं"
+
+#: lib/quickslips_web/error_messages.ex:30
+#, elixir-autogen, elixir-format
+msgid "must be a list"
+msgstr "सूची होनी चाहिए"
+
+#: lib/quickslips_web/error_messages.ex:46
+#, elixir-autogen, elixir-format
+msgid "must have at most %{max} rows"
+msgstr "अधिकतम %{max} पंक्तियाँ होनी चाहिए"

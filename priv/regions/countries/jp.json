@@ -1,0 +1,44 @@
+{
+  "code": "jp",
+  "currency": "JPY",
+  "number": {
+    "decimal": ".",
+    "group": ",",
+    "grouping": "standard"
+  },
+  "money": {
+    "position": "before",
+    "space": false
+  },
+  "date": {
+    "order": "ymd",
+    "separator": "/"
+  },
+  "example": {
+    "address": "東京都新宿区西新宿2-8-1",
+    "tax_id": "T1234567890123"
+  },
+  "tax": {
+    "name": {
+      "en": "Consumption tax",
+      "ja": "消費税"
+    },
+    "rates": [
+      0,
+      8,
+      10
+    ],
+    "id": {
+      "label": {
+        "en": "Registration No.",
+        "ja": "登録番号"
+      },
+      "pattern": "^T[0-9]{13}$"
+    },
+    "checked": "2026-11-06",
+    "note": "Standard 10%, reduced 8% (food and drink to take away, newspapers). A qualified invoice needs the registration number T plus 13 digits. Checked against municipal pages that quote the National Tax Agency, not the agency itself.",
+    "sources": [
+      "https://www.city.chiba.jp/zaiseikyoku/zaisei/zaisei/invoice.html"
+    ]
+  }
+}

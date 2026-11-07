@@ -1,0 +1,71 @@
+{
+  "title": "Tankrechnung-Generator",
+  "name": "Tankrechnung",
+  "public_slug": "tankrechnung-generator",
+  "summary": "Erstellen Sie eine Tankrechnung für Benzin oder Diesel als PDF.",
+  "description": "Erstellen Sie eine übersichtliche Tankrechnung mit Name der Tankstelle, Datum, Kraftstoffart, Menge und Preis. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Klassisch"
+  },
+  "fields": {
+    "station_name": {
+      "label": "Name der Tankstelle"
+    },
+    "station_address": {
+      "label": "Adresse der Tankstelle"
+    },
+    "bill_number": {
+      "label": "Belegnummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "vehicle_number": {
+      "label": "Kfz-Kennzeichen"
+    },
+    "fuel_type": {
+      "label": "Kraftstoffart",
+      "options": {
+        "Petrol": "Benzin",
+        "Diesel": "Diesel",
+        "CNG": "Erdgas (CNG)"
+      }
+    },
+    "quantity": {
+      "label": "Menge (Liter)"
+    },
+    "rate": {
+      "label": "Preis pro Liter ({currency})"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    }
+  },
+  "print": {
+    "bill_no": "Beleg-Nr.",
+    "date": "Datum",
+    "vehicle": "Fahrzeug",
+    "fuel": "Kraftstoff",
+    "item": "Bezeichnung",
+    "quantity": "Menge (l)",
+    "rate": "Preis",
+    "amount": "Betrag",
+    "total": "Gesamt",
+    "signatory": "Unterschrift",
+    "thanks": "Vielen Dank. Gute Fahrt!",
+    "taxable": "Nettobetrag",
+    "tax_included": "Preis inkl. Umsatzsteuer."
+  },
+  "sample": {
+    "station_name": "Sonnen-Tankstelle",
+    "station_address": "Hauptstraße 12, 10115 Berlin",
+    "bill_number": "TR-10482",
+    "vehicle_number": "B AB 1234",
+    "rate": 1.79,
+    "seller_tax_id": "DE123456789",
+    "tax_percent": 19
+  }
+}

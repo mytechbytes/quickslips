@@ -1,0 +1,46 @@
+{
+  "code": "fr",
+  "currency": "EUR",
+  "number": {
+    "decimal": ",",
+    "group": " ",
+    "grouping": "standard"
+  },
+  "money": {
+    "position": "after",
+    "space": true
+  },
+  "date": {
+    "order": "dmy",
+    "separator": "/"
+  },
+  "example": {
+    "address": "12 avenue de la République, 75011 Paris",
+    "tax_id": "FR12345678901"
+  },
+  "tax": {
+    "name": {
+      "en": "VAT",
+      "fr": "TVA"
+    },
+    "rates": [
+      0,
+      2.1,
+      5.5,
+      10,
+      20
+    ],
+    "id": {
+      "label": {
+        "en": "VAT No.",
+        "fr": "N° TVA"
+      },
+      "pattern": "^FR[0-9A-Z]{2}[0-9]{9}$"
+    },
+    "checked": "2026-11-06",
+    "note": "Standard 20%, intermediate 10%, reduced 5.5%, special 2.1% (economie.gouv.fr). The VAT number is FR, a two-character key and the nine-digit SIREN.",
+    "sources": [
+      "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mes-autres-impots-et-taxes/tva-quels-sont-les-taux-de-votre"
+    ]
+  }
+}

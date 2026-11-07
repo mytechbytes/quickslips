@@ -1,0 +1,21 @@
+{
+  "fields": {
+    "fuel_type": {
+      "label": "Fuel type",
+      "options": {
+        "Petrol": "Gasoline",
+        "Diesel": "Diesel",
+        "CNG": "CNG"
+      }
+    }
+  },
+  "sample": {
+    "station_name": "Maple Fuel Station",
+    "station_address": "250 Yonge Street, Toronto, ON M5B 2L7",
+    "vehicle_number": "ABCD 123",
+    "quantity": 40,
+    "rate": 1.62,
+    "seller_tax_id": "123456789RT0001",
+    "tax_percent": 13
+  }
+}

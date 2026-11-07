@@ -29,13 +29,13 @@ defmodule QuickSlips.Templates do
   def get(slug) when is_binary(slug), do: Registry.fetch(slug)
 
   @doc "The same as `get/1`, in the language of `locale`; `{:error, :not_found}` when the template has none."
-  def get(slug, %{code: code}) when is_binary(slug) do
-    with {:ok, view} <- Registry.view(slug, code), do: {:ok, view.schema}
+  def get(slug, %{code: _} = locale) when is_binary(slug) do
+    with {:ok, view} <- Registry.view(slug, locale), do: {:ok, view.schema}
   end
 
   @doc "The template that lives at `public_slug` under a locale, `{:ok, schema}` in that locale's language."
-  def get_public(%{code: code}, public_slug) when is_binary(public_slug) do
-    with {:ok, id} <- Registry.fetch_by_public_slug(code, public_slug), do: get(id, %{code: code})
+  def get_public(%{code: code} = locale, public_slug) when is_binary(public_slug) do
+    with {:ok, id} <- Registry.fetch_by_public_slug(code, public_slug), do: get(id, locale)
   end
 
   @doc "Whether the template is in the language of `locale`."
@@ -74,8 +74,8 @@ defmodule QuickSlips.Templates do
   What the Typst helpers read as `text.json` for a document of `locale`, or `nil` when the template is not in
   its language.
   """
-  def print_text(slug, %{code: code}) do
-    case Registry.view(slug, code) do
+  def print_text(slug, %{code: _} = locale) do
+    case Registry.view(slug, locale) do
       {:ok, view} -> view.print
       {:error, :not_found} -> nil
     end
@@ -85,7 +85,7 @@ defmodule QuickSlips.Templates do
   def sample(slug), do: sample(slug, Locales.default())
 
   @doc "The sample a form starts with in the language of `locale`."
-  def sample(slug, %{code: code}) when is_binary(slug) do
-    with {:ok, view} <- Registry.view(slug, code), do: {:ok, view.sample}
+  def sample(slug, %{code: _} = locale) when is_binary(slug) do
+    with {:ok, view} <- Registry.view(slug, locale), do: {:ok, view.sample}
   end
 end

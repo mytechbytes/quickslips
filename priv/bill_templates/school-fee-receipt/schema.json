@@ -9,19 +9,19 @@
   "description": "Generate a school fee receipt with student, class, fee period and a breakup of tuition, transport and other fees. Preview instantly and download as PDF.",
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
-    { "key": "school_name", "label": "School or institute", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "school_address", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
-    { "key": "receipt_number", "label": "Receipt number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "date", "label": "Receipt date", "type": "date", "required": true },
-    { "key": "student_name", "label": "Student name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "class_name", "label": "Class and section", "type": "text", "required": true, "max_length": 30 },
-    { "key": "admission_number", "label": "Admission or roll number (optional)", "type": "text", "required": false, "max_length": 30 },
-    { "key": "parent_name", "label": "Parent or guardian (optional)", "type": "text", "required": false, "max_length": 80 },
-    { "key": "fee_period", "label": "Fee for", "type": "text", "required": true, "max_length": 60 },
-    { "key": "tuition_fee", "label": "Tuition fee (₹)", "type": "number", "required": true, "min": 0 },
-    { "key": "transport_fee", "label": "Transport fee (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "other_fee", "label": "Exam, activity and other fees (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "late_fee", "label": "Late fee (₹) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "payment_mode", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Cheque"], "required": true }
+    { "key": "school_name", "group": "business", "label": "School or institute", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "school_address", "group": "business", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "receipt_number", "group": "document", "label": "Receipt number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "group": "document", "label": "Receipt date", "type": "date", "required": true },
+    { "key": "student_name", "group": "customer", "label": "Student name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "class_name", "group": "customer", "label": "Class and section", "type": "text", "required": true, "max_length": 30 },
+    { "key": "admission_number", "group": "customer", "label": "Admission or roll number (optional)", "type": "text", "required": false, "max_length": 30 },
+    { "key": "parent_name", "group": "customer", "label": "Parent or guardian (optional)", "type": "text", "required": false, "max_length": 80 },
+    { "key": "fee_period", "group": "details", "label": "Fee for", "type": "text", "required": true, "max_length": 60 },
+    { "key": "tuition_fee", "group": "charges", "label": "Tuition fee ({currency})", "type": "number", "required": true, "min": 0 },
+    { "key": "transport_fee", "group": "charges", "label": "Transport fee ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "other_fee", "group": "charges", "label": "Exam, activity and other fees ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "late_fee", "group": "charges", "label": "Late fee ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Cheque"], "required": true }
   ]
 }

@@ -27,6 +27,8 @@ defmodule QuickSlipsWeb.ErrorMessages do
   defp translate("must be text"), do: dgettext("errors", "must be text")
   defp translate("must be a number"), do: dgettext("errors", "must be a number")
   defp translate("must be an object"), do: dgettext("errors", "must be an object")
+  defp translate("must be a list"), do: dgettext("errors", "must be a list")
+  defp translate("has invalid format"), do: dgettext("errors", "has invalid format")
   defp translate("has an unsupported type"), do: dgettext("errors", "has an unsupported type")
 
   defp translate("must be a date like 2026-10-31"),
@@ -39,6 +41,9 @@ defmodule QuickSlipsWeb.ErrorMessages do
     cond do
       match = Regex.run(~r/^must be at most (\d+) characters$/, message) ->
         dgettext("errors", "must be at most %{max} characters", max: List.last(match))
+
+      match = Regex.run(~r/^must have at most (\d+) rows$/, message) ->
+        dgettext("errors", "must have at most %{max} rows", max: List.last(match))
 
       match = Regex.run(~r/^must be at most (.+)$/, message) ->
         dgettext("errors", "must be at most %{max}", max: List.last(match))

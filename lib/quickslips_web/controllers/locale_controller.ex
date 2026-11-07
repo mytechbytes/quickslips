@@ -6,6 +6,12 @@ defmodule QuickSlipsWeb.LocaleController do
 
   The cookie is set only here, in answer to a click: it is the visitor's own preference, not something a page
   visit does behind their back.
+
+  The page's script (`assets/js/locale.ts`) posts with the header `x-locale-switch: fetch` and gets JSON back
+  (`%{to: path, live: bool, lang: "hi-IN"}`) instead of a redirect, so that it can move on by a live navigation
+  where that is possible: the catalogue of a locale and a bill are LiveViews, and going from one to another needs
+  no new page. A page without a locale in its address, and a page that is not in the new language (which carries
+  a flash), is a full load.
   """
   use QuickSlipsWeb, :controller
 
@@ -22,16 +28,26 @@ defmodule QuickSlipsWeb.LocaleController do
       {:ok, locale} ->
         {path, found} = LocaleSwitch.target(from, locale)
 
-        conn
-        |> put_session(:locale, locale.code)
-        |> put_resp_cookie(LocalePlug.cookie_name(), locale.code,
-          max_age: @one_year,
-          http_only: true,
-          same_site: "Lax",
-          secure: conn.scheme == :https
-        )
-        |> tell_if_unavailable(found, locale)
-        |> redirect(to: path)
+        conn =
+          conn
+          |> put_session(:locale, locale.code)
+          |> put_resp_cookie(LocalePlug.cookie_name(), locale.code,
+            max_age: @one_year,
+            http_only: true,
+            same_site: "Lax",
+            secure: conn.scheme == :https
+          )
+          |> tell_if_unavailable(found, locale)
+
+        if "fetch" in get_req_header(conn, "x-locale-switch") do
+          json(conn, %{
+            to: path,
+            live: found == :same and locale_pages?(from, path),
+            lang: Locales.hreflang(locale)
+          })
+        else
+          redirect(conn, to: path)
+        end
 
       :error ->
         redirect(conn, to: from)
@@ -39,6 +55,14 @@ defmodule QuickSlipsWeb.LocaleController do
   end
 
   def update(conn, _params), do: redirect(conn, to: ~p"/")
+
+  # A live navigation is for one page that has its locale in the address to another (`/en-in` to `/hi-in`, a bill
+  # to the same bill): both are LiveViews of the same live session, and the locale is in the address, so the
+  # session cookie does not matter.
+  defp locale_pages?(from, path), do: locale_page?(URI.parse(from).path) and locale_page?(path)
+
+  defp locale_page?(path),
+    do: is_binary(path) and Regex.match?(~r/^\/[a-z]{2}-[a-z]{2}(\/[a-z0-9-]+)?$/, path)
 
   # The page the visitor was on is not in the language they chose: say so, in that language.
   defp tell_if_unavailable(conn, :same, _locale), do: conn

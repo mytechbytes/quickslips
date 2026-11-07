@@ -30,7 +30,14 @@ defmodule QuickSlipsWeb.HomeLive do
       |> stream_configure(:templates, dom_id: &"template-#{&1["slug"]}")
       |> stream_templates()
 
-    {:ok, socket}
+    {:ok, tell_locale(socket, locale)}
+  end
+
+  # Tells the page which locale it is in, for the LiveViews that have none in their address (see `locale.ts`).
+  defp tell_locale(socket, locale) do
+    if connected?(socket),
+      do: push_event(socket, "locale", %{code: locale.code, lang: Locales.hreflang(locale)}),
+      else: socket
   end
 
   @impl true
@@ -77,15 +84,15 @@ defmodule QuickSlipsWeb.HomeLive do
       <section
         :if={!signed_in?(@current_scope)}
         aria-labelledby="home-title"
-        class="mx-auto max-w-3xl pt-10 pb-6 text-center lg:pt-16 lg:pb-8"
+        class="mx-auto max-w-3xl pt-6 pb-4 text-center lg:pt-8 lg:pb-5"
       >
         <h1
           id="home-title"
-          class="font-display text-3xl font-bold tracking-tight text-balance text-ink sm:text-4xl lg:text-5xl"
+          class="font-display text-3xl font-bold tracking-tight text-balance text-ink sm:text-3xl lg:text-4xl"
         >
           {gettext("Bills and receipts, ready in seconds")}
         </h1>
-        <p class="mx-auto mt-3 max-w-xl text-base/7 text-pretty text-ink-muted lg:mt-4 lg:max-w-2xl lg:text-lg/8">
+        <p class="mx-auto mt-2 max-w-xl text-sm/6 text-pretty text-ink-muted lg:max-w-2xl lg:text-base/7">
           {gettext("Pick a template, fill in the form and download the PDF. No account needed.")}
         </p>
       </section>
@@ -129,7 +136,7 @@ defmodule QuickSlipsWeb.HomeLive do
 
         <div
           :if={!signed_in?(@current_scope)}
-          class="mt-12 rounded-card bg-primary-soft px-6 py-8 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:px-8"
+          class="mt-8 rounded-card bg-primary-soft px-5 py-5 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:px-8"
         >
           <div>
             <h2 class="text-lg/7 font-semibold text-ink">

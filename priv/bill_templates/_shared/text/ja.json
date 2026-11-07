@@ -1,0 +1,95 @@
+{
+  "months": [
+    "1月",
+    "2月",
+    "3月",
+    "4月",
+    "5月",
+    "6月",
+    "7月",
+    "8月",
+    "9月",
+    "10月",
+    "11月",
+    "12月"
+  ],
+  "months_short": [
+    "1月",
+    "2月",
+    "3月",
+    "4月",
+    "5月",
+    "6月",
+    "7月",
+    "8月",
+    "9月",
+    "10月",
+    "11月",
+    "12月"
+  ],
+  "categories": {
+    "Travel": "旅行・移動",
+    "Home & utilities": "住まいと公共料金",
+    "Health & learning": "健康・教育",
+    "Food & shopping": "食事・買い物",
+    "Work": "仕事"
+  },
+  "in_words": {
+    "label": "金額(大字)",
+    "and": "",
+    "only": "",
+    "joiner": "",
+    "whole_only": "也",
+    "prefix": "金",
+    "currencies": {
+      "INR": {
+        "one": "ルピー",
+        "other": "ルピー",
+        "minor_one": "パイサ",
+        "minor_other": "パイサ"
+      },
+      "EUR": {
+        "one": "ユーロ",
+        "other": "ユーロ",
+        "minor_one": "セント",
+        "minor_other": "セント"
+      },
+      "USD": {
+        "one": "ドル",
+        "other": "ドル",
+        "minor_one": "セント",
+        "minor_other": "セント"
+      },
+      "CNY": {
+        "one": "元",
+        "other": "元",
+        "minor_one": "分",
+        "minor_other": "分"
+      },
+      "JPY": {
+        "one": "円",
+        "other": "円",
+        "minor_one": "銭",
+        "minor_other": "銭"
+      },
+      "GBP": {
+        "one": "ポンド",
+        "other": "ポンド",
+        "minor_one": "ペンス",
+        "minor_other": "ペンス"
+      },
+      "BRL": {
+        "one": "レアル",
+        "other": "レアル",
+        "minor_one": "センターボ",
+        "minor_other": "センターボ"
+      },
+      "CAD": {
+        "one": "カナダドル",
+        "other": "カナダドル",
+        "minor_one": "セント",
+        "minor_other": "セント"
+      }
+    }
+  }
+}

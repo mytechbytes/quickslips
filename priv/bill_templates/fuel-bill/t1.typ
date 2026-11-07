@@ -12,6 +12,7 @@
   #picture(data, "logo", 14mm)
   #text(size: 14pt, weight: "bold")[#data.station_name]
   #if opt(data, "station_address") != none [ \ #lines(opt(data, "station_address"))]
+  #if opt(data, "seller_tax_id") != none [ \ #text(size: 9pt, fill: muted)[#tax-id-label: #opt(data, "seller_tax_id")]]
 ]
 
 #v(2mm)
@@ -34,11 +35,28 @@
 )
 
 #v(2mm)
+// Where the country has a tax on fuel that is part of the price (IVA in Spain), the bill shows what the price holds.
+#let rate = opt(data, "tax_percent")
+#if rate != none {
+  let split = tax-split(total, rate)
+  let base = split.base
+  align(right, grid(
+    columns: (auto, auto),
+    column-gutter: 6mm,
+    row-gutter: 1.5mm,
+    align: (left, right),
+    text(fill: muted)[#t.taxable], [#money(base)],
+    text(fill: muted)[#tax-name (#fmt-number(rate)%)], [#money(split.tax)],
+  ))
+  v(1mm)
+}
 #align(right)[#text(size: 12pt, weight: "bold")[#t.total: #money(total)]]
+#let words = amount-words-line(total)
+#if words != none [#v(1.5mm) #words]
 
 #if opt(data, "signature") != none [
   #v(8mm)
   #signature-block(data, t.signatory)
 ]
 
-#footnote[#t.thanks]
+#footnote[#if rate != none [#t.tax_included ]#t.thanks]

@@ -79,12 +79,18 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
         |> LazyHTML.query("link[rel=alternate][hreflang]")
         |> Enum.map(&{LazyHTML.attribute(&1, "hreflang"), LazyHTML.attribute(&1, "href")})
 
-      assert alternates == [
-               {["en-IN"], ["#{base}/en-in/fuel-bill-generator"]},
-               {["hi-IN"], ["#{base}/hi-in/fuel-bill-generator"]},
-               {["es-ES"], ["#{base}/es-es/generador-de-factura-de-gasolina"]},
-               {["x-default"], ["#{base}/en-in/fuel-bill-generator"]}
-             ]
+      assert Enum.map(alternates, &elem(&1, 0)) ==
+               Enum.map(
+                 ~w(en-IN hi-IN es-ES en-US zh-CN de-DE ja-JP en-GB fr-FR it-IT pt-BR en-CA fr-CA x-default),
+                 &[&1]
+               )
+
+      assert Enum.at(alternates, 0) == {["en-IN"], ["#{base}/en-in/fuel-bill-generator"]}
+
+      assert Enum.at(alternates, 2) ==
+               {["es-ES"], ["#{base}/es-es/generador-de-factura-de-gasolina"]}
+
+      assert List.last(alternates) == {["x-default"], ["#{base}/en-in/fuel-bill-generator"]}
     end
 
     test "a bill with one language only names that one, and the query is not part of the canonical",
@@ -96,7 +102,8 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
                "#{base}/en-in/rent-receipt-generator"
              ]
 
-      assert attrs(html, "link[rel=alternate]", "hreflang") == ["en-IN", "x-default"]
+      assert attrs(html, "link[rel=alternate]", "hreflang") ==
+               ["en-IN", "en-US", "en-GB", "en-CA", "x-default"]
     end
 
     test "a bill that is not in the language of the locale is a 404, not English under another address",
@@ -280,6 +287,102 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       html = conn |> get(~p"/en-in/fuel-bill-generator?from=1") |> html_response(200)
 
       assert html =~ "Sunrise Fuel Station"
+    end
+  end
+
+  describe "the country and the currency" do
+    test "the page tells the script its country's own currency", %{conn: conn} do
+      html = conn |> get(~p"/es-es/generador-de-factura-de-gasolina") |> html_response(200)
+
+      assert attrs(html, "#bill-app", "data-own-currency") == ["EUR"]
+      assert attrs(html, "#bill-app", "data-edit") == ["false"]
+    end
+
+    test "the dialog of the site (language, country, currency) has the currencies, with the country's own chosen",
+         %{conn: conn} do
+      html = conn |> get(~p"/es-es/generador-de-factura-de-gasolina") |> html_response(200)
+      document = LazyHTML.from_document(html)
+
+      for id <- ["#locale-menu-currency", "#footer-locale-currency"] do
+        assert document |> LazyHTML.query("#{id} option[selected]") |> LazyHTML.attribute("value") ==
+                 ["EUR"]
+
+        assert document |> LazyHTML.query("#{id} option") |> Enum.count() == 8
+      end
+
+      assert document
+             |> LazyHTML.query("#footer-locale-dialog[data-locale-dialog]")
+             |> Enum.count() ==
+               1
+    end
+
+    test "tells the preview which fonts to load", %{conn: conn} do
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      assert [fonts] = attrs(html, "#bill-app", "data-fonts")
+      assert Jason.decode!(fonts) == ["/fonts/NotoSans-Regular.ttf", "/fonts/NotoSans-Bold.ttf"]
+    end
+
+    test "a document made for another country opens with that country's form", %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      sample = "priv/bill_templates/fuel-bill/sample.json" |> File.read!() |> Jason.decode!()
+
+      doc =
+        document_fixture(scope, %{
+          data: sample,
+          options: %{"country" => "es", "currency" => "EUR"}
+        })
+
+      html = conn |> get("/en-in/fuel-bill-generator?from=#{doc.id}") |> html_response(200)
+
+      assert attrs(html, "#bill-app", "data-edit") == ["true"]
+      assert [region] = attrs(html, "#bill-app", "data-region") |> Enum.map(&Jason.decode!/1)
+      assert region["country"] == "es" and region["currency"]["code"] == "EUR"
+
+      assert [schema] = attrs(html, "#bill-app", "data-schema") |> Enum.map(&Jason.decode!/1)
+      assert Enum.find(schema["fields"], &(&1["key"] == "tax_percent"))["rates"] == [0, 4, 10, 21]
+    end
+  end
+
+  describe "the template select" do
+    test "is there even when a bill has one template", %{conn: conn} do
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      document = LazyHTML.from_document(html)
+
+      assert document |> LazyHTML.query("#template-select option") |> LazyHTML.attribute("value") ==
+               ["t1"]
+
+      assert document |> LazyHTML.query("#template-select option[selected]") |> LazyHTML.text() =~
+               "Classic"
+
+      assert attrs(html, "#bill-app", "data-template") == ["t1"]
+    end
+
+    test "has the names in the language of the page", %{conn: conn} do
+      html = conn |> get(~p"/hi-in/fuel-bill-generator") |> html_response(200)
+
+      assert html
+             |> LazyHTML.from_document()
+             |> LazyHTML.query("#template-select option")
+             |> LazyHTML.text() =~ "क्लासिक"
+    end
+  end
+
+  describe "the sections of the form" do
+    @groups ~w(business registration document customer items details charges payment)
+
+    test "every field of every bill is in a section the form knows" do
+      for %{"slug" => slug} <- QuickSlips.Templates.list(),
+          {:ok, schema} = QuickSlips.Templates.get(slug),
+          field <- schema["fields"] do
+        assert field["group"] in @groups, "#{slug}: #{field["key"]}"
+      end
+    end
+
+    test "the page has a title for each section", %{conn: conn} do
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      [i18n] = attrs(html, "#bill-app", "data-i18n") |> Enum.map(&Jason.decode!/1)
+
+      for group <- @groups, do: assert(Map.has_key?(i18n, "group_" <> group), group)
     end
   end
 end

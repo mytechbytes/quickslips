@@ -10,22 +10,30 @@ type Job = {
   images: Record<string, Uint8Array>
   text: string
   region: string
+  fonts: string[]
 }
 
-// Tell typst.ts where to fetch its two WASM modules from (our own server), and which fonts to draw with:
-// the two the server draws the PDF with (they cover Latin, Spanish accents and Devanagari), and nothing else,
-// so the preview looks like the PDF. `assets: false` keeps typst.ts from fetching its own fonts from a CDN.
-$typst.setCompilerInitOptions({
-  beforeBuild: [loadFonts(["/fonts/NotoSans-Regular.ttf", "/fonts/NotoSans-Bold.ttf"], { assets: false })],
-  getModule: () => "/wasm/typst_ts_web_compiler_bg.wasm",
-})
+// Tell typst.ts where to fetch its two WASM modules from (our own server).
 $typst.setRendererInitOptions({
   getModule: () => "/wasm/typst_ts_renderer_bg.wasm",
 })
 
+// The compiler is set up with the first job, because the fonts depend on the language of the page: the ones the
+// server draws the PDF with (Latin, accents, Devanagari, and Chinese or Japanese for those languages), and nothing
+// else, so the preview looks like the PDF. `assets: false` keeps typst.ts from fetching its own fonts from a CDN.
+let configured = false
+function configure(fonts: string[]) {
+  if (configured) return
+  configured = true
+  $typst.setCompilerInitOptions({
+    beforeBuild: [loadFonts(fonts, { assets: false })],
+    getModule: () => "/wasm/typst_ts_web_compiler_bg.wasm",
+  })
+}
 self.onmessage = async (event: MessageEvent<Job>) => {
-  const { id, source, helpers, data, images, text, region } = event.data
+  const { id, source, helpers, data, images, text, region, fonts } = event.data
   try {
+    configure(fonts)
     // Same layout as on the server: main.typ with data.json, text.json and region.json next to it.
     const encode = (value: string) => new TextEncoder().encode(value)
     await $typst.mapShadow("/data.json", encode(JSON.stringify(data)))

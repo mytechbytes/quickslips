@@ -45,7 +45,7 @@
 )
 
 #v(3mm)
-#totals((([Subtotal], room + extras), ([GST (#tax-rate%)], tax)), total)
+#totals((([Subtotal], room + extras), ([#tax-name (#tax-rate%)], tax)), total)
 
 #v(14mm)
 #signature-block(data, [Authorised signatory], name: data.hotel_name)

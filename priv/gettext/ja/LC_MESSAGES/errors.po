@@ -1,0 +1,190 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "can't be blank"
+msgstr "空白にできません"
+
+msgid "has already been taken"
+msgstr "はすでに使われています"
+
+msgid "is invalid"
+msgstr "は無効です"
+
+msgid "must be accepted"
+msgstr "を承認する必要があります"
+
+#: lib/quickslips_web/error_messages.ex:31
+#, elixir-autogen
+msgid "has invalid format"
+msgstr "の形式が正しくありません"
+
+msgid "has an invalid entry"
+msgstr "に無効な項目があります"
+
+msgid "is reserved"
+msgstr "は予約されています"
+
+msgid "does not match confirmation"
+msgstr "が確認用と一致しません"
+
+msgid "is still associated with this entry"
+msgstr "はまだこの項目に関連付けられています"
+
+msgid "are still associated with this entry"
+msgstr "はまだこの項目に関連付けられています"
+
+msgid "should have %{count} item(s)"
+msgid_plural "should have %{count} item(s)"
+msgstr[0] "は%{count}個である必要があります"
+
+msgid "should be %{count} character(s)"
+msgid_plural "should be %{count} character(s)"
+msgstr[0] "は%{count}文字である必要があります"
+
+msgid "should be %{count} byte(s)"
+msgid_plural "should be %{count} byte(s)"
+msgstr[0] "は%{count}バイトである必要があります"
+
+msgid "should have at least %{count} item(s)"
+msgid_plural "should have at least %{count} item(s)"
+msgstr[0] "は%{count}個以上である必要があります"
+
+msgid "should be at least %{count} character(s)"
+msgid_plural "should be at least %{count} character(s)"
+msgstr[0] "は%{count}文字以上である必要があります"
+
+msgid "should be at least %{count} byte(s)"
+msgid_plural "should be at least %{count} byte(s)"
+msgstr[0] "は%{count}バイト以上である必要があります"
+
+msgid "should have at most %{count} item(s)"
+msgid_plural "should have at most %{count} item(s)"
+msgstr[0] "は%{count}個以下である必要があります"
+
+msgid "should be at most %{count} character(s)"
+msgid_plural "should be at most %{count} character(s)"
+msgstr[0] "は%{count}文字以下である必要があります"
+
+msgid "should be at most %{count} byte(s)"
+msgid_plural "should be at most %{count} byte(s)"
+msgstr[0] "は%{count}バイト以下である必要があります"
+
+msgid "must be less than %{number}"
+msgstr "は%{number}より小さくしてください"
+
+msgid "must be greater than %{number}"
+msgstr "は%{number}より大きくしてください"
+
+msgid "must be less than or equal to %{number}"
+msgstr "は%{number}以下にしてください"
+
+msgid "must be greater than or equal to %{number}"
+msgstr "は%{number}以上にしてください"
+
+msgid "must be equal to %{number}"
+msgstr "は%{number}と等しくしてください"
+
+#: lib/quickslips_web/error_messages.ex:70
+#, elixir-autogen, elixir-format
+msgid "at least one digit or punctuation character"
+msgstr "数字または記号を1文字以上"
+
+#: lib/quickslips_web/error_messages.ex:68
+#, elixir-autogen, elixir-format
+msgid "at least one lower case character"
+msgstr "小文字を1文字以上"
+
+#: lib/quickslips_web/error_messages.ex:69
+#, elixir-autogen, elixir-format
+msgid "at least one upper case character"
+msgstr "大文字を1文字以上"
+
+#: lib/quickslips_web/error_messages.ex:66
+#, elixir-autogen, elixir-format
+msgid "did not change"
+msgstr "は変更されていません"
+
+#: lib/quickslips_web/error_messages.ex:67
+#, elixir-autogen, elixir-format
+msgid "does not match password"
+msgstr "がパスワードと一致しません"
+
+#: lib/quickslips_web/error_messages.ex:32
+#, elixir-autogen, elixir-format
+msgid "has an unsupported type"
+msgstr "はサポートされていない型です"
+
+#: lib/quickslips_web/error_messages.ex:26
+#, elixir-autogen, elixir-format
+msgid "is required"
+msgstr "は必須です"
+
+#: lib/quickslips_web/error_messages.ex:35
+#, elixir-autogen, elixir-format
+msgid "must be a date like 2026-10-31"
+msgstr "は2026-10-31のような日付にしてください"
+
+#: lib/quickslips_web/error_messages.ex:38
+#, elixir-autogen, elixir-format
+msgid "must be a month like 2026-10"
+msgstr "は2026-10のような月にしてください"
+
+#: lib/quickslips_web/error_messages.ex:28
+#, elixir-autogen, elixir-format
+msgid "must be a number"
+msgstr "は数値にしてください"
+
+#: lib/quickslips_web/error_messages.ex:29
+#, elixir-autogen, elixir-format
+msgid "must be an object"
+msgstr "はオブジェクトにしてください"
+
+#: lib/quickslips_web/error_messages.ex:52
+#, elixir-autogen, elixir-format
+msgid "must be at least %{min}"
+msgstr "は%{min}以上にしてください"
+
+#: lib/quickslips_web/error_messages.ex:49
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max}"
+msgstr "は%{max}以下にしてください"
+
+#: lib/quickslips_web/error_messages.ex:43
+#, elixir-autogen, elixir-format
+msgid "must be at most %{max} characters"
+msgstr "は%{max}文字以下にしてください"
+
+#: lib/quickslips_web/error_messages.ex:55
+#, elixir-autogen, elixir-format
+msgid "must be one of: %{options}"
+msgstr "は次のいずれかにしてください：%{options}"
+
+#: lib/quickslips_web/error_messages.ex:27
+#, elixir-autogen, elixir-format
+msgid "must be text"
+msgstr "はテキストにしてください"
+
+#: lib/quickslips_web/error_messages.ex:65
+#, elixir-autogen, elixir-format
+msgid "must have the @ sign and no spaces"
+msgstr "は@を含み、スペースを含まない必要があります"
+
+#: lib/quickslips_web/error_messages.ex:30
+#, elixir-autogen, elixir-format
+msgid "must be a list"
+msgstr "はリストにしてください"
+
+#: lib/quickslips_web/error_messages.ex:46
+#, elixir-autogen, elixir-format
+msgid "must have at most %{max} rows"
+msgstr "は%{max}行以下にしてください"

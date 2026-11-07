@@ -1,6 +1,9 @@
 defmodule QuickSlipsWeb.BusinessLive.Form do
   use QuickSlipsWeb, :live_view
 
+  # A live navigation does not run the router's plugs, so the login is checked here too.
+  on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}
+
   alias QuickSlips.Businesses
   alias QuickSlips.Businesses.Business
   alias QuickSlips.Uploads

@@ -23,6 +23,7 @@ defmodule QuickSlipsWeb.UI do
 
   alias Phoenix.LiveView.JS
   alias QuickSlips.Locales
+  alias QuickSlips.Regions
 
   @doc "True when the scope carries a logged-in user."
   def signed_in?(%{user: %{}}), do: true
@@ -305,7 +306,7 @@ defmodule QuickSlipsWeb.UI do
 
   def auth_card(assigns) do
     ~H"""
-    <div class="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
+    <div class="flex flex-col justify-center px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
         <div
           :if={@icon}
@@ -321,7 +322,7 @@ defmodule QuickSlipsWeb.UI do
         </p>
       </div>
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="rounded-card border border-line bg-surface px-5 py-8 shadow-card sm:px-10">
+        <div class="rounded-card border border-line bg-surface px-5 py-6 shadow-card sm:px-8">
           {render_slot(@inner_block)}
         </div>
         <p :if={@footer != []} class="mt-8 text-center text-sm/6 text-ink-muted">
@@ -340,7 +341,7 @@ defmodule QuickSlipsWeb.UI do
     <.link
       id={@id}
       href={~p"/auth/google"}
-      class="flex min-h-11 w-full items-center justify-center gap-3 rounded-button border border-line-strong bg-surface px-3 text-sm font-semibold text-ink shadow-card hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+      class="flex min-h-10 sm:min-h-9 w-full items-center justify-center gap-3 rounded-button border border-line-strong bg-surface px-3 text-sm font-semibold text-ink shadow-card hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
     >
       <img src={~p"/images/google.svg"} alt="" class="size-5" /> {gettext("Continue with Google")}
     </.link>
@@ -432,11 +433,11 @@ defmodule QuickSlipsWeb.UI do
 
   defp tab_class("pills"),
     do:
-      "inline-flex min-h-11 items-center rounded-button px-4 text-sm/6 font-medium whitespace-nowrap text-ink-muted hover:bg-surface-muted hover:text-ink aria-selected:bg-primary-soft aria-selected:text-primary sm:min-h-9"
+      "inline-flex min-h-10 sm:min-h-9 items-center rounded-button px-4 text-sm/6 font-medium whitespace-nowrap text-ink-muted hover:bg-surface-muted hover:text-ink aria-selected:bg-primary-soft aria-selected:text-primary sm:min-h-9"
 
   defp tab_class("underline"),
     do:
-      "-mb-px inline-flex min-h-11 items-center border-b-2 border-transparent px-1 text-sm/6 font-medium whitespace-nowrap text-ink-muted hover:border-line-strong hover:text-ink aria-selected:border-primary aria-selected:text-primary"
+      "-mb-px inline-flex min-h-10 sm:min-h-9 items-center border-b-2 border-transparent px-1 text-sm/6 font-medium whitespace-nowrap text-ink-muted hover:border-line-strong hover:text-ink aria-selected:border-primary aria-selected:text-primary"
 
   # Select one tab and show its panel, hide the others. These JS commands run in the browser.
   defp select_tab(id, selected, keys) do
@@ -484,7 +485,7 @@ defmodule QuickSlipsWeb.UI do
         id={"#{@id}-trigger"}
         type="button"
         class={[
-          "relative flex size-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2",
+          "relative flex size-10 sm:size-9 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2",
           !@on_dark &&
             "text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-focus",
           @on_dark &&
@@ -527,23 +528,36 @@ defmodule QuickSlipsWeb.UI do
   defp theme_check("light"), do: "[[data-theme-source=user][data-theme=light]_&]:opacity-100"
   defp theme_check("dark"), do: "[[data-theme-source=user][data-theme=dark]_&]:opacity-100"
 
+  @doc "The address of the catalogue of a locale: where a link to \"all templates\" goes (not `/`, which redirects)."
+  def home_path(locale), do: Locales.path(locale || Locales.default())
+
   @doc """
   The name of a country in the language of the page (the names are translated like any other text).
   """
   def country_name("in"), do: gettext("India")
   def country_name("es"), do: gettext("Spain")
-  def country_name("mx"), do: gettext("Mexico")
   def country_name("us"), do: gettext("United States")
   def country_name("gb"), do: gettext("United Kingdom")
+  def country_name("cn"), do: gettext("China")
+  def country_name("de"), do: gettext("Germany")
+  def country_name("jp"), do: gettext("Japan")
+  def country_name("fr"), do: gettext("France")
+  def country_name("it"), do: gettext("Italy")
+  def country_name("br"), do: gettext("Brazil")
+  def country_name("ca"), do: gettext("Canada")
   def country_name(code), do: String.upcase(code)
 
-  @doc """
-  The language and country switch for a header: a globe, the current choice, and a menu that lists the countries
-  and, under each, its languages. A choice posts to `/locale`, which remembers it and goes to the same page in
-  the new locale (see `QuickSlipsWeb.LocaleController`).
+  # The flag of a country, from its two letters: regional indicator symbols, which the system draws as a flag.
+  defp flag(code),
+    do: for(<<char <- String.upcase(code)>>, into: "", do: <<0x1F1E6 + char - ?A::utf8>>)
 
-  The buttons of the menu are not inside the form: they name it with `form=`, which keeps the menu made of plain
-  buttons, like the theme menu. The form takes the address of the page when it is submitted
+  @doc """
+  The language and country switch for a header: a globe and the current choice, which open a dialog that lists
+  the countries as cards and, in each card, its languages. A choice posts to `/locale`, which remembers it and
+  goes to the same page in the new locale (see `QuickSlipsWeb.LocaleController`).
+
+  The buttons of the dialog are not inside the form: they name it with `form=`. The form takes the address of the
+  page when it is submitted, and the dialog opens and closes through `data-dialog-open` and `data-dialog-close`
   (`assets/js/locale.ts`); without scripts the server reads the `Referer`.
   """
   attr :id, :string, default: "locale-menu"
@@ -551,104 +565,189 @@ defmodule QuickSlipsWeb.UI do
   attr :on_dark, :boolean, default: false
 
   def locale_menu(assigns) do
-    assigns = assign(assigns, :groups, Locales.by_country())
-
     ~H"""
-    <el-dropdown id={@id} class="relative">
-      <button
-        id={"#{@id}-trigger"}
-        type="button"
-        class={[
-          "relative flex min-h-11 items-center gap-x-1.5 rounded-full px-3 focus-visible:outline-2 focus-visible:outline-offset-2",
-          !@on_dark &&
-            "text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-focus",
-          @on_dark &&
-            "text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-on-sidebar"
-        ]}
-      >
-        <span class="sr-only">{gettext("Language and country")}</span>
-        <.icon name="hero-globe-alt" class="size-5" />
-        <span class="hidden text-sm/6 font-medium sm:inline">
-          <span lang={@locale.language}>{@locale.name}</span> · {country_name(@locale.country)}
-        </span>
-        <.icon name="hero-chevron-down" class="hidden size-4 opacity-70 sm:block" />
-      </button>
-      <el-menu anchor="bottom end" popover class={["w-64", menu_class()]}>
-        <p class="px-3 pt-1 pb-1 text-xs/5 font-semibold text-ink-muted">
-          {gettext("Language and country")}
-        </p>
-        <div
-          :for={{country, locales} <- @groups}
-          role="group"
-          aria-label={country_name(country)}
-          class="border-t border-line py-1"
-        >
-          <p class="px-3 py-1 text-xs/5 text-ink-faint">{country_name(country)}</p>
-          <button
-            :for={locale <- locales}
-            id={"#{@id}-#{locale.code}"}
-            type="submit"
-            form={"#{@id}-form"}
-            name="locale"
-            value={locale.code}
-            lang={locale.language}
-            aria-current={locale.code == @locale.code && "true"}
-            class={["group", menu_item_class()]}
-          >
-            {locale.name}
-            <.icon
-              name="hero-check"
-              class={["ml-auto size-4 text-primary", locale.code != @locale.code && "opacity-0"]}
-            />
-          </button>
-        </div>
-      </el-menu>
-    </el-dropdown>
+    <button
+      id={"#{@id}-trigger"}
+      type="button"
+      data-dialog-open={"#{@id}-dialog"}
+      aria-haspopup="dialog"
+      class={[
+        "relative flex min-h-10 sm:min-h-9 items-center gap-x-1.5 rounded-full px-3 focus-visible:outline-2 focus-visible:outline-offset-2",
+        !@on_dark &&
+          "text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-focus",
+        @on_dark &&
+          "text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-on-sidebar"
+      ]}
+    >
+      <span class="sr-only">{gettext("Language, Country & Currency")}</span>
+      <.icon name="hero-globe-alt" class="size-5" />
+      <span class="hidden text-sm/6 font-medium sm:inline">
+        <span lang={@locale.language}>{@locale.name}</span>
+        · {country_name(@locale.country)} · <.currency_label locale={@locale} />
+      </span>
+      <.icon name="hero-chevron-down" class="hidden size-4 opacity-70 sm:block" />
+    </button>
+    <div id={@id}>
+      <.locale_dialog id={@id} locale={@locale} />
+    </div>
     <.locale_form id={"#{@id}-form"} />
     """
   end
 
   @doc """
-  The same choice as a list for the footer: each country with its languages, the current one marked. It posts like
+  The same choice for the footer: a button with the current choice, which opens the same dialog. It posts like
   `locale_menu/1`.
   """
   attr :id, :string, default: "footer-locale"
   attr :locale, :map, required: true
 
   def locale_picker(assigns) do
-    assigns = assign(assigns, :groups, Locales.by_country())
-
     ~H"""
     <div id={@id}>
-      <p class="flex items-center gap-x-2 text-sm/6 font-medium text-ink">
+      <button
+        id={"#{@id}-trigger"}
+        type="button"
+        data-dialog-open={"#{@id}-dialog"}
+        aria-haspopup="dialog"
+        class="inline-flex min-h-10 items-center gap-x-2 rounded-field px-2 text-sm/6 font-medium text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus sm:min-h-9"
+      >
         <.icon name="hero-globe-alt" class="size-5 text-ink-muted" />
-        {gettext("Language and country")}
-      </p>
-      <div class="mt-1 flex flex-wrap gap-x-8 gap-y-1">
-        <div
-          :for={{country, locales} <- @groups}
-          role="group"
-          aria-label={country_name(country)}
-          class="flex flex-wrap items-center gap-x-1"
-        >
-          <span class="text-sm/6 text-ink-muted">{country_name(country)}</span>
-          <button
-            :for={locale <- locales}
-            id={"#{@id}-#{locale.code}"}
-            type="submit"
-            form={"#{@id}-form"}
-            name="locale"
-            value={locale.code}
-            lang={locale.language}
-            aria-current={locale.code == @locale.code && "true"}
-            class="inline-flex min-h-11 items-center rounded-field px-2 text-sm/6 text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus aria-[current=true]:font-semibold aria-[current=true]:text-primary sm:min-h-9"
-          >
-            {locale.name}
-          </button>
-        </div>
-      </div>
+        <span class="sr-only">{gettext("Language, Country & Currency")}:</span>
+        <span lang={@locale.language}>{@locale.name}</span>
+        · {country_name(@locale.country)} · <.currency_label locale={@locale} />
+      </button>
+      <.locale_dialog id={@id} locale={@locale} />
     </div>
     <.locale_form id={"#{@id}-form"} />
+    """
+  end
+
+  # The dialog of both: a title, a close button, and a card for each country with its languages as links.
+  attr :id, :string, required: true
+  attr :locale, :map, required: true
+
+  defp locale_dialog(assigns) do
+    assigns =
+      assigns
+      |> assign(:groups, Locales.by_country())
+      |> assign(:currencies, Regions.currencies())
+
+    ~H"""
+    <dialog
+      id={"#{@id}-dialog"}
+      aria-labelledby={"#{@id}-title"}
+      data-backdrop-close
+      data-locale-dialog
+      class="m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-3xl overflow-hidden rounded-card border border-line bg-surface p-0 text-ink shadow-pop backdrop:bg-overlay"
+    >
+      <div class="flex max-h-[90vh] flex-col">
+        <div class="flex items-center justify-between gap-x-3 border-b border-line px-5 py-3">
+          <h2 id={"#{@id}-title"} class="flex items-center gap-x-2 text-base/6 font-semibold">
+            <.icon name="hero-globe-alt" class="size-5 text-ink-muted" />
+            {gettext("Language, Country & Currency")}
+          </h2>
+          <button
+            type="button"
+            data-dialog-close
+            class="-mr-2 inline-flex size-9 items-center justify-center rounded-full text-ink-muted hover:bg-surface-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-focus"
+          >
+            <span class="sr-only">{gettext("close")}</span>
+            <.icon name="hero-x-mark" class="size-5" />
+          </button>
+        </div>
+        <div class="space-y-5 overflow-y-auto p-4 sm:p-5">
+          <section data-group="currency">
+            <.dialog_heading id={"#{@id}-currency-heading"}>{gettext("Currency")}</.dialog_heading>
+            <select
+              id={"#{@id}-currency"}
+              aria-labelledby={"#{@id}-currency-heading"}
+              data-currency-select
+              data-default={Regions.default_currency(@locale.country)}
+              class="block w-full rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:max-w-xs"
+            >
+              <option
+                :for={currency <- @currencies}
+                value={currency["code"]}
+                selected={currency["code"] == Regions.default_currency(@locale.country)}
+              >
+                {currency["code"]} {currency["symbol"]}
+              </option>
+            </select>
+          </section>
+          <section data-group="country-language">
+            <.dialog_heading id={"#{@id}-countries-heading"}>
+              {gettext("Country & Language")}
+            </.dialog_heading>
+            <div class="grid grid-cols-2 gap-3 lg:grid-cols-3">
+              <div
+                :for={{country, locales} <- @groups}
+                role="group"
+                aria-label={country_name(country)}
+                class={[
+                  "rounded-card border p-2",
+                  if(country == @locale.country,
+                    do: "border-primary bg-surface-muted",
+                    else: "border-line"
+                  )
+                ]}
+              >
+                <p class="flex items-center gap-x-2 px-2 pt-1 pb-1.5 text-sm/6 font-semibold">
+                  <span aria-hidden="true" class="text-lg/6">{flag(country)}</span>
+                  {country_name(country)}
+                </p>
+                <button
+                  :for={locale <- locales}
+                  id={"#{@id}-#{locale.code}"}
+                  type="submit"
+                  form={"#{@id}-form"}
+                  name="locale"
+                  value={locale.code}
+                  lang={locale.language}
+                  aria-current={locale.code == @locale.code && "true"}
+                  class="flex min-h-10 w-full cursor-pointer items-center gap-x-2 rounded-field px-2 text-left text-sm/6 text-ink transition-colors hover:bg-primary hover:text-on-primary focus-visible:bg-primary focus-visible:text-on-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus aria-[current=true]:font-semibold aria-[current=true]:text-primary aria-[current=true]:hover:text-on-primary sm:min-h-9"
+                >
+                  {locale.name}
+                  <.icon
+                    name="hero-check"
+                    class={["ml-auto size-4", locale.code != @locale.code && "opacity-0"]}
+                  />
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </dialog>
+    """
+  end
+
+  # A section heading of the dialog: the bar, the title and a hairline, as in the forms (`assets/js/bill/form.ts`).
+  attr :id, :string, required: true
+  slot :inner_block, required: true
+
+  defp dialog_heading(assigns) do
+    ~H"""
+    <div class="mb-2.5 flex items-center gap-3">
+      <h3
+        id={@id}
+        class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
+      >
+        {render_slot(@inner_block)}
+      </h3>
+      <span class="h-px flex-1 bg-line"></span>
+    </div>
+    """
+  end
+
+  # The code of the currency in the switch. The server writes the country's own; the script of the page writes the
+  # one the visitor chose (`locale.ts`), which is only in their browser.
+  attr :locale, :map, required: true
+
+  defp currency_label(assigns) do
+    ~H"""
+    <span data-currency-label data-default={Regions.default_currency(@locale.country)}>
+      {Regions.default_currency(@locale.country)}
+    </span>
     """
   end
 
@@ -673,7 +772,7 @@ defmodule QuickSlipsWeb.UI do
       <button
         id={"#{@id}-trigger"}
         type="button"
-        class="relative flex min-h-11 items-center gap-3 rounded-full pr-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+        class="relative flex min-h-10 sm:min-h-9 items-center gap-3 rounded-full pr-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
       >
         <span class="sr-only">{gettext("Open user menu")}</span>
         <.avatar initials={initials(@user)} />

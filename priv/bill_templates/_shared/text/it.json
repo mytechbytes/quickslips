@@ -1,0 +1,109 @@
+{
+  "months": [
+    "gennaio",
+    "febbraio",
+    "marzo",
+    "aprile",
+    "maggio",
+    "giugno",
+    "luglio",
+    "agosto",
+    "settembre",
+    "ottobre",
+    "novembre",
+    "dicembre"
+  ],
+  "months_short": [
+    "gen",
+    "feb",
+    "mar",
+    "apr",
+    "mag",
+    "giu",
+    "lug",
+    "ago",
+    "set",
+    "ott",
+    "nov",
+    "dic"
+  ],
+  "categories": {
+    "Travel": "Viaggi",
+    "Home & utilities": "Casa e utenze",
+    "Health & learning": "Salute e istruzione",
+    "Food & shopping": "Cibo e acquisti",
+    "Work": "Lavoro"
+  },
+  "in_words": {
+    "label": "Importo in lettere",
+    "and": "e",
+    "only": "",
+    "joiner": "",
+    "currencies": {
+      "INR": {
+        "one": "rupia",
+        "other": "rupie",
+        "minor_one": "paisa",
+        "minor_other": "paise",
+        "gender": "f",
+        "minor_gender": "f"
+      },
+      "EUR": {
+        "one": "euro",
+        "other": "euro",
+        "minor_one": "centesimo",
+        "minor_other": "centesimi",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "USD": {
+        "one": "dollaro",
+        "other": "dollari",
+        "minor_one": "centesimo",
+        "minor_other": "centesimi",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "CNY": {
+        "one": "yuan",
+        "other": "yuan",
+        "minor_one": "fen",
+        "minor_other": "fen",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "JPY": {
+        "one": "yen",
+        "other": "yen",
+        "minor_one": "sen",
+        "minor_other": "sen",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "GBP": {
+        "one": "sterlina",
+        "other": "sterline",
+        "minor_one": "penny",
+        "minor_other": "pence",
+        "gender": "f",
+        "minor_gender": "m"
+      },
+      "BRL": {
+        "one": "real",
+        "other": "real",
+        "minor_one": "centavo",
+        "minor_other": "centavi",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "CAD": {
+        "one": "dollaro canadese",
+        "other": "dollari canadesi",
+        "minor_one": "centesimo",
+        "minor_other": "centesimi",
+        "gender": "m",
+        "minor_gender": "m"
+      }
+    }
+  }
+}

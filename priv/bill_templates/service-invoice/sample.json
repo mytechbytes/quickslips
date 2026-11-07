@@ -8,15 +8,23 @@
   "client_name": "Shreeji Logistics Pvt Ltd",
   "client_address": "Plot 44, Makarpura GIDC, Vadodara, Gujarat 390010",
   "client_gstin": "24PQRST5678G1Z9",
-  "service_1": "Engine overhaul and servicing (per truck)",
-  "qty_1": 2,
-  "rate_1": 38000,
-  "service_2": "Brake pad replacement (per set)",
-  "qty_2": 2,
-  "rate_2": 4500,
-  "service_3": "Labour and road test",
-  "qty_3": 1,
-  "rate_3": 4000,
+  "items": [
+    {
+      "name": "Engine overhaul and servicing (per truck)",
+      "qty": 2,
+      "rate": 38000
+    },
+    {
+      "name": "Brake pad replacement (per set)",
+      "qty": 2,
+      "rate": 4500
+    },
+    {
+      "name": "Labour and road test",
+      "qty": 1,
+      "rate": 4000
+    }
+  ],
   "gst_percent": 18,
   "notes": "Pay by bank transfer within 15 days. State Bank of India, A/c 3321 0098 4412, IFSC SBIN0001234."
 }

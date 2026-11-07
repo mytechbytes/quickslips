@@ -11,7 +11,8 @@ defmodule QuickSlipsWeb.LocaleMenuTest do
 
       assert has_element?(view, "#locale-menu-trigger")
 
-      for code <- ["en-in", "hi-in", "es-es"] do
+      for code <-
+            ~w(en-in hi-in es-es en-us zh-cn de-de ja-jp en-gb fr-fr it-it pt-br en-ca fr-ca) do
         assert has_element?(
                  view,
                  ~s(#locale-menu-#{code}[type=submit][form=locale-menu-form][name=locale][value=#{code}])
@@ -23,7 +24,7 @@ defmodule QuickSlipsWeb.LocaleMenuTest do
                )
       end
 
-      for code <- ["es-mx", "en-us", "en-gb"] do
+      for code <- ["es-mx", "xx-yy"] do
         refute has_element?(view, "#locale-menu-#{code}")
         refute has_element?(view, "#footer-locale-#{code}")
       end
@@ -57,9 +58,9 @@ defmodule QuickSlipsWeb.LocaleMenuTest do
 
     test "says what is chosen, in the language of the page", %{conn: conn} do
       for {path, text} <- [
-            {"/en-in", "English · India"},
-            {"/hi-in", "हिन्दी · भारत"},
-            {"/es-es", "Español · España"}
+            {"/en-in", "English · India · INR"},
+            {"/hi-in", "हिन्दी · भारत · INR"},
+            {"/es-es", "Español · España · EUR"}
           ] do
         {:ok, view, _html} = live(conn, path)
 
@@ -67,7 +68,8 @@ defmodule QuickSlipsWeb.LocaleMenuTest do
                |> element("#locale-menu-trigger")
                |> render()
                |> LazyHTML.from_fragment()
-               |> LazyHTML.text() =~
+               |> LazyHTML.text()
+               |> String.replace(~r/\s+/, " ") =~
                  text
       end
     end

@@ -1,0 +1,70 @@
+{
+  "title": "Gerador de nota de combustível",
+  "name": "Nota de combustível",
+  "public_slug": "gerador-de-nota-de-combustivel",
+  "summary": "Crie uma nota de abastecimento de gasolina ou diesel em PDF.",
+  "description": "Gere uma nota de combustível organizada com nome do posto, data, tipo de combustível, quantidade e preço. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Clássico"
+  },
+  "fields": {
+    "station_name": {
+      "label": "Nome do posto"
+    },
+    "station_address": {
+      "label": "Endereço do posto"
+    },
+    "bill_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "vehicle_number": {
+      "label": "Placa do veículo"
+    },
+    "fuel_type": {
+      "label": "Tipo de combustível",
+      "options": {
+        "Petrol": "Gasolina",
+        "Diesel": "Diesel",
+        "CNG": "GNV"
+      }
+    },
+    "quantity": {
+      "label": "Quantidade (litros)"
+    },
+    "rate": {
+      "label": "Preço por litro ({currency})"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    }
+  },
+  "print": {
+    "bill_no": "Nº",
+    "date": "Data",
+    "vehicle": "Veículo",
+    "fuel": "Combustível",
+    "item": "Descrição",
+    "quantity": "Qtd. (L)",
+    "rate": "Preço",
+    "amount": "Valor",
+    "total": "Total",
+    "signatory": "Assinatura autorizada",
+    "thanks": "Obrigado. Volte sempre!",
+    "taxable": "Base de cálculo",
+    "tax_included": "Preço com impostos incluídos."
+  },
+  "sample": {
+    "station_name": "Posto Sol Nascente",
+    "station_address": "Av. Paulista, 1000, Bela Vista, São Paulo - SP, 01310-100",
+    "bill_number": "NF-10482",
+    "vehicle_number": "ABC-1D23",
+    "rate": 6.19,
+    "seller_tax_id": "12.345.678/0001-90"
+  }
+}
