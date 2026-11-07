@@ -29,10 +29,12 @@
       "label": "VAT number",
       "pattern": "^(GB)?([0-9]{9}|[0-9]{12})$"
     },
-    "checked": "2026-11-06",
-    "note": "Standard 20%, reduced 5%, zero 0% (gov.uk). The nine-digit VAT number shape is from general knowledge and was not checked in a source.",
+    "checked": "2026-11-07",
+    "note": "Standard 20%, reduced 5%, zero 0% (gov.uk). The VAT number is nine digits, with GB in front (HMRC design pattern); a 12-digit form is accepted for branches. The pattern only checks the shape, not that the number exists.",
     "sources": [
-      "https://www.gov.uk/vat-rates"
+      "https://www.gov.uk/vat-rates",
+      "https://design.tax.service.gov.uk/hmrc-design-patterns/vat-registration-number/",
+      "https://www.gov.uk/check-uk-vat-number"
     ]
   }
 }

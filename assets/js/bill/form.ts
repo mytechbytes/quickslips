@@ -90,6 +90,9 @@ function addBusinessPicker(
   form.prepend(wrapper)
 }
 
+// The value of the "Other rate…" line of a list of tax rates: the typed rate is read from the box beside it.
+const OTHER_RATE = "other"
+
 function createControl(field: Field, id: string): Control {
   let control: Control
   if (field.type === "textarea") {
@@ -107,6 +110,8 @@ function createControl(field: Field, id: string): Control {
     control = document.createElement("select")
     if (!field.required) control.append(new Option("—", ""))
     for (const rate of field.rates ?? []) control.append(new Option(`${rate}%`, String(rate)))
+    // A rate the country does not list (a local rate, a new one) is typed in a box that opens beside the list.
+    control.append(new Option(t("other_rate"), OTHER_RATE))
   } else if (field.type === "select") {
     control = document.createElement("select")
     for (const option of field.options ?? []) {
@@ -146,6 +151,7 @@ export function buildForm(
   formatMoney: (amount: number) => string = String,
 ) {
   const controls = new Map<string, Control>()
+  const typedRates = new Map<string, HTMLInputElement>() // the box of "Other rate…", by field key
   const errorEls = new Map<string, HTMLElement>()
   const tables = new Map<string, ReturnType<typeof createItemsField>>()
   const sections = new Map<string, HTMLElement>()
@@ -210,7 +216,26 @@ export function buildForm(
     error.className = "mt-1.5 text-sm text-danger"
     control.setAttribute("aria-describedby", error.id)
 
-    wrapper.append(label, control, error)
+    wrapper.append(label, control)
+    if (field.type === "tax_rate" && control instanceof HTMLSelectElement) {
+      const typed = document.createElement("input")
+      typed.type = "number"
+      typed.step = "any"
+      typed.min = "0"
+      typed.max = "100"
+      typed.id = `${id}-typed`
+      typed.className = `${INPUT_CLASS} mt-2 hidden`
+      typed.placeholder = t("type_rate")
+      typed.setAttribute("aria-label", t("type_rate"))
+      const show = () => typed.classList.toggle("hidden", control.value !== OTHER_RATE)
+      control.addEventListener("change", () => {
+        show()
+        if (control.value === OTHER_RATE) typed.focus()
+      })
+      typedRates.set(field.key, typed)
+      wrapper.append(typed)
+    }
+    wrapper.append(error)
     sectionOf(field).append(wrapper)
     controls.set(field.key, control)
     errorEls.set(field.key, error)
@@ -230,7 +255,8 @@ export function buildForm(
         if (rows.length > 0) data[field.key] = rows
         continue
       }
-      const raw = controls.get(field.key)!.value.trim()
+      const control = controls.get(field.key)!
+      const raw = (control.value === OTHER_RATE ? (typedRates.get(field.key)?.value ?? "") : control.value).trim()
       if (raw === "") continue // optional and empty: omit
       data[field.key] = field.type === "number" || field.type === "tax_rate" ? Number(raw) : raw
     }

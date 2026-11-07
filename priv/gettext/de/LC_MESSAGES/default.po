@@ -676,3 +676,13 @@ msgstr "Positionen"
 #, elixir-autogen, elixir-format
 msgid "Generate Now"
 msgstr "Jetzt erstellen"
+
+#: lib/quickslips_web/live/template_live.ex:146
+#, elixir-autogen, elixir-format
+msgid "Other rate…"
+msgstr "Anderer Satz…"
+
+#: lib/quickslips_web/live/template_live.ex:147
+#, elixir-autogen, elixir-format
+msgid "Type the rate in %"
+msgstr "Satz in % eingeben"

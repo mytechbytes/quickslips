@@ -676,3 +676,13 @@ msgstr "Dettaglio voci"
 #, elixir-autogen, elixir-format
 msgid "Generate Now"
 msgstr "Genera ora"
+
+#: lib/quickslips_web/live/template_live.ex:146
+#, elixir-autogen, elixir-format
+msgid "Other rate…"
+msgstr "Altra aliquota…"
+
+#: lib/quickslips_web/live/template_live.ex:147
+#, elixir-autogen, elixir-format
+msgid "Type the rate in %"
+msgstr "Scrivi l'aliquota in %"

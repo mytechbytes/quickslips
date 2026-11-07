@@ -142,7 +142,9 @@ defmodule QuickSlipsWeb.TemplateLive do
       "subtotal" => gettext("Subtotal"),
       "amount" => gettext("Amount"),
       "pick_business" => gettext("Choose a saved business…"),
-      "fill_business" => gettext("Fill from a saved business")
+      "fill_business" => gettext("Fill from a saved business"),
+      "other_rate" => gettext("Other rate…"),
+      "type_rate" => gettext("Type the rate in %")
     }
   end
 

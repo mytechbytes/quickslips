@@ -50,10 +50,11 @@
       },
       "pattern": "^[0-9]{9}( ?RT ?[0-9]{4})?$"
     },
-    "checked": "2026-11-06",
-    "note": "Federal GST 5%; HST 13% in Ontario, 14% in Nova Scotia (from April 2025, not confirmed in the sources) and 15% in the other Atlantic provinces. Provincial PST and Quebec's QST are separate and are not offered. The number is the nine-digit business number, RT and four digits.",
+    "checked": "2026-11-07",
+    "note": "Federal GST 5%; HST 13% in Ontario, 14% in Nova Scotia (from 1 April 2025, confirmed by the CRA) and 15% in the other Atlantic provinces. Provincial PST and Quebec's QST are separate and are not offered. The number is the nine-digit business number, RT and four digits.",
     "sources": [
-      "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html"
+      "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html",
+      "https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/notice342/nova-scotia-hst-rate-decrease-questions-answers-general-transitional-rules-personal-property-services.html"
     ]
   }
 }

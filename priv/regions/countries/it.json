@@ -37,10 +37,11 @@
       },
       "pattern": "^(IT)?[0-9]{11}$"
     },
-    "checked": "2026-11-06",
-    "note": "Standard 22%; 10%, 5% and 4% for goods and services in Tabella A. Checked against tax-advice sites, not the Agenzia delle Entrate. The 11-digit partita IVA is from general knowledge and was not checked in a source.",
+    "checked": "2026-11-07",
+    "note": "Standard 22%; 10%, 5% and 4% for goods and services in Tabella A (parts II, II-bis and III of DPR 633/1972). Checked on the Agenzia delle Entrate pages. The partita IVA has 11 digits (Agenzia delle Entrate).",
     "sources": [
-      "https://www.fiscozen.it/guide/tipologie-iva/"
+      "https://www.agenziaentrate.gov.it/portale/iva-regole-generali-aliquote-esenzioni-pagamento/norme-generali-e-aliquote",
+      "https://www.agenziaentrate.gov.it/portale/agenzia/amministrazione-trasparente/servizi-erogati/carta-servizi/i-nostri-servizi/area-identificazione-del-contribuente/partita-iva"
     ]
   }
 }

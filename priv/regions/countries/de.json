@@ -35,11 +35,12 @@
       },
       "pattern": "^DE[0-9]{9}$"
     },
-    "checked": "2026-11-06",
-    "note": "Standard 19%, reduced 7%. Checked against secondary sources (tax advisers, Stripe); the Federal Ministry of Finance pages were not reached.",
+    "checked": "2026-11-07",
+    "note": "Standard 19%, reduced 7% (Bundesfinanzministerium, § 12 UStG). Restaurant and catering services return to the reduced rate from 1 January 2026 (BMF letter of 22 December 2025); the bill takes the rate the person picks. The USt-IdNr. shape (DE and nine digits) is from the tax advisers' pages.",
     "sources": [
-      "https://taxfix.de/en/vat-number-germany/",
-      "https://stripe.com/de-lu/resources/more/germany-vat-rate"
+      "https://www.bundesfinanzministerium.de/Web/DE/Service/FAQ_Glossar/Glossar/Functions/glossar.html?lv2=176942&lv3=507052",
+      "https://usth.bundesfinanzministerium.de/usth/2022/A-Umsatzsteuergesetz/IV-Steuer-und-Vorsteuer/Paragraf-12/inhalt.html",
+      "https://taxfix.de/en/vat-number-germany/"
     ]
   }
 }

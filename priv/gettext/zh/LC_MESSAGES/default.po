@@ -676,3 +676,13 @@ msgstr "项目明细"
 #, elixir-autogen, elixir-format
 msgid "Generate Now"
 msgstr "立即生成"
+
+#: lib/quickslips_web/live/template_live.ex:146
+#, elixir-autogen, elixir-format
+msgid "Other rate…"
+msgstr "其他税率…"
+
+#: lib/quickslips_web/live/template_live.ex:147
+#, elixir-autogen, elixir-format
+msgid "Type the rate in %"
+msgstr "输入税率（%）"

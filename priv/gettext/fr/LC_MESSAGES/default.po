@@ -676,3 +676,13 @@ msgstr "Détail des articles"
 #, elixir-autogen, elixir-format
 msgid "Generate Now"
 msgstr "Générer maintenant"
+
+#: lib/quickslips_web/live/template_live.ex:146
+#, elixir-autogen, elixir-format
+msgid "Other rate…"
+msgstr "Autre taux…"
+
+#: lib/quickslips_web/live/template_live.ex:147
+#, elixir-autogen, elixir-format
+msgid "Type the rate in %"
+msgstr "Saisissez le taux en %"

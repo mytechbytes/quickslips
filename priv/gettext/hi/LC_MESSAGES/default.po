@@ -676,3 +676,13 @@ msgstr "वस्तु विवरण"
 #, elixir-autogen, elixir-format
 msgid "Generate Now"
 msgstr "अभी बनाएँ"
+
+#: lib/quickslips_web/live/template_live.ex:146
+#, elixir-autogen, elixir-format
+msgid "Other rate…"
+msgstr "अन्य दर…"
+
+#: lib/quickslips_web/live/template_live.ex:147
+#, elixir-autogen, elixir-format
+msgid "Type the rate in %"
+msgstr "दर % में लिखें"

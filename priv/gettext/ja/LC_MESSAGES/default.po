@@ -676,3 +676,13 @@ msgstr "品目の詳細"
 #, elixir-autogen, elixir-format
 msgid "Generate Now"
 msgstr "今すぐ作成"
+
+#: lib/quickslips_web/live/template_live.ex:146
+#, elixir-autogen, elixir-format
+msgid "Other rate…"
+msgstr "その他の税率…"
+
+#: lib/quickslips_web/live/template_live.ex:147
+#, elixir-autogen, elixir-format
+msgid "Type the rate in %"
+msgstr "税率を%で入力"
