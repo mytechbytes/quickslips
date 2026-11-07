@@ -95,11 +95,11 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
 
     test "a bill with one language only names that one, and the query is not part of the canonical",
          %{conn: conn} do
-      html = conn |> get(~p"/en-in/rent-receipt-generator?from=3") |> html_response(200)
+      html = conn |> get(~p"/en-in/courier-receipt-generator?from=3") |> html_response(200)
       base = QuickSlipsWeb.Endpoint.url()
 
       assert attrs(html, "link[rel=canonical]", "href") == [
-               "#{base}/en-in/rent-receipt-generator"
+               "#{base}/en-in/courier-receipt-generator"
              ]
 
       assert attrs(html, "link[rel=alternate]", "hreflang") ==
@@ -108,8 +108,8 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
 
     test "a bill that is not in the language of the locale is a 404, not English under another address",
          %{conn: conn} do
-      assert_error_sent 404, fn -> get(conn, ~p"/hi-in/rent-receipt-generator") end
-      assert_error_sent 404, fn -> get(conn, ~p"/es-es/rent-receipt-generator") end
+      assert_error_sent 404, fn -> get(conn, ~p"/hi-in/courier-receipt-generator") end
+      assert_error_sent 404, fn -> get(conn, ~p"/es-es/courier-receipt-generator") end
     end
 
     test "the slug of one locale is not an address in another", %{conn: conn} do
@@ -344,17 +344,26 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
   end
 
   describe "the template select" do
-    test "is there even when a bill has one template", %{conn: conn} do
+    test "lists the designs of a bill, the first one chosen", %{conn: conn} do
       html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
       document = LazyHTML.from_document(html)
 
       assert document |> LazyHTML.query("#template-select option") |> LazyHTML.attribute("value") ==
-               ["t1"]
+               ~w(t1 t2 t3 t4 t5 t6)
 
       assert document |> LazyHTML.query("#template-select option[selected]") |> LazyHTML.text() =~
-               "Classic"
+               "Receipt"
 
       assert attrs(html, "#bill-app", "data-template") == ["t1"]
+    end
+
+    test "is there even when a bill has one template", %{conn: conn} do
+      html = conn |> get(~p"/en-in/courier-receipt-generator") |> html_response(200)
+
+      assert html
+             |> LazyHTML.from_document()
+             |> LazyHTML.query("#template-select option")
+             |> LazyHTML.attribute("value") == ["t1"]
     end
 
     test "has the names in the language of the page", %{conn: conn} do
@@ -363,7 +372,7 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       assert html
              |> LazyHTML.from_document()
              |> LazyHTML.query("#template-select option")
-             |> LazyHTML.text() =~ "क्लासिक"
+             |> LazyHTML.text() =~ "पंप स्लिप"
     end
   end
 

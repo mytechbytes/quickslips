@@ -1,0 +1,175 @@
+{
+  "title": "ハイパーマーケット請求書作成",
+  "name": "ハイパーマーケット請求書",
+  "public_slug": "hypermarket-bill-generator",
+  "summary": "商品ごとの税率を記載した大型スーパーの請求書。",
+  "description": "商品コード、商品ごとの{tax}率、税率別の内訳、注文・配送情報、割引額を記載した大型スーパーの請求書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "請求書"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "店舗ブランド"
+    },
+    "company_name": {
+      "label": "会社名"
+    },
+    "company_address": {
+      "label": "会社住所（任意）"
+    },
+    "phone": {
+      "label": "お客様相談室の電話番号（任意）"
+    },
+    "email": {
+      "label": "お客様相談室のメール（任意）"
+    },
+    "website": {
+      "label": "利用規約のURL（任意）"
+    },
+    "cin": {
+      "label": "CIN（任意）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "fssai": {
+      "label": "FSSAI 番号（任意）"
+    },
+    "invoice_number": {
+      "label": "請求書番号"
+    },
+    "date": {
+      "label": "請求書の日付"
+    },
+    "order_number": {
+      "label": "注文番号（任意）"
+    },
+    "order_date": {
+      "label": "注文日（任意）"
+    },
+    "delivery_date": {
+      "label": "配達日（任意）"
+    },
+    "delivery_time": {
+      "label": "配達時間（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "customer_name": {
+      "label": "お客様名（任意）"
+    },
+    "customer_phone": {
+      "label": "携帯電話番号（任意）"
+    },
+    "delivery_mode": {
+      "label": "受け取り方法",
+      "options": {
+        "Self pick-up": "店頭受け取り",
+        "Home delivery": "宅配"
+      }
+    },
+    "delivery_address": {
+      "label": "受け取り・配達先住所（任意）"
+    },
+    "savings": {
+      "label": "定価からの割引額（{currency}）（任意）"
+    },
+    "payment_note": {
+      "label": "お支払いの案内（任意）"
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "商品",
+        "hsn": "商品コード",
+        "qty": "数量",
+        "rate": "単価（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "請求書",
+    "invoice_no": "請求書番号",
+    "invoice_date": "発行日",
+    "hsn": "コード",
+    "particulars": "品名",
+    "qty": "数量",
+    "rate": "単価",
+    "value": "金額",
+    "items": "品目",
+    "amt": "合計",
+    "your_savings": "割引額",
+    "on_list": "定価より",
+    "breakup": "税率別内訳",
+    "amount_in": "金額単位",
+    "rate_col": "税率",
+    "taxable": "課税額",
+    "total": "合計",
+    "order_details": "注文情報",
+    "order_number": "注文番号",
+    "order_date": "注文日",
+    "delivery_date": "配達日",
+    "delivery_time": "配達時間",
+    "payment_mode": "支払方法",
+    "customer_delivery": "お客様・配送情報",
+    "customer_name": "お客様名",
+    "mobile": "携帯電話番号",
+    "delivery_mode": "受け取り方法",
+    "address": "受け取り・配達先住所",
+    "collect": "お届け時に {amount} をお支払いください",
+    "computer_generated": "この請求書はコンピュータで作成されています。",
+    "exempt": "非課税"
+  },
+  "sample": {
+    "brand_name": "グリーンマート",
+    "company_name": "株式会社グリーンマート",
+    "phone": "0120-123-456",
+    "delivery_time": "18:00〜21:00",
+    "payment_note": "代金引換（現金またはカード）",
+    "customer_name": "田中 太郎",
+    "customer_phone": "090-1234-5678",
+    "items": [
+      {
+        "name": "コシヒカリ (2 kg)",
+        "qty": 1,
+        "rate": 780,
+        "tax": 8
+      },
+      {
+        "name": "ひまわり油 (1 L)",
+        "qty": 2,
+        "rate": 420,
+        "tax": 8
+      },
+      {
+        "name": "クリームビスケット (300 g)",
+        "qty": 3,
+        "rate": 198,
+        "tax": 8
+      },
+      {
+        "name": "食器用洗剤 (500 ml)",
+        "qty": 1,
+        "rate": 248,
+        "tax": 10
+      },
+      {
+        "name": "新鮮トマト (1 kg)",
+        "qty": 2,
+        "rate": 298,
+        "tax": 8
+      }
+    ],
+    "savings": 120,
+    "delivery_mode": "Home delivery"
+  }
+}

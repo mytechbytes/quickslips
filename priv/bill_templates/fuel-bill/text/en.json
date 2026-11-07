@@ -5,7 +5,12 @@
   "summary": "Create a petrol or diesel fuel bill as a PDF.",
   "description": "Generate a clean fuel bill with station name, date, fuel type, quantity and rate. Preview instantly and download as PDF.",
   "designs": {
-    "t1": "Classic"
+    "t1": "Receipt",
+    "t2": "Pump slip",
+    "t3": "Thermal",
+    "t4": "Thermal with details",
+    "t5": "Cash memo",
+    "t6": "Dot-matrix"
   },
   "fields": {
     "station_name": {
@@ -42,6 +47,40 @@
     },
     "tax_percent": {
       "label": "{tax} (%) (optional)"
+    },
+    "station_phone": {
+      "label": "Station phone (optional)"
+    },
+    "dealer_name": {
+      "label": "Dealer name (optional)"
+    },
+    "fcc_id": {
+      "label": "FCC ID (optional)"
+    },
+    "fip_no": {
+      "label": "FIP no. (optional)"
+    },
+    "time": {
+      "label": "Time (optional)"
+    },
+    "customer_name": {
+      "label": "Customer name (optional)"
+    },
+    "nozzle_number": {
+      "label": "Nozzle no. (optional)"
+    },
+    "density": {
+      "label": "Density (kg/m³) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "Card": "Card",
+        "UPI": "UPI",
+        "Net banking": "Net banking",
+        "Online": "Online"
+      }
     }
   },
   "print": {
@@ -57,7 +96,45 @@
     "signatory": "Authorised signatory",
     "thanks": "Thank you. Visit again.",
     "taxable": "Taxable amount",
-    "tax_included": "Price includes tax."
+    "tax_included": "Price includes tax.",
+    "receipt_title": "Fuel Receipt",
+    "receipt_details": "Receipt Details",
+    "receipt_no": "Receipt No.",
+    "time": "Time",
+    "billed_to": "Billed To",
+    "customer": "Customer Name",
+    "vehicle_no": "Vehicle No.",
+    "fuel_type": "Fuel Type",
+    "station": "Fuel Station",
+    "payment": "Payment Method",
+    "summary": "Receipt Summary",
+    "fuel_rate": "Fuel Rate",
+    "total_amount": "Total Amount",
+    "thanks_fuelling": "Thank you for fuelling with us!",
+    "queries": "For any queries or complaints, please contact our customer care.",
+    "save_fuel": "Save fuel, secure the future!",
+    "save_money": "Save fuel, save money! Thank you for fuelling with us.",
+    "welcome": "Welcome!",
+    "product": "Product",
+    "volume": "Volume",
+    "unit": "L",
+    "tel": "Tel.",
+    "fcc": "FCC ID",
+    "fip": "FIP No.",
+    "nozzle": "Nozzle No.",
+    "dealer": "Dealer",
+    "density": "Density",
+    "original": "Original",
+    "cash_memo": "Cash Memo",
+    "no": "No.",
+    "dated": "Dated",
+    "particulars": "Particulars",
+    "all_tax_included": "All taxes included",
+    "eoe": "E. & O. E.",
+    "happy_journey": "Wish you a happy journey",
+    "pump": "Pump No.",
+    "grade": "Grade",
+    "unit_price": "Unit Price"
   },
   "sample": {}
 }

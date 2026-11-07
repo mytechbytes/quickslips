@@ -1,0 +1,61 @@
+{
+  "workshop_name": "Sunrise Motors Workshop",
+  "workshop_address": "Plot 21, Industrial Area, Gurugram, Haryana",
+  "workshop_phone": "0124 456 7890",
+  "dealer_name": "Sunrise Motors Pvt. Ltd.",
+  "seller_tax_id": "06ABCDE1234F1Z5",
+  "document_type": "Estimate",
+  "document_number": "EST-2026-0897",
+  "reference_number": "33368",
+  "date": "2026-10-12",
+  "workshop_section": "Main workshop",
+  "customer_name": "Amit Verma",
+  "customer_phone": "98450 12345",
+  "vehicle_model": "Honda City",
+  "registration_number": "HR 26 AB 1234",
+  "vin": "MAKGM654MKN012345",
+  "insurance_company": "National Insurance",
+  "parts": [
+    {
+      "code": "61684KHD787",
+      "name": "Engine oil filter",
+      "billing": "PAID",
+      "qty": 1,
+      "rate": 450,
+      "discount": 10
+    },
+    {
+      "code": "45022TF0",
+      "name": "Front brake pads (set)",
+      "billing": "PAID",
+      "qty": 1,
+      "rate": 2400,
+      "discount": 0
+    },
+    {
+      "code": "17220R1A",
+      "name": "Air filter",
+      "billing": "Warranty",
+      "qty": 1,
+      "rate": 650,
+      "discount": 100
+    }
+  ],
+  "labour": [
+    {
+      "code": "66266KTP337",
+      "name": "Regular service",
+      "billing": "PAID",
+      "rate": 1200,
+      "discount": 0
+    },
+    {
+      "code": "66310KBR101",
+      "name": "Brake inspection and fitting",
+      "billing": "PAID",
+      "rate": 800,
+      "discount": 5
+    }
+  ],
+  "terms": "Payment to be made within 7 days from the date of invoice.\nEstimate valid for 15 days only.\nLabour charges as per company policy.\nInsurance claims subject to surveyor approval.\nThe workshop is not responsible for items left in the vehicle.\nPlease check all details before leaving the workshop."
+}

@@ -1,0 +1,174 @@
+{
+  "title": "Générateur de facture de taxi",
+  "name": "Facture de taxi",
+  "public_slug": "generateur-de-facture-de-taxi",
+  "summary": "Facture de course en taxi ou VTC avec tarif, péage et {tax}.",
+  "description": "Générez une facture de taxi ou de VTC avec lieux de prise en charge et de dépose, distance, tarif, péage et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Reçu de course",
+    "t2": "Course et facture",
+    "t3": "Facture",
+    "t4": "Reçu simple"
+  },
+  "fields": {
+    "operator_name": {
+      "label": "Nom de la société de taxi ou du chauffeur"
+    },
+    "operator_address": {
+      "label": "Adresse (facultatif)"
+    },
+    "receipt_number": {
+      "label": "Numéro de reçu"
+    },
+    "date": {
+      "label": "Date de la course"
+    },
+    "drop_date": {
+      "label": "Date d'arrivée (facultatif)"
+    },
+    "passenger_name": {
+      "label": "Nom du passager (facultatif)"
+    },
+    "customer_phone": {
+      "label": "Mobile du passager (facultatif)"
+    },
+    "customer_address": {
+      "label": "Adresse du passager (facultatif)"
+    },
+    "driver_name": {
+      "label": "Nom du chauffeur (facultatif)"
+    },
+    "vehicle_number": {
+      "label": "Immatriculation du véhicule (facultatif)"
+    },
+    "vehicle_model": {
+      "label": "Modèle du véhicule (facultatif)"
+    },
+    "pickup": {
+      "label": "Lieu de prise en charge"
+    },
+    "pickup_time": {
+      "label": "Heure de prise en charge (facultatif)"
+    },
+    "drop": {
+      "label": "Lieu de destination"
+    },
+    "drop_time": {
+      "label": "Heure d'arrivée (facultatif)"
+    },
+    "distance_km": {
+      "label": "Distance (km)"
+    },
+    "base_fare": {
+      "label": "Tarif ({currency})"
+    },
+    "toll": {
+      "label": "Péage et frais de service ({currency}) (facultatif)"
+    },
+    "airport_charge": {
+      "label": "Supplément aéroport ({currency}) (facultatif)"
+    },
+    "advance_paid": {
+      "label": "Acompte versé ({currency}) (facultatif)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Payé par",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    }
+  },
+  "print": {
+    "receipt_title": "Voici votre reçu pour votre course,",
+    "enjoyed": "Nous espérons que vous avez apprécié votre course.",
+    "trip_total": "Tarif total de la course",
+    "trip_fare": "Tarif de la course",
+    "subtotal": "Sous-total",
+    "toll": "Péage et frais de service",
+    "airport": "Supplément aéroport",
+    "payments": "Paiements",
+    "includes": "Le total de {total} comprend {tax} pour {amount}.",
+    "rode_with": "Vous avez roulé avec",
+    "plate": "Plaque",
+    "fares_incl": "Les tarifs incluent les taxes.",
+    "pickup": "Prise en charge",
+    "drop": "Destination",
+    "thanks_travel": "Merci d'avoir voyagé avec nous,",
+    "ride_details": "Détails de la course",
+    "bill_details": "Détails de la facture",
+    "total_bill": "Total à payer",
+    "includes_taxes": "Dont {amount} de taxes",
+    "promise": "Nous avons tenu notre promesse de vous conduire à destination au tarif total convenu. Modifier la destination ou l'itinéraire peut changer ce tarif.",
+    "complaint": "Pour toute réclamation concernant cette facture, écrivez-nous à",
+    "payment": "Paiement",
+    "paid_by": "Payé par",
+    "original": "Facture originale",
+    "driver_invoice": "Facture du chauffeur",
+    "service": "Prestation : course en taxi",
+    "invoice_id": "N° de facture",
+    "invoice_date": "Date de facture",
+    "customer": "Nom du client",
+    "mobile": "Mobile",
+    "pickup_address": "Adresse de prise en charge",
+    "description": "Désignation",
+    "amount": "Montant",
+    "ride_fee": "Prix de la course",
+    "note": "À noter : 1. Cette facture est émise au nom du prestataire de transport. 2. Elle est générée électroniquement et ne nécessite pas de signature.",
+    "tax_invoice": "Facture",
+    "invoice_no": "N° de facture",
+    "date": "Date",
+    "billed_to": "Facturé à",
+    "trip_details": "Détails du trajet",
+    "driver": "Chauffeur",
+    "vehicle_no": "Immatriculation",
+    "vehicle": "Véhicule",
+    "date_time": "Date et heure",
+    "particulars": "Désignation",
+    "period": "Période de voyage",
+    "until": "au",
+    "distance": "Distance",
+    "rate": "Tarif",
+    "pick_point": "Lieu de prise en charge",
+    "drop_point": "Lieu de dépose",
+    "advance": "Moins : acompte versé",
+    "balance": "Solde à payer",
+    "total_amount": "Montant total",
+    "signatory": "Signature autorisée",
+    "thanks_riding": "Merci d'avoir voyagé,",
+    "before_tax": "Avant taxes",
+    "fees": "Péages, aéroport et frais",
+    "trip_id": "ID de course",
+    "cab_no": "N° du taxi",
+    "time": "Heure de la course",
+    "paid": "Payé",
+    "total": "Total",
+    "unit": "km"
+  },
+  "sample": {
+    "operator_name": "Taxi Seine",
+    "passenger_name": "Camille Martin",
+    "driver_name": "Pierre Dubois",
+    "pickup": "Gare de Lyon, Paris",
+    "drop": "Aéroport Charles-de-Gaulle, Roissy",
+    "vehicle_number": "AB-452-CD",
+    "vehicle_model": "Peugeot 508",
+    "customer_phone": "06 12 34 56 78",
+    "receipt_number": "T-007731",
+    "distance_km": 32.1,
+    "base_fare": 56,
+    "toll": 0,
+    "airport_charge": 4,
+    "advance_paid": 0,
+    "tax_percent": 10
+  }
+}

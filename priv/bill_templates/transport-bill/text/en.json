@@ -1,0 +1,118 @@
+{
+  "title": "Transport Bill Generator",
+  "name": "Transport Bill",
+  "public_slug": "transport-bill-generator",
+  "summary": "Goods consignment note with consignor, consignee, weight and freight.",
+  "description": "Generate a goods transport bill or consignment note with origin and destination, consignor and consignee, number of articles, weight and to-pay or paid freight. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Consignment note"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Transport company name"
+    },
+    "company_address": {
+      "label": "Company address (optional)"
+    },
+    "company_phone": {
+      "label": "Office phone numbers (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "gc_number": {
+      "label": "Consignment note number"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "booking_date": {
+      "label": "Booking date (optional)"
+    },
+    "eta_date": {
+      "label": "Expected delivery date (optional)"
+    },
+    "pm_number": {
+      "label": "P.M. number (optional)"
+    },
+    "consignor": {
+      "label": "Consignor's name and address"
+    },
+    "consignee": {
+      "label": "Consignee's name and address"
+    },
+    "description": {
+      "label": "Description of goods (optional)"
+    },
+    "articles": {
+      "label": "Number of articles (optional)"
+    },
+    "actual_weight": {
+      "label": "Actual weight (optional)"
+    },
+    "charged_weight": {
+      "label": "Charged weight (optional)"
+    },
+    "remarks": {
+      "label": "Remarks (optional)"
+    },
+    "from_place": {
+      "label": "From (place)"
+    },
+    "from_phone": {
+      "label": "Origin phone (optional)"
+    },
+    "from_address": {
+      "label": "Origin address"
+    },
+    "to_place": {
+      "label": "To (place)"
+    },
+    "to_phone": {
+      "label": "Destination phone (optional)"
+    },
+    "to_address": {
+      "label": "Destination address"
+    },
+    "delivery_at": {
+      "label": "Delivery at (optional)"
+    },
+    "signatory_name": {
+      "label": "Signatory name (optional)"
+    },
+    "to_pay": {
+      "label": "To pay ({currency}) (optional)"
+    },
+    "paid": {
+      "label": "Paid ({currency}) (optional)"
+    }
+  },
+  "print": {
+    "heading": "Goods consignment note",
+    "title": "Customer's copy (original)",
+    "gc_no": "G.C. No.",
+    "from": "From",
+    "to": "To",
+    "consignor": "Consignor's name & address",
+    "consignee": "Consignee's name & address",
+    "description": "Description / said to contain",
+    "date": "Date",
+    "booking": "Booking date",
+    "eta": "ETA date",
+    "articles": "No. of articles",
+    "pm_no": "P.M. no.",
+    "actual_weight": "Actual weight",
+    "charged_weight": "Charged weight",
+    "remarks": "Remarks",
+    "to_pay": "To pay",
+    "paid": "Paid",
+    "signature": "Signature",
+    "delivery_at": "Delivery at",
+    "tel": "Tel.",
+    "note_labour": "Note: the delivery office will charge labour and delivery charges separately from the freight.",
+    "note_insurance": "Please insure valuable goods fully; the transporter is not liable for loss.",
+    "note_validity": "This receipt is valid for 5 days from the booking date only. Please take delivery from the transport godown on time.",
+    "note_docs": "Any transport documents required by law (such as an E-way bill in India) must be provided by the consignor, who is responsible for losses caused by missing documents."
+  },
+  "sample": {}
+}

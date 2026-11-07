@@ -1,29 +1,39 @@
-// Rent receipt, design t1.
+// Rent receipt, design t1: the receipt a tenant hands to the employer to be reimbursed (HRA): a certificate with the
+// amount, the month, the property and the landlord. Reads data.json (next to this file). The words come from text.json
+// (`t`), the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(paper: "a5", margin: (x: 16mm, y: 16mm), size: 10.5pt)
-#set par(leading: 0.7em)
+#show: base.with(width: 160mm, margin: (x: 14mm, y: 13mm), size: 10.5pt)
+#set par(leading: 0.75em)
 
-#align(center)[#text(size: 15pt, weight: "bold")[RENT RECEIPT]]
+#let rent = data.monthly_rent
+// The revenue stamp is stuck on a receipt in India only.
+#let stamp = if region.country == "in" {
+  box(width: 24mm, height: 28mm, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"), inset: 2mm, align(center + horizon, text(size: 7.5pt, fill: muted, t.revenue_stamp)))
+}
+
+#align(right)[#t.date: #fmt-date(data.receipt_date)]
+#v(1mm)
+#align(center, text(size: 15pt, weight: "bold", t.title))
 #v(2mm)
 #rule()
 #v(4mm)
 
-#align(right)[Date: #fmt-date(data.receipt_date)]
+#say(t.certify, (tenant: data.tenant_name, amount: money(rent), landlord: data.landlord_name, month: month-label(data.month)))
+
+#t.reimburse
+
 #v(2mm)
-
-Received *#money(data.monthly_rent)* from *#data.tenant_name* towards the rent for the
-month of *#month-label(data.month)* for the property situated at:
-
-#pad(left: 5mm)[#lines(data.property_address)]
-
-Payment mode: *#data.payment_mode*.
-
-#v(6mm)
-
-// The landlord signs. With a saved signature it is drawn above the line, otherwise there is room to sign by hand.
-#signature-block(
-  data,
-  [Landlord] + if opt(data, "landlord_pan") != none [ \ PAN: #opt(data, "landlord_pan")],
-  name: data.landlord_name,
+#grid(
+  columns: (1fr, auto),
+  column-gutter: 8mm,
+  row-gutter: 5mm,
+  [*#t.address:* #lines(data.property_address)], align(right)[*#t.payment_method:* #option-label("payment_mode", data.payment_mode)],
+  [*#t.landlord_name:* #data.landlord_name#if opt(data, "landlord_pan") != none [ (PAN: #opt(data, "landlord_pan"))]], align(right)[*#t.tenant_name:* #data.tenant_name],
+)
+#v(4mm)
+#grid(
+  columns: (1fr, auto),
+  [*#t.date:* #fmt-date(data.receipt_date) #if stamp != none [ \ \ #stamp]],
+  align(bottom, signature-block(data, t.landlord_signature, name: data.landlord_name)),
 )

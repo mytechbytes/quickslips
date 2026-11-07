@@ -1,0 +1,248 @@
+{
+  "title": "Générateur de facture d'électronique",
+  "name": "Facture d'électronique",
+  "public_slug": "generateur-de-facture-d-electronique",
+  "summary": "Facture d'électronique avec numéros de série et détail des taxes.",
+  "description": "Générez une facture pour téléphones, appareils électroménagers et autres produits électroniques avec numéros de série, codes HS, {tax} incluse dans le prix, les parties facturée et livrée, les détails de paiement et le montant en lettres. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Facture"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Raison sociale"
+    },
+    "branch": {
+      "label": "Succursale (facultatif)"
+    },
+    "seller_address": {
+      "label": "Adresse (facultatif)"
+    },
+    "seller_state": {
+      "label": "Région (facultatif)"
+    },
+    "seller_phone": {
+      "label": "Téléphone (facultatif)"
+    },
+    "seller_email": {
+      "label": "E-mail (facultatif)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "seller_pan": {
+      "label": "PAN (facultatif)"
+    },
+    "cin": {
+      "label": "CIN (facultatif)"
+    },
+    "copy_label": {
+      "label": "Mention de la copie (facultatif)"
+    },
+    "place_of_supply": {
+      "label": "Lieu de livraison (facultatif)"
+    },
+    "supply": {
+      "label": "Fourniture",
+      "options": {
+        "Same state": "Même région",
+        "Other state": "Autre région"
+      }
+    },
+    "reverse_charge": {
+      "label": "Autoliquidation (facultatif)"
+    },
+    "invoice_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date de la facture"
+    },
+    "do_number": {
+      "label": "N° de bon de livraison (facultatif)"
+    },
+    "financier": {
+      "label": "Organisme de financement (facultatif)"
+    },
+    "bill_name": {
+      "label": "Facturé à : nom"
+    },
+    "bill_care_of": {
+      "label": "Facturé à : aux soins de (facultatif)"
+    },
+    "bill_address": {
+      "label": "Facturé à : adresse (facultatif)"
+    },
+    "bill_state": {
+      "label": "Facturé à : région (facultatif)"
+    },
+    "bill_pin": {
+      "label": "Facturé à : code postal (facultatif)"
+    },
+    "bill_phone": {
+      "label": "Facturé à : téléphone (facultatif)"
+    },
+    "bill_tax_id": {
+      "label": "Facturé à : {tax_id} (facultatif)"
+    },
+    "ship_code": {
+      "label": "Livrer à : code (facultatif)"
+    },
+    "ship_auth_code": {
+      "label": "Livrer à : code d'autorisation (facultatif)"
+    },
+    "ship_address": {
+      "label": "Livrer à : adresse (facultatif)"
+    },
+    "ship_state": {
+      "label": "Livrer à : région (facultatif)"
+    },
+    "ship_phone": {
+      "label": "Livrer à : téléphone (facultatif)"
+    },
+    "ship_tax_id": {
+      "label": "Livrer à : {tax_id} (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Cheque": "Chèque",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "payment_reference": {
+      "label": "N° d'autorisation / chèque / OTP (facultatif)"
+    },
+    "payment_date": {
+      "label": "Date de paiement (facultatif)"
+    },
+    "amount_paid": {
+      "label": "Montant payé ({currency}) (le total si vide) (facultatif)"
+    },
+    "remarks": {
+      "label": "Remarques (facultatif)"
+    },
+    "bank_details": {
+      "label": "Banque (facultatif)"
+    },
+    "bank_account": {
+      "label": "Compte bancaire (facultatif)"
+    },
+    "bank_ifsc": {
+      "label": "IFSC (facultatif)"
+    },
+    "customer_care": {
+      "label": "Service client (facultatif)"
+    },
+    "delivery_helpline": {
+      "label": "Assistance livraison (facultatif)"
+    },
+    "signatory_for": {
+      "label": "Signataire pour (facultatif)"
+    },
+    "thank_you": {
+      "label": "Message de remerciement (facultatif)"
+    },
+    "items": {
+      "label": "Articles",
+      "columns": {
+        "name": "Article",
+        "code": "N° de série",
+        "hsn": "Code HS",
+        "qty": "Qté",
+        "rate": "Prix ({currency})",
+        "tax": "Taxe %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Facture",
+    "state": "Région",
+    "tel_no": "Tél.",
+    "email": "E-mail",
+    "place_of_supply": "Lieu de livraison",
+    "invoice_number": "Numéro de facture",
+    "invoice_date": "Date de facture",
+    "do_number": "N° de BL",
+    "bill_to_party": "Facturé à",
+    "ship_to_party": "Livré à",
+    "financier": "Financeur",
+    "name": "Nom",
+    "care_of": "Aux soins de",
+    "address": "Adresse",
+    "pin": "Code postal",
+    "contact": "Téléphone",
+    "code": "Code",
+    "auth_code": "Code d'autorisation",
+    "serial_no": "N° de série",
+    "item_name": "Article",
+    "hsn": "Code HS",
+    "qty": "Qté",
+    "rate": "Prix",
+    "taxable_value": "Base HT",
+    "amount": "Montant",
+    "totals": "Totaux",
+    "amount_in_words": "Montant en lettres",
+    "payment_mode": "Mode",
+    "reference": "Aut. / chèque / OTP",
+    "date": "Date",
+    "total": "Total",
+    "payments": "Paiements",
+    "balance": "Solde",
+    "amt": "Mont.",
+    "remarks": "Remarques",
+    "bank_details": "Banque",
+    "bank_account": "Compte",
+    "ifsc": "IFSC",
+    "customer_care": "Service client",
+    "delivery_helpline": "Assistance livraison",
+    "for": "pour",
+    "authorised": "Signataire autorisé"
+  },
+  "sample": {
+    "company_name": "Vision Électronique SAS",
+    "branch": "Magasin Centre",
+    "signatory_for": "Vision Électronique SAS",
+    "seller_state": "Île-de-France",
+    "seller_phone": "01 23 45 67 89",
+    "bill_name": "Camille Martin",
+    "bill_state": "Île-de-France",
+    "bill_pin": "75001",
+    "bill_phone": "06 12 34 56 78",
+    "ship_state": "Île-de-France",
+    "customer_care": "0 800 123 456",
+    "delivery_helpline": "0 800 765 432",
+    "bank_details": "Banque Exemple, Paris",
+    "bank_account": "FR14 2004 1010 0505 0001 3M02 606",
+    "items": [
+      {
+        "name": "Smartphone 128 Go (noir minuit)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 449,
+        "tax": 20
+      },
+      {
+        "name": "Écouteurs sans fil",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 49,
+        "tax": 20
+      },
+      {
+        "name": "Batterie externe 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 29.9,
+        "tax": 20
+      }
+    ],
+    "ship_phone": "06 12 34 56 78",
+    "copy_label": "(Original pour le destinataire)",
+    "remarks": "Conservez cette facture pour la garantie. Protège-écran posé gratuitement en magasin.",
+    "thank_you": "Merci. À bientôt."
+  }
+}

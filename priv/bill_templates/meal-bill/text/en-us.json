@@ -1,0 +1,39 @@
+{
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Technologies Inc.\n100 Main Street, Austin, TX 78701",
+    "legal_name": "Green Leaf Hospitality LLC",
+    "restaurant_name": "Green Leaf Diner",
+    "items": [
+      {
+        "name": "Cheeseburger x 2",
+        "rate": 23,
+        "discount": 0,
+        "tax": 0
+      },
+      {
+        "name": "Iced tea x 3",
+        "rate": 10.5,
+        "discount": 10,
+        "tax": 0
+      },
+      {
+        "name": "Caesar salad",
+        "rate": 9.5,
+        "discount": 0,
+        "tax": 0
+      },
+      {
+        "name": "Packaging and delivery",
+        "rate": 3,
+        "discount": 0,
+        "tax": 0
+      }
+    ],
+    "customer_name": "John Smith",
+    "delivery_address": "500 Congress Avenue, Apt 12, Austin, TX 78701",
+    "service_description": "Restaurant service",
+    "payment_note": "Paid online",
+    "signatory_name": "A. Johnson"
+  }
+}

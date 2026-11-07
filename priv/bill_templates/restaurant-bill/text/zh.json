@@ -1,0 +1,126 @@
+{
+  "title": "餐厅账单生成器",
+  "name": "餐厅账单",
+  "public_slug": "restaurant-bill-generator",
+  "summary": "包含菜品和{tax}的堂食或外带账单。",
+  "description": "生成包含任意数量菜品、数量、服务费和{tax}的餐厅账单。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "像素小票",
+    "t2": "虚线收据",
+    "t3": "紧凑账单",
+    "t4": "打字机账单"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "餐厅名称"
+    },
+    "restaurant_address": {
+      "label": "地址（选填）"
+    },
+    "gstin": {
+      "label": "{tax_id}（选填）"
+    },
+    "fssai_number": {
+      "label": "FSSAI 许可证号（选填）"
+    },
+    "bill_number": {
+      "label": "账单编号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "time": {
+      "label": "时间（选填）"
+    },
+    "table_number": {
+      "label": "桌号（选填）"
+    },
+    "customer_name": {
+      "label": "客户姓名（选填）"
+    },
+    "service_percent": {
+      "label": "服务费（%）（选填）"
+    },
+    "gst_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "items": {
+      "label": "项目",
+      "columns": {
+        "name": "品项",
+        "qty": "数量",
+        "rate": "单价（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "welcome": "欢迎光临！",
+    "original": "收据原件",
+    "date": "日期",
+    "time": "时间",
+    "customer": "客户姓名",
+    "table": "桌号",
+    "receipt_no": "小票编号",
+    "bill_no": "账单号",
+    "description": "品名",
+    "item": "品项",
+    "qty": "数量",
+    "price": "单价",
+    "subtotal": "小计",
+    "total": "合计",
+    "service": "服务费",
+    "paid_by": "支付方式",
+    "save_paper": "节约用纸，保护自然！",
+    "thanks_meal": "感谢您享用美味佳肴。",
+    "receipt": "小票",
+    "support_local": "感谢您支持本地商家！",
+    "thanks_visit": "感谢光临！一路平安。",
+    "round_off": "四舍五入",
+    "above_incl": "以上价格已含税",
+    "total_tax": "税额合计",
+    "amount": "金额"
+  },
+  "sample": {
+    "restaurant_name": "绿叶茶餐厅",
+    "items": [
+      {
+        "name": "麻婆豆腐",
+        "qty": 2,
+        "rate": 28
+      },
+      {
+        "name": "绿茶",
+        "qty": 3,
+        "rate": 8
+      },
+      {
+        "name": "炒饭",
+        "qty": 1,
+        "rate": 22
+      },
+      {
+        "name": "宫保鸡丁",
+        "qty": 1,
+        "rate": 38
+      },
+      {
+        "name": "杨枝甘露",
+        "qty": 2,
+        "rate": 18
+      }
+    ],
+    "customer_name": "王伟",
+    "table_number": "T-7",
+    "gst_percent": 6
+  }
+}

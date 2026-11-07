@@ -1,0 +1,127 @@
+{
+  "title": "किराना बिल जनरेटर",
+  "name": "किराना बिल",
+  "public_slug": "grocery-bill-generator",
+  "summary": "वस्तुएँ, मात्रा और कुल राशि।",
+  "description": "जितनी चाहें उतनी वस्तुओं, मात्रा, मूल्य, छूट और {tax} के साथ किराना बिल बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "खुदरा चालान",
+    "t2": "बचत चालान"
+  },
+  "fields": {
+    "store_name": {
+      "label": "दुकान का नाम"
+    },
+    "store_address": {
+      "label": "पता (वैकल्पिक)"
+    },
+    "store_phone": {
+      "label": "फ़ोन नंबर (वैकल्पिक)"
+    },
+    "gstin": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "fssai_number": {
+      "label": "FSSAI लाइसेंस नं. (वैकल्पिक)"
+    },
+    "bill_number": {
+      "label": "बिल नंबर"
+    },
+    "date": {
+      "label": "तारीख"
+    },
+    "time": {
+      "label": "समय (वैकल्पिक)"
+    },
+    "transaction_id": {
+      "label": "लेन-देन आईडी (वैकल्पिक)"
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम (वैकल्पिक)"
+    },
+    "discount": {
+      "label": "छूट ({currency}) (वैकल्पिक)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का माध्यम",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "items": {
+      "label": "वस्तुएँ",
+      "columns": {
+        "name": "वस्तु",
+        "qty": "मात्रा",
+        "rate": "मूल्य ({currency})",
+        "discount": "छूट %"
+      }
+    }
+  },
+  "print": {
+    "phone": "फ़ोन नं.",
+    "retail_invoice": "खुदरा चालान",
+    "bill_no": "बिल नं.",
+    "bill_date": "बिल की तारीख",
+    "time": "समय",
+    "particulars": "विवरण",
+    "rate": "दर",
+    "qty": "मात्रा",
+    "amount": "राशि",
+    "total": "कुल",
+    "net_amount": "शुद्ध राशि",
+    "payment_method": "भुगतान का तरीका",
+    "transaction": "लेन-देन आईडी",
+    "customer": "ग्राहक का नाम",
+    "thanks": "धन्यवाद! कृपया फिर पधारें।",
+    "sn": "क्र.",
+    "item_name": "वस्तु का नाम",
+    "unit_price": "शुद्ध मूल्य",
+    "sub_total": "उप-योग",
+    "saving": "कुल बचत",
+    "saving_pct": "कुल बचत (%)",
+    "discount": "छूट"
+  },
+  "sample": {
+    "store_name": "मेहता एंड संस प्रोविज़न्स",
+    "items": [
+      {
+        "name": "बासमती चावल (5 किग्रा)",
+        "qty": 1,
+        "rate": 640
+      },
+      {
+        "name": "अरहर दाल (1 किग्रा)",
+        "qty": 2,
+        "rate": 165
+      },
+      {
+        "name": "सूरजमुखी तेल (1 लीटर)",
+        "qty": 2,
+        "rate": 142,
+        "discount": 5
+      },
+      {
+        "name": "चीनी (1 किग्रा)",
+        "qty": 3,
+        "rate": 46
+      },
+      {
+        "name": "चाय पत्ती (500 ग्राम)",
+        "qty": 1,
+        "rate": 255,
+        "discount": 10
+      }
+    ],
+    "customer_name": "रोहन मेहता",
+    "tax_percent": 5,
+    "store_address": "दुकान 21, स्टेशन रोड, सूरत, गुजरात 395003"
+  }
+}

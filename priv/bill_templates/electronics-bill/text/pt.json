@@ -1,0 +1,248 @@
+{
+  "title": "Gerador de nota de eletrônicos",
+  "name": "Nota de eletrônicos",
+  "public_slug": "gerador-de-nota-de-eletronicos",
+  "summary": "Nota de eletrônicos com números de série e detalhamento de impostos.",
+  "description": "Gere uma nota para celulares, eletrodomésticos e outros eletrônicos com números de série, códigos HS, {tax} no preço, as partes de cobrança e entrega, os dados de pagamento e o valor por extenso. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota fiscal"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Razão social"
+    },
+    "branch": {
+      "label": "Filial (opcional)"
+    },
+    "seller_address": {
+      "label": "Endereço (opcional)"
+    },
+    "seller_state": {
+      "label": "Estado (opcional)"
+    },
+    "seller_phone": {
+      "label": "Telefone (opcional)"
+    },
+    "seller_email": {
+      "label": "E-mail (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "seller_pan": {
+      "label": "PAN (opcional)"
+    },
+    "cin": {
+      "label": "CIN (opcional)"
+    },
+    "copy_label": {
+      "label": "Identificação da via (opcional)"
+    },
+    "place_of_supply": {
+      "label": "Local de fornecimento (opcional)"
+    },
+    "supply": {
+      "label": "Fornecimento",
+      "options": {
+        "Same state": "Mesmo estado",
+        "Other state": "Outro estado"
+      }
+    },
+    "reverse_charge": {
+      "label": "Reverse charge (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data da nota"
+    },
+    "do_number": {
+      "label": "N.º do pedido de entrega (opcional)"
+    },
+    "financier": {
+      "label": "Financeira (opcional)"
+    },
+    "bill_name": {
+      "label": "Cobrar de: nome"
+    },
+    "bill_care_of": {
+      "label": "Cobrar de: a/c (opcional)"
+    },
+    "bill_address": {
+      "label": "Cobrar de: endereço (opcional)"
+    },
+    "bill_state": {
+      "label": "Cobrar de: estado (opcional)"
+    },
+    "bill_pin": {
+      "label": "Cobrar de: CEP (opcional)"
+    },
+    "bill_phone": {
+      "label": "Cobrar de: telefone (opcional)"
+    },
+    "bill_tax_id": {
+      "label": "Cobrar de: {tax_id} (opcional)"
+    },
+    "ship_code": {
+      "label": "Entregar em: código (opcional)"
+    },
+    "ship_auth_code": {
+      "label": "Entregar em: código de autorização (opcional)"
+    },
+    "ship_address": {
+      "label": "Entregar em: endereço (opcional)"
+    },
+    "ship_state": {
+      "label": "Entregar em: estado (opcional)"
+    },
+    "ship_phone": {
+      "label": "Entregar em: telefone (opcional)"
+    },
+    "ship_tax_id": {
+      "label": "Entregar em: {tax_id} (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Cheque": "Cheque",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "payment_reference": {
+      "label": "N.º de aprovação / cheque / OTP (opcional)"
+    },
+    "payment_date": {
+      "label": "Data do pagamento (opcional)"
+    },
+    "amount_paid": {
+      "label": "Valor pago ({currency}) (o total se vazio) (opcional)"
+    },
+    "remarks": {
+      "label": "Observações (opcional)"
+    },
+    "bank_details": {
+      "label": "Banco (opcional)"
+    },
+    "bank_account": {
+      "label": "Conta bancária (opcional)"
+    },
+    "bank_ifsc": {
+      "label": "IFSC (opcional)"
+    },
+    "customer_care": {
+      "label": "Atendimento ao cliente (opcional)"
+    },
+    "delivery_helpline": {
+      "label": "Central de entregas (opcional)"
+    },
+    "signatory_for": {
+      "label": "Signatário por (opcional)"
+    },
+    "thank_you": {
+      "label": "Mensagem de agradecimento (opcional)"
+    },
+    "items": {
+      "label": "Itens",
+      "columns": {
+        "name": "Item",
+        "code": "N.º de série",
+        "hsn": "Código HS",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})",
+        "tax": "Imposto %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Nota fiscal",
+    "state": "Estado",
+    "tel_no": "Tel.",
+    "email": "E-mail",
+    "place_of_supply": "Local de fornecimento",
+    "invoice_number": "Número da nota",
+    "invoice_date": "Data da nota",
+    "do_number": "N.º do pedido de entrega",
+    "bill_to_party": "Cobrar de",
+    "ship_to_party": "Entregar em",
+    "financier": "Financeira",
+    "name": "Nome",
+    "care_of": "A/C",
+    "address": "Endereço",
+    "pin": "CEP",
+    "contact": "Telefone",
+    "code": "Código",
+    "auth_code": "Código de autorização",
+    "serial_no": "N.º de série",
+    "item_name": "Item",
+    "hsn": "Código HS",
+    "qty": "Qtd.",
+    "rate": "Preço",
+    "taxable_value": "Base de cálculo",
+    "amount": "Valor",
+    "totals": "Totais",
+    "amount_in_words": "Valor por extenso",
+    "payment_mode": "Forma",
+    "reference": "Aprov. / cheque / OTP",
+    "date": "Data",
+    "total": "Total",
+    "payments": "Pagamentos",
+    "balance": "Saldo",
+    "amt": "Valor",
+    "remarks": "Observações",
+    "bank_details": "Banco",
+    "bank_account": "Conta",
+    "ifsc": "IFSC",
+    "customer_care": "Atendimento ao cliente",
+    "delivery_helpline": "Central de entregas",
+    "for": "por",
+    "authorised": "Signatário autorizado"
+  },
+  "sample": {
+    "company_name": "Visão Eletrônica Ltda.",
+    "branch": "Loja Centro",
+    "signatory_for": "Visão Eletrônica Ltda.",
+    "seller_state": "São Paulo",
+    "seller_phone": "(11) 3456-7890",
+    "bill_name": "Ana Souza",
+    "bill_state": "São Paulo",
+    "bill_pin": "01310-100",
+    "bill_phone": "(11) 91234-5678",
+    "ship_state": "São Paulo",
+    "customer_care": "0800 123 4567",
+    "delivery_helpline": "0800 765 4321",
+    "bank_details": "Banco Exemplo, São Paulo",
+    "bank_account": "Ag. 0001 · C/C 12345-6",
+    "items": [
+      {
+        "name": "Smartphone 128 GB (preto meia-noite)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 2499,
+        "tax": 18
+      },
+      {
+        "name": "Fones de ouvido sem fio",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 299,
+        "tax": 18
+      },
+      {
+        "name": "Carregador portátil 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 179,
+        "tax": 18
+      }
+    ],
+    "ship_phone": "(11) 91234-5678",
+    "copy_label": "(Via original do destinatário)",
+    "remarks": "Guarde esta nota para a garantia. Película de tela aplicada gratuitamente na loja.",
+    "thank_you": "Obrigado. Volte sempre."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "sample": {
+    "clinic_name": "Clinique familiale Érable",
+    "doctor_name": "Dr Marc Gagnon",
+    "doctor_designation": "Médecin interniste",
+    "patient_name": "Julie Tremblay",
+    "guardian_name": "Luc Tremblay",
+    "payer_name": "Luc Tremblay",
+    "patient_issue": "Fièvre et toux",
+    "items": [
+      {
+        "name": "Chambre (par jour)",
+        "qty": 2,
+        "rate": 300
+      },
+      {
+        "name": "Soins infirmiers (par jour)",
+        "qty": 2,
+        "rate": 90
+      }
+    ],
+    "consultation_fee": 120,
+    "medicines_cost": 45,
+    "tests_cost": 90,
+    "discount": 25,
+    "amount_paid": 300,
+    "tax_percent": 5,
+    "hospital_details": "Urgences 24 h/24, pharmacie et laboratoire",
+    "registration_number": "OHIP 123456",
+    "clinic_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "patient_address": "45 rue Sherbrooke Ouest, app. 12, Montréal, QC H2X 1X7",
+    "payer_address": "45 rue Sherbrooke Ouest, app. 12, Montréal, QC H2X 1X7",
+    "clinic_phone": "(514) 555-0123",
+    "patient_details": "42 / F"
+  }
+}

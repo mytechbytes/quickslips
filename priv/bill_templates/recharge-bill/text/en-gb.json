@@ -1,0 +1,15 @@
+{
+  "sample": {
+    "provider_name": "Zing Mobile",
+    "customer_name": "James Taylor",
+    "mobile_number": "07700 900123",
+    "amount": 15,
+    "tax_percent": 20,
+    "amount_after_due": 2,
+    "email_banner": "To get your monthly bill by email, text STARTBILL <email> to 198.",
+    "offer_title": "Get 10 GB a month free",
+    "offer_text": "Broadband data with every pay-as-you-go and TV line",
+    "pay_options": "Pay in the app\nPay in the Zing Pay app: download from the App Store or Google Play\nPay on the official website",
+    "landmark": null
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "title": "Parkquittung-Generator",
+  "name": "Parkquittung",
+  "public_slug": "parkquittung-generator",
+  "summary": "Parkquittung mit Stellplatz, Uhrzeit und Gebühr als PDF.",
+  "description": "Erstellen Sie eine Parkquittung mit Name und Adresse des Parkplatzes, Stellplatz, Uhrzeit und Gebühr. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Parkbeleg"
+  },
+  "fields": {
+    "facility_name": {
+      "label": "Name des Parkhauses"
+    },
+    "facility_address": {
+      "label": "Adresse des Parkhauses"
+    },
+    "facility_phone": {
+      "label": "Telefon (optional)"
+    },
+    "receipt_number": {
+      "label": "Belegnummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "time": {
+      "label": "Uhrzeit (optional)"
+    },
+    "space_number": {
+      "label": "Stellplatz"
+    },
+    "thank_you": {
+      "label": "Dankesnachricht (optional)"
+    },
+    "amount": {
+      "label": "Gesamtbetrag ({currency})"
+    }
+  },
+  "print": {
+    "title": "Parkquittung",
+    "space": "Stellplatz",
+    "paid": "Bezahlt",
+    "tel": "Tel."
+  },
+  "sample": {
+    "facility_name": "Parkhaus Mitte",
+    "facility_phone": "030 1234567",
+    "amount": 8,
+    "thank_you": "DANKE UND GUTE FAHRT!"
+  }
+}

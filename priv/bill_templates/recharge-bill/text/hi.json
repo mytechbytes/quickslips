@@ -1,0 +1,178 @@
+{
+  "title": "रिचार्ज बिल जनरेटर",
+  "name": "रिचार्ज बिल",
+  "public_slug": "recharge-bill-generator",
+  "summary": "अकाउंट सारांश के साथ मोबाइल, फ़ोन या DTH रिचार्ज का इनवॉइस।",
+  "description": "ऑपरेटर, प्लान, बिलिंग चक्र, अकाउंट सारांश, {tax} और प्राप्ति पर्ची के साथ मोबाइल, फ़ोन या DTH कनेक्शन का रिचार्ज इनवॉइस बनाएं, चार रंगों की थीम में। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "टैक्स इनवॉइस"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "ऑपरेटर या रिटेलर"
+    },
+    "provider_address": {
+      "label": "ऑपरेटर का पता (वैकल्पिक)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "invoice_number": {
+      "label": "इनवॉइस नंबर"
+    },
+    "bill_date": {
+      "label": "बिल की तारीख"
+    },
+    "time": {
+      "label": "समय (वैकल्पिक)"
+    },
+    "period_start": {
+      "label": "बिल अवधि से"
+    },
+    "period_end": {
+      "label": "बिल अवधि तक"
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम"
+    },
+    "customer_address": {
+      "label": "ग्राहक का पता (वैकल्पिक)"
+    },
+    "landmark": {
+      "label": "लैंडमार्क (वैकल्पिक)"
+    },
+    "customer_id": {
+      "label": "ग्राहक आईडी"
+    },
+    "mobile_number": {
+      "label": "मोबाइल नंबर"
+    },
+    "alternative_number": {
+      "label": "वैकल्पिक नंबर (वैकल्पिक)"
+    },
+    "email": {
+      "label": "ईमेल (वैकल्पिक)"
+    },
+    "service": {
+      "label": "सेवा",
+      "options": {
+        "Prepaid": "प्रीपेड",
+        "Postpaid": "पोस्टपेड"
+      }
+    },
+    "payment_in": {
+      "label": "भुगतान",
+      "options": {
+        "Advance": "अग्रिम",
+        "Immediate": "तुरंत"
+      }
+    },
+    "bill_cycle": {
+      "label": "बिलिंग चक्र",
+      "options": {
+        "Monthly": "मासिक",
+        "Quarterly": "त्रैमासिक",
+        "Half-yearly": "छमाही",
+        "Annual": "वार्षिक"
+      }
+    },
+    "theme": {
+      "label": "रंग की थीम",
+      "options": {
+        "Red": "लाल",
+        "Blue": "नीला",
+        "Yellow": "पीला",
+        "Green": "हरा"
+      }
+    },
+    "email_banner": {
+      "label": "बैनर संदेश (वैकल्पिक)"
+    },
+    "offer_title": {
+      "label": "ऑफ़र का शीर्षक (वैकल्पिक)"
+    },
+    "offer_text": {
+      "label": "ऑफ़र का विवरण (वैकल्पिक)"
+    },
+    "pay_options": {
+      "label": "भुगतान के तरीके (हर पंक्ति में एक) (वैकल्पिक)"
+    },
+    "previous_balance": {
+      "label": "पिछला बिल ({currency}) (वैकल्पिक)"
+    },
+    "adjustment": {
+      "label": "समायोजन राशि ({currency}) (वैकल्पिक)"
+    },
+    "amount": {
+      "label": "रिचार्ज या प्लान की राशि ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (वैकल्पिक)"
+    },
+    "amount_after_due": {
+      "label": "देय तारीख के बाद की राशि ({currency}) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का तरीका",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    }
+  },
+  "print": {
+    "original_copy": "प्राप्तकर्ता के लिए मूल प्रति — टैक्स इनवॉइस",
+    "invoice_no": "इनवॉइस नं.",
+    "billed_to": "ग्राहक",
+    "customer_id": "ग्राहक आईडी",
+    "mobile_no": "मोबाइल नं.",
+    "bill_no": "बिल नं.",
+    "bill_date": "बिल की तारीख",
+    "bill_cycle": "बिल चक्र",
+    "bill_period": "बिल अवधि",
+    "to": "से",
+    "pay_by": "भुगतान",
+    "alt_no": "वैकल्पिक नं.",
+    "email": "ईमेल",
+    "account_summary": "आपके अकाउंट का सारांश",
+    "previous_bill": "पिछला बिल",
+    "adjustment": "समायोजन राशि",
+    "this_month": "इस महीने",
+    "service": "सेवा",
+    "after_due": "देय तारीख के बाद राशि",
+    "payment_method": "भुगतान का तरीका",
+    "month_charge": "इस महीने का शुल्क",
+    "monthly_charges": "मासिक शुल्क",
+    "tax": "कर",
+    "taxable_amount": "कर योग्य राशि",
+    "bill_from": "बिल प्रारंभ",
+    "total_amount": "कुल राशि",
+    "tax_note": "लागू नियमों के अनुसार, इस इनवॉइस पर प्रभावी {tax} {rate}% है।",
+    "detach": "कृपया इस पर्ची को अलग करें और भुगतान के साथ लौटाएँ",
+    "pay_on_go": "चलते-फिरते भुगतान करें",
+    "provider_details": "प्रदाता का विवरण",
+    "acknowledgement": "प्राप्ति पर्ची",
+    "customer_name": "ग्राहक का नाम",
+    "amount": "राशि",
+    "computer_generated": "* यह कंप्यूटर द्वारा तैयार किया गया इनवॉइस है, हस्ताक्षर आवश्यक नहीं। {date} को {time} बजे बनाया गया।",
+    "computer_generated_date": "* यह कंप्यूटर द्वारा तैयार किया गया इनवॉइस है, हस्ताक्षर आवश्यक नहीं। {date} को बनाया गया।"
+  },
+  "sample": {
+    "provider_name": "ज़िंग मोबाइल",
+    "customer_name": "रोहन मेहता",
+    "mobile_number": "98200 12345",
+    "amount": 299,
+    "tax_percent": 18,
+    "amount_after_due": 50,
+    "email_banner": "मासिक बिल ईमेल पर पाने के लिए 198 पर SMS करें: STARTBILL <ईमेल आईडी>।",
+    "offer_title": "हर महीने 10 GB मुफ़्त पाएँ",
+    "offer_text": "हर प्रीपेड और DTH कनेक्शन के साथ ब्रॉडबैंड डेटा",
+    "pay_options": "ऐप से भुगतान करें\nZing Pay ऐप से भुगतान करें: Play Store या App Store से डाउनलोड करें\nआधिकारिक वेबसाइट से भुगतान करें",
+    "landmark": "रेलवे स्टेशन के पास",
+    "provider_address": "टावर बी, टेक पार्क, अंधेरी ईस्ट, मुंबई, महाराष्ट्र 400093",
+    "customer_address": "फ्लैट 12, सनराइज़ अपार्टमेंट्स, स्टेशन रोड, मुंबई"
+  }
+}

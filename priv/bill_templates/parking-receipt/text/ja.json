@@ -1,0 +1,51 @@
+{
+  "title": "駐車場領収書作成",
+  "name": "駐車場領収書",
+  "public_slug": "parking-receipt-generator",
+  "summary": "区画・時刻・料金を記載した駐車場の領収書。",
+  "description": "駐車場名、住所、区画、時刻、料金を記載した駐車場領収書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "レシート"
+  },
+  "fields": {
+    "facility_name": {
+      "label": "駐車場名"
+    },
+    "facility_address": {
+      "label": "駐車場の住所"
+    },
+    "facility_phone": {
+      "label": "電話番号（任意）"
+    },
+    "receipt_number": {
+      "label": "伝票番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "time": {
+      "label": "時刻（任意）"
+    },
+    "space_number": {
+      "label": "区画"
+    },
+    "thank_you": {
+      "label": "お礼のメッセージ（任意）"
+    },
+    "amount": {
+      "label": "合計金額（{currency}）"
+    }
+  },
+  "print": {
+    "title": "駐車場領収書",
+    "space": "区画",
+    "paid": "お支払い",
+    "tel": "電話"
+  },
+  "sample": {
+    "facility_name": "駅前パーキング",
+    "facility_phone": "03-1234-5678",
+    "amount": 1200,
+    "thank_you": "ご利用ありがとうございました。安全運転で！"
+  }
+}

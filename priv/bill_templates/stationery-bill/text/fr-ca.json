@@ -1,0 +1,36 @@
+{
+  "sample": {
+    "shop_name": "Papeterie Érable",
+    "customer_name": "Julie Tremblay",
+    "items": [
+      {
+        "name": "Cahier à spirale (200 pages)",
+        "qty": 4,
+        "rate": 4.5
+      },
+      {
+        "name": "Stylos à bille bleus (10)",
+        "qty": 2,
+        "rate": 6
+      },
+      {
+        "name": "Surligneurs (4 couleurs)",
+        "qty": 1,
+        "rate": 7.5
+      },
+      {
+        "name": "Ramette de papier (500 feuilles)",
+        "qty": 1,
+        "rate": 11
+      },
+      {
+        "name": "Bâtons de colle (2)",
+        "qty": 2,
+        "rate": 3.5
+      }
+    ],
+    "tax_percent": 5,
+    "remarks": "Veuillez conserver le ticket pour tout échange sous 7 jours.",
+    "shop_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

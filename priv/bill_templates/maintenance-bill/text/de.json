@@ -1,0 +1,192 @@
+{
+  "title": "Werkstattrechnung-Generator",
+  "name": "Werkstattrechnung",
+  "public_slug": "werkstattrechnung-generator",
+  "summary": "Werkstatt-Kostenvoranschlag oder -Rechnung mit Teilen, Arbeit und {tax}.",
+  "description": "Erstellen Sie einen Kostenvoranschlag, eine Rechnung oder einen Werkstattauftrag für Auto oder Motorrad mit Kunde und Fahrzeug, Ersatzteilen mit Rabatt, Arbeitsleistungen und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Werkstattbeleg"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "Name der Werkstatt"
+    },
+    "workshop_address": {
+      "label": "Adresse der Werkstatt"
+    },
+    "workshop_phone": {
+      "label": "Telefon (optional)"
+    },
+    "dealer_name": {
+      "label": "Vertragshändler (optional)"
+    },
+    "document_type": {
+      "label": "Dokument",
+      "options": {
+        "Estimate": "Kostenvoranschlag",
+        "Invoice": "Rechnung",
+        "Job card": "Werkstattauftrag"
+      }
+    },
+    "document_number": {
+      "label": "Dokumentnummer"
+    },
+    "reference_number": {
+      "label": "Referenznummer (optional)"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "workshop_section": {
+      "label": "Werkstattbereich (optional)",
+      "options": {
+        "Main workshop": "Hauptwerkstatt",
+        "Service bay": "Servicebucht",
+        "Body shop": "Karosserie",
+        "Spare counter": "Teiletheke",
+        "Express lane": "Schnellservice",
+        "PDI bay": "PDI-Platz"
+      }
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "customer_phone": {
+      "label": "Kontakt des Kunden (optional)"
+    },
+    "vehicle_model": {
+      "label": "Modell"
+    },
+    "registration_number": {
+      "label": "Kennzeichen"
+    },
+    "vin": {
+      "label": "Fahrgestellnummer (VIN) (optional)"
+    },
+    "insurance_company": {
+      "label": "Versicherung (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "terms": {
+      "label": "Bedingungen, eine pro Zeile (optional)"
+    },
+    "parts": {
+      "label": "Ersatzteile",
+      "options": {
+        "PAID": "Bezahlt",
+        "Warranty": "Garantie",
+        "Insurance": "Versicherung"
+      },
+      "columns": {
+        "code": "Teilenr.",
+        "name": "Beschreibung",
+        "billing": "Abrechnung",
+        "qty": "Menge",
+        "rate": "Preis ({currency})",
+        "discount": "Rabatt %"
+      }
+    },
+    "labour": {
+      "label": "Arbeit",
+      "options": {
+        "PAID": "Bezahlt",
+        "Warranty": "Garantie",
+        "Insurance": "Versicherung"
+      },
+      "columns": {
+        "code": "Arbeitscode",
+        "name": "Arbeit",
+        "billing": "Abrechnung",
+        "rate": "Betrag ({currency})",
+        "discount": "Rabatt %"
+      }
+    }
+  },
+  "print": {
+    "contact": "Kontakt",
+    "dealer": "Vertragshändler",
+    "no": "Nr.",
+    "customer": "Kundenname",
+    "vin": "VIN",
+    "insurance": "Versicherung",
+    "reference": "Referenznr.",
+    "date": "Datum",
+    "model": "Modell",
+    "reg_no": "Kennzeichen",
+    "section": "Bereich",
+    "parts": "Ersatzteile",
+    "labour": "Arbeit",
+    "parts_total": "Summe Teile",
+    "jobs_total": "Summe Arbeit",
+    "tax_details": "Steuerangaben",
+    "taxable": "Steuerpflichtiger Betrag",
+    "summary": "Zusammenfassung",
+    "total": "Gesamt",
+    "signatory": "Autorisierte Unterschrift",
+    "code": "Code",
+    "description": "Beschreibung",
+    "billing": "Abrechnung",
+    "qty": "Menge",
+    "rate": "Preis",
+    "discount": "Rabatt",
+    "net": "Nettobetrag"
+  },
+  "sample": {
+    "workshop_name": "Autowerkstatt Mitte",
+    "workshop_phone": "030 1234567",
+    "customer_name": "Anna Becker",
+    "customer_phone": "0171 2345678",
+    "vehicle_model": "VW Golf",
+    "registration_number": "B WK 4521",
+    "insurance_company": "Nationale Versicherung",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "Ölfilter",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 14,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "Bremsbeläge vorn (Satz)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 62,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "Luftfilter",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 20,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "Inspektion",
+        "billing": "PAID",
+        "rate": 75,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "Bremsenprüfung und Einbau",
+        "billing": "PAID",
+        "rate": 55,
+        "discount": 5
+      }
+    ],
+    "tax_percent": 19,
+    "terms": "Zahlung innerhalb von 7 Tagen ab Rechnungsdatum.\nKostenvoranschlag 15 Tage gültig.\nArbeitskosten nach den Richtlinien der Werkstatt.\nVersicherungsansprüche vorbehaltlich der Freigabe durch den Gutachter.\nFür im Fahrzeug zurückgelassene Gegenstände übernimmt die Werkstatt keine Haftung.\nBitte prüfen Sie alle Angaben, bevor Sie die Werkstatt verlassen."
+  }
+}

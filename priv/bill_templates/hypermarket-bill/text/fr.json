@@ -1,0 +1,175 @@
+{
+  "title": "Générateur de facture d'hypermarché",
+  "name": "Facture d'hypermarché",
+  "public_slug": "generateur-de-facture-d-hypermarche",
+  "summary": "Facture d'hypermarché avec un taux de taxe par article.",
+  "description": "Créez une facture d'hypermarché ou de supermarché avec un taux de {tax} pour chaque article, le détail de la taxe par taux, les informations de commande et de livraison et vos économies. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Facture"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Enseigne du magasin"
+    },
+    "company_name": {
+      "label": "Raison sociale"
+    },
+    "company_address": {
+      "label": "Adresse de la société (facultatif)"
+    },
+    "phone": {
+      "label": "Téléphone du service client (facultatif)"
+    },
+    "email": {
+      "label": "E-mail du service client (facultatif)"
+    },
+    "website": {
+      "label": "Adresse web des conditions (facultatif)"
+    },
+    "cin": {
+      "label": "CIN (facultatif)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "fssai": {
+      "label": "N° FSSAI (facultatif)"
+    },
+    "invoice_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date de la facture"
+    },
+    "order_number": {
+      "label": "Numéro de commande (facultatif)"
+    },
+    "order_date": {
+      "label": "Date de commande (facultatif)"
+    },
+    "delivery_date": {
+      "label": "Date de livraison (facultatif)"
+    },
+    "delivery_time": {
+      "label": "Créneau de livraison (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "customer_name": {
+      "label": "Nom du client (facultatif)"
+    },
+    "customer_phone": {
+      "label": "Numéro de mobile (facultatif)"
+    },
+    "delivery_mode": {
+      "label": "Mode de livraison",
+      "options": {
+        "Self pick-up": "Retrait en magasin",
+        "Home delivery": "Livraison à domicile"
+      }
+    },
+    "delivery_address": {
+      "label": "Adresse de retrait / livraison (facultatif)"
+    },
+    "savings": {
+      "label": "Économie sur le prix catalogue ({currency}) (facultatif)"
+    },
+    "payment_note": {
+      "label": "Instruction de paiement (facultatif)"
+    },
+    "items": {
+      "label": "Articles",
+      "columns": {
+        "name": "Article",
+        "hsn": "Code HS",
+        "qty": "Qté",
+        "rate": "Prix ({currency})",
+        "tax": "Taxe %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Facture",
+    "invoice_no": "Facture n°",
+    "invoice_date": "Date",
+    "hsn": "HS",
+    "particulars": "Désignation",
+    "qty": "Qté",
+    "rate": "Prix",
+    "value": "Montant",
+    "items": "Articles",
+    "amt": "Total",
+    "your_savings": "Vos économies",
+    "on_list": "sur le prix catalogue",
+    "breakup": "Détail des taxes",
+    "amount_in": "Montants en",
+    "rate_col": "Taux",
+    "taxable": "Base HT",
+    "total": "Total",
+    "order_details": "Détails de la commande",
+    "order_number": "Numéro de commande",
+    "order_date": "Date de commande",
+    "delivery_date": "Date de livraison",
+    "delivery_time": "Créneau de livraison",
+    "payment_mode": "Mode de paiement",
+    "customer_delivery": "Client et livraison",
+    "customer_name": "Nom du client",
+    "mobile": "Numéro de mobile",
+    "delivery_mode": "Mode de livraison",
+    "address": "Adresse de retrait / livraison",
+    "collect": "{amount} à régler à la livraison",
+    "computer_generated": "Facture générée par ordinateur.",
+    "exempt": "Exonéré"
+  },
+  "sample": {
+    "brand_name": "Hyper Marché",
+    "company_name": "Hyper Marché SAS",
+    "phone": "0 800 123 456",
+    "delivery_time": "18h00 - 21h00",
+    "payment_note": "Paiement à la livraison (espèces ou carte)",
+    "customer_name": "Camille Martin",
+    "customer_phone": "06 12 34 56 78",
+    "items": [
+      {
+        "name": "Riz (1 kg)",
+        "qty": 1,
+        "rate": 3.2,
+        "tax": 5.5
+      },
+      {
+        "name": "Huile de tournesol (1 L)",
+        "qty": 2,
+        "rate": 2.6,
+        "tax": 5.5
+      },
+      {
+        "name": "Biscuits (300 g)",
+        "qty": 3,
+        "rate": 1.4,
+        "tax": 5.5
+      },
+      {
+        "name": "Liquide vaisselle (500 ml)",
+        "qty": 1,
+        "rate": 2.3,
+        "tax": 20
+      },
+      {
+        "name": "Tomates fraîches (1 kg)",
+        "qty": 2,
+        "rate": 2.9,
+        "tax": 5.5
+      }
+    ],
+    "savings": 1.8,
+    "delivery_mode": "Home delivery"
+  }
+}

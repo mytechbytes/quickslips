@@ -1,0 +1,36 @@
+{
+  "sample": {
+    "seller_name": "Bright Cart Retail Ltd.",
+    "seller_phone": "1-800-555-0187",
+    "customer_name": "Emma Wilson",
+    "signatory_name": "David Tremblay",
+    "items": [
+      {
+        "name": "Wireless earbuds with charging case",
+        "qty": 1,
+        "rate": 59.99,
+        "tax": 5
+      },
+      {
+        "name": "Silicone phone case",
+        "qty": 2,
+        "rate": 14.99,
+        "tax": 5
+      },
+      {
+        "name": "Cotton crew-neck T-shirt",
+        "qty": 2,
+        "rate": 22,
+        "tax": 5
+      },
+      {
+        "name": "Stainless steel water bottle (750 ml)",
+        "qty": 1,
+        "rate": 26.5,
+        "tax": 5
+      }
+    ],
+    "shipping_charge": 6.99,
+    "customer_phone": "(416) 555-0199"
+  }
+}

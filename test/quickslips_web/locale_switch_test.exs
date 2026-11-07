@@ -61,10 +61,10 @@ defmodule QuickSlipsWeb.LocaleSwitchTest do
     end
 
     test "a bill that the new locale does not have goes to its catalogue, and says so" do
-      assert LocaleSwitch.target("/en-in/rent-receipt-generator", locale("hi-in")) ==
+      assert LocaleSwitch.target("/en-in/courier-receipt-generator", locale("hi-in")) ==
                {"/hi-in", :unavailable}
 
-      assert LocaleSwitch.target("/en-in/rent-receipt-generator?from=1", locale("es-es")) ==
+      assert LocaleSwitch.target("/en-in/courier-receipt-generator?from=1", locale("es-es")) ==
                {"/es-es", :unavailable}
     end
 

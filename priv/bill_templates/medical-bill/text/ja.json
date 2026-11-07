@@ -1,0 +1,226 @@
+{
+  "title": "医療費請求書作成",
+  "name": "医療費請求書",
+  "public_slug": "medical-bill-generator",
+  "summary": "病院・クリニック・検査機関の請求書（{tax}つき）。",
+  "description": "患者、医師、病室、診察料、薬剤、検査、明細項目を記載した病院・クリニック・検査機関の請求書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "病院請求書",
+    "t2": "仮請求書"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "病院・クリニック・検査機関"
+    },
+    "clinic_address": {
+      "label": "住所（任意）"
+    },
+    "clinic_phone": {
+      "label": "連絡先電話番号（任意）"
+    },
+    "hospital_details": {
+      "label": "医療機関情報（任意）"
+    },
+    "registration_number": {
+      "label": "登録番号（任意）"
+    },
+    "bill_number": {
+      "label": "請求書番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "time": {
+      "label": "時刻（任意）"
+    },
+    "admit_date": {
+      "label": "入院日（任意）"
+    },
+    "discharge_date": {
+      "label": "退院日（任意）"
+    },
+    "patient_name": {
+      "label": "患者氏名"
+    },
+    "patient_details": {
+      "label": "年齢・性別（任意）"
+    },
+    "patient_issue": {
+      "label": "主訴（任意）"
+    },
+    "guardian_name": {
+      "label": "保護者氏名（任意）"
+    },
+    "patient_phone": {
+      "label": "患者の携帯電話（任意）"
+    },
+    "patient_address": {
+      "label": "患者の住所（任意）"
+    },
+    "payer_name": {
+      "label": "支払者名（任意）"
+    },
+    "payer_address": {
+      "label": "支払者の住所（任意）"
+    },
+    "doctor_name": {
+      "label": "担当医（任意）"
+    },
+    "doctor_designation": {
+      "label": "役職（任意）"
+    },
+    "room": {
+      "label": "病室区分（任意）",
+      "options": {
+        "Single": "個室",
+        "Semi-private": "準個室",
+        "Private": "特別室",
+        "General": "大部屋",
+        "ICU": "ICU"
+      }
+    },
+    "insurance": {
+      "label": "保険（任意）",
+      "options": {
+        "Yes": "あり",
+        "No": "なし"
+      }
+    },
+    "remark": {
+      "label": "備考（任意）"
+    },
+    "consultation_fee": {
+      "label": "診察料（{currency}）（任意）"
+    },
+    "medicines_cost": {
+      "label": "薬剤（{currency}）（任意）"
+    },
+    "tests_cost": {
+      "label": "検査・処置（{currency}）（任意）"
+    },
+    "other_charges": {
+      "label": "その他（{currency}）（任意）"
+    },
+    "discount": {
+      "label": "割引（{currency}）（任意）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "amount_paid": {
+      "label": "支払済み金額（{currency}）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "items": {
+      "label": "明細項目",
+      "columns": {
+        "name": "内容",
+        "qty": "数量",
+        "rate": "単価（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "請求書番号",
+    "contact": "連絡先",
+    "reg_no": "登録番号",
+    "discharge_date": "退院日",
+    "admit_date": "入院日",
+    "patient_info": "患者情報",
+    "patient_name": "患者氏名",
+    "patient_issue": "主訴",
+    "address": "住所",
+    "guardian": "保護者氏名",
+    "mobile": "携帯電話",
+    "insurance": "保険の有無",
+    "age": "年齢",
+    "consultant": "担当医",
+    "room": "病室区分",
+    "details": "内容",
+    "price": "単価",
+    "amount": "金額",
+    "units": "数量",
+    "pay_by": "支払方法",
+    "amount_paid": "支払済み金額",
+    "tax": "税",
+    "taxable": "課税対象額",
+    "net": "正味金額",
+    "total_amount": "合計金額",
+    "remark": "備考",
+    "computer": "※コンピューターで作成した請求書のため、署名は不要です。",
+    "created": "作成日 {when}",
+    "phone": "電話",
+    "timing": "時刻",
+    "patient_uid": "患者ID",
+    "name": "氏名",
+    "payer": "支払者情報",
+    "consulting_doctors": "診察医",
+    "date": "日付",
+    "admission_no": "入院番号",
+    "admission_date": "入院日",
+    "bed": "ベッド",
+    "provisional": "仮請求書",
+    "room_type": "病室タイプ",
+    "particulars": "品目",
+    "total_bill": "請求総額",
+    "discount": "割引",
+    "payable": "お支払い額",
+    "balance": "残高",
+    "breakup": "明細",
+    "date_time": "日時",
+    "rate": "単価",
+    "payment_mode": "支払方法",
+    "gst_type": "GST の種類",
+    "intra": "州内（CGST + SGST）",
+    "gst_pct": "税率",
+    "notes": "注記",
+    "consultation": "診察料",
+    "medicines": "薬剤",
+    "tests": "検査・処置",
+    "other": "その他",
+    "itemised": "明細項目"
+  },
+  "sample": {
+    "clinic_name": "グリーンリーフ家庭クリニック",
+    "doctor_name": "山田 医師",
+    "doctor_designation": "内科担当医",
+    "patient_name": "田中 太郎",
+    "guardian_name": "田中 花子",
+    "payer_name": "田中 花子",
+    "patient_issue": "発熱と咳",
+    "items": [
+      {
+        "name": "室料（1日）",
+        "qty": 2,
+        "rate": 6000
+      },
+      {
+        "name": "看護料（1日）",
+        "qty": 2,
+        "rate": 1500
+      }
+    ],
+    "consultation_fee": 3000,
+    "medicines_cost": 2400,
+    "tests_cost": 4800,
+    "discount": 500,
+    "amount_paid": 12000,
+    "tax_percent": null,
+    "hospital_details": "24時間救急対応、薬局・検査室あり",
+    "registration_number": "医療機関コード 1311234",
+    "patient_address": "東京都世田谷区三軒茶屋2-2-2 305号室",
+    "payer_address": "東京都世田谷区三軒茶屋2-2-2 305号室",
+    "clinic_phone": "03-1234-5678",
+    "patient_details": "42 / 男",
+    "remark": "痛み、動かすと痛い、赤み、膿、出血がある場合はすぐに受診してください。5日後に再診をお願いします。"
+  }
+}

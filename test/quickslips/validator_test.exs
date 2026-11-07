@@ -31,4 +31,18 @@ defmodule QuickSlips.Templates.ValidatorTest do
     assert Map.has_key?(errors, "quantity")
     assert Map.has_key?(errors, "fuel_type")
   end
+
+  test "a time is hours and minutes of a day", %{schema: schema, sample: sample} do
+    for good <- ["00:00", "09:05", "23:59"] do
+      assert {:ok, %{"time" => ^good}} = Validator.validate(schema, Map.put(sample, "time", good))
+    end
+
+    for bad <- ["24:00", "9:05", "10:60", "noon", 1025] do
+      assert {:error, {:validation, %{"time" => ["must be a time like 14:30"]}}} =
+               Validator.validate(schema, Map.put(sample, "time", bad))
+    end
+
+    {:ok, clean} = Validator.validate(schema, Map.put(sample, "time", ""))
+    refute Map.has_key?(clean, "time")
+  end
 end

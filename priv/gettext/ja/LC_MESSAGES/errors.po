@@ -94,27 +94,27 @@ msgstr "は%{number}以上にしてください"
 msgid "must be equal to %{number}"
 msgstr "は%{number}と等しくしてください"
 
-#: lib/quickslips_web/error_messages.ex:70
+#: lib/quickslips_web/error_messages.ex:73
 #, elixir-autogen, elixir-format
 msgid "at least one digit or punctuation character"
 msgstr "数字または記号を1文字以上"
 
-#: lib/quickslips_web/error_messages.ex:68
+#: lib/quickslips_web/error_messages.ex:71
 #, elixir-autogen, elixir-format
 msgid "at least one lower case character"
 msgstr "小文字を1文字以上"
 
-#: lib/quickslips_web/error_messages.ex:69
+#: lib/quickslips_web/error_messages.ex:72
 #, elixir-autogen, elixir-format
 msgid "at least one upper case character"
 msgstr "大文字を1文字以上"
 
-#: lib/quickslips_web/error_messages.ex:66
+#: lib/quickslips_web/error_messages.ex:69
 #, elixir-autogen, elixir-format
 msgid "did not change"
 msgstr "は変更されていません"
 
-#: lib/quickslips_web/error_messages.ex:67
+#: lib/quickslips_web/error_messages.ex:70
 #, elixir-autogen, elixir-format
 msgid "does not match password"
 msgstr "がパスワードと一致しません"
@@ -149,22 +149,22 @@ msgstr "は数値にしてください"
 msgid "must be an object"
 msgstr "はオブジェクトにしてください"
 
-#: lib/quickslips_web/error_messages.ex:52
+#: lib/quickslips_web/error_messages.ex:55
 #, elixir-autogen, elixir-format
 msgid "must be at least %{min}"
 msgstr "は%{min}以上にしてください"
 
-#: lib/quickslips_web/error_messages.ex:49
+#: lib/quickslips_web/error_messages.ex:52
 #, elixir-autogen, elixir-format
 msgid "must be at most %{max}"
 msgstr "は%{max}以下にしてください"
 
-#: lib/quickslips_web/error_messages.ex:43
+#: lib/quickslips_web/error_messages.ex:46
 #, elixir-autogen, elixir-format
 msgid "must be at most %{max} characters"
 msgstr "は%{max}文字以下にしてください"
 
-#: lib/quickslips_web/error_messages.ex:55
+#: lib/quickslips_web/error_messages.ex:58
 #, elixir-autogen, elixir-format
 msgid "must be one of: %{options}"
 msgstr "は次のいずれかにしてください：%{options}"
@@ -174,7 +174,7 @@ msgstr "は次のいずれかにしてください：%{options}"
 msgid "must be text"
 msgstr "はテキストにしてください"
 
-#: lib/quickslips_web/error_messages.ex:65
+#: lib/quickslips_web/error_messages.ex:68
 #, elixir-autogen, elixir-format
 msgid "must have the @ sign and no spaces"
 msgstr "は@を含み、スペースを含まない必要があります"
@@ -184,7 +184,12 @@ msgstr "は@を含み、スペースを含まない必要があります"
 msgid "must be a list"
 msgstr "はリストにしてください"
 
-#: lib/quickslips_web/error_messages.ex:46
+#: lib/quickslips_web/error_messages.ex:49
 #, elixir-autogen, elixir-format
 msgid "must have at most %{max} rows"
 msgstr "は%{max}行以下にしてください"
+
+#: lib/quickslips_web/error_messages.ex:41
+#, elixir-autogen, elixir-format
+msgid "must be a time like 14:30"
+msgstr "14:30 のような時刻にしてください"

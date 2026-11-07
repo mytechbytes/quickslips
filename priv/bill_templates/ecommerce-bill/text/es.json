@@ -1,0 +1,174 @@
+{
+  "title": "Generador de Factura de Comercio Electrónico",
+  "name": "Factura de Comercio Electrónico",
+  "public_slug": "generador-de-factura-de-comercio-electronico",
+  "summary": "Factura de pedido en línea con un tipo de impuesto por artículo y envío.",
+  "description": "Crea una factura de un pedido en línea con productos, cantidades, un tipo de {tax} para cada artículo, envío, el vendedor, la tienda o el marketplace y las direcciones del cliente. Cuatro diseños; previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Recibo de pago",
+    "t2": "Pedido confirmado",
+    "t3": "Factura",
+    "t4": "Factura con impuestos"
+  },
+  "fields": {
+    "seller_name": {
+      "label": "Vendido por"
+    },
+    "seller_address": {
+      "label": "Dirección del vendedor (opcional)"
+    },
+    "seller_phone": {
+      "label": "Teléfono del vendedor (opcional)"
+    },
+    "platform_name": {
+      "label": "Tienda en línea o marketplace (opcional)"
+    },
+    "platform_website": {
+      "label": "Sitio web (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha de la factura"
+    },
+    "order_number": {
+      "label": "Número de pedido (opcional)"
+    },
+    "order_date": {
+      "label": "Fecha del pedido (opcional)"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "customer_phone": {
+      "label": "Teléfono móvil (opcional)"
+    },
+    "shipping_address": {
+      "label": "Dirección de envío"
+    },
+    "billing_address": {
+      "label": "Dirección de facturación (opcional)"
+    },
+    "shipping_charge": {
+      "label": "Gastos de envío ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "signatory_name": {
+      "label": "Nombre del firmante (opcional)"
+    },
+    "return_policy": {
+      "label": "Política de devolución y notas (opcional)"
+    },
+    "items": {
+      "label": "Productos",
+      "columns": {
+        "name": "Descripción",
+        "qty": "Cant.",
+        "rate": "Precio ({currency})",
+        "tax": "Impuesto %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tel.",
+    "authorised": "Firmante autorizado",
+    "return_policy": "Política de devolución",
+    "payment_receipt": "Recibo de pago",
+    "receipt_no": "Recibo n.º",
+    "sold_by": "Vendido por",
+    "order_no": "Pedido n.º",
+    "order_date": "Fecha del pedido",
+    "invoice_date": "Fecha de factura",
+    "receipt_date": "Fecha del recibo",
+    "bill_to": "Facturar a",
+    "description": "Descripción",
+    "net_amount": "Importe neto",
+    "qty": "Cant.",
+    "total_amount": "Importe total",
+    "total": "Total",
+    "shipping": "Envío",
+    "payment_method": "Forma de pago",
+    "order_confirmed": "¡Tu pedido está confirmado!",
+    "hello": "Hola",
+    "order_number": "Número de pedido",
+    "shipping_address": "Dirección de envío",
+    "mobile": "Teléfono móvil",
+    "receipt_summary": "Resumen del recibo",
+    "rate": "Precio",
+    "amt": "Imp.",
+    "subtotal": "Subtotal",
+    "confirmation_note": "Te enviaremos un correo de confirmación cuando el artículo salga de camino.",
+    "thanks_shopping": "Gracias por comprar con nosotros",
+    "need_help": "¿Necesitas ayuda?",
+    "invoice": "Factura",
+    "invoice_no": "Factura n.º",
+    "date": "Fecha",
+    "invoice_to": "Facturar a",
+    "pay_to": "Pagar a",
+    "price": "Precio",
+    "payment_info": "Datos de pago",
+    "amount": "Importe",
+    "tax_invoice": "Factura",
+    "ship_from": "Dirección de origen",
+    "invoice_number": "Número de factura",
+    "order_id": "ID del pedido",
+    "payment": "Pago",
+    "ship_to": "Enviar a",
+    "keep_invoice": "conserva esta factura y la caja del fabricante para la garantía",
+    "total_items": "Total de artículos",
+    "title": "Artículo",
+    "gross_amount": "Importe bruto",
+    "taxable_value": "Base imponible",
+    "grand_total": "Total general",
+    "thank_you": "¡Gracias!",
+    "for_shopping": "por comprar con nosotros"
+  },
+  "sample": {
+    "seller_name": "Carrito Brillante S.L.",
+    "seller_phone": "900 123 456",
+    "customer_name": "Carlos Gómez",
+    "signatory_name": "Lucía Fernández",
+    "items": [
+      {
+        "name": "Auriculares inalámbricos con estuche de carga",
+        "qty": 1,
+        "rate": 39.9,
+        "tax": 21
+      },
+      {
+        "name": "Funda de silicona para móvil",
+        "qty": 2,
+        "rate": 7.5,
+        "tax": 21
+      },
+      {
+        "name": "Camiseta de algodón de cuello redondo",
+        "qty": 2,
+        "rate": 12,
+        "tax": 21
+      },
+      {
+        "name": "Botella de acero inoxidable (750 ml)",
+        "qty": 1,
+        "rate": 14.5,
+        "tax": 21
+      }
+    ],
+    "shipping_charge": 3.95,
+    "return_policy": "Nos esforzamos por entregar cada pedido a la perfección. Si necesitas devolver un artículo, hazlo con la caja o la etiqueta de precio originales, el embalaje original y la factura; sin ellos no podemos tramitar tu solicitud. Se aplican los términos y condiciones.\nLos productos vendidos son para el consumo del usuario final y no para su reventa.",
+    "customer_phone": "612 345 678"
+  }
+}

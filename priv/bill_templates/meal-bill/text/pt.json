@@ -1,0 +1,153 @@
+{
+  "title": "Gerador de nota de entrega de refeição",
+  "name": "Nota de entrega de refeição",
+  "public_slug": "gerador-de-nota-de-entrega-de-refeicao",
+  "summary": "Nota fiscal de entrega de refeição com {tax} em cada linha.",
+  "description": "Gere uma nota de entrega de refeição em nome de um restaurante, com endereço de entrega, imposto por linha, dados legais da plataforma e um signatário. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota de entrega"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Plataforma ou marca (opcional)"
+    },
+    "legal_name": {
+      "label": "Razão social (opcional)"
+    },
+    "restaurant_name": {
+      "label": "Nome do restaurante"
+    },
+    "restaurant_address": {
+      "label": "Endereço do restaurante (opcional)"
+    },
+    "restaurant_gstin": {
+      "label": "Restaurante {tax_id} (opcional)"
+    },
+    "restaurant_fssai": {
+      "label": "N.º FSSAI do restaurante (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data da nota"
+    },
+    "order_id": {
+      "label": "ID do pedido (opcional)"
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "delivery_address": {
+      "label": "Endereço de entrega (opcional)"
+    },
+    "place_of_supply": {
+      "label": "Estado e local de fornecimento (opcional)"
+    },
+    "hsn_code": {
+      "label": "Código HSN (opcional)"
+    },
+    "service_description": {
+      "label": "Descrição do serviço (opcional)"
+    },
+    "reverse_charge": {
+      "label": "Reverse charge (opcional)",
+      "options": {
+        "No": "Não",
+        "Yes": "Sim"
+      }
+    },
+    "payment_note": {
+      "label": "Observação de pagamento (opcional)"
+    },
+    "platform_company": {
+      "label": "Razão social e endereço da plataforma (opcional)"
+    },
+    "platform_pan": {
+      "label": "PAN da plataforma (opcional)"
+    },
+    "platform_cin": {
+      "label": "CIN da plataforma (opcional)"
+    },
+    "platform_tax_id": {
+      "label": "Plataforma {tax_id} (opcional)"
+    },
+    "platform_fssai": {
+      "label": "N.º FSSAI da plataforma (opcional)"
+    },
+    "signatory_name": {
+      "label": "Nome do signatário (opcional)"
+    },
+    "items": {
+      "label": "Linhas de cobrança",
+      "columns": {
+        "name": "Descrição",
+        "rate": "Valor bruto ({currency})",
+        "discount": "Desc. %",
+        "tax": "Imposto %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Nota fiscal",
+    "original": "Original para o destinatário",
+    "on_behalf": "Nota em nome de",
+    "restaurant": "Restaurante",
+    "invoice_no": "N.º da nota",
+    "invoice_date": "Data da nota",
+    "customer": "Nome do cliente",
+    "delivery_address": "Endereço de entrega",
+    "place": "Estado e local de fornecimento",
+    "hsn": "Código HSN",
+    "service": "Descrição do serviço",
+    "order_id": "ID do pedido",
+    "particulars": "Descrição",
+    "gross": "Valor bruto",
+    "discount": "Desconto",
+    "net": "Valor líquido",
+    "rate": "Alíquota",
+    "tax": "Imposto",
+    "total": "Total",
+    "reverse": "O fornecimento está sujeito a reverse charge",
+    "payment_note": "Observação de pagamento",
+    "for": "Por",
+    "authorised": "Assinatura autorizada"
+  },
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Tecnologia Ltda.\nAv. Faria Lima, 1000, São Paulo - SP",
+    "legal_name": "Café Verde Ltda.",
+    "restaurant_name": "Café Verde",
+    "items": [
+      {
+        "name": "Feijoada x 2",
+        "rate": 76,
+        "discount": 0,
+        "tax": 0
+      },
+      {
+        "name": "Suco de laranja x 3",
+        "rate": 27,
+        "discount": 10,
+        "tax": 0
+      },
+      {
+        "name": "Picanha",
+        "rate": 68,
+        "discount": 0,
+        "tax": 0
+      },
+      {
+        "name": "Embalagem e entrega",
+        "rate": 8,
+        "discount": 0,
+        "tax": 0
+      }
+    ],
+    "customer_name": "Ana Souza",
+    "delivery_address": "Rua das Flores, 45, apto 12, São Paulo - SP",
+    "service_description": "Serviço de restaurante",
+    "payment_note": "Pago online",
+    "signatory_name": "A. Oliveira"
+  }
+}

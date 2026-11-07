@@ -1,0 +1,51 @@
+{
+  "title": "Gerador de recibo de estacionamento",
+  "name": "Recibo de estacionamento",
+  "public_slug": "gerador-de-recibo-de-estacionamento",
+  "summary": "Recibo de estacionamento com vaga, hora e valor.",
+  "description": "Gere um recibo de estacionamento com nome, endereço, vaga, hora e valor. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Cupom"
+  },
+  "fields": {
+    "facility_name": {
+      "label": "Nome do estacionamento"
+    },
+    "facility_address": {
+      "label": "Endereço do estacionamento"
+    },
+    "facility_phone": {
+      "label": "Telefone (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número do recibo"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "space_number": {
+      "label": "Vaga"
+    },
+    "thank_you": {
+      "label": "Mensagem de agradecimento (opcional)"
+    },
+    "amount": {
+      "label": "Valor total ({currency})"
+    }
+  },
+  "print": {
+    "title": "Recibo de estacionamento",
+    "space": "Vaga",
+    "paid": "Pago",
+    "tel": "Tel."
+  },
+  "sample": {
+    "facility_name": "Estacionamento Centro",
+    "facility_phone": "(11) 3456-7890",
+    "amount": 25,
+    "thank_you": "OBRIGADO E DIRIJA COM SEGURANÇA!"
+  }
+}

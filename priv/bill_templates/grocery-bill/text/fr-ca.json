@@ -1,0 +1,38 @@
+{
+  "sample": {
+    "store_name": "Marché Érable",
+    "items": [
+      {
+        "name": "Riz basmati (2 kg)",
+        "qty": 1,
+        "rate": 6.5
+      },
+      {
+        "name": "Lentilles (900 g)",
+        "qty": 2,
+        "rate": 3.5
+      },
+      {
+        "name": "Huile de tournesol (1 L)",
+        "qty": 2,
+        "rate": 4.5,
+        "discount": 5
+      },
+      {
+        "name": "Sucre (2 kg)",
+        "qty": 3,
+        "rate": 3.8
+      },
+      {
+        "name": "Café (340 g)",
+        "qty": 1,
+        "rate": 8.5,
+        "discount": 10
+      }
+    ],
+    "customer_name": "Julie Tremblay",
+    "tax_percent": null,
+    "store_phone": "(514) 555-0123",
+    "store_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

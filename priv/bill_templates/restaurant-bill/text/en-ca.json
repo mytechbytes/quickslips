@@ -1,0 +1,35 @@
+{
+  "sample": {
+    "restaurant_name": "Maple Leaf Café",
+    "items": [
+      {
+        "name": "Poutine",
+        "qty": 2,
+        "rate": 11
+      },
+      {
+        "name": "Coffee",
+        "qty": 3,
+        "rate": 3
+      },
+      {
+        "name": "Caesar salad",
+        "qty": 1,
+        "rate": 10
+      },
+      {
+        "name": "Smoked meat sandwich",
+        "qty": 1,
+        "rate": 15
+      },
+      {
+        "name": "Butter tart",
+        "qty": 2,
+        "rate": 4.5
+      }
+    ],
+    "customer_name": "Emma Wilson",
+    "table_number": "T-7",
+    "gst_percent": 5
+  }
+}

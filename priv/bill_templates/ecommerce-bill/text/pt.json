@@ -1,0 +1,174 @@
+{
+  "title": "Gerador de nota de e-commerce",
+  "name": "Nota de e-commerce",
+  "public_slug": "gerador-de-nota-de-e-commerce",
+  "summary": "Nota de pedido online com alíquota por item e frete.",
+  "description": "Crie uma nota para um pedido online com produtos, quantidades, uma alíquota de {tax} para cada item, frete, o vendedor, o marketplace e os endereços do cliente. Quatro modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Recibo de pagamento",
+    "t2": "Pedido confirmado",
+    "t3": "Fatura",
+    "t4": "Nota fiscal"
+  },
+  "fields": {
+    "seller_name": {
+      "label": "Vendido por"
+    },
+    "seller_address": {
+      "label": "Endereço do vendedor (opcional)"
+    },
+    "seller_phone": {
+      "label": "Telefone do vendedor (opcional)"
+    },
+    "platform_name": {
+      "label": "Loja online ou marketplace (opcional)"
+    },
+    "platform_website": {
+      "label": "Site (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data da nota"
+    },
+    "order_number": {
+      "label": "Número do pedido (opcional)"
+    },
+    "order_date": {
+      "label": "Data do pedido (opcional)"
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "customer_phone": {
+      "label": "Celular (opcional)"
+    },
+    "shipping_address": {
+      "label": "Endereço de entrega"
+    },
+    "billing_address": {
+      "label": "Endereço de cobrança (opcional)"
+    },
+    "shipping_charge": {
+      "label": "Frete ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "signatory_name": {
+      "label": "Nome do signatário (opcional)"
+    },
+    "return_policy": {
+      "label": "Política de devolução e observações (opcional)"
+    },
+    "items": {
+      "label": "Produtos",
+      "columns": {
+        "name": "Descrição",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})",
+        "tax": "Imposto %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tel.",
+    "authorised": "Signatário autorizado",
+    "return_policy": "Política de devolução",
+    "payment_receipt": "Recibo de pagamento",
+    "receipt_no": "Recibo n.º",
+    "sold_by": "Vendido por",
+    "order_no": "Pedido n.º",
+    "order_date": "Data do pedido",
+    "invoice_date": "Data da nota",
+    "receipt_date": "Data do recibo",
+    "bill_to": "Cobrar de",
+    "description": "Descrição",
+    "net_amount": "Valor líquido",
+    "qty": "Qtd.",
+    "total_amount": "Valor total",
+    "total": "Total",
+    "shipping": "Frete",
+    "payment_method": "Forma de pagamento",
+    "order_confirmed": "Seu pedido está confirmado!",
+    "hello": "Olá",
+    "order_number": "Número do pedido",
+    "shipping_address": "Endereço de entrega",
+    "mobile": "Celular",
+    "receipt_summary": "Resumo do recibo",
+    "rate": "Preço",
+    "amt": "Valor",
+    "subtotal": "Subtotal",
+    "confirmation_note": "Enviaremos um e-mail de confirmação quando o item for despachado.",
+    "thanks_shopping": "Obrigado por comprar conosco",
+    "need_help": "Precisa de ajuda?",
+    "invoice": "Nota fiscal",
+    "invoice_no": "Nota n.º",
+    "date": "Data",
+    "invoice_to": "Faturar para",
+    "pay_to": "Pagar a",
+    "price": "Preço",
+    "payment_info": "Dados do pagamento",
+    "amount": "Valor",
+    "tax_invoice": "Nota fiscal",
+    "ship_from": "Endereço de origem",
+    "invoice_number": "Número da nota",
+    "order_id": "ID do pedido",
+    "payment": "Pagamento",
+    "ship_to": "Entregar em",
+    "keep_invoice": "guarde esta nota e a caixa do fabricante para fins de garantia",
+    "total_items": "Total de itens",
+    "title": "Item",
+    "gross_amount": "Valor bruto",
+    "taxable_value": "Base de cálculo",
+    "grand_total": "Total geral",
+    "thank_you": "Obrigado!",
+    "for_shopping": "por comprar conosco"
+  },
+  "sample": {
+    "seller_name": "Carrinho Brilhante Ltda.",
+    "seller_phone": "0800 123 4567",
+    "customer_name": "Ana Souza",
+    "signatory_name": "Mariana Lima",
+    "items": [
+      {
+        "name": "Fones de ouvido sem fio com estojo de carga",
+        "qty": 1,
+        "rate": 189.9,
+        "tax": 18
+      },
+      {
+        "name": "Capa de silicone para celular",
+        "qty": 2,
+        "rate": 39.9,
+        "tax": 18
+      },
+      {
+        "name": "Camiseta de algodão gola redonda",
+        "qty": 2,
+        "rate": 59.9,
+        "tax": 12
+      },
+      {
+        "name": "Garrafa de aço inoxidável (750 ml)",
+        "qty": 1,
+        "rate": 69.9,
+        "tax": 18
+      }
+    ],
+    "shipping_charge": 19.9,
+    "return_policy": "Nos esforçamos para entregar cada pedido com perfeição. Se precisar devolver um item, faça-o com a caixa ou a etiqueta de preço originais, a embalagem original e a nota fiscal; sem eles não podemos processar o seu pedido. Aplicam-se os termos e condições.\nOs produtos vendidos destinam-se ao consumo final e não à revenda.",
+    "customer_phone": "(11) 91234-5678"
+  }
+}

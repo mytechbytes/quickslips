@@ -1,0 +1,92 @@
+{
+  "title": "Générateur de reçu de librairie",
+  "name": "Reçu de librairie",
+  "public_slug": "generateur-de-recu-de-librairie",
+  "summary": "Reçu de librairie avec titre, auteur et paiement.",
+  "description": "Créez un reçu de librairie avec le titre, l'auteur et l'éditeur du livre, la quantité, le prix et le mode de paiement. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Classique",
+    "t2": "Avec le vendeur"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Nom de la librairie"
+    },
+    "store_address": {
+      "label": "Adresse de la librairie (facultatif)"
+    },
+    "receipt_number": {
+      "label": "Numéro de reçu"
+    },
+    "date": {
+      "label": "Date d'achat"
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "book_name": {
+      "label": "Titre du livre"
+    },
+    "author": {
+      "label": "Auteur (facultatif)"
+    },
+    "publisher": {
+      "label": "Éditeur"
+    },
+    "description": {
+      "label": "Description (facultatif)"
+    },
+    "quantity": {
+      "label": "Quantité"
+    },
+    "book_price": {
+      "label": "Prix d'un livre ({currency})"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    }
+  },
+  "print": {
+    "title": "Reçu de librairie",
+    "bill_to": "Facturé à",
+    "receipt_details": "Détails du reçu",
+    "receipt_no": "Reçu n°",
+    "receipt_date": "Date",
+    "customer_name": "Nom du client",
+    "book_name": "Titre",
+    "author": "Auteur",
+    "publisher": "Éditeur",
+    "payment_method": "Mode de paiement",
+    "receipt_summary": "Récapitulatif",
+    "item": "Article",
+    "description": "Description",
+    "qty": "Qté",
+    "price": "Prix",
+    "total": "Total",
+    "sold_by": "Vendu par",
+    "store_name": "Nom",
+    "store_address": "Adresse",
+    "thanks": "Merci ! À bientôt.",
+    "quote_1": "Une pièce sans livres est comme un corps sans âme.",
+    "quote_2": "Emportez un bon livre au lit — les livres ne ronflent pas.",
+    "quote_3": "Les livres sont les amis les plus silencieux et les plus constants ; ce sont les conseillers les plus accessibles et les plus sages, et les enseignants les plus patients.",
+    "quote_4": "Les livres sont une bonne compagnie, dans les moments tristes comme dans les moments heureux, car les livres sont des personnes – des personnes qui ont réussi à rester en vie en se cachant entre les pages d'un livre."
+  },
+  "sample": {
+    "store_name": "Librairie La Page",
+    "customer_name": "Camille Martin",
+    "book_name": "Le Petit Prince",
+    "author": "Antoine de Saint-Exupéry",
+    "publisher": "Éditions du Soleil",
+    "description": "Livre de poche",
+    "quantity": 2,
+    "book_price": 9.5
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "title": "充值发票生成器",
+  "name": "充值发票",
+  "public_slug": "recharge-bill-generator",
+  "summary": "含账户汇总的手机、电话或电视充值发票。",
+  "description": "生成手机、电话或电视充值发票，包含运营商、套餐、计费周期、账户汇总、{tax}和付款回执，提供四种配色。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "税务发票"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "运营商或零售商"
+    },
+    "provider_address": {
+      "label": "运营商地址（选填）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "invoice_number": {
+      "label": "发票号码"
+    },
+    "bill_date": {
+      "label": "账单日期"
+    },
+    "time": {
+      "label": "时间（选填）"
+    },
+    "period_start": {
+      "label": "账期起"
+    },
+    "period_end": {
+      "label": "账期止"
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "customer_address": {
+      "label": "客户地址（选填）"
+    },
+    "landmark": {
+      "label": "附近地标（选填）"
+    },
+    "customer_id": {
+      "label": "客户编号"
+    },
+    "mobile_number": {
+      "label": "手机号码"
+    },
+    "alternative_number": {
+      "label": "备用号码（选填）"
+    },
+    "email": {
+      "label": "邮箱（选填）"
+    },
+    "service": {
+      "label": "服务类型",
+      "options": {
+        "Prepaid": "预付费",
+        "Postpaid": "后付费"
+      }
+    },
+    "payment_in": {
+      "label": "付款时间",
+      "options": {
+        "Advance": "预付",
+        "Immediate": "即时"
+      }
+    },
+    "bill_cycle": {
+      "label": "计费周期",
+      "options": {
+        "Monthly": "月度",
+        "Quarterly": "季度",
+        "Half-yearly": "半年度",
+        "Annual": "年度"
+      }
+    },
+    "theme": {
+      "label": "配色",
+      "options": {
+        "Red": "红色",
+        "Blue": "蓝色",
+        "Yellow": "黄色",
+        "Green": "绿色"
+      }
+    },
+    "email_banner": {
+      "label": "横幅文字（选填）"
+    },
+    "offer_title": {
+      "label": "优惠标题（选填）"
+    },
+    "offer_text": {
+      "label": "优惠说明（选填）"
+    },
+    "pay_options": {
+      "label": "付款方式（每行一条）（选填）"
+    },
+    "previous_balance": {
+      "label": "上期账单（{currency}）（选填）"
+    },
+    "adjustment": {
+      "label": "调整金额（{currency}）（选填）"
+    },
+    "amount": {
+      "label": "充值或套餐金额（{currency}）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "amount_after_due": {
+      "label": "逾期后金额（{currency}）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    }
+  },
+  "print": {
+    "original_copy": "客户联（正本）— 税务发票",
+    "invoice_no": "发票号码",
+    "billed_to": "购买人",
+    "customer_id": "客户编号",
+    "mobile_no": "手机号",
+    "bill_no": "账单号",
+    "bill_date": "账单日期",
+    "bill_cycle": "计费周期",
+    "bill_period": "账期",
+    "to": "至",
+    "pay_by": "付款",
+    "alt_no": "备用号码",
+    "email": "邮箱",
+    "account_summary": "您的账户汇总",
+    "previous_bill": "上期账单",
+    "adjustment": "调整金额",
+    "this_month": "本月",
+    "service": "服务",
+    "after_due": "逾期后金额",
+    "payment_method": "支付方式",
+    "month_charge": "本月费用",
+    "monthly_charges": "月度费用",
+    "tax": "税",
+    "taxable_amount": "计税金额",
+    "bill_from": "起始日",
+    "total_amount": "总金额",
+    "tax_note": "根据适用规定，本发票适用的{tax}税率为 {rate}%。",
+    "detach": "请撕下此联并随付款一起交回",
+    "pay_on_go": "随时随地付款",
+    "provider_details": "运营商信息",
+    "acknowledgement": "付款回执",
+    "customer_name": "客户姓名",
+    "amount": "金额",
+    "computer_generated": "* 本发票由电脑生成，无需签字。生成时间：{date} {time}。",
+    "computer_generated_date": "* 本发票由电脑生成，无需签字。生成日期：{date}。"
+  },
+  "sample": {
+    "provider_name": "极讯移动",
+    "customer_name": "王伟",
+    "mobile_number": "138 0013 8000",
+    "amount": 49,
+    "tax_percent": 6,
+    "amount_after_due": 5,
+    "email_banner": "如需通过邮箱接收月度账单，请发送短信：STARTBILL <邮箱地址> 至 198。",
+    "offer_title": "每月免费赠送 10 GB",
+    "offer_text": "每个预付费和电视套餐均赠送宽带流量",
+    "pay_options": "通过应用付款\n通过 Zing Pay 应用付款：可在应用商店下载\n通过官方网站付款",
+    "landmark": null
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "title": "Gerador de nota de farmácia",
+  "name": "Nota de farmácia",
+  "public_slug": "gerador-de-nota-de-farmacia",
+  "summary": "Nota de farmácia com lote, validade e preço.",
+  "description": "Gere uma nota de farmácia com medicamentos, fabricante, lote, validade e preço máximo, {tax} no preço, desconto e dados de licença da filial. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota fiscal"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Nome da farmácia"
+    },
+    "brand_subtitle": {
+      "label": "Slogan (opcional)"
+    },
+    "branch_name": {
+      "label": "Filial (opcional)"
+    },
+    "branch_address": {
+      "label": "Endereço da filial (opcional)"
+    },
+    "toll_free": {
+      "label": "Telefone (opcional)"
+    },
+    "website": {
+      "label": "Site (opcional)"
+    },
+    "dl_number": {
+      "label": "N.º da licença sanitária (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "fssai": {
+      "label": "N.º FSSAI (opcional)"
+    },
+    "registered_office": {
+      "label": "Sede registrada (opcional)"
+    },
+    "admin_office": {
+      "label": "Escritório administrativo (opcional)"
+    },
+    "bill_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "terminal_number": {
+      "label": "Terminal n.º (opcional)"
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "ref_number": {
+      "label": "N.º de ref. (opcional)"
+    },
+    "doctor_name": {
+      "label": "Médico / prescritor (opcional)"
+    },
+    "discount": {
+      "label": "Desconto sobre o total ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "signatory_name": {
+      "label": "Nome do signatário (opcional)"
+    },
+    "signatory_line": {
+      "label": "Cargo do signatário (opcional)"
+    },
+    "items": {
+      "label": "Medicamentos",
+      "columns": {
+        "name": "Item",
+        "hsn": "Código HSN",
+        "mfr": "Fabricante",
+        "batch": "Lote",
+        "expiry": "Validade",
+        "schedule": "Lista",
+        "qty": "Qtd.",
+        "rate": "PMC ({currency})",
+        "tax": "Imposto %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "Nota fiscal",
+    "bill_no": "Nota n.º",
+    "date_time": "Data / hora",
+    "terminal": "Terminal n.º",
+    "name": "Nome",
+    "ref_no": "N.º de ref.",
+    "doctor": "Médico",
+    "payment": "Pagamento",
+    "tel": "Tel.",
+    "dl_no": "N.º da licença",
+    "item": "Item",
+    "hsn": "Código HSN",
+    "mfr": "Fabricante",
+    "batch": "Lote",
+    "expiry": "Validade",
+    "sch": "Lista",
+    "qty": "Qtd.",
+    "mrp": "PMC",
+    "tax_rate": "Imposto %",
+    "taxable": "Base",
+    "total_amount": "Valor total",
+    "total": "Total",
+    "discount": "Desconto",
+    "net_total": "Total líquido",
+    "authorised": "Assinatura autorizada",
+    "registered": "Sede registrada",
+    "admin": "Escritório administrativo",
+    "taxable_value": "Base de cálculo"
+  },
+  "sample": {
+    "brand_name": "Farmácia Verde",
+    "brand_subtitle": "Sua saúde, nossa prioridade",
+    "branch_name": "Filial Centro",
+    "doctor_name": "Dra. Ana Souza",
+    "customer_name": "Carlos Lima",
+    "items": [
+      {
+        "name": "Paracetamol 500 mg (20 comprimidos)",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 12,
+        "tax": 0
+      },
+      {
+        "name": "Amoxicilina 500 mg (21 cápsulas)",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 38,
+        "tax": 0
+      },
+      {
+        "name": "Xarope para tosse 100 ml",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 29,
+        "tax": 0
+      },
+      {
+        "name": "Termômetro digital",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 45,
+        "tax": 0
+      }
+    ],
+    "discount": 5,
+    "toll_free": "(11) 3456-7890",
+    "dl_number": "AFE 1.01234-5",
+    "registered_office": "Farmácia Verde Ltda., Av. Faria Lima, 1000, São Paulo - SP",
+    "admin_office": "Farmácia Verde Ltda., Rua da Mooca, 1200, São Paulo - SP",
+    "signatory_line": "Farmacêutico(a)"
+  }
+}

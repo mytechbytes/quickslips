@@ -1,0 +1,92 @@
+{
+  "title": "书店收据生成器",
+  "name": "书店收据",
+  "public_slug": "book-receipt-generator",
+  "summary": "含书名、作者和付款方式的书店收据。",
+  "description": "生成包含书名、作者、出版社、数量、单价和付款方式的书店收据。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "经典",
+    "t2": "含卖家信息"
+  },
+  "fields": {
+    "store_name": {
+      "label": "书店名称"
+    },
+    "store_address": {
+      "label": "书店地址（选填）"
+    },
+    "receipt_number": {
+      "label": "收据编号"
+    },
+    "date": {
+      "label": "购买日期"
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "book_name": {
+      "label": "书名"
+    },
+    "author": {
+      "label": "作者（选填）"
+    },
+    "publisher": {
+      "label": "出版社"
+    },
+    "description": {
+      "label": "说明（选填）"
+    },
+    "quantity": {
+      "label": "数量"
+    },
+    "book_price": {
+      "label": "单价（{currency}）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    }
+  },
+  "print": {
+    "title": "书店收据",
+    "bill_to": "购买人",
+    "receipt_details": "收据信息",
+    "receipt_no": "收据号码",
+    "receipt_date": "日期",
+    "customer_name": "客户姓名",
+    "book_name": "书名",
+    "author": "作者",
+    "publisher": "出版社",
+    "payment_method": "支付方式",
+    "receipt_summary": "收据明细",
+    "item": "商品",
+    "description": "说明",
+    "qty": "数量",
+    "price": "单价",
+    "total": "合计",
+    "sold_by": "卖家",
+    "store_name": "店名",
+    "store_address": "地址",
+    "thanks": "谢谢惠顾，欢迎再来！",
+    "quote_1": "没有书的房间，就像没有灵魂的身体。",
+    "quote_2": "睡前带一本好书上床吧，书可不会打呼噜。",
+    "quote_3": "书是最安静、最忠实的朋友；是最容易接近、最睿智的顾问，也是最有耐心的老师。",
+    "quote_4": "书是好伴侣，无论悲伤还是快乐，因为书就是人——那些藏身书页之间、得以继续活下去的人。"
+  },
+  "sample": {
+    "store_name": "书香书店",
+    "customer_name": "王伟",
+    "book_name": "红楼梦",
+    "author": "曹雪芹",
+    "publisher": "朝阳出版社",
+    "description": "平装，第二版",
+    "quantity": 1,
+    "book_price": 58
+  }
+}

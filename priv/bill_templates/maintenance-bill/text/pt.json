@@ -1,0 +1,192 @@
+{
+  "title": "Gerador de nota de oficina",
+  "name": "Nota de oficina",
+  "public_slug": "gerador-de-nota-de-oficina",
+  "summary": "Orçamento ou nota de oficina com peças, mão de obra e {tax}.",
+  "description": "Gere um orçamento, nota ou ordem de serviço de oficina de carro ou moto com cliente e veículo, peças com desconto, mão de obra e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Ficha de oficina"
+  },
+  "fields": {
+    "workshop_name": {
+      "label": "Nome da oficina"
+    },
+    "workshop_address": {
+      "label": "Endereço da oficina"
+    },
+    "workshop_phone": {
+      "label": "Telefone (opcional)"
+    },
+    "dealer_name": {
+      "label": "Concessionária autorizada (opcional)"
+    },
+    "document_type": {
+      "label": "Documento",
+      "options": {
+        "Estimate": "Orçamento",
+        "Invoice": "Fatura",
+        "Job card": "Ordem de serviço"
+      }
+    },
+    "document_number": {
+      "label": "Número do documento"
+    },
+    "reference_number": {
+      "label": "Número de referência (opcional)"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "workshop_section": {
+      "label": "Setor da oficina (opcional)",
+      "options": {
+        "Main workshop": "Oficina principal",
+        "Service bay": "Baia de serviço",
+        "Body shop": "Funilaria",
+        "Spare counter": "Balcão de peças",
+        "Express lane": "Atendimento rápido",
+        "PDI bay": "Área PDI"
+      }
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "customer_phone": {
+      "label": "Contato do cliente (opcional)"
+    },
+    "vehicle_model": {
+      "label": "Modelo"
+    },
+    "registration_number": {
+      "label": "Placa"
+    },
+    "vin": {
+      "label": "Chassi (VIN) (opcional)"
+    },
+    "insurance_company": {
+      "label": "Seguradora (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "terms": {
+      "label": "Condições, uma por linha (opcional)"
+    },
+    "parts": {
+      "label": "Peças",
+      "options": {
+        "PAID": "Pago",
+        "Warranty": "Garantia",
+        "Insurance": "Seguro"
+      },
+      "columns": {
+        "code": "Cód. da peça",
+        "name": "Descrição",
+        "billing": "Cobrança",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})",
+        "discount": "Desc. %"
+      }
+    },
+    "labour": {
+      "label": "Mão de obra",
+      "options": {
+        "PAID": "Pago",
+        "Warranty": "Garantia",
+        "Insurance": "Seguro"
+      },
+      "columns": {
+        "code": "Cód. do serviço",
+        "name": "Serviço",
+        "billing": "Cobrança",
+        "rate": "Valor ({currency})",
+        "discount": "Desc. %"
+      }
+    }
+  },
+  "print": {
+    "contact": "Contato",
+    "dealer": "Concessionária autorizada",
+    "no": "n.º",
+    "customer": "Nome do cliente",
+    "vin": "Chassi (VIN)",
+    "insurance": "Seguradora",
+    "reference": "N.º de referência",
+    "date": "Data",
+    "model": "Modelo",
+    "reg_no": "Placa",
+    "section": "Setor",
+    "parts": "Peças",
+    "labour": "Mão de obra",
+    "parts_total": "Total de peças",
+    "jobs_total": "Total de mão de obra",
+    "tax_details": "Detalhe dos impostos",
+    "taxable": "Base de cálculo",
+    "summary": "Resumo",
+    "total": "Total",
+    "signatory": "Assinatura autorizada",
+    "code": "Código",
+    "description": "Descrição",
+    "billing": "Cobrança",
+    "qty": "Qtd.",
+    "rate": "Preço",
+    "discount": "Desc.",
+    "net": "Valor líquido"
+  },
+  "sample": {
+    "workshop_name": "Oficina Paulista",
+    "workshop_phone": "(11) 3456-7890",
+    "customer_name": "Ana Souza",
+    "customer_phone": "(11) 91234-5678",
+    "vehicle_model": "Chevrolet Onix",
+    "registration_number": "ABC-1D23",
+    "insurance_company": "Seguradora Nacional",
+    "parts": [
+      {
+        "code": "61684KHD787",
+        "name": "Filtro de óleo",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 45,
+        "discount": 10
+      },
+      {
+        "code": "45022TF0",
+        "name": "Pastilhas de freio dianteiras (jogo)",
+        "billing": "PAID",
+        "qty": 1,
+        "rate": 280,
+        "discount": 0
+      },
+      {
+        "code": "17220R1A",
+        "name": "Filtro de ar",
+        "billing": "Warranty",
+        "qty": 1,
+        "rate": 70,
+        "discount": 100
+      }
+    ],
+    "labour": [
+      {
+        "code": "66266KTP337",
+        "name": "Revisão periódica",
+        "billing": "PAID",
+        "rate": 150,
+        "discount": 0
+      },
+      {
+        "code": "66310KBR101",
+        "name": "Inspeção e troca de freios",
+        "billing": "PAID",
+        "rate": 120,
+        "discount": 5
+      }
+    ],
+    "tax_percent": null,
+    "terms": "Pagamento em até 7 dias a partir da data da fatura.\nOrçamento válido por 15 dias.\nMão de obra conforme a política da oficina.\nSinistros do seguro sujeitos à aprovação do perito.\nA oficina não se responsabiliza por objetos deixados no veículo.\nConfira todos os dados antes de sair da oficina."
+  }
+}

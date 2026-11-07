@@ -1,0 +1,39 @@
+{
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Technologies Ltd\n10 Downing Road, London EC1A 1AA",
+    "legal_name": "Green Leaf Hospitality Ltd",
+    "restaurant_name": "Green Leaf Café",
+    "items": [
+      {
+        "name": "Fish and chips x 2",
+        "rate": 27,
+        "discount": 0,
+        "tax": 20
+      },
+      {
+        "name": "Tea x 3",
+        "rate": 8.4,
+        "discount": 10,
+        "tax": 20
+      },
+      {
+        "name": "Soup of the day",
+        "rate": 6.5,
+        "discount": 0,
+        "tax": 20
+      },
+      {
+        "name": "Packaging and delivery",
+        "rate": 2.5,
+        "discount": 0,
+        "tax": 20
+      }
+    ],
+    "customer_name": "James Taylor",
+    "delivery_address": "12 Baker Street, Flat 3, London NW1 6XE",
+    "service_description": "Restaurant service",
+    "payment_note": "Paid online",
+    "signatory_name": "A. Johnson"
+  }
+}

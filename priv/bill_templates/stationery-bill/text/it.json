@@ -1,0 +1,105 @@
+{
+  "title": "Generatore di scontrino per cartoleria",
+  "name": "Scontrino cartoleria",
+  "public_slug": "generatore-scontrino-cartoleria",
+  "summary": "Scontrino di cartoleria con articoli, prezzi e totali.",
+  "description": "Crea uno scontrino per cartoleria con penne, carta e altro materiale, quantità, prezzi e {tax}. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Scontrino"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Nome della cartoleria"
+    },
+    "shop_address": {
+      "label": "Indirizzo della cartoleria"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "Numero di scontrino"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "customer_address": {
+      "label": "Indirizzo del cliente"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "remarks": {
+      "label": "Note / istruzioni (facoltativo)"
+    },
+    "items": {
+      "label": "Articoli",
+      "columns": {
+        "name": "Articolo",
+        "qty": "Quantità",
+        "rate": "Prezzo ({currency})"
+      }
+    }
+  },
+  "print": {
+    "receipt_no": "Scontrino n.",
+    "date": "Data",
+    "billed_to": "Intestato a",
+    "address": "Indirizzo",
+    "item": "Articolo",
+    "rate": "Prezzo",
+    "quantity": "Quantità",
+    "amount": "Importo",
+    "remarks": "Note / istruzioni",
+    "subtotal": "Subtotale",
+    "total_amount": "Importo totale",
+    "payment_method": "Metodo di pagamento",
+    "save_paper": "Risparmia carta, salva la natura! Grazie per aver acquistato da noi."
+  },
+  "sample": {
+    "shop_name": "Cartoleria La Penna",
+    "customer_name": "Marco Rossi",
+    "items": [
+      {
+        "name": "Quaderno a spirale (200 pagine)",
+        "qty": 4,
+        "rate": 2.5
+      },
+      {
+        "name": "Penne a sfera blu (confezione da 10)",
+        "qty": 2,
+        "rate": 3.8
+      },
+      {
+        "name": "Set di evidenziatori (4 colori)",
+        "qty": 1,
+        "rate": 5.2
+      },
+      {
+        "name": "Risma di carta A4 (500 fogli)",
+        "qty": 1,
+        "rate": 5.5
+      },
+      {
+        "name": "Colla stick (2 pezzi)",
+        "qty": 2,
+        "rate": 2.4
+      }
+    ],
+    "tax_percent": 22,
+    "remarks": "Conservare lo scontrino per i cambi entro 7 giorni."
+  }
+}

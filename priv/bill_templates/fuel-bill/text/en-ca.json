@@ -16,6 +16,8 @@
     "quantity": 40,
     "rate": 1.62,
     "seller_tax_id": "123456789RT0001",
-    "tax_percent": 13
+    "tax_percent": 13,
+    "customer_name": "Emma Wilson",
+    "station_phone": "(416) 555-0187"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "sample": {
+    "tenant_name": "James Taylor",
+    "landlord_name": "Oliver Smith",
+    "receiver_name": "Oliver Smith",
+    "monthly_rent": 1100
+  }
+}

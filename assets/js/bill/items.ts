@@ -2,18 +2,68 @@ import { t } from "./i18n"
 import { INPUT_CLASS, SECONDARY_BUTTON_CLASS } from "./styles"
 import type { Field } from "./form"
 
-export type ItemRow = { name?: string; qty?: number; rate?: number }
+export type ItemRow = {
+  name?: string
+  qty?: number
+  rate?: number
+  code?: string
+  billing?: string
+  discount?: number
+  tax?: number
+  hsn?: string
+  mfr?: string
+  batch?: string
+  expiry?: string
+  schedule?: string
+}
 
-type Columns = { name: string; qty: string; rate: string }
+type Cell = keyof ItemRow
 
-const COLUMNS: (keyof ItemRow)[] = ["name", "qty", "rate"]
+// The cells of a row, in the order of the field's `cells`; a table that names none has the first three.
+const DEFAULT_CELLS: Cell[] = ["name", "qty", "rate"]
+const DEFAULT_HEADS: Record<Cell, string> = {
+  code: "Code",
+  name: "Item",
+  billing: "Billing",
+  qty: "Qty",
+  rate: "Rate ({currency})",
+  discount: "Disc. %",
+  tax: "Tax %",
+  hsn: "HSN",
+  mfr: "Mfr",
+  batch: "Batch",
+  expiry: "Expiry",
+  schedule: "Sch",
+}
+// The widths of the cells in rem (the classes below), to tell how wide a table with many cells must be.
+const CELL_REM: Record<string, number> = { code: 7, billing: 7, qty: 5, rate: 7, discount: 5, tax: 5, hsn: 6, mfr: 7, batch: 6, expiry: 5.5, schedule: 4, amount: 7, remove: 2.5, name: 14 }
+// In a table with many cells the widths are the same on every screen, because it scrolls.
+const WIDE_WIDTH: Partial<Record<Cell, string>> = { code: "w-28", billing: "w-28", qty: "w-20", rate: "w-28", discount: "w-20", tax: "w-20", hsn: "w-24", mfr: "w-28", batch: "w-24", expiry: "w-22", schedule: "w-16" }
+// The widths of the narrow cells; the name takes what is left.
+const CELL_WIDTH: Partial<Record<Cell, string>> = {
+  code: "w-28",
+  billing: "w-28",
+  qty: "w-16 sm:w-20",
+  rate: "w-20 sm:w-28",
+  discount: "w-20",
+  tax: "w-20",
+  hsn: "w-24",
+  mfr: "w-28",
+  batch: "w-24",
+  expiry: "w-22",
+  schedule: "w-16",
+}
 
 // The table: heads on top, a row per item, the amount of the row and a remove icon at its end. The amount is left out
 // on a phone, where the row would not fit; the subtotal is still shown.
 const CELL_INPUT_CLASS = INPUT_CLASS.replace("px-3 py-2", "px-2 py-1.5").replace("sm:py-1.5", "sm:py-1")
 const HEAD_CLASS = "px-2 py-2 text-xs font-medium text-ink-muted"
 
-const isBlank = (row: ItemRow) => COLUMNS.every((column) => row[column] === undefined || row[column] === "")
+// A choice (the billing type) has a value from the start, so it does not count as something typed in.
+const isBlank = (row: ItemRow) =>
+  (Object.keys(row) as Cell[]).every((cell) => cell === "billing" || row[cell] === undefined || row[cell] === "")
+
+const isNumeric = (cell: Cell) => cell === "qty" || cell === "rate" || cell === "discount" || cell === "tax"
 
 /**
  * A table of items: add, edit and remove rows, with the amount of each row (quantity times rate) and the subtotal
@@ -26,21 +76,17 @@ export function createItemsField(
   ctx: { currency: string; formatMoney: (amount: number) => string },
   onChange: () => void,
 ) {
-  const columns: Columns = {
-    name: "Item",
-    qty: "Qty",
-    rate: "Rate ({currency})",
-    ...field.columns,
-  }
-  const heads = {
-    name: columns.name,
-    qty: columns.qty,
-    rate: columns.rate.replace("{currency}", ctx.currency),
-  }
+  const cells = (field.cells ?? DEFAULT_CELLS) as Cell[]
+  const hasQty = cells.includes("qty")
+  const heads = Object.fromEntries(
+    cells.map((cell) => [cell, ({ ...DEFAULT_HEADS, ...field.columns }[cell] ?? cell).replace("{currency}", ctx.currency)]),
+  ) as Record<Cell, string>
   const maxRows = field.max_rows ?? 30
 
   const wrapper = document.createElement("div")
   wrapper.id = `field-${field.key}`
+  // A grid item does not shrink below its content: without this a wide table would stretch the form on a phone.
+  wrapper.className = "min-w-0"
 
   const addButton = document.createElement("button")
   addButton.type = "button"
@@ -55,6 +101,11 @@ export function createItemsField(
   // row on the left and the subtotal on the right. The name of the field is the caption, for those who hear it.
   const table = document.createElement("table")
   table.className = "w-full table-fixed border-collapse"
+  // A table with many cells is wider than the form: the name keeps room to be read and the box scrolls sideways.
+  if (cells.length > 3) {
+    const width = cells.reduce((sum, cell) => sum + (CELL_REM[cell] ?? 0), CELL_REM.amount + CELL_REM.remove)
+    table.style.minWidth = `${width}rem`
+  }
   table.id = `items-${field.key}`
   const caption = document.createElement("caption")
   caption.className = "sr-only"
@@ -62,13 +113,14 @@ export function createItemsField(
   table.append(caption)
   const headRow = document.createElement("tr")
   headRow.className = "bg-surface-muted"
-  const heads4 = [
-    [heads.name, ""],
-    [heads.qty, "w-16 text-right sm:w-20"],
-    [heads.rate, "w-20 text-right sm:w-28"],
+  const headCells: string[][] = [
+    ...cells.map((cell) => [
+      heads[cell],
+      `${cells.length > 3 ? WIDE_WIDTH[cell] : (CELL_WIDTH[cell] ?? "")} ${isNumeric(cell) ? "text-right" : ""}`,
+    ]),
     [t("amount"), "hidden w-28 text-right sm:table-cell"],
   ]
-  for (const [text, className] of heads4) {
+  for (const [text, className] of headCells) {
     const th = document.createElement("th")
     th.scope = "col"
     th.className = `${HEAD_CLASS} text-left font-medium ${className}`
@@ -95,8 +147,9 @@ export function createItemsField(
   foot.className = "flex items-center justify-between gap-3 border-t border-line px-2 py-2"
   foot.append(addButton, subtotalEl)
 
+  // A table with many cells is wider than a phone: the box scrolls sideways.
   const box = document.createElement("div")
-  box.className = "overflow-hidden rounded-card border border-line"
+  box.className = "overflow-x-auto rounded-card border border-line"
   box.append(table, foot)
 
   wrapper.append(box, error)
@@ -106,21 +159,23 @@ export function createItemsField(
 
   const rows = () => [...table.querySelectorAll<HTMLElement>("tbody[data-item-row]")]
 
-  const cellValue = (row: HTMLElement, column: keyof ItemRow): string =>
-    row.querySelector<HTMLInputElement>(`[data-column=${column}]`)!.value.trim()
+  const cellValue = (row: HTMLElement, column: Cell): string =>
+    row.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-column=${column}]`)!.value.trim()
 
   const parsed = (row: HTMLElement): ItemRow => {
     const item: ItemRow = {}
-    const name = cellValue(row, "name")
-    if (name !== "") item.name = name
-    for (const column of ["qty", "rate"] as const) {
-      const raw = cellValue(row, column)
-      if (raw !== "") item[column] = Number(raw)
+    for (const cell of cells) {
+      const raw = cellValue(row, cell)
+      if (raw === "") continue
+      if (isNumeric(cell)) item[cell as "qty" | "rate" | "discount" | "tax"] = Number(raw)
+      else item[cell as "name" | "code" | "billing" | "hsn" | "mfr" | "batch" | "expiry" | "schedule"] = raw
     }
     return item
   }
 
-  const amountOf = (item: ItemRow) => (item.qty ?? 0) * (item.rate ?? 0)
+  // Quantity times rate, less the discount; a table without a quantity has one of each.
+  const amountOf = (item: ItemRow) =>
+    (hasQty ? (item.qty ?? 0) : 1) * (item.rate ?? 0) * (1 - Math.min(item.discount ?? 0, 100) / 100)
 
   function refresh() {
     let subtotal = 0
@@ -135,19 +190,34 @@ export function createItemsField(
     addButton.hidden = all.length >= maxRows
   }
 
-  function input(column: keyof ItemRow, value: string | number | undefined) {
+  function input(column: Cell, value: string | number | undefined) {
+    if (column === "billing") {
+      const select = document.createElement("select")
+      select.dataset.column = column
+      select.setAttribute("aria-label", heads[column])
+      select.className = CELL_INPUT_CLASS
+      for (const option of field.billing_options ?? []) {
+        const el = document.createElement("option")
+        el.value = option
+        el.textContent = field.option_labels?.[option] ?? option
+        select.append(el)
+      }
+      if (value !== undefined) select.value = String(value)
+      return select
+    }
     const el = document.createElement("input")
     el.dataset.column = column
-    el.setAttribute("aria-label", heads[column as keyof typeof heads])
-    el.className = CELL_INPUT_CLASS + (column === "name" ? "" : " text-right")
-    if (column === "name") {
+    el.setAttribute("aria-label", heads[column])
+    el.className = CELL_INPUT_CLASS + (isNumeric(column) ? " text-right" : "")
+    if (!isNumeric(column)) {
       el.type = "text"
-      el.maxLength = field.name_max_length ?? 80
+      el.maxLength = column === "name" ? (field.name_max_length ?? 80) : (field.cell_max_length ?? field.code_max_length ?? 30)
       el.autocomplete = "off"
     } else {
       el.type = "number"
       el.step = "any"
       el.min = column === "qty" ? "0.01" : "0"
+      if (column === "discount" || column === "tax") el.max = "100"
       el.inputMode = "decimal"
     }
     if (value !== undefined) el.value = String(value)
@@ -180,16 +250,14 @@ export function createItemsField(
 
     const main = document.createElement("tr")
     main.append(
-      td("", input("name", item.name)),
-      td("", input("qty", item.qty)),
-      td("", input("rate", item.rate)),
+      ...cells.map((cell) => td("", input(cell, item[cell]))),
       td("hidden text-right text-sm/6 text-ink tabular-nums sm:table-cell", amount),
       td("text-right", remove),
     )
 
     const errorRow = document.createElement("tr")
     const errorCell = document.createElement("td")
-    errorCell.colSpan = 5
+    errorCell.colSpan = cells.length + 2
     errorCell.dataset.rowError = ""
     errorCell.className = "px-2 pb-1 text-sm text-danger empty:hidden"
     errorRow.append(errorCell)
@@ -227,7 +295,7 @@ export function createItemsField(
   addButton.addEventListener("click", () => {
     const row = addRow()
     refresh()
-    row.querySelector<HTMLInputElement>("[data-column=name]")!.focus()
+    row.querySelector<HTMLInputElement>(`[data-column=${cells[0]}]`)!.focus()
   })
 
   return {
@@ -250,7 +318,7 @@ export function createItemsField(
       const all = rows()
       for (const row of all) {
         row.querySelector("[data-row-error]")!.textContent = ""
-        for (const input of row.querySelectorAll("input")) input.removeAttribute("aria-invalid")
+        for (const input of row.querySelectorAll("input, select")) input.removeAttribute("aria-invalid")
       }
       const pattern = new RegExp(`^${field.key}\\.(\\d+)(?:\\.(\\w+))?$`)
       for (const [key, messages] of Object.entries(errors)) {

@@ -1,0 +1,124 @@
+{
+  "title": "Driver Salary Receipt Generator",
+  "name": "Driver Salary Receipt",
+  "public_slug": "driver-salary-receipt-generator",
+  "summary": "Monthly pay receipt for a driver.",
+  "description": "Create a salary receipt for a driver with monthly pay, overtime, allowances and deductions. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Reimbursement",
+    "t2": "With acknowledgement",
+    "t3": "Employer's declaration",
+    "t4": "Several months",
+    "t5": "Payroll voucher",
+    "t6": "Simple record"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Employer name"
+    },
+    "employer_address": {
+      "label": "Employer address (optional)"
+    },
+    "driver_name": {
+      "label": "Driver name"
+    },
+    "vehicle_number": {
+      "label": "Vehicle number (optional)"
+    },
+    "declaration": {
+      "label": "Declaration (optional)"
+    },
+    "month": {
+      "label": "Salary for month"
+    },
+    "from_date": {
+      "label": "Period from (optional)"
+    },
+    "to_date": {
+      "label": "Period to (optional)"
+    },
+    "bill_by": {
+      "label": "Bill by",
+      "options": {
+        "Monthly": "Monthly",
+        "Quarterly": "Quarterly",
+        "Half-yearly": "Half-yearly",
+        "Yearly": "Yearly"
+      }
+    },
+    "receipt_date": {
+      "label": "Receipt date"
+    },
+    "basic_salary": {
+      "label": "Monthly salary ({currency})"
+    },
+    "overtime": {
+      "label": "Overtime ({currency}) (optional)"
+    },
+    "allowance": {
+      "label": "Fuel and other allowance ({currency}) (optional)"
+    },
+    "deductions": {
+      "label": "Advance or deductions ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Paid by",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Bank transfer": "Bank transfer",
+        "Cheque": "Cheque",
+        "Card": "Card",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Driver Salary Receipt",
+    "date": "Date",
+    "certify": "This is to certify that {employer} has paid {amount} to driver {driver} towards salary for the month of {month} (acknowledged receipt enclosed).",
+    "certify_period": "This is to certify that {employer} has paid {amount} to driver {driver} towards salary for the period {period} (acknowledged receipt enclosed).",
+    "certify_self": "This is to certify that I have paid {amount} to driver {driver} for the month of {month} (acknowledged receipt enclosed).",
+    "reimburse": "Please reimburse the above amount. I further declare that what is stated above is correct and true.",
+    "vehicle_no": "Vehicle number",
+    "driver_name": "Driver name",
+    "employer_name": "Employer name",
+    "employer_signature": "Employer signature",
+    "revenue_stamp": "Revenue stamp",
+    "salary_month": "Salary of the month",
+    "amount_paid": "Amount paid",
+    "received_text": "Received from {employer} the sum of {amount} by driver {driver} towards salary for the month of {month}.",
+    "ack_title": "Receipt acknowledgement",
+    "receipt_date_of": "Date of receipt",
+    "for_month": "For the month of",
+    "received_sum": "Received a sum of {amount} only for the month of {month} from {employer}.",
+    "period": "Period",
+    "receipt_of": "Receipt {number} of {total}",
+    "payroll_voucher": "Payroll voucher",
+    "voucher_sub": "Driver salary disbursement slip",
+    "payer": "Payer",
+    "driver": "Driver",
+    "acknowledgement": "Acknowledgement",
+    "ack_voucher": "Received by {driver} from {employer} towards salary for {month}.",
+    "received_by": "Received by",
+    "prepared_by": "Prepared by",
+    "name": "Name",
+    "record_title": "Driver salary record",
+    "record_sub": "Simple typed acknowledgement format",
+    "payer_name": "Payer name",
+    "declaration_label": "Declaration",
+    "confirm": "I confirm receipt of the salary amount stated above from the payer for the month mentioned in this record.",
+    "notes": "Notes",
+    "note_1": "Salary covers the stated month only.",
+    "note_2": "Overtime and allowances are included only where listed.",
+    "payer_details": "Payer details",
+    "driver_signature": "Driver signature",
+    "monthly_salary": "Monthly salary",
+    "overtime": "Overtime",
+    "allowance": "Allowance",
+    "deductions": "Advance or deductions"
+  },
+  "sample": {
+    "declaration": "I also declare that the driver is exclusively utilized for official purpose only."
+  }
+}

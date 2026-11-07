@@ -1,0 +1,180 @@
+{
+  "title": "Apothekenbeleg-Generator",
+  "name": "Apothekenbeleg",
+  "public_slug": "apothekenbeleg-generator",
+  "summary": "Apothekenbeleg mit Charge, Verfall und Preis.",
+  "description": "Erstellen Sie einen Apothekenbeleg mit Medikamenten, Hersteller, Charge, Verfall und Verkaufspreis, {tax} im Preis enthalten, Rabatt und den Zulassungsangaben der Filiale. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Rechnung"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Name der Apotheke"
+    },
+    "brand_subtitle": {
+      "label": "Slogan (optional)"
+    },
+    "branch_name": {
+      "label": "Filiale (optional)"
+    },
+    "branch_address": {
+      "label": "Adresse der Filiale (optional)"
+    },
+    "toll_free": {
+      "label": "Telefon (optional)"
+    },
+    "website": {
+      "label": "Website (optional)"
+    },
+    "dl_number": {
+      "label": "Apothekenbetriebserlaubnis (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "fssai": {
+      "label": "FSSAI-Nr. (optional)"
+    },
+    "registered_office": {
+      "label": "Sitz der Gesellschaft (optional)"
+    },
+    "admin_office": {
+      "label": "Verwaltung (optional)"
+    },
+    "bill_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "time": {
+      "label": "Uhrzeit (optional)"
+    },
+    "terminal_number": {
+      "label": "Terminal-Nr. (optional)"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "ref_number": {
+      "label": "Ref.-Nr. (optional)"
+    },
+    "doctor_name": {
+      "label": "Arzt / Verordner (optional)"
+    },
+    "discount": {
+      "label": "Rabatt auf die Summe ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlung",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "signatory_name": {
+      "label": "Name des Unterzeichners (optional)"
+    },
+    "signatory_line": {
+      "label": "Funktion des Unterzeichners (optional)"
+    },
+    "items": {
+      "label": "Medikamente",
+      "columns": {
+        "name": "Artikel",
+        "hsn": "HSN-Code",
+        "mfr": "Hersteller",
+        "batch": "Charge",
+        "expiry": "Verfall",
+        "schedule": "Liste",
+        "qty": "Menge",
+        "rate": "UVP ({currency})",
+        "tax": "Steuer %"
+      }
+    }
+  },
+  "print": {
+    "invoice": "Rechnung",
+    "bill_no": "Rechnungs-Nr.",
+    "date_time": "Datum / Uhrzeit",
+    "terminal": "Terminal-Nr.",
+    "name": "Name",
+    "ref_no": "Ref.-Nr.",
+    "doctor": "Arzt",
+    "payment": "Zahlung",
+    "tel": "Tel.",
+    "dl_no": "Lizenz-Nr.",
+    "item": "Artikel",
+    "hsn": "HSN-Code",
+    "mfr": "Hersteller",
+    "batch": "Charge",
+    "expiry": "Verfall",
+    "sch": "Liste",
+    "qty": "Menge",
+    "mrp": "UVP",
+    "tax_rate": "Steuer %",
+    "taxable": "Netto",
+    "total_amount": "Gesamtbetrag",
+    "total": "Gesamt",
+    "discount": "Rabatt",
+    "net_total": "Nettosumme",
+    "authorised": "Autorisierte Unterschrift",
+    "registered": "Sitz der Gesellschaft",
+    "admin": "Verwaltung",
+    "taxable_value": "Steuerbasis"
+  },
+  "sample": {
+    "brand_name": "Apotheke am Markt",
+    "brand_subtitle": "Ihre Gesundheit, unsere Aufgabe",
+    "branch_name": "Filiale Mitte",
+    "doctor_name": "Dr. Thomas Müller",
+    "customer_name": "Anna Becker",
+    "items": [
+      {
+        "name": "Paracetamol 500 mg (20 Tabletten)",
+        "mfr": "Alpha Pharma",
+        "batch": "PCM2407",
+        "expiry": "08/27",
+        "qty": 2,
+        "rate": 3.2,
+        "tax": 19
+      },
+      {
+        "name": "Amoxicillin 500 mg (10 Kapseln)",
+        "mfr": "Beta Labs",
+        "batch": "AMX2311",
+        "expiry": "03/27",
+        "schedule": "Rx",
+        "qty": 1,
+        "rate": 9.5,
+        "tax": 19
+      },
+      {
+        "name": "Hustensaft 100 ml",
+        "mfr": "Gamma Health",
+        "batch": "CS2402",
+        "expiry": "01/28",
+        "qty": 1,
+        "rate": 7.9,
+        "tax": 19
+      },
+      {
+        "name": "Digitalthermometer",
+        "mfr": "Delta Devices",
+        "batch": "TH2405",
+        "qty": 1,
+        "rate": 11.9,
+        "tax": 19
+      }
+    ],
+    "discount": 1,
+    "toll_free": "030 1234567",
+    "dl_number": "Betriebserlaubnis 12345",
+    "registered_office": "Apotheke am Markt GmbH, Friedrichstraße 100, 10117 Berlin",
+    "admin_office": "Apotheke am Markt GmbH, Hauptstraße 12, 10115 Berlin",
+    "signatory_line": "Apotheker/in"
+  }
+}

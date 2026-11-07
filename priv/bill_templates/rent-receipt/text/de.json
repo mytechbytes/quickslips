@@ -1,0 +1,115 @@
+{
+  "title": "Mietquittung-Generator",
+  "name": "Mietquittung",
+  "public_slug": "mietquittung-generator",
+  "summary": "Monatliche Mietquittungen als Zahlungsnachweis.",
+  "description": "Erstellen Sie eine Mietquittung oder bis zu 12 Quittungen für einen Zeitraum mit Mieter, Vermieter, Mietobjekt und Betrag. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Erstattung",
+    "t2": "Mit Empfangsbestätigung",
+    "t3": "Mehrere Monate",
+    "t4": "Förmliche Quittung"
+  },
+  "fields": {
+    "tenant_name": {
+      "label": "Name des Mieters"
+    },
+    "landlord_name": {
+      "label": "Name des Vermieters"
+    },
+    "landlord_pan": {
+      "label": "PAN des Vermieters (optional)"
+    },
+    "property_address": {
+      "label": "Anschrift der Mietsache"
+    },
+    "month": {
+      "label": "Miete für den Monat"
+    },
+    "from_date": {
+      "label": "Zeitraum von (optional)"
+    },
+    "to_date": {
+      "label": "Zeitraum bis (optional)"
+    },
+    "bill_by": {
+      "label": "Abrechnung",
+      "options": {
+        "Monthly": "Monatlich",
+        "Quarterly": "Vierteljährlich",
+        "Half-yearly": "Halbjährlich",
+        "Yearly": "Jährlich"
+      }
+    },
+    "receipt_date": {
+      "label": "Datum der Quittung"
+    },
+    "monthly_rent": {
+      "label": "Monatsmiete ({currency})"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Bank transfer": "Überweisung",
+        "UPI": "UPI",
+        "Cash": "Bar",
+        "Cheque": "Scheck",
+        "Card": "Karte",
+        "Online": "Online"
+      }
+    },
+    "received_by": {
+      "label": "Empfangen durch",
+      "options": {
+        "Landlord": "Vermieter",
+        "Manager": "Verwalter"
+      }
+    },
+    "receiver_name": {
+      "label": "Name des Empfängers (optional)"
+    }
+  },
+  "print": {
+    "title": "Mietquittung",
+    "date": "Datum",
+    "certify": "Hiermit wird bestätigt, dass {tenant} an den Vermieter {landlord} für den Monat {month} eine Miete von {amount} gezahlt hat (Empfangsbestätigung liegt bei).",
+    "certify_period": "Hiermit wird bestätigt, dass {tenant} an den Vermieter {landlord} für den Zeitraum {period} eine Miete von {amount} gezahlt hat (Empfangsbestätigung liegt bei).",
+    "reimburse": "Bitte erstatten Sie den obigen Betrag. Ich erkläre außerdem, dass die obigen Angaben richtig und wahr sind.",
+    "address": "Adresse",
+    "payment_method": "Zahlungsart",
+    "landlord_name": "Name des Vermieters",
+    "tenant_name": "Name des Mieters",
+    "revenue_stamp": "Stempelmarke",
+    "landlord_signature": "Unterschrift des Vermieters",
+    "rent_month": "Miete für den Monat",
+    "rental_address": "Anschrift der Mietsache",
+    "received_text": "Erhalten von {tenant}: {amount} als Miete für den Monat {month}. Empfangen durch {role} {receiver}.",
+    "ack_title": "Empfangsbestätigung",
+    "amount": "Betrag",
+    "received_from": "Erhalten von",
+    "landlord": "Vermieter",
+    "receivers_name": "Name des Empfängers",
+    "received_by": "Empfangen durch",
+    "subtitle": "Bestätigung der monatlichen Mietzahlung",
+    "tenant": "Mieter",
+    "property": "Anschrift des Objekts",
+    "rental_period": "Mietzeitraum",
+    "amount_received": "Erhaltener Betrag",
+    "mode": "Zahlungsart",
+    "ack": "Ich, {landlord}, bestätige hiermit den Erhalt der Miete in Höhe von {amount} von {tenant} für den Mietzeitraum {period}.",
+    "premises": "Die Miete betrifft die Räumlichkeiten in {address}; diese Quittung dient als Zahlungsnachweis für Buchhaltung, Steuer und Erstattung.",
+    "term_1": "Diese Quittung bestätigt nur die Zahlung für den oben genannten Zeitraum.",
+    "term_2": "Nebenkosten, Strafgebühren oder Instandhaltung sind nicht enthalten, sofern nicht gesondert angegeben.",
+    "term_3": "Die Parteien bestätigen, dass die Angaben in dieser Quittung wahr und richtig sind.",
+    "name": "Name",
+    "period": "Zeitraum",
+    "month": "Monat",
+    "receipt_of": "Quittung {number} von {total}"
+  },
+  "sample": {
+    "tenant_name": "Anna Becker",
+    "landlord_name": "Thomas Müller",
+    "receiver_name": "Thomas Müller",
+    "monthly_rent": 1200
+  }
+}

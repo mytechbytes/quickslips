@@ -1,0 +1,117 @@
+{
+  "title": "Meal Bill Generator",
+  "name": "Meal Bill",
+  "public_slug": "meal-bill-generator",
+  "summary": "Food-delivery tax invoice with {tax} on each line.",
+  "description": "Generate a food-delivery or meal tax invoice on behalf of a restaurant, with the delivery address, tax on each line, the platform's legal details and a signatory. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Delivery tax invoice"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Platform or brand name (optional)"
+    },
+    "legal_name": {
+      "label": "Legal entity name (optional)"
+    },
+    "restaurant_name": {
+      "label": "Restaurant name"
+    },
+    "restaurant_address": {
+      "label": "Restaurant address (optional)"
+    },
+    "restaurant_gstin": {
+      "label": "Restaurant {tax_id} (optional)"
+    },
+    "restaurant_fssai": {
+      "label": "Restaurant FSSAI no. (optional)"
+    },
+    "invoice_number": {
+      "label": "Invoice number"
+    },
+    "date": {
+      "label": "Invoice date"
+    },
+    "order_id": {
+      "label": "Order ID (optional)"
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "delivery_address": {
+      "label": "Delivery address (optional)"
+    },
+    "place_of_supply": {
+      "label": "State and place of supply (optional)"
+    },
+    "hsn_code": {
+      "label": "HSN code (optional)"
+    },
+    "service_description": {
+      "label": "Service description (optional)"
+    },
+    "reverse_charge": {
+      "label": "Reverse charge (optional)",
+      "options": {
+        "No": "No",
+        "Yes": "Yes"
+      }
+    },
+    "payment_note": {
+      "label": "Payment note (optional)"
+    },
+    "platform_company": {
+      "label": "Platform company name and address (optional)"
+    },
+    "platform_pan": {
+      "label": "Platform PAN (optional)"
+    },
+    "platform_cin": {
+      "label": "Platform CIN (optional)"
+    },
+    "platform_tax_id": {
+      "label": "Platform {tax_id} (optional)"
+    },
+    "platform_fssai": {
+      "label": "Platform FSSAI no. (optional)"
+    },
+    "signatory_name": {
+      "label": "Signatory name (optional)"
+    },
+    "items": {
+      "label": "Billing rows",
+      "columns": {
+        "name": "Particulars",
+        "rate": "Gross value ({currency})",
+        "discount": "Discount %",
+        "tax": "Tax %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Tax invoice",
+    "original": "Original for recipient",
+    "on_behalf": "Tax invoice on behalf of",
+    "restaurant": "Restaurant",
+    "invoice_no": "Invoice no.",
+    "invoice_date": "Invoice date",
+    "customer": "Customer name",
+    "delivery_address": "Delivery address",
+    "place": "State name & place of supply",
+    "hsn": "HSN code",
+    "service": "Service description",
+    "order_id": "Order ID",
+    "particulars": "Particulars",
+    "gross": "Gross value",
+    "discount": "Discount",
+    "net": "Net value",
+    "rate": "Rate",
+    "tax": "Tax",
+    "total": "Total",
+    "reverse": "Supply attracts reverse charge",
+    "payment_note": "Payment note",
+    "for": "For",
+    "authorised": "Authorised signatory"
+  },
+  "sample": {}
+}

@@ -1,0 +1,127 @@
+{
+  "title": "超市小票生成器",
+  "name": "超市小票",
+  "public_slug": "grocery-bill-generator",
+  "summary": "商品、数量和合计。",
+  "description": "生成包含任意数量商品、数量、单价、折扣和{tax}的超市小票。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "零售发票",
+    "t2": "优惠小票"
+  },
+  "fields": {
+    "store_name": {
+      "label": "店铺名称"
+    },
+    "store_address": {
+      "label": "地址（选填）"
+    },
+    "store_phone": {
+      "label": "电话（选填）"
+    },
+    "gstin": {
+      "label": "{tax_id}（选填）"
+    },
+    "fssai_number": {
+      "label": "FSSAI 许可证号（选填）"
+    },
+    "bill_number": {
+      "label": "账单编号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "time": {
+      "label": "时间（选填）"
+    },
+    "transaction_id": {
+      "label": "交易编号（选填）"
+    },
+    "customer_name": {
+      "label": "客户姓名（选填）"
+    },
+    "discount": {
+      "label": "折扣（{currency}）（选填）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "商品",
+        "qty": "数量",
+        "rate": "单价（{currency}）",
+        "discount": "折扣 %"
+      }
+    }
+  },
+  "print": {
+    "phone": "电话",
+    "retail_invoice": "零售发票",
+    "bill_no": "账单号",
+    "bill_date": "账单日期",
+    "time": "时间",
+    "particulars": "品名",
+    "rate": "单价",
+    "qty": "数量",
+    "amount": "金额",
+    "total": "合计",
+    "net_amount": "应付金额",
+    "payment_method": "支付方式",
+    "transaction": "交易编号",
+    "customer": "客户姓名",
+    "thanks": "谢谢惠顾，欢迎再来！",
+    "sn": "序号",
+    "item_name": "商品",
+    "unit_price": "实价",
+    "sub_total": "小计",
+    "saving": "共节省",
+    "saving_pct": "节省比例（%）",
+    "discount": "折扣"
+  },
+  "sample": {
+    "store_name": "绿叶超市",
+    "items": [
+      {
+        "name": "香米 (5 公斤)",
+        "qty": 1,
+        "rate": 68
+      },
+      {
+        "name": "红豆 (500 克)",
+        "qty": 2,
+        "rate": 12
+      },
+      {
+        "name": "葵花籽油 (1 升)",
+        "qty": 2,
+        "rate": 28,
+        "discount": 5
+      },
+      {
+        "name": "白砂糖 (1 公斤)",
+        "qty": 3,
+        "rate": 9
+      },
+      {
+        "name": "绿茶 (250 克)",
+        "qty": 1,
+        "rate": 45,
+        "discount": 10
+      }
+    ],
+    "customer_name": "王伟",
+    "tax_percent": 9,
+    "store_phone": "010-12345678"
+  }
+}

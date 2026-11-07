@@ -1,0 +1,196 @@
+{
+  "title": "Medical Bill Generator",
+  "name": "Medical Bill",
+  "public_slug": "medical-bill-generator",
+  "summary": "Hospital, clinic or lab bill with {tax}.",
+  "description": "Create a hospital, clinic or lab bill with patient, doctor, room, consultation, medicines, tests and itemised charges. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Hospital invoice",
+    "t2": "Provisional bill"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "Hospital, clinic or lab"
+    },
+    "clinic_address": {
+      "label": "Address (optional)"
+    },
+    "clinic_phone": {
+      "label": "Contact phone (optional)"
+    },
+    "hospital_details": {
+      "label": "Hospital details (optional)"
+    },
+    "registration_number": {
+      "label": "Registration number (optional)"
+    },
+    "bill_number": {
+      "label": "Bill number"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Time (optional)"
+    },
+    "admit_date": {
+      "label": "Admit date (optional)"
+    },
+    "discharge_date": {
+      "label": "Discharge date (optional)"
+    },
+    "patient_name": {
+      "label": "Patient name"
+    },
+    "patient_details": {
+      "label": "Age and sex (optional)"
+    },
+    "patient_issue": {
+      "label": "Patient issue (optional)"
+    },
+    "guardian_name": {
+      "label": "Guardian name (optional)"
+    },
+    "patient_phone": {
+      "label": "Patient mobile (optional)"
+    },
+    "patient_address": {
+      "label": "Patient address (optional)"
+    },
+    "payer_name": {
+      "label": "Payer name (optional)"
+    },
+    "payer_address": {
+      "label": "Payer address (optional)"
+    },
+    "doctor_name": {
+      "label": "Doctor / consultant (optional)"
+    },
+    "doctor_designation": {
+      "label": "Designation (optional)"
+    },
+    "room": {
+      "label": "Room category (optional)",
+      "options": {
+        "Single": "Single",
+        "Semi-private": "Semi-private",
+        "Private": "Private",
+        "General": "General",
+        "ICU": "ICU"
+      }
+    },
+    "insurance": {
+      "label": "Insurance (optional)",
+      "options": {
+        "Yes": "Yes",
+        "No": "No"
+      }
+    },
+    "remark": {
+      "label": "Remark (optional)"
+    },
+    "consultation_fee": {
+      "label": "Consultation ({currency}) (optional)"
+    },
+    "medicines_cost": {
+      "label": "Medicines ({currency}) (optional)"
+    },
+    "tests_cost": {
+      "label": "Tests and procedures ({currency}) (optional)"
+    },
+    "other_charges": {
+      "label": "Other charges ({currency}) (optional)"
+    },
+    "discount": {
+      "label": "Discount ({currency}) (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "amount_paid": {
+      "label": "Amount paid ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Paid by",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Itemised charges",
+      "columns": {
+        "name": "Description",
+        "qty": "Units",
+        "rate": "Price ({currency})"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "Invoice no.",
+    "contact": "Contact",
+    "reg_no": "Reg. no.",
+    "discharge_date": "Discharge date",
+    "admit_date": "Admit date",
+    "patient_info": "Patient information",
+    "patient_name": "Patient name",
+    "patient_issue": "Patient issue",
+    "address": "Address",
+    "guardian": "Guardian name",
+    "mobile": "Mobile",
+    "insurance": "Insurance available",
+    "age": "Age",
+    "consultant": "Consultant",
+    "room": "Room category",
+    "details": "Details",
+    "price": "Price",
+    "amount": "Amount",
+    "units": "Units",
+    "pay_by": "Pay by",
+    "amount_paid": "Amount paid",
+    "tax": "Tax",
+    "taxable": "Taxable amount",
+    "net": "Net amount",
+    "total_amount": "Total amount",
+    "remark": "Remark",
+    "computer": "* This is a computer generated invoice, signature not required.",
+    "created": "Created on {when}",
+    "phone": "Ph",
+    "timing": "Time",
+    "patient_uid": "Patient ID",
+    "name": "Name",
+    "payer": "Payer details",
+    "consulting_doctors": "Consulting doctors",
+    "date": "Date",
+    "admission_no": "Admission no.",
+    "admission_date": "Admission date",
+    "bed": "Bed(s)",
+    "provisional": "Provisional bill",
+    "room_type": "Room type",
+    "particulars": "Particulars",
+    "total_bill": "Total bill amount",
+    "discount": "Discount",
+    "payable": "Amount payable",
+    "balance": "Balance",
+    "breakup": "Detailed breakup",
+    "date_time": "Date & time",
+    "rate": "Rate",
+    "payment_mode": "Payment mode",
+    "gst_type": "GST type",
+    "intra": "Intra-state (CGST + SGST)",
+    "gst_pct": "Tax rate",
+    "notes": "Notes",
+    "consultation": "Consultation",
+    "medicines": "Medicines",
+    "tests": "Tests and procedures",
+    "other": "Other charges",
+    "itemised": "Itemised charges"
+  },
+  "sample": {
+    "tax_percent": 5,
+    "remark": "In case of emergency, consult immediately if you get pain, painful movements, redness, pus or bleeding. Follow up after 5 days."
+  }
+}

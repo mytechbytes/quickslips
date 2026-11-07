@@ -1,0 +1,17 @@
+{
+  "sample": {
+    "provider_name": "Zing Mobile",
+    "customer_name": "Julie Tremblay",
+    "mobile_number": "(514) 555-0166",
+    "amount": 40,
+    "tax_percent": 5,
+    "amount_after_due": 5,
+    "email_banner": "Pour recevoir votre facture mensuelle par e-mail, envoyez un SMS : STARTBILL <e-mail> au 198.",
+    "offer_title": "10 Go offerts par mois",
+    "offer_text": "Données haut débit avec chaque ligne prépayée et TV",
+    "pay_options": "Payez avec l'application\nPayez avec l'application Zing Pay : à télécharger sur Play Store ou App Store\nPayez sur le site officiel",
+    "landmark": null,
+    "provider_address": "1200 rue Sherbrooke, Montréal, QC H3A 1H6",
+    "customer_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

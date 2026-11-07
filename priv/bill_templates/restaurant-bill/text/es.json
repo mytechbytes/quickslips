@@ -1,0 +1,126 @@
+{
+  "title": "Generador de Factura de Restaurante",
+  "name": "Factura de Restaurante",
+  "public_slug": "generador-de-factura-de-restaurante",
+  "summary": "Ticket o factura de restaurante con artículos y {tax}.",
+  "description": "Genera una cuenta de restaurante con cualquier número de artículos, cantidades, servicio y {tax}. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Ticket pixelado",
+    "t2": "Recibo con guiones",
+    "t3": "Cuenta compacta",
+    "t4": "Cuenta mecanografiada"
+  },
+  "fields": {
+    "restaurant_name": {
+      "label": "Nombre del restaurante"
+    },
+    "restaurant_address": {
+      "label": "Dirección (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "fssai_number": {
+      "label": "N.º de licencia FSSAI (opcional)"
+    },
+    "bill_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "table_number": {
+      "label": "Mesa (opcional)"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente (opcional)"
+    },
+    "service_percent": {
+      "label": "Servicio (%) (opcional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pagado con",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "items": {
+      "label": "Artículos",
+      "columns": {
+        "name": "Artículo",
+        "qty": "Cant.",
+        "rate": "Precio ({currency})"
+      }
+    }
+  },
+  "print": {
+    "welcome": "¡Bienvenido!",
+    "original": "Recibo original",
+    "date": "Fecha",
+    "time": "Hora",
+    "customer": "Nombre del cliente",
+    "table": "Mesa",
+    "receipt_no": "Recibo n.º",
+    "bill_no": "Factura n.º",
+    "description": "Descripción",
+    "item": "Artículo",
+    "qty": "Cant.",
+    "price": "Precio",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "service": "Servicio",
+    "paid_by": "Pagado con",
+    "save_paper": "¡Ahorra papel, cuida la naturaleza!",
+    "thanks_meal": "Gracias por una comida deliciosa.",
+    "receipt": "Recibo",
+    "support_local": "¡Gracias por apoyar al comercio local!",
+    "thanks_visit": "¡Gracias por su visita! Buen viaje.",
+    "round_off": "Redondeo",
+    "above_incl": "Los precios incluyen impuestos",
+    "total_tax": "Total de impuestos",
+    "amount": "Importe"
+  },
+  "sample": {
+    "restaurant_name": "Café La Giralda",
+    "items": [
+      {
+        "name": "Tortilla española",
+        "qty": 2,
+        "rate": 6.5
+      },
+      {
+        "name": "Café con leche",
+        "qty": 3,
+        "rate": 1.8
+      },
+      {
+        "name": "Gazpacho",
+        "qty": 1,
+        "rate": 5
+      },
+      {
+        "name": "Paella",
+        "qty": 1,
+        "rate": 14
+      },
+      {
+        "name": "Flan",
+        "qty": 2,
+        "rate": 4
+      }
+    ],
+    "customer_name": "Carlos Gómez",
+    "table_number": "T-7",
+    "gst_percent": 10
+  }
+}

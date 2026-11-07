@@ -1,0 +1,105 @@
+{
+  "title": "Schreibwaren-Kassenbon-Generator",
+  "name": "Schreibwaren-Kassenbon",
+  "public_slug": "schreibwaren-kassenbon-generator",
+  "summary": "Kassenbon für Schreibwaren mit Artikeln, Preisen und Summen.",
+  "description": "Erstellen Sie einen Kassenbon für ein Schreibwarengeschäft mit Stiften, Papier und anderem Bedarf, Mengen, Preisen und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Kassenbon"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Name des Geschäfts"
+    },
+    "shop_address": {
+      "label": "Adresse des Geschäfts"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "invoice_number": {
+      "label": "Bon-Nummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "customer_address": {
+      "label": "Kundenadresse"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "remarks": {
+      "label": "Anmerkungen / Hinweise (optional)"
+    },
+    "items": {
+      "label": "Artikel",
+      "columns": {
+        "name": "Artikel",
+        "qty": "Menge",
+        "rate": "Preis ({currency})"
+      }
+    }
+  },
+  "print": {
+    "receipt_no": "Bon-Nr.",
+    "date": "Datum",
+    "billed_to": "Rechnung an",
+    "address": "Adresse",
+    "item": "Artikel",
+    "rate": "Preis",
+    "quantity": "Menge",
+    "amount": "Betrag",
+    "remarks": "Anmerkungen / Hinweise",
+    "subtotal": "Zwischensumme",
+    "total_amount": "Gesamtbetrag",
+    "payment_method": "Zahlungsart",
+    "save_paper": "Papier sparen, Natur schützen! Danke für Ihren Einkauf."
+  },
+  "sample": {
+    "shop_name": "Schreibwaren Federkiel",
+    "customer_name": "Anna Becker",
+    "items": [
+      {
+        "name": "Spiralblock (200 Seiten)",
+        "qty": 4,
+        "rate": 2.2
+      },
+      {
+        "name": "Kugelschreiber, blau (10er-Pack)",
+        "qty": 2,
+        "rate": 3.5
+      },
+      {
+        "name": "Textmarker-Set (4 Farben)",
+        "qty": 1,
+        "rate": 4.9
+      },
+      {
+        "name": "Kopierpapier A4 (500 Blatt)",
+        "qty": 1,
+        "rate": 5.9
+      },
+      {
+        "name": "Klebestift (2 Stück)",
+        "qty": 2,
+        "rate": 2.4
+      }
+    ],
+    "tax_percent": 19,
+    "remarks": "Bitte bewahren Sie den Bon für Umtausch innerhalb von 7 Tagen auf."
+  }
+}

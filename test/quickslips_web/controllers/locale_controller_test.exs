@@ -49,7 +49,7 @@ defmodule QuickSlipsWeb.LocaleControllerTest do
          %{
            conn: conn
          } do
-      conn = choose(conn, "hi-in", "/en-in/rent-receipt-generator")
+      conn = choose(conn, "hi-in", "/en-in/courier-receipt-generator")
 
       assert redirected_to(conn) == "/hi-in"
 
@@ -168,7 +168,7 @@ defmodule QuickSlipsWeb.LocaleControllerTest do
     test "a page that is not in the new language is a full load, which shows the flash", %{
       conn: conn
     } do
-      conn = choose_by_script(conn, "hi-in", "/en-in/rent-receipt-generator")
+      conn = choose_by_script(conn, "hi-in", "/en-in/courier-receipt-generator")
 
       assert %{"to" => "/hi-in", "live" => false} = json_response(conn, 200)
       assert Phoenix.Flash.get(conn.assigns.flash, :info)

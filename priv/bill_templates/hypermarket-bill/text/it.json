@@ -1,0 +1,175 @@
+{
+  "title": "Generatore di fattura per ipermercato",
+  "name": "Fattura ipermercato",
+  "public_slug": "generatore-fattura-ipermercato",
+  "summary": "Fattura per ipermercato con un'aliquota per articolo.",
+  "description": "Crea una fattura per ipermercato o supermercato con un'aliquota {tax} per ogni articolo, il dettaglio dell'imposta per aliquota, i dati dell'ordine e della consegna e il tuo risparmio. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Fattura"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Insegna del negozio"
+    },
+    "company_name": {
+      "label": "Ragione sociale"
+    },
+    "company_address": {
+      "label": "Indirizzo della società (facoltativo)"
+    },
+    "phone": {
+      "label": "Telefono assistenza clienti (facoltativo)"
+    },
+    "email": {
+      "label": "Email assistenza clienti (facoltativo)"
+    },
+    "website": {
+      "label": "Indirizzo web delle condizioni (facoltativo)"
+    },
+    "cin": {
+      "label": "CIN (facoltativo)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "fssai": {
+      "label": "N. FSSAI (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data della fattura"
+    },
+    "order_number": {
+      "label": "Numero d'ordine (facoltativo)"
+    },
+    "order_date": {
+      "label": "Data dell'ordine (facoltativo)"
+    },
+    "delivery_date": {
+      "label": "Data di consegna (facoltativo)"
+    },
+    "delivery_time": {
+      "label": "Fascia di consegna (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "customer_name": {
+      "label": "Nome del cliente (facoltativo)"
+    },
+    "customer_phone": {
+      "label": "Numero di cellulare (facoltativo)"
+    },
+    "delivery_mode": {
+      "label": "Modalità di consegna",
+      "options": {
+        "Self pick-up": "Ritiro in negozio",
+        "Home delivery": "Consegna a domicilio"
+      }
+    },
+    "delivery_address": {
+      "label": "Indirizzo di ritiro / consegna (facoltativo)"
+    },
+    "savings": {
+      "label": "Risparmio sul prezzo di listino ({currency}) (facoltativo)"
+    },
+    "payment_note": {
+      "label": "Istruzione di pagamento (facoltativo)"
+    },
+    "items": {
+      "label": "Articoli",
+      "columns": {
+        "name": "Articolo",
+        "hsn": "Codice HS",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})",
+        "tax": "Imposta %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Fattura",
+    "invoice_no": "Fattura n.",
+    "invoice_date": "Data",
+    "hsn": "HS",
+    "particulars": "Descrizione",
+    "qty": "Q.tà",
+    "rate": "Prezzo",
+    "value": "Importo",
+    "items": "Articoli",
+    "amt": "Totale",
+    "your_savings": "Il tuo risparmio",
+    "on_list": "sul prezzo di listino",
+    "breakup": "Dettaglio imposte",
+    "amount_in": "Importi in",
+    "rate_col": "Aliquota",
+    "taxable": "Imponibile",
+    "total": "Totale",
+    "order_details": "Dettagli dell'ordine",
+    "order_number": "Numero d'ordine",
+    "order_date": "Data dell'ordine",
+    "delivery_date": "Data di consegna",
+    "delivery_time": "Fascia di consegna",
+    "payment_mode": "Metodo di pagamento",
+    "customer_delivery": "Cliente e consegna",
+    "customer_name": "Nome del cliente",
+    "mobile": "Numero di cellulare",
+    "delivery_mode": "Modalità di consegna",
+    "address": "Indirizzo di ritiro / consegna",
+    "collect": "{amount} da incassare alla consegna",
+    "computer_generated": "Fattura generata al computer.",
+    "exempt": "Esente"
+  },
+  "sample": {
+    "brand_name": "Ipermercato Sole",
+    "company_name": "Ipermercato Sole S.r.l.",
+    "phone": "800 123 456",
+    "delivery_time": "18:00 - 21:00",
+    "payment_note": "Pagamento alla consegna (contanti o carta)",
+    "customer_name": "Marco Rossi",
+    "customer_phone": "333 123 4567",
+    "items": [
+      {
+        "name": "Riso (1 kg)",
+        "qty": 1,
+        "rate": 2.4,
+        "tax": 4
+      },
+      {
+        "name": "Olio di semi (1 L)",
+        "qty": 2,
+        "rate": 2.2,
+        "tax": 10
+      },
+      {
+        "name": "Biscotti (300 g)",
+        "qty": 3,
+        "rate": 1.6,
+        "tax": 10
+      },
+      {
+        "name": "Detersivo piatti (500 ml)",
+        "qty": 1,
+        "rate": 2.1,
+        "tax": 22
+      },
+      {
+        "name": "Pomodori freschi (1 kg)",
+        "qty": 2,
+        "rate": 2.5,
+        "tax": 4
+      }
+    ],
+    "savings": 1.4,
+    "delivery_mode": "Home delivery"
+  }
+}

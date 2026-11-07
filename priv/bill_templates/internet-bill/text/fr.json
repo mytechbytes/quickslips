@@ -1,0 +1,175 @@
+{
+  "title": "Générateur de facture internet",
+  "name": "Facture internet",
+  "public_slug": "generateur-de-facture-internet",
+  "summary": "Facture haut débit ou fibre avec forfait, période et {tax}.",
+  "description": "Créez une facture internet haut débit ou fibre avec le forfait, le débit, la période de facturation, les frais et la {tax}. Quatre modèles ; aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Classique",
+    "t2": "Facture internet",
+    "t3": "Facture détaillée",
+    "t4": "Relevé"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Fournisseur d'accès"
+    },
+    "provider_address": {
+      "label": "Adresse (facultatif)"
+    },
+    "provider_email": {
+      "label": "E-mail (facultatif)"
+    },
+    "registered_office": {
+      "label": "Siège social (facultatif)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "bill_number": {
+      "label": "Numéro de facture"
+    },
+    "account_number": {
+      "label": "Numéro de client"
+    },
+    "bill_date": {
+      "label": "Date de la facture"
+    },
+    "due_date": {
+      "label": "Date d'échéance (facultatif)"
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "customer_address": {
+      "label": "Adresse du client (facultatif)"
+    },
+    "user_name": {
+      "label": "Identifiant (facultatif)"
+    },
+    "period_start": {
+      "label": "Période de facturation du"
+    },
+    "period_end": {
+      "label": "Période de facturation au"
+    },
+    "plan_name": {
+      "label": "Forfait"
+    },
+    "plan_speed": {
+      "label": "Débit (facultatif)"
+    },
+    "plan_package": {
+      "label": "Type de forfait (facultatif)",
+      "options": {
+        "Limited": "Limité",
+        "Unlimited": "Illimité",
+        "FUP": "Usage raisonnable"
+      }
+    },
+    "plan_validity": {
+      "label": "Validité du forfait (facultatif)",
+      "options": {
+        "Monthly": "Mensuel",
+        "Quarterly": "Trimestriel",
+        "Half-yearly": "Semestriel",
+        "Annual": "Annuel"
+      }
+    },
+    "service_description": {
+      "label": "Description du service (facultatif)"
+    },
+    "plan_charge": {
+      "label": "Montant du forfait ({currency})"
+    },
+    "other_charges": {
+      "label": "Installation ou autres frais ({currency}) (facultatif)"
+    },
+    "discount": {
+      "label": "Remise ({currency}) (facultatif)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "payments_received": {
+      "label": "Paiements reçus ({currency}) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement (facultatif)",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "terms": {
+      "label": "Conditions (une par ligne) (facultatif)"
+    }
+  },
+  "print": {
+    "title": "Facture internet",
+    "bill_no": "Facture n°",
+    "bill_date": "Date de facture",
+    "due_date": "Échéance",
+    "account_no": "N° de client",
+    "billing_period": "Période de facturation",
+    "billed_to": "Facturé à",
+    "description": "Description",
+    "amount": "Montant",
+    "installation": "Installation et autres frais",
+    "discount": "Remise",
+    "subtotal": "Sous-total",
+    "amount_due": "Montant à payer",
+    "pay_by": "Merci de régler avant le {date} pour que votre connexion reste active.",
+    "computer_generated": "Facture générée par ordinateur.",
+    "invoice_title": "Facture internet",
+    "customer_name": "Nom du client",
+    "customer_address": "Adresse du client",
+    "bill_account": "Numéro de client",
+    "receipt_details": "Détails du reçu",
+    "receipt_no": "Numéro de reçu",
+    "date": "Date",
+    "payment_method": "Mode de paiement",
+    "provider_details": "Coordonnées du fournisseur",
+    "billing_cycle": "Cycle de facturation",
+    "plan_summary": "Récapitulatif du forfait",
+    "plan": "Forfait",
+    "plan_speed": "Débit",
+    "plan_package": "Type",
+    "plan_validity": "Validité",
+    "plan_amount": "Montant",
+    "total": "Total",
+    "payable_to": "Tous les paiements sont à effectuer à l'ordre de",
+    "no_signature": "Cette facture est générée par ordinateur et ne nécessite aucune signature",
+    "receipt_for_recipient": "(Reçu pour le destinataire)",
+    "name": "Nom",
+    "invoice_no": "Facture n°",
+    "taxable_amount": "Base HT",
+    "rate_pct": "taux %",
+    "payments_received": "Paiements reçus",
+    "user_name": "Identifiant",
+    "service_description": "Description du service internet",
+    "amount_incl_tax": "Montant TTC",
+    "registered_office": "Siège social",
+    "terms_title": "Conditions générales",
+    "acknowledgement": "Accusé de réception",
+    "subscriber_name": "Nom de l'abonné",
+    "hello": "Bonjour",
+    "invoice_total": "Total de la facture",
+    "currency": "Devise",
+    "invoice_amount": "Montant de la facture",
+    "mailing_address": "Notre adresse de contact est"
+  },
+  "sample": {
+    "provider_name": "Ciel Fibre",
+    "registered_office": "Ciel Fibre SAS, 12 rue de la Paix, 75002 Paris",
+    "customer_name": "Camille Martin",
+    "plan_name": "Fibre 200 Mbit/s, données illimitées",
+    "service_description": "Abonnement internet fibre",
+    "plan_charge": 29.99,
+    "gst_percent": 20,
+    "terms": "Les chèques sont à libeller à l'ordre de Ciel Fibre.\nEn cas de chèque impayé, une pénalité de 10 € sera appliquée.\nDes frais de retard seront facturés si la facture est réglée après l'échéance.\nEn cas de retard de paiement, nous nous réservons le droit de suspendre le service.\nCette facture est générée par le système ; signature et cachet non requis."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "sample": {
+    "brand_name": "Marché Érable",
+    "company_name": "Marché Érable Inc.",
+    "phone": "1-800-555-0123",
+    "delivery_time": "18 h - 21 h",
+    "payment_note": "Paiement à la livraison (comptant ou carte)",
+    "customer_name": "Julie Tremblay",
+    "customer_phone": "(514) 555-0166",
+    "items": [
+      {
+        "name": "Riz basmati (2 kg)",
+        "qty": 1,
+        "rate": 6.5,
+        "tax": 0
+      },
+      {
+        "name": "Huile de tournesol (1 L)",
+        "qty": 2,
+        "rate": 4.5,
+        "tax": 0
+      },
+      {
+        "name": "Biscuits à la crème (300 g)",
+        "qty": 3,
+        "rate": 3,
+        "tax": 5
+      },
+      {
+        "name": "Savon à vaisselle (500 ml)",
+        "qty": 1,
+        "rate": 3.8,
+        "tax": 5
+      },
+      {
+        "name": "Tomates fraîches (1 kg)",
+        "qty": 2,
+        "rate": 3.5,
+        "tax": 0
+      }
+    ],
+    "savings": 1.5,
+    "delivery_mode": "Home delivery",
+    "company_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

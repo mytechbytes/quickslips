@@ -29,10 +29,10 @@ defmodule QuickSlips.TemplatesTest do
 
   @categories ["Travel", "Home & utilities", "Health & learning", "Food & shopping", "Work"]
 
-  test "the catalogue has fifteen templates in five categories" do
+  test "the catalogue has twenty-one templates in five categories" do
     templates = Templates.list()
 
-    assert length(templates) == 15
+    assert length(templates) == 27
 
     assert templates |> Enum.map(& &1["category"]) |> Enum.uniq() |> Enum.sort() ==
              Enum.sort(@categories)
@@ -58,6 +58,7 @@ defmodule QuickSlips.TemplatesTest do
                  "textarea",
                  "number",
                  "date",
+                 "time",
                  "month",
                  "select",
                  "items",
@@ -95,21 +96,33 @@ defmodule QuickSlips.TemplatesTest do
 
   # The English names and slugs the owner confirmed for search engines: internal id => public slug.
   @public_slugs %{
+    "book-receipt" => "book-receipt-generator",
     "courier-receipt" => "courier-receipt-generator",
+    "daily-helper-receipt" => "daily-helper-receipt-generator",
     "driver-salary-receipt" => "driver-salary-receipt-generator",
+    "ecommerce-bill" => "ecommerce-bill-generator",
     "electricity-bill" => "electricity-bill-generator",
+    "electronics-bill" => "electronics-bill-generator",
     "fuel-bill" => "fuel-bill-generator",
     "grocery-bill" => "grocery-bill-generator",
     "gym-membership-receipt" => "gym-membership-receipt-generator",
     "hotel-invoice" => "hotel-bill-generator",
+    "hypermarket-bill" => "hypermarket-bill-generator",
     "internet-bill" => "internet-bill-generator",
+    "maintenance-bill" => "maintenance-bill-generator",
+    "meal-bill" => "meal-bill-generator",
     "medical-bill" => "medical-bill-generator",
     "mobile-bill" => "mobile-bill-generator",
+    "parking-receipt" => "parking-receipt-generator",
+    "pharmacy-bill" => "pharmacy-bill-generator",
+    "recharge-bill" => "recharge-bill-generator",
     "rent-receipt" => "rent-receipt-generator",
     "restaurant-bill" => "restaurant-bill-generator",
     "school-fee-receipt" => "school-fee-receipt-generator",
     "service-invoice" => "invoice-generator",
-    "taxi-receipt" => "cab-bill-generator"
+    "stationery-bill" => "stationery-bill-generator",
+    "taxi-receipt" => "cab-bill-generator",
+    "transport-bill" => "transport-bill-generator"
   }
 
   describe "public slugs" do
@@ -145,17 +158,45 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel Bill is in English, Hindi and Spanish; the other templates only in English" do
-      for locale <- Locales.live() do
-        assert Templates.supports?("fuel-bill", locale)
+    test "the bills that have been translated are in every language; the other templates only in English" do
+      for locale <- Locales.live(),
+          slug <-
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill hypermarket-bill book-receipt ecommerce-bill electronics-bill stationery-bill internet-bill recharge-bill) do
+        assert Templates.supports?(slug, locale)
       end
 
       hindi = Locales.fetch!("hi-in")
-      assert Templates.supports?("rent-receipt", Locales.fetch!("en-in"))
-      refute Templates.supports?("rent-receipt", hindi)
-      assert [%{"slug" => "fuel-bill"}] = Templates.list(hindi)
-      assert [%{"slug" => "fuel-bill"}] = Templates.list(Locales.fetch!("es-es"))
-      assert length(Templates.list(Locales.fetch!("en-in"))) == 15
+      assert Templates.supports?("courier-receipt", Locales.fetch!("en-in"))
+      refute Templates.supports?("courier-receipt", hindi)
+
+      for code <- ["hi-in", "es-es", "ja-jp"] do
+        slugs = Locales.fetch!(code) |> Templates.list() |> Enum.map(& &1["slug"])
+
+        assert Enum.sort(slugs) == [
+                 "book-receipt",
+                 "daily-helper-receipt",
+                 "driver-salary-receipt",
+                 "ecommerce-bill",
+                 "electronics-bill",
+                 "fuel-bill",
+                 "grocery-bill",
+                 "hypermarket-bill",
+                 "internet-bill",
+                 "maintenance-bill",
+                 "meal-bill",
+                 "medical-bill",
+                 "parking-receipt",
+                 "pharmacy-bill",
+                 "recharge-bill",
+                 "rent-receipt",
+                 "restaurant-bill",
+                 "stationery-bill",
+                 "taxi-receipt",
+                 "transport-bill"
+               ]
+      end
+
+      assert length(Templates.list(Locales.fetch!("en-in"))) == 27
     end
 
     test "get/2 gives the words of the language and keeps the internal slug" do
@@ -178,7 +219,7 @@ defmodule QuickSlips.TemplatesTest do
       assert fuel_type["options"] == ["Petrol", "Diesel", "CNG"]
       assert fuel_type["option_labels"]["Petrol"] == "पेट्रोल"
 
-      assert {:error, :not_found} = Templates.get("rent-receipt", Locales.fetch!("hi-in"))
+      assert {:error, :not_found} = Templates.get("courier-receipt", Locales.fetch!("hi-in"))
     end
 
     test "get/1 is still the English one" do
@@ -199,14 +240,14 @@ defmodule QuickSlips.TemplatesTest do
                Templates.get_public(Locales.fetch!("hi-in"), "fuel-bill-generator")
 
       assert {:error, :not_found} =
-               Templates.get_public(Locales.fetch!("hi-in"), "rent-receipt-generator")
+               Templates.get_public(Locales.fetch!("hi-in"), "courier-receipt-generator")
     end
 
     test "public_path/2 and alternates/1" do
       assert Templates.public_path("fuel-bill", Locales.fetch!("es-es")) ==
                "/es-es/generador-de-factura-de-gasolina"
 
-      assert Templates.public_path("rent-receipt", Locales.fetch!("hi-in")) == nil
+      assert Templates.public_path("courier-receipt", Locales.fetch!("hi-in")) == nil
 
       alternates = Templates.alternates("fuel-bill")
 
@@ -232,7 +273,7 @@ defmodule QuickSlips.TemplatesTest do
 
       # A bill that is in English only is in the English locales: India, the United States, the UK, Canada.
       assert ["en-in", "en-us", "en-gb", "en-ca"] =
-               "rent-receipt"
+               "courier-receipt"
                |> Templates.alternates()
                |> Enum.map(fn {locale, _} -> locale.code end)
 
@@ -256,11 +297,11 @@ defmodule QuickSlips.TemplatesTest do
       assert text["options"]["fuel_type"]["Petrol"] == "Gasolina"
       assert length(text["months"]) == 12
       assert length(text["months_short"]) == 12
-      assert Templates.print_text("rent-receipt", Locales.fetch!("es-es")) == nil
+      assert Templates.print_text("courier-receipt", Locales.fetch!("es-es")) == nil
 
       # A template that is not translated still has the months, for the helpers.
       assert %{"lang" => "en", "print" => %{}} =
-               Templates.print_text("rent-receipt", Locales.default())
+               Templates.print_text("courier-receipt", Locales.default())
     end
 
     test "a translation has every word the English has" do
@@ -276,7 +317,8 @@ defmodule QuickSlips.TemplatesTest do
 
         assert everywhere.(schema["fields"]) == everywhere.(english["fields"])
 
-        for {field, english_field} <- Enum.zip(schema["fields"], english["fields"]) do
+        for field <- schema["fields"],
+            english_field = Enum.find(english["fields"], &(&1["key"] == field["key"])) do
           assert field["label"] not in [nil, ""], "#{locale.code} #{field["key"]} has no label"
           # A label that names the currency does so in every language.
           assert String.contains?(field["label"], "{currency}") ==
@@ -290,6 +332,20 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "samples" do
+    test "a country without a standard tax rate has none in the sample, whatever the English file says" do
+      for slug <- ["taxi-receipt", "maintenance-bill"] do
+        {:ok, india} = Templates.sample(slug, Locales.fetch!("en-in"))
+        {:ok, america} = Templates.sample(slug, Locales.fetch!("en-us"))
+        {:ok, brazil} = Templates.sample(slug, Locales.fetch!("pt-br"))
+        {:ok, spain} = Templates.sample(slug, Locales.fetch!("es-es"))
+
+        assert is_number(india["tax_percent"]), slug
+        assert is_number(spain["tax_percent"]), slug
+        refute Map.has_key?(america, "tax_percent"), slug
+        refute Map.has_key?(brazil, "tax_percent"), slug
+      end
+    end
+
     test "sample/2 puts the words of the language over the English sample" do
       {:ok, english} = Templates.sample("fuel-bill")
       {:ok, hindi} = Templates.sample("fuel-bill", Locales.fetch!("hi-in"))
@@ -315,7 +371,10 @@ defmodule QuickSlips.TemplatesTest do
       assert american["gstin"] == example["tax_id"]
       refute Map.has_key?(american, "fssai_number")
       assert american["payment_mode"] == "Cash"
-      assert american["restaurant_name"] == indian["restaurant_name"]
+
+      # The menu and the name are the country's own too (the text file of English in the United States).
+      assert american["restaurant_name"] == "Green Leaf Diner"
+      refute Map.has_key?(american, "gst_percent")
     end
 
     test "Chinese and Japanese: the fuel bill is translated, its sample is valid and they print with their fonts" do

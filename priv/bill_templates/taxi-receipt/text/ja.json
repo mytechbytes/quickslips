@@ -1,0 +1,174 @@
+{
+  "title": "タクシー領収書作成",
+  "name": "タクシー領収書",
+  "public_slug": "cab-bill-generator",
+  "summary": "運賃・通行料・{tax}を記載したタクシーの乗車領収書。",
+  "description": "乗車地と降車地、距離、運賃、通行料、{tax}を記載したタクシー領収書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "乗車レシート",
+    "t2": "乗車と請求書",
+    "t3": "税務請求書",
+    "t4": "シンプルなレシート"
+  },
+  "fields": {
+    "operator_name": {
+      "label": "タクシー会社または運転手名"
+    },
+    "operator_address": {
+      "label": "住所（任意）"
+    },
+    "receipt_number": {
+      "label": "伝票番号"
+    },
+    "date": {
+      "label": "乗車日"
+    },
+    "drop_date": {
+      "label": "降車日（任意）"
+    },
+    "passenger_name": {
+      "label": "乗客名（任意）"
+    },
+    "customer_phone": {
+      "label": "乗客の携帯電話（任意）"
+    },
+    "customer_address": {
+      "label": "乗客の住所（任意）"
+    },
+    "driver_name": {
+      "label": "運転手名（任意）"
+    },
+    "vehicle_number": {
+      "label": "車両ナンバー（任意）"
+    },
+    "vehicle_model": {
+      "label": "車種（任意）"
+    },
+    "pickup": {
+      "label": "乗車地"
+    },
+    "pickup_time": {
+      "label": "乗車時刻（任意）"
+    },
+    "drop": {
+      "label": "降車地"
+    },
+    "drop_time": {
+      "label": "降車時刻（任意）"
+    },
+    "distance_km": {
+      "label": "距離（km）"
+    },
+    "base_fare": {
+      "label": "運賃（{currency}）"
+    },
+    "toll": {
+      "label": "通行料・手数料（{currency}）（任意）"
+    },
+    "airport_charge": {
+      "label": "空港乗り入れ料（{currency}）（任意）"
+    },
+    "advance_paid": {
+      "label": "前払い金（{currency}）（任意）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    }
+  },
+  "print": {
+    "receipt_title": "ご乗車のレシートです。",
+    "enjoyed": "快適なご乗車だったことを願っています。",
+    "trip_total": "運賃合計",
+    "trip_fare": "運賃",
+    "subtotal": "小計",
+    "toll": "通行料・手数料",
+    "airport": "空港乗り入れ料",
+    "payments": "お支払い",
+    "includes": "合計 {total} には{tax} {amount} が含まれます。",
+    "rode_with": "ご乗車の車両",
+    "plate": "ナンバー",
+    "fares_incl": "運賃は税込です。",
+    "pickup": "乗車地",
+    "drop": "降車地",
+    "thanks_travel": "ご利用ありがとうございます。",
+    "ride_details": "ご乗車の詳細",
+    "bill_details": "料金の詳細",
+    "total_bill": "お支払い合計",
+    "includes_taxes": "うち税 {amount}",
+    "promise": "事前にお約束した合計運賃で目的地までお送りしました。降車地やルートを変更すると運賃が変わることがあります。",
+    "complaint": "この請求書に関するご意見・苦情は次の宛先までご連絡ください。",
+    "payment": "お支払い",
+    "paid_by": "支払方法",
+    "original": "原本（税務請求書）",
+    "driver_invoice": "ドライバー乗車請求書",
+    "service": "サービス：タクシー",
+    "invoice_id": "請求書番号",
+    "invoice_date": "請求日",
+    "customer": "お客様名",
+    "mobile": "携帯電話",
+    "pickup_address": "乗車地住所",
+    "description": "品目",
+    "amount": "金額",
+    "ride_fee": "運賃",
+    "note": "ご注意：1. この請求書は運送サービス提供者に代わって発行されたものです。2. 電子的に作成されており、署名は不要です。",
+    "tax_invoice": "税務請求書",
+    "invoice_no": "請求書番号",
+    "date": "日付",
+    "billed_to": "請求先",
+    "trip_details": "乗車情報",
+    "driver": "運転手",
+    "vehicle_no": "車両ナンバー",
+    "vehicle": "車種",
+    "date_time": "日時",
+    "particulars": "品目",
+    "period": "乗車期間",
+    "until": "～",
+    "distance": "距離",
+    "rate": "単価",
+    "pick_point": "乗車地",
+    "drop_point": "降車地",
+    "advance": "差引：前払い金",
+    "balance": "お支払い残高",
+    "total_amount": "請求合計",
+    "signatory": "承認者署名",
+    "thanks_riding": "ご乗車ありがとうございます。",
+    "before_tax": "税抜",
+    "fees": "通行料・空港料金・手数料",
+    "trip_id": "乗車ID",
+    "cab_no": "車両番号",
+    "time": "乗車時間",
+    "paid": "お支払い済み",
+    "total": "合計",
+    "unit": "km"
+  },
+  "sample": {
+    "operator_name": "東京ハイヤー",
+    "passenger_name": "田中 太郎",
+    "driver_name": "鈴木 一郎",
+    "pickup": "東京駅",
+    "drop": "羽田空港",
+    "vehicle_number": "品川 300 あ 12-34",
+    "vehicle_model": "トヨタ クラウン",
+    "customer_phone": "090-1234-5678",
+    "receipt_number": "T-007731",
+    "distance_km": 18.4,
+    "base_fare": 6200,
+    "toll": 1050,
+    "airport_charge": 0,
+    "advance_paid": 0,
+    "tax_percent": 10
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "title": "Generador de Recibo de Aparcamiento",
+  "name": "Recibo de Aparcamiento",
+  "public_slug": "generador-de-recibo-de-aparcamiento",
+  "summary": "Recibo de aparcamiento con plaza, hora e importe.",
+  "description": "Genera un recibo de aparcamiento con el nombre, la dirección, la plaza, la hora y el importe. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Ticket"
+  },
+  "fields": {
+    "facility_name": {
+      "label": "Nombre del aparcamiento"
+    },
+    "facility_address": {
+      "label": "Dirección del aparcamiento"
+    },
+    "facility_phone": {
+      "label": "Teléfono (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número de recibo"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "space_number": {
+      "label": "Plaza"
+    },
+    "thank_you": {
+      "label": "Mensaje de agradecimiento (opcional)"
+    },
+    "amount": {
+      "label": "Importe total ({currency})"
+    }
+  },
+  "print": {
+    "title": "Recibo de aparcamiento",
+    "space": "Plaza",
+    "paid": "Pagado",
+    "tel": "Tel."
+  },
+  "sample": {
+    "facility_name": "Aparcamiento Centro",
+    "facility_phone": "954 123 456",
+    "amount": 6.5,
+    "thank_you": "¡GRACIAS Y CONDUZCA CON PRUDENCIA!"
+  }
+}

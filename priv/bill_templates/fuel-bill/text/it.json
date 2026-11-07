@@ -5,7 +5,12 @@
   "summary": "Crea una ricevuta di rifornimento (benzina o gasolio) in PDF.",
   "description": "Genera una ricevuta di carburante ordinata con nome del distributore, data, tipo di carburante, quantità e prezzo. Anteprima immediata e download in PDF.",
   "designs": {
-    "t1": "Classico"
+    "t1": "Ricevuta",
+    "t2": "Scontrino della pompa",
+    "t3": "Termico",
+    "t4": "Termico dettagliato",
+    "t5": "Nota di cassa",
+    "t6": "Ad aghi"
   },
   "fields": {
     "station_name": {
@@ -42,6 +47,40 @@
     },
     "tax_percent": {
       "label": "{tax} (%) (facoltativo)"
+    },
+    "station_phone": {
+      "label": "Telefono del distributore (facoltativo)"
+    },
+    "dealer_name": {
+      "label": "Nome del gestore (facoltativo)"
+    },
+    "fcc_id": {
+      "label": "ID FCC (facoltativo)"
+    },
+    "fip_no": {
+      "label": "N. FIP (facoltativo)"
+    },
+    "time": {
+      "label": "Ora (facoltativo)"
+    },
+    "customer_name": {
+      "label": "Nome del cliente (facoltativo)"
+    },
+    "nozzle_number": {
+      "label": "N. erogatore (facoltativo)"
+    },
+    "density": {
+      "label": "Densità (kg/m³) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "Card": "Carta",
+        "UPI": "UPI",
+        "Net banking": "Home banking",
+        "Online": "Online"
+      }
     }
   },
   "print": {
@@ -57,7 +96,45 @@
     "signatory": "Firma autorizzata",
     "thanks": "Grazie e arrivederci.",
     "taxable": "Imponibile",
-    "tax_included": "IVA inclusa nel prezzo."
+    "tax_included": "IVA inclusa nel prezzo.",
+    "receipt_title": "Ricevuta carburante",
+    "receipt_details": "Dati della ricevuta",
+    "receipt_no": "Ricevuta n.",
+    "time": "Ora",
+    "billed_to": "Intestata a",
+    "customer": "Cliente",
+    "vehicle_no": "Targa",
+    "fuel_type": "Carburante",
+    "station": "Distributore",
+    "payment": "Metodo di pagamento",
+    "summary": "Riepilogo",
+    "fuel_rate": "Prezzo del carburante",
+    "total_amount": "Importo totale",
+    "thanks_fuelling": "Grazie per aver fatto rifornimento da noi!",
+    "queries": "Per domande o reclami contatta il nostro servizio clienti.",
+    "save_fuel": "Risparmia carburante, proteggi il futuro!",
+    "save_money": "Risparmia carburante, risparmia denaro. Grazie e arrivederci!",
+    "welcome": "Benvenuto!",
+    "product": "Prodotto",
+    "volume": "Volume",
+    "unit": "L",
+    "tel": "Tel.",
+    "fcc": "ID FCC",
+    "fip": "N. FIP",
+    "nozzle": "Erogatore n.",
+    "dealer": "Gestore",
+    "density": "Densità",
+    "original": "Originale",
+    "cash_memo": "Nota di cassa",
+    "no": "N.",
+    "dated": "Data",
+    "particulars": "Descrizione",
+    "all_tax_included": "Tutte le imposte incluse",
+    "eoe": "Salvo errori e omissioni",
+    "happy_journey": "Buon viaggio!",
+    "pump": "Pompa n.",
+    "grade": "Tipo",
+    "unit_price": "Prezzo unitario"
   },
   "sample": {
     "station_name": "Distributore Sole",
@@ -66,6 +143,8 @@
     "vehicle_number": "AB 123 CD",
     "rate": 1.82,
     "seller_tax_id": "IT01234567890",
-    "tax_percent": 22
+    "tax_percent": 22,
+    "customer_name": "Marco Rossi",
+    "station_phone": "06 1234567"
   }
 }

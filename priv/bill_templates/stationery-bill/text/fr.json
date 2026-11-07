@@ -1,0 +1,105 @@
+{
+  "title": "Générateur de ticket de papeterie",
+  "name": "Ticket de papeterie",
+  "public_slug": "generateur-de-ticket-de-papeterie",
+  "summary": "Ticket de papeterie avec articles, prix et totaux.",
+  "description": "Créez un ticket de papeterie avec stylos, papier et autres fournitures, quantités, prix et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Ticket"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Nom de la papeterie"
+    },
+    "shop_address": {
+      "label": "Adresse de la papeterie"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "invoice_number": {
+      "label": "Numéro de ticket"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "customer_address": {
+      "label": "Adresse du client"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "remarks": {
+      "label": "Remarques / instructions (facultatif)"
+    },
+    "items": {
+      "label": "Articles",
+      "columns": {
+        "name": "Article",
+        "qty": "Quantité",
+        "rate": "Prix ({currency})"
+      }
+    }
+  },
+  "print": {
+    "receipt_no": "Ticket n°",
+    "date": "Date",
+    "billed_to": "Facturé à",
+    "address": "Adresse",
+    "item": "Article",
+    "rate": "Prix",
+    "quantity": "Quantité",
+    "amount": "Montant",
+    "remarks": "Remarques / instructions",
+    "subtotal": "Sous-total",
+    "total_amount": "Montant total",
+    "payment_method": "Mode de paiement",
+    "save_paper": "Économisez le papier, protégez la nature ! Merci pour votre achat."
+  },
+  "sample": {
+    "shop_name": "Papeterie de la Plume",
+    "customer_name": "Camille Martin",
+    "items": [
+      {
+        "name": "Cahier à spirale (200 pages)",
+        "qty": 4,
+        "rate": 2.9
+      },
+      {
+        "name": "Stylos à bille bleus (lot de 10)",
+        "qty": 2,
+        "rate": 4.2
+      },
+      {
+        "name": "Set de surligneurs (4 couleurs)",
+        "qty": 1,
+        "rate": 5.5
+      },
+      {
+        "name": "Ramette de papier A4 (500 feuilles)",
+        "qty": 1,
+        "rate": 5.8
+      },
+      {
+        "name": "Bâton de colle (2 pièces)",
+        "qty": 2,
+        "rate": 2.6
+      }
+    ],
+    "tax_percent": 20,
+    "remarks": "Veuillez conserver le ticket pour tout échange sous 7 jours."
+  }
+}
