@@ -1,0 +1,177 @@
+{
+  "title": "इंटरनेट बिल जनरेटर",
+  "name": "इंटरनेट बिल",
+  "public_slug": "internet-bill-generator",
+  "summary": "प्लान, अवधि और {tax} के साथ ब्रॉडबैंड या फ़ाइबर बिल।",
+  "description": "प्लान, स्पीड, बिलिंग अवधि, शुल्क और {tax} के साथ ब्रॉडबैंड या फ़ाइबर इंटरनेट बिल बनाएं। चार डिज़ाइन; तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "क्लासिक",
+    "t2": "इंटरनेट इनवॉइस",
+    "t3": "विस्तृत इनवॉइस",
+    "t4": "स्टेटमेंट"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "इंटरनेट प्रदाता"
+    },
+    "provider_address": {
+      "label": "पता (वैकल्पिक)"
+    },
+    "provider_email": {
+      "label": "ईमेल (वैकल्पिक)"
+    },
+    "registered_office": {
+      "label": "पंजीकृत कार्यालय (वैकल्पिक)"
+    },
+    "gstin": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "bill_number": {
+      "label": "बिल नंबर"
+    },
+    "account_number": {
+      "label": "ग्राहक खाता संख्या"
+    },
+    "bill_date": {
+      "label": "बिल की तारीख"
+    },
+    "due_date": {
+      "label": "भुगतान की अंतिम तारीख (वैकल्पिक)"
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम"
+    },
+    "customer_address": {
+      "label": "ग्राहक का पता (वैकल्पिक)"
+    },
+    "user_name": {
+      "label": "यूज़र नेम (वैकल्पिक)"
+    },
+    "period_start": {
+      "label": "बिलिंग अवधि से"
+    },
+    "period_end": {
+      "label": "बिलिंग अवधि तक"
+    },
+    "plan_name": {
+      "label": "प्लान"
+    },
+    "plan_speed": {
+      "label": "प्लान की स्पीड (वैकल्पिक)"
+    },
+    "plan_package": {
+      "label": "प्लान पैकेज (वैकल्पिक)",
+      "options": {
+        "Limited": "सीमित",
+        "Unlimited": "अनलिमिटेड",
+        "FUP": "FUP"
+      }
+    },
+    "plan_validity": {
+      "label": "प्लान की वैधता (वैकल्पिक)",
+      "options": {
+        "Monthly": "मासिक",
+        "Quarterly": "त्रैमासिक",
+        "Half-yearly": "छमाही",
+        "Annual": "वार्षिक"
+      }
+    },
+    "service_description": {
+      "label": "सेवा का विवरण (वैकल्पिक)"
+    },
+    "plan_charge": {
+      "label": "प्लान शुल्क ({currency})"
+    },
+    "other_charges": {
+      "label": "इंस्टॉलेशन या अन्य शुल्क ({currency}) (वैकल्पिक)"
+    },
+    "discount": {
+      "label": "छूट ({currency}) (वैकल्पिक)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (वैकल्पिक)"
+    },
+    "payments_received": {
+      "label": "प्राप्त भुगतान ({currency}) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का तरीका (वैकल्पिक)",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "terms": {
+      "label": "नियम और शर्तें (हर पंक्ति में एक) (वैकल्पिक)"
+    }
+  },
+  "print": {
+    "title": "इंटरनेट बिल",
+    "bill_no": "बिल नं.",
+    "bill_date": "बिल की तारीख",
+    "due_date": "अंतिम तारीख",
+    "account_no": "खाता नं.",
+    "billing_period": "बिलिंग अवधि",
+    "billed_to": "ग्राहक",
+    "description": "विवरण",
+    "amount": "राशि",
+    "installation": "इंस्टॉलेशन और अन्य शुल्क",
+    "discount": "छूट",
+    "subtotal": "उप-योग",
+    "amount_due": "देय राशि",
+    "pay_by": "कनेक्शन चालू रखने के लिए कृपया {date} तक भुगतान करें।",
+    "computer_generated": "यह कंप्यूटर द्वारा तैयार किया गया बिल है।",
+    "invoice_title": "इंटरनेट इनवॉइस",
+    "customer_name": "ग्राहक का नाम",
+    "customer_address": "ग्राहक का पता",
+    "bill_account": "बिल खाता संख्या",
+    "receipt_details": "रसीद विवरण",
+    "receipt_no": "रसीद नंबर",
+    "date": "तारीख",
+    "payment_method": "भुगतान का तरीका",
+    "provider_details": "इंटरनेट प्रदाता का विवरण",
+    "billing_cycle": "बिलिंग चक्र",
+    "plan_summary": "सेवा प्लान का सारांश",
+    "plan": "प्लान",
+    "plan_speed": "प्लान की स्पीड",
+    "plan_package": "प्लान पैकेज",
+    "plan_validity": "प्लान की वैधता",
+    "plan_amount": "प्लान राशि",
+    "total": "कुल",
+    "payable_to": "सभी भुगतान इनके नाम पर किए जाएँ:",
+    "no_signature": "यह कंप्यूटर द्वारा तैयार किया गया इनवॉइस है और इस पर हस्ताक्षर आवश्यक नहीं है",
+    "receipt_for_recipient": "(प्राप्तकर्ता के लिए रसीद)",
+    "name": "नाम",
+    "invoice_no": "इनवॉइस नं.",
+    "taxable_amount": "कर योग्य राशि",
+    "rate_pct": "दर %",
+    "payments_received": "प्राप्त भुगतान",
+    "user_name": "यूज़र नेम",
+    "service_description": "इंटरनेट सेवा का विवरण",
+    "amount_incl_tax": "कर सहित राशि",
+    "registered_office": "पंजीकृत कार्यालय का पता",
+    "terms_title": "नियम और शर्तें",
+    "acknowledgement": "प्राप्ति पर्ची",
+    "subscriber_name": "ग्राहक का नाम",
+    "hello": "नमस्ते",
+    "invoice_total": "इनवॉइस का कुल",
+    "currency": "मुद्रा",
+    "invoice_amount": "इनवॉइस राशि",
+    "mailing_address": "हमारा संपर्क पता है"
+  },
+  "sample": {
+    "provider_name": "स्काईलाइन ब्रॉडबैंड",
+    "registered_office": "स्काईलाइन ब्रॉडबैंड प्रा. लि., प्लॉट 18, हाई-टेक सिटी, हैदराबाद, तेलंगाना 500081",
+    "customer_name": "कविता रेड्डी",
+    "plan_name": "फ़ाइबर 200 Mbps, अनलिमिटेड डेटा",
+    "service_description": "फ़ाइबर ब्रॉडबैंड सब्सक्रिप्शन",
+    "plan_charge": 999,
+    "gst_percent": 18,
+    "terms": "चेक स्काईलाइन ब्रॉडबैंड के नाम पर बनाए जाएँ।\nचेक बाउंस होने पर ₹ 100 का जुर्माना लगेगा।\nदेय तारीख के बाद भुगतान करने पर विलंब शुल्क लिया जाएगा।\nबकाया रहने पर सेवाएँ बंद करने का अधिकार सुरक्षित है।\nयह इनवॉइस कंप्यूटर द्वारा तैयार किया गया है; हस्ताक्षर और मुहर आवश्यक नहीं है।",
+    "provider_address": "प्लॉट 18, हाई-टेक सिटी, हैदराबाद, तेलंगाना 500081",
+    "customer_address": "फ्लैट 9B, ग्रीन हाइट्स, कोंडापुर, हैदराबाद 500084"
+  }
+}
