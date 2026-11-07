@@ -1,0 +1,154 @@
+{
+  "title": "Leave Travel Allowance Bill Generator",
+  "name": "LTA Bill",
+  "public_slug": "leave-travel-allowance-bill-generator",
+  "summary": "Bus or train e-ticket for a leave travel allowance claim.",
+  "description": "Create a bus or train e-ticket for a leave travel allowance (LTA) claim with the operator, boarding and dropping points, passengers, seat, fare, {tax} and the cancellation terms. Two designs; preview instantly and download as PDF.",
+  "designs": {
+    "t1": "E-ticket",
+    "t2": "Boxed e-ticket"
+  },
+  "fields": {
+    "travel_name": {
+      "label": "Travel operator"
+    },
+    "boarding_phone": {
+      "label": "Boarding point phone"
+    },
+    "customer_care": {
+      "label": "Customer care number"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "ticket_number": {
+      "label": "Ticket number"
+    },
+    "pnr_number": {
+      "label": "PNR number (optional)"
+    },
+    "travel_type": {
+      "label": "Travel type",
+      "options": {
+        "Sleeper": "Sleeper",
+        "AC Sleeper": "AC Sleeper",
+        "Semi Sleeper": "Semi Sleeper",
+        "AC Sleeper (2+1)": "AC Sleeper (2+1)",
+        "Non Sleeper": "Non Sleeper",
+        "Non AC": "Non AC"
+      }
+    },
+    "location": {
+      "label": "Boarding point: location"
+    },
+    "landmark": {
+      "label": "Boarding point: landmark"
+    },
+    "boarding_address": {
+      "label": "Boarding point: address"
+    },
+    "reporting_date": {
+      "label": "Reporting date"
+    },
+    "departure_time": {
+      "label": "Departure time (optional)"
+    },
+    "dropping_date": {
+      "label": "Dropping point: date"
+    },
+    "dropping_time": {
+      "label": "Dropping point: time (optional)"
+    },
+    "dropping_address": {
+      "label": "Dropping point: address"
+    },
+    "passenger_details": {
+      "label": "Passenger name, age, gender"
+    },
+    "passenger_count": {
+      "label": "Number of passengers"
+    },
+    "seat_number": {
+      "label": "Seat number"
+    },
+    "amount": {
+      "label": "Fare ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "cancellation_charge": {
+      "label": "Cancellation charge before departure ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "t1_banner": "Congratulations! You have booked a reschedulable ticket. You can advance or postpone this journey till {when}.",
+    "eticket": "eTICKET",
+    "type": "Type",
+    "need_help": "Need help with your trip?",
+    "boarding_phone": "Boarding point phone",
+    "customer_care": "Travels customer care",
+    "ticket_no": "Ticket no",
+    "pnr_no": "PNR no",
+    "reporting_date": "Reporting date",
+    "departure_time": "Departure time",
+    "no_passengers": "No. of passengers",
+    "boarding_point": "Boarding point details",
+    "dropping_point": "Dropping point details",
+    "location": "Location",
+    "landmark": "Landmark",
+    "address": "Address",
+    "time": "Time",
+    "date": "Date",
+    "passenger_details": "Passenger details (age, gender)",
+    "seat_number": "Seat number",
+    "mticket_note": "NOTE: This operator accepts mobile tickets; you need not carry a printout.",
+    "total_fare": "Total fare",
+    "gst_note": "({rate}% {tax} and service charge applicable, if any)",
+    "net_amount": "Net amount",
+    "taxable_amount": "Taxable amount",
+    "terms": "Terms and conditions",
+    "t1_term_0": "Please note the following regarding the luggage policy for your journey.",
+    "t1_term_1": "Each passenger may carry one bag of up to 10 kg and one personal item such as a laptop bag, handbag or briefcase of up to 5 kg.",
+    "t1_term_2": "Passengers must not carry weapons, flammable items, firearms, ammunition, drugs, liquor, smuggled goods or any other articles prohibited by law.",
+    "t1_term_3": "The operator may deny boarding or charge extra if a passenger carries more luggage than allowed.",
+    "t1_term_4": "Partial cancellation is NOT allowed for this ticket. The charges for cancelling the whole ticket are shown below.",
+    "cancel_time": "Cancellation time",
+    "cancel_charges": "Cancellation charges",
+    "after": "After",
+    "before": "Before",
+    "on": "on",
+    "cut_as_charges": "{amount} will be cut as cancellation charges",
+    "t2_banner": "Congratulations! Your ticket is reschedulable until {when}.",
+    "lta_month": "LTA month",
+    "boarding_help": "Boarding help",
+    "journey_date": "Journey date",
+    "passengers": "Passengers",
+    "seat_count": "Seat",
+    "passenger_details_title": "Passenger details (name/age/gender)",
+    "payment_method": "Payment method",
+    "important_note": "Important note",
+    "note_mticket": "This operator accepts mobile tickets. Carrying a printed ticket is optional.",
+    "note_id": "Carry a valid photo ID for passenger verification during boarding.",
+    "note_changes": "For travel changes, contact operator support before the cutoff time.",
+    "base_fare": "Base fare",
+    "tax": "Tax",
+    "t2_term_1": "One luggage bag up to 10 kg and one personal bag up to 5 kg is allowed.",
+    "t2_term_2": "Do not carry prohibited items such as weapons, drugs or hazardous goods.",
+    "t2_term_3": "The operator may deny boarding in case of policy or safety violations.",
+    "t2_term_4": "Partial cancellation is not available for this ticket.",
+    "cancel_window": "Cancellation window",
+    "applicable_charge": "Applicable charge"
+  },
+  "sample": {}
+}

@@ -1,0 +1,100 @@
+{
+  "title": "Gerador de nota geral",
+  "name": "Nota geral",
+  "public_slug": "gerador-de-nota-geral",
+  "summary": "Nota simples para qualquer venda ou serviço, com alíquota por item.",
+  "description": "Crie uma nota para qualquer venda ou serviço com quantos itens precisar, uma alíquota de {tax} para cada um, o vendedor, o cliente e o pagamento. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota simples"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Nome da loja"
+    },
+    "shop_address": {
+      "label": "Dados do vendedor"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "order_number": {
+      "label": "Número do pedido (opcional)"
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "customer_location": {
+      "label": "Cidade do cliente"
+    },
+    "shipping_address": {
+      "label": "Endereço de entrega do cliente"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Itens",
+      "columns": {
+        "name": "Descrição",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})",
+        "tax": "Imposto %"
+      }
+    }
+  },
+  "print": {
+    "invoice_date": "Data da nota",
+    "invoice_no": "Nota n.º",
+    "sold_by": "Vendido por",
+    "billed_to": "Faturado para",
+    "description": "Descrição",
+    "qty": "Qtd.",
+    "price": "Preço",
+    "amt": "Valor",
+    "subtotal": "Subtotal",
+    "payment_info": "Dados do pagamento",
+    "due_by": "Vencimento",
+    "total_amount": "Valor total",
+    "order_no": "Pedido n.º",
+    "payment_method": "Forma de pagamento",
+    "thanks": "Obrigado! Volte sempre."
+  },
+  "sample": {
+    "shop_name": "Armarinho Central",
+    "customer_name": "Ana Souza",
+    "customer_location": "São Paulo",
+    "items": [
+      {
+        "name": "Conjunto de potes de aço para cozinha",
+        "qty": 2,
+        "rate": 89,
+        "tax": 0
+      },
+      {
+        "name": "Lençol de algodão (casal)",
+        "qty": 3,
+        "rate": 119,
+        "tax": 12
+      },
+      {
+        "name": "Lâmpada LED 9 W (pacote com 4)",
+        "qty": 2,
+        "rate": 32,
+        "tax": 18
+      }
+    ]
+  }
+}

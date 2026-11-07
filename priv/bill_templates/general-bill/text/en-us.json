@@ -1,0 +1,27 @@
+{
+  "sample": {
+    "shop_name": "Main Street General Store",
+    "customer_name": "John Smith",
+    "customer_location": "Austin",
+    "items": [
+      {
+        "name": "Steel kitchen container set",
+        "qty": 2,
+        "rate": 24,
+        "tax": 8.25
+      },
+      {
+        "name": "Cotton bed sheet (double)",
+        "qty": 3,
+        "rate": 32,
+        "tax": 8.25
+      },
+      {
+        "name": "LED bulb 9 W (pack of 4)",
+        "qty": 2,
+        "rate": 10,
+        "tax": 8.25
+      }
+    ]
+  }
+}

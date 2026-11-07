@@ -1,0 +1,163 @@
+{
+  "title": "Fitnessstudio-Beleg-Generator",
+  "name": "Fitnessstudio-Beleg",
+  "public_slug": "fitnessstudio-beleg-generator",
+  "summary": "Mitgliedsbeleg oder Rechnung mit Tarif, Zeitraum und Beiträgen.",
+  "description": "Erstellen Sie einen Mitgliedsbeleg oder eine Rechnung für ein Fitnessstudio mit Tarif, Abrechnungszyklus, Zeitraum, Beiträgen, zusätzlichen Posten, {tax} und den Hinweisen des Studios. Zwei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Beleg",
+    "t2": "Rechnung"
+  },
+  "fields": {
+    "gym_name": {
+      "label": "Fitnessstudio oder Club"
+    },
+    "gym_address": {
+      "label": "Adresse (optional)"
+    },
+    "gym_email": {
+      "label": "E-Mail des Studios (optional)"
+    },
+    "gym_phone": {
+      "label": "Telefon des Studios (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "receipt_number": {
+      "label": "Quittungsnummer"
+    },
+    "date": {
+      "label": "Belegdatum"
+    },
+    "member_name": {
+      "label": "Name des Mitglieds"
+    },
+    "member_phone": {
+      "label": "Telefon des Mitglieds (optional)"
+    },
+    "customer_number": {
+      "label": "Kundennummer (optional)"
+    },
+    "user_number": {
+      "label": "Benutzer-ID (optional)"
+    },
+    "member_address": {
+      "label": "Adresse des Mitglieds (optional)"
+    },
+    "plan": {
+      "label": "Tarif",
+      "options": {
+        "Day pass": "Tageskarte",
+        "Monthly": "Monatlich",
+        "Quarterly": "Vierteljährlich",
+        "Half-yearly": "Halbjährlich",
+        "Yearly": "Jährlich"
+      }
+    },
+    "billing_cycle": {
+      "label": "Abrechnungszyklus (optional)",
+      "options": {
+        "Monthly": "Monatlich",
+        "Quarterly": "Vierteljährlich",
+        "Half-yearly": "Halbjährlich",
+        "Annual": "Jährlich"
+      }
+    },
+    "start_date": {
+      "label": "Gültig ab"
+    },
+    "end_date": {
+      "label": "Gültig bis"
+    },
+    "fee": {
+      "label": "Mitgliedsbeitrag ({currency})"
+    },
+    "joining_fee": {
+      "label": "Aufnahmegebühr ({currency}) (optional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "remarks": {
+      "label": "Anmerkung (optional)"
+    },
+    "instructions": {
+      "label": "Hinweise für Mitglieder (eine pro Zeile) (optional)"
+    },
+    "items": {
+      "label": "Zusätzliche Posten",
+      "columns": {
+        "name": "Posten und Beschreibung",
+        "qty": "Einheiten",
+        "rate": "Preis ({currency})"
+      }
+    }
+  },
+  "print": {
+    "membership_receipt": "Mitgliedsbeleg",
+    "receipt_no": "Quittungs-Nr.",
+    "date": "Datum",
+    "member": "Mitglied",
+    "phone": "Telefon",
+    "plan": "Tarif",
+    "valid": "Gültig",
+    "to": "bis",
+    "paid_by": "Bezahlt mit",
+    "membership_fee": "Mitgliedsbeitrag",
+    "joining_fee": "Aufnahmegebühr",
+    "subtotal": "Zwischensumme",
+    "authorised": "Unterschriftsberechtigter",
+    "stay_fit": "Bleiben Sie fit. Wir sehen uns im Studio.",
+    "invoice_no": "Rechnung Nr.",
+    "invoice_date": "Rechnungsdatum",
+    "user_id": "Benutzer-ID",
+    "customer_name": "Kundenname",
+    "address": "Adresse",
+    "mobile": "Mobil",
+    "account_summary": "Kontoübersicht",
+    "bill_from_date": "Abrechnung ab",
+    "billing_cycle": "Abrechnungszyklus",
+    "due_date": "Fälligkeit",
+    "amount": "Betrag",
+    "payment_mode": "Zahlungsart",
+    "billing_details": "Rechnungsdetails",
+    "gym_item": "Position",
+    "unit": "Einh.",
+    "net_amount": "Nettobetrag",
+    "total": "Gesamt",
+    "tax_pct": "Steuer %",
+    "taxable_amount": "Steuerbasis",
+    "instructions_title": "Hinweise zum Studio",
+    "remark": "Anmerkung",
+    "signature": "Unterschrift"
+  },
+  "sample": {
+    "gym_name": "Eisenwerk Fitness",
+    "member_name": "Anna Becker",
+    "gym_phone": "030 1234567",
+    "member_phone": "0151 2345678",
+    "fee": 99,
+    "joining_fee": 20,
+    "gst_percent": 19,
+    "items": [
+      {
+        "name": "Personal-Training-Einheit",
+        "qty": 4,
+        "rate": 25
+      }
+    ],
+    "instructions": "Check-in: Melden Sie sich bei Ankunft bei Bedarf an der Rezeption an.\nKleidung und Hygiene: Tragen Sie Sportkleidung und saubere Hallenschuhe. Bringen Sie ein Handtuch zum Abwischen der Geräte mit.\nAufwärmen: Beginnen Sie mit 5-10 Minuten Aufwärmen, z. B. leichtes Cardio oder dynamisches Dehnen.\nGeräte: Machen Sie sich als Neuling mit den Geräten vertraut und fragen Sie das Personal.\nCardiogeräte: Stellen Sie die Geräte auf Ihr Niveau ein und wischen Sie sie vor und nach der Nutzung ab.\nFlüssigkeit: Trinken Sie vor, während und nach dem Training Wasser.\nPausen: Ruhen Sie zwischen den Sätzen, blockieren Sie aber zu Stoßzeiten keine Geräte.\nCool-down: Beenden Sie das Training mit 5-10 Minuten leichtem Dehnen.\nWertsachen: Bewahren Sie Ihre Sachen in den Schließfächern auf und lassen Sie nichts unbeaufsichtigt.\nViel Spaß und Regelmäßigkeit: Regelmäßigkeit ist der Schlüssel zum Ziel.",
+    "remarks": "Für Pausierungen ist eine Frist von 7 Tagen einzuhalten."
+  }
+}

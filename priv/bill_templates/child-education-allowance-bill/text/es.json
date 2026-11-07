@@ -1,0 +1,132 @@
+{
+  "title": "Generador de Solicitud de Ayuda por Estudios de Hijos",
+  "name": "Ayuda por Estudios de Hijos",
+  "public_slug": "generador-de-ayuda-por-estudios-de-hijos",
+  "summary": "Formulario de reembolso de la ayuda por estudios de los hijos.",
+  "description": "Rellena el formulario de reembolso de una ayuda por estudios de los hijos (CEA) o subsidio de residencia con el solicitante, el cónyuge, los hijos y sus colegios y los gastos. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Formulario"
+  },
+  "fields": {
+    "claim_date": {
+      "label": "Fecha"
+    },
+    "academic_year": {
+      "label": "Curso escolar"
+    },
+    "name_rank": {
+      "label": "Nombre y rango del empleado público"
+    },
+    "personal_number": {
+      "label": "Número personal"
+    },
+    "designation": {
+      "label": "Cargo"
+    },
+    "unit": {
+      "label": "Unidad o centro"
+    },
+    "spouse_employed": {
+      "label": "Cónyuge empleado en la administración, un organismo público o una entidad privada"
+    },
+    "spouse_office": {
+      "label": "Cargo y oficina del cónyuge (opcional)"
+    },
+    "child1_name": {
+      "label": "Hijo/a 1: nombre"
+    },
+    "child1_dob": {
+      "label": "Hijo/a 1: fecha de nacimiento"
+    },
+    "child1_standard": {
+      "label": "Hijo/a 1: curso"
+    },
+    "child1_school": {
+      "label": "Hijo/a 1: nombre y lugar del colegio"
+    },
+    "child2_name": {
+      "label": "Hijo/a 2: nombre (opcional)"
+    },
+    "child2_dob": {
+      "label": "Hijo/a 2: fecha de nacimiento (opcional)"
+    },
+    "child2_standard": {
+      "label": "Hijo/a 2: curso (opcional)"
+    },
+    "child2_school": {
+      "label": "Hijo/a 2: nombre y lugar del colegio (opcional)"
+    },
+    "items": {
+      "label": "Reembolso de gastos",
+      "columns": {
+        "code": "N.º",
+        "name": "Periodo",
+        "qty": "Meses",
+        "rate": "Importe mensual ({currency})",
+        "batch": "Observaciones"
+      }
+    }
+  },
+  "print": {
+    "title": "Formulario de reembolso de la ayuda por estudios de los hijos",
+    "claim_for": "Solicitud para el curso escolar",
+    "intro": "Por la presente solicito el reembolso de la ayuda por estudios / subsidio de residencia para mi hijo/hijos; los datos pertinentes figuran a continuación:",
+    "date": "Fecha",
+    "q1": "Nombre y rango del empleado público",
+    "q2": "N.º personal",
+    "q3": "Cargo",
+    "q4": "Nombre de la unidad",
+    "q5": "Si el cónyuge trabaja en la administración central / regional, un organismo autónomo, una empresa pública, un ente local o una entidad privada, etc.",
+    "q6": "Cargo, oficina y n.º de unidad del cónyuge (si trabaja en la administración)",
+    "children_title": "Datos de los hijos para los que se solicita la ayuda / el subsidio:",
+    "sequence": "N.º",
+    "child_name": "Nombre del hijo/a",
+    "dob": "F. nac.",
+    "standard": "Curso",
+    "ay": "Curso",
+    "school": "Nombre y lugar del colegio / centro",
+    "expenditure_title": "Reembolso de gastos:",
+    "period": "Periodo",
+    "rate_cea": "Importe mensual",
+    "amount_claimed": "Importe solicitado",
+    "remarks": "Observaciones",
+    "total_claimed": "Total solicitado",
+    "months": "meses"
+  },
+  "sample": {
+    "name_rank": "Comandante Arturo Cano",
+    "personal_number": "N-48213",
+    "designation": "Oficial de Estado Mayor",
+    "unit": "Cuartel General, Madrid",
+    "spouse_employed": "No",
+    "child1_name": "Pablo Cano",
+    "child2_name": "Lucía Cano",
+    "child1_school": "Colegio Amanecer, Madrid",
+    "child2_school": "Colegio Amanecer, Madrid",
+    "child1_standard": "1.º de ESO",
+    "child2_standard": "4.º de Primaria",
+    "items": [
+      {
+        "code": "1",
+        "name": "Abril a junio de 2026",
+        "qty": 3,
+        "rate": 80,
+        "batch": "Pablo Cano"
+      },
+      {
+        "code": "2",
+        "name": "Julio a septiembre de 2026",
+        "qty": 3,
+        "rate": 80,
+        "batch": "Pablo Cano"
+      },
+      {
+        "code": "3",
+        "name": "Abril a septiembre de 2026",
+        "qty": 6,
+        "rate": 80,
+        "batch": "Lucía Cano"
+      }
+    ]
+  }
+}

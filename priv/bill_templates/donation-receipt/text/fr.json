@@ -1,0 +1,85 @@
+{
+  "title": "Générateur de reçu de don",
+  "name": "Reçu de don",
+  "public_slug": "generateur-de-recu-de-don",
+  "summary": "Reçu pour un don à une association ou une fondation.",
+  "description": "Créez un reçu de don pour une association, une œuvre caritative ou une fondation avec le donateur, le montant en chiffres et en lettres, le mode de paiement, le bénéficiaire et un remerciement. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Reçu"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "Nom de l'organisation"
+    },
+    "registration_number": {
+      "label": "Numéro d'enregistrement (facultatif)"
+    },
+    "address": {
+      "label": "Adresse"
+    },
+    "email": {
+      "label": "E-mail (facultatif)"
+    },
+    "website": {
+      "label": "Site web (facultatif)"
+    },
+    "phone": {
+      "label": "Téléphone / contact (facultatif)"
+    },
+    "receipt_number": {
+      "label": "Reçu n°"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "donor_name": {
+      "label": "Nom du donateur"
+    },
+    "amount": {
+      "label": "Montant total ({currency})"
+    },
+    "amount_in_words": {
+      "label": "Montant en lettres (écrit automatiquement si vide) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "received_by": {
+      "label": "Reçu par (facultatif)"
+    },
+    "donation_description": {
+      "label": "Description du don (facultatif)"
+    }
+  },
+  "print": {
+    "email": "E-mail",
+    "website": "Site web",
+    "phone": "Téléphone",
+    "donation_receipt": "Reçu de don",
+    "receipt_no": "Reçu n°",
+    "date": "Date",
+    "received_from": "Reçu de :",
+    "amount": "Montant",
+    "sum_of_words": "La somme en lettres",
+    "payment_method": "Mode de paiement",
+    "received_by": "Reçu par :",
+    "description_of_donation": "Description du don :",
+    "thanks": "Merci pour votre générosité, nous apprécions votre soutien."
+  },
+  "sample": {
+    "organisation_name": "Fondation Découverte et Restauration",
+    "registration_number": "Association déclarée n° W751091 (2018)",
+    "phone": "+33 1 23 45 67 89",
+    "donor_name": "Camille Martin",
+    "amount": 100,
+    "received_by": "Pierre Dubois, trésorier",
+    "donation_description": "Don pour la restauration de la bibliothèque patrimoniale."
+  }
+}

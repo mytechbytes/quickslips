@@ -1,0 +1,19 @@
+{
+  "sample": {
+    "hotel_name": "Lotus Residency Hotel",
+    "guest_name": "Emma Wilson",
+    "nationality": "Canadian",
+    "room_description": "Lake-view room with breakfast",
+    "items": [
+      {
+        "name": "Extra bed",
+        "rate": 38.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 190,
+    "extra_charges": 50,
+    "gst_percent": 5,
+    "advance_amount": 100
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "slug": "general-bill",
+  "public_slug": "general-bill-generator",
+  "title": "General Bill Generator",
+  "category": "Work",
+  "icon": "hero-document-text",
+  "number_field": "invoice_number",
+  "summary": "A simple bill for any sale or service, with a tax rate per item.",
+  "description": "Make a bill for any sale or service with as many items as you need, a {tax} rate for each item, the seller, the customer and the payment. Preview instantly and download as PDF.",
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "tax": { "default": "added", "es": "included", "de": "included", "fr": "included", "it": "included", "gb": "included", "jp": "included", "cn": "included" },
+  "templates": [{ "id": "t1" }],
+  "fields": [
+    { "key": "shop_name", "group": "business", "label": "Shop name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "shop_address", "group": "business", "label": "Sold by details", "type": "textarea", "required": true, "max_length": 200, "prefill": "business.address" },
+    { "key": "seller_tax_id", "group": "registration", "label": "{tax_id} (optional)", "type": "tax_id", "required": false, "max_length": 20, "prefill": "business.gstin" },
+    { "key": "invoice_number", "group": "document", "label": "Invoice number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "order_number", "group": "document", "label": "Order number (optional)", "type": "text", "required": false, "max_length": 30 },
+    { "key": "customer_name", "group": "customer", "label": "Customer name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "customer_location", "group": "customer", "label": "Customer location", "type": "text", "required": true, "max_length": 80 },
+    { "key": "shipping_address", "group": "customer", "label": "Customer shipping address", "type": "textarea", "required": true, "max_length": 200 },
+    { "key": "items", "group": "items", "label": "Items", "type": "items", "required": true, "max_rows": 40, "name_max_length": 120,
+      "cells": ["name", "qty", "rate", "tax"],
+      "columns": { "name": "Description", "qty": "Qty", "rate": "Price ({currency})", "tax": "Tax %" } },
+    { "key": "payment_mode", "group": "payment", "label": "Payment method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true }
+  ]
+}

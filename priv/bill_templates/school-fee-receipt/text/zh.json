@@ -1,0 +1,103 @@
+{
+  "title": "学费收据生成器",
+  "name": "学费收据",
+  "public_slug": "school-fee-receipt-generator",
+  "summary": "含费用明细的学费收据，或简式收款凭证。",
+  "description": "生成学费收据，包含学生、班级、缴费期间以及学费、交通费和其他费用明细，或带大写金额的简式收款凭证。两种样式；即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "经典",
+    "t2": "简式凭证"
+  },
+  "fields": {
+    "school_name": {
+      "label": "学校或机构"
+    },
+    "school_address": {
+      "label": "地址（选填）"
+    },
+    "school_phone": {
+      "label": "联系电话（选填）"
+    },
+    "receipt_number": {
+      "label": "收据编号"
+    },
+    "date": {
+      "label": "收据日期"
+    },
+    "student_name": {
+      "label": "学生姓名"
+    },
+    "class_name": {
+      "label": "班级"
+    },
+    "admission_number": {
+      "label": "学号（选填）"
+    },
+    "parent_name": {
+      "label": "家长或监护人（选填）"
+    },
+    "fee_period": {
+      "label": "缴费项目"
+    },
+    "tuition_fee": {
+      "label": "学费（{currency}）"
+    },
+    "transport_fee": {
+      "label": "交通费（{currency}）（选填）"
+    },
+    "other_fee": {
+      "label": "考试、活动及其他费用（{currency}）（选填）"
+    },
+    "late_fee": {
+      "label": "滞纳金（{currency}）（选填）"
+    },
+    "amount_in_words": {
+      "label": "大写金额（留空则自动生成）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Cheque": "支票"
+      }
+    }
+  },
+  "print": {
+    "fee_receipt": "学费收据",
+    "receipt_no": "收据号码",
+    "date": "日期",
+    "student": "学生",
+    "class": "班级",
+    "admission_no": "学号",
+    "parent": "家长或监护人",
+    "fee_for": "缴费项目",
+    "paid_by": "支付方式",
+    "tuition_fee": "学费",
+    "transport_fee": "交通费",
+    "other_fee": "考试、活动及其他费用",
+    "late_fee": "滞纳金",
+    "total_received": "实收合计",
+    "accounts_office": "财务处",
+    "keep_receipt": "请妥善保管本收据。",
+    "branches": "校区",
+    "cell": "电话",
+    "no": "编号",
+    "receipt": "收据",
+    "received": "兹收到 {pupil} 的家长 {payer} 先生/女士缴纳的{purpose}，金额为 {words}，付款方式：{mode}。",
+    "signature": "签名"
+  },
+  "sample": {
+    "school_name": "朝阳实验学校",
+    "student_name": "王小明",
+    "parent_name": "王伟",
+    "tuition_fee": 6800,
+    "transport_fee": 1500,
+    "other_fee": 800,
+    "class_name": "七年级（2）班",
+    "fee_period": "2026-27 学年第二学期",
+    "school_phone": "010-12345678"
+  }
+}

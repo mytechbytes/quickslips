@@ -1,0 +1,28 @@
+{
+  "slug": "laundry-bill",
+  "public_slug": "laundry-bill-generator",
+  "title": "Laundry Bill Generator",
+  "category": "Home & utilities",
+  "icon": "hero-sparkles",
+  "number_field": "invoice_number",
+  "summary": "Laundry and dry-cleaning bill with garments, quantities and amounts.",
+  "description": "Create a laundry or dry-cleaning bill with the garments, quantities and prices, a delivery date, {tax}, the payment method and your terms and conditions. Two designs; preview instantly and download as PDF.",
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "tax": { "default": "added", "es": "included", "de": "included", "fr": "included", "it": "included", "gb": "included", "jp": "included", "cn": "included" },
+  "templates": [{ "id": "t1" }, { "id": "t2" }],
+  "fields": [
+    { "key": "laundry_name", "group": "business", "label": "Laundry name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "laundry_address", "group": "business", "label": "Laundry address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "invoice_number", "group": "document", "label": "Invoice ID", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "delivery_date", "group": "document", "label": "Delivery date", "type": "date", "required": true },
+    { "key": "customer_name", "group": "customer", "label": "Customer name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "customer_address", "group": "customer", "label": "Customer address (optional)", "type": "textarea", "required": false, "max_length": 200 },
+    { "key": "items", "group": "items", "label": "Garments and services", "type": "items", "required": true, "max_rows": 40, "name_max_length": 100,
+      "cells": ["name", "qty", "rate"],
+      "columns": { "name": "Description", "qty": "Qty", "rate": "Price ({currency})" } },
+    { "key": "tax_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
+    { "key": "payment_mode", "group": "payment", "label": "Payment method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true },
+    { "key": "terms", "group": "details", "label": "Terms and conditions (optional, one per line)", "type": "textarea", "required": false, "max_length": 1200 }
+  ]
+}

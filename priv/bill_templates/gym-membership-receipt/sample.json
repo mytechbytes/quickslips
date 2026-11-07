@@ -12,5 +12,20 @@
   "fee": 6000,
   "joining_fee": 500,
   "gst_percent": 18,
-  "payment_mode": "UPI"
+  "payment_mode": "UPI",
+  "gym_email": "hello@ironworks.example",
+  "gym_phone": "0120 456 7890",
+  "user_number": "751W2T",
+  "customer_number": "1671939904",
+  "member_address": "B-14, Sector 62, Noida, Uttar Pradesh 201301",
+  "billing_cycle": "Quarterly",
+  "items": [
+    {
+      "name": "Personal training session",
+      "qty": 4,
+      "rate": 500
+    }
+  ],
+  "remarks": "Freeze requests need 7 days' notice.",
+  "instructions": "Check-in: on arrival, check in at the front desk if required.\nAttire and hygiene: wear workout attire and clean, non-marking athletic shoes. Bring a towel to wipe down equipment after use.\nWarm-up: start with a 5-10 minute warm-up, such as light cardio or dynamic stretching.\nEquipment: if you are new, familiarise yourself with the machines and ask the staff for guidance.\nCardio equipment: adjust the machines to your fitness level and wipe them down before and after use.\nHydration: drink water before, during and after your workout.\nRest periods: rest between sets, but avoid hogging equipment during peak hours.\nCool down: finish with 5-10 minutes of light stretching.\nPersonal belongings: keep your belongings in the lockers provided and never leave valuables unattended.\nEnjoy and stay consistent: consistency is key to reaching your fitness goals."
 }

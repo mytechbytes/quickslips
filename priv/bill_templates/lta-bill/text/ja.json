@@ -1,0 +1,165 @@
+{
+  "title": "休暇旅行手当（LTA）乗車券作成",
+  "name": "LTA乗車券",
+  "public_slug": "leave-travel-allowance-bill-generator",
+  "summary": "休暇旅行手当の請求に使うバス・鉄道の電子チケット。",
+  "description": "運行会社、乗車・降車地点、乗客、座席、運賃、{tax}、キャンセル規定を記載した休暇旅行手当（LTA）請求用のバス・鉄道の電子チケットを作成できます。2つのデザイン。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "電子チケット",
+    "t2": "枠つき電子チケット"
+  },
+  "fields": {
+    "travel_name": {
+      "label": "運行会社"
+    },
+    "boarding_phone": {
+      "label": "乗車地点の電話"
+    },
+    "customer_care": {
+      "label": "お客様相談室"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "ticket_number": {
+      "label": "チケット番号"
+    },
+    "pnr_number": {
+      "label": "PNR番号（任意）"
+    },
+    "travel_type": {
+      "label": "車両タイプ",
+      "options": {
+        "Sleeper": "寝台",
+        "AC Sleeper": "エアコン付き寝台",
+        "Semi Sleeper": "セミ寝台",
+        "AC Sleeper (2+1)": "エアコン付き寝台（2+1）",
+        "Non Sleeper": "座席",
+        "Non AC": "エアコンなし"
+      }
+    },
+    "location": {
+      "label": "乗車地点：場所"
+    },
+    "landmark": {
+      "label": "乗車地点：目印"
+    },
+    "boarding_address": {
+      "label": "乗車地点：住所"
+    },
+    "reporting_date": {
+      "label": "集合日"
+    },
+    "departure_time": {
+      "label": "出発時刻（任意）"
+    },
+    "dropping_date": {
+      "label": "降車地点：日付"
+    },
+    "dropping_time": {
+      "label": "降車地点：時刻（任意）"
+    },
+    "dropping_address": {
+      "label": "降車地点：住所"
+    },
+    "passenger_details": {
+      "label": "乗客の氏名・年齢・性別"
+    },
+    "passenger_count": {
+      "label": "乗客数"
+    },
+    "seat_number": {
+      "label": "座席番号"
+    },
+    "amount": {
+      "label": "運賃（{currency}）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "cancellation_charge": {
+      "label": "出発前のキャンセル料（{currency}）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    }
+  },
+  "print": {
+    "t1_banner": "予約が完了しました。この旅程は {when} まで前倒し・延期できます。",
+    "eticket": "電子チケット",
+    "type": "タイプ",
+    "need_help": "ご旅行のお困りごとは？",
+    "boarding_phone": "乗車地点の電話",
+    "customer_care": "お客様相談室",
+    "ticket_no": "チケット番号",
+    "pnr_no": "PNR番号",
+    "reporting_date": "集合日",
+    "departure_time": "出発時刻",
+    "no_passengers": "乗客数",
+    "boarding_point": "乗車地点",
+    "dropping_point": "降車地点",
+    "location": "場所",
+    "landmark": "目印",
+    "address": "住所",
+    "time": "時刻",
+    "date": "日付",
+    "passenger_details": "乗客情報（年齢・性別）",
+    "seat_number": "座席番号",
+    "mticket_note": "注意：この運行会社はモバイルチケットに対応しており、印刷は不要です。",
+    "total_fare": "運賃合計",
+    "gst_note": "（{tax}{rate}%、サービス料がある場合は別途）",
+    "net_amount": "正味金額",
+    "taxable_amount": "課税対象額",
+    "terms": "利用条件",
+    "t1_term_0": "ご旅行の手荷物規定をご確認ください。",
+    "t1_term_1": "乗客1名につき、10kgまでの荷物1個と5kgまでの身の回り品（ノートPCバッグ、ハンドバッグ、ブリーフケース）1個を持ち込めます。",
+    "t1_term_2": "武器、可燃物、銃器、弾薬、薬物、酒類、密輸品、その他法律で禁止されている物品の持ち込みはできません。",
+    "t1_term_3": "手荷物が規定を超える場合、運行会社は乗車を断るか追加料金を請求することがあります。",
+    "t1_term_4": "このチケットは一部のキャンセルはできません。全体のキャンセル料は下記のとおりです。",
+    "cancel_time": "キャンセル時期",
+    "cancel_charges": "キャンセル料",
+    "after": "以降",
+    "before": "以前",
+    "on": "の",
+    "cut_as_charges": "キャンセル料として {amount} を差し引きます",
+    "t2_banner": "このチケットは {when} まで変更できます。",
+    "lta_month": "LTA対象月",
+    "boarding_help": "乗車案内",
+    "journey_date": "乗車日",
+    "passengers": "乗客",
+    "seat_count": "座席",
+    "passenger_details_title": "乗客情報（氏名/年齢/性別）",
+    "payment_method": "支払方法",
+    "important_note": "重要なお知らせ",
+    "note_mticket": "この運行会社はモバイルチケットに対応しています。印刷は任意です。",
+    "note_id": "乗車時の本人確認のため、写真付きの身分証をお持ちください。",
+    "note_changes": "ご旅行の変更は、締切時刻までに運行会社へご連絡ください。",
+    "base_fare": "基本運賃",
+    "tax": "税",
+    "t2_term_1": "10kgまでの荷物1個と5kgまでの身の回り品1個を持ち込めます。",
+    "t2_term_2": "武器、薬物、危険物などの禁止物品は持ち込まないでください。",
+    "t2_term_3": "規則や安全に違反した場合、運行会社は乗車を断ることがあります。",
+    "t2_term_4": "このチケットは一部キャンセルできません。",
+    "cancel_window": "キャンセル期間",
+    "applicable_charge": "適用料金"
+  },
+  "sample": {
+    "travel_name": "エバーグリーン観光",
+    "boarding_phone": "03-1234-5678",
+    "customer_care": "0120-123-456",
+    "location": "新宿高速バスターミナル",
+    "landmark": "地下鉄駅の向かい",
+    "passenger_details": "田中 太郎、34歳、男性",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 6500,
+    "tax_percent": 10,
+    "cancellation_charge": 1300
+  }
+}

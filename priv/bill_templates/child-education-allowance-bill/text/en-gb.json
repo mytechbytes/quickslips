@@ -1,0 +1,38 @@
+{
+  "sample": {
+    "name_rank": "Major Arthur Cole",
+    "personal_number": "SVC-48213",
+    "designation": "Staff Officer",
+    "unit": "Headquarters, Aldershot",
+    "spouse_employed": "No",
+    "child1_name": "Oliver Cole",
+    "child2_name": "Emma Cole",
+    "child1_school": "Sunrise Academy, Aldershot",
+    "child2_school": "Sunrise Academy, Aldershot",
+    "child1_standard": "Year 8",
+    "child2_standard": "Year 5",
+    "items": [
+      {
+        "code": "1",
+        "name": "April to June 2026",
+        "qty": 3,
+        "rate": 250,
+        "batch": "Oliver Cole"
+      },
+      {
+        "code": "2",
+        "name": "July to September 2026",
+        "qty": 3,
+        "rate": 250,
+        "batch": "Oliver Cole"
+      },
+      {
+        "code": "3",
+        "name": "April to September 2026",
+        "qty": 6,
+        "rate": 250,
+        "batch": "Emma Cole"
+      }
+    ]
+  }
+}

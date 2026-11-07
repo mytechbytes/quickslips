@@ -5,23 +5,162 @@
   "category": "Health & learning",
   "icon": "hero-academic-cap",
   "number_field": "receipt_number",
-  "summary": "Tuition and term fee receipt.",
-  "description": "Generate a school fee receipt with student, class, fee period and a breakup of tuition, transport and other fees. Preview instantly and download as PDF.",
-  "templates": [{ "id": "t1", "name": "Classic" }],
+  "summary": "School fee receipt with a breakup of the fees, or a short receipt voucher.",
+  "description": "Generate a school fee receipt with student, class, fee period and a breakup of tuition, transport and other fees, or a short receipt voucher with the amount in words. Two designs; preview instantly and download as PDF.",
+  "templates": [
+    {
+      "id": "t1"
+    },
+    {
+      "id": "t2"
+    }
+  ],
   "fields": [
-    { "key": "school_name", "group": "business", "label": "School or institute", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "school_address", "group": "business", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
-    { "key": "receipt_number", "group": "document", "label": "Receipt number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "date", "group": "document", "label": "Receipt date", "type": "date", "required": true },
-    { "key": "student_name", "group": "customer", "label": "Student name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "class_name", "group": "customer", "label": "Class and section", "type": "text", "required": true, "max_length": 30 },
-    { "key": "admission_number", "group": "customer", "label": "Admission or roll number (optional)", "type": "text", "required": false, "max_length": 30 },
-    { "key": "parent_name", "group": "customer", "label": "Parent or guardian (optional)", "type": "text", "required": false, "max_length": 80 },
-    { "key": "fee_period", "group": "details", "label": "Fee for", "type": "text", "required": true, "max_length": 60 },
-    { "key": "tuition_fee", "group": "charges", "label": "Tuition fee ({currency})", "type": "number", "required": true, "min": 0 },
-    { "key": "transport_fee", "group": "charges", "label": "Transport fee ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "other_fee", "group": "charges", "label": "Exam, activity and other fees ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "late_fee", "group": "charges", "label": "Late fee ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Cheque"], "required": true }
+    {
+      "key": "school_name",
+      "group": "business",
+      "label": "School or institute",
+      "type": "text",
+      "required": true,
+      "max_length": 80,
+      "prefill": "business.name"
+    },
+    {
+      "key": "school_address",
+      "group": "business",
+      "label": "Address (optional)",
+      "type": "textarea",
+      "required": false,
+      "max_length": 200,
+      "prefill": "business.address"
+    },
+    {
+      "key": "school_phone",
+      "group": "business",
+      "label": "Contact number (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 40
+    },
+    {
+      "key": "receipt_number",
+      "group": "document",
+      "label": "Receipt number",
+      "type": "text",
+      "required": true,
+      "max_length": 30
+    },
+    {
+      "key": "date",
+      "group": "document",
+      "label": "Receipt date",
+      "type": "date",
+      "required": true
+    },
+    {
+      "key": "student_name",
+      "group": "customer",
+      "label": "Student name",
+      "type": "text",
+      "required": true,
+      "max_length": 80
+    },
+    {
+      "key": "class_name",
+      "group": "customer",
+      "label": "Class and section",
+      "type": "text",
+      "required": true,
+      "max_length": 30
+    },
+    {
+      "key": "admission_number",
+      "group": "customer",
+      "label": "Admission or roll number (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 30
+    },
+    {
+      "key": "parent_name",
+      "group": "customer",
+      "label": "Parent or guardian (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 80
+    },
+    {
+      "key": "fee_period",
+      "group": "details",
+      "label": "Fee for",
+      "type": "text",
+      "required": true,
+      "max_length": 60
+    },
+    {
+      "key": "tuition_fee",
+      "group": "charges",
+      "label": "Tuition fee ({currency})",
+      "type": "number",
+      "required": true,
+      "min": 0
+    },
+    {
+      "key": "transport_fee",
+      "group": "charges",
+      "label": "Transport fee ({currency}) (optional)",
+      "type": "number",
+      "required": false,
+      "min": 0
+    },
+    {
+      "key": "other_fee",
+      "group": "charges",
+      "label": "Exam, activity and other fees ({currency}) (optional)",
+      "type": "number",
+      "required": false,
+      "min": 0
+    },
+    {
+      "key": "late_fee",
+      "group": "charges",
+      "label": "Late fee ({currency}) (optional)",
+      "type": "number",
+      "required": false,
+      "min": 0
+    },
+    {
+      "key": "amount_in_words",
+      "group": "charges",
+      "label": "Amount in words (optional, written out for you when empty)",
+      "type": "textarea",
+      "required": false,
+      "max_length": 200
+    },
+    {
+      "key": "payment_mode",
+      "group": "payment",
+      "label": "Payment method",
+      "type": "select",
+      "options": [
+        "Cash",
+        "UPI",
+        "Card",
+        "Bank transfer",
+        "Cheque"
+      ],
+      "required": true
+    }
+  ],
+  "languages": [
+    "en",
+    "hi",
+    "es",
+    "de",
+    "fr",
+    "it",
+    "pt",
+    "zh",
+    "ja"
   ]
 }

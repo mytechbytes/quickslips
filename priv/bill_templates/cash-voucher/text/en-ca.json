@@ -1,0 +1,20 @@
+{
+  "sample": {
+    "paid_to": "Robert Cole",
+    "items": [
+      {
+        "name": "Stationery purchase for the office",
+        "rate": 68
+      },
+      {
+        "name": "Courier charges",
+        "rate": 19
+      }
+    ],
+    "prepared_by": "S. Jones",
+    "checked_by": "M. Irving",
+    "approved_by": "A. Davis",
+    "place": "Toronto",
+    "resident_certificate": "ON-3169647"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "title": "Schulgeldquittung-Generator",
+  "name": "Schulgeldquittung",
+  "public_slug": "schulgeldquittung-generator",
+  "summary": "Schulgeldquittung mit Aufschlüsselung oder kurze Quittung.",
+  "description": "Erstellen Sie eine Schulgeldquittung mit Schüler, Klasse, Zeitraum und Aufschlüsselung von Schulgeld, Fahrtkosten und sonstigen Gebühren oder eine kurze Quittung mit dem Betrag in Worten. Zwei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Klassisch",
+    "t2": "Kurzquittung"
+  },
+  "fields": {
+    "school_name": {
+      "label": "Schule oder Institut"
+    },
+    "school_address": {
+      "label": "Adresse (optional)"
+    },
+    "school_phone": {
+      "label": "Kontaktnummer (optional)"
+    },
+    "receipt_number": {
+      "label": "Quittungsnummer"
+    },
+    "date": {
+      "label": "Belegdatum"
+    },
+    "student_name": {
+      "label": "Name des Schülers"
+    },
+    "class_name": {
+      "label": "Klasse"
+    },
+    "admission_number": {
+      "label": "Aufnahme- oder Schülernummer (optional)"
+    },
+    "parent_name": {
+      "label": "Eltern oder Erziehungsberechtigte (optional)"
+    },
+    "fee_period": {
+      "label": "Gebühr für"
+    },
+    "tuition_fee": {
+      "label": "Schulgeld ({currency})"
+    },
+    "transport_fee": {
+      "label": "Fahrtkosten ({currency}) (optional)"
+    },
+    "other_fee": {
+      "label": "Prüfungen, Aktivitäten und sonstige Gebühren ({currency}) (optional)"
+    },
+    "late_fee": {
+      "label": "Mahngebühr ({currency}) (optional)"
+    },
+    "amount_in_words": {
+      "label": "Betrag in Worten (wird bei Leerlassen ausgeschrieben) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Cheque": "Scheck"
+      }
+    }
+  },
+  "print": {
+    "fee_receipt": "Schulgeldquittung",
+    "receipt_no": "Quittungs-Nr.",
+    "date": "Datum",
+    "student": "Schüler",
+    "class": "Klasse",
+    "admission_no": "Aufnahme-Nr.",
+    "parent": "Eltern oder Erziehungsberechtigte",
+    "fee_for": "Gebühr für",
+    "paid_by": "Bezahlt mit",
+    "tuition_fee": "Schulgeld",
+    "transport_fee": "Fahrtkosten",
+    "other_fee": "Prüfungen, Aktivitäten und sonstige Gebühren",
+    "late_fee": "Mahngebühr",
+    "total_received": "Gesamt erhalten",
+    "accounts_office": "Buchhaltung",
+    "keep_receipt": "Bitte bewahren Sie diese Quittung für Ihre Unterlagen auf.",
+    "branches": "Standorte",
+    "cell": "Tel.",
+    "no": "Nr.",
+    "receipt": "Quittung",
+    "received": "Mit Dank erhalten von Herrn/Frau {payer}, Elternteil von {pupil}, der Betrag von {words} für {purpose}, bezahlt: {mode}.",
+    "signature": "Unterschrift"
+  },
+  "sample": {
+    "school_name": "Sonnenaufgang-Gymnasium",
+    "student_name": "Jonas Becker",
+    "parent_name": "Anna Becker",
+    "tuition_fee": 380,
+    "transport_fee": 70,
+    "other_fee": 40,
+    "class_name": "Klasse 7b",
+    "fee_period": "2. Halbjahr 2026/27",
+    "school_phone": "030 1234567"
+  }
+}

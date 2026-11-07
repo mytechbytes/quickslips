@@ -1,0 +1,20 @@
+{
+  "sample": {
+    "paid_to": "Robert Cole",
+    "items": [
+      {
+        "name": "Stationery purchase for the office",
+        "rate": 48.5
+      },
+      {
+        "name": "Courier charges",
+        "rate": 14
+      }
+    ],
+    "prepared_by": "S. Jones",
+    "checked_by": "M. Irving",
+    "approved_by": "A. Davis",
+    "place": "London",
+    "resident_certificate": "UK-3169647"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "title": "Generador de Factura de Hotel",
+  "name": "Factura de Hotel",
+  "public_slug": "generador-de-factura-de-hotel",
+  "summary": "Factura de estancia con tarifa, extras, anticipo y {tax}.",
+  "description": "Crea una factura de hotel con el huésped, la habitación, la entrada y la salida, la tarifa por noche, habitaciones o servicios adicionales, el anticipo y el {tax}. Tres diseños; previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Clásico",
+    "t2": "Factura con impuestos",
+    "t3": "Formulario con cuadros"
+  },
+  "fields": {
+    "hotel_name": {
+      "label": "Nombre del hotel"
+    },
+    "hotel_address": {
+      "label": "Dirección del hotel (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "registration_number": {
+      "label": "N.º de registro / CIN (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de factura"
+    },
+    "reservation_number": {
+      "label": "Número de reserva (opcional)"
+    },
+    "invoice_date": {
+      "label": "Fecha de la factura"
+    },
+    "guest_name": {
+      "label": "Nombre del huésped"
+    },
+    "guest_gender": {
+      "label": "Sexo (opcional)",
+      "options": {
+        "Male": "Hombre",
+        "Female": "Mujer",
+        "Transgender": "Transgénero"
+      }
+    },
+    "guest_age": {
+      "label": "Edad (opcional)"
+    },
+    "nationality": {
+      "label": "Nacionalidad (opcional)"
+    },
+    "guest_address": {
+      "label": "Dirección del huésped (opcional)"
+    },
+    "room_type": {
+      "label": "Tipo de habitación",
+      "options": {
+        "Standard": "Estándar",
+        "Deluxe": "Deluxe",
+        "Suite": "Suite",
+        "Dormitory": "Dormitorio"
+      }
+    },
+    "room_description": {
+      "label": "Descripción de la habitación (opcional)"
+    },
+    "room_number": {
+      "label": "Número de habitación (opcional)"
+    },
+    "check_in": {
+      "label": "Fecha de entrada"
+    },
+    "check_in_time": {
+      "label": "Hora de entrada (opcional)"
+    },
+    "check_out": {
+      "label": "Fecha de salida"
+    },
+    "check_out_time": {
+      "label": "Hora de salida (opcional)"
+    },
+    "tariff_per_night": {
+      "label": "Tarifa por noche ({currency})"
+    },
+    "extra_charges": {
+      "label": "Comidas y otros cargos ({currency}) (opcional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "advance_amount": {
+      "label": "Anticipo pagado ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Tipo de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "items": {
+      "label": "Más habitaciones o servicios",
+      "columns": {
+        "name": "Tipo de habitación y descripción",
+        "rate": "Precio ({currency})",
+        "qty": "N.º de días"
+      }
+    }
+  },
+  "print": {
+    "invoice_title": "Factura",
+    "invoice_no": "Factura n.º",
+    "invoice_date": "Fecha de factura",
+    "guest": "Huésped",
+    "room": "Habitación",
+    "no": "N.º",
+    "check_in": "Entrada",
+    "check_out": "Salida",
+    "reservation_no": "N.º de reserva",
+    "nationality": "Nacionalidad",
+    "guest_address": "Dirección del huésped",
+    "description": "Descripción",
+    "nights": "Noches",
+    "rate_per_night": "Precio por noche",
+    "amount": "Importe",
+    "room_tariff": "Tarifa de habitación",
+    "extra": "Comidas y otros cargos",
+    "subtotal": "Subtotal",
+    "less_advance": "Menos anticipo",
+    "balance_due": "Saldo pendiente",
+    "total": "Total",
+    "authorised": "Firmante autorizado",
+    "thanks_stay": "Gracias por alojarse con nosotros. Factura generada por ordenador.",
+    "tax_invoice": "Factura",
+    "bill_no": "Factura n.º",
+    "guest_name": "Nombre del huésped",
+    "address": "Dirección",
+    "res_no": "Reserva n.º",
+    "room_no": "Habitación n.º",
+    "room_type": "Tipo de habitación",
+    "pay_type": "Tipo de pago",
+    "room_description": "Descripción",
+    "rate": "Precio",
+    "days_nights": "Días / noches",
+    "receipt_no": "Recibo n.º",
+    "check_in_date": "Fecha de entrada",
+    "total_amount": "Importe total",
+    "payment_type": "Tipo de pago",
+    "receive": "Cobrar",
+    "payment_received": "Pago recibido",
+    "receptionist": "Recepcionista",
+    "guest_signature": "Firma del huésped",
+    "thank_visit": "¡Gracias, vuelva pronto!",
+    "reg_no": "N.º de registro",
+    "departure_date": "Fecha de salida",
+    "check_in_time": "Hora de entrada",
+    "check_out_time": "Hora de salida",
+    "particular": "Concepto",
+    "days": "Días",
+    "payment_method": "Forma de pago",
+    "refunded_received": "Devuelto / cobrado",
+    "customer_signature": "Firma del cliente",
+    "manager_signature": "Firma del gerente",
+    "thanks": "Gracias",
+    "eoe": "S. E. u O."
+  },
+  "sample": {
+    "hotel_name": "Hotel Residencia Loto",
+    "guest_name": "Carlos Gómez",
+    "nationality": "Española",
+    "room_description": "Habitación con vistas al mar y desayuno",
+    "items": [
+      {
+        "name": "Cama supletoria",
+        "rate": 19.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 95,
+    "extra_charges": 28,
+    "gst_percent": 10,
+    "advance_amount": 50
+  }
+}

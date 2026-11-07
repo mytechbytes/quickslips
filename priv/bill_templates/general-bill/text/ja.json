@@ -1,0 +1,100 @@
+{
+  "title": "汎用請求書作成",
+  "name": "汎用請求書",
+  "public_slug": "general-bill-generator",
+  "summary": "あらゆる販売・サービス向けの、商品ごとの税率つきシンプルな請求書。",
+  "description": "必要な数の商品、商品ごとの{tax}率、販売者、お客様、支払方法を記載した、あらゆる販売・サービス向けの請求書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "シンプル請求書"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "店名"
+    },
+    "shop_address": {
+      "label": "販売者情報"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "invoice_number": {
+      "label": "請求書番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "order_number": {
+      "label": "注文番号（任意）"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "customer_location": {
+      "label": "お客様の所在地"
+    },
+    "shipping_address": {
+      "label": "お客様の配送先住所"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "内容",
+        "qty": "数量",
+        "rate": "単価（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "invoice_date": "請求日",
+    "invoice_no": "請求書番号",
+    "sold_by": "販売者",
+    "billed_to": "請求先",
+    "description": "内容",
+    "qty": "数量",
+    "price": "単価",
+    "amt": "金額",
+    "subtotal": "小計",
+    "payment_info": "お支払い情報",
+    "due_by": "支払期限",
+    "total_amount": "合計金額",
+    "order_no": "注文番号",
+    "payment_method": "支払方法",
+    "thanks": "ありがとうございました。またお越しください。"
+  },
+  "sample": {
+    "shop_name": "なんでも雑貨店",
+    "customer_name": "田中 太郎",
+    "customer_location": "東京",
+    "items": [
+      {
+        "name": "ステンレス製キッチン容器セット",
+        "qty": 2,
+        "rate": 3280,
+        "tax": 10
+      },
+      {
+        "name": "綿のベッドシーツ（ダブル）",
+        "qty": 3,
+        "rate": 2980,
+        "tax": 10
+      },
+      {
+        "name": "LED電球 9 W（4個入り）",
+        "qty": 2,
+        "rate": 980,
+        "tax": 10
+      }
+    ]
+  }
+}

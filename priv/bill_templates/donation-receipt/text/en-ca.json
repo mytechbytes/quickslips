@@ -1,0 +1,11 @@
+{
+  "sample": {
+    "organisation_name": "The Discovery and Restoration Foundation",
+    "registration_number": "Registered charity no. 91018 4455 RR0001",
+    "phone": "+1 416 555 0142",
+    "donor_name": "Emma Wilson",
+    "amount": 100,
+    "received_by": "David Tremblay, Treasurer",
+    "donation_description": "Donation towards the restoration of the heritage library."
+  }
+}

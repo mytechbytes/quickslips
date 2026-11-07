@@ -1,0 +1,23 @@
+{
+  "claim_date": "2026-11-07",
+  "academic_year": "2026-27",
+  "name_rank": "Major Arvind Kumar",
+  "personal_number": "IC-48213K",
+  "designation": "Staff Officer",
+  "unit": "Headquarters, 21 Corps, Pune",
+  "spouse_employed": "No",
+  "spouse_office": "",
+  "child1_name": "Aarav Kumar",
+  "child1_dob": "2015-06-12",
+  "child1_standard": "Class 7",
+  "child1_school": "Sunrise Public School, Pune",
+  "child2_name": "Anaya Kumar",
+  "child2_dob": "2018-03-25",
+  "child2_standard": "Class 4",
+  "child2_school": "Sunrise Public School, Pune",
+  "items": [
+    { "code": "1", "name": "April to June 2026", "qty": 3, "rate": 2250, "batch": "Aarav" },
+    { "code": "2", "name": "July to September 2026", "qty": 3, "rate": 2250, "batch": "Aarav" },
+    { "code": "3", "name": "April to September 2026", "qty": 6, "rate": 2250, "batch": "Anaya" }
+  ]
+}

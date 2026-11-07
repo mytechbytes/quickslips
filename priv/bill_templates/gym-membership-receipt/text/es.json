@@ -1,0 +1,163 @@
+{
+  "title": "Generador de Recibo de Gimnasio",
+  "name": "Recibo de Gimnasio",
+  "public_slug": "generador-de-recibo-de-gimnasio",
+  "summary": "Recibo o factura de gimnasio con plan, periodo y cuotas.",
+  "description": "Crea un recibo o factura de gimnasio con el plan, el ciclo de facturación, el periodo, las cuotas, artículos adicionales, el {tax} y las normas del gimnasio. Dos diseños; previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Recibo",
+    "t2": "Factura"
+  },
+  "fields": {
+    "gym_name": {
+      "label": "Gimnasio o club"
+    },
+    "gym_address": {
+      "label": "Dirección (opcional)"
+    },
+    "gym_email": {
+      "label": "Correo del gimnasio (opcional)"
+    },
+    "gym_phone": {
+      "label": "Teléfono del gimnasio (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número de recibo"
+    },
+    "date": {
+      "label": "Fecha del recibo"
+    },
+    "member_name": {
+      "label": "Nombre del socio"
+    },
+    "member_phone": {
+      "label": "Teléfono del socio (opcional)"
+    },
+    "customer_number": {
+      "label": "Número de cliente (opcional)"
+    },
+    "user_number": {
+      "label": "ID de usuario (opcional)"
+    },
+    "member_address": {
+      "label": "Dirección del socio (opcional)"
+    },
+    "plan": {
+      "label": "Plan",
+      "options": {
+        "Day pass": "Pase diario",
+        "Monthly": "Mensual",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
+    },
+    "billing_cycle": {
+      "label": "Ciclo de facturación (opcional)",
+      "options": {
+        "Monthly": "Mensual",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Annual": "Anual"
+      }
+    },
+    "start_date": {
+      "label": "Válido desde"
+    },
+    "end_date": {
+      "label": "Válido hasta"
+    },
+    "fee": {
+      "label": "Cuota de socio ({currency})"
+    },
+    "joining_fee": {
+      "label": "Cuota de inscripción ({currency}) (opcional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "remarks": {
+      "label": "Observación (opcional)"
+    },
+    "instructions": {
+      "label": "Normas para los socios (una por línea) (opcional)"
+    },
+    "items": {
+      "label": "Artículos adicionales",
+      "columns": {
+        "name": "Artículo y descripción",
+        "qty": "Unidades",
+        "rate": "Precio ({currency})"
+      }
+    }
+  },
+  "print": {
+    "membership_receipt": "Recibo de socio",
+    "receipt_no": "Recibo n.º",
+    "date": "Fecha",
+    "member": "Socio",
+    "phone": "Teléfono",
+    "plan": "Plan",
+    "valid": "Válido",
+    "to": "a",
+    "paid_by": "Pagado con",
+    "membership_fee": "Cuota de socio",
+    "joining_fee": "Cuota de inscripción",
+    "subtotal": "Subtotal",
+    "authorised": "Firmante autorizado",
+    "stay_fit": "Mantente en forma. ¡Nos vemos en el gimnasio!",
+    "invoice_no": "Factura n.º",
+    "invoice_date": "Fecha de factura",
+    "user_id": "ID de usuario",
+    "customer_name": "Nombre del cliente",
+    "address": "Dirección",
+    "mobile": "Móvil",
+    "account_summary": "Resumen de la cuenta",
+    "bill_from_date": "Facturado desde",
+    "billing_cycle": "Ciclo de facturación",
+    "due_date": "Vencimiento",
+    "amount": "Importe",
+    "payment_mode": "Forma de pago",
+    "billing_details": "Detalle de facturación",
+    "gym_item": "Concepto",
+    "unit": "Uds.",
+    "net_amount": "Importe neto",
+    "total": "Total",
+    "tax_pct": "Impuesto %",
+    "taxable_amount": "Base imponible",
+    "instructions_title": "Normas del gimnasio",
+    "remark": "Observación",
+    "signature": "Firma"
+  },
+  "sample": {
+    "gym_name": "Gimnasio Hierro Fit",
+    "member_name": "Carlos Gómez",
+    "gym_phone": "954 123 456",
+    "member_phone": "612 345 678",
+    "fee": 90,
+    "joining_fee": 15,
+    "gst_percent": 21,
+    "items": [
+      {
+        "name": "Sesión de entrenamiento personal",
+        "qty": 4,
+        "rate": 12
+      }
+    ],
+    "instructions": "Registro: al llegar, regístrate en recepción si es necesario.\nRopa e higiene: usa ropa deportiva y calzado limpio de suela no marcante. Lleva una toalla para limpiar los equipos.\nCalentamiento: empieza con 5-10 minutos de calentamiento, como cardio suave o estiramientos dinámicos.\nEquipos: si eres nuevo, familiarízate con las máquinas y pide ayuda al personal.\nCardio: ajusta las máquinas a tu nivel y límpialas antes y después de usarlas.\nHidratación: bebe agua antes, durante y después del entrenamiento.\nDescansos: descansa entre series, pero no acapares los equipos en horas punta.\nEnfriamiento: termina con 5-10 minutos de estiramientos suaves.\nPertenencias: guarda tus cosas en las taquillas y no dejes objetos de valor sin vigilar.\nDisfruta y sé constante: la constancia es la clave para lograr tus objetivos.",
+    "remarks": "Las solicitudes de congelación requieren 7 días de aviso."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "sample": {
+    "name_rank": "Major Arthur Cole",
+    "personal_number": "SVC-48213",
+    "designation": "Officier d'état-major",
+    "unit": "Quartier général, Ottawa",
+    "spouse_employed": "Non",
+    "child1_name": "Liam Cole",
+    "child2_name": "Léa Cole",
+    "child1_school": "École Soleil Levant, Montréal",
+    "child2_school": "École Soleil Levant, Montréal",
+    "child1_standard": "1re secondaire",
+    "child2_standard": "4e année",
+    "items": [
+      {
+        "code": "1",
+        "name": "Avril à juin 2026",
+        "qty": 3,
+        "rate": 320,
+        "batch": "Liam Cole"
+      },
+      {
+        "code": "2",
+        "name": "Juillet à septembre 2026",
+        "qty": 3,
+        "rate": 320,
+        "batch": "Liam Cole"
+      },
+      {
+        "code": "3",
+        "name": "Avril à septembre 2026",
+        "qty": 6,
+        "rate": 320,
+        "batch": "Léa Cole"
+      }
+    ]
+  }
+}

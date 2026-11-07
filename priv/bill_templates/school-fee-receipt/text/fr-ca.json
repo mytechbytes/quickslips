@@ -1,0 +1,14 @@
+{
+  "sample": {
+    "school_name": "École Soleil Levant",
+    "student_name": "Léa Tremblay",
+    "parent_name": "Julie Tremblay",
+    "tuition_fee": 2500,
+    "transport_fee": 420,
+    "other_fee": 220,
+    "class_name": "1re secondaire B",
+    "fee_period": "2e étape, 2026-27",
+    "school_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "school_phone": "(514) 555-0142"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "sample": {
+    "school_name": "Sunrise Academy",
+    "student_name": "Oliver Taylor",
+    "parent_name": "James Taylor",
+    "tuition_fee": 2100,
+    "transport_fee": 350,
+    "other_fee": 180,
+    "class_name": "Year 8 B",
+    "fee_period": "Spring term, 2026-27",
+    "school_phone": "020 7946 0123"
+  }
+}

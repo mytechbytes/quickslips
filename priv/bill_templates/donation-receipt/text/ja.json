@@ -1,0 +1,85 @@
+{
+  "title": "寄付領収書作成",
+  "name": "寄付領収書",
+  "public_slug": "donation-receipt-generator",
+  "summary": "NPO・財団などへの寄付の領収書。",
+  "description": "寄付者、金額（数字と文字）、支払方法、受領者、お礼のメッセージを記載した、NPO・慈善団体・財団向けの寄付領収書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "領収書"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "団体名"
+    },
+    "registration_number": {
+      "label": "登録番号（任意）"
+    },
+    "address": {
+      "label": "住所"
+    },
+    "email": {
+      "label": "メール（任意）"
+    },
+    "website": {
+      "label": "ウェブサイト（任意）"
+    },
+    "phone": {
+      "label": "電話／連絡先（任意）"
+    },
+    "receipt_number": {
+      "label": "領収書番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "donor_name": {
+      "label": "寄付者名"
+    },
+    "amount": {
+      "label": "合計金額（{currency}）"
+    },
+    "amount_in_words": {
+      "label": "金額（文字）（空欄なら自動で表記）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "received_by": {
+      "label": "受領者（任意）"
+    },
+    "donation_description": {
+      "label": "寄付の内容（任意）"
+    }
+  },
+  "print": {
+    "email": "メール",
+    "website": "ウェブサイト",
+    "phone": "電話",
+    "donation_receipt": "寄付領収書",
+    "receipt_no": "領収書番号",
+    "date": "日付",
+    "received_from": "受領元：",
+    "amount": "金額",
+    "sum_of_words": "金額（文字）",
+    "payment_method": "支払方法",
+    "received_by": "受領者：",
+    "description_of_donation": "寄付の内容：",
+    "thanks": "ご寄付に心より感謝いたします。"
+  },
+  "sample": {
+    "organisation_name": "発見と修復財団",
+    "registration_number": "法人番号：9-1234-5678-9012",
+    "phone": "+81 3-1234-5678",
+    "donor_name": "田中 太郎",
+    "amount": 10000,
+    "received_by": "山田 花子（会計）",
+    "donation_description": "歴史ある図書館の修復のための寄付。"
+  }
+}

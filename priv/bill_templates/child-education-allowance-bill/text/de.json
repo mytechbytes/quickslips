@@ -1,0 +1,132 @@
+{
+  "title": "Kinderbildungszuschuss-Antrag-Generator",
+  "name": "Kinderbildungszuschuss",
+  "public_slug": "kinderbildungszuschuss-antrag-generator",
+  "summary": "Antragsformular zur Erstattung eines Kinderbildungszuschusses.",
+  "description": "Füllen Sie das Formular zur Erstattung eines Kinderbildungszuschusses (CEA) oder Internatszuschusses mit Antragsteller, Ehepartner, Kindern, Schulen und Ausgaben aus. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Formular"
+  },
+  "fields": {
+    "claim_date": {
+      "label": "Datum"
+    },
+    "academic_year": {
+      "label": "Schuljahr"
+    },
+    "name_rank": {
+      "label": "Name und Dienstgrad des Beschäftigten"
+    },
+    "personal_number": {
+      "label": "Personalnummer"
+    },
+    "designation": {
+      "label": "Dienststellung"
+    },
+    "unit": {
+      "label": "Einheit oder Dienststelle"
+    },
+    "spouse_employed": {
+      "label": "Ehepartner bei Behörde, öffentlicher Stelle oder privatem Arbeitgeber beschäftigt"
+    },
+    "spouse_office": {
+      "label": "Stellung und Dienststelle des Ehepartners (optional)"
+    },
+    "child1_name": {
+      "label": "Kind 1: Name"
+    },
+    "child1_dob": {
+      "label": "Kind 1: Geburtsdatum"
+    },
+    "child1_standard": {
+      "label": "Kind 1: Klasse"
+    },
+    "child1_school": {
+      "label": "Kind 1: Name und Ort der Schule"
+    },
+    "child2_name": {
+      "label": "Kind 2: Name (optional)"
+    },
+    "child2_dob": {
+      "label": "Kind 2: Geburtsdatum (optional)"
+    },
+    "child2_standard": {
+      "label": "Kind 2: Klasse (optional)"
+    },
+    "child2_school": {
+      "label": "Kind 2: Name und Ort der Schule (optional)"
+    },
+    "items": {
+      "label": "Erstattung der Ausgaben",
+      "columns": {
+        "code": "Lfd. Nr.",
+        "name": "Zeitraum",
+        "qty": "Monate",
+        "rate": "Satz der Leistung ({currency})",
+        "batch": "Anmerkungen"
+      }
+    }
+  },
+  "print": {
+    "title": "Formular zur Erstattung des Kinderbildungszuschusses",
+    "claim_for": "Antrag für das Schuljahr",
+    "intro": "Hiermit beantrage ich die Erstattung des Kinderbildungs- / Internatszuschusses für mein Kind / meine Kinder; die maßgeblichen Angaben folgen unten:",
+    "date": "Datum",
+    "q1": "Name und Dienstgrad des Beschäftigten",
+    "q2": "Personalnr.",
+    "q3": "Dienststellung",
+    "q4": "Name der Einheit",
+    "q5": "Falls der Ehepartner bei Bund / Land, einer Körperschaft, einem öffentlichen Unternehmen, einer Kommune oder einem privaten Arbeitgeber usw. beschäftigt ist",
+    "q6": "Stellung, Dienststelle und Kennzahl des Ehepartners (bei Beschäftigung im öffentlichen Dienst)",
+    "children_title": "Angaben zu den Kindern, für die der Zuschuss beantragt wird:",
+    "sequence": "Lfd. Nr.",
+    "child_name": "Name des Kindes",
+    "dob": "Geb.-Datum",
+    "standard": "Klasse",
+    "ay": "Schuljahr",
+    "school": "Name und Ort der Schule / Einrichtung",
+    "expenditure_title": "Erstattung der Ausgaben:",
+    "period": "Zeitraum",
+    "rate_cea": "Satz",
+    "amount_claimed": "Beantragter Betrag",
+    "remarks": "Anmerkungen",
+    "total_claimed": "Beantragte Gesamtsumme",
+    "months": "Monate"
+  },
+  "sample": {
+    "name_rank": "Major Arno Keller",
+    "personal_number": "P-48213",
+    "designation": "Stabsoffizier",
+    "unit": "Hauptquartier, Berlin",
+    "spouse_employed": "Nein",
+    "child1_name": "Jonas Keller",
+    "child2_name": "Mia Keller",
+    "child1_school": "Sonnenaufgang-Gymnasium, Berlin",
+    "child2_school": "Sonnenaufgang-Gymnasium, Berlin",
+    "child1_standard": "Klasse 7",
+    "child2_standard": "Klasse 4",
+    "items": [
+      {
+        "code": "1",
+        "name": "April bis Juni 2026",
+        "qty": 3,
+        "rate": 90,
+        "batch": "Jonas Keller"
+      },
+      {
+        "code": "2",
+        "name": "Juli bis September 2026",
+        "qty": 3,
+        "rate": 90,
+        "batch": "Jonas Keller"
+      },
+      {
+        "code": "3",
+        "name": "April bis September 2026",
+        "qty": 6,
+        "rate": 90,
+        "batch": "Mia Keller"
+      }
+    ]
+  }
+}

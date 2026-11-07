@@ -1,0 +1,163 @@
+{
+  "title": "Generatore di ricevuta per palestra",
+  "name": "Ricevuta palestra",
+  "public_slug": "generatore-ricevuta-palestra",
+  "summary": "Ricevuta o fattura di abbonamento con piano, periodo e quote.",
+  "description": "Crea una ricevuta o fattura di abbonamento palestra con piano, ciclo di fatturazione, periodo, quote, articoli aggiuntivi, {tax} e le istruzioni della palestra. Due modelli; anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Ricevuta",
+    "t2": "Fattura"
+  },
+  "fields": {
+    "gym_name": {
+      "label": "Palestra o club"
+    },
+    "gym_address": {
+      "label": "Indirizzo (facoltativo)"
+    },
+    "gym_email": {
+      "label": "Email della palestra (facoltativo)"
+    },
+    "gym_phone": {
+      "label": "Telefono della palestra (facoltativo)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "receipt_number": {
+      "label": "Numero di ricevuta"
+    },
+    "date": {
+      "label": "Data della ricevuta"
+    },
+    "member_name": {
+      "label": "Nome del socio"
+    },
+    "member_phone": {
+      "label": "Telefono del socio (facoltativo)"
+    },
+    "customer_number": {
+      "label": "Numero cliente (facoltativo)"
+    },
+    "user_number": {
+      "label": "ID utente (facoltativo)"
+    },
+    "member_address": {
+      "label": "Indirizzo del socio (facoltativo)"
+    },
+    "plan": {
+      "label": "Piano",
+      "options": {
+        "Day pass": "Ingresso giornaliero",
+        "Monthly": "Mensile",
+        "Quarterly": "Trimestrale",
+        "Half-yearly": "Semestrale",
+        "Yearly": "Annuale"
+      }
+    },
+    "billing_cycle": {
+      "label": "Ciclo di fatturazione (facoltativo)",
+      "options": {
+        "Monthly": "Mensile",
+        "Quarterly": "Trimestrale",
+        "Half-yearly": "Semestrale",
+        "Annual": "Annuale"
+      }
+    },
+    "start_date": {
+      "label": "Valido dal"
+    },
+    "end_date": {
+      "label": "Valido fino al"
+    },
+    "fee": {
+      "label": "Quota associativa ({currency})"
+    },
+    "joining_fee": {
+      "label": "Quota di iscrizione ({currency}) (facoltativo)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "remarks": {
+      "label": "Nota (facoltativo)"
+    },
+    "instructions": {
+      "label": "Istruzioni per i soci (una per riga) (facoltativo)"
+    },
+    "items": {
+      "label": "Articoli aggiuntivi",
+      "columns": {
+        "name": "Articolo e descrizione",
+        "qty": "Unità",
+        "rate": "Prezzo ({currency})"
+      }
+    }
+  },
+  "print": {
+    "membership_receipt": "Ricevuta di iscrizione",
+    "receipt_no": "Ricevuta n.",
+    "date": "Data",
+    "member": "Socio",
+    "phone": "Telefono",
+    "plan": "Piano",
+    "valid": "Valido",
+    "to": "al",
+    "paid_by": "Pagato con",
+    "membership_fee": "Quota associativa",
+    "joining_fee": "Quota di iscrizione",
+    "subtotal": "Subtotale",
+    "authorised": "Firmatario autorizzato",
+    "stay_fit": "Resta in forma. Ci vediamo in palestra!",
+    "invoice_no": "Fattura n.",
+    "invoice_date": "Data fattura",
+    "user_id": "ID utente",
+    "customer_name": "Nome del cliente",
+    "address": "Indirizzo",
+    "mobile": "Cellulare",
+    "account_summary": "Riepilogo del conto",
+    "bill_from_date": "Fatturato dal",
+    "billing_cycle": "Ciclo di fatturazione",
+    "due_date": "Scadenza",
+    "amount": "Importo",
+    "payment_mode": "Metodo di pagamento",
+    "billing_details": "Dettagli di fatturazione",
+    "gym_item": "Voce",
+    "unit": "Unità",
+    "net_amount": "Importo netto",
+    "total": "Totale",
+    "tax_pct": "Imposta %",
+    "taxable_amount": "Imponibile",
+    "instructions_title": "Istruzioni per la palestra",
+    "remark": "Nota",
+    "signature": "Firma"
+  },
+  "sample": {
+    "gym_name": "Palestra Ferro Forma",
+    "member_name": "Marco Rossi",
+    "gym_phone": "06 1234567",
+    "member_phone": "333 123 4567",
+    "fee": 89,
+    "joining_fee": 15,
+    "gst_percent": 22,
+    "items": [
+      {
+        "name": "Sessione di personal training",
+        "qty": 4,
+        "rate": 20
+      }
+    ],
+    "instructions": "Check-in: all'arrivo, presentati alla reception se necessario.\nAbbigliamento e igiene: indossa abbigliamento sportivo e scarpe pulite. Porta un asciugamano per pulire gli attrezzi.\nRiscaldamento: inizia con 5-10 minuti di riscaldamento, come cardio leggero o stretching dinamico.\nAttrezzature: se sei nuovo, familiarizza con i macchinari e chiedi aiuto al personale.\nCardio: regola le macchine al tuo livello e puliscile prima e dopo l'uso.\nIdratazione: bevi acqua prima, durante e dopo l'allenamento.\nPause: riposa tra le serie, ma non monopolizzare gli attrezzi nelle ore di punta.\nDefaticamento: concludi con 5-10 minuti di stretching leggero.\nEffetti personali: riponi le tue cose negli armadietti e non lasciare oggetti di valore incustoditi.\nDivertiti e sii costante: la costanza è la chiave per raggiungere i tuoi obiettivi.",
+    "remarks": "Le richieste di sospensione richiedono 7 giorni di preavviso."
+  }
+}

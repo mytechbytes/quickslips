@@ -1,0 +1,87 @@
+{
+  "title": "Laundry Bill Generator",
+  "name": "Laundry Bill",
+  "public_slug": "laundry-bill-generator",
+  "summary": "Laundry and dry-cleaning bill with garments, quantities and amounts.",
+  "description": "Create a laundry or dry-cleaning bill with the garments, quantities and prices, a delivery date, {tax}, the payment method and your terms and conditions. Two designs; preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Yellow bill",
+    "t2": "Cash or credit invoice"
+  },
+  "fields": {
+    "laundry_name": {
+      "label": "Laundry name"
+    },
+    "laundry_address": {
+      "label": "Laundry address (optional)"
+    },
+    "invoice_number": {
+      "label": "Invoice ID"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "delivery_date": {
+      "label": "Delivery date"
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "customer_address": {
+      "label": "Customer address (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "terms": {
+      "label": "Terms and conditions (one per line) (optional)"
+    },
+    "items": {
+      "label": "Garments and services",
+      "columns": {
+        "name": "Description",
+        "qty": "Qty",
+        "rate": "Price ({currency})"
+      }
+    }
+  },
+  "print": {
+    "date": "Date",
+    "delivery_date": "Delivery date",
+    "bill_to": "Bill to",
+    "description": "Description",
+    "qty": "Qty",
+    "price": "Price",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "tax_pct": "Tax %",
+    "tax_amount": "Tax amount",
+    "grand_total": "Grand total",
+    "payment_method": "Payment method",
+    "terms": "Terms and conditions",
+    "service_title": "Dry cleaning & laundry service",
+    "cash_credit_invoice": "Cash / credit invoice",
+    "name": "Name",
+    "address": "Address",
+    "no": "No.",
+    "delivery": "Delivery",
+    "rate": "Rate",
+    "minor": "Small change",
+    "good_condition": "Receive goods in good condition.",
+    "no_refund": "No refund of money after payment.",
+    "amount_in_words": "Amount in words"
+  },
+  "sample": {
+    "tax_percent": 18
+  }
+}

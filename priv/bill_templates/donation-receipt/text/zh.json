@@ -1,0 +1,85 @@
+{
+  "title": "捐赠收据生成器",
+  "name": "捐赠收据",
+  "public_slug": "donation-receipt-generator",
+  "summary": "向公益组织或基金会捐款的收据。",
+  "description": "为公益组织、慈善机构或基金会生成捐赠收据，包含捐赠人、小写和大写金额、付款方式、经手人和感谢语。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "收据"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "组织名称"
+    },
+    "registration_number": {
+      "label": "注册编号（选填）"
+    },
+    "address": {
+      "label": "地址"
+    },
+    "email": {
+      "label": "邮箱（选填）"
+    },
+    "website": {
+      "label": "网站（选填）"
+    },
+    "phone": {
+      "label": "电话 / 联系方式（选填）"
+    },
+    "receipt_number": {
+      "label": "收据号码"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "donor_name": {
+      "label": "捐赠人姓名"
+    },
+    "amount": {
+      "label": "合计金额（{currency}）"
+    },
+    "amount_in_words": {
+      "label": "大写金额（留空则自动生成）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "received_by": {
+      "label": "经手人（选填）"
+    },
+    "donation_description": {
+      "label": "捐赠说明（选填）"
+    }
+  },
+  "print": {
+    "email": "邮箱",
+    "website": "网站",
+    "phone": "电话",
+    "donation_receipt": "捐赠收据",
+    "receipt_no": "收据号码",
+    "date": "日期",
+    "received_from": "收款自：",
+    "amount": "金额",
+    "sum_of_words": "大写金额",
+    "payment_method": "支付方式",
+    "received_by": "经手人：",
+    "description_of_donation": "捐赠说明：",
+    "thanks": "感谢您的慷慨捐赠，我们由衷感激您的支持。"
+  },
+  "sample": {
+    "organisation_name": "发现与修复基金会",
+    "registration_number": "民政登记号：91-2018",
+    "phone": "+86 10 1234 5678",
+    "donor_name": "王伟",
+    "amount": 1000,
+    "received_by": "李明，财务",
+    "donation_description": "用于修缮历史图书馆的捐款。"
+  }
+}

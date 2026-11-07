@@ -1,0 +1,103 @@
+{
+  "title": "Générateur de reçu de frais de scolarité",
+  "name": "Reçu de scolarité",
+  "public_slug": "generateur-de-recu-de-scolarite",
+  "summary": "Reçu de scolarité avec détail des frais, ou reçu court.",
+  "description": "Générez un reçu de frais de scolarité avec l'élève, la classe, la période et le détail des frais de scolarité, de transport et autres, ou un reçu court avec le montant en lettres. Deux modèles ; aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Classique",
+    "t2": "Reçu court"
+  },
+  "fields": {
+    "school_name": {
+      "label": "École ou établissement"
+    },
+    "school_address": {
+      "label": "Adresse (facultatif)"
+    },
+    "school_phone": {
+      "label": "Numéro de contact (facultatif)"
+    },
+    "receipt_number": {
+      "label": "Numéro de reçu"
+    },
+    "date": {
+      "label": "Date du reçu"
+    },
+    "student_name": {
+      "label": "Nom de l'élève"
+    },
+    "class_name": {
+      "label": "Classe"
+    },
+    "admission_number": {
+      "label": "Numéro d'inscription (facultatif)"
+    },
+    "parent_name": {
+      "label": "Parent ou tuteur (facultatif)"
+    },
+    "fee_period": {
+      "label": "Frais pour"
+    },
+    "tuition_fee": {
+      "label": "Frais de scolarité ({currency})"
+    },
+    "transport_fee": {
+      "label": "Frais de transport ({currency}) (facultatif)"
+    },
+    "other_fee": {
+      "label": "Examens, activités et autres frais ({currency}) (facultatif)"
+    },
+    "late_fee": {
+      "label": "Pénalité de retard ({currency}) (facultatif)"
+    },
+    "amount_in_words": {
+      "label": "Montant en lettres (écrit automatiquement si vide) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Cheque": "Chèque"
+      }
+    }
+  },
+  "print": {
+    "fee_receipt": "Reçu de scolarité",
+    "receipt_no": "Reçu n°",
+    "date": "Date",
+    "student": "Élève",
+    "class": "Classe",
+    "admission_no": "N° d'inscription",
+    "parent": "Parent ou tuteur",
+    "fee_for": "Frais pour",
+    "paid_by": "Payé par",
+    "tuition_fee": "Frais de scolarité",
+    "transport_fee": "Frais de transport",
+    "other_fee": "Examens, activités et autres frais",
+    "late_fee": "Pénalité de retard",
+    "total_received": "Total reçu",
+    "accounts_office": "Service comptabilité",
+    "keep_receipt": "Veuillez conserver ce reçu pour vos dossiers.",
+    "branches": "Sites",
+    "cell": "Tél.",
+    "no": "N°",
+    "receipt": "Reçu",
+    "received": "Reçu avec remerciements de M./Mme {payer}, parent de {pupil}, la somme de {words} au titre de {purpose}, payée par {mode}.",
+    "signature": "Signature"
+  },
+  "sample": {
+    "school_name": "École Soleil Levant",
+    "student_name": "Louis Martin",
+    "parent_name": "Camille Martin",
+    "tuition_fee": 350,
+    "transport_fee": 65,
+    "other_fee": 35,
+    "class_name": "5e B",
+    "fee_period": "2e trimestre, 2026-27",
+    "school_phone": "01 23 45 67 89"
+  }
+}

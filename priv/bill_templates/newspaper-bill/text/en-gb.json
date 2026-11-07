@@ -1,0 +1,25 @@
+{
+  "sample": {
+    "agency_name": "City News Agency",
+    "customer_name": "James Taylor",
+    "items": [
+      {
+        "name": "Morning Chronicle (daily)",
+        "rate": 1.8,
+        "qty": 30
+      },
+      {
+        "name": "Sunday Magazine",
+        "rate": 3.5,
+        "qty": 4
+      },
+      {
+        "name": "Business Weekly",
+        "rate": 5,
+        "qty": 4
+      }
+    ],
+    "service_charge": 8,
+    "name_prefix": "Mr."
+  }
+}

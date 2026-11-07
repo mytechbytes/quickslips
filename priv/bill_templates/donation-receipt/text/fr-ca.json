@@ -1,0 +1,12 @@
+{
+  "sample": {
+    "organisation_name": "Fondation Découverte et Restauration",
+    "registration_number": "Organisme de bienfaisance n° 91018 4455 RR0001",
+    "phone": "+1 514 555 0142",
+    "donor_name": "Julie Tremblay",
+    "amount": 100,
+    "received_by": "Marc Gagnon, trésorier",
+    "donation_description": "Don pour la restauration de la bibliothèque patrimoniale.",
+    "address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

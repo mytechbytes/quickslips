@@ -1,0 +1,14 @@
+{
+  "sample": {
+    "travel_name": "Evergreen Travels",
+    "boarding_phone": "020 7946 0123",
+    "customer_care": "0800 123 4567",
+    "location": "Victoria Coach Station, London",
+    "landmark": "Opposite the Underground station",
+    "passenger_details": "James Taylor, 34, Male",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 35,
+    "tax_percent": 20,
+    "cancellation_charge": 7
+  }
+}

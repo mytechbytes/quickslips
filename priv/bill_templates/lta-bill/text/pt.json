@@ -1,0 +1,165 @@
+{
+  "title": "Gerador de passagem para auxílio-viagem (LTA)",
+  "name": "Passagem LTA",
+  "public_slug": "gerador-de-passagem-lta",
+  "summary": "E-ticket de ônibus ou trem para um auxílio-viagem.",
+  "description": "Crie um e-ticket de ônibus ou trem para um auxílio-viagem (LTA) com a operadora, os pontos de embarque e desembarque, os passageiros, o assento, a tarifa, o {tax} e as condições de cancelamento. Dois modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "E-ticket",
+    "t2": "E-ticket em quadros"
+  },
+  "fields": {
+    "travel_name": {
+      "label": "Operadora de viagens"
+    },
+    "boarding_phone": {
+      "label": "Telefone do ponto de embarque"
+    },
+    "customer_care": {
+      "label": "Atendimento ao cliente"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "ticket_number": {
+      "label": "Número da passagem"
+    },
+    "pnr_number": {
+      "label": "Número PNR (opcional)"
+    },
+    "travel_type": {
+      "label": "Tipo de viagem",
+      "options": {
+        "Sleeper": "Leito",
+        "AC Sleeper": "Leito com ar-condicionado",
+        "Semi Sleeper": "Semileito",
+        "AC Sleeper (2+1)": "Leito com ar (2+1)",
+        "Non Sleeper": "Convencional",
+        "Non AC": "Sem ar-condicionado"
+      }
+    },
+    "location": {
+      "label": "Embarque: local"
+    },
+    "landmark": {
+      "label": "Embarque: ponto de referência"
+    },
+    "boarding_address": {
+      "label": "Embarque: endereço"
+    },
+    "reporting_date": {
+      "label": "Data de apresentação"
+    },
+    "departure_time": {
+      "label": "Hora de partida (opcional)"
+    },
+    "dropping_date": {
+      "label": "Desembarque: data"
+    },
+    "dropping_time": {
+      "label": "Desembarque: hora (opcional)"
+    },
+    "dropping_address": {
+      "label": "Desembarque: endereço"
+    },
+    "passenger_details": {
+      "label": "Passageiro: nome, idade, sexo"
+    },
+    "passenger_count": {
+      "label": "Número de passageiros"
+    },
+    "seat_number": {
+      "label": "Número do assento"
+    },
+    "amount": {
+      "label": "Tarifa ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "cancellation_charge": {
+      "label": "Taxa de cancelamento antes da partida ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "t1_banner": "Parabéns! Você reservou uma passagem remarcável. Você pode antecipar ou adiar esta viagem até {when}.",
+    "eticket": "E-TICKET",
+    "type": "Tipo",
+    "need_help": "Precisa de ajuda com a viagem?",
+    "boarding_phone": "Tel. do ponto de embarque",
+    "customer_care": "Atendimento ao cliente",
+    "ticket_no": "Passagem n.º",
+    "pnr_no": "PNR n.º",
+    "reporting_date": "Data de apresentação",
+    "departure_time": "Hora de partida",
+    "no_passengers": "N.º de passageiros",
+    "boarding_point": "Ponto de embarque",
+    "dropping_point": "Ponto de desembarque",
+    "location": "Local",
+    "landmark": "Ponto de referência",
+    "address": "Endereço",
+    "time": "Hora",
+    "date": "Data",
+    "passenger_details": "Passageiro (idade, sexo)",
+    "seat_number": "Assento",
+    "mticket_note": "OBSERVAÇÃO: Esta operadora aceita passagens no celular; não é preciso imprimir.",
+    "total_fare": "Tarifa total",
+    "gst_note": "({rate}% de {tax} e taxa de serviço, se houver)",
+    "net_amount": "Valor líquido",
+    "taxable_amount": "Base de cálculo",
+    "terms": "Termos e condições",
+    "t1_term_0": "Observe a política de bagagem para a sua viagem.",
+    "t1_term_1": "Cada passageiro pode levar uma mala de até 10 kg e um item pessoal (bolsa de notebook, bolsa de mão ou pasta) de até 5 kg.",
+    "t1_term_2": "É proibido transportar armas, materiais inflamáveis, armas de fogo, munições, drogas, bebidas alcoólicas, contrabando ou outros artigos proibidos por lei.",
+    "t1_term_3": "A operadora pode negar o embarque ou cobrar adicional se o passageiro levar mais bagagem do que o permitido.",
+    "t1_term_4": "O cancelamento parcial NÃO é permitido para esta passagem. As taxas de cancelamento total constam abaixo.",
+    "cancel_time": "Momento do cancelamento",
+    "cancel_charges": "Taxas de cancelamento",
+    "after": "Depois de",
+    "before": "Antes de",
+    "on": "em",
+    "cut_as_charges": "{amount} serão descontados como taxa de cancelamento",
+    "t2_banner": "Parabéns! Sua passagem é remarcável até {when}.",
+    "lta_month": "Mês do auxílio-viagem",
+    "boarding_help": "Ajuda no embarque",
+    "journey_date": "Data da viagem",
+    "passengers": "Passageiros",
+    "seat_count": "Assento",
+    "passenger_details_title": "Passageiro (nome/idade/sexo)",
+    "payment_method": "Forma de pagamento",
+    "important_note": "Observação importante",
+    "note_mticket": "Esta operadora aceita passagens no celular. Levar a passagem impressa é opcional.",
+    "note_id": "Leve um documento de identidade com foto para a verificação no embarque.",
+    "note_changes": "Para alterações na viagem, contate a operadora antes do horário limite.",
+    "base_fare": "Tarifa base",
+    "tax": "Imposto",
+    "t2_term_1": "É permitida uma mala de até 10 kg e uma bolsa pessoal de até 5 kg.",
+    "t2_term_2": "Não leve itens proibidos como armas, drogas ou mercadorias perigosas.",
+    "t2_term_3": "A operadora pode negar o embarque em caso de violação das regras ou da segurança.",
+    "t2_term_4": "O cancelamento parcial não está disponível para esta passagem.",
+    "cancel_window": "Prazo de cancelamento",
+    "applicable_charge": "Taxa aplicável"
+  },
+  "sample": {
+    "travel_name": "Viagens Sempre Verde",
+    "boarding_phone": "(11) 3456-7890",
+    "customer_care": "0800 123 4567",
+    "location": "Terminal Rodoviário Tietê, São Paulo",
+    "landmark": "Em frente ao metrô",
+    "passenger_details": "Ana Souza, 34, feminino",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 180,
+    "tax_percent": null,
+    "cancellation_charge": 36
+  }
+}

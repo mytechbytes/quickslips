@@ -1,0 +1,18 @@
+{
+  "sample": {
+    "gym_name": "IronWorks Fitness",
+    "member_name": "John Smith",
+    "gym_phone": "(512) 555-0142",
+    "member_phone": "(512) 555-0188",
+    "fee": 150,
+    "joining_fee": 25,
+    "gst_percent": null,
+    "items": [
+      {
+        "name": "Personal training session",
+        "qty": 4,
+        "rate": 40
+      }
+    ]
+  }
+}

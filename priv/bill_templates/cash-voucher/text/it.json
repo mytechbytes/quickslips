@@ -1,0 +1,84 @@
+{
+  "title": "Generatore di buono di cassa",
+  "name": "Buono di cassa",
+  "public_slug": "generatore-buono-di-cassa",
+  "summary": "Buono di cassa con voci, importo e firme di approvazione.",
+  "description": "Crea un buono di cassa con beneficiario, voci e importi, totale in cifre e lettere, e le firme di preparazione, controllo, approvazione e ricezione. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Buono a riquadri"
+  },
+  "fields": {
+    "voucher_number": {
+      "label": "Buono n."
+    },
+    "date": {
+      "label": "Data"
+    },
+    "paid_to": {
+      "label": "Pagato a"
+    },
+    "address": {
+      "label": "Indirizzo"
+    },
+    "prepared_by": {
+      "label": "Preparato da"
+    },
+    "checked_by": {
+      "label": "Controllato da"
+    },
+    "approved_by": {
+      "label": "Approvato da"
+    },
+    "resident_certificate": {
+      "label": "N. certificato di residenza (facoltativo)"
+    },
+    "received_date": {
+      "label": "Data di ricezione (facoltativo)"
+    },
+    "place": {
+      "label": "Luogo (facoltativo)"
+    },
+    "items": {
+      "label": "Voci",
+      "columns": {
+        "name": "Voce",
+        "rate": "Importo ({currency})"
+      }
+    }
+  },
+  "print": {
+    "no": "N.",
+    "cash_voucher": "Buono di cassa",
+    "paid_to": "Pagato a",
+    "date": "Data",
+    "address": "Indirizzo",
+    "particular": "Voce",
+    "amount": "Importo",
+    "total": "Totale",
+    "in_words": "Importo in lettere",
+    "prepared_by": "Preparato da",
+    "checked_by": "Controllato da",
+    "approved_by": "Approvato da",
+    "received_by": "Ha ricevuto l'intero importo sopra descritto:",
+    "res_cert": "Cert. res. n.",
+    "place": "Luogo"
+  },
+  "sample": {
+    "paid_to": "Remo Caputo",
+    "items": [
+      {
+        "name": "Acquisto di cancelleria per l'ufficio",
+        "rate": 46.8
+      },
+      {
+        "name": "Spese di corriere",
+        "rate": 12.5
+      }
+    ],
+    "prepared_by": "S. Gentile",
+    "checked_by": "M. Ioppolo",
+    "approved_by": "A. De Luca",
+    "place": "Roma",
+    "resident_certificate": "R-3169647"
+  }
+}

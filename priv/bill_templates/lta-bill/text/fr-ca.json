@@ -1,0 +1,16 @@
+{
+  "sample": {
+    "travel_name": "Voyages Toujours Verts",
+    "boarding_phone": "(514) 555-0142",
+    "customer_care": "1-800-555-0123",
+    "location": "Gare d'autocars de Montréal",
+    "landmark": "En face du métro",
+    "passenger_details": "Julie Tremblay, 34, femme",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 69,
+    "tax_percent": 5,
+    "cancellation_charge": 14,
+    "boarding_address": "1717 rue Berri, Montréal, QC H2L 4E9",
+    "dropping_address": "Gare d'autocars de Québec, 320 rue Abraham-Martin, QC G1K 8N9"
+  }
+}

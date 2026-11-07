@@ -1,0 +1,121 @@
+{
+  "title": "Générateur de facture de presse",
+  "name": "Facture de presse",
+  "public_slug": "generateur-de-facture-de-presse",
+  "summary": "Facture mensuelle de portage de presse avec frais de service.",
+  "description": "Créez une facture mensuelle de portage de journaux ou de magazines avec l'agence, le mois, les titres avec leur prix et leur quantité, des frais de livraison à domicile et le total. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Classique"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "Nom de l'agence"
+    },
+    "agency_address": {
+      "label": "Adresse de l'agence"
+    },
+    "agency_mobile": {
+      "label": "Mobile (facultatif)"
+    },
+    "agency_phone": {
+      "label": "Téléphone (facultatif)"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "bill_number": {
+      "label": "Numéro de facture"
+    },
+    "month": {
+      "label": "Mois",
+      "options": {
+        "January": "janvier",
+        "February": "février",
+        "March": "mars",
+        "April": "avril",
+        "May": "mai",
+        "June": "juin",
+        "July": "juillet",
+        "August": "août",
+        "September": "septembre",
+        "October": "octobre",
+        "November": "novembre",
+        "December": "décembre"
+      }
+    },
+    "bill_year": {
+      "label": "Année de la facture"
+    },
+    "name_prefix": {
+      "label": "Civilité (facultatif)",
+      "options": {
+        "Mr.": "M.",
+        "Mrs.": "Mme"
+      }
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "service_charge": {
+      "label": "Frais de service ({currency}) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Type de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "items": {
+      "label": "Journaux et magazines",
+      "columns": {
+        "name": "Description",
+        "rate": "Prix ({currency})",
+        "qty": "Qté"
+      }
+    }
+  },
+  "print": {
+    "mobile": "Mobile",
+    "phone": "Tél.",
+    "month": "Mois",
+    "bill_no": "Facture n°",
+    "payment": "Paiement",
+    "qty": "Qté",
+    "description": "Description",
+    "rate": "Prix",
+    "total": "Total",
+    "subtotal": "Sous-total",
+    "service": "Service",
+    "service_note": "Comprend les frais de livraison à domicile.",
+    "grand_total": "Total général",
+    "date": "Date",
+    "customer_signature": "Signature du client"
+  },
+  "sample": {
+    "agency_name": "Agence de presse du Centre",
+    "customer_name": "Camille Martin",
+    "items": [
+      {
+        "name": "Le Quotidien du Matin (quotidien)",
+        "rate": 1.8,
+        "qty": 30
+      },
+      {
+        "name": "Magazine du dimanche",
+        "rate": 3.2,
+        "qty": 4
+      },
+      {
+        "name": "Hebdo Économie",
+        "rate": 4.9,
+        "qty": 4
+      }
+    ],
+    "service_charge": 8,
+    "name_prefix": "Mr."
+  }
+}

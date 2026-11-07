@@ -1,0 +1,112 @@
+{
+  "title": "Generatore di fattura per lavanderia",
+  "name": "Fattura lavanderia",
+  "public_slug": "generatore-fattura-lavanderia",
+  "summary": "Fattura di lavanderia e lavaggio a secco con capi, quantità e importi.",
+  "description": "Crea una fattura per lavanderia o lavaggio a secco con capi, quantità e prezzi, data di consegna, {tax}, metodo di pagamento e le tue condizioni. Due modelli; anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Fattura gialla",
+    "t2": "Fattura per contanti o credito"
+  },
+  "fields": {
+    "laundry_name": {
+      "label": "Nome della lavanderia"
+    },
+    "laundry_address": {
+      "label": "Indirizzo della lavanderia (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "ID fattura"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "delivery_date": {
+      "label": "Data di consegna"
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "customer_address": {
+      "label": "Indirizzo del cliente (facoltativo)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "terms": {
+      "label": "Termini e condizioni (uno per riga) (facoltativo)"
+    },
+    "items": {
+      "label": "Capi e servizi",
+      "columns": {
+        "name": "Descrizione",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})"
+      }
+    }
+  },
+  "print": {
+    "date": "Data",
+    "delivery_date": "Data di consegna",
+    "bill_to": "Intestato a",
+    "description": "Descrizione",
+    "qty": "Q.tà",
+    "price": "Prezzo",
+    "total": "Totale",
+    "subtotal": "Subtotale",
+    "tax_pct": "Imposta %",
+    "tax_amount": "Importo dell'imposta",
+    "grand_total": "Totale complessivo",
+    "payment_method": "Metodo di pagamento",
+    "terms": "Termini e condizioni",
+    "service_title": "Servizio di lavanderia e lavaggio a secco",
+    "cash_credit_invoice": "Fattura per contanti / credito",
+    "name": "Nome",
+    "address": "Indirizzo",
+    "no": "N.",
+    "delivery": "Consegna",
+    "rate": "Prezzo",
+    "minor": "Cent.",
+    "good_condition": "Ritirare i capi in buone condizioni.",
+    "no_refund": "Nessun rimborso dopo il pagamento.",
+    "amount_in_words": "Importo in lettere"
+  },
+  "sample": {
+    "laundry_name": "Lavanderia Scintilla",
+    "customer_name": "Marco Rossi",
+    "items": [
+      {
+        "name": "Camicia (lavaggio e stiratura)",
+        "qty": 6,
+        "rate": 3
+      },
+      {
+        "name": "Pantaloni (lavaggio a secco)",
+        "qty": 3,
+        "rate": 10
+      },
+      {
+        "name": "Lenzuolo (lavaggio)",
+        "qty": 2,
+        "rate": 6
+      },
+      {
+        "name": "Vestito (lavaggio a secco)",
+        "qty": 1,
+        "rate": 14
+      }
+    ],
+    "tax_percent": 22,
+    "terms": "Tutti i capi, la biancheria e i tessuti sono trattati con la massima cura, ma a causa delle condizioni degli articoli o di difetti non visibili del materiale esiste la POSSIBILITÀ DI SCOLORIMENTO O RESTRINGIMENTO. Tali capi sono accettati per la pulizia A RISCHIO DEL PROPRIETARIO e l'azienda non si assume alcuna responsabilità.\nL'azienda si impegna ragionevolmente a mantenere un alto livello di qualità nel lavaggio, nell'asciugatura e nella piegatura.\nPer ragioni di tempo, l'azienda non legge le etichette di manutenzione dei produttori e non risponde dei capi con etichetta «solo lavaggio a mano» o «solo lavaggio a secco»."
+  }
+}

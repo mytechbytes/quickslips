@@ -1,0 +1,165 @@
+{
+  "title": "休假旅行津贴车票生成器（LTA）",
+  "name": "LTA 车票",
+  "public_slug": "leave-travel-allowance-bill-generator",
+  "summary": "用于休假旅行津贴报销的大巴或火车电子票。",
+  "description": "生成用于休假旅行津贴（LTA）报销的大巴或火车电子票，包含运营商、上下车点、乘客、座位、票价、{tax}和退票条款。两种样式；即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "电子票",
+    "t2": "分栏电子票"
+  },
+  "fields": {
+    "travel_name": {
+      "label": "运输公司"
+    },
+    "boarding_phone": {
+      "label": "上车点电话"
+    },
+    "customer_care": {
+      "label": "客服电话"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "ticket_number": {
+      "label": "车票编号"
+    },
+    "pnr_number": {
+      "label": "PNR 号码（选填）"
+    },
+    "travel_type": {
+      "label": "车辆类型",
+      "options": {
+        "Sleeper": "卧铺",
+        "AC Sleeper": "空调卧铺",
+        "Semi Sleeper": "半卧铺",
+        "AC Sleeper (2+1)": "空调卧铺（2+1）",
+        "Non Sleeper": "座席",
+        "Non AC": "无空调"
+      }
+    },
+    "location": {
+      "label": "上车点：地点"
+    },
+    "landmark": {
+      "label": "上车点：地标"
+    },
+    "boarding_address": {
+      "label": "上车点：地址"
+    },
+    "reporting_date": {
+      "label": "到站日期"
+    },
+    "departure_time": {
+      "label": "发车时间（选填）"
+    },
+    "dropping_date": {
+      "label": "下车点：日期"
+    },
+    "dropping_time": {
+      "label": "下车点：时间（选填）"
+    },
+    "dropping_address": {
+      "label": "下车点：地址"
+    },
+    "passenger_details": {
+      "label": "乘客姓名、年龄、性别"
+    },
+    "passenger_count": {
+      "label": "乘客人数"
+    },
+    "seat_number": {
+      "label": "座位号"
+    },
+    "amount": {
+      "label": "票价（{currency}）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "cancellation_charge": {
+      "label": "发车前退票费（{currency}）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    }
+  },
+  "print": {
+    "t1_banner": "恭喜！您已预订可改期车票。您可在 {when} 前提前或推迟本次行程。",
+    "eticket": "电子票",
+    "type": "类型",
+    "need_help": "行程需要帮助？",
+    "boarding_phone": "上车点电话",
+    "customer_care": "客服",
+    "ticket_no": "车票号",
+    "pnr_no": "PNR 号",
+    "reporting_date": "到站日期",
+    "departure_time": "发车时间",
+    "no_passengers": "乘客人数",
+    "boarding_point": "上车点信息",
+    "dropping_point": "下车点信息",
+    "location": "地点",
+    "landmark": "地标",
+    "address": "地址",
+    "time": "时间",
+    "date": "日期",
+    "passenger_details": "乘客信息（年龄、性别）",
+    "seat_number": "座位号",
+    "mticket_note": "注意：本运营商接受手机电子票，无需打印。",
+    "total_fare": "票价合计",
+    "gst_note": "（适用 {rate}% {tax}，如有服务费另计）",
+    "net_amount": "净额",
+    "taxable_amount": "计税金额",
+    "terms": "条款和条件",
+    "t1_term_0": "请注意本次行程的行李规定。",
+    "t1_term_1": "每位乘客可携带一件不超过 10 公斤的行李和一件不超过 5 公斤的随身物品（电脑包、手提包或公文包）。",
+    "t1_term_2": "严禁携带武器、易燃物品、枪支、弹药、毒品、酒类、走私物品及其他法律禁止的物品。",
+    "t1_term_3": "乘客携带超出规定的行李时，运营商有权拒绝乘车或加收费用。",
+    "t1_term_4": "本车票不支持部分退票。整票退票费用如下。",
+    "cancel_time": "退票时间",
+    "cancel_charges": "退票费用",
+    "after": "之后",
+    "before": "之前",
+    "on": "于",
+    "cut_as_charges": "将扣除 {amount} 作为退票费",
+    "t2_banner": "恭喜！您的车票在 {when} 前可改期。",
+    "lta_month": "LTA 月份",
+    "boarding_help": "上车咨询",
+    "journey_date": "乘车日期",
+    "passengers": "乘客",
+    "seat_count": "座位",
+    "passenger_details_title": "乘客信息（姓名/年龄/性别）",
+    "payment_method": "支付方式",
+    "important_note": "重要提示",
+    "note_mticket": "本运营商接受手机电子票，打印为可选。",
+    "note_id": "上车时请携带有效的带照片证件以供核验。",
+    "note_changes": "如需更改行程，请在截止时间前联系运营商。",
+    "base_fare": "基本票价",
+    "tax": "税",
+    "t2_term_1": "允许携带一件不超过 10 公斤的行李和一个不超过 5 公斤的随身包。",
+    "t2_term_2": "请勿携带武器、毒品或危险品等违禁物品。",
+    "t2_term_3": "如违反规定或安全要求，运营商可拒绝乘车。",
+    "t2_term_4": "本车票不支持部分退票。",
+    "cancel_window": "退票时段",
+    "applicable_charge": "适用费用"
+  },
+  "sample": {
+    "travel_name": "常青旅行社",
+    "boarding_phone": "010-12345678",
+    "customer_care": "400-123-4567",
+    "location": "北京六里桥长途汽车站",
+    "landmark": "地铁站对面",
+    "passenger_details": "王伟，34岁，男",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 220,
+    "tax_percent": 9,
+    "cancellation_charge": 44
+  }
+}

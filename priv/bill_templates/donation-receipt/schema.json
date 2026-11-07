@@ -1,0 +1,28 @@
+{
+  "slug": "donation-receipt",
+  "public_slug": "donation-receipt-generator",
+  "title": "Donation Receipt Generator",
+  "category": "Work",
+  "icon": "hero-heart",
+  "number_field": "receipt_number",
+  "summary": "Receipt for a donation to an NGO or trust.",
+  "description": "Create a donation receipt for an NGO, charity or trust with the donor, the amount in figures and words, the payment method, who received it and a thank-you. Preview instantly and download as PDF.",
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "templates": [{ "id": "t1" }],
+  "fields": [
+    { "key": "organisation_name", "group": "business", "label": "Organisation name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "registration_number", "group": "business", "label": "Registration number (optional)", "type": "text", "required": false, "max_length": 60 },
+    { "key": "address", "group": "business", "label": "Address", "type": "textarea", "required": true, "max_length": 200, "prefill": "business.address" },
+    { "key": "email", "group": "business", "label": "Email (optional)", "type": "text", "required": false, "max_length": 80 },
+    { "key": "website", "group": "business", "label": "Website (optional)", "type": "text", "required": false, "max_length": 80 },
+    { "key": "phone", "group": "business", "label": "Phone / contact (optional)", "type": "text", "required": false, "max_length": 30 },
+    { "key": "receipt_number", "group": "document", "label": "Receipt no.", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "donor_name", "group": "customer", "label": "Donor name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "amount", "group": "charges", "label": "Total amount ({currency})", "type": "number", "required": true, "min": 0 },
+    { "key": "amount_in_words", "group": "charges", "label": "Amount in words (optional, written out for you when empty)", "type": "textarea", "required": false, "max_length": 200 },
+    { "key": "payment_mode", "group": "payment", "label": "Payment method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true },
+    { "key": "received_by", "group": "payment", "label": "Received by (optional)", "type": "text", "required": false, "max_length": 80 },
+    { "key": "donation_description", "group": "details", "label": "Description of donation (optional)", "type": "textarea", "required": false, "max_length": 300 }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "title": "Generador de Factura de Periódicos",
+  "name": "Factura de Periódicos",
+  "public_slug": "generador-de-factura-de-periodicos",
+  "summary": "Factura mensual de reparto de prensa con cargo de servicio.",
+  "description": "Crea una factura mensual de reparto de periódicos o revistas con la agencia, el mes, las publicaciones con su precio y cantidad, un cargo por reparto a domicilio y el total. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Clásico"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "Nombre de la agencia"
+    },
+    "agency_address": {
+      "label": "Dirección de la agencia"
+    },
+    "agency_mobile": {
+      "label": "Móvil (opcional)"
+    },
+    "agency_phone": {
+      "label": "Teléfono (opcional)"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "bill_number": {
+      "label": "Número de factura"
+    },
+    "month": {
+      "label": "Mes",
+      "options": {
+        "January": "enero",
+        "February": "febrero",
+        "March": "marzo",
+        "April": "abril",
+        "May": "mayo",
+        "June": "junio",
+        "July": "julio",
+        "August": "agosto",
+        "September": "septiembre",
+        "October": "octubre",
+        "November": "noviembre",
+        "December": "diciembre"
+      }
+    },
+    "bill_year": {
+      "label": "Año de la factura"
+    },
+    "name_prefix": {
+      "label": "Tratamiento (opcional)",
+      "options": {
+        "Mr.": "Sr.",
+        "Mrs.": "Sra."
+      }
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "service_charge": {
+      "label": "Cargo por servicio ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Tipo de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "items": {
+      "label": "Periódicos y revistas",
+      "columns": {
+        "name": "Descripción",
+        "rate": "Precio ({currency})",
+        "qty": "Cant."
+      }
+    }
+  },
+  "print": {
+    "mobile": "Móvil",
+    "phone": "Tel.",
+    "month": "Mes",
+    "bill_no": "Factura n.º",
+    "payment": "Pago",
+    "qty": "Cant.",
+    "description": "Descripción",
+    "rate": "Precio",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "service": "Servicio",
+    "service_note": "Incluye el cargo por reparto a domicilio.",
+    "grand_total": "Total general",
+    "date": "Fecha",
+    "customer_signature": "Firma del cliente"
+  },
+  "sample": {
+    "agency_name": "Kiosco Prensa Centro",
+    "customer_name": "Carlos Gómez",
+    "items": [
+      {
+        "name": "Diario de la Mañana (diario)",
+        "rate": 1.5,
+        "qty": 30
+      },
+      {
+        "name": "Revista dominical",
+        "rate": 3,
+        "qty": 4
+      },
+      {
+        "name": "Semanario económico",
+        "rate": 4.5,
+        "qty": 4
+      }
+    ],
+    "service_charge": 8,
+    "name_prefix": "Mr."
+  }
+}
