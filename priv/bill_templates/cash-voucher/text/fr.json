@@ -1,0 +1,84 @@
+{
+  "title": "Générateur de bon de caisse",
+  "name": "Bon de caisse",
+  "public_slug": "generateur-de-bon-de-caisse",
+  "summary": "Bon de caisse avec désignations, montant et signatures d'approbation.",
+  "description": "Créez un bon de caisse avec le bénéficiaire, les désignations et montants, le total en chiffres et en lettres, et les signatures d'établissement, de vérification, d'approbation et de réception. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Bon à cases"
+  },
+  "fields": {
+    "voucher_number": {
+      "label": "Bon n°"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "paid_to": {
+      "label": "Payé à"
+    },
+    "address": {
+      "label": "Adresse"
+    },
+    "prepared_by": {
+      "label": "Établi par"
+    },
+    "checked_by": {
+      "label": "Vérifié par"
+    },
+    "approved_by": {
+      "label": "Approuvé par"
+    },
+    "resident_certificate": {
+      "label": "N° de certificat de résidence (facultatif)"
+    },
+    "received_date": {
+      "label": "Date de réception (facultatif)"
+    },
+    "place": {
+      "label": "Lieu (facultatif)"
+    },
+    "items": {
+      "label": "Désignations",
+      "columns": {
+        "name": "Désignation",
+        "rate": "Montant ({currency})"
+      }
+    }
+  },
+  "print": {
+    "no": "N°",
+    "cash_voucher": "Bon de caisse",
+    "paid_to": "Payé à",
+    "date": "Date",
+    "address": "Adresse",
+    "particular": "Désignation",
+    "amount": "Montant",
+    "total": "Total",
+    "in_words": "Montant en lettres",
+    "prepared_by": "Établi par",
+    "checked_by": "Vérifié par",
+    "approved_by": "Approuvé par",
+    "received_by": "A reçu la totalité du montant décrit ci-dessus :",
+    "res_cert": "Cert. rés. n°",
+    "place": "Lieu"
+  },
+  "sample": {
+    "paid_to": "Rémi Caron",
+    "items": [
+      {
+        "name": "Achat de fournitures de bureau",
+        "rate": 52.4
+      },
+      {
+        "name": "Frais de coursier",
+        "rate": 14
+      }
+    ],
+    "prepared_by": "S. Joly",
+    "checked_by": "M. Imbert",
+    "approved_by": "A. Delorme",
+    "place": "Paris",
+    "resident_certificate": "R-3169647"
+  }
+}

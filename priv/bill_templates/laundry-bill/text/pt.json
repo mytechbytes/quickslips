@@ -1,0 +1,112 @@
+{
+  "title": "Gerador de nota de lavanderia",
+  "name": "Nota de lavanderia",
+  "public_slug": "gerador-de-nota-de-lavanderia",
+  "summary": "Nota de lavanderia e lavagem a seco com peças, quantidades e valores.",
+  "description": "Crie uma nota de lavanderia ou lavagem a seco com as peças, quantidades e preços, a data de entrega, o {tax}, a forma de pagamento e as suas condições. Dois modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota amarela",
+    "t2": "Nota à vista ou a prazo"
+  },
+  "fields": {
+    "laundry_name": {
+      "label": "Nome da lavanderia"
+    },
+    "laundry_address": {
+      "label": "Endereço da lavanderia (opcional)"
+    },
+    "invoice_number": {
+      "label": "ID da nota"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "delivery_date": {
+      "label": "Data de entrega"
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "customer_address": {
+      "label": "Endereço do cliente (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "terms": {
+      "label": "Termos e condições (um por linha) (opcional)"
+    },
+    "items": {
+      "label": "Peças e serviços",
+      "columns": {
+        "name": "Descrição",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})"
+      }
+    }
+  },
+  "print": {
+    "date": "Data",
+    "delivery_date": "Data de entrega",
+    "bill_to": "Cliente",
+    "description": "Descrição",
+    "qty": "Qtd.",
+    "price": "Preço",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "tax_pct": "Imposto %",
+    "tax_amount": "Valor do imposto",
+    "grand_total": "Total geral",
+    "payment_method": "Forma de pagamento",
+    "terms": "Termos e condições",
+    "service_title": "Serviço de lavanderia e lavagem a seco",
+    "cash_credit_invoice": "Nota à vista / a prazo",
+    "name": "Nome",
+    "address": "Endereço",
+    "no": "N.º",
+    "delivery": "Entrega",
+    "rate": "Preço",
+    "minor": "Cent.",
+    "good_condition": "Receba as peças em bom estado.",
+    "no_refund": "Não há reembolso após o pagamento.",
+    "amount_in_words": "Valor por extenso"
+  },
+  "sample": {
+    "laundry_name": "Lavanderia Brilho",
+    "customer_name": "Ana Souza",
+    "items": [
+      {
+        "name": "Camisa (lavar e passar)",
+        "qty": 6,
+        "rate": 12
+      },
+      {
+        "name": "Calça (lavagem a seco)",
+        "qty": 3,
+        "rate": 28
+      },
+      {
+        "name": "Lençol (lavar)",
+        "qty": 2,
+        "rate": 20
+      },
+      {
+        "name": "Vestido (lavagem a seco)",
+        "qty": 1,
+        "rate": 45
+      }
+    ],
+    "tax_percent": null,
+    "terms": "Todas as peças, roupas de cama e tecidos são tratados com o máximo cuidado, mas devido ao estado dos artigos ou a defeitos não visíveis no material há POSSIBILIDADE DE DESBOTAMENTO OU ENCOLHIMENTO. Tais peças são aceitas para limpeza POR CONTA E RISCO DO PROPRIETÁRIO e a empresa não assume qualquer responsabilidade.\nA empresa fará esforços razoáveis para manter em alto nível a qualidade da lavagem, secagem e dobra.\nPor falta de tempo, a empresa não lê as etiquetas de cuidado dos fabricantes e não se responsabiliza por peças etiquetadas «somente lavar à mão» ou «somente lavagem a seco»."
+  }
+}

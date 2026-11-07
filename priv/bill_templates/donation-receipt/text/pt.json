@@ -1,0 +1,85 @@
+{
+  "title": "Gerador de recibo de doação",
+  "name": "Recibo de doação",
+  "public_slug": "gerador-de-recibo-de-doacao",
+  "summary": "Recibo de doação para uma ONG ou fundação.",
+  "description": "Crie um recibo de doação para uma ONG, entidade beneficente ou fundação com o doador, o valor em números e por extenso, a forma de pagamento, quem recebeu e um agradecimento. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Recibo"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "Nome da organização"
+    },
+    "registration_number": {
+      "label": "Número de registro (opcional)"
+    },
+    "address": {
+      "label": "Endereço"
+    },
+    "email": {
+      "label": "E-mail (opcional)"
+    },
+    "website": {
+      "label": "Site (opcional)"
+    },
+    "phone": {
+      "label": "Telefone / contato (opcional)"
+    },
+    "receipt_number": {
+      "label": "Recibo n.º"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "donor_name": {
+      "label": "Nome do doador"
+    },
+    "amount": {
+      "label": "Valor total ({currency})"
+    },
+    "amount_in_words": {
+      "label": "Valor por extenso (escrito automaticamente se vazio) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "received_by": {
+      "label": "Recebido por (opcional)"
+    },
+    "donation_description": {
+      "label": "Descrição da doação (opcional)"
+    }
+  },
+  "print": {
+    "email": "E-mail",
+    "website": "Site",
+    "phone": "Telefone",
+    "donation_receipt": "Recibo de doação",
+    "receipt_no": "Recibo n.º",
+    "date": "Data",
+    "received_from": "Recebido de:",
+    "amount": "Valor",
+    "sum_of_words": "A quantia por extenso",
+    "payment_method": "Forma de pagamento",
+    "received_by": "Recebido por:",
+    "description_of_donation": "Descrição da doação:",
+    "thanks": "Obrigado pela sua generosidade; agradecemos o seu apoio."
+  },
+  "sample": {
+    "organisation_name": "Fundação Descoberta e Restauro",
+    "registration_number": "Registro n.º 91/2018",
+    "phone": "+55 11 3456-7890",
+    "donor_name": "Ana Souza",
+    "amount": 300,
+    "received_by": "Mariana Lima, tesoureira",
+    "donation_description": "Doação para a restauração da biblioteca histórica."
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "title": "Hotelrechnung-Generator",
+  "name": "Hotelrechnung",
+  "public_slug": "hotelrechnung-generator",
+  "summary": "Hotelrechnung mit Preis pro Nacht, Extras, Anzahlung und {tax}.",
+  "description": "Erstellen Sie eine Hotelrechnung mit Gast, Zimmer, An- und Abreise, Preis pro Nacht, weiteren Zimmern und Leistungen, Anzahlung und {tax}. Drei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Klassisch",
+    "t2": "Steuerrechnung",
+    "t3": "Formular mit Linien"
+  },
+  "fields": {
+    "hotel_name": {
+      "label": "Name des Hotels"
+    },
+    "hotel_address": {
+      "label": "Adresse des Hotels (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "registration_number": {
+      "label": "Registernr. / CIN (optional)"
+    },
+    "invoice_number": {
+      "label": "Rechnungsnummer"
+    },
+    "reservation_number": {
+      "label": "Reservierungsnummer (optional)"
+    },
+    "invoice_date": {
+      "label": "Rechnungsdatum"
+    },
+    "guest_name": {
+      "label": "Name des Gastes"
+    },
+    "guest_gender": {
+      "label": "Geschlecht (optional)",
+      "options": {
+        "Male": "Männlich",
+        "Female": "Weiblich",
+        "Transgender": "Transgender"
+      }
+    },
+    "guest_age": {
+      "label": "Alter (optional)"
+    },
+    "nationality": {
+      "label": "Nationalität (optional)"
+    },
+    "guest_address": {
+      "label": "Adresse des Gastes (optional)"
+    },
+    "room_type": {
+      "label": "Zimmertyp",
+      "options": {
+        "Standard": "Standard",
+        "Deluxe": "Deluxe",
+        "Suite": "Suite",
+        "Dormitory": "Schlafsaal"
+      }
+    },
+    "room_description": {
+      "label": "Zimmerbeschreibung (optional)"
+    },
+    "room_number": {
+      "label": "Zimmernummer (optional)"
+    },
+    "check_in": {
+      "label": "Anreisedatum"
+    },
+    "check_in_time": {
+      "label": "Anreisezeit (optional)"
+    },
+    "check_out": {
+      "label": "Abreisedatum"
+    },
+    "check_out_time": {
+      "label": "Abreisezeit (optional)"
+    },
+    "tariff_per_night": {
+      "label": "Preis pro Nacht ({currency})"
+    },
+    "extra_charges": {
+      "label": "Verpflegung und sonstige Kosten ({currency}) (optional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "advance_amount": {
+      "label": "Geleistete Anzahlung ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Weitere Zimmer oder Leistungen",
+      "columns": {
+        "name": "Zimmertyp und Beschreibung",
+        "rate": "Preis ({currency})",
+        "qty": "Anzahl Tage"
+      }
+    }
+  },
+  "print": {
+    "invoice_title": "Rechnung",
+    "invoice_no": "Rechnungs-Nr.",
+    "invoice_date": "Rechnungsdatum",
+    "guest": "Gast",
+    "room": "Zimmer",
+    "no": "Nr.",
+    "check_in": "Anreise",
+    "check_out": "Abreise",
+    "reservation_no": "Reservierungs-Nr.",
+    "nationality": "Nationalität",
+    "guest_address": "Adresse des Gastes",
+    "description": "Beschreibung",
+    "nights": "Nächte",
+    "rate_per_night": "Preis pro Nacht",
+    "amount": "Betrag",
+    "room_tariff": "Zimmerpreis",
+    "extra": "Verpflegung und sonstige Kosten",
+    "subtotal": "Zwischensumme",
+    "less_advance": "Abzgl. Anzahlung",
+    "balance_due": "Offener Betrag",
+    "total": "Gesamt",
+    "authorised": "Unterschriftsberechtigter",
+    "thanks_stay": "Danke für Ihren Aufenthalt. Diese Rechnung wurde maschinell erstellt.",
+    "tax_invoice": "Rechnung",
+    "bill_no": "Rechnungs-Nr.",
+    "guest_name": "Name des Gastes",
+    "address": "Adresse",
+    "res_no": "Res.-Nr.",
+    "room_no": "Zimmer-Nr.",
+    "room_type": "Zimmertyp",
+    "pay_type": "Zahlungsart",
+    "room_description": "Beschreibung",
+    "rate": "Preis",
+    "days_nights": "Tage / Nächte",
+    "receipt_no": "Quittungs-Nr.",
+    "check_in_date": "Anreisedatum",
+    "total_amount": "Gesamtbetrag",
+    "payment_type": "Zahlungsart",
+    "receive": "Zu erhalten",
+    "payment_received": "Erhaltene Zahlung",
+    "receptionist": "Rezeption",
+    "guest_signature": "Unterschrift des Gastes",
+    "thank_visit": "Danke, bis zum nächsten Mal!",
+    "reg_no": "Reg.-Nr.",
+    "departure_date": "Abreisedatum",
+    "check_in_time": "Anreisezeit",
+    "check_out_time": "Abreisezeit",
+    "particular": "Position",
+    "days": "Tage",
+    "payment_method": "Zahlungsart",
+    "refunded_received": "Erstattet / erhalten",
+    "customer_signature": "Unterschrift des Kunden",
+    "manager_signature": "Unterschrift des Managers",
+    "thanks": "Danke",
+    "eoe": "Irrtümer vorbehalten"
+  },
+  "sample": {
+    "hotel_name": "Hotel Lotus Residenz",
+    "guest_name": "Anna Becker",
+    "nationality": "Deutsch",
+    "room_description": "Zimmer mit Meerblick und Frühstück",
+    "items": [
+      {
+        "name": "Zustellbett",
+        "rate": 22.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 110,
+    "extra_charges": 32,
+    "gst_percent": 7,
+    "advance_amount": 60
+  }
+}

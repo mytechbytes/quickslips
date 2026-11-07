@@ -1,0 +1,14 @@
+{
+  "sample": {
+    "travel_name": "Evergreen Travels",
+    "boarding_phone": "(416) 555-0142",
+    "customer_care": "1-800-555-0187",
+    "location": "Toronto Coach Terminal",
+    "landmark": "Across from the subway station",
+    "passenger_details": "Emma Wilson, 34, Female",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 69,
+    "tax_percent": 5,
+    "cancellation_charge": 14
+  }
+}

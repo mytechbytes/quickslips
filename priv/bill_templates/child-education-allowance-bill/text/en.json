@@ -1,0 +1,97 @@
+{
+  "title": "Child Education Allowance Bill Generator",
+  "name": "Child Education Allowance Bill",
+  "public_slug": "child-education-allowance-bill-generator",
+  "summary": "Claim form for the reimbursement of a children education allowance.",
+  "description": "Fill in the proforma for the reimbursement of a children education allowance (CEA) or hostel subsidy with the claimant, the spouse, the children and their schools and the expenditure. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Proforma"
+  },
+  "fields": {
+    "claim_date": {
+      "label": "Date"
+    },
+    "academic_year": {
+      "label": "Academic year"
+    },
+    "name_rank": {
+      "label": "Name and rank of the government servant"
+    },
+    "personal_number": {
+      "label": "Personal number"
+    },
+    "designation": {
+      "label": "Designation"
+    },
+    "unit": {
+      "label": "Unit or establishment"
+    },
+    "spouse_employed": {
+      "label": "Spouse employed under government, a public body or a private organisation"
+    },
+    "spouse_office": {
+      "label": "Spouse's designation and office (optional)"
+    },
+    "child1_name": {
+      "label": "Child 1: name"
+    },
+    "child1_dob": {
+      "label": "Child 1: date of birth"
+    },
+    "child1_standard": {
+      "label": "Child 1: standard or class"
+    },
+    "child1_school": {
+      "label": "Child 1: name and place of the school"
+    },
+    "child2_name": {
+      "label": "Child 2: name (optional)"
+    },
+    "child2_dob": {
+      "label": "Child 2: date of birth (optional)"
+    },
+    "child2_standard": {
+      "label": "Child 2: standard or class (optional)"
+    },
+    "child2_school": {
+      "label": "Child 2: name and place of the school (optional)"
+    },
+    "items": {
+      "label": "Reimbursement of expenditure",
+      "columns": {
+        "code": "Sequence",
+        "name": "Period",
+        "qty": "Months",
+        "rate": "Rate of allowance ({currency})",
+        "batch": "Remarks"
+      }
+    }
+  },
+  "print": {
+    "title": "Proforma for reimbursement of children education allowance",
+    "claim_for": "Claim for the academic year",
+    "intro": "I hereby apply for the reimbursement of the children education allowance / hostel subsidy for my child / children, and the relevant particulars are furnished below:",
+    "date": "Date",
+    "q1": "Name and rank of the government servant",
+    "q2": "Personal no.",
+    "q3": "Designation",
+    "q4": "Name of the unit",
+    "q5": "If the spouse is employed under the central / state government, an autonomous body, a government undertaking, a local body or a private organisation, etc.",
+    "q6": "Designation, office and B.U. no. of the spouse (if employed under the central / state government)",
+    "children_title": "Details of the child / children for whom the allowance / hostel subsidy is claimed:",
+    "sequence": "Sequence",
+    "child_name": "Name of child",
+    "dob": "DOB",
+    "standard": "Standard",
+    "ay": "A.Y.",
+    "school": "Name and place of the school / institution",
+    "expenditure_title": "Reimbursement of expenditure:",
+    "period": "Period",
+    "rate_cea": "Rate of allowance",
+    "amount_claimed": "Amount claimed",
+    "remarks": "Remarks",
+    "total_claimed": "Total amount claimed",
+    "months": "months"
+  },
+  "sample": {}
+}

@@ -1,0 +1,122 @@
+{
+  "title": "अख़बार बिल जनरेटर",
+  "name": "अख़बार बिल",
+  "public_slug": "newspaper-bill-generator",
+  "summary": "सर्विस चार्ज के साथ मासिक अख़बार वितरण का बिल।",
+  "description": "एजेंसी, महीने, अख़बारों की दर और संख्या, घर पहुँच सेवा शुल्क और कुल राशि के साथ मासिक अख़बार या पत्रिका वितरण का बिल बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "क्लासिक"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "एजेंसी का नाम"
+    },
+    "agency_address": {
+      "label": "एजेंसी का पता"
+    },
+    "agency_mobile": {
+      "label": "मोबाइल (वैकल्पिक)"
+    },
+    "agency_phone": {
+      "label": "फ़ोन (वैकल्पिक)"
+    },
+    "date": {
+      "label": "तारीख"
+    },
+    "bill_number": {
+      "label": "बिल नंबर"
+    },
+    "month": {
+      "label": "महीना",
+      "options": {
+        "January": "जनवरी",
+        "February": "फ़रवरी",
+        "March": "मार्च",
+        "April": "अप्रैल",
+        "May": "मई",
+        "June": "जून",
+        "July": "जुलाई",
+        "August": "अगस्त",
+        "September": "सितंबर",
+        "October": "अक्टूबर",
+        "November": "नवंबर",
+        "December": "दिसंबर"
+      }
+    },
+    "bill_year": {
+      "label": "बिल का वर्ष"
+    },
+    "name_prefix": {
+      "label": "संबोधन (वैकल्पिक)",
+      "options": {
+        "Mr.": "श्री",
+        "Mrs.": "श्रीमती"
+      }
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम"
+    },
+    "service_charge": {
+      "label": "सर्विस चार्ज ({currency}) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का प्रकार",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "items": {
+      "label": "अख़बार और पत्रिकाएँ",
+      "columns": {
+        "name": "विवरण",
+        "rate": "दर ({currency})",
+        "qty": "मात्रा"
+      }
+    }
+  },
+  "print": {
+    "mobile": "मोबाइल",
+    "phone": "फ़ोन",
+    "month": "महीना",
+    "bill_no": "बिल नं.",
+    "payment": "भुगतान",
+    "qty": "मात्रा",
+    "description": "विवरण",
+    "rate": "दर",
+    "total": "कुल",
+    "subtotal": "उप-योग",
+    "service": "सर्विस",
+    "service_note": "इसमें घर पहुँच सेवा का शुल्क शामिल है।",
+    "grand_total": "कुल योग",
+    "date": "तारीख",
+    "customer_signature": "ग्राहक के हस्ताक्षर"
+  },
+  "sample": {
+    "agency_name": "सिटी न्यूज़ एजेंसी",
+    "customer_name": "रोहन मेहता",
+    "items": [
+      {
+        "name": "मॉर्निंग क्रॉनिकल (दैनिक)",
+        "rate": 6,
+        "qty": 30
+      },
+      {
+        "name": "संडे मैगज़ीन",
+        "rate": 15,
+        "qty": 4
+      },
+      {
+        "name": "बिज़नेस वीकली",
+        "rate": 20,
+        "qty": 4
+      }
+    ],
+    "service_charge": 50,
+    "name_prefix": "Mr.",
+    "agency_address": "दुकान 2, मार्केट रोड, नासिक, महाराष्ट्र 422001"
+  }
+}

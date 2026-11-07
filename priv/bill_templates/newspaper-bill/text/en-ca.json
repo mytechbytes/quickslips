@@ -1,0 +1,25 @@
+{
+  "sample": {
+    "agency_name": "City News Agency",
+    "customer_name": "Emma Wilson",
+    "items": [
+      {
+        "name": "Morning Chronicle (daily)",
+        "rate": 2.5,
+        "qty": 30
+      },
+      {
+        "name": "Sunday Magazine",
+        "rate": 5,
+        "qty": 4
+      },
+      {
+        "name": "Business Weekly",
+        "rate": 7,
+        "qty": 4
+      }
+    ],
+    "service_charge": 10,
+    "name_prefix": "Mr."
+  }
+}

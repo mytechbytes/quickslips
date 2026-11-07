@@ -1,0 +1,84 @@
+{
+  "title": "Gerador de vale de caixa",
+  "name": "Vale de caixa",
+  "public_slug": "gerador-de-vale-de-caixa",
+  "summary": "Vale de caixa com itens, valor e assinaturas de aprovação.",
+  "description": "Crie um vale de caixa com o beneficiário, os itens e valores, o total em números e por extenso, e as assinaturas de elaboração, conferência, aprovação e recebimento. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Vale em quadros"
+  },
+  "fields": {
+    "voucher_number": {
+      "label": "Vale n.º"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "paid_to": {
+      "label": "Pago a"
+    },
+    "address": {
+      "label": "Endereço"
+    },
+    "prepared_by": {
+      "label": "Elaborado por"
+    },
+    "checked_by": {
+      "label": "Conferido por"
+    },
+    "approved_by": {
+      "label": "Aprovado por"
+    },
+    "resident_certificate": {
+      "label": "N.º do comprovante de residência (opcional)"
+    },
+    "received_date": {
+      "label": "Data de recebimento (opcional)"
+    },
+    "place": {
+      "label": "Local (opcional)"
+    },
+    "items": {
+      "label": "Itens",
+      "columns": {
+        "name": "Item",
+        "rate": "Valor ({currency})"
+      }
+    }
+  },
+  "print": {
+    "no": "N.º",
+    "cash_voucher": "Vale de caixa",
+    "paid_to": "Pago a",
+    "date": "Data",
+    "address": "Endereço",
+    "particular": "Item",
+    "amount": "Valor",
+    "total": "Total",
+    "in_words": "Valor por extenso",
+    "prepared_by": "Elaborado por",
+    "checked_by": "Conferido por",
+    "approved_by": "Aprovado por",
+    "received_by": "Recebi o valor total descrito acima:",
+    "res_cert": "Comp. res. n.º",
+    "place": "Local"
+  },
+  "sample": {
+    "paid_to": "Ricardo Cardoso",
+    "items": [
+      {
+        "name": "Compra de material de escritório",
+        "rate": 185
+      },
+      {
+        "name": "Despesas com courier",
+        "rate": 48
+      }
+    ],
+    "prepared_by": "S. Jardim",
+    "checked_by": "M. Ibrahim",
+    "approved_by": "A. Duarte",
+    "place": "São Paulo",
+    "resident_certificate": "R-3169647"
+  }
+}

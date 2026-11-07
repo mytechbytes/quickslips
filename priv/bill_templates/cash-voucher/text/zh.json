@@ -1,0 +1,84 @@
+{
+  "title": "现金凭证生成器",
+  "name": "现金凭证",
+  "public_slug": "cash-voucher-generator",
+  "summary": "含事项、金额和审批签字的现金凭证。",
+  "description": "生成现金凭证，包含收款人、事项与金额、小写和大写合计，以及制单、复核、批准和收款签字。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "表格凭证"
+  },
+  "fields": {
+    "voucher_number": {
+      "label": "凭证号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "paid_to": {
+      "label": "收款人"
+    },
+    "address": {
+      "label": "地址"
+    },
+    "prepared_by": {
+      "label": "制单人"
+    },
+    "checked_by": {
+      "label": "复核人"
+    },
+    "approved_by": {
+      "label": "批准人"
+    },
+    "resident_certificate": {
+      "label": "居住证明编号（选填）"
+    },
+    "received_date": {
+      "label": "收款日期（选填）"
+    },
+    "place": {
+      "label": "地点（选填）"
+    },
+    "items": {
+      "label": "事项",
+      "columns": {
+        "name": "事项",
+        "rate": "金额（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "no": "编号",
+    "cash_voucher": "现金凭证",
+    "paid_to": "收款人",
+    "date": "日期",
+    "address": "地址",
+    "particular": "事项",
+    "amount": "金额",
+    "total": "合计",
+    "in_words": "大写金额",
+    "prepared_by": "制单人",
+    "checked_by": "复核人",
+    "approved_by": "批准人",
+    "received_by": "已全额收讫上述款项，收款人：",
+    "res_cert": "居住证号",
+    "place": "地点"
+  },
+  "sample": {
+    "paid_to": "王建国",
+    "items": [
+      {
+        "name": "购买办公文具",
+        "rate": 320.5
+      },
+      {
+        "name": "快递费",
+        "rate": 60
+      }
+    ],
+    "prepared_by": "苏经办",
+    "checked_by": "李复核",
+    "approved_by": "陈批准",
+    "place": "北京",
+    "resident_certificate": "京-3169647"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "title": "दान रसीद जनरेटर",
+  "name": "दान रसीद",
+  "public_slug": "donation-receipt-generator",
+  "summary": "NGO या ट्रस्ट को दिए दान की रसीद।",
+  "description": "दानदाता, अंकों और शब्दों में राशि, भुगतान के तरीके, प्राप्तकर्ता और धन्यवाद संदेश के साथ NGO, चैरिटी या ट्रस्ट के लिए दान रसीद बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "रसीद"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "संगठन का नाम"
+    },
+    "registration_number": {
+      "label": "पंजीकरण संख्या (वैकल्पिक)"
+    },
+    "address": {
+      "label": "पता"
+    },
+    "email": {
+      "label": "ईमेल (वैकल्पिक)"
+    },
+    "website": {
+      "label": "वेबसाइट (वैकल्पिक)"
+    },
+    "phone": {
+      "label": "फ़ोन / संपर्क (वैकल्पिक)"
+    },
+    "receipt_number": {
+      "label": "रसीद नं."
+    },
+    "date": {
+      "label": "तारीख"
+    },
+    "donor_name": {
+      "label": "दानदाता का नाम"
+    },
+    "amount": {
+      "label": "कुल राशि ({currency})"
+    },
+    "amount_in_words": {
+      "label": "शब्दों में राशि (खाली होने पर अपने आप लिखी जाएगी) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का तरीका",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "received_by": {
+      "label": "प्राप्तकर्ता (वैकल्पिक)"
+    },
+    "donation_description": {
+      "label": "दान का विवरण (वैकल्पिक)"
+    }
+  },
+  "print": {
+    "email": "ईमेल",
+    "website": "वेबसाइट",
+    "phone": "फ़ोन",
+    "donation_receipt": "दान रसीद",
+    "receipt_no": "रसीद नं.",
+    "date": "तारीख",
+    "received_from": "इनसे प्राप्त:",
+    "amount": "राशि",
+    "sum_of_words": "शब्दों में राशि",
+    "payment_method": "भुगतान का तरीका",
+    "received_by": "प्राप्तकर्ता:",
+    "description_of_donation": "दान का विवरण:",
+    "thanks": "आपकी उदारता के लिए धन्यवाद, हम आपके सहयोग के आभारी हैं।"
+  },
+  "sample": {
+    "organisation_name": "डिस्कवरी एंड रेस्टोरेशन ट्रस्ट",
+    "registration_number": "सरकारी पंजीकरण क्र. 91 / 2018",
+    "phone": "+91 20 4000 5678",
+    "donor_name": "रोहन मेहता",
+    "amount": 5000,
+    "received_by": "मीरा अय्यर, कोषाध्यक्ष",
+    "donation_description": "विरासत पुस्तकालय के जीर्णोद्धार के लिए दान।",
+    "address": "21, हेरिटेज लेन, पुणे, महाराष्ट्र 411001"
+  }
+}

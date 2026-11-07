@@ -1,0 +1,186 @@
+{
+  "title": "ホテル請求書作成",
+  "name": "ホテル請求書",
+  "public_slug": "hotel-bill-generator",
+  "summary": "宿泊料・追加料金・前払金・{tax}を記載した宿泊の請求書。",
+  "description": "宿泊者、客室、チェックイン・チェックアウト、1泊の料金、追加の客室やサービス、前払金、{tax}を記載したホテルの請求書を作成できます。3つのデザイン。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "クラシック",
+    "t2": "税務請求書",
+    "t3": "罫線フォーム"
+  },
+  "fields": {
+    "hotel_name": {
+      "label": "ホテル名"
+    },
+    "hotel_address": {
+      "label": "ホテルの住所（任意）"
+    },
+    "gstin": {
+      "label": "{tax_id}（任意）"
+    },
+    "registration_number": {
+      "label": "登録番号 / CIN（任意）"
+    },
+    "invoice_number": {
+      "label": "請求書番号"
+    },
+    "reservation_number": {
+      "label": "予約番号（任意）"
+    },
+    "invoice_date": {
+      "label": "請求日"
+    },
+    "guest_name": {
+      "label": "宿泊者名"
+    },
+    "guest_gender": {
+      "label": "性別（任意）",
+      "options": {
+        "Male": "男性",
+        "Female": "女性",
+        "Transgender": "トランスジェンダー"
+      }
+    },
+    "guest_age": {
+      "label": "年齢（任意）"
+    },
+    "nationality": {
+      "label": "国籍（任意）"
+    },
+    "guest_address": {
+      "label": "宿泊者の住所（任意）"
+    },
+    "room_type": {
+      "label": "客室タイプ",
+      "options": {
+        "Standard": "スタンダード",
+        "Deluxe": "デラックス",
+        "Suite": "スイート",
+        "Dormitory": "ドミトリー"
+      }
+    },
+    "room_description": {
+      "label": "客室の説明（任意）"
+    },
+    "room_number": {
+      "label": "部屋番号（任意）"
+    },
+    "check_in": {
+      "label": "チェックイン日"
+    },
+    "check_in_time": {
+      "label": "チェックイン時刻（任意）"
+    },
+    "check_out": {
+      "label": "チェックアウト日"
+    },
+    "check_out_time": {
+      "label": "チェックアウト時刻（任意）"
+    },
+    "tariff_per_night": {
+      "label": "1泊の料金（{currency}）"
+    },
+    "extra_charges": {
+      "label": "飲食・その他の料金（{currency}）（任意）"
+    },
+    "gst_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "advance_amount": {
+      "label": "支払済み前払金（{currency}）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "items": {
+      "label": "追加の客室・サービス",
+      "columns": {
+        "name": "客室タイプと内容",
+        "rate": "単価（{currency}）",
+        "qty": "日数"
+      }
+    }
+  },
+  "print": {
+    "invoice_title": "請求書",
+    "invoice_no": "請求書番号",
+    "invoice_date": "請求日",
+    "guest": "宿泊者",
+    "room": "客室",
+    "no": "番号",
+    "check_in": "チェックイン",
+    "check_out": "チェックアウト",
+    "reservation_no": "予約番号",
+    "nationality": "国籍",
+    "guest_address": "宿泊者の住所",
+    "description": "内容",
+    "nights": "泊数",
+    "rate_per_night": "1泊料金",
+    "amount": "金額",
+    "room_tariff": "宿泊料",
+    "extra": "飲食・その他の料金",
+    "subtotal": "小計",
+    "less_advance": "前払金（控除）",
+    "balance_due": "お支払い残高",
+    "total": "合計",
+    "authorised": "認可署名者",
+    "thanks_stay": "ご宿泊ありがとうございました。この請求書はコンピュータで作成されています。",
+    "tax_invoice": "請求書",
+    "bill_no": "請求書番号",
+    "guest_name": "宿泊者名",
+    "address": "住所",
+    "res_no": "予約番号",
+    "room_no": "部屋番号",
+    "room_type": "客室タイプ",
+    "pay_type": "支払方法",
+    "room_description": "客室の説明",
+    "rate": "単価",
+    "days_nights": "日数／泊数",
+    "receipt_no": "領収書番号",
+    "check_in_date": "チェックイン日",
+    "total_amount": "合計金額",
+    "payment_type": "支払方法",
+    "receive": "請求額",
+    "payment_received": "受領額",
+    "receptionist": "フロント担当",
+    "guest_signature": "宿泊者署名",
+    "thank_visit": "ありがとうございました。またお越しください！",
+    "reg_no": "登録番号",
+    "departure_date": "出発日",
+    "check_in_time": "チェックイン時刻",
+    "check_out_time": "チェックアウト時刻",
+    "particular": "項目",
+    "days": "日数",
+    "payment_method": "支払方法",
+    "refunded_received": "返金／受領",
+    "customer_signature": "お客様署名",
+    "manager_signature": "支配人署名",
+    "thanks": "ありがとうございます",
+    "eoe": "誤記・脱漏は訂正のうえ有効"
+  },
+  "sample": {
+    "hotel_name": "ロータスホテル",
+    "guest_name": "田中 太郎",
+    "nationality": "日本",
+    "room_description": "オーシャンビュー・朝食つき",
+    "items": [
+      {
+        "name": "エキストラベッド",
+        "rate": 3000.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 15000,
+    "extra_charges": 4000,
+    "gst_percent": 10,
+    "advance_amount": 5000
+  }
+}

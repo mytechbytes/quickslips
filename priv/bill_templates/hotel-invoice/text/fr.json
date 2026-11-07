@@ -1,0 +1,186 @@
+{
+  "title": "Générateur de facture d'hôtel",
+  "name": "Facture d'hôtel",
+  "public_slug": "generateur-de-facture-d-hotel",
+  "summary": "Facture de séjour avec tarif, extras, acompte et {tax}.",
+  "description": "Créez une facture d'hôtel avec le client, la chambre, l'arrivée et le départ, le tarif par nuit, des chambres ou services supplémentaires, l'acompte et la {tax}. Trois modèles ; aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Classique",
+    "t2": "Facture fiscale",
+    "t3": "Formulaire à cases"
+  },
+  "fields": {
+    "hotel_name": {
+      "label": "Nom de l'hôtel"
+    },
+    "hotel_address": {
+      "label": "Adresse de l'hôtel (facultatif)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "registration_number": {
+      "label": "N° d'enregistrement / CIN (facultatif)"
+    },
+    "invoice_number": {
+      "label": "Numéro de facture"
+    },
+    "reservation_number": {
+      "label": "Numéro de réservation (facultatif)"
+    },
+    "invoice_date": {
+      "label": "Date de la facture"
+    },
+    "guest_name": {
+      "label": "Nom du client"
+    },
+    "guest_gender": {
+      "label": "Sexe (facultatif)",
+      "options": {
+        "Male": "Homme",
+        "Female": "Femme",
+        "Transgender": "Transgenre"
+      }
+    },
+    "guest_age": {
+      "label": "Âge (facultatif)"
+    },
+    "nationality": {
+      "label": "Nationalité (facultatif)"
+    },
+    "guest_address": {
+      "label": "Adresse du client (facultatif)"
+    },
+    "room_type": {
+      "label": "Type de chambre",
+      "options": {
+        "Standard": "Standard",
+        "Deluxe": "Deluxe",
+        "Suite": "Suite",
+        "Dormitory": "Dortoir"
+      }
+    },
+    "room_description": {
+      "label": "Description de la chambre (facultatif)"
+    },
+    "room_number": {
+      "label": "Numéro de chambre (facultatif)"
+    },
+    "check_in": {
+      "label": "Date d'arrivée"
+    },
+    "check_in_time": {
+      "label": "Heure d'arrivée (facultatif)"
+    },
+    "check_out": {
+      "label": "Date de départ"
+    },
+    "check_out_time": {
+      "label": "Heure de départ (facultatif)"
+    },
+    "tariff_per_night": {
+      "label": "Tarif par nuit ({currency})"
+    },
+    "extra_charges": {
+      "label": "Repas et autres frais ({currency}) (facultatif)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "advance_amount": {
+      "label": "Acompte versé ({currency}) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Type de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "items": {
+      "label": "Autres chambres ou services",
+      "columns": {
+        "name": "Type de chambre et description",
+        "rate": "Prix ({currency})",
+        "qty": "Nombre de jours"
+      }
+    }
+  },
+  "print": {
+    "invoice_title": "Facture",
+    "invoice_no": "Facture n°",
+    "invoice_date": "Date de facture",
+    "guest": "Client",
+    "room": "Chambre",
+    "no": "N°",
+    "check_in": "Arrivée",
+    "check_out": "Départ",
+    "reservation_no": "N° de réservation",
+    "nationality": "Nationalité",
+    "guest_address": "Adresse du client",
+    "description": "Description",
+    "nights": "Nuits",
+    "rate_per_night": "Tarif par nuit",
+    "amount": "Montant",
+    "room_tariff": "Tarif de la chambre",
+    "extra": "Repas et autres frais",
+    "subtotal": "Sous-total",
+    "less_advance": "Moins acompte",
+    "balance_due": "Solde à payer",
+    "total": "Total",
+    "authorised": "Signataire autorisé",
+    "thanks_stay": "Merci de votre séjour. Facture générée par ordinateur.",
+    "tax_invoice": "Facture",
+    "bill_no": "Facture n°",
+    "guest_name": "Nom du client",
+    "address": "Adresse",
+    "res_no": "Réserv. n°",
+    "room_no": "Chambre n°",
+    "room_type": "Type de chambre",
+    "pay_type": "Type de paiement",
+    "room_description": "Description",
+    "rate": "Prix",
+    "days_nights": "Jours / nuits",
+    "receipt_no": "Reçu n°",
+    "check_in_date": "Date d'arrivée",
+    "total_amount": "Montant total",
+    "payment_type": "Type de paiement",
+    "receive": "À recevoir",
+    "payment_received": "Paiement reçu",
+    "receptionist": "Réceptionniste",
+    "guest_signature": "Signature du client",
+    "thank_visit": "Merci, à bientôt !",
+    "reg_no": "N° d'enreg.",
+    "departure_date": "Date de départ",
+    "check_in_time": "Heure d'arrivée",
+    "check_out_time": "Heure de départ",
+    "particular": "Désignation",
+    "days": "Jours",
+    "payment_method": "Mode de paiement",
+    "refunded_received": "Remboursé / reçu",
+    "customer_signature": "Signature du client",
+    "manager_signature": "Signature du directeur",
+    "thanks": "Merci",
+    "eoe": "Sauf erreur ou omission"
+  },
+  "sample": {
+    "hotel_name": "Hôtel Résidence Lotus",
+    "guest_name": "Camille Martin",
+    "nationality": "Française",
+    "room_description": "Chambre vue mer avec petit-déjeuner",
+    "items": [
+      {
+        "name": "Lit d'appoint",
+        "rate": 21.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 105,
+    "extra_charges": 30,
+    "gst_percent": 10,
+    "advance_amount": 50
+  }
+}

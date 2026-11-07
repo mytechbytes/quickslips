@@ -1,0 +1,84 @@
+{
+  "title": "Generador de Vale de Caja",
+  "name": "Vale de Caja",
+  "public_slug": "generador-de-vale-de-caja",
+  "summary": "Vale de caja con conceptos, importe y firmas de aprobación.",
+  "description": "Crea un vale de caja con el beneficiario, los conceptos e importes, el total en cifras y letras, y las firmas de elaboración, revisión, aprobación y recepción. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Vale con cuadros"
+  },
+  "fields": {
+    "voucher_number": {
+      "label": "Vale n.º"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "paid_to": {
+      "label": "Pagado a"
+    },
+    "address": {
+      "label": "Dirección"
+    },
+    "prepared_by": {
+      "label": "Elaborado por"
+    },
+    "checked_by": {
+      "label": "Revisado por"
+    },
+    "approved_by": {
+      "label": "Aprobado por"
+    },
+    "resident_certificate": {
+      "label": "N.º de certificado de residencia (opcional)"
+    },
+    "received_date": {
+      "label": "Fecha de recepción (opcional)"
+    },
+    "place": {
+      "label": "Lugar (opcional)"
+    },
+    "items": {
+      "label": "Conceptos",
+      "columns": {
+        "name": "Concepto",
+        "rate": "Importe ({currency})"
+      }
+    }
+  },
+  "print": {
+    "no": "N.º",
+    "cash_voucher": "Vale de caja",
+    "paid_to": "Pagado a",
+    "date": "Fecha",
+    "address": "Dirección",
+    "particular": "Concepto",
+    "amount": "Importe",
+    "total": "Total",
+    "in_words": "Importe en letras",
+    "prepared_by": "Elaborado por",
+    "checked_by": "Revisado por",
+    "approved_by": "Aprobado por",
+    "received_by": "Recibí el importe íntegro descrito arriba. Firma:",
+    "res_cert": "Cert. res. n.º",
+    "place": "Lugar"
+  },
+  "sample": {
+    "paid_to": "Ramón Castillo",
+    "items": [
+      {
+        "name": "Compra de material de oficina",
+        "rate": 48.5
+      },
+      {
+        "name": "Gastos de mensajería",
+        "rate": 12
+      }
+    ],
+    "prepared_by": "S. Jiménez",
+    "checked_by": "M. Ortega",
+    "approved_by": "A. Delgado",
+    "place": "Sevilla",
+    "resident_certificate": "R-3169647"
+  }
+}

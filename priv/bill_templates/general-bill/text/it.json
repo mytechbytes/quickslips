@@ -1,0 +1,100 @@
+{
+  "title": "Generatore di fattura generica",
+  "name": "Fattura generica",
+  "public_slug": "generatore-fattura-generica",
+  "summary": "Fattura semplice per qualsiasi vendita o servizio, con aliquota per articolo.",
+  "description": "Crea una fattura per qualsiasi vendita o servizio con tutti gli articoli che servono, un'aliquota {tax} per ciascuno, venditore, cliente e pagamento. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Fattura semplice"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Nome del negozio"
+    },
+    "shop_address": {
+      "label": "Dati del venditore"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "order_number": {
+      "label": "Numero d'ordine (facoltativo)"
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "customer_location": {
+      "label": "Località del cliente"
+    },
+    "shipping_address": {
+      "label": "Indirizzo di spedizione del cliente"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Articoli",
+      "columns": {
+        "name": "Descrizione",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})",
+        "tax": "Imposta %"
+      }
+    }
+  },
+  "print": {
+    "invoice_date": "Data fattura",
+    "invoice_no": "Fattura n.",
+    "sold_by": "Venduto da",
+    "billed_to": "Intestato a",
+    "description": "Descrizione",
+    "qty": "Q.tà",
+    "price": "Prezzo",
+    "amt": "Imp.",
+    "subtotal": "Subtotale",
+    "payment_info": "Informazioni di pagamento",
+    "due_by": "Scadenza",
+    "total_amount": "Importo totale",
+    "order_no": "Ordine n.",
+    "payment_method": "Metodo di pagamento",
+    "thanks": "Grazie! Arrivederci."
+  },
+  "sample": {
+    "shop_name": "Emporio Centrale",
+    "customer_name": "Marco Rossi",
+    "customer_location": "Roma",
+    "items": [
+      {
+        "name": "Set di contenitori da cucina in acciaio",
+        "qty": 2,
+        "rate": 21,
+        "tax": 22
+      },
+      {
+        "name": "Lenzuolo di cotone (matrimoniale)",
+        "qty": 3,
+        "rate": 26,
+        "tax": 22
+      },
+      {
+        "name": "Lampadina LED 9 W (confezione da 4)",
+        "qty": 2,
+        "rate": 7.9,
+        "tax": 22
+      }
+    ]
+  }
+}

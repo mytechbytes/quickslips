@@ -1,0 +1,100 @@
+{
+  "title": "通用账单生成器",
+  "name": "通用账单",
+  "public_slug": "general-bill-generator",
+  "summary": "适用于任何销售或服务、每件商品单独税率的简易账单。",
+  "description": "为任何销售或服务生成账单，可添加任意数量的商品，每件商品单独设置{tax}税率，并包含卖家、客户和付款信息。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "简易账单"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "店铺名称"
+    },
+    "shop_address": {
+      "label": "卖家信息"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "invoice_number": {
+      "label": "发票号码"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "order_number": {
+      "label": "订单编号（选填）"
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "customer_location": {
+      "label": "客户所在地"
+    },
+    "shipping_address": {
+      "label": "客户收货地址"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "说明",
+        "qty": "数量",
+        "rate": "单价（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "invoice_date": "开票日期",
+    "invoice_no": "发票号码",
+    "sold_by": "卖家",
+    "billed_to": "购买人",
+    "description": "说明",
+    "qty": "数量",
+    "price": "单价",
+    "amt": "金额",
+    "subtotal": "小计",
+    "payment_info": "付款信息",
+    "due_by": "到期日",
+    "total_amount": "合计金额",
+    "order_no": "订单号",
+    "payment_method": "支付方式",
+    "thanks": "谢谢惠顾，欢迎再来！"
+  },
+  "sample": {
+    "shop_name": "万家杂货店",
+    "customer_name": "王伟",
+    "customer_location": "北京",
+    "items": [
+      {
+        "name": "不锈钢厨房收纳盒套装",
+        "qty": 2,
+        "rate": 88,
+        "tax": 13
+      },
+      {
+        "name": "纯棉床单（双人）",
+        "qty": 3,
+        "rate": 69,
+        "tax": 13
+      },
+      {
+        "name": "LED 灯泡 9 W（4 只装）",
+        "qty": 2,
+        "rate": 26,
+        "tax": 13
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "slug": "newspaper-bill",
+  "public_slug": "newspaper-bill-generator",
+  "title": "Newspaper Bill Generator",
+  "category": "Home & utilities",
+  "icon": "hero-newspaper",
+  "number_field": "bill_number",
+  "summary": "Monthly newspaper delivery bill with a service charge.",
+  "description": "Create a monthly newspaper or magazine delivery bill with the agency, the month, the papers with their rate and quantity, a home-delivery service charge and the total. Preview instantly and download as PDF.",
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "templates": [{ "id": "t1" }],
+  "fields": [
+    { "key": "agency_name", "group": "business", "label": "Agency name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "agency_address", "group": "business", "label": "Agency address", "type": "textarea", "required": true, "max_length": 200, "prefill": "business.address" },
+    { "key": "agency_mobile", "group": "business", "label": "Mobile (optional)", "type": "text", "required": false, "max_length": 20 },
+    { "key": "agency_phone", "group": "business", "label": "Phone (optional)", "type": "text", "required": false, "max_length": 20 },
+    { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "bill_number", "group": "document", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "month", "group": "document", "label": "Month", "type": "select", "options": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "required": true },
+    { "key": "bill_year", "group": "document", "label": "Bill year", "type": "text", "required": true, "max_length": 4, "pattern": "^[0-9]{4}$" },
+    { "key": "name_prefix", "group": "customer", "label": "Title", "type": "select", "options": ["Mr.", "Mrs."], "required": false },
+    { "key": "customer_name", "group": "customer", "label": "Customer name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "items", "group": "items", "label": "Newspapers and magazines", "type": "items", "required": true, "max_rows": 30, "name_max_length": 100,
+      "cells": ["name", "rate", "qty"],
+      "columns": { "name": "Description", "rate": "Rate ({currency})", "qty": "Qty" } },
+    { "key": "service_charge", "group": "charges", "label": "Service charge ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
+    { "key": "payment_mode", "group": "payment", "label": "Payment type", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true }
+  ]
+}

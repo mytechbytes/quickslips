@@ -1,0 +1,103 @@
+{
+  "title": "Generatore di ricevuta per rette scolastiche",
+  "name": "Ricevuta scolastica",
+  "public_slug": "generatore-ricevuta-scolastica",
+  "summary": "Ricevuta di retta scolastica con dettaglio, o ricevuta breve.",
+  "description": "Genera una ricevuta di retta scolastica con alunno, classe, periodo e dettaglio di retta, trasporto e altre quote, oppure una ricevuta breve con l'importo in lettere. Due modelli; anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Classico",
+    "t2": "Ricevuta breve"
+  },
+  "fields": {
+    "school_name": {
+      "label": "Scuola o istituto"
+    },
+    "school_address": {
+      "label": "Indirizzo (facoltativo)"
+    },
+    "school_phone": {
+      "label": "Numero di contatto (facoltativo)"
+    },
+    "receipt_number": {
+      "label": "Numero di ricevuta"
+    },
+    "date": {
+      "label": "Data della ricevuta"
+    },
+    "student_name": {
+      "label": "Nome dell'alunno"
+    },
+    "class_name": {
+      "label": "Classe e sezione"
+    },
+    "admission_number": {
+      "label": "Numero di iscrizione (facoltativo)"
+    },
+    "parent_name": {
+      "label": "Genitore o tutore (facoltativo)"
+    },
+    "fee_period": {
+      "label": "Quota per"
+    },
+    "tuition_fee": {
+      "label": "Retta ({currency})"
+    },
+    "transport_fee": {
+      "label": "Trasporto ({currency}) (facoltativo)"
+    },
+    "other_fee": {
+      "label": "Esami, attività e altre quote ({currency}) (facoltativo)"
+    },
+    "late_fee": {
+      "label": "Mora ({currency}) (facoltativo)"
+    },
+    "amount_in_words": {
+      "label": "Importo in lettere (scritto in automatico se vuoto) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Cheque": "Assegno"
+      }
+    }
+  },
+  "print": {
+    "fee_receipt": "Ricevuta retta",
+    "receipt_no": "Ricevuta n.",
+    "date": "Data",
+    "student": "Alunno",
+    "class": "Classe",
+    "admission_no": "N. iscrizione",
+    "parent": "Genitore o tutore",
+    "fee_for": "Quota per",
+    "paid_by": "Pagato con",
+    "tuition_fee": "Retta",
+    "transport_fee": "Trasporto",
+    "other_fee": "Esami, attività e altre quote",
+    "late_fee": "Mora",
+    "total_received": "Totale incassato",
+    "accounts_office": "Ufficio amministrativo",
+    "keep_receipt": "Conservare questa ricevuta per i propri archivi.",
+    "branches": "Sedi",
+    "cell": "Tel.",
+    "no": "N.",
+    "receipt": "Ricevuta",
+    "received": "Ricevuta con ringraziamenti dal Sig./Sig.ra {payer}, genitore di {pupil}, la somma di {words} a titolo di {purpose}, pagata con {mode}.",
+    "signature": "Firma"
+  },
+  "sample": {
+    "school_name": "Scuola Alba",
+    "student_name": "Matteo Rossi",
+    "parent_name": "Marco Rossi",
+    "tuition_fee": 330,
+    "transport_fee": 60,
+    "other_fee": 30,
+    "class_name": "1ª B",
+    "fee_period": "Secondo quadrimestre, 2026-27",
+    "school_phone": "06 1234567"
+  }
+}

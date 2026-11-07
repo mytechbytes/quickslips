@@ -1,0 +1,21 @@
+{
+  "sample": {
+    "hotel_name": "Hôtel Résidence Lotus",
+    "guest_name": "Julie Tremblay",
+    "nationality": "Canadienne",
+    "room_description": "Chambre vue sur le fleuve avec petit-déjeuner",
+    "items": [
+      {
+        "name": "Lit d'appoint",
+        "rate": 38.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 190,
+    "extra_charges": 50,
+    "gst_percent": 5,
+    "advance_amount": 100,
+    "hotel_address": "1200 rue Sherbrooke, Montréal, QC H3A 1H6",
+    "guest_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "title": "होटल बिल जनरेटर",
+  "name": "होटल बिल",
+  "public_slug": "hotel-bill-generator",
+  "summary": "टैरिफ, अतिरिक्त शुल्क, एडवांस और {tax} के साथ कमरे का बिल।",
+  "description": "मेहमान, कमरे, चेक-इन और चेक-आउट, प्रति रात टैरिफ, अतिरिक्त कमरों और सेवाओं, एडवांस और {tax} के साथ होटल बिल बनाएं। तीन डिज़ाइन; तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "क्लासिक",
+    "t2": "टैक्स इनवॉइस",
+    "t3": "रूल्ड फ़ॉर्म"
+  },
+  "fields": {
+    "hotel_name": {
+      "label": "होटल का नाम"
+    },
+    "hotel_address": {
+      "label": "होटल का पता (वैकल्पिक)"
+    },
+    "gstin": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "registration_number": {
+      "label": "पंजीकरण नं. / CIN (वैकल्पिक)"
+    },
+    "invoice_number": {
+      "label": "बिल नंबर"
+    },
+    "reservation_number": {
+      "label": "आरक्षण नंबर (वैकल्पिक)"
+    },
+    "invoice_date": {
+      "label": "बिल की तारीख"
+    },
+    "guest_name": {
+      "label": "मेहमान का नाम"
+    },
+    "guest_gender": {
+      "label": "लिंग (वैकल्पिक)",
+      "options": {
+        "Male": "पुरुष",
+        "Female": "महिला",
+        "Transgender": "ट्रांसजेंडर"
+      }
+    },
+    "guest_age": {
+      "label": "आयु (वैकल्पिक)"
+    },
+    "nationality": {
+      "label": "राष्ट्रीयता (वैकल्पिक)"
+    },
+    "guest_address": {
+      "label": "मेहमान का पता (वैकल्पिक)"
+    },
+    "room_type": {
+      "label": "कमरे का प्रकार",
+      "options": {
+        "Standard": "स्टैंडर्ड",
+        "Deluxe": "डीलक्स",
+        "Suite": "सुइट",
+        "Dormitory": "डॉरमिटरी"
+      }
+    },
+    "room_description": {
+      "label": "कमरे का विवरण (वैकल्पिक)"
+    },
+    "room_number": {
+      "label": "कमरा नंबर (वैकल्पिक)"
+    },
+    "check_in": {
+      "label": "चेक-इन की तारीख"
+    },
+    "check_in_time": {
+      "label": "चेक-इन का समय (वैकल्पिक)"
+    },
+    "check_out": {
+      "label": "चेक-आउट की तारीख"
+    },
+    "check_out_time": {
+      "label": "चेक-आउट का समय (वैकल्पिक)"
+    },
+    "tariff_per_night": {
+      "label": "प्रति रात टैरिफ ({currency})"
+    },
+    "extra_charges": {
+      "label": "भोजन और अन्य शुल्क ({currency}) (वैकल्पिक)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (वैकल्पिक)"
+    },
+    "advance_amount": {
+      "label": "दिया गया एडवांस ({currency}) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का प्रकार",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "items": {
+      "label": "अन्य कमरे या सेवाएँ",
+      "columns": {
+        "name": "कमरे का प्रकार और विवरण",
+        "rate": "दर ({currency})",
+        "qty": "दिनों की संख्या"
+      }
+    }
+  },
+  "print": {
+    "invoice_title": "इनवॉइस",
+    "invoice_no": "इनवॉइस नं.",
+    "invoice_date": "इनवॉइस की तारीख",
+    "guest": "मेहमान",
+    "room": "कमरा",
+    "no": "नं.",
+    "check_in": "चेक-इन",
+    "check_out": "चेक-आउट",
+    "reservation_no": "आरक्षण नं.",
+    "nationality": "राष्ट्रीयता",
+    "guest_address": "मेहमान का पता",
+    "description": "विवरण",
+    "nights": "रातें",
+    "rate_per_night": "प्रति रात दर",
+    "amount": "राशि",
+    "room_tariff": "कमरे का टैरिफ",
+    "extra": "भोजन और अन्य शुल्क",
+    "subtotal": "उप-योग",
+    "less_advance": "घटाएँ: एडवांस",
+    "balance_due": "देय शेष राशि",
+    "total": "कुल",
+    "authorised": "अधिकृत हस्ताक्षरकर्ता",
+    "thanks_stay": "हमारे यहाँ ठहरने के लिए धन्यवाद। यह कंप्यूटर द्वारा तैयार किया गया इनवॉइस है।",
+    "tax_invoice": "टैक्स इनवॉइस",
+    "bill_no": "बिल नं.",
+    "guest_name": "मेहमान का नाम",
+    "address": "पता",
+    "res_no": "आरक्षण नं.",
+    "room_no": "कमरा नं.",
+    "room_type": "कमरे का प्रकार",
+    "pay_type": "भुगतान प्रकार",
+    "room_description": "कमरे का विवरण",
+    "rate": "दर",
+    "days_nights": "दिन / रातें",
+    "receipt_no": "रसीद नं.",
+    "check_in_date": "चेक-इन की तारीख",
+    "total_amount": "कुल राशि",
+    "payment_type": "भुगतान का प्रकार",
+    "receive": "प्राप्त करें",
+    "payment_received": "प्राप्त भुगतान",
+    "receptionist": "रिसेप्शनिस्ट",
+    "guest_signature": "मेहमान के हस्ताक्षर",
+    "thank_visit": "धन्यवाद, फिर पधारें!",
+    "reg_no": "पंजी. नं.",
+    "departure_date": "प्रस्थान की तारीख",
+    "check_in_time": "चेक-इन का समय",
+    "check_out_time": "चेक-आउट का समय",
+    "particular": "विवरण",
+    "days": "दिन",
+    "payment_method": "भुगतान का तरीका",
+    "refunded_received": "वापस / प्राप्त",
+    "customer_signature": "ग्राहक के हस्ताक्षर",
+    "manager_signature": "प्रबंधक के हस्ताक्षर",
+    "thanks": "धन्यवाद",
+    "eoe": "त्रुटि एवं चूक अपवाद"
+  },
+  "sample": {
+    "hotel_name": "लोटस रेज़िडेंसी",
+    "guest_name": "रोहन मेहता",
+    "nationality": "भारतीय",
+    "room_description": "समुद्र की ओर खुलने वाला कमरा, नाश्ते के साथ",
+    "items": [
+      {
+        "name": "एक्स्ट्रा बेड",
+        "rate": 800.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 4000,
+    "extra_charges": 1200,
+    "gst_percent": 12,
+    "advance_amount": 2000,
+    "hotel_address": "4, बीच रोड, कैंडोलिम, गोवा 403515",
+    "guest_address": "22, हिल रोड, बांद्रा पश्चिम, मुंबई 400050"
+  }
+}

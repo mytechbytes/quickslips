@@ -1,0 +1,67 @@
+{
+  "title": "Cash Voucher Generator",
+  "name": "Cash Voucher",
+  "public_slug": "cash-voucher-generator",
+  "summary": "Cash voucher with particulars, amount and approval signatures.",
+  "description": "Create a cash voucher with the payee, the particulars and amounts, the total in figures and words, and the prepared, checked, approved and received signatures. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Ruled voucher"
+  },
+  "fields": {
+    "voucher_number": {
+      "label": "Voucher no."
+    },
+    "date": {
+      "label": "Date"
+    },
+    "paid_to": {
+      "label": "Paid to"
+    },
+    "address": {
+      "label": "Address"
+    },
+    "prepared_by": {
+      "label": "Prepared by"
+    },
+    "checked_by": {
+      "label": "Checked by"
+    },
+    "approved_by": {
+      "label": "Approved by"
+    },
+    "resident_certificate": {
+      "label": "Resident certificate no. (optional)"
+    },
+    "received_date": {
+      "label": "Date received (optional)"
+    },
+    "place": {
+      "label": "Place (optional)"
+    },
+    "items": {
+      "label": "Particulars",
+      "columns": {
+        "name": "Particular",
+        "rate": "Amount ({currency})"
+      }
+    }
+  },
+  "print": {
+    "no": "No.",
+    "cash_voucher": "Cash voucher",
+    "paid_to": "Paid to",
+    "date": "Date",
+    "address": "Address",
+    "particular": "Particular",
+    "amount": "Amount",
+    "total": "Total",
+    "in_words": "Amount in words",
+    "prepared_by": "Prepared by",
+    "checked_by": "Checked by",
+    "approved_by": "Approved by",
+    "received_by": "Received the full payment amount described above by:",
+    "res_cert": "Res. cert. no.",
+    "place": "Place"
+  },
+  "sample": {}
+}

@@ -1,0 +1,186 @@
+{
+  "title": "Gerador de nota de hotel",
+  "name": "Nota de hotel",
+  "public_slug": "gerador-de-nota-de-hotel",
+  "summary": "Nota de hospedagem com diária, extras, adiantamento e {tax}.",
+  "description": "Crie uma nota de hotel com hóspede, quarto, check-in e check-out, diária, quartos ou serviços adicionais, adiantamento e {tax}. Três modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Clássico",
+    "t2": "Nota fiscal",
+    "t3": "Formulário em quadros"
+  },
+  "fields": {
+    "hotel_name": {
+      "label": "Nome do hotel"
+    },
+    "hotel_address": {
+      "label": "Endereço do hotel (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "registration_number": {
+      "label": "N.º de registro / CIN (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número da nota"
+    },
+    "reservation_number": {
+      "label": "Número da reserva (opcional)"
+    },
+    "invoice_date": {
+      "label": "Data da nota"
+    },
+    "guest_name": {
+      "label": "Nome do hóspede"
+    },
+    "guest_gender": {
+      "label": "Sexo (opcional)",
+      "options": {
+        "Male": "Masculino",
+        "Female": "Feminino",
+        "Transgender": "Transgênero"
+      }
+    },
+    "guest_age": {
+      "label": "Idade (opcional)"
+    },
+    "nationality": {
+      "label": "Nacionalidade (opcional)"
+    },
+    "guest_address": {
+      "label": "Endereço do hóspede (opcional)"
+    },
+    "room_type": {
+      "label": "Tipo de quarto",
+      "options": {
+        "Standard": "Padrão",
+        "Deluxe": "Luxo",
+        "Suite": "Suíte",
+        "Dormitory": "Dormitório"
+      }
+    },
+    "room_description": {
+      "label": "Descrição do quarto (opcional)"
+    },
+    "room_number": {
+      "label": "Número do quarto (opcional)"
+    },
+    "check_in": {
+      "label": "Data de check-in"
+    },
+    "check_in_time": {
+      "label": "Hora de check-in (opcional)"
+    },
+    "check_out": {
+      "label": "Data de check-out"
+    },
+    "check_out_time": {
+      "label": "Hora de check-out (opcional)"
+    },
+    "tariff_per_night": {
+      "label": "Diária ({currency})"
+    },
+    "extra_charges": {
+      "label": "Refeições e outras cobranças ({currency}) (opcional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "advance_amount": {
+      "label": "Adiantamento pago ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Tipo de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Mais quartos ou serviços",
+      "columns": {
+        "name": "Tipo de quarto e descrição",
+        "rate": "Preço ({currency})",
+        "qty": "N.º de dias"
+      }
+    }
+  },
+  "print": {
+    "invoice_title": "Nota fiscal",
+    "invoice_no": "Nota n.º",
+    "invoice_date": "Data da nota",
+    "guest": "Hóspede",
+    "room": "Quarto",
+    "no": "N.º",
+    "check_in": "Check-in",
+    "check_out": "Check-out",
+    "reservation_no": "N.º da reserva",
+    "nationality": "Nacionalidade",
+    "guest_address": "Endereço do hóspede",
+    "description": "Descrição",
+    "nights": "Noites",
+    "rate_per_night": "Diária",
+    "amount": "Valor",
+    "room_tariff": "Diária do quarto",
+    "extra": "Refeições e outras cobranças",
+    "subtotal": "Subtotal",
+    "less_advance": "Menos adiantamento",
+    "balance_due": "Saldo a pagar",
+    "total": "Total",
+    "authorised": "Signatário autorizado",
+    "thanks_stay": "Obrigado pela hospedagem. Nota gerada por computador.",
+    "tax_invoice": "Nota fiscal",
+    "bill_no": "Nota n.º",
+    "guest_name": "Nome do hóspede",
+    "address": "Endereço",
+    "res_no": "Reserva n.º",
+    "room_no": "Quarto n.º",
+    "room_type": "Tipo de quarto",
+    "pay_type": "Tipo de pagamento",
+    "room_description": "Descrição",
+    "rate": "Preço",
+    "days_nights": "Dias / noites",
+    "receipt_no": "Recibo n.º",
+    "check_in_date": "Data de check-in",
+    "total_amount": "Valor total",
+    "payment_type": "Tipo de pagamento",
+    "receive": "A receber",
+    "payment_received": "Pagamento recebido",
+    "receptionist": "Recepcionista",
+    "guest_signature": "Assinatura do hóspede",
+    "thank_visit": "Obrigado, volte sempre!",
+    "reg_no": "N.º de registro",
+    "departure_date": "Data de saída",
+    "check_in_time": "Hora de check-in",
+    "check_out_time": "Hora de check-out",
+    "particular": "Descrição",
+    "days": "Dias",
+    "payment_method": "Forma de pagamento",
+    "refunded_received": "Reembolsado / recebido",
+    "customer_signature": "Assinatura do cliente",
+    "manager_signature": "Assinatura do gerente",
+    "thanks": "Obrigado",
+    "eoe": "Salvo erros e omissões"
+  },
+  "sample": {
+    "hotel_name": "Hotel Residência Lótus",
+    "guest_name": "Ana Souza",
+    "nationality": "Brasileira",
+    "room_description": "Quarto com vista para o mar e café da manhã",
+    "items": [
+      {
+        "name": "Cama extra",
+        "rate": 90.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 450,
+    "extra_charges": 120,
+    "gst_percent": 5,
+    "advance_amount": 200
+  }
+}

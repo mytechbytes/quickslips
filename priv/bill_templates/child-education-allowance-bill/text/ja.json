@@ -1,0 +1,132 @@
+{
+  "title": "子女教育手当（CEA）請求書作成",
+  "name": "子女教育手当請求書",
+  "public_slug": "child-education-allowance-bill-generator",
+  "summary": "子女教育手当の償還請求書。",
+  "description": "申請者、配偶者、子女とその学校、支出の内訳を記載した子女教育手当（CEA）または寮費補助の償還請求書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "申請書"
+  },
+  "fields": {
+    "claim_date": {
+      "label": "日付"
+    },
+    "academic_year": {
+      "label": "学年度"
+    },
+    "name_rank": {
+      "label": "公務員の氏名・階級"
+    },
+    "personal_number": {
+      "label": "個人番号"
+    },
+    "designation": {
+      "label": "役職"
+    },
+    "unit": {
+      "label": "部署・機関"
+    },
+    "spouse_employed": {
+      "label": "配偶者が政府・公的機関・民間で勤務しているか"
+    },
+    "spouse_office": {
+      "label": "配偶者の役職・勤務先（任意）"
+    },
+    "child1_name": {
+      "label": "子女1：氏名"
+    },
+    "child1_dob": {
+      "label": "子女1：生年月日"
+    },
+    "child1_standard": {
+      "label": "子女1：学年"
+    },
+    "child1_school": {
+      "label": "子女1：学校名と所在地"
+    },
+    "child2_name": {
+      "label": "子女2：氏名（任意）"
+    },
+    "child2_dob": {
+      "label": "子女2：生年月日（任意）"
+    },
+    "child2_standard": {
+      "label": "子女2：学年（任意）"
+    },
+    "child2_school": {
+      "label": "子女2：学校名と所在地（任意）"
+    },
+    "items": {
+      "label": "費用の償還",
+      "columns": {
+        "code": "順番",
+        "name": "期間",
+        "qty": "月数",
+        "rate": "手当の額（{currency}）",
+        "batch": "備考"
+      }
+    }
+  },
+  "print": {
+    "title": "子女教育手当 償還申請書",
+    "claim_for": "申請の対象学年度",
+    "intro": "子女の教育手当・寮費補助の償還を申請します。関連事項は以下のとおりです。",
+    "date": "日付",
+    "q1": "公務員の氏名・階級",
+    "q2": "個人番号",
+    "q3": "役職",
+    "q4": "部署名",
+    "q5": "配偶者が国・地方政府、自治団体、公営企業、地方機関、民間などに勤務している場合",
+    "q6": "配偶者の役職・勤務先・部署番号（公務員の場合）",
+    "children_title": "手当・補助を申請する子女の情報：",
+    "sequence": "順番",
+    "child_name": "子女の氏名",
+    "dob": "生年月日",
+    "standard": "学年",
+    "ay": "年度",
+    "school": "学校・機関の名称と所在地",
+    "expenditure_title": "費用の償還：",
+    "period": "期間",
+    "rate_cea": "手当の額",
+    "amount_claimed": "請求額",
+    "remarks": "備考",
+    "total_claimed": "請求合計額",
+    "months": "か月"
+  },
+  "sample": {
+    "name_rank": "田中 健一 少佐",
+    "personal_number": "J-48213",
+    "designation": "幕僚",
+    "unit": "東京本部",
+    "spouse_employed": "いいえ",
+    "child1_name": "田中 一郎",
+    "child2_name": "田中 花",
+    "child1_school": "あさひ学園（東京）",
+    "child2_school": "あさひ学園（東京）",
+    "child1_standard": "中学1年",
+    "child2_standard": "小学4年",
+    "items": [
+      {
+        "code": "1",
+        "name": "2026年4月〜6月",
+        "qty": 3,
+        "rate": 15000,
+        "batch": "田中 一郎"
+      },
+      {
+        "code": "2",
+        "name": "2026年7月〜9月",
+        "qty": 3,
+        "rate": 15000,
+        "batch": "田中 一郎"
+      },
+      {
+        "code": "3",
+        "name": "2026年4月〜9月",
+        "qty": 6,
+        "rate": 15000,
+        "batch": "田中 花"
+      }
+    ]
+  }
+}

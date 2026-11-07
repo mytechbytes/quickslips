@@ -1,0 +1,163 @@
+{
+  "title": "健身房会员收据生成器",
+  "name": "健身房会员收据",
+  "public_slug": "gym-membership-receipt-generator",
+  "summary": "含套餐、期限和费用的健身房会员收据或发票。",
+  "description": "生成健身房会员收据或发票，包含套餐、计费周期、有效期、费用、附加项目、{tax}和健身房须知。两种样式；即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "收据",
+    "t2": "发票"
+  },
+  "fields": {
+    "gym_name": {
+      "label": "健身房或俱乐部"
+    },
+    "gym_address": {
+      "label": "地址（选填）"
+    },
+    "gym_email": {
+      "label": "健身房邮箱（选填）"
+    },
+    "gym_phone": {
+      "label": "健身房电话（选填）"
+    },
+    "gstin": {
+      "label": "{tax_id}（选填）"
+    },
+    "receipt_number": {
+      "label": "收据编号"
+    },
+    "date": {
+      "label": "收据日期"
+    },
+    "member_name": {
+      "label": "会员姓名"
+    },
+    "member_phone": {
+      "label": "会员电话（选填）"
+    },
+    "customer_number": {
+      "label": "客户编号（选填）"
+    },
+    "user_number": {
+      "label": "用户编号（选填）"
+    },
+    "member_address": {
+      "label": "会员地址（选填）"
+    },
+    "plan": {
+      "label": "套餐",
+      "options": {
+        "Day pass": "日卡",
+        "Monthly": "月卡",
+        "Quarterly": "季卡",
+        "Half-yearly": "半年卡",
+        "Yearly": "年卡"
+      }
+    },
+    "billing_cycle": {
+      "label": "计费周期（选填）",
+      "options": {
+        "Monthly": "月度",
+        "Quarterly": "季度",
+        "Half-yearly": "半年度",
+        "Annual": "年度"
+      }
+    },
+    "start_date": {
+      "label": "有效期自"
+    },
+    "end_date": {
+      "label": "有效期至"
+    },
+    "fee": {
+      "label": "会员费（{currency}）"
+    },
+    "joining_fee": {
+      "label": "入会费（{currency}）（选填）"
+    },
+    "gst_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "remarks": {
+      "label": "备注（选填）"
+    },
+    "instructions": {
+      "label": "会员须知（每行一条）（选填）"
+    },
+    "items": {
+      "label": "附加项目",
+      "columns": {
+        "name": "项目及说明",
+        "qty": "数量",
+        "rate": "单价（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "membership_receipt": "会员收据",
+    "receipt_no": "收据号码",
+    "date": "日期",
+    "member": "会员",
+    "phone": "电话",
+    "plan": "套餐",
+    "valid": "有效期",
+    "to": "至",
+    "paid_by": "支付方式",
+    "membership_fee": "会员费",
+    "joining_fee": "入会费",
+    "subtotal": "小计",
+    "authorised": "授权签字人",
+    "stay_fit": "保持健康，健身房见。",
+    "invoice_no": "发票号",
+    "invoice_date": "开票日期",
+    "user_id": "用户编号",
+    "customer_name": "客户姓名",
+    "address": "地址",
+    "mobile": "手机",
+    "account_summary": "账户汇总",
+    "bill_from_date": "计费起始日",
+    "billing_cycle": "计费周期",
+    "due_date": "到期日",
+    "amount": "金额",
+    "payment_mode": "支付方式",
+    "billing_details": "账单明细",
+    "gym_item": "项目",
+    "unit": "数量",
+    "net_amount": "净额",
+    "total": "合计",
+    "tax_pct": "税率 %",
+    "taxable_amount": "计税金额",
+    "instructions_title": "健身房须知",
+    "remark": "备注",
+    "signature": "签名"
+  },
+  "sample": {
+    "gym_name": "铁人健身房",
+    "member_name": "王伟",
+    "gym_phone": "010-12345678",
+    "member_phone": "138 0013 8000",
+    "fee": 899,
+    "joining_fee": 100,
+    "gst_percent": 6,
+    "items": [
+      {
+        "name": "私教课",
+        "qty": 4,
+        "rate": 150
+      }
+    ],
+    "instructions": "签到：到达后如有需要，请在前台签到。\n着装与卫生：请穿运动服和干净的运动鞋，并自备毛巾擦拭器械。\n热身：训练前先做 5-10 分钟热身，如轻度有氧或动态拉伸。\n器械：新会员请先熟悉器械布局，如有需要可向工作人员请教。\n有氧器械：按自身体能调节器械，使用前后请擦拭。\n补水：训练前、中、后请适量饮水。\n休息：组间适当休息，高峰时段请勿长时间占用器械。\n放松：训练后做 5-10 分钟轻度拉伸。\n随身物品：请将物品存放在储物柜，贵重物品勿无人看管。\n享受锻炼，坚持不懈：坚持是达成健身目标的关键。",
+    "remarks": "暂停会籍需提前 7 天申请。"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "title": "Generatore di biglietto per indennità di viaggio (LTA)",
+  "name": "Biglietto LTA",
+  "public_slug": "generatore-biglietto-lta",
+  "summary": "E-ticket di autobus o treno per un'indennità di viaggio.",
+  "description": "Crea un e-ticket di autobus o treno per un'indennità di viaggio (LTA) con operatore, punti di salita e discesa, passeggeri, posto, tariffa, {tax} e condizioni di cancellazione. Due modelli; anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "E-ticket",
+    "t2": "E-ticket a riquadri"
+  },
+  "fields": {
+    "travel_name": {
+      "label": "Operatore di viaggio"
+    },
+    "boarding_phone": {
+      "label": "Telefono del punto di salita"
+    },
+    "customer_care": {
+      "label": "Assistenza clienti"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "ticket_number": {
+      "label": "Numero del biglietto"
+    },
+    "pnr_number": {
+      "label": "Numero PNR (facoltativo)"
+    },
+    "travel_type": {
+      "label": "Tipo di viaggio",
+      "options": {
+        "Sleeper": "Cuccette",
+        "AC Sleeper": "Cuccette con A/C",
+        "Semi Sleeper": "Semi-cuccette",
+        "AC Sleeper (2+1)": "Cuccette con A/C (2+1)",
+        "Non Sleeper": "Posti a sedere",
+        "Non AC": "Senza A/C"
+      }
+    },
+    "location": {
+      "label": "Salita: luogo"
+    },
+    "landmark": {
+      "label": "Salita: punto di riferimento"
+    },
+    "boarding_address": {
+      "label": "Salita: indirizzo"
+    },
+    "reporting_date": {
+      "label": "Data di presentazione"
+    },
+    "departure_time": {
+      "label": "Ora di partenza (facoltativo)"
+    },
+    "dropping_date": {
+      "label": "Discesa: data"
+    },
+    "dropping_time": {
+      "label": "Discesa: ora (facoltativo)"
+    },
+    "dropping_address": {
+      "label": "Discesa: indirizzo"
+    },
+    "passenger_details": {
+      "label": "Passeggero: nome, età, sesso"
+    },
+    "passenger_count": {
+      "label": "Numero di passeggeri"
+    },
+    "seat_number": {
+      "label": "Numero del posto"
+    },
+    "amount": {
+      "label": "Tariffa ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "cancellation_charge": {
+      "label": "Costo di cancellazione prima della partenza ({currency}) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "t1_banner": "Congratulazioni! Hai prenotato un biglietto modificabile. Puoi anticipare o posticipare questo viaggio fino al {when}.",
+    "eticket": "E-TICKET",
+    "type": "Tipo",
+    "need_help": "Serve aiuto con il viaggio?",
+    "boarding_phone": "Tel. punto di salita",
+    "customer_care": "Assistenza clienti",
+    "ticket_no": "Biglietto n.",
+    "pnr_no": "PNR n.",
+    "reporting_date": "Data di presentazione",
+    "departure_time": "Ora di partenza",
+    "no_passengers": "N. passeggeri",
+    "boarding_point": "Punto di salita",
+    "dropping_point": "Punto di discesa",
+    "location": "Luogo",
+    "landmark": "Punto di riferimento",
+    "address": "Indirizzo",
+    "time": "Ora",
+    "date": "Data",
+    "passenger_details": "Passeggero (età, sesso)",
+    "seat_number": "Posto",
+    "mticket_note": "NOTA: Questo operatore accetta biglietti su mobile; non serve stamparlo.",
+    "total_fare": "Tariffa totale",
+    "gst_note": "({rate}% di {tax} e costo del servizio, se previsti)",
+    "net_amount": "Importo netto",
+    "taxable_amount": "Imponibile",
+    "terms": "Termini e condizioni",
+    "t1_term_0": "Tieni presente la politica sui bagagli per il tuo viaggio.",
+    "t1_term_1": "Ogni passeggero può portare un bagaglio fino a 10 kg e un oggetto personale (borsa per laptop, borsetta, valigetta) fino a 5 kg.",
+    "t1_term_2": "È vietato trasportare armi, materiali infiammabili, armi da fuoco, munizioni, droghe, alcolici, merci di contrabbando o altri articoli vietati dalla legge.",
+    "t1_term_3": "L'operatore può negare l'imbarco o addebitare un supplemento se il passeggero porta più bagaglio del consentito.",
+    "t1_term_4": "La cancellazione parziale NON è consentita per questo biglietto. I costi di cancellazione dell'intero biglietto sono indicati sotto.",
+    "cancel_time": "Momento della cancellazione",
+    "cancel_charges": "Costi di cancellazione",
+    "after": "Dopo",
+    "before": "Prima di",
+    "on": "il",
+    "cut_as_charges": "{amount} verranno trattenuti come costi di cancellazione",
+    "t2_banner": "Congratulazioni! Il tuo biglietto è modificabile fino al {when}.",
+    "lta_month": "Mese dell'indennità",
+    "boarding_help": "Aiuto per la salita",
+    "journey_date": "Data del viaggio",
+    "passengers": "Passeggeri",
+    "seat_count": "Posto",
+    "passenger_details_title": "Passeggero (nome/età/sesso)",
+    "payment_method": "Metodo di pagamento",
+    "important_note": "Nota importante",
+    "note_mticket": "Questo operatore accetta biglietti su mobile. Il biglietto stampato è facoltativo.",
+    "note_id": "Porta un documento d'identità con foto valido per la verifica all'imbarco.",
+    "note_changes": "Per modifiche al viaggio, contatta l'operatore prima dell'orario limite.",
+    "base_fare": "Tariffa base",
+    "tax": "Imposta",
+    "t2_term_1": "È consentito un bagaglio fino a 10 kg e una borsa personale fino a 5 kg.",
+    "t2_term_2": "Non portare articoli vietati come armi, droghe o merci pericolose.",
+    "t2_term_3": "L'operatore può negare l'imbarco in caso di violazioni delle regole o della sicurezza.",
+    "t2_term_4": "La cancellazione parziale non è disponibile per questo biglietto.",
+    "cancel_window": "Finestra di cancellazione",
+    "applicable_charge": "Costo applicabile"
+  },
+  "sample": {
+    "travel_name": "Viaggi Sempreverde",
+    "boarding_phone": "06 1234567",
+    "customer_care": "800 123 456",
+    "location": "Autostazione Tiburtina, Roma",
+    "landmark": "Di fronte alla metro",
+    "passenger_details": "Marco Rossi, 34, maschio",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 38,
+    "tax_percent": 10,
+    "cancellation_charge": 8
+  }
+}

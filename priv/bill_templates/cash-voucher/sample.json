@@ -1,0 +1,16 @@
+{
+  "voucher_number": "9144",
+  "date": "2026-11-07",
+  "paid_to": "Ramesh Kulkarni",
+  "address": "14, Shivaji Nagar, Pune, Maharashtra 411005",
+  "items": [
+    { "name": "Stationery purchase for the office", "rate": 1250.5 },
+    { "name": "Courier charges", "rate": 480 }
+  ],
+  "prepared_by": "S. Joshi",
+  "checked_by": "M. Iyer",
+  "approved_by": "A. Deshmukh",
+  "resident_certificate": "B-3169647",
+  "received_date": "2026-11-07",
+  "place": "Pune"
+}

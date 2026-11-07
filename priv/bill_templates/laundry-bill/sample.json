@@ -1,0 +1,17 @@
+{
+  "laundry_name": "Sparkle Dry Cleaning & Laundry",
+  "laundry_address": "Shop 9, Station Road, Thane, Maharashtra 400601",
+  "invoice_number": "713530",
+  "date": "2026-11-07",
+  "delivery_date": "2026-11-09",
+  "customer_name": "Rohan Mehta",
+  "customer_address": "Flat 12, Sunrise Apartments, Station Road, Thane",
+  "items": [
+    { "name": "Shirt (wash and iron)", "qty": 6, "rate": 30 },
+    { "name": "Trousers (dry clean)", "qty": 3, "rate": 120 },
+    { "name": "Bed sheet (wash)", "qty": 2, "rate": 80 },
+    { "name": "Saree (dry clean)", "qty": 1, "rate": 250 }
+  ],
+  "payment_mode": "Cash",
+  "terms": "All garments, linen and fabrics are handled with the greatest care, but owing to the condition of the articles or defects that are not visible in the material there is a POSSIBILITY OF DISCOLOURING OR SHRINKAGE. Such garments are accepted for cleaning at the OWNER'S RISK and the company will not accept any responsibility for it.\nThe company will use reasonable efforts to keep washing, drying and folding at a high level of quality.\nDue to time constraints the company does not read the manufacturers' care labels and is not responsible for garments labelled \"hand wash only\" or \"dry clean only\"."
+}

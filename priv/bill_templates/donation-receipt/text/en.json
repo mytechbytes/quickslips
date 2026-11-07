@@ -1,0 +1,77 @@
+{
+  "title": "Donation Receipt Generator",
+  "name": "Donation Receipt",
+  "public_slug": "donation-receipt-generator",
+  "summary": "Receipt for a donation to an NGO or trust.",
+  "description": "Create a donation receipt for an NGO, charity or trust with the donor, the amount in figures and words, the payment method, who received it and a thank-you. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Receipt"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "Organisation name"
+    },
+    "registration_number": {
+      "label": "Registration number (optional)"
+    },
+    "address": {
+      "label": "Address"
+    },
+    "email": {
+      "label": "Email (optional)"
+    },
+    "website": {
+      "label": "Website (optional)"
+    },
+    "phone": {
+      "label": "Phone / contact (optional)"
+    },
+    "receipt_number": {
+      "label": "Receipt no."
+    },
+    "date": {
+      "label": "Date"
+    },
+    "donor_name": {
+      "label": "Donor name"
+    },
+    "amount": {
+      "label": "Total amount ({currency})"
+    },
+    "amount_in_words": {
+      "label": "Amount in words (written out for you when empty) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "received_by": {
+      "label": "Received by (optional)"
+    },
+    "donation_description": {
+      "label": "Description of donation (optional)"
+    }
+  },
+  "print": {
+    "email": "Email",
+    "website": "Website",
+    "phone": "Phone",
+    "donation_receipt": "Donation receipt",
+    "receipt_no": "Receipt no.",
+    "date": "Date",
+    "received_from": "Received from:",
+    "amount": "Amount",
+    "sum_of_words": "The sum of amount in words",
+    "payment_method": "Payment method",
+    "received_by": "Received by:",
+    "description_of_donation": "Description of donation:",
+    "thanks": "Thank you for your generosity, we appreciate your support."
+  },
+  "sample": {}
+}

@@ -1,0 +1,103 @@
+{
+  "title": "स्कूल फ़ीस रसीद जनरेटर",
+  "name": "स्कूल फ़ीस रसीद",
+  "public_slug": "school-fee-receipt-generator",
+  "summary": "फ़ीस के विवरण के साथ स्कूल फ़ीस की रसीद, या संक्षिप्त रसीद वाउचर।",
+  "description": "छात्र, कक्षा, फ़ीस अवधि और ट्यूशन, परिवहन व अन्य शुल्क के विवरण के साथ स्कूल फ़ीस की रसीद, या शब्दों में राशि वाला संक्षिप्त रसीद वाउचर बनाएं। दो डिज़ाइन; तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "क्लासिक",
+    "t2": "रसीद वाउचर"
+  },
+  "fields": {
+    "school_name": {
+      "label": "स्कूल या संस्थान"
+    },
+    "school_address": {
+      "label": "पता (वैकल्पिक)"
+    },
+    "school_phone": {
+      "label": "संपर्क नंबर (वैकल्पिक)"
+    },
+    "receipt_number": {
+      "label": "रसीद नंबर"
+    },
+    "date": {
+      "label": "रसीद की तारीख"
+    },
+    "student_name": {
+      "label": "छात्र का नाम"
+    },
+    "class_name": {
+      "label": "कक्षा और सेक्शन"
+    },
+    "admission_number": {
+      "label": "प्रवेश या रोल नंबर (वैकल्पिक)"
+    },
+    "parent_name": {
+      "label": "अभिभावक (वैकल्पिक)"
+    },
+    "fee_period": {
+      "label": "फ़ीस किसकी"
+    },
+    "tuition_fee": {
+      "label": "ट्यूशन फ़ीस ({currency})"
+    },
+    "transport_fee": {
+      "label": "परिवहन शुल्क ({currency}) (वैकल्पिक)"
+    },
+    "other_fee": {
+      "label": "परीक्षा, गतिविधि और अन्य शुल्क ({currency}) (वैकल्पिक)"
+    },
+    "late_fee": {
+      "label": "विलंब शुल्क ({currency}) (वैकल्पिक)"
+    },
+    "amount_in_words": {
+      "label": "शब्दों में राशि (खाली होने पर अपने आप लिखी जाएगी) (वैकल्पिक)"
+    },
+    "payment_mode": {
+      "label": "भुगतान का तरीका",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Cheque": "चेक"
+      }
+    }
+  },
+  "print": {
+    "fee_receipt": "फ़ीस रसीद",
+    "receipt_no": "रसीद नं.",
+    "date": "तारीख",
+    "student": "छात्र",
+    "class": "कक्षा",
+    "admission_no": "प्रवेश नं.",
+    "parent": "अभिभावक",
+    "fee_for": "फ़ीस किसकी",
+    "paid_by": "भुगतान का माध्यम",
+    "tuition_fee": "ट्यूशन फ़ीस",
+    "transport_fee": "परिवहन शुल्क",
+    "other_fee": "परीक्षा, गतिविधि और अन्य शुल्क",
+    "late_fee": "विलंब शुल्क",
+    "total_received": "कुल प्राप्त",
+    "accounts_office": "लेखा कार्यालय",
+    "keep_receipt": "कृपया इस रसीद को अपने रिकॉर्ड के लिए सँभालकर रखें।",
+    "branches": "शाखाएँ",
+    "cell": "मोबाइल",
+    "no": "नं.",
+    "receipt": "रसीद",
+    "received": "श्री / श्रीमती {payer} से, जो {pupil} के अभिभावक हैं, {purpose} के लिए {mode} द्वारा {words} धन्यवाद सहित प्राप्त हुए।",
+    "signature": "हस्ताक्षर"
+  },
+  "sample": {
+    "school_name": "सनराइज़ पब्लिक स्कूल",
+    "student_name": "आरव गुप्ता",
+    "parent_name": "नेहा गुप्ता",
+    "tuition_fee": 9500,
+    "transport_fee": 2000,
+    "other_fee": 1000,
+    "class_name": "कक्षा 7-ब",
+    "fee_period": "द्वितीय सत्र, 2026-27",
+    "school_address": "सेक्टर 14, चंडीगढ़ 160014"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "sample": {
+    "laundry_name": "Pressing Étincelle",
+    "customer_name": "Julie Tremblay",
+    "items": [
+      {
+        "name": "Chemise (lavage et repassage)",
+        "qty": 6,
+        "rate": 3.5
+      },
+      {
+        "name": "Pantalon (nettoyage à sec)",
+        "qty": 3,
+        "rate": 10
+      },
+      {
+        "name": "Drap (lavage)",
+        "qty": 2,
+        "rate": 9
+      },
+      {
+        "name": "Robe (nettoyage à sec)",
+        "qty": 1,
+        "rate": 16
+      }
+    ],
+    "tax_percent": 5,
+    "terms": "Tous les vêtements, le linge et les tissus sont traités avec le plus grand soin, mais en raison de l'état des articles ou de défauts non visibles de la matière, il existe une POSSIBILITÉ DE DÉCOLORATION OU DE RÉTRÉCISSEMENT. Ces articles sont acceptés pour nettoyage AUX RISQUES DU PROPRIÉTAIRE et l'entreprise décline toute responsabilité.\nL'entreprise fera des efforts raisonnables pour maintenir un haut niveau de qualité pour le lavage, le séchage et le pliage.\nFaute de temps, l'entreprise ne lit pas les étiquettes d'entretien des fabricants et n'est pas responsable des vêtements marqués « lavage à la main uniquement » ou « nettoyage à sec uniquement ».",
+    "laundry_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6",
+    "customer_address": "1200 rue Sherbrooke, Montréal, QC H3A 1H6"
+  }
+}

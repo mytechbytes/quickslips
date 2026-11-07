@@ -1,0 +1,121 @@
+{
+  "title": "新聞代金請求書作成",
+  "name": "新聞代金請求書",
+  "public_slug": "newspaper-bill-generator",
+  "summary": "配達料つきの月ぎめ新聞代金の請求書。",
+  "description": "販売店、月、新聞・雑誌の単価と部数、宅配サービス料、合計を記載した月ぎめの新聞・雑誌代金の請求書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "クラシック"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "販売店名"
+    },
+    "agency_address": {
+      "label": "販売店の住所"
+    },
+    "agency_mobile": {
+      "label": "携帯電話（任意）"
+    },
+    "agency_phone": {
+      "label": "電話（任意）"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "bill_number": {
+      "label": "請求書番号"
+    },
+    "month": {
+      "label": "月",
+      "options": {
+        "January": "1月",
+        "February": "2月",
+        "March": "3月",
+        "April": "4月",
+        "May": "5月",
+        "June": "6月",
+        "July": "7月",
+        "August": "8月",
+        "September": "9月",
+        "October": "10月",
+        "November": "11月",
+        "December": "12月"
+      }
+    },
+    "bill_year": {
+      "label": "請求年"
+    },
+    "name_prefix": {
+      "label": "敬称（任意）",
+      "options": {
+        "Mr.": "氏",
+        "Mrs.": "夫人"
+      }
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "service_charge": {
+      "label": "サービス料（{currency}）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "items": {
+      "label": "新聞・雑誌",
+      "columns": {
+        "name": "内容",
+        "rate": "単価（{currency}）",
+        "qty": "数量"
+      }
+    }
+  },
+  "print": {
+    "mobile": "携帯",
+    "phone": "電話",
+    "month": "月",
+    "bill_no": "請求書番号",
+    "payment": "支払い",
+    "qty": "数量",
+    "description": "内容",
+    "rate": "単価",
+    "total": "合計",
+    "subtotal": "小計",
+    "service": "サービス料",
+    "service_note": "宅配料を含みます。",
+    "grand_total": "総合計",
+    "date": "日付",
+    "customer_signature": "お客様署名"
+  },
+  "sample": {
+    "agency_name": "中央新聞販売店",
+    "customer_name": "田中 太郎",
+    "items": [
+      {
+        "name": "朝日新聞（朝刊）",
+        "rate": 150,
+        "qty": 30
+      },
+      {
+        "name": "日曜版マガジン",
+        "rate": 400,
+        "qty": 4
+      },
+      {
+        "name": "週刊経済",
+        "rate": 500,
+        "qty": 4
+      }
+    ],
+    "service_charge": 500,
+    "name_prefix": "Mr."
+  }
+}

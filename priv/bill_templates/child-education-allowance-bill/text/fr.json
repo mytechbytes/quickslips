@@ -1,0 +1,132 @@
+{
+  "title": "Générateur de demande d'allocation d'études des enfants",
+  "name": "Allocation d'études des enfants",
+  "public_slug": "generateur-de-demande-d-allocation-d-etudes",
+  "summary": "Formulaire de remboursement de l'allocation d'études des enfants.",
+  "description": "Remplissez le formulaire de remboursement d'une allocation d'études des enfants (CEA) ou d'une aide à l'internat avec le demandeur, le conjoint, les enfants et leurs écoles et les dépenses. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Formulaire"
+  },
+  "fields": {
+    "claim_date": {
+      "label": "Date"
+    },
+    "academic_year": {
+      "label": "Année scolaire"
+    },
+    "name_rank": {
+      "label": "Nom et grade de l'agent public"
+    },
+    "personal_number": {
+      "label": "Numéro personnel"
+    },
+    "designation": {
+      "label": "Fonction"
+    },
+    "unit": {
+      "label": "Unité ou établissement"
+    },
+    "spouse_employed": {
+      "label": "Conjoint employé dans l'administration, un organisme public ou une entreprise privée"
+    },
+    "spouse_office": {
+      "label": "Fonction et service du conjoint (facultatif)"
+    },
+    "child1_name": {
+      "label": "Enfant 1 : nom"
+    },
+    "child1_dob": {
+      "label": "Enfant 1 : date de naissance"
+    },
+    "child1_standard": {
+      "label": "Enfant 1 : classe"
+    },
+    "child1_school": {
+      "label": "Enfant 1 : nom et lieu de l'école"
+    },
+    "child2_name": {
+      "label": "Enfant 2 : nom (facultatif)"
+    },
+    "child2_dob": {
+      "label": "Enfant 2 : date de naissance (facultatif)"
+    },
+    "child2_standard": {
+      "label": "Enfant 2 : classe (facultatif)"
+    },
+    "child2_school": {
+      "label": "Enfant 2 : nom et lieu de l'école (facultatif)"
+    },
+    "items": {
+      "label": "Remboursement des dépenses",
+      "columns": {
+        "code": "N°",
+        "name": "Période",
+        "qty": "Mois",
+        "rate": "Taux de l'allocation ({currency})",
+        "batch": "Remarques"
+      }
+    }
+  },
+  "print": {
+    "title": "Formulaire de remboursement de l'allocation d'études des enfants",
+    "claim_for": "Demande pour l'année scolaire",
+    "intro": "Je demande par la présente le remboursement de l'allocation d'études / aide à l'internat pour mon ou mes enfants ; les informations utiles figurent ci-dessous :",
+    "date": "Date",
+    "q1": "Nom et grade de l'agent public",
+    "q2": "N° personnel",
+    "q3": "Fonction",
+    "q4": "Nom de l'unité",
+    "q5": "Si le conjoint est employé par l'État / une collectivité, un organisme autonome, une entreprise publique ou une organisation privée, etc.",
+    "q6": "Fonction, service et n° d'unité du conjoint (si employé par l'État)",
+    "children_title": "Détails du ou des enfants pour lesquels l'allocation / l'aide est demandée :",
+    "sequence": "N°",
+    "child_name": "Nom de l'enfant",
+    "dob": "Date de naiss.",
+    "standard": "Classe",
+    "ay": "Année",
+    "school": "Nom et lieu de l'école / établissement",
+    "expenditure_title": "Remboursement des dépenses :",
+    "period": "Période",
+    "rate_cea": "Taux",
+    "amount_claimed": "Montant demandé",
+    "remarks": "Remarques",
+    "total_claimed": "Total demandé",
+    "months": "mois"
+  },
+  "sample": {
+    "name_rank": "Commandant Alain Roux",
+    "personal_number": "M-48213",
+    "designation": "Officier d'état-major",
+    "unit": "Quartier général, Paris",
+    "spouse_employed": "Non",
+    "child1_name": "Louis Roux",
+    "child2_name": "Léa Roux",
+    "child1_school": "École Soleil Levant, Paris",
+    "child2_school": "École Soleil Levant, Paris",
+    "child1_standard": "5e",
+    "child2_standard": "CM1",
+    "items": [
+      {
+        "code": "1",
+        "name": "Avril à juin 2026",
+        "qty": 3,
+        "rate": 85,
+        "batch": "Louis Roux"
+      },
+      {
+        "code": "2",
+        "name": "Juillet à septembre 2026",
+        "qty": 3,
+        "rate": 85,
+        "batch": "Louis Roux"
+      },
+      {
+        "code": "3",
+        "name": "Avril à septembre 2026",
+        "qty": 6,
+        "rate": 85,
+        "batch": "Léa Roux"
+      }
+    ]
+  }
+}

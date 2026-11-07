@@ -1,0 +1,27 @@
+{
+  "sample": {
+    "shop_name": "Main Street General Store",
+    "customer_name": "Emma Wilson",
+    "customer_location": "Toronto",
+    "items": [
+      {
+        "name": "Steel kitchen container set",
+        "qty": 2,
+        "rate": 28,
+        "tax": 5
+      },
+      {
+        "name": "Cotton bed sheet (double)",
+        "qty": 3,
+        "rate": 36,
+        "tax": 5
+      },
+      {
+        "name": "LED bulb 9 W (pack of 4)",
+        "qty": 2,
+        "rate": 12,
+        "tax": 5
+      }
+    ]
+  }
+}

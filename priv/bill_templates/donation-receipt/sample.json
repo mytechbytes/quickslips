@@ -1,0 +1,15 @@
+{
+  "organisation_name": "The Discovery and Restoration Trust",
+  "registration_number": "Govt. Regd. No. 91 of 2018",
+  "address": "21, Heritage Lane, Pune, Maharashtra 411001",
+  "email": "office@discovery-trust.example",
+  "website": "www.discovery-trust.example",
+  "phone": "+91 20 4000 5678",
+  "receipt_number": "6438",
+  "date": "2026-11-07",
+  "donor_name": "Rohan Mehta",
+  "amount": 5000,
+  "payment_mode": "UPI",
+  "received_by": "Meera Iyer, Treasurer",
+  "donation_description": "Donation towards the restoration of the heritage library."
+}

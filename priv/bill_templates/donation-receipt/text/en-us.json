@@ -1,0 +1,11 @@
+{
+  "sample": {
+    "organisation_name": "The Discovery and Restoration Foundation",
+    "registration_number": "EIN 12-3456789 (501(c)(3) nonprofit)",
+    "phone": "+1 512 555 0142",
+    "donor_name": "John Smith",
+    "amount": 100,
+    "received_by": "Michael Brown, Treasurer",
+    "donation_description": "Donation towards the restoration of the heritage library."
+  }
+}

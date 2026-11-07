@@ -1,0 +1,33 @@
+{
+  "slug": "child-education-allowance-bill",
+  "public_slug": "child-education-allowance-bill-generator",
+  "title": "Child Education Allowance Bill Generator",
+  "category": "Health & learning",
+  "icon": "hero-user-group",
+  "number_field": "personal_number",
+  "summary": "Claim form for the reimbursement of a children education allowance.",
+  "description": "Fill in the proforma for the reimbursement of a children education allowance (CEA) or hostel subsidy with the claimant, the spouse, the children and their schools and the expenditure. Preview instantly and download as PDF.",
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "templates": [{ "id": "t1" }],
+  "fields": [
+    { "key": "claim_date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "academic_year", "group": "document", "label": "Academic year", "type": "text", "required": true, "max_length": 20 },
+    { "key": "name_rank", "group": "customer", "label": "Name and rank of the government servant", "type": "textarea", "required": true, "max_length": 120 },
+    { "key": "personal_number", "group": "customer", "label": "Personal number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "designation", "group": "customer", "label": "Designation", "type": "text", "required": true, "max_length": 80 },
+    { "key": "unit", "group": "customer", "label": "Unit or establishment", "type": "text", "required": true, "max_length": 80 },
+    { "key": "spouse_employed", "group": "customer", "label": "Spouse employed under government, a public body or a private organisation", "type": "text", "required": true, "max_length": 120 },
+    { "key": "spouse_office", "group": "customer", "label": "Spouse's designation and office (optional)", "type": "textarea", "required": false, "max_length": 160 },
+    { "key": "child1_name", "group": "details", "label": "Child 1: name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "child1_dob", "group": "details", "label": "Child 1: date of birth", "type": "date", "required": true },
+    { "key": "child1_standard", "group": "details", "label": "Child 1: standard or class", "type": "text", "required": true, "max_length": 30 },
+    { "key": "child1_school", "group": "details", "label": "Child 1: name and place of the school", "type": "textarea", "required": true, "max_length": 160 },
+    { "key": "child2_name", "group": "details", "label": "Child 2: name (optional)", "type": "text", "required": false, "max_length": 80 },
+    { "key": "child2_dob", "group": "details", "label": "Child 2: date of birth (optional)", "type": "date", "required": false },
+    { "key": "child2_standard", "group": "details", "label": "Child 2: standard or class (optional)", "type": "text", "required": false, "max_length": 30 },
+    { "key": "child2_school", "group": "details", "label": "Child 2: name and place of the school (optional)", "type": "textarea", "required": false, "max_length": 160 },
+    { "key": "items", "group": "items", "label": "Reimbursement of expenditure", "type": "items", "required": true, "max_rows": 20, "name_max_length": 60, "cell_max_length": 80,
+      "cells": ["code", "name", "qty", "rate", "batch"],
+      "columns": { "code": "Sequence", "name": "Period", "qty": "Months", "rate": "Rate of allowance ({currency})", "batch": "Remarks" } }
+  ]
+}

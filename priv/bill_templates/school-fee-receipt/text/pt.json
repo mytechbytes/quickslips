@@ -1,0 +1,103 @@
+{
+  "title": "Gerador de recibo de mensalidade escolar",
+  "name": "Recibo escolar",
+  "public_slug": "gerador-de-recibo-escolar",
+  "summary": "Recibo de mensalidade com detalhamento, ou recibo curto.",
+  "description": "Gere um recibo de mensalidade escolar com aluno, turma, período e detalhamento de mensalidade, transporte e outras taxas, ou um recibo curto com o valor por extenso. Dois modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Clássico",
+    "t2": "Recibo curto"
+  },
+  "fields": {
+    "school_name": {
+      "label": "Escola ou instituição"
+    },
+    "school_address": {
+      "label": "Endereço (opcional)"
+    },
+    "school_phone": {
+      "label": "Telefone de contato (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número do recibo"
+    },
+    "date": {
+      "label": "Data do recibo"
+    },
+    "student_name": {
+      "label": "Nome do aluno"
+    },
+    "class_name": {
+      "label": "Turma"
+    },
+    "admission_number": {
+      "label": "Número de matrícula (opcional)"
+    },
+    "parent_name": {
+      "label": "Responsável (opcional)"
+    },
+    "fee_period": {
+      "label": "Referente a"
+    },
+    "tuition_fee": {
+      "label": "Mensalidade ({currency})"
+    },
+    "transport_fee": {
+      "label": "Transporte ({currency}) (opcional)"
+    },
+    "other_fee": {
+      "label": "Provas, atividades e outras taxas ({currency}) (opcional)"
+    },
+    "late_fee": {
+      "label": "Multa por atraso ({currency}) (opcional)"
+    },
+    "amount_in_words": {
+      "label": "Valor por extenso (escrito automaticamente se vazio) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Cheque": "Cheque"
+      }
+    }
+  },
+  "print": {
+    "fee_receipt": "Recibo de mensalidade",
+    "receipt_no": "Recibo n.º",
+    "date": "Data",
+    "student": "Aluno",
+    "class": "Turma",
+    "admission_no": "Matrícula n.º",
+    "parent": "Responsável",
+    "fee_for": "Referente a",
+    "paid_by": "Pago com",
+    "tuition_fee": "Mensalidade",
+    "transport_fee": "Transporte",
+    "other_fee": "Provas, atividades e outras taxas",
+    "late_fee": "Multa por atraso",
+    "total_received": "Total recebido",
+    "accounts_office": "Secretaria financeira",
+    "keep_receipt": "Guarde este recibo para seus registros.",
+    "branches": "Unidades",
+    "cell": "Tel.",
+    "no": "N.º",
+    "receipt": "Recibo",
+    "received": "Recebemos com agradecimento do(a) Sr./Sra. {payer}, responsável por {pupil}, a quantia de {words} referente a {purpose}, pago em {mode}.",
+    "signature": "Assinatura"
+  },
+  "sample": {
+    "school_name": "Colégio Amanhecer",
+    "student_name": "Pedro Souza",
+    "parent_name": "Ana Souza",
+    "tuition_fee": 1800,
+    "transport_fee": 350,
+    "other_fee": 150,
+    "class_name": "7º ano B",
+    "fee_period": "2º semestre de 2026",
+    "school_phone": "(11) 3456-7890"
+  }
+}

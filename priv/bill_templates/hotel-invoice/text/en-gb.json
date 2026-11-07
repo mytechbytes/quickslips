@@ -1,0 +1,19 @@
+{
+  "sample": {
+    "hotel_name": "Lotus Residency Hotel",
+    "guest_name": "James Taylor",
+    "nationality": "British",
+    "room_description": "Sea-view room with breakfast",
+    "items": [
+      {
+        "name": "Extra bed",
+        "rate": 24.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 120,
+    "extra_charges": 35,
+    "gst_percent": 20,
+    "advance_amount": 60
+  }
+}

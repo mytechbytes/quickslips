@@ -1,0 +1,103 @@
+{
+  "title": "授業料領収書作成",
+  "name": "授業料領収書",
+  "public_slug": "school-fee-receipt-generator",
+  "summary": "費用の内訳つきの授業料領収書、または簡易領収書。",
+  "description": "児童・生徒、学年、対象期間、授業料・交通費・その他の費用の内訳を記載した領収書、または金額（文字）つきの簡易領収書を作成できます。2つのデザイン。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "クラシック",
+    "t2": "簡易領収書"
+  },
+  "fields": {
+    "school_name": {
+      "label": "学校・教育機関"
+    },
+    "school_address": {
+      "label": "住所（任意）"
+    },
+    "school_phone": {
+      "label": "連絡先（任意）"
+    },
+    "receipt_number": {
+      "label": "領収書番号"
+    },
+    "date": {
+      "label": "領収日"
+    },
+    "student_name": {
+      "label": "児童・生徒名"
+    },
+    "class_name": {
+      "label": "学年・クラス"
+    },
+    "admission_number": {
+      "label": "学籍番号（任意）"
+    },
+    "parent_name": {
+      "label": "保護者（任意）"
+    },
+    "fee_period": {
+      "label": "対象"
+    },
+    "tuition_fee": {
+      "label": "授業料（{currency}）"
+    },
+    "transport_fee": {
+      "label": "交通費（{currency}）（任意）"
+    },
+    "other_fee": {
+      "label": "試験・活動・その他の費用（{currency}）（任意）"
+    },
+    "late_fee": {
+      "label": "延滞金（{currency}）（任意）"
+    },
+    "amount_in_words": {
+      "label": "金額（文字）（空欄なら自動で表記）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Cheque": "小切手"
+      }
+    }
+  },
+  "print": {
+    "fee_receipt": "授業料領収書",
+    "receipt_no": "領収書番号",
+    "date": "日付",
+    "student": "児童・生徒",
+    "class": "学年・クラス",
+    "admission_no": "学籍番号",
+    "parent": "保護者",
+    "fee_for": "対象",
+    "paid_by": "支払方法",
+    "tuition_fee": "授業料",
+    "transport_fee": "交通費",
+    "other_fee": "試験・活動・その他の費用",
+    "late_fee": "延滞金",
+    "total_received": "領収合計",
+    "accounts_office": "経理担当",
+    "keep_receipt": "この領収書は大切に保管してください。",
+    "branches": "所在地",
+    "cell": "電話",
+    "no": "番号",
+    "receipt": "領収書",
+    "received": "{pupil} の保護者 {payer} 様より、{purpose}として {words} を {mode} にて確かに領収いたしました。",
+    "signature": "署名"
+  },
+  "sample": {
+    "school_name": "あさひ学園",
+    "student_name": "田中 一郎",
+    "parent_name": "田中 太郎",
+    "tuition_fee": 120000,
+    "transport_fee": 30000,
+    "other_fee": 15000,
+    "class_name": "中学1年B組",
+    "fee_period": "2026年度 2学期",
+    "school_phone": "03-1234-5678"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "title": "Générateur de facture générale",
+  "name": "Facture générale",
+  "public_slug": "generateur-de-facture-generale",
+  "summary": "Facture simple pour toute vente ou prestation, avec un taux de taxe par article.",
+  "description": "Créez une facture pour toute vente ou prestation avec autant d'articles que nécessaire, un taux de {tax} par article, le vendeur, le client et le paiement. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Facture simple"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Nom du magasin"
+    },
+    "shop_address": {
+      "label": "Coordonnées du vendeur"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "invoice_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "order_number": {
+      "label": "Numéro de commande (facultatif)"
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "customer_location": {
+      "label": "Ville du client"
+    },
+    "shipping_address": {
+      "label": "Adresse de livraison du client"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "items": {
+      "label": "Articles",
+      "columns": {
+        "name": "Description",
+        "qty": "Qté",
+        "rate": "Prix ({currency})",
+        "tax": "Taxe %"
+      }
+    }
+  },
+  "print": {
+    "invoice_date": "Date de facture",
+    "invoice_no": "Facture n°",
+    "sold_by": "Vendu par",
+    "billed_to": "Facturé à",
+    "description": "Description",
+    "qty": "Qté",
+    "price": "Prix",
+    "amt": "Mont.",
+    "subtotal": "Sous-total",
+    "payment_info": "Informations de paiement",
+    "due_by": "Échéance",
+    "total_amount": "Montant total",
+    "order_no": "Commande n°",
+    "payment_method": "Mode de paiement",
+    "thanks": "Merci ! À bientôt."
+  },
+  "sample": {
+    "shop_name": "Bazar du Centre",
+    "customer_name": "Camille Martin",
+    "customer_location": "Paris",
+    "items": [
+      {
+        "name": "Set de boîtes de cuisine en inox",
+        "qty": 2,
+        "rate": 22,
+        "tax": 20
+      },
+      {
+        "name": "Drap en coton (lit double)",
+        "qty": 3,
+        "rate": 27,
+        "tax": 20
+      },
+      {
+        "name": "Ampoule LED 9 W (lot de 4)",
+        "qty": 2,
+        "rate": 8.9,
+        "tax": 20
+      }
+    ]
+  }
+}

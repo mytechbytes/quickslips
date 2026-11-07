@@ -1,0 +1,165 @@
+{
+  "title": "Reisekostenzuschuss-Ticket-Generator (LTA)",
+  "name": "LTA-Ticket",
+  "public_slug": "reisekostenzuschuss-ticket-generator",
+  "summary": "Bus- oder Bahn-E-Ticket für einen Reisekostenzuschuss.",
+  "description": "Erstellen Sie ein Bus- oder Bahn-E-Ticket für einen Reisekostenzuschuss (LTA) mit Anbieter, Einstiegs- und Ausstiegsort, Fahrgästen, Sitzplatz, Fahrpreis, {tax} und Stornobedingungen. Zwei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "E-Ticket",
+    "t2": "E-Ticket mit Feldern"
+  },
+  "fields": {
+    "travel_name": {
+      "label": "Reiseveranstalter"
+    },
+    "boarding_phone": {
+      "label": "Telefon der Einstiegsstelle"
+    },
+    "customer_care": {
+      "label": "Kundenservice-Nummer"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "ticket_number": {
+      "label": "Ticketnummer"
+    },
+    "pnr_number": {
+      "label": "PNR-Nummer (optional)"
+    },
+    "travel_type": {
+      "label": "Fahrzeugtyp",
+      "options": {
+        "Sleeper": "Liegesitz",
+        "AC Sleeper": "Liegesitz mit Klima",
+        "Semi Sleeper": "Halbliegesitz",
+        "AC Sleeper (2+1)": "Liegesitz mit Klima (2+1)",
+        "Non Sleeper": "Normalsitz",
+        "Non AC": "Ohne Klima"
+      }
+    },
+    "location": {
+      "label": "Einstieg: Ort"
+    },
+    "landmark": {
+      "label": "Einstieg: Orientierungspunkt"
+    },
+    "boarding_address": {
+      "label": "Einstieg: Adresse"
+    },
+    "reporting_date": {
+      "label": "Meldedatum"
+    },
+    "departure_time": {
+      "label": "Abfahrtszeit (optional)"
+    },
+    "dropping_date": {
+      "label": "Ausstieg: Datum"
+    },
+    "dropping_time": {
+      "label": "Ausstieg: Uhrzeit (optional)"
+    },
+    "dropping_address": {
+      "label": "Ausstieg: Adresse"
+    },
+    "passenger_details": {
+      "label": "Fahrgast: Name, Alter, Geschlecht"
+    },
+    "passenger_count": {
+      "label": "Anzahl der Fahrgäste"
+    },
+    "seat_number": {
+      "label": "Sitzplatznummer"
+    },
+    "amount": {
+      "label": "Fahrpreis ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "cancellation_charge": {
+      "label": "Stornogebühr vor Abfahrt ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "t1_banner": "Glückwunsch! Sie haben ein umbuchbares Ticket gebucht. Sie können diese Reise bis {when} vorverlegen oder verschieben.",
+    "eticket": "E-TICKET",
+    "type": "Typ",
+    "need_help": "Hilfe zu Ihrer Reise?",
+    "boarding_phone": "Tel. Einstiegsstelle",
+    "customer_care": "Kundenservice",
+    "ticket_no": "Ticket-Nr.",
+    "pnr_no": "PNR-Nr.",
+    "reporting_date": "Meldedatum",
+    "departure_time": "Abfahrtszeit",
+    "no_passengers": "Anzahl Fahrgäste",
+    "boarding_point": "Einstiegsstelle",
+    "dropping_point": "Ausstiegsstelle",
+    "location": "Ort",
+    "landmark": "Orientierungspunkt",
+    "address": "Adresse",
+    "time": "Uhrzeit",
+    "date": "Datum",
+    "passenger_details": "Fahrgastdaten (Alter, Geschlecht)",
+    "seat_number": "Sitzplatz",
+    "mticket_note": "HINWEIS: Dieser Anbieter akzeptiert mobile Tickets; ein Ausdruck ist nicht nötig.",
+    "total_fare": "Gesamtpreis",
+    "gst_note": "({rate} % {tax} und ggf. Servicegebühr)",
+    "net_amount": "Nettobetrag",
+    "taxable_amount": "Steuerbasis",
+    "terms": "Bedingungen",
+    "t1_term_0": "Bitte beachten Sie die Gepäckregeln für Ihre Reise.",
+    "t1_term_1": "Jeder Fahrgast darf eine Tasche bis 10 kg und ein persönliches Stück (Laptoptasche, Handtasche oder Aktentasche) bis 5 kg mitführen.",
+    "t1_term_2": "Waffen, brennbare Stoffe, Schusswaffen, Munition, Drogen, Alkohol, Schmuggelware und gesetzlich verbotene Gegenstände dürfen nicht mitgeführt werden.",
+    "t1_term_3": "Der Anbieter kann die Beförderung verweigern oder einen Zuschlag verlangen, wenn mehr Gepäck als erlaubt mitgeführt wird.",
+    "t1_term_4": "Eine Teilstornierung ist für dieses Ticket NICHT möglich. Die Gebühren für die Stornierung des gesamten Tickets stehen unten.",
+    "cancel_time": "Stornozeitpunkt",
+    "cancel_charges": "Stornogebühren",
+    "after": "Nach",
+    "before": "Vor",
+    "on": "am",
+    "cut_as_charges": "{amount} werden als Stornogebühr einbehalten",
+    "t2_banner": "Glückwunsch! Ihr Ticket ist bis {when} umbuchbar.",
+    "lta_month": "LTA-Monat",
+    "boarding_help": "Hilfe am Einstieg",
+    "journey_date": "Reisedatum",
+    "passengers": "Fahrgäste",
+    "seat_count": "Sitzplatz",
+    "passenger_details_title": "Fahrgastdaten (Name/Alter/Geschlecht)",
+    "payment_method": "Zahlungsart",
+    "important_note": "Wichtiger Hinweis",
+    "note_mticket": "Dieser Anbieter akzeptiert mobile Tickets. Ein Ausdruck ist optional.",
+    "note_id": "Führen Sie zur Überprüfung beim Einsteigen einen gültigen Lichtbildausweis mit.",
+    "note_changes": "Für Änderungen wenden Sie sich vor Ablauf der Frist an den Anbieter.",
+    "base_fare": "Grundpreis",
+    "tax": "Steuer",
+    "t2_term_1": "Erlaubt sind ein Gepäckstück bis 10 kg und eine persönliche Tasche bis 5 kg.",
+    "t2_term_2": "Führen Sie keine verbotenen Gegenstände wie Waffen, Drogen oder Gefahrgut mit.",
+    "t2_term_3": "Bei Verstößen gegen Richtlinien oder Sicherheit kann der Anbieter die Beförderung verweigern.",
+    "t2_term_4": "Für dieses Ticket ist keine Teilstornierung möglich.",
+    "cancel_window": "Stornofrist",
+    "applicable_charge": "Anfallende Gebühr"
+  },
+  "sample": {
+    "travel_name": "Immergrün Reisen",
+    "boarding_phone": "030 1234567",
+    "customer_care": "0800 1234567",
+    "location": "Zentraler Omnibusbahnhof Berlin",
+    "landmark": "Gegenüber dem S-Bahnhof",
+    "passenger_details": "Anna Becker, 34, weiblich",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 39.9,
+    "tax_percent": 19,
+    "cancellation_charge": 8
+  }
+}
