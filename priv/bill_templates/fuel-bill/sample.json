@@ -1,11 +1,20 @@
 {
   "station_name": "Sunrise Fuel Station",
   "station_address": "NH-48, Sector 12, Gurugram, Haryana",
+  "station_phone": "0124 456 7890",
+  "dealer_name": "Sunrise Enterprises",
   "bill_number": "FB-10482",
   "date": "2026-10-12",
+  "time": "10:25",
+  "customer_name": "Amit Verma",
   "vehicle_number": "HR 26 AB 1234",
   "fuel_type": "Petrol",
+  "nozzle_number": "4",
+  "density": 745.2,
   "quantity": 28.5,
   "rate": 102.45,
-  "seller_tax_id": "06ABCDE1234F1Z5"
+  "payment_mode": "Cash",
+  "seller_tax_id": "06ABCDE1234F1Z5",
+  "fcc_id": "FCC-2041",
+  "fip_no": "FIP-118"
 }

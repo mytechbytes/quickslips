@@ -6,6 +6,8 @@
     "quantity": 38,
     "rate": 1.42,
     "seller_tax_id": "GB123456789",
-    "tax_percent": 20
+    "tax_percent": 20,
+    "customer_name": "James Taylor",
+    "station_phone": "0118 496 0123"
   }
 }

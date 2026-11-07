@@ -175,6 +175,12 @@ defmodule QuickSlips.Templates.Validator do
       else: {:error, "must be a month like 2026-10"}
   end
 
+  defp check(%{"type" => "time"}, value) do
+    if is_binary(value) and Regex.match?(~r/^([01]\d|2[0-3]):[0-5]\d$/, value),
+      do: {:ok, value},
+      else: {:error, "must be a time like 14:30"}
+  end
+
   defp check(%{"type" => "select", "options" => options}, value) do
     if value in options,
       do: {:ok, value},
