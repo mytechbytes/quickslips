@@ -1,6 +1,9 @@
 defmodule QuickSlipsWeb.BusinessLive.Index do
   use QuickSlipsWeb, :live_view
 
+  # A live navigation does not run the router's plugs, so the login is checked here too.
+  on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}
+
   alias QuickSlips.Businesses
 
   @impl true

@@ -157,10 +157,13 @@
   --font-display: var(--font-sans);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
+  /* Page width: one step wider than Tailwind's largest container (7xl, 80rem). `max-w-8xl` = 1400px. */
+  --container-8xl: 87.5rem;
+
   /* Radii */
-  --radius-card: 1rem;
-  --radius-field: 0.625rem;
-  --radius-button: 0.625rem;
+  --radius-card: 0.5rem;
+  --radius-field: 0.3125rem;
+  --radius-button: 0.3125rem;
 
   /* Shadows */
   --shadow-card: 0 1px 2px 0 oklch(25% 0.03 168 / 0.06), 0 1px 3px 0 oklch(25% 0.03 168 / 0.05);

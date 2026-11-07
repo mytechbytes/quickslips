@@ -1,0 +1,71 @@
+{
+  "title": "給油レシート作成",
+  "name": "給油レシート",
+  "public_slug": "fuel-bill-generator",
+  "summary": "ガソリンや軽油の給油レシートをPDFで作成します。",
+  "description": "給油所名、日付、燃料の種類、数量、単価を入れた見やすい給油レシートを作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "クラシック"
+  },
+  "fields": {
+    "station_name": {
+      "label": "給油所名"
+    },
+    "station_address": {
+      "label": "給油所の住所"
+    },
+    "bill_number": {
+      "label": "伝票番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "vehicle_number": {
+      "label": "車両ナンバー"
+    },
+    "fuel_type": {
+      "label": "燃料の種類",
+      "options": {
+        "Petrol": "ガソリン",
+        "Diesel": "軽油",
+        "CNG": "CNG"
+      }
+    },
+    "quantity": {
+      "label": "数量（リットル）"
+    },
+    "rate": {
+      "label": "1リットルあたりの単価（{currency}）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "tax_percent": {
+      "label": "{tax}（%）（任意）"
+    }
+  },
+  "print": {
+    "bill_no": "伝票番号",
+    "date": "日付",
+    "vehicle": "車両",
+    "fuel": "燃料",
+    "item": "品名",
+    "quantity": "数量（L）",
+    "rate": "単価",
+    "amount": "金額",
+    "total": "合計",
+    "signatory": "責任者署名",
+    "thanks": "ありがとうございました。またのご利用をお待ちしております。",
+    "taxable": "課税対象額",
+    "tax_included": "価格には消費税が含まれます。"
+  },
+  "sample": {
+    "station_name": "サンライズ給油所",
+    "station_address": "東京都新宿区西新宿2-8-1",
+    "bill_number": "FB-10482",
+    "vehicle_number": "品川 300 あ 12-34",
+    "rate": 175,
+    "seller_tax_id": "T1234567890123",
+    "tax_percent": 10
+  }
+}

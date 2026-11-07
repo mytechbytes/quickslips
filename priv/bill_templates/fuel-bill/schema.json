@@ -3,16 +3,19 @@
   "category": "Travel",
   "icon": "hero-fire",
   "number_field": "bill_number",
-  "languages": ["en", "hi", "es"],
+  "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
+  "tax": { "default": "none", "es": "included", "de": "included", "fr": "included", "it": "included", "gb": "included", "jp": "included", "cn": "included", "ca": "included" },
   "templates": [{ "id": "t1" }],
   "fields": [
-    { "key": "station_name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "station_address", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
-    { "key": "bill_number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "date", "type": "date", "required": true },
-    { "key": "vehicle_number", "type": "text", "required": false, "max_length": 20 },
-    { "key": "fuel_type", "type": "select", "options": ["Petrol", "Diesel", "CNG"], "required": true },
-    { "key": "quantity", "type": "number", "required": true, "min": 0.01 },
-    { "key": "rate", "type": "number", "required": true, "min": 0.01 }
+    { "key": "station_name", "group": "business", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "station_address", "group": "business", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "bill_number", "group": "document", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "group": "document", "type": "date", "required": true },
+    { "key": "seller_tax_id", "group": "registration", "type": "tax_id", "required": false, "max_length": 20 },
+    { "key": "vehicle_number", "group": "details", "type": "text", "required": false, "max_length": 20 },
+    { "key": "fuel_type", "group": "details", "type": "select", "options": ["Petrol", "Diesel", "CNG"], "required": true },
+    { "key": "quantity", "group": "charges", "type": "number", "required": true, "min": 0.01 },
+    { "key": "rate", "group": "charges", "type": "number", "required": true, "min": 0.01 },
+    { "key": "tax_percent", "group": "charges", "type": "tax_rate", "required": false }
   ]
 }

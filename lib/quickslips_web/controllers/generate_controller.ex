@@ -8,6 +8,7 @@ defmodule QuickSlipsWeb.GenerateController do
   alias QuickSlips.Downloads
   alias QuickSlips.Locales
   alias QuickSlips.Regions
+  alias QuickSlips.Templates.Items
   alias QuickSlips.Templates.Validator
   alias QuickSlips.Templates
   alias QuickSlips.Render.Renderer
@@ -19,14 +20,15 @@ defmodule QuickSlipsWeb.GenerateController do
   # dates are. A client that does not send one (a page loaded before this existed) gets the default.
   def create(conn, %{"slug" => slug, "template" => template, "data" => data} = params)
       when is_map(data) do
-    with {:ok, locale} <- fetch_locale(params),
+    with {:ok, page_locale} <- fetch_locale(params),
+         {:ok, locale, currency} <- document_region(page_locale, params),
          {:ok, schema} <- Templates.get(slug, locale),
          {:ok, clean} <- validate(schema, data, locale),
          {:ok, business} <- load_business(conn, params),
          :ok <- verify_human(conn, params),
          {:ok, grant} <- Downloads.reserve(caller(conn)),
-         {:ok, pdf} <- render_or_refund(slug, template, clean, business, locale, grant) do
-      remember(conn, schema, template, clean, business, locale)
+         {:ok, pdf} <- render_or_refund(slug, template, clean, business, locale, currency, grant) do
+      remember(conn, schema, template, clean, business, locale, currency)
 
       conn
       |> put_resp_header("x-downloads-remaining", Integer.to_string(grant.remaining))
@@ -42,7 +44,8 @@ defmodule QuickSlipsWeb.GenerateController do
 
   # What is wrong with the data is told in the language of the page the visitor is on.
   defp validate(schema, data, locale) do
-    case Validator.validate(schema, data) do
+    # A page that was open before a bill had a table of items still sends the numbered fields.
+    case Validator.validate(schema, Items.upgrade(schema, data)) do
       {:ok, clean} ->
         {:ok, clean}
 
@@ -69,13 +72,27 @@ defmodule QuickSlipsWeb.GenerateController do
 
   defp load_business(_conn, _params), do: {:ok, nil}
 
-  defp render_or_refund(slug, template, clean, business, locale, grant) do
+  # The page's locale decides the language; the document may be for another country (and currency), chosen in the
+  # "Region & tax" panel of the page.
+  defp document_region(locale, params) do
+    country = params["country"]
+    locale = Locales.with_country(locale, country)
+
+    case Regions.build(locale.country, params["currency"], locale.language) do
+      {:ok, %{"currency" => %{"code" => code}}} -> {:ok, locale, code}
+      {:error, _reason} -> {:error, :unknown_locale}
+    end
+  end
+
+  defp render_or_refund(slug, template, clean, business, locale, currency, grant) do
     # The names of the pictures are added here, after validation, so a user can never choose them.
     %{data: image_names, files: files} = Businesses.render_assets(business)
 
     case Renderer.render(slug, template, Map.merge(clean, image_names),
            assets: files,
-           locale: locale.code
+           locale: base_code(locale),
+           country: locale.country,
+           currency: currency
          ) do
       {:ok, pdf} ->
         {:ok, pdf}
@@ -89,7 +106,21 @@ defmodule QuickSlipsWeb.GenerateController do
   # A logged-in user gets the document in their history. What is kept is the data, not the PDF: a few
   # hundred bytes that can be rendered again. The history must never cost the user the PDF they just
   # got, so a failure is logged and nothing more.
-  defp remember(conn, schema, template, clean, business, locale) do
+  # The code of a locale that has a page: `hi-in` for Hindi made for Japan, whose own code is `hi-jp`.
+  defp base_code(locale) do
+    case Enum.find(
+           Locales.live(),
+           &(&1.language == locale.language and &1.country == locale.country)
+         ) do
+      %{code: code} ->
+        code
+
+      nil ->
+        (Enum.find(Locales.live(), &(&1.language == locale.language)) || Locales.default()).code
+    end
+  end
+
+  defp remember(conn, schema, template, clean, business, locale, currency) do
     with %{user: %{}} = scope <- conn.assigns[:current_scope],
          attrs = %{
            "slug" => schema["slug"],
@@ -97,10 +128,7 @@ defmodule QuickSlipsWeb.GenerateController do
            "title" => Documents.build_title(schema, clean, short_months(schema, locale)),
            "data" => clean,
            "language" => locale.language,
-           "options" => %{
-             "country" => locale.country,
-             "currency" => Regions.default_currency(locale.country)
-           }
+           "options" => %{"country" => locale.country, "currency" => currency}
          },
          {:error, changeset} <- Documents.create_document(scope, attrs, business) do
       Logger.warning("could not save a document in the history: #{inspect(changeset.errors)}")

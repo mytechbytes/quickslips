@@ -36,9 +36,12 @@ defmodule QuickSlips.Templates.Registry do
   @doc """
   What a visitor of a locale (its code) sees of a template: `{:ok, %{schema: _, print: _, sample: _}}`, or
   `{:error, :not_found}` when the template does not exist or is not in the language of the locale.
+
+  With a locale map instead of a code, a locale that has no page of its own (Hindi for Japan: a document made for
+  another country than its page) is worked out on the spot from the same files.
   """
-  def view(id, locale_code, server \\ __MODULE__),
-    do: GenServer.call(server, {:view, id, locale_code})
+  def view(id, locale_or_code, server \\ __MODULE__),
+    do: GenServer.call(server, {:view, id, locale_or_code})
 
   @doc "The templates of a locale, by title."
   def list_for(locale_code, server \\ __MODULE__),
@@ -83,10 +86,26 @@ defmodule QuickSlips.Templates.Registry do
     end
   end
 
-  def handle_call({:view, id, code}, _from, state) do
+  def handle_call({:view, id, code}, _from, state) when is_binary(code) do
     case Map.fetch(state.views, {id, code}) do
       {:ok, view} -> {:reply, {:ok, view}, state}
       :error -> {:reply, {:error, :not_found}, state}
+    end
+  end
+
+  def handle_call({:view, id, %{code: code} = locale}, from, state) do
+    case Map.fetch(state.views, {id, code}) do
+      {:ok, view} -> {:reply, {:ok, view}, state}
+      :error -> handle_call({:compute, id, locale}, from, state)
+    end
+  end
+
+  def handle_call({:compute, id, locale}, _from, state) do
+    with {:ok, entry} <- Map.fetch(state.entries, id),
+         true <- locale.language in (entry.schema["languages"] || ["en"]) do
+      {:reply, {:ok, make_view(entry, state.shared, locale)}, state}
+    else
+      _ -> {:reply, {:error, :not_found}, state}
     end
   end
 
@@ -151,7 +170,7 @@ defmodule QuickSlips.Templates.Registry do
         end
       end)
 
-    %{views: views, slugs: slugs}
+    %{views: views, slugs: slugs, entries: entries, shared: shared}
   end
 
   defp load_template!(path) do
@@ -212,17 +231,21 @@ defmodule QuickSlips.Templates.Registry do
         locale <- Locales.live(),
         locale.language in (entry.schema["languages"] || ["en"]),
         into: %{} do
-      localized = Localizer.localize(entry.schema, entry.texts, shared, locale)
-      check_public_slug!(id, locale, localized["public_slug"])
-
-      view = %{
-        schema: localized,
-        print: Localizer.print_text(localized, entry.texts, shared, locale),
-        sample: Localizer.sample(entry.sample, entry.texts, locale)
-      }
+      view = make_view(entry, shared, locale)
+      check_public_slug!(id, locale, view.schema["public_slug"])
 
       {{id, locale.code}, view}
     end
+  end
+
+  defp make_view(entry, shared, locale) do
+    localized = Localizer.localize(entry.schema, entry.texts, shared, locale)
+
+    %{
+      schema: localized,
+      print: Localizer.print_text(localized, entry.texts, shared, locale),
+      sample: Localizer.sample(entry.sample, entry.texts, locale)
+    }
   end
 
   defp check_public_slug!(id, locale, slug) do

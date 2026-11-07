@@ -115,7 +115,7 @@ defmodule QuickSlipsWeb.HomeLiveTest do
              ]
 
       assert document |> LazyHTML.query("link[rel=alternate]") |> LazyHTML.attribute("hreflang") ==
-               ["en-IN", "hi-IN", "es-ES", "x-default"]
+               ~w(en-IN hi-IN es-ES en-US zh-CN de-DE ja-JP en-GB fr-FR it-IT pt-BR en-CA fr-CA x-default)
 
       assert document |> LazyHTML.query("link[hreflang=x-default]") |> LazyHTML.attribute("href") ==
                ["#{base}/en-in"]

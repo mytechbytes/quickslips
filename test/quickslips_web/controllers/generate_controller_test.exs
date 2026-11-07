@@ -289,4 +289,135 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
       assert doc.options == %{"country" => "in", "currency" => "INR"}
     end
   end
+
+  describe "a table of items" do
+    defp bill_sample(slug),
+      do: "priv/bill_templates/#{slug}/sample.json" |> File.read!() |> Jason.decode!()
+
+    defp make(conn, slug, data),
+      do:
+        post(conn, ~p"/api/generate", %{
+          slug: slug,
+          template: "t1",
+          data: data,
+          turnstile_token: "test"
+        })
+
+    test "makes the grocery bill, the restaurant bill and the invoice from their rows", %{
+      conn: conn
+    } do
+      for slug <- ["grocery-bill", "restaurant-bill", "service-invoice"] do
+        assert "%PDF" <> _ = conn |> make(slug, bill_sample(slug)) |> response(200)
+      end
+    end
+
+    test "names a mistake in a row after its cell", %{conn: conn} do
+      data =
+        Map.put(bill_sample("grocery-bill"), "items", [
+          %{"name" => "Rice", "qty" => 0, "rate" => 10}
+        ])
+
+      assert %{"errors" => %{"items.0.qty" => ["must be at least 0.01"]}} =
+               conn |> make("grocery-bill", data) |> json_response(422)
+    end
+
+    test "says what a row is missing", %{conn: conn} do
+      data = Map.put(bill_sample("grocery-bill"), "items", [%{"name" => "Rice"}])
+
+      assert %{"errors" => %{"items.0.qty" => ["is required"], "items.0.rate" => ["is required"]}} =
+               conn |> make("grocery-bill", data) |> json_response(422)
+    end
+
+    test "still takes the numbered fields of a page that was open before the table", %{conn: conn} do
+      old = %{
+        "store_name" => "Mehta",
+        "bill_number" => "1",
+        "date" => "2026-10-18",
+        "payment_mode" => "Cash",
+        "item_1" => "Rice",
+        "qty_1" => 1,
+        "price_1" => 640
+      }
+
+      assert "%PDF" <> _ = conn |> make("grocery-bill", old) |> response(200)
+    end
+  end
+
+  describe "tax and registration numbers" do
+    test "the Spanish Fuel Bill carries its IVA, and a tax id that is a NIF", %{conn: conn} do
+      conn = generate_in(conn, "es-es")
+
+      assert "%PDF" <> _ = response(conn, 200)
+    end
+
+    test "the Spanish Fuel Bill refuses an Indian GSTIN as the seller's tax id", %{conn: conn} do
+      data = Map.put(sample_for("es-es"), "seller_tax_id", "24ABCDE1234F1Z5")
+
+      assert %{"errors" => %{"seller_tax_id" => ["tiene un formato no válido"]}} =
+               conn |> generate_in("es-es", %{data: data}) |> json_response(422)
+    end
+
+    test "an Indian bill keeps no tax rate that only Spain has", %{conn: conn} do
+      data = Map.put(sample_for("en-in"), "tax_percent", 21)
+      assert "%PDF" <> _ = conn |> generate_in("en-in", %{data: data}) |> response(200)
+    end
+
+    test "a restaurant bill with its FSSAI number is made, and one with a wrong number is refused",
+         %{conn: conn} do
+      sample = bill_sample("restaurant-bill")
+      assert "%PDF" <> _ = conn |> make("restaurant-bill", sample) |> response(200)
+
+      assert %{"errors" => %{"fssai_number" => [_]}} =
+               conn
+               |> make("restaurant-bill", Map.put(sample, "fssai_number", "123"))
+               |> json_response(422)
+    end
+  end
+
+  describe "a document for another country" do
+    setup :register_and_log_in_user
+
+    test "is made with that country's numbers, and keeps the country and the currency", %{
+      conn: conn,
+      scope: scope
+    } do
+      conn =
+        generate(conn, %{
+          country: "de",
+          currency: "EUR",
+          data: Map.delete(sample(), "seller_tax_id")
+        })
+
+      assert "%PDF" <> _ = response(conn, 200)
+
+      assert [doc] = QuickSlips.Documents.list_documents(scope)
+      assert doc.language == "en"
+      assert doc.options == %{"country" => "de", "currency" => "EUR"}
+    end
+
+    test "the currency defaults to the country's", %{conn: conn, scope: scope} do
+      conn
+      |> generate(%{country: "jp", data: Map.delete(sample(), "seller_tax_id")})
+      |> response(200)
+
+      assert [%{options: %{"country" => "jp", "currency" => "JPY"}}] =
+               QuickSlips.Documents.list_documents(scope)
+    end
+
+    test "is checked against that country's fields: a Spanish NIF is not an Indian GSTIN", %{
+      conn: conn
+    } do
+      data = Map.put(sample(), "seller_tax_id", "B41234567")
+
+      assert %{"errors" => %{"seller_tax_id" => ["has invalid format"]}} =
+               conn |> generate(%{data: data}) |> json_response(422)
+
+      assert "%PDF" <> _ = conn |> generate(%{data: data, country: "es"}) |> response(200)
+    end
+
+    test "a country or currency that does not exist is a 400", %{conn: conn} do
+      assert conn |> generate(%{country: "zz"}) |> json_response(400)
+      assert conn |> generate(%{currency: "XXX"}) |> json_response(400)
+    end
+  end
 end

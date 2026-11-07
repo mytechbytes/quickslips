@@ -13,8 +13,14 @@ export function createPreview(opts: {
   // (`text.json`) and what its country and currency decide (`region.json`).
   text: string
   region: string
+  // The font files of the language, as web paths (Noto Sans, and a Chinese or Japanese font for those languages).
+  fonts: string[]
 }) {
   const worker = new Worker(opts.workerUrl)
+  // The words and the region of the document; the currency of the site switch changes them.
+  let template = opts.template
+  let text = opts.text
+  let region = opts.region
   let source: string | null = null
   let helpers: string | null = null
   let latest = 0
@@ -28,7 +34,7 @@ export function createPreview(opts: {
 
   const img = document.createElement("img")
   img.alt = t("preview_alt")
-  img.className = "max-h-[75vh] w-auto bg-white shadow"
+  img.className = "max-h-[75vh] w-auto bg-white shadow lg:max-h-[calc(100vh-14rem)]"
 
   worker.onmessage = (event: MessageEvent<Reply>) => {
     const { id, svg, error } = event.data
@@ -52,7 +58,7 @@ export function createPreview(opts: {
 
   async function loadSource() {
     if (source) return source
-    const res = await fetch(`/source/${opts.slug}/${opts.template}`)
+    const res = await fetch(`/source/${opts.slug}/${template}`)
     source = await res.text()
     return source
   }
@@ -76,8 +82,9 @@ export function createPreview(opts: {
       helpers: await loadHelpers(),
       data: { ...data, ...imageNames },
       images,
-      text: opts.text,
-      region: opts.region,
+      text,
+      region,
+      fonts: opts.fonts,
     })
   }
 
@@ -108,7 +115,25 @@ export function createPreview(opts: {
 
   return {
     renderNow,
+    /** Another design of the same bill: its layout is fetched and the preview drawn again. */
+    setTemplate(id: string) {
+      template = id
+      source = null
+      if (lastData) renderNow(lastData)
+    },
+    /** The document is for another country or currency: use its words and region from now on. */
+    setRegion(newText: string, newRegion: string) {
+      text = newText
+      region = newRegion
+      if (lastData) renderNow(lastData)
+    },
     setBusiness,
+    /** The page is going away: stop the worker and let go of the last picture. */
+    destroy() {
+      window.clearTimeout(timer)
+      worker.terminate()
+      if (currentUrl) URL.revokeObjectURL(currentUrl)
+    },
     /** Re-render after the user stops typing for `delay` ms (Task 6.3). */
     schedule(data: BillData, delay = 300) {
       window.clearTimeout(timer)

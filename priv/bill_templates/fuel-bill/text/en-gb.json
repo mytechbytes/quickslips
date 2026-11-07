@@ -1,0 +1,11 @@
+{
+  "sample": {
+    "station_name": "Sunrise Services",
+    "station_address": "London Road, Reading RG1 2AB",
+    "vehicle_number": "AB12 CDE",
+    "quantity": 38,
+    "rate": 1.42,
+    "seller_tax_id": "GB123456789",
+    "tax_percent": 20
+  }
+}

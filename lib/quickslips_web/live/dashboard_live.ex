@@ -1,6 +1,9 @@
 defmodule QuickSlipsWeb.DashboardLive do
   use QuickSlipsWeb, :live_view
 
+  # A live navigation does not run the router's plugs, so the login is checked here too.
+  on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}
+
   import QuickSlipsWeb.CatalogueComponents, only: [template_tile: 1]
 
   alias QuickSlips.Businesses
@@ -35,7 +38,7 @@ defmodule QuickSlipsWeb.DashboardLive do
       subtitle={"Welcome back, #{first_name(@current_scope.user)}."}
     >
       <:actions>
-        <.button id="dashboard-new-document" navigate={~p"/"}>
+        <.button id="dashboard-new-document" navigate={home_path(@locale)}>
           <.icon name="hero-plus" class="size-5" /> New document
         </.button>
       </:actions>
@@ -86,7 +89,7 @@ defmodule QuickSlipsWeb.DashboardLive do
             <.empty_state icon="hero-document-text" title="No documents yet">
               Documents you download while logged in are kept here, so you can download them again later.
               <:actions>
-                <.button id="empty-new-document" navigate={~p"/"}>
+                <.button id="empty-new-document" navigate={home_path(@locale)}>
                   <.icon name="hero-plus" class="size-5" /> New document
                 </.button>
               </:actions>

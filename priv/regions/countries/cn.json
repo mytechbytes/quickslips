@@ -1,0 +1,47 @@
+{
+  "code": "cn",
+  "currency": "CNY",
+  "number": {
+    "decimal": ".",
+    "group": ",",
+    "grouping": "standard"
+  },
+  "money": {
+    "position": "before",
+    "space": false
+  },
+  "date": {
+    "order": "ymd",
+    "separator": "-"
+  },
+  "example": {
+    "address": "北京市朝阳区建国路88号",
+    "tax_id": "91110000600037341L"
+  },
+  "tax": {
+    "name": {
+      "en": "VAT",
+      "zh": "增值税"
+    },
+    "rates": [
+      0,
+      3,
+      6,
+      9,
+      13
+    ],
+    "id": {
+      "label": {
+        "en": "USCC",
+        "zh": "统一社会信用代码"
+      },
+      "pattern": "^[0-9A-HJ-NPQRTUWXY]{18}$"
+    },
+    "checked": "2026-11-06",
+    "note": "General taxpayers 13%, 9% and 6%; small-scale taxpayers 3%. One source reports a temporary 1% small-scale rate to the end of 2027 that was not confirmed against the State Taxation Administration, so it is not offered. The 18-character unified social credit code pattern is from general knowledge and was not checked in a source. An ordinary receipt is not a fapiao, the official tax invoice.",
+    "sources": [
+      "https://www.vatupdate.com/2026/01/30/china-implements-first-comprehensive-vat-law-key-changes-for-domestic-and-international-businesses",
+      "https://www.avalara.com/vatlive/en/country-guides/asia/china/chinese-vat-rates.html"
+    ]
+  }
+}

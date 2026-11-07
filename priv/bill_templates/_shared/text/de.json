@@ -1,0 +1,109 @@
+{
+  "months": [
+    "Januar",
+    "Februar",
+    "März",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember"
+  ],
+  "months_short": [
+    "Jan",
+    "Feb",
+    "Mär",
+    "Apr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Okt",
+    "Nov",
+    "Dez"
+  ],
+  "categories": {
+    "Travel": "Reisen & Verkehr",
+    "Home & utilities": "Haushalt & Nebenkosten",
+    "Health & learning": "Gesundheit & Bildung",
+    "Food & shopping": "Essen & Einkaufen",
+    "Work": "Beruf"
+  },
+  "in_words": {
+    "label": "Betrag in Worten",
+    "and": "und",
+    "only": "",
+    "joiner": "",
+    "currencies": {
+      "INR": {
+        "one": "Rupie",
+        "other": "Rupien",
+        "minor_one": "Paisa",
+        "minor_other": "Paise",
+        "gender": "f",
+        "minor_gender": "f"
+      },
+      "EUR": {
+        "one": "Euro",
+        "other": "Euro",
+        "minor_one": "Cent",
+        "minor_other": "Cent",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "USD": {
+        "one": "Dollar",
+        "other": "Dollar",
+        "minor_one": "Cent",
+        "minor_other": "Cent",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "CNY": {
+        "one": "Yuan",
+        "other": "Yuan",
+        "minor_one": "Fen",
+        "minor_other": "Fen",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "JPY": {
+        "one": "Yen",
+        "other": "Yen",
+        "minor_one": "Sen",
+        "minor_other": "Sen",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "GBP": {
+        "one": "Pfund",
+        "other": "Pfund",
+        "minor_one": "Penny",
+        "minor_other": "Pence",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "BRL": {
+        "one": "Real",
+        "other": "Real",
+        "minor_one": "Centavo",
+        "minor_other": "Centavos",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "CAD": {
+        "one": "kanadischer Dollar",
+        "other": "kanadische Dollar",
+        "minor_one": "Cent",
+        "minor_other": "Cent",
+        "gender": "m",
+        "minor_gender": "m"
+      }
+    }
+  }
+}

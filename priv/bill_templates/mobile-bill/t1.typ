@@ -37,7 +37,7 @@
 )
 
 #v(3mm)
-#totals((([Subtotal], plan + other), ([GST (#tax-rate%)], tax)), total)
+#totals((([Subtotal], plan + other), ([#tax-name (#tax-rate%)], tax)), total)
 
 #v(8mm)
 #signature-block(data, [Authorised signatory])

@@ -4,16 +4,45 @@
   "public_slug": "fuel-bill-generator",
   "summary": "Create a petrol or diesel fuel bill as a PDF.",
   "description": "Generate a clean fuel bill with station name, date, fuel type, quantity and rate. Preview instantly and download as PDF.",
-  "designs": { "t1": "Classic" },
+  "designs": {
+    "t1": "Classic"
+  },
   "fields": {
-    "station_name": { "label": "Fuel station name" },
-    "station_address": { "label": "Station address" },
-    "bill_number": { "label": "Bill number" },
-    "date": { "label": "Date" },
-    "vehicle_number": { "label": "Vehicle number" },
-    "fuel_type": { "label": "Fuel type", "options": { "Petrol": "Petrol", "Diesel": "Diesel", "CNG": "CNG" } },
-    "quantity": { "label": "Quantity (litres)" },
-    "rate": { "label": "Rate per litre ({currency})" }
+    "station_name": {
+      "label": "Fuel station name"
+    },
+    "station_address": {
+      "label": "Station address"
+    },
+    "bill_number": {
+      "label": "Bill number"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "vehicle_number": {
+      "label": "Vehicle number"
+    },
+    "fuel_type": {
+      "label": "Fuel type",
+      "options": {
+        "Petrol": "Petrol",
+        "Diesel": "Diesel",
+        "CNG": "CNG"
+      }
+    },
+    "quantity": {
+      "label": "Quantity (litres)"
+    },
+    "rate": {
+      "label": "Rate per litre ({currency})"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    }
   },
   "print": {
     "bill_no": "Bill no.",
@@ -26,7 +55,9 @@
     "amount": "Amount",
     "total": "Total",
     "signatory": "Authorised signatory",
-    "thanks": "Thank you. Visit again."
+    "thanks": "Thank you. Visit again.",
+    "taxable": "Taxable amount",
+    "tax_included": "Price includes tax."
   },
   "sample": {}
 }

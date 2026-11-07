@@ -11,14 +11,14 @@ defmodule QuickSlips.Render.HelpersTest do
 
   # What the helpers of `_shared/helpers.typ` make of the region and the words they are given. The values come
   # back through `typst eval`, so the test reads the exact text, not a picture of it.
-  defp evaluate(dir, expression, region, locale_code \\ "en-in") do
+  defp evaluate(dir, expression, region, locale_code \\ "en-in", extra_text \\ %{}) do
     locale = Locales.fetch!(locale_code)
     File.cp_r!(Path.join(Templates.root_dir(), "_shared"), Path.join(dir, "_shared"))
     File.write!(Path.join(dir, "region.json"), Jason.encode!(region))
 
     File.write!(
       Path.join(dir, "text.json"),
-      Jason.encode!(Templates.print_text("fuel-bill", locale))
+      Jason.encode!(Map.merge(Templates.print_text("fuel-bill", locale), extra_text))
     )
 
     main = Path.join(dir, "main.typ")
@@ -159,6 +159,43 @@ defmodule QuickSlips.Render.HelpersTest do
       assert evaluate(dir, "t.total", region("in"), "en-in") == "Total"
       assert evaluate(dir, "t.total", region("in"), "hi-in") == "कुल"
       assert evaluate(dir, "t.total", region("es"), "es-es") == "Total"
+    end
+  end
+
+  describe "tax and the money of other countries" do
+    test "tax-split works out a price that holds the tax, and a tax that is added", %{
+      tmp_dir: dir
+    } do
+      expression =
+        "(a: tax-split(121, 21).tax, b: tax-split(100, 21).total, c: tax-split(121, 21).base)"
+
+      for {mode, expected} <- [
+            {"included", %{"a" => 21.0, "b" => 100.0, "c" => 100.0}},
+            {"added", %{"a" => 25.41, "b" => 121.0, "c" => 121}}
+          ] do
+        result = evaluate(dir, expression, region("es"), "es-es", %{"tax_mode" => mode})
+        assert_in_delta result["a"], expected["a"], 0.001
+        assert_in_delta result["b"], expected["b"], 0.001
+        assert_in_delta result["c"], expected["c"], 0.001
+      end
+    end
+
+    test "money in Japan has no decimals, in France a narrow space, in Brazil a space after R$",
+         %{tmp_dir: dir} do
+      assert evaluate(dir, "money(1234567)", region("jp")) == "¥1,234,567"
+      assert evaluate(dir, "money(1234.5)", region("fr")) == "1\u202f234,50\u00a0€"
+      assert evaluate(dir, "money(1234.5)", region("br")) == "R$\u00a01.234,50"
+      assert evaluate(dir, "money(1234.5)", region("de")) == "1.234,50\u00a0€"
+      assert evaluate(dir, "money(1234.5)", region("gb")) == "£1,234.50"
+
+      assert evaluate(dir, "money(1234.5)", elem(Regions.build("ca", nil, "fr"), 1)) ==
+               "1\u00a0234,50\u00a0$"
+    end
+
+    test "dates in Japan and Canada run year first, in Germany with dots", %{tmp_dir: dir} do
+      assert evaluate(dir, ~s{fmt-date("2026-10-12")}, region("jp")) == "2026/10/12"
+      assert evaluate(dir, ~s{fmt-date("2026-10-12")}, region("ca")) == "2026-10-12"
+      assert evaluate(dir, ~s{fmt-date("2026-10-12")}, region("de")) == "12.10.2026"
     end
   end
 end

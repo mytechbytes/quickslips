@@ -1,0 +1,34 @@
+{
+  "code": "br",
+  "currency": "BRL",
+  "number": {
+    "decimal": ",",
+    "group": ".",
+    "grouping": "standard"
+  },
+  "money": {
+    "position": "before",
+    "space": true
+  },
+  "date": {
+    "order": "dmy",
+    "separator": "/"
+  },
+  "example": {
+    "address": "Av. Paulista, 1000, São Paulo - SP, 01310-100",
+    "tax_id": "12.345.678/0001-90"
+  },
+  "tax": {
+    "name": "ICMS/ISS",
+    "rates": [],
+    "id": {
+      "label": "CNPJ",
+      "pattern": "^[0-9A-Z]{2}\\.?[0-9A-Z]{3}\\.?[0-9A-Z]{3}/?[0-9A-Z]{4}-?[0-9]{2}$"
+    },
+    "checked": "2026-11-06",
+    "note": "ICMS (goods, by state) and ISS (services, by municipality) vary, so the rate is typed in. The CNPJ has 14 positions; since July 2026 new ones may hold letters. Brazilian businesses issue a nota fiscal eletronica: a bill made here is not one.",
+    "sources": [
+      "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/cnpj/cnpj-alfanumerico.pdf"
+    ]
+  }
+}

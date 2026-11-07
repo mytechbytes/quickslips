@@ -55,20 +55,46 @@ defmodule QuickSlipsWeb.Plugs.Locale do
   the locale of this request in it). Put it first in the list, so the hooks after it speak the language too.
   """
   def on_mount(:default, _params, session, socket) do
-    locale = live_locale(session["locale"]) || Locales.default()
+    locale = connected_locale(socket) || live_locale(session["locale"]) || Locales.default()
     Gettext.put_locale(QuickSlipsWeb.Gettext, locale.language)
 
     {:cont, Phoenix.Component.assign(socket, :locale, locale)}
+  end
+
+  # The session is the one of the first page load, so after live navigations it is out of date. The page's script
+  # sends the locale of the page the visitor is on (`data-locale` of the `html` tag, which the pages that have a
+  # locale in their address keep up to date) when a LiveView connects.
+  defp connected_locale(socket) do
+    if Phoenix.LiveView.connected?(socket),
+      do: live_locale((Phoenix.LiveView.get_connect_params(socket) || %{})["locale"])
   end
 
   defp from_address(conn, code) do
     case Locales.fetch(code) do
       {:ok, locale} ->
         conn = use_locale(conn, locale)
-        if conn.path_params["slug"], do: conn, else: merge_assigns(conn, Seo.home(locale))
+
+        case conn.path_params["slug"] do
+          nil -> merge_assigns(conn, Seo.home(locale))
+          public_slug -> bill_head(conn, locale, public_slug)
+        end
 
       :error ->
         moved_or_missing(conn, code)
+    end
+  end
+
+  # The head of a bill's page: its description, its canonical address and its other languages. A template that
+  # is not in this locale is a 404.
+  defp bill_head(conn, locale, public_slug) do
+    case Templates.get_public(locale, public_slug) do
+      {:ok, schema} ->
+        conn
+        |> assign(:meta_description, schema["description"])
+        |> merge_assigns(Seo.bill(locale, schema["slug"]))
+
+      {:error, :not_found} ->
+        raise QuickSlipsWeb.NotFoundError
     end
   end
 
