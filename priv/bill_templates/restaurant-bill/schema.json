@@ -18,7 +18,7 @@
     { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
     { "key": "table_number", "group": "document", "label": "Table (optional)", "type": "text", "required": false, "max_length": 10 },
     { "key": "customer_name", "group": "customer", "label": "Customer name (optional)", "type": "text", "required": false, "max_length": 80 },
-    { "key": "items", "group": "details", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 80,
+    { "key": "items", "group": "items", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 80,
       "columns": { "name": "Item", "qty": "Qty", "rate": "Rate ({currency})" },
       "legacy": { "name": "item", "qty": "qty", "rate": "price", "count": 5 } },
     { "key": "service_percent", "group": "charges", "label": "Service charge (%) (optional)", "type": "number", "required": false, "min": 0, "max": 30 },

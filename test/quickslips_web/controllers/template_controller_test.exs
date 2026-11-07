@@ -290,24 +290,30 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
     end
   end
 
-  describe "the Region & tax panel" do
-    test "lists the countries and the currencies, with the page's own chosen", %{conn: conn} do
+  describe "the country and the currency" do
+    test "the page tells the script its country's own currency", %{conn: conn} do
+      html = conn |> get(~p"/es-es/generador-de-factura-de-gasolina") |> html_response(200)
+
+      assert attrs(html, "#bill-app", "data-own-currency") == ["EUR"]
+      assert attrs(html, "#bill-app", "data-edit") == ["false"]
+    end
+
+    test "the dialog of the site (language, country, currency) has the currencies, with the country's own chosen",
+         %{conn: conn} do
       html = conn |> get(~p"/es-es/generador-de-factura-de-gasolina") |> html_response(200)
       document = LazyHTML.from_document(html)
 
-      assert document
-             |> LazyHTML.query("#region-country option[selected]")
-             |> LazyHTML.attribute("value") == ["es"]
+      for id <- ["#locale-menu-currency", "#footer-locale-currency"] do
+        assert document |> LazyHTML.query("#{id} option[selected]") |> LazyHTML.attribute("value") ==
+                 ["EUR"]
+
+        assert document |> LazyHTML.query("#{id} option") |> Enum.count() == 8
+      end
 
       assert document
-             |> LazyHTML.query("#region-currency option[selected]")
-             |> LazyHTML.attribute("value") == ["EUR"]
-
-      assert document |> LazyHTML.query("#region-country option") |> Enum.count() == 11
-      assert document |> LazyHTML.query("#region-currency option") |> Enum.count() == 8
-
-      assert document |> LazyHTML.query("#region-country option[value=jp]") |> LazyHTML.text() =~
-               "Japón"
+             |> LazyHTML.query("#footer-locale-dialog[data-locale-dialog]")
+             |> Enum.count() ==
+               1
     end
 
     test "tells the preview which fonts to load", %{conn: conn} do
@@ -327,11 +333,10 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
         })
 
       html = conn |> get("/en-in/fuel-bill-generator?from=#{doc.id}") |> html_response(200)
-      document = LazyHTML.from_document(html)
 
-      assert document
-             |> LazyHTML.query("#region-country option[selected]")
-             |> LazyHTML.attribute("value") == ["es"]
+      assert attrs(html, "#bill-app", "data-edit") == ["true"]
+      assert [region] = attrs(html, "#bill-app", "data-region") |> Enum.map(&Jason.decode!/1)
+      assert region["country"] == "es" and region["currency"]["code"] == "EUR"
 
       assert [schema] = attrs(html, "#bill-app", "data-schema") |> Enum.map(&Jason.decode!/1)
       assert Enum.find(schema["fields"], &(&1["key"] == "tax_percent"))["rates"] == [0, 4, 10, 21]
@@ -360,26 +365,10 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
              |> LazyHTML.query("#template-select option")
              |> LazyHTML.text() =~ "क्लासिक"
     end
-
-    test "the Region & tax dialog is on the page, closed, with its two selects", %{conn: conn} do
-      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
-      document = LazyHTML.from_document(html)
-
-      assert document |> LazyHTML.query("dialog#region-dialog #region-country") |> Enum.count() ==
-               1
-
-      assert document |> LazyHTML.query("dialog#region-dialog #region-currency") |> Enum.count() ==
-               1
-
-      assert document |> LazyHTML.query("dialog#region-dialog button#region-done") |> Enum.count() ==
-               1
-
-      assert document |> LazyHTML.query("dialog#region-dialog[open]") |> Enum.count() == 0
-    end
   end
 
   describe "the sections of the form" do
-    @groups ~w(business registration document customer details charges payment)
+    @groups ~w(business registration document customer items details charges payment)
 
     test "every field of every bill is in a section the form knows" do
       for %{"slug" => slug} <- QuickSlips.Templates.list(),

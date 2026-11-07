@@ -16,7 +16,7 @@
     { "key": "bill_number", "group": "document", "label": "Bill number", "type": "text", "required": true, "max_length": 30 },
     { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
     { "key": "customer_name", "group": "customer", "label": "Customer name (optional)", "type": "text", "required": false, "max_length": 80 },
-    { "key": "items", "group": "details", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 80,
+    { "key": "items", "group": "items", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 80,
       "columns": { "name": "Item", "qty": "Qty", "rate": "Price ({currency})" },
       "legacy": { "name": "item", "qty": "qty", "rate": "price", "count": 6 } },
     { "key": "discount", "group": "charges", "label": "Discount ({currency}) (optional)", "type": "number", "required": false, "min": 0 },

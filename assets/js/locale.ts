@@ -24,6 +24,8 @@ document.addEventListener("submit", async (event) => {
     if (!response.ok) throw new Error(String(response.status))
     const { to, live, lang } = (await response.json()) as { to: string; live: boolean; lang: string }
 
+    // A new country brings its own currency.
+    chooseCurrency(null)
     submitter.closest("dialog")?.close()
     const liveSocket = (window as unknown as { liveSocket?: { isConnected(): boolean } }).liveSocket
     if (live && liveSocket?.isConnected() && document.querySelector("[data-phx-main]")) {
@@ -78,3 +80,49 @@ window.addEventListener("phx:locale", (event) => {
   document.documentElement.dataset.locale = code
   document.documentElement.lang = lang
 })
+
+// The currency the visitor chose in the switch. It is kept in the browser (`localStorage`), for every page; the
+// bill's page uses it for the money of the form, the preview and the PDF. Without a choice a page has its country's
+// own currency (`data-default` of the select and of the label).
+const CURRENCY_KEY = "qs_currency"
+
+/** The code of the currency the visitor chose, or `null` for the country's own. */
+export function chosenCurrency(): string | null {
+  try {
+    return localStorage.getItem(CURRENCY_KEY)
+  } catch {
+    return null
+  }
+}
+
+function chooseCurrency(code: string | null) {
+  try {
+    if (code) localStorage.setItem(CURRENCY_KEY, code)
+    else localStorage.removeItem(CURRENCY_KEY)
+  } catch {
+    // no storage (a private window): the choice lasts until the page goes
+  }
+  showCurrency()
+}
+
+// Every select of the switch (header and footer) and the label of the button show the same currency.
+function showCurrency() {
+  const chosen = chosenCurrency()
+  for (const select of document.querySelectorAll<HTMLSelectElement>("select[data-currency-select]")) {
+    const wanted = chosen ?? select.dataset.default ?? ""
+    if ([...select.options].some((option) => option.value === wanted)) select.value = wanted
+  }
+  for (const label of document.querySelectorAll<HTMLElement>("[data-currency-label]")) {
+    label.textContent = chosen ?? label.dataset.default ?? ""
+  }
+}
+
+document.addEventListener("change", (event) => {
+  const select = event.target
+  if (!(select instanceof HTMLSelectElement) || !select.hasAttribute("data-currency-select")) return
+
+  chooseCurrency(select.value === select.dataset.default ? null : select.value)
+  window.dispatchEvent(new CustomEvent("qs:currency"))
+})
+document.addEventListener("DOMContentLoaded", showCurrency)
+window.addEventListener("phx:page-loading-stop", showCurrency)

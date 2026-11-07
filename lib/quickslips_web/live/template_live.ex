@@ -51,12 +51,6 @@ defmodule QuickSlipsWeb.TemplateLive do
             region: region,
             template: chosen_template(schema, document),
             text: Templates.print_text(slug, view_locale),
-            countries:
-              for(
-                code <- Regions.countries(),
-                do: %{code: code, name: QuickSlipsWeb.UI.country_name(code)}
-              ),
-            currencies: Regions.currencies(),
             fonts: QuickSlips.Fonts.urls(locale.language),
             businesses: saved_businesses(scope)
           )
@@ -135,11 +129,11 @@ defmodule QuickSlipsWeb.TemplateLive do
       "preview_updating" => gettext("Updating preview…"),
       "preview_failed" => gettext("Preview could not be rendered."),
       "preview_alt" => gettext("Document preview"),
-      "region_and_tax" => gettext("Region & tax"),
       "group_business" => gettext("Business"),
       "group_registration" => gettext("Registration"),
       "group_document" => gettext("Document"),
       "group_customer" => gettext("Customer"),
+      "group_items" => gettext("Item Details"),
       "group_details" => gettext("Details"),
       "group_charges" => gettext("Charges"),
       "group_payment" => gettext("Payment"),

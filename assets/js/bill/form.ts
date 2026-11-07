@@ -35,7 +35,7 @@ export type Business = {
 
 // The sections of the form, in the order they appear; a field says which one it is in. The titles are ui strings
 // (`group_business`, ...), so every language has them.
-const GROUPS = ["business", "registration", "document", "customer", "details", "charges", "payment"]
+const GROUPS = ["business", "registration", "document", "customer", "items", "details", "charges", "payment"]
 
 type Control = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
@@ -152,7 +152,7 @@ export function buildForm(
       const section = document.createElement("section")
       section.dataset.group = id
       section.innerHTML =
-        `<div class="mb-2.5 flex items-center gap-3"><h3 class="border-l-2 border-accent pl-2 text-xs font-semibold uppercase tracking-wider text-ink"></h3><span class="h-px flex-1 bg-line"></span></div>` +
+        `<div class="mb-3 flex items-center gap-3"><h3 class="border-l-2 border-accent pl-2 text-xs font-semibold uppercase tracking-wider text-ink"></h3><span class="h-px flex-1 bg-line"></span></div>` +
         `<div class="grid gap-x-3 gap-y-2.5 sm:grid-cols-2"></div>`
       section.querySelector("h3")!.textContent = t(`group_${id}`)
       grid = section.querySelector<HTMLElement>("div:last-child")!
@@ -183,7 +183,7 @@ export function buildForm(
 
     const label = document.createElement("label")
     label.htmlFor = id
-    label.className = "mb-0.5 block text-sm/5 font-medium text-ink"
+    label.className = "mb-1 block text-sm/5 font-medium text-ink"
     label.textContent =
       field.label
         .replace("{currency}", vars.currency ?? "")

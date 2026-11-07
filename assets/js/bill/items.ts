@@ -11,7 +11,7 @@ const COLUMNS: (keyof ItemRow)[] = ["name", "qty", "rate"]
 // The table: heads on top, a row per item, the amount of the row and a remove icon at its end. The amount is left out
 // on a phone, where the row would not fit; the subtotal is still shown.
 const CELL_INPUT_CLASS = INPUT_CLASS.replace("px-3 py-2", "px-2 py-1.5").replace("sm:py-1.5", "sm:py-1")
-const HEAD_CLASS = "px-1 pb-1 text-xs font-medium text-ink-muted"
+const HEAD_CLASS = "px-2 py-2 text-xs font-medium text-ink-muted"
 
 const isBlank = (row: ItemRow) => COLUMNS.every((column) => row[column] === undefined || row[column] === "")
 
@@ -42,10 +42,6 @@ export function createItemsField(
   const wrapper = document.createElement("div")
   wrapper.id = `field-${field.key}`
 
-  const label = document.createElement("p")
-  label.className = "block text-sm/6 font-medium text-ink"
-  label.textContent = field.label + (field.required ? " *" : "")
-
   const addButton = document.createElement("button")
   addButton.type = "button"
   addButton.id = `add-${field.key}`
@@ -55,15 +51,17 @@ export function createItemsField(
   addText.textContent = t("add_item")
   addButton.append(addText)
 
-  // The name of the table on the left, the button that adds a row on the right.
-  const top = document.createElement("div")
-  top.className = "mb-2 flex items-center justify-between gap-3"
-  top.append(label, addButton)
-
+  // A table in a box: the heads on a tinted row, a line between the rows, and a foot with the button that adds a
+  // row on the left and the subtotal on the right. The name of the field is the caption, for those who hear it.
   const table = document.createElement("table")
   table.className = "w-full table-fixed border-collapse"
   table.id = `items-${field.key}`
+  const caption = document.createElement("caption")
+  caption.className = "sr-only"
+  caption.textContent = field.label + (field.required ? " *" : "")
+  table.append(caption)
   const headRow = document.createElement("tr")
+  headRow.className = "bg-surface-muted"
   const heads4 = [
     [heads.name, ""],
     [heads.qty, "w-16 text-right sm:w-20"],
@@ -90,10 +88,18 @@ export function createItemsField(
   error.className = "mt-1.5 text-sm text-danger"
 
   const subtotalEl = document.createElement("p")
-  subtotalEl.className = "mt-3 text-right text-sm/6 font-medium text-ink"
+  subtotalEl.className = "text-right text-sm/6 font-medium text-ink"
   subtotalEl.id = `subtotal-${field.key}`
 
-  wrapper.append(top, table, error, subtotalEl)
+  const foot = document.createElement("div")
+  foot.className = "flex items-center justify-between gap-3 border-t border-line px-2 py-2"
+  foot.append(addButton, subtotalEl)
+
+  const box = document.createElement("div")
+  box.className = "overflow-hidden rounded-card border border-line"
+  box.append(table, foot)
+
+  wrapper.append(box, error)
 
   // Which row of the page each row that was sent is, so an error can be shown under the right one.
   let sentFrom: number[] = []
@@ -150,7 +156,7 @@ export function createItemsField(
 
   function td(className: string, ...children: Node[]) {
     const cell = document.createElement("td")
-    cell.className = `p-1 align-top ${className}`
+    cell.className = `border-t border-line px-2 py-1.5 align-middle ${className}`
     cell.append(...children)
     return cell
   }
@@ -177,7 +183,7 @@ export function createItemsField(
       td("", input("name", item.name)),
       td("", input("qty", item.qty)),
       td("", input("rate", item.rate)),
-      td("hidden pt-3 text-right text-sm/6 text-ink tabular-nums sm:table-cell", amount),
+      td("hidden text-right text-sm/6 text-ink tabular-nums sm:table-cell", amount),
       td("text-right", remove),
     )
 
@@ -185,7 +191,7 @@ export function createItemsField(
     const errorCell = document.createElement("td")
     errorCell.colSpan = 5
     errorCell.dataset.rowError = ""
-    errorCell.className = "px-1 pb-1 text-sm text-danger empty:hidden"
+    errorCell.className = "px-2 pb-1 text-sm text-danger empty:hidden"
     errorRow.append(errorCell)
 
     row.append(main, errorRow)

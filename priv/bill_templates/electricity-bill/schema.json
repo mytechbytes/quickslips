@@ -22,6 +22,6 @@
     { "key": "current_reading", "group": "charges", "label": "Current meter reading (units)", "type": "number", "required": true, "min": 0 },
     { "key": "rate_per_unit", "group": "charges", "label": "Rate per unit ({currency})", "type": "number", "required": true, "min": 0 },
     { "key": "fixed_charge", "group": "charges", "label": "Fixed charge ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "tax_percent", "group": "charges", "label": "Duty and tax (%) (optional)", "type": "number", "required": false, "min": 0, "max": 28 }
+    { "key": "tax_percent", "group": "charges", "label": "Duty and tax (%) (optional)", "type": "tax_rate", "required": false }
   ]
 }

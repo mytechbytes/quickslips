@@ -17,7 +17,7 @@ export function createPreview(opts: {
   fonts: string[]
 }) {
   const worker = new Worker(opts.workerUrl)
-  // The words and the region of the document; the "Region & tax" panel changes them.
+  // The words and the region of the document; the currency of the site switch changes them.
   let template = opts.template
   let text = opts.text
   let region = opts.region

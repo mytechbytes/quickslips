@@ -3,6 +3,7 @@ import { createPreview } from "./preview"
 import { downloadPdf } from "./download"
 import { createTurnstile } from "./turnstile"
 import { loadStrings, t } from "./i18n"
+import { chosenCurrency } from "../locale"
 
 type Quota = { remaining: number; limit: number; tier: string }
 
@@ -26,8 +27,8 @@ export function mountBillApp(root: HTMLElement): () => void {
   const businesses: Business[] = JSON.parse(root.dataset.businesses ?? "[]")
   const sample: BillData = JSON.parse(root.dataset.sample!)
   const form = root.querySelector<HTMLFormElement>("#bill-form")!
-  // The language and country of the page ("hi-in"). The document may be made for another country (the "Region & tax"
-  // panel), so what depends on the country is kept in `region` and changes with it.
+  // The language and country of the page ("hi-in"). The document may be made for another country (an edited one)
+  // and the currency may be the visitor's own, so what depends on them is kept in `region` and changes with it.
   const locale = root.dataset.locale!
   const language = locale.split("-")[0]
   let region = JSON.parse(root.dataset.region!)
@@ -57,34 +58,9 @@ export function mountBillApp(root: HTMLElement): () => void {
     business = picked
     preview.setBusiness(picked)
   }
-  // The "Region & tax" dialog: another country or currency means other rates, other registration numbers, other
-  // money and date formats. The server says what the form is for that country; the values typed so far stay.
-  const dialog = root.querySelector<HTMLDialogElement>("#region-dialog")!
-  const countrySelect = root.querySelector<HTMLSelectElement>("#region-country")!
-  const currencySelect = root.querySelector<HTMLSelectElement>("#region-currency")!
-
-  // The one button that opens the dialog. It sits with the tax rate when the bill has one, else at the top of the form.
-  function placeRegionButton() {
-    const button = document.createElement("button")
-    button.type = "button"
-    button.id = "region-button"
-    button.className =
-      "mt-1 inline-flex items-center gap-1.5 rounded-field border border-line-strong bg-surface px-2.5 py-1 text-sm text-ink hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
-    button.innerHTML = `<span class="hero-globe-alt size-4 text-ink-muted" aria-hidden="true"></span>`
-    const text = document.createElement("span")
-    const country = countrySelect.selectedOptions[0]?.text ?? ""
-    text.textContent = `${t("region_and_tax")}: ${country} · ${region.currency.code}${region.tax ? " · " + region.tax.name : ""}`
-    button.append(text)
-    button.addEventListener("click", () => dialog.showModal())
-    const taxField = form.querySelector<HTMLElement>('[data-field-type="tax_rate"]')
-    if (taxField) {
-      taxField.append(button)
-    } else {
-      const row = document.createElement("div")
-      row.append(button)
-      form.prepend(row)
-    }
-  }
+  // The country and the currency are chosen in the switch of the site (language, country and currency:
+  // `UI.locale_dialog/1`), for every page. The country is the page's; the currency is the visitor's choice, or the
+  // country's own (see `followChoice` below).
 
   const mountForm = (initial: BillData) => {
     const built = buildForm(
@@ -97,7 +73,6 @@ export function mountBillApp(root: HTMLElement): () => void {
       { currency: region.currency.symbol, tax: region.tax?.name, tax_id: region.tax?.id?.label },
       (amount) => money.format(amount),
     )
-    placeRegionButton()
     return built
   }
   let ui = mountForm(sample)
@@ -110,9 +85,10 @@ export function mountBillApp(root: HTMLElement): () => void {
     preview.setTemplate(template)
   })
 
-  async function changeRegion(countryChanged: boolean) {
-    const params = new URLSearchParams({ locale, country: countrySelect.value })
-    if (!countryChanged) params.set("currency", currencySelect.value)
+  // Another currency: the money of the form, the preview and the PDF is written in it. The server says what the
+  // region is (and the words the layout prints); the values typed so far stay.
+  async function changeCurrency(code: string) {
+    const params = new URLSearchParams({ locale, country: region.country, currency: code })
     const response = await fetch(`/api/bill/${schema.slug}/view?${params}`).catch(() => null)
     if (!response?.ok) return
     const view = await response.json()
@@ -122,13 +98,20 @@ export function mountBillApp(root: HTMLElement): () => void {
     schema.fields = view.fields
     region = view.region
     money = makeMoney(region)
-    currencySelect.value = region.currency.code
     ui = mountForm(data)
     if (business) form.querySelector<HTMLSelectElement>("#business-select")!.value = String(business.id)
     preview.setRegion(JSON.stringify(view.text), JSON.stringify(view.region))
   }
-  countrySelect.addEventListener("change", () => changeRegion(true))
-  currencySelect.addEventListener("change", () => changeRegion(false))
+
+  // The currency chosen in the switch of the site, or the country's own. A document that is being edited keeps its own
+  // until the visitor chooses another.
+  const ownCurrency = root.dataset.ownCurrency!
+  const followChoice = () => {
+    const wanted = chosenCurrency() ?? ownCurrency
+    if (wanted !== region.currency.code) changeCurrency(wanted)
+  }
+  window.addEventListener("qs:currency", followChoice)
+  if (root.dataset.edit !== "true") followChoice()
 
   // "Edit and regenerate": the document was made with this business, so it is selected again. Its fields
   // already hold what the document had, so nothing is filled in.
@@ -191,5 +174,8 @@ export function mountBillApp(root: HTMLElement): () => void {
     }
   })
 
-  return () => preview.destroy()
+  return () => {
+    window.removeEventListener("qs:currency", followChoice)
+    preview.destroy()
+  }
 }

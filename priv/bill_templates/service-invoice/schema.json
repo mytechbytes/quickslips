@@ -19,7 +19,7 @@
     { "key": "client_name", "group": "customer", "label": "Client name", "type": "text", "required": true, "max_length": 80 },
     { "key": "client_address", "group": "customer", "label": "Client address (optional)", "type": "textarea", "required": false, "max_length": 200 },
     { "key": "client_gstin", "group": "customer", "label": "Client {tax_id} (optional)", "type": "text", "required": false, "max_length": 20 },
-    { "key": "items", "group": "details", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 120,
+    { "key": "items", "group": "items", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 120,
       "columns": { "name": "Description", "qty": "Qty", "rate": "Rate ({currency})" },
       "legacy": { "name": "service", "qty": "qty", "rate": "rate", "count": 3 } },
     { "key": "gst_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
