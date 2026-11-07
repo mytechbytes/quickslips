@@ -1,0 +1,174 @@
+{
+  "title": "Onlineshop-Rechnung-Generator",
+  "name": "Onlineshop-Rechnung",
+  "public_slug": "onlineshop-rechnung-generator",
+  "summary": "Rechnung für Online-Bestellungen mit Steuersatz je Artikel und Versand.",
+  "description": "Erstellen Sie eine Rechnung für eine Online-Bestellung mit Produkten, Mengen, einem {tax}-Satz für jeden Artikel, Versand, Verkäufer, Marktplatz und den Adressen des Kunden. Vier Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Zahlungsbeleg",
+    "t2": "Bestellbestätigung",
+    "t3": "Rechnung",
+    "t4": "Steuerrechnung"
+  },
+  "fields": {
+    "seller_name": {
+      "label": "Verkauft von"
+    },
+    "seller_address": {
+      "label": "Adresse des Verkäufers (optional)"
+    },
+    "seller_phone": {
+      "label": "Telefon des Verkäufers (optional)"
+    },
+    "platform_name": {
+      "label": "Onlineshop oder Marktplatz (optional)"
+    },
+    "platform_website": {
+      "label": "Website (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "invoice_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Rechnungsdatum"
+    },
+    "order_number": {
+      "label": "Bestellnummer (optional)"
+    },
+    "order_date": {
+      "label": "Bestelldatum (optional)"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "customer_phone": {
+      "label": "Mobilnummer (optional)"
+    },
+    "shipping_address": {
+      "label": "Lieferadresse"
+    },
+    "billing_address": {
+      "label": "Rechnungsadresse (optional)"
+    },
+    "shipping_charge": {
+      "label": "Versandkosten ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "signatory_name": {
+      "label": "Name des Unterzeichners (optional)"
+    },
+    "return_policy": {
+      "label": "Rückgaberichtlinie und Hinweise (optional)"
+    },
+    "items": {
+      "label": "Produkte",
+      "columns": {
+        "name": "Beschreibung",
+        "qty": "Menge",
+        "rate": "Preis ({currency})",
+        "tax": "Steuer %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tel.",
+    "authorised": "Unterschriftsberechtigter",
+    "return_policy": "Rückgaberichtlinie",
+    "payment_receipt": "Zahlungsbeleg",
+    "receipt_no": "Beleg-Nr.",
+    "sold_by": "Verkauft von",
+    "order_no": "Bestell-Nr.",
+    "order_date": "Bestelldatum",
+    "invoice_date": "Rechnungsdatum",
+    "receipt_date": "Belegdatum",
+    "bill_to": "Rechnung an",
+    "description": "Beschreibung",
+    "net_amount": "Nettobetrag",
+    "qty": "Menge",
+    "total_amount": "Gesamtbetrag",
+    "total": "Gesamt",
+    "shipping": "Versand",
+    "payment_method": "Zahlungsart",
+    "order_confirmed": "Ihre Bestellung ist bestätigt!",
+    "hello": "Hallo",
+    "order_number": "Bestellnummer",
+    "shipping_address": "Lieferadresse",
+    "mobile": "Mobilnummer",
+    "receipt_summary": "Zusammenfassung",
+    "rate": "Preis",
+    "amt": "Betrag",
+    "subtotal": "Zwischensumme",
+    "confirmation_note": "Wir senden Ihnen eine Versandbestätigung per E-Mail, sobald der Artikel versendet wird.",
+    "thanks_shopping": "Danke für Ihren Einkauf",
+    "need_help": "Brauchen Sie Hilfe?",
+    "invoice": "Rechnung",
+    "invoice_no": "Rechnungs-Nr.",
+    "date": "Datum",
+    "invoice_to": "Rechnung an",
+    "pay_to": "Zahlen an",
+    "price": "Preis",
+    "payment_info": "Zahlungsinformationen",
+    "amount": "Betrag",
+    "tax_invoice": "Rechnung",
+    "ship_from": "Versandadresse",
+    "invoice_number": "Rechnungsnummer",
+    "order_id": "Bestell-ID",
+    "payment": "Zahlung",
+    "ship_to": "Lieferung an",
+    "keep_invoice": "bewahren Sie diese Rechnung und die Originalverpackung für Garantiezwecke auf",
+    "total_items": "Artikel gesamt",
+    "title": "Artikel",
+    "gross_amount": "Bruttobetrag",
+    "taxable_value": "Steuerbasis",
+    "grand_total": "Gesamtsumme",
+    "thank_you": "Vielen Dank!",
+    "for_shopping": "für Ihren Einkauf bei uns"
+  },
+  "sample": {
+    "seller_name": "Heller Warenkorb GmbH",
+    "seller_phone": "0800 1234567",
+    "customer_name": "Anna Becker",
+    "signatory_name": "Thomas Müller",
+    "items": [
+      {
+        "name": "Kabellose Ohrhörer mit Ladecase",
+        "qty": 1,
+        "rate": 34.9,
+        "tax": 19
+      },
+      {
+        "name": "Silikon-Handyhülle",
+        "qty": 2,
+        "rate": 8.9,
+        "tax": 19
+      },
+      {
+        "name": "Baumwoll-T-Shirt mit Rundhalsausschnitt",
+        "qty": 2,
+        "rate": 14.9,
+        "tax": 19
+      },
+      {
+        "name": "Edelstahl-Trinkflasche (750 ml)",
+        "qty": 1,
+        "rate": 16.9,
+        "tax": 19
+      }
+    ],
+    "shipping_charge": 4.9,
+    "return_policy": "Wir bemühen uns, jede Bestellung einwandfrei zu liefern. Wenn Sie einen Artikel zurücksenden möchten, senden Sie ihn bitte mit der Original-Markenverpackung oder dem Preisschild, der Originalverpackung und der Rechnung zurück; ohne diese können wir Ihre Anfrage nicht bearbeiten. Es gelten die Geschäftsbedingungen.\nDie verkauften Waren sind für den Endverbrauch bestimmt und nicht für den Weiterverkauf.",
+    "customer_phone": "0151 2345678"
+  }
+}

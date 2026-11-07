@@ -1,0 +1,174 @@
+{
+  "title": "Générateur de facture e-commerce",
+  "name": "Facture e-commerce",
+  "public_slug": "generateur-de-facture-e-commerce",
+  "summary": "Facture de commande en ligne avec un taux de taxe par article et la livraison.",
+  "description": "Créez une facture pour une commande en ligne avec les produits, les quantités, un taux de {tax} pour chaque article, la livraison, le vendeur, la place de marché et les adresses du client. Quatre modèles ; aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Reçu de paiement",
+    "t2": "Commande confirmée",
+    "t3": "Facture",
+    "t4": "Facture fiscale"
+  },
+  "fields": {
+    "seller_name": {
+      "label": "Vendu par"
+    },
+    "seller_address": {
+      "label": "Adresse du vendeur (facultatif)"
+    },
+    "seller_phone": {
+      "label": "Téléphone du vendeur (facultatif)"
+    },
+    "platform_name": {
+      "label": "Boutique en ligne ou place de marché (facultatif)"
+    },
+    "platform_website": {
+      "label": "Site web (facultatif)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "invoice_number": {
+      "label": "Numéro de facture"
+    },
+    "date": {
+      "label": "Date de la facture"
+    },
+    "order_number": {
+      "label": "Numéro de commande (facultatif)"
+    },
+    "order_date": {
+      "label": "Date de commande (facultatif)"
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "customer_phone": {
+      "label": "Numéro de mobile (facultatif)"
+    },
+    "shipping_address": {
+      "label": "Adresse de livraison"
+    },
+    "billing_address": {
+      "label": "Adresse de facturation (facultatif)"
+    },
+    "shipping_charge": {
+      "label": "Frais de livraison ({currency}) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "signatory_name": {
+      "label": "Nom du signataire (facultatif)"
+    },
+    "return_policy": {
+      "label": "Politique de retour et remarques (facultatif)"
+    },
+    "items": {
+      "label": "Produits",
+      "columns": {
+        "name": "Description",
+        "qty": "Qté",
+        "rate": "Prix ({currency})",
+        "tax": "Taxe %"
+      }
+    }
+  },
+  "print": {
+    "phone": "Tél.",
+    "authorised": "Signataire autorisé",
+    "return_policy": "Politique de retour",
+    "payment_receipt": "Reçu de paiement",
+    "receipt_no": "Reçu n°",
+    "sold_by": "Vendu par",
+    "order_no": "Commande n°",
+    "order_date": "Date de commande",
+    "invoice_date": "Date de facture",
+    "receipt_date": "Date du reçu",
+    "bill_to": "Facturé à",
+    "description": "Description",
+    "net_amount": "Montant net",
+    "qty": "Qté",
+    "total_amount": "Montant total",
+    "total": "Total",
+    "shipping": "Livraison",
+    "payment_method": "Mode de paiement",
+    "order_confirmed": "Votre commande est confirmée !",
+    "hello": "Bonjour",
+    "order_number": "Numéro de commande",
+    "shipping_address": "Adresse de livraison",
+    "mobile": "Numéro de mobile",
+    "receipt_summary": "Récapitulatif",
+    "rate": "Prix",
+    "amt": "Mont.",
+    "subtotal": "Sous-total",
+    "confirmation_note": "Nous vous enverrons un e-mail de confirmation dès l'expédition de l'article.",
+    "thanks_shopping": "Merci pour votre achat",
+    "need_help": "Besoin d'aide ?",
+    "invoice": "Facture",
+    "invoice_no": "Facture n°",
+    "date": "Date",
+    "invoice_to": "Facturé à",
+    "pay_to": "Payer à",
+    "price": "Prix",
+    "payment_info": "Informations de paiement",
+    "amount": "Montant",
+    "tax_invoice": "Facture",
+    "ship_from": "Adresse d'expédition",
+    "invoice_number": "Numéro de facture",
+    "order_id": "ID de commande",
+    "payment": "Paiement",
+    "ship_to": "Livrer à",
+    "keep_invoice": "conservez cette facture et la boîte du fabricant pour la garantie",
+    "total_items": "Total d'articles",
+    "title": "Article",
+    "gross_amount": "Montant brut",
+    "taxable_value": "Base HT",
+    "grand_total": "Total général",
+    "thank_you": "Merci !",
+    "for_shopping": "pour votre achat chez nous"
+  },
+  "sample": {
+    "seller_name": "Panier Lumineux SAS",
+    "seller_phone": "0 800 123 456",
+    "customer_name": "Camille Martin",
+    "signatory_name": "Pierre Dubois",
+    "items": [
+      {
+        "name": "Écouteurs sans fil avec boîtier de charge",
+        "qty": 1,
+        "rate": 39.9,
+        "tax": 20
+      },
+      {
+        "name": "Coque de téléphone en silicone",
+        "qty": 2,
+        "rate": 9.9,
+        "tax": 20
+      },
+      {
+        "name": "T-shirt en coton col rond",
+        "qty": 2,
+        "rate": 14.9,
+        "tax": 20
+      },
+      {
+        "name": "Gourde en acier inoxydable (750 ml)",
+        "qty": 1,
+        "rate": 16.9,
+        "tax": 20
+      }
+    ],
+    "shipping_charge": 4.95,
+    "return_policy": "Nous nous efforçons de livrer chaque commande à la perfection. Pour retourner un article, merci de le renvoyer avec sa boîte d'origine ou son étiquette de prix, son emballage d'origine et la facture ; sans ces éléments, nous ne pouvons pas traiter votre demande. Les conditions générales s'appliquent.\nLes produits vendus sont destinés à la consommation finale et non à la revente.",
+    "customer_phone": "06 12 34 56 78"
+  }
+}

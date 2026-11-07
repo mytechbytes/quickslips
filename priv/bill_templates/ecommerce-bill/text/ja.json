@@ -1,0 +1,174 @@
+{
+  "title": "ネット通販請求書作成",
+  "name": "ネット通販請求書",
+  "public_slug": "ecommerce-bill-generator",
+  "summary": "商品ごとの税率と送料を記載したネット注文の請求書。",
+  "description": "商品、数量、商品ごとの{tax}率、送料、販売者、モール、お客様の住所を記載したネット注文の請求書を作成できます。4つのデザイン。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "お支払い領収書",
+    "t2": "注文確認",
+    "t3": "請求書",
+    "t4": "税務請求書"
+  },
+  "fields": {
+    "seller_name": {
+      "label": "販売者"
+    },
+    "seller_address": {
+      "label": "販売者の住所（任意）"
+    },
+    "seller_phone": {
+      "label": "販売者の電話番号（任意）"
+    },
+    "platform_name": {
+      "label": "ネットショップ／モール（任意）"
+    },
+    "platform_website": {
+      "label": "ウェブサイト（任意）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "invoice_number": {
+      "label": "請求書番号"
+    },
+    "date": {
+      "label": "請求書の日付"
+    },
+    "order_number": {
+      "label": "注文番号（任意）"
+    },
+    "order_date": {
+      "label": "注文日（任意）"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "customer_phone": {
+      "label": "携帯電話番号（任意）"
+    },
+    "shipping_address": {
+      "label": "配送先住所"
+    },
+    "billing_address": {
+      "label": "請求先住所（任意）"
+    },
+    "shipping_charge": {
+      "label": "送料（{currency}）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "signatory_name": {
+      "label": "署名者名（任意）"
+    },
+    "return_policy": {
+      "label": "返品ポリシーと備考（任意）"
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "内容",
+        "qty": "数量",
+        "rate": "単価（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "phone": "電話",
+    "authorised": "認可署名者",
+    "return_policy": "返品ポリシー",
+    "payment_receipt": "お支払い領収書",
+    "receipt_no": "領収書番号",
+    "sold_by": "販売者",
+    "order_no": "注文番号",
+    "order_date": "注文日",
+    "invoice_date": "請求書日付",
+    "receipt_date": "領収日",
+    "bill_to": "請求先",
+    "description": "内容",
+    "net_amount": "税抜金額",
+    "qty": "数量",
+    "total_amount": "合計金額",
+    "total": "合計",
+    "shipping": "送料",
+    "payment_method": "支払方法",
+    "order_confirmed": "ご注文を承りました！",
+    "hello": "こんにちは",
+    "order_number": "注文番号",
+    "shipping_address": "配送先住所",
+    "mobile": "携帯電話番号",
+    "receipt_summary": "明細",
+    "rate": "単価",
+    "amt": "金額",
+    "subtotal": "小計",
+    "confirmation_note": "商品の発送時に、発送完了メールをお送りします。",
+    "thanks_shopping": "ご利用ありがとうございます",
+    "need_help": "お困りですか？",
+    "invoice": "請求書",
+    "invoice_no": "請求書番号",
+    "date": "日付",
+    "invoice_to": "請求先",
+    "pay_to": "支払先",
+    "price": "単価",
+    "payment_info": "お支払い情報",
+    "amount": "金額",
+    "tax_invoice": "請求書",
+    "ship_from": "発送元住所",
+    "invoice_number": "請求書番号",
+    "order_id": "注文ID",
+    "payment": "支払い",
+    "ship_to": "配送先",
+    "keep_invoice": "保証のため、この請求書とメーカーの箱を保管してください",
+    "total_items": "商品数",
+    "title": "商品",
+    "gross_amount": "税込金額",
+    "taxable_value": "課税対象額",
+    "grand_total": "総合計",
+    "thank_you": "ありがとうございます！",
+    "for_shopping": "ご利用いただき"
+  },
+  "sample": {
+    "seller_name": "ブライトカート株式会社",
+    "seller_phone": "0120-123-456",
+    "customer_name": "田中 太郎",
+    "signatory_name": "山田 花子",
+    "items": [
+      {
+        "name": "ワイヤレスイヤホン（充電ケース付き）",
+        "qty": 1,
+        "rate": 5980,
+        "tax": 10
+      },
+      {
+        "name": "シリコン製スマホケース",
+        "qty": 2,
+        "rate": 1280,
+        "tax": 10
+      },
+      {
+        "name": "コットン丸首Tシャツ",
+        "qty": 2,
+        "rate": 1980,
+        "tax": 10
+      },
+      {
+        "name": "ステンレスボトル (750 ml)",
+        "qty": 1,
+        "rate": 2480,
+        "tax": 10
+      }
+    ],
+    "shipping_charge": 550,
+    "return_policy": "すべてのご注文を完璧にお届けできるよう努めております。返品の際は、元のブランド箱または値札、元の梱包、請求書を添えてください。これらがない場合は返品をお受けできません。利用規約が適用されます。\n販売した商品は最終消費者向けであり、再販売を目的としたものではありません。",
+    "customer_phone": "090-1234-5678"
+  }
+}
