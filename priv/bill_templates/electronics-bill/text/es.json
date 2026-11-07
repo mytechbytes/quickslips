@@ -1,0 +1,248 @@
+{
+  "title": "Generador de Factura de Electrónica",
+  "name": "Factura de Electrónica",
+  "public_slug": "generador-de-factura-de-electronica",
+  "summary": "Factura de electrónica con números de serie y desglose de impuestos.",
+  "description": "Genera una factura de móviles, electrodomésticos y otros productos electrónicos con números de serie, códigos HSN, {tax} incluido en el precio, las partes de facturación y envío, los datos de pago y el importe en letras. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Razón social"
+    },
+    "branch": {
+      "label": "Sucursal (opcional)"
+    },
+    "seller_address": {
+      "label": "Dirección (opcional)"
+    },
+    "seller_state": {
+      "label": "Provincia (opcional)"
+    },
+    "seller_phone": {
+      "label": "Teléfono (opcional)"
+    },
+    "seller_email": {
+      "label": "Correo electrónico (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "seller_pan": {
+      "label": "PAN (opcional)"
+    },
+    "cin": {
+      "label": "CIN (opcional)"
+    },
+    "copy_label": {
+      "label": "Etiqueta de la copia (opcional)"
+    },
+    "place_of_supply": {
+      "label": "Lugar de suministro (opcional)"
+    },
+    "supply": {
+      "label": "Suministro",
+      "options": {
+        "Same state": "Mismo estado",
+        "Other state": "Otro estado"
+      }
+    },
+    "reverse_charge": {
+      "label": "Inversión del sujeto pasivo (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha de la factura"
+    },
+    "do_number": {
+      "label": "N.º de albarán (opcional)"
+    },
+    "financier": {
+      "label": "Financiera (opcional)"
+    },
+    "bill_name": {
+      "label": "Facturar a: nombre"
+    },
+    "bill_care_of": {
+      "label": "Facturar a: a la atención de (opcional)"
+    },
+    "bill_address": {
+      "label": "Facturar a: dirección (opcional)"
+    },
+    "bill_state": {
+      "label": "Facturar a: provincia (opcional)"
+    },
+    "bill_pin": {
+      "label": "Facturar a: código postal (opcional)"
+    },
+    "bill_phone": {
+      "label": "Facturar a: teléfono (opcional)"
+    },
+    "bill_tax_id": {
+      "label": "Facturar a: {tax_id} (opcional)"
+    },
+    "ship_code": {
+      "label": "Enviar a: código (opcional)"
+    },
+    "ship_auth_code": {
+      "label": "Enviar a: código de autorización (opcional)"
+    },
+    "ship_address": {
+      "label": "Enviar a: dirección (opcional)"
+    },
+    "ship_state": {
+      "label": "Enviar a: provincia (opcional)"
+    },
+    "ship_phone": {
+      "label": "Enviar a: teléfono (opcional)"
+    },
+    "ship_tax_id": {
+      "label": "Enviar a: {tax_id} (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Cheque": "Cheque",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "payment_reference": {
+      "label": "N.º de aprobación / cheque / OTP (opcional)"
+    },
+    "payment_date": {
+      "label": "Fecha de pago (opcional)"
+    },
+    "amount_paid": {
+      "label": "Importe pagado ({currency}) (el total si se deja vacío) (opcional)"
+    },
+    "remarks": {
+      "label": "Observaciones (opcional)"
+    },
+    "bank_details": {
+      "label": "Banco (opcional)"
+    },
+    "bank_account": {
+      "label": "Cuenta bancaria (opcional)"
+    },
+    "bank_ifsc": {
+      "label": "IFSC (opcional)"
+    },
+    "customer_care": {
+      "label": "Atención al cliente (opcional)"
+    },
+    "delivery_helpline": {
+      "label": "Línea de ayuda de entregas (opcional)"
+    },
+    "signatory_for": {
+      "label": "Firmante en nombre de (opcional)"
+    },
+    "thank_you": {
+      "label": "Mensaje de agradecimiento (opcional)"
+    },
+    "items": {
+      "label": "Artículos",
+      "columns": {
+        "name": "Artículo",
+        "code": "N.º de serie",
+        "hsn": "Código HS",
+        "qty": "Cant.",
+        "rate": "Precio ({currency})",
+        "tax": "Impuesto %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Factura",
+    "state": "Provincia",
+    "tel_no": "Tel.",
+    "email": "Correo",
+    "place_of_supply": "Lugar de suministro",
+    "invoice_number": "Número de factura",
+    "invoice_date": "Fecha de factura",
+    "do_number": "N.º de albarán",
+    "bill_to_party": "Facturar a",
+    "ship_to_party": "Enviar a",
+    "financier": "Financiera",
+    "name": "Nombre",
+    "care_of": "A/A",
+    "address": "Dirección",
+    "pin": "C. P.",
+    "contact": "Teléfono",
+    "code": "Código",
+    "auth_code": "Código de autorización",
+    "serial_no": "N.º de serie",
+    "item_name": "Artículo",
+    "hsn": "Código HS",
+    "qty": "Cant.",
+    "rate": "Precio",
+    "taxable_value": "Base imponible",
+    "amount": "Importe",
+    "totals": "Totales",
+    "amount_in_words": "Importe en letras",
+    "payment_mode": "Forma",
+    "reference": "Aprob. / cheque / OTP",
+    "date": "Fecha",
+    "total": "Total",
+    "payments": "Pagos",
+    "balance": "Saldo",
+    "amt": "Imp.",
+    "remarks": "Observaciones",
+    "bank_details": "Banco",
+    "bank_account": "Cuenta",
+    "ifsc": "IFSC",
+    "customer_care": "Atención al cliente",
+    "delivery_helpline": "Ayuda de entregas",
+    "for": "en nombre de",
+    "authorised": "Firmante autorizado"
+  },
+  "sample": {
+    "company_name": "Visión Electrónica S.L.",
+    "branch": "Tienda Centro",
+    "signatory_for": "Visión Electrónica S.L.",
+    "seller_state": "Andalucía",
+    "seller_phone": "954 123 456",
+    "bill_name": "Carlos Gómez",
+    "bill_state": "Andalucía",
+    "bill_pin": "41001",
+    "bill_phone": "612 345 678",
+    "ship_state": "Andalucía",
+    "customer_care": "900 123 456",
+    "delivery_helpline": "900 765 432",
+    "bank_details": "Banco Ejemplo, Sevilla",
+    "bank_account": "ES91 2100 0418 4502 0005 1332",
+    "items": [
+      {
+        "name": "Smartphone 128 GB (negro medianoche)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 449,
+        "tax": 21
+      },
+      {
+        "name": "Auriculares inalámbricos",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 59,
+        "tax": 21
+      },
+      {
+        "name": "Batería externa 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 29.9,
+        "tax": 21
+      }
+    ],
+    "ship_phone": "612 345 678",
+    "copy_label": "(Original para el destinatario)",
+    "remarks": "Conserve esta factura para la garantía. Protector de pantalla colocado gratis en tienda.",
+    "thank_you": "Gracias. Vuelva pronto."
+  }
+}

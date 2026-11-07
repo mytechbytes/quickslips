@@ -1,0 +1,248 @@
+{
+  "title": "Generatore di fattura per elettronica",
+  "name": "Fattura elettronica di vendita",
+  "public_slug": "generatore-fattura-elettronica",
+  "summary": "Fattura per elettronica con numeri di serie e dettaglio delle imposte.",
+  "description": "Genera una fattura per telefoni, elettrodomestici e altra elettronica con numeri di serie, codici HS, {tax} inclusa nel prezzo, le parti di fatturazione e spedizione, i dati di pagamento e l'importo in lettere. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Fattura"
+  },
+  "fields": {
+    "company_name": {
+      "label": "Ragione sociale"
+    },
+    "branch": {
+      "label": "Filiale (facoltativo)"
+    },
+    "seller_address": {
+      "label": "Indirizzo (facoltativo)"
+    },
+    "seller_state": {
+      "label": "Regione (facoltativo)"
+    },
+    "seller_phone": {
+      "label": "Telefono (facoltativo)"
+    },
+    "seller_email": {
+      "label": "Email (facoltativo)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "seller_pan": {
+      "label": "PAN (facoltativo)"
+    },
+    "cin": {
+      "label": "CIN (facoltativo)"
+    },
+    "copy_label": {
+      "label": "Etichetta della copia (facoltativo)"
+    },
+    "place_of_supply": {
+      "label": "Luogo di fornitura (facoltativo)"
+    },
+    "supply": {
+      "label": "Fornitura",
+      "options": {
+        "Same state": "Stessa regione",
+        "Other state": "Altra regione"
+      }
+    },
+    "reverse_charge": {
+      "label": "Inversione contabile (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "Numero di fattura"
+    },
+    "date": {
+      "label": "Data della fattura"
+    },
+    "do_number": {
+      "label": "N. bolla di consegna (facoltativo)"
+    },
+    "financier": {
+      "label": "Finanziaria (facoltativo)"
+    },
+    "bill_name": {
+      "label": "Intestato a: nome"
+    },
+    "bill_care_of": {
+      "label": "Intestato a: c/o (facoltativo)"
+    },
+    "bill_address": {
+      "label": "Intestato a: indirizzo (facoltativo)"
+    },
+    "bill_state": {
+      "label": "Intestato a: regione (facoltativo)"
+    },
+    "bill_pin": {
+      "label": "Intestato a: CAP (facoltativo)"
+    },
+    "bill_phone": {
+      "label": "Intestato a: telefono (facoltativo)"
+    },
+    "bill_tax_id": {
+      "label": "Intestato a: {tax_id} (facoltativo)"
+    },
+    "ship_code": {
+      "label": "Spedire a: codice (facoltativo)"
+    },
+    "ship_auth_code": {
+      "label": "Spedire a: codice di autorizzazione (facoltativo)"
+    },
+    "ship_address": {
+      "label": "Spedire a: indirizzo (facoltativo)"
+    },
+    "ship_state": {
+      "label": "Spedire a: regione (facoltativo)"
+    },
+    "ship_phone": {
+      "label": "Spedire a: telefono (facoltativo)"
+    },
+    "ship_tax_id": {
+      "label": "Spedire a: {tax_id} (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Cheque": "Assegno",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "payment_reference": {
+      "label": "N. autorizzazione / assegno / OTP (facoltativo)"
+    },
+    "payment_date": {
+      "label": "Data del pagamento (facoltativo)"
+    },
+    "amount_paid": {
+      "label": "Importo pagato ({currency}) (il totale se vuoto) (facoltativo)"
+    },
+    "remarks": {
+      "label": "Note (facoltativo)"
+    },
+    "bank_details": {
+      "label": "Banca (facoltativo)"
+    },
+    "bank_account": {
+      "label": "Conto bancario (facoltativo)"
+    },
+    "bank_ifsc": {
+      "label": "IFSC (facoltativo)"
+    },
+    "customer_care": {
+      "label": "Assistenza clienti (facoltativo)"
+    },
+    "delivery_helpline": {
+      "label": "Assistenza consegne (facoltativo)"
+    },
+    "signatory_for": {
+      "label": "Firmatario per (facoltativo)"
+    },
+    "thank_you": {
+      "label": "Messaggio di ringraziamento (facoltativo)"
+    },
+    "items": {
+      "label": "Articoli",
+      "columns": {
+        "name": "Articolo",
+        "code": "N. di serie",
+        "hsn": "Codice HS",
+        "qty": "Q.tà",
+        "rate": "Prezzo ({currency})",
+        "tax": "Imposta %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Fattura",
+    "state": "Regione",
+    "tel_no": "Tel.",
+    "email": "Email",
+    "place_of_supply": "Luogo di fornitura",
+    "invoice_number": "Numero di fattura",
+    "invoice_date": "Data fattura",
+    "do_number": "N. DDT",
+    "bill_to_party": "Intestatario",
+    "ship_to_party": "Destinatario",
+    "financier": "Finanziaria",
+    "name": "Nome",
+    "care_of": "c/o",
+    "address": "Indirizzo",
+    "pin": "CAP",
+    "contact": "Telefono",
+    "code": "Codice",
+    "auth_code": "Codice di autorizzazione",
+    "serial_no": "N. di serie",
+    "item_name": "Articolo",
+    "hsn": "Codice HS",
+    "qty": "Q.tà",
+    "rate": "Prezzo",
+    "taxable_value": "Imponibile",
+    "amount": "Importo",
+    "totals": "Totali",
+    "amount_in_words": "Importo in lettere",
+    "payment_mode": "Metodo",
+    "reference": "Aut. / assegno / OTP",
+    "date": "Data",
+    "total": "Totale",
+    "payments": "Pagamenti",
+    "balance": "Saldo",
+    "amt": "Imp.",
+    "remarks": "Note",
+    "bank_details": "Banca",
+    "bank_account": "Conto",
+    "ifsc": "IFSC",
+    "customer_care": "Assistenza clienti",
+    "delivery_helpline": "Assistenza consegne",
+    "for": "per",
+    "authorised": "Firmatario autorizzato"
+  },
+  "sample": {
+    "company_name": "Visione Elettronica S.r.l.",
+    "branch": "Negozio Centro",
+    "signatory_for": "Visione Elettronica S.r.l.",
+    "seller_state": "Lazio",
+    "seller_phone": "06 1234567",
+    "bill_name": "Marco Rossi",
+    "bill_state": "Lazio",
+    "bill_pin": "00184",
+    "bill_phone": "333 123 4567",
+    "ship_state": "Lazio",
+    "customer_care": "800 123 456",
+    "delivery_helpline": "800 765 432",
+    "bank_details": "Banca Esempio, Roma",
+    "bank_account": "IT60 X054 2811 1010 0000 0123 456",
+    "items": [
+      {
+        "name": "Smartphone 128 GB (nero notte)",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 459,
+        "tax": 22
+      },
+      {
+        "name": "Auricolari wireless",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 59,
+        "tax": 22
+      },
+      {
+        "name": "Power bank 20000 mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 29.9,
+        "tax": 22
+      }
+    ],
+    "ship_phone": "333 123 4567",
+    "copy_label": "(Originale per il destinatario)",
+    "remarks": "Conservare questa fattura per la garanzia. Pellicola protettiva applicata gratuitamente in negozio.",
+    "thank_you": "Grazie. Arrivederci."
+  }
+}

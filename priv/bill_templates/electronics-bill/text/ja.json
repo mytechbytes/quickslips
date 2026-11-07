@@ -1,0 +1,248 @@
+{
+  "title": "家電・電子機器請求書作成",
+  "name": "家電・電子機器請求書",
+  "public_slug": "electronics-bill-generator",
+  "summary": "シリアル番号と税額内訳つきの電子機器の請求書。",
+  "description": "スマートフォン、家電などの電子機器について、シリアル番号、商品コード、価格に含まれる{tax}、請求先・配送先、支払情報、金額の文字表記を記載した請求書を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "請求書"
+  },
+  "fields": {
+    "company_name": {
+      "label": "会社名"
+    },
+    "branch": {
+      "label": "店舗（任意）"
+    },
+    "seller_address": {
+      "label": "住所（任意）"
+    },
+    "seller_state": {
+      "label": "都道府県（任意）"
+    },
+    "seller_phone": {
+      "label": "電話（任意）"
+    },
+    "seller_email": {
+      "label": "メール（任意）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "seller_pan": {
+      "label": "PAN（任意）"
+    },
+    "cin": {
+      "label": "CIN（任意）"
+    },
+    "copy_label": {
+      "label": "控えの表記（任意）"
+    },
+    "place_of_supply": {
+      "label": "供給地（任意）"
+    },
+    "supply": {
+      "label": "供給区分",
+      "options": {
+        "Same state": "同一都道府県",
+        "Other state": "他の都道府県"
+      }
+    },
+    "reverse_charge": {
+      "label": "リバースチャージ（任意）"
+    },
+    "invoice_number": {
+      "label": "請求書番号"
+    },
+    "date": {
+      "label": "請求書の日付"
+    },
+    "do_number": {
+      "label": "納品書番号（任意）"
+    },
+    "financier": {
+      "label": "金融会社（任意）"
+    },
+    "bill_name": {
+      "label": "請求先：氏名"
+    },
+    "bill_care_of": {
+      "label": "請求先：気付（任意）"
+    },
+    "bill_address": {
+      "label": "請求先：住所（任意）"
+    },
+    "bill_state": {
+      "label": "請求先：都道府県（任意）"
+    },
+    "bill_pin": {
+      "label": "請求先：郵便番号（任意）"
+    },
+    "bill_phone": {
+      "label": "請求先：連絡先（任意）"
+    },
+    "bill_tax_id": {
+      "label": "請求先：{tax_id}（任意）"
+    },
+    "ship_code": {
+      "label": "配送先：コード（任意）"
+    },
+    "ship_auth_code": {
+      "label": "配送先：承認コード（任意）"
+    },
+    "ship_address": {
+      "label": "配送先：住所（任意）"
+    },
+    "ship_state": {
+      "label": "配送先：都道府県（任意）"
+    },
+    "ship_phone": {
+      "label": "配送先：連絡先（任意）"
+    },
+    "ship_tax_id": {
+      "label": "配送先：{tax_id}（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Cheque": "小切手",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "payment_reference": {
+      "label": "カード承認／小切手／OTP番号（任意）"
+    },
+    "payment_date": {
+      "label": "支払日（任意）"
+    },
+    "amount_paid": {
+      "label": "支払済み金額（{currency}）（空欄なら合計全額）（任意）"
+    },
+    "remarks": {
+      "label": "備考（任意）"
+    },
+    "bank_details": {
+      "label": "銀行（任意）"
+    },
+    "bank_account": {
+      "label": "口座番号（任意）"
+    },
+    "bank_ifsc": {
+      "label": "IFSC（任意）"
+    },
+    "customer_care": {
+      "label": "お客様相談室（任意）"
+    },
+    "delivery_helpline": {
+      "label": "配送ヘルプライン（任意）"
+    },
+    "signatory_for": {
+      "label": "署名者の所属（任意）"
+    },
+    "thank_you": {
+      "label": "お礼のメッセージ（任意）"
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "商品",
+        "code": "シリアル番号",
+        "hsn": "商品コード",
+        "qty": "数量",
+        "rate": "単価（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "請求書",
+    "state": "都道府県",
+    "tel_no": "電話",
+    "email": "メール",
+    "place_of_supply": "供給地",
+    "invoice_number": "請求書番号",
+    "invoice_date": "請求書日付",
+    "do_number": "納品書番号",
+    "bill_to_party": "請求先",
+    "ship_to_party": "配送先",
+    "financier": "金融会社",
+    "name": "氏名",
+    "care_of": "気付",
+    "address": "住所",
+    "pin": "郵便番号",
+    "contact": "連絡先",
+    "code": "コード",
+    "auth_code": "承認コード",
+    "serial_no": "シリアル番号",
+    "item_name": "商品",
+    "hsn": "商品コード",
+    "qty": "数量",
+    "rate": "単価",
+    "taxable_value": "課税対象額",
+    "amount": "金額",
+    "totals": "合計",
+    "amount_in_words": "金額（文字）",
+    "payment_mode": "方法",
+    "reference": "承認／小切手／OTP",
+    "date": "日付",
+    "total": "合計",
+    "payments": "お支払い",
+    "balance": "残高",
+    "amt": "金額",
+    "remarks": "備考",
+    "bank_details": "銀行",
+    "bank_account": "口座",
+    "ifsc": "IFSC",
+    "customer_care": "お客様相談室",
+    "delivery_helpline": "配送ヘルプライン",
+    "for": "代表",
+    "authorised": "認可署名者"
+  },
+  "sample": {
+    "company_name": "ビジョン電機株式会社",
+    "branch": "新宿店",
+    "signatory_for": "ビジョン電機株式会社",
+    "seller_state": "東京都",
+    "seller_phone": "03-1234-5678",
+    "bill_name": "田中 太郎",
+    "bill_state": "東京都",
+    "bill_pin": "160-0023",
+    "bill_phone": "090-1234-5678",
+    "ship_state": "東京都",
+    "customer_care": "0120-123-456",
+    "delivery_helpline": "0120-765-432",
+    "bank_details": "サンプル銀行 新宿支店",
+    "bank_account": "普通 1234567",
+    "items": [
+      {
+        "name": "スマートフォン 128GB（ミッドナイトブラック）",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 54800,
+        "tax": 10
+      },
+      {
+        "name": "ワイヤレスイヤホン",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 5980,
+        "tax": 10
+      },
+      {
+        "name": "モバイルバッテリー 20000mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 3980,
+        "tax": 10
+      }
+    ],
+    "ship_phone": "090-1234-5678",
+    "copy_label": "（お客様控え）",
+    "remarks": "保証のためこの請求書を保管してください。店頭で画面保護フィルムを無料で貼付しました。",
+    "thank_you": "ありがとうございました。またお越しください。"
+  }
+}

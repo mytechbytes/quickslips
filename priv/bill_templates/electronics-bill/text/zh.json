@@ -1,0 +1,248 @@
+{
+  "title": "电子产品发票生成器",
+  "name": "电子产品发票",
+  "public_slug": "electronics-bill-generator",
+  "summary": "含序列号和税额明细的电子产品税务发票。",
+  "description": "生成手机、家电等电子产品的税务发票，包含序列号、商品编码、含税价格中的{tax}、购买方与收货方、付款信息和大写金额。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "税务发票"
+  },
+  "fields": {
+    "company_name": {
+      "label": "公司名称"
+    },
+    "branch": {
+      "label": "分店（选填）"
+    },
+    "seller_address": {
+      "label": "地址（选填）"
+    },
+    "seller_state": {
+      "label": "省份（选填）"
+    },
+    "seller_phone": {
+      "label": "电话（选填）"
+    },
+    "seller_email": {
+      "label": "邮箱（选填）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（选填）"
+    },
+    "seller_pan": {
+      "label": "PAN（选填）"
+    },
+    "cin": {
+      "label": "CIN（选填）"
+    },
+    "copy_label": {
+      "label": "联次说明（选填）"
+    },
+    "place_of_supply": {
+      "label": "供应地（选填）"
+    },
+    "supply": {
+      "label": "供应类型",
+      "options": {
+        "Same state": "同省",
+        "Other state": "跨省"
+      }
+    },
+    "reverse_charge": {
+      "label": "反向征税（选填）"
+    },
+    "invoice_number": {
+      "label": "发票号码"
+    },
+    "date": {
+      "label": "开票日期"
+    },
+    "do_number": {
+      "label": "送货单号（选填）"
+    },
+    "financier": {
+      "label": "金融机构（选填）"
+    },
+    "bill_name": {
+      "label": "购买方：姓名"
+    },
+    "bill_care_of": {
+      "label": "购买方：联系人（选填）"
+    },
+    "bill_address": {
+      "label": "购买方：地址（选填）"
+    },
+    "bill_state": {
+      "label": "购买方：省份（选填）"
+    },
+    "bill_pin": {
+      "label": "购买方：邮政编码（选填）"
+    },
+    "bill_phone": {
+      "label": "购买方：联系电话（选填）"
+    },
+    "bill_tax_id": {
+      "label": "购买方：{tax_id}（选填）"
+    },
+    "ship_code": {
+      "label": "收货方：代码（选填）"
+    },
+    "ship_auth_code": {
+      "label": "收货方：授权码（选填）"
+    },
+    "ship_address": {
+      "label": "收货方：地址（选填）"
+    },
+    "ship_state": {
+      "label": "收货方：省份（选填）"
+    },
+    "ship_phone": {
+      "label": "收货方：联系电话（选填）"
+    },
+    "ship_tax_id": {
+      "label": "收货方：{tax_id}（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Cheque": "支票",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "payment_reference": {
+      "label": "刷卡授权码 / 支票 / 验证码（选填）"
+    },
+    "payment_date": {
+      "label": "付款日期（选填）"
+    },
+    "amount_paid": {
+      "label": "已付金额（{currency}）（留空则为全额）（选填）"
+    },
+    "remarks": {
+      "label": "备注（选填）"
+    },
+    "bank_details": {
+      "label": "银行（选填）"
+    },
+    "bank_account": {
+      "label": "银行账号（选填）"
+    },
+    "bank_ifsc": {
+      "label": "IFSC（选填）"
+    },
+    "customer_care": {
+      "label": "客服电话（选填）"
+    },
+    "delivery_helpline": {
+      "label": "配送热线（选填）"
+    },
+    "signatory_for": {
+      "label": "签署单位（选填）"
+    },
+    "thank_you": {
+      "label": "感谢语（选填）"
+    },
+    "items": {
+      "label": "商品",
+      "columns": {
+        "name": "商品",
+        "code": "序列号",
+        "hsn": "商品编码",
+        "qty": "数量",
+        "rate": "单价（{currency}）",
+        "tax": "税率 %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "税务发票",
+    "state": "省份",
+    "tel_no": "电话",
+    "email": "邮箱",
+    "place_of_supply": "供应地",
+    "invoice_number": "发票号码",
+    "invoice_date": "开票日期",
+    "do_number": "送货单号",
+    "bill_to_party": "购买方",
+    "ship_to_party": "收货方",
+    "financier": "金融机构",
+    "name": "姓名",
+    "care_of": "联系人",
+    "address": "地址",
+    "pin": "邮编",
+    "contact": "联系电话",
+    "code": "代码",
+    "auth_code": "授权码",
+    "serial_no": "序列号",
+    "item_name": "商品",
+    "hsn": "商品编码",
+    "qty": "数量",
+    "rate": "单价",
+    "taxable_value": "计税金额",
+    "amount": "金额",
+    "totals": "合计",
+    "amount_in_words": "大写金额",
+    "payment_mode": "方式",
+    "reference": "授权码/支票/验证码",
+    "date": "日期",
+    "total": "合计",
+    "payments": "已付款",
+    "balance": "余额",
+    "amt": "金额",
+    "remarks": "备注",
+    "bank_details": "银行",
+    "bank_account": "银行账号",
+    "ifsc": "IFSC",
+    "customer_care": "客服电话",
+    "delivery_helpline": "配送热线",
+    "for": "代表",
+    "authorised": "授权签字人"
+  },
+  "sample": {
+    "company_name": "远景电子有限公司",
+    "branch": "朝阳旗舰店",
+    "signatory_for": "远景电子有限公司",
+    "seller_state": "北京",
+    "seller_phone": "010-12345678",
+    "bill_name": "王伟",
+    "bill_state": "北京",
+    "bill_pin": "100020",
+    "bill_phone": "138 0013 8000",
+    "ship_state": "北京",
+    "customer_care": "400-123-4567",
+    "delivery_helpline": "400-765-4321",
+    "bank_details": "示例银行北京分行",
+    "bank_account": "6222 0200 1234 5678 901",
+    "items": [
+      {
+        "name": "智能手机 128GB（午夜黑）",
+        "code": "SN-35829104",
+        "qty": 1,
+        "rate": 2999,
+        "tax": 13
+      },
+      {
+        "name": "无线蓝牙耳机",
+        "code": "SN-77120045",
+        "qty": 1,
+        "rate": 199,
+        "tax": 13
+      },
+      {
+        "name": "充电宝 20000mAh",
+        "code": "SN-90017733",
+        "qty": 1,
+        "rate": 129,
+        "tax": 13
+      }
+    ],
+    "ship_phone": "138 0013 8000",
+    "copy_label": "（正本，客户联）",
+    "remarks": "请保留本发票以便保修。门店免费贴膜。",
+    "thank_you": "谢谢惠顾，欢迎再来。"
+  }
+}
