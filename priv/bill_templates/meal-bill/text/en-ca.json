@@ -1,0 +1,39 @@
+{
+  "sample": {
+    "brand_name": "QuickEats",
+    "platform_company": "QuickEats Technologies Inc.\n200 Bay Street, Toronto, ON M5J 2J1",
+    "legal_name": "Maple Leaf Hospitality Inc.",
+    "restaurant_name": "Maple Leaf Café",
+    "items": [
+      {
+        "name": "Poutine x 2",
+        "rate": 22,
+        "discount": 0,
+        "tax": 5
+      },
+      {
+        "name": "Coffee x 3",
+        "rate": 9,
+        "discount": 10,
+        "tax": 5
+      },
+      {
+        "name": "Caesar salad",
+        "rate": 10,
+        "discount": 0,
+        "tax": 5
+      },
+      {
+        "name": "Packaging and delivery",
+        "rate": 3,
+        "discount": 0,
+        "tax": 5
+      }
+    ],
+    "customer_name": "Emma Wilson",
+    "delivery_address": "45 King Street West, Unit 12, Toronto, ON M5H 1J8",
+    "service_description": "Restaurant service",
+    "payment_note": "Paid online",
+    "signatory_name": "A. Johnson"
+  }
+}

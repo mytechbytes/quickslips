@@ -2,7 +2,15 @@ import { t } from "./i18n"
 import { INPUT_CLASS, SECONDARY_BUTTON_CLASS } from "./styles"
 import type { Field } from "./form"
 
-export type ItemRow = { name?: string; qty?: number; rate?: number; code?: string; billing?: string; discount?: number }
+export type ItemRow = {
+  name?: string
+  qty?: number
+  rate?: number
+  code?: string
+  billing?: string
+  discount?: number
+  tax?: number
+}
 
 type Cell = keyof ItemRow
 
@@ -15,11 +23,12 @@ const DEFAULT_HEADS: Record<Cell, string> = {
   qty: "Qty",
   rate: "Rate ({currency})",
   discount: "Disc. %",
+  tax: "Tax %",
 }
 // The widths of the cells in rem (the classes below), to tell how wide a table with many cells must be.
-const CELL_REM: Record<string, number> = { code: 7, billing: 7, qty: 5, rate: 7, discount: 5, amount: 7, remove: 2.5, name: 14 }
+const CELL_REM: Record<string, number> = { code: 7, billing: 7, qty: 5, rate: 7, discount: 5, tax: 5, amount: 7, remove: 2.5, name: 14 }
 // In a table with many cells the widths are the same on every screen, because it scrolls.
-const WIDE_WIDTH: Partial<Record<Cell, string>> = { code: "w-28", billing: "w-28", qty: "w-20", rate: "w-28", discount: "w-20" }
+const WIDE_WIDTH: Partial<Record<Cell, string>> = { code: "w-28", billing: "w-28", qty: "w-20", rate: "w-28", discount: "w-20", tax: "w-20" }
 // The widths of the narrow cells; the name takes what is left.
 const CELL_WIDTH: Partial<Record<Cell, string>> = {
   code: "w-28",
@@ -27,6 +36,7 @@ const CELL_WIDTH: Partial<Record<Cell, string>> = {
   qty: "w-16 sm:w-20",
   rate: "w-20 sm:w-28",
   discount: "w-20",
+  tax: "w-20",
 }
 
 // The table: heads on top, a row per item, the amount of the row and a remove icon at its end. The amount is left out
@@ -38,7 +48,7 @@ const HEAD_CLASS = "px-2 py-2 text-xs font-medium text-ink-muted"
 const isBlank = (row: ItemRow) =>
   (Object.keys(row) as Cell[]).every((cell) => cell === "billing" || row[cell] === undefined || row[cell] === "")
 
-const isNumeric = (cell: Cell) => cell === "qty" || cell === "rate" || cell === "discount"
+const isNumeric = (cell: Cell) => cell === "qty" || cell === "rate" || cell === "discount" || cell === "tax"
 
 /**
  * A table of items: add, edit and remove rows, with the amount of each row (quantity times rate) and the subtotal
@@ -142,7 +152,7 @@ export function createItemsField(
     for (const cell of cells) {
       const raw = cellValue(row, cell)
       if (raw === "") continue
-      if (isNumeric(cell)) item[cell as "qty" | "rate" | "discount"] = Number(raw)
+      if (isNumeric(cell)) item[cell as "qty" | "rate" | "discount" | "tax"] = Number(raw)
       else item[cell as "name" | "code" | "billing"] = raw
     }
     return item
@@ -192,7 +202,7 @@ export function createItemsField(
       el.type = "number"
       el.step = "any"
       el.min = column === "qty" ? "0.01" : "0"
-      if (column === "discount") el.max = "100"
+      if (column === "discount" || column === "tax") el.max = "100"
       el.inputMode = "decimal"
     }
     if (value !== undefined) el.value = String(value)

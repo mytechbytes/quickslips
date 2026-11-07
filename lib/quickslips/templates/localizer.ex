@@ -178,22 +178,24 @@ defmodule QuickSlips.Templates.Localizer do
   defp adapt_to_country(sample, nil), do: sample
 
   defp adapt_to_country(sample, example) do
-    Map.new(sample, fn
-      {key, _value} when key in ~w(gstin client_gstin seller_tax_id) ->
-        {key, example["tax_id"]}
-
-      {key, value} when is_binary(value) ->
-        cond do
-          String.ends_with?(key, "_address") -> {key, example["address"]}
-          value == "UPI" -> {key, "Cash"}
-          true -> {key, value}
-        end
-
-      other ->
-        other
-    end)
-    |> Map.drop(~w(fssai_number landlord_pan))
+    sample
+    |> Map.new(fn {key, value} -> {key, adapt_value(key, value, example)} end)
+    |> Map.drop(
+      ~w(fssai_number landlord_pan restaurant_fssai platform_pan platform_cin platform_fssai place_of_supply hsn_code reverse_charge)
+    )
   end
+
+  # A registration number (`gstin`, `seller_tax_id`, `platform_tax_id`...) and an address are the country's examples.
+  defp adapt_value(key, value, example) when is_binary(value) do
+    cond do
+      String.ends_with?(key, "gstin") or String.ends_with?(key, "tax_id") -> example["tax_id"]
+      String.ends_with?(key, "_address") -> example["address"]
+      value == "UPI" -> "Cash"
+      true -> value
+    end
+  end
+
+  defp adapt_value(_key, value, _example), do: value
 
   @doc """
   The dotted names of the keys that `reference` has and `candidate` has not, like `["fields.rate.label"]`. It
