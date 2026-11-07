@@ -340,6 +340,24 @@ defmodule QuickSlips.Render.RendererTest do
           )
       }
     },
+    "recharge-bill" => %{
+      designs: ~w(t1),
+      optional:
+        ~w(provider_address seller_tax_id time customer_address landmark alternative_number email email_banner
+           offer_title offer_text pay_options previous_balance adjustment tax_percent amount_after_due),
+      long: %{
+        "provider_name" => String.duplicate("Zing Mobile ", 6),
+        "provider_address" => String.duplicate("Tower B, Tech Park, Andheri East, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "customer_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "email_banner" => String.duplicate("To get your monthly bill on email ", 4),
+        "offer_title" => String.duplicate("Get 10 GB ", 4),
+        "offer_text" => String.duplicate("Broadband data with every connection ", 2),
+        "pay_options" => String.duplicate("Pay using the official website\n", 8),
+        "amount" => 99_999_999.99,
+        "previous_balance" => 99_999_999.99
+      }
+    },
     "internet-bill" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:

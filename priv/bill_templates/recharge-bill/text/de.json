@@ -1,0 +1,176 @@
+{
+  "title": "Aufladung-Rechnung-Generator",
+  "name": "Aufladungsrechnung",
+  "public_slug": "aufladung-rechnung-generator",
+  "summary": "Rechnung für Handy-, Telefon- oder TV-Aufladung mit Kontoübersicht.",
+  "description": "Erstellen Sie eine Aufladungsrechnung für einen Mobilfunk-, Telefon- oder TV-Anschluss mit Anbieter, Tarif, Abrechnungszyklus, Kontoübersicht, {tax} und Zahlungsbestätigung, in vier Farbthemen. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Rechnung"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Anbieter oder Händler"
+    },
+    "provider_address": {
+      "label": "Adresse des Anbieters (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "invoice_number": {
+      "label": "Rechnungsnummer"
+    },
+    "bill_date": {
+      "label": "Rechnungsdatum"
+    },
+    "time": {
+      "label": "Uhrzeit (optional)"
+    },
+    "period_start": {
+      "label": "Zeitraum von"
+    },
+    "period_end": {
+      "label": "Zeitraum bis"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "customer_address": {
+      "label": "Kundenadresse (optional)"
+    },
+    "landmark": {
+      "label": "Orientierungspunkt (optional)"
+    },
+    "customer_id": {
+      "label": "Kunden-ID"
+    },
+    "mobile_number": {
+      "label": "Mobilnummer"
+    },
+    "alternative_number": {
+      "label": "Alternative Nummer (optional)"
+    },
+    "email": {
+      "label": "E-Mail (optional)"
+    },
+    "service": {
+      "label": "Dienst",
+      "options": {
+        "Prepaid": "Prepaid",
+        "Postpaid": "Vertrag"
+      }
+    },
+    "payment_in": {
+      "label": "Zahlung",
+      "options": {
+        "Advance": "Im Voraus",
+        "Immediate": "Sofort"
+      }
+    },
+    "bill_cycle": {
+      "label": "Abrechnungszyklus",
+      "options": {
+        "Monthly": "Monatlich",
+        "Quarterly": "Vierteljährlich",
+        "Half-yearly": "Halbjährlich",
+        "Annual": "Jährlich"
+      }
+    },
+    "theme": {
+      "label": "Farbthema",
+      "options": {
+        "Red": "Rot",
+        "Blue": "Blau",
+        "Yellow": "Gelb",
+        "Green": "Grün"
+      }
+    },
+    "email_banner": {
+      "label": "Bannertext (optional)"
+    },
+    "offer_title": {
+      "label": "Angebotstitel (optional)"
+    },
+    "offer_text": {
+      "label": "Angebotstext (optional)"
+    },
+    "pay_options": {
+      "label": "Zahlungsmöglichkeiten (eine pro Zeile) (optional)"
+    },
+    "previous_balance": {
+      "label": "Vorherige Rechnung ({currency}) (optional)"
+    },
+    "adjustment": {
+      "label": "Anpassungsbetrag ({currency}) (optional)"
+    },
+    "amount": {
+      "label": "Aufladungs- oder Tarifbetrag ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "amount_after_due": {
+      "label": "Betrag nach Fälligkeit ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "original_copy": "Original für den Empfänger — Rechnung",
+    "invoice_no": "Rechnungs-Nr.",
+    "billed_to": "Rechnung an",
+    "customer_id": "Kunden-ID",
+    "mobile_no": "Mobilnr.",
+    "bill_no": "Rechnungs-Nr.",
+    "bill_date": "Datum",
+    "bill_cycle": "Zyklus",
+    "bill_period": "Zeitraum",
+    "to": "bis",
+    "pay_by": "Zahlung",
+    "alt_no": "Alternative Nr.",
+    "email": "E-Mail",
+    "account_summary": "Ihre Kontoübersicht",
+    "previous_bill": "Vorherige Rechnung",
+    "adjustment": "Anpassung",
+    "this_month": "Dieser Monat",
+    "service": "Dienst",
+    "after_due": "Betrag nach Fälligkeit",
+    "payment_method": "Zahlungsart",
+    "month_charge": "Entgelt dieses Monats",
+    "monthly_charges": "Monatliche Entgelte",
+    "tax": "Steuer",
+    "taxable_amount": "Steuerbasis",
+    "bill_from": "Ab",
+    "total_amount": "Gesamtbetrag",
+    "tax_note": "Nach den geltenden Vorschriften beträgt die {tax} auf dieser Rechnung {rate} %.",
+    "detach": "Bitte trennen Sie diesen Abschnitt ab und senden Sie ihn mit der Zahlung zurück",
+    "pay_on_go": "Unterwegs bezahlen",
+    "provider_details": "Anbieterdaten",
+    "acknowledgement": "Zahlungsbestätigung",
+    "customer_name": "Kundenname",
+    "amount": "Betrag",
+    "computer_generated": "* Maschinell erstellte Rechnung, keine Unterschrift erforderlich. Erstellt am {date} um {time} Uhr.",
+    "computer_generated_date": "* Maschinell erstellte Rechnung, keine Unterschrift erforderlich. Erstellt am {date}."
+  },
+  "sample": {
+    "provider_name": "Zing Mobilfunk",
+    "customer_name": "Anna Becker",
+    "mobile_number": "0151 2345678",
+    "amount": 19.99,
+    "tax_percent": 19,
+    "amount_after_due": 2,
+    "email_banner": "Um Ihre Monatsrechnung per E-Mail zu erhalten, senden Sie eine SMS: STARTBILL <E-Mail> an 198.",
+    "offer_title": "10 GB pro Monat gratis",
+    "offer_text": "Breitband-Datenvolumen zu jedem Prepaid- und TV-Anschluss",
+    "pay_options": "Mit der App bezahlen\nMit der Zing-Pay-App bezahlen: im Play Store oder App Store laden\nAuf der offiziellen Website bezahlen",
+    "landmark": null
+  }
+}

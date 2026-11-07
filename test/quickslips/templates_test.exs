@@ -32,7 +32,7 @@ defmodule QuickSlips.TemplatesTest do
   test "the catalogue has twenty-one templates in five categories" do
     templates = Templates.list()
 
-    assert length(templates) == 26
+    assert length(templates) == 27
 
     assert templates |> Enum.map(& &1["category"]) |> Enum.uniq() |> Enum.sort() ==
              Enum.sort(@categories)
@@ -115,6 +115,7 @@ defmodule QuickSlips.TemplatesTest do
     "mobile-bill" => "mobile-bill-generator",
     "parking-receipt" => "parking-receipt-generator",
     "pharmacy-bill" => "pharmacy-bill-generator",
+    "recharge-bill" => "recharge-bill-generator",
     "rent-receipt" => "rent-receipt-generator",
     "restaurant-bill" => "restaurant-bill-generator",
     "school-fee-receipt" => "school-fee-receipt-generator",
@@ -160,7 +161,7 @@ defmodule QuickSlips.TemplatesTest do
     test "the bills that have been translated are in every language; the other templates only in English" do
       for locale <- Locales.live(),
           slug <-
-            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill hypermarket-bill book-receipt ecommerce-bill electronics-bill stationery-bill internet-bill) do
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill hypermarket-bill book-receipt ecommerce-bill electronics-bill stationery-bill internet-bill recharge-bill) do
         assert Templates.supports?(slug, locale)
       end
 
@@ -186,6 +187,7 @@ defmodule QuickSlips.TemplatesTest do
                  "medical-bill",
                  "parking-receipt",
                  "pharmacy-bill",
+                 "recharge-bill",
                  "rent-receipt",
                  "restaurant-bill",
                  "stationery-bill",
@@ -194,7 +196,7 @@ defmodule QuickSlips.TemplatesTest do
                ]
       end
 
-      assert length(Templates.list(Locales.fetch!("en-in"))) == 26
+      assert length(Templates.list(Locales.fetch!("en-in"))) == 27
     end
 
     test "get/2 gives the words of the language and keeps the internal slug" do

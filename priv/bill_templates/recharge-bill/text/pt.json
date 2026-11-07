@@ -1,0 +1,176 @@
+{
+  "title": "Gerador de nota de recarga",
+  "name": "Nota de recarga",
+  "public_slug": "gerador-de-nota-de-recarga",
+  "summary": "Nota de recarga de celular, telefone ou TV com resumo da conta.",
+  "description": "Crie uma nota de recarga para uma linha de celular, telefone ou TV com operadora, plano, ciclo de cobrança, resumo da conta, {tax} e comprovante de pagamento, em quatro temas de cor. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota fiscal"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "Operadora ou loja"
+    },
+    "provider_address": {
+      "label": "Endereço da operadora (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número da nota"
+    },
+    "bill_date": {
+      "label": "Data da nota"
+    },
+    "time": {
+      "label": "Hora (opcional)"
+    },
+    "period_start": {
+      "label": "Período de"
+    },
+    "period_end": {
+      "label": "Período até"
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "customer_address": {
+      "label": "Endereço do cliente (opcional)"
+    },
+    "landmark": {
+      "label": "Ponto de referência (opcional)"
+    },
+    "customer_id": {
+      "label": "ID do cliente"
+    },
+    "mobile_number": {
+      "label": "Número do celular"
+    },
+    "alternative_number": {
+      "label": "Número alternativo (opcional)"
+    },
+    "email": {
+      "label": "E-mail (opcional)"
+    },
+    "service": {
+      "label": "Serviço",
+      "options": {
+        "Prepaid": "Pré-pago",
+        "Postpaid": "Pós-pago"
+      }
+    },
+    "payment_in": {
+      "label": "Pagamento",
+      "options": {
+        "Advance": "Antecipado",
+        "Immediate": "Imediato"
+      }
+    },
+    "bill_cycle": {
+      "label": "Ciclo de cobrança",
+      "options": {
+        "Monthly": "Mensal",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Annual": "Anual"
+      }
+    },
+    "theme": {
+      "label": "Tema de cor",
+      "options": {
+        "Red": "Vermelho",
+        "Blue": "Azul",
+        "Yellow": "Amarelo",
+        "Green": "Verde"
+      }
+    },
+    "email_banner": {
+      "label": "Mensagem do banner (opcional)"
+    },
+    "offer_title": {
+      "label": "Título da oferta (opcional)"
+    },
+    "offer_text": {
+      "label": "Texto da oferta (opcional)"
+    },
+    "pay_options": {
+      "label": "Formas de pagar (uma por linha) (opcional)"
+    },
+    "previous_balance": {
+      "label": "Fatura anterior ({currency}) (opcional)"
+    },
+    "adjustment": {
+      "label": "Valor de ajuste ({currency}) (opcional)"
+    },
+    "amount": {
+      "label": "Valor da recarga ou do plano ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "amount_after_due": {
+      "label": "Valor após o vencimento ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "original_copy": "Via original do destinatário — Nota fiscal",
+    "invoice_no": "Nota n.º",
+    "billed_to": "Cliente",
+    "customer_id": "ID do cliente",
+    "mobile_no": "Celular",
+    "bill_no": "Nota n.º",
+    "bill_date": "Data",
+    "bill_cycle": "Ciclo",
+    "bill_period": "Período",
+    "to": "a",
+    "pay_by": "Pagamento",
+    "alt_no": "Outro número",
+    "email": "E-mail",
+    "account_summary": "Resumo da sua conta",
+    "previous_bill": "Fatura anterior",
+    "adjustment": "Ajuste",
+    "this_month": "Este mês",
+    "service": "Serviço",
+    "after_due": "Valor após vencimento",
+    "payment_method": "Forma de pagamento",
+    "month_charge": "Cobrança deste mês",
+    "monthly_charges": "Cobranças mensais",
+    "tax": "Imposto",
+    "taxable_amount": "Base de cálculo",
+    "bill_from": "De",
+    "total_amount": "Valor total",
+    "tax_note": "Conforme as regras aplicáveis, o {tax} desta nota é de {rate}%.",
+    "detach": "Destaque este comprovante e devolva-o com o pagamento",
+    "pay_on_go": "Pague em qualquer lugar",
+    "provider_details": "Dados da operadora",
+    "acknowledgement": "Comprovante de pagamento",
+    "customer_name": "Nome do cliente",
+    "amount": "Valor",
+    "computer_generated": "* Nota gerada por computador, assinatura não necessária. Criada em {date} às {time}.",
+    "computer_generated_date": "* Nota gerada por computador, assinatura não necessária. Criada em {date}."
+  },
+  "sample": {
+    "provider_name": "Zing Móvel",
+    "customer_name": "Ana Souza",
+    "mobile_number": "(11) 91234-5678",
+    "amount": 49.9,
+    "tax_percent": null,
+    "amount_after_due": 5,
+    "email_banner": "Para receber sua fatura mensal por e-mail, envie um SMS: STARTBILL <e-mail> para 198.",
+    "offer_title": "10 GB grátis por mês",
+    "offer_text": "Dados de banda larga em cada linha pré-paga e de TV",
+    "pay_options": "Pague pelo app\nPague pelo app Zing Pay: baixe na Play Store ou App Store\nPague no site oficial",
+    "landmark": null
+  }
+}

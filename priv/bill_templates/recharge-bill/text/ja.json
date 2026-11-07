@@ -1,0 +1,176 @@
+{
+  "title": "チャージ請求書作成",
+  "name": "チャージ請求書",
+  "public_slug": "recharge-bill-generator",
+  "summary": "アカウント概要つきの携帯・電話・テレビのチャージ請求書。",
+  "description": "事業者、プラン、請求サイクル、アカウント概要、{tax}、受領証を記載した携帯・電話・テレビ回線のチャージ請求書を4色のテーマで作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "請求書"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "事業者または販売店"
+    },
+    "provider_address": {
+      "label": "事業者の住所（任意）"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id}（任意）"
+    },
+    "invoice_number": {
+      "label": "請求書番号"
+    },
+    "bill_date": {
+      "label": "請求日"
+    },
+    "time": {
+      "label": "時刻（任意）"
+    },
+    "period_start": {
+      "label": "請求期間（開始）"
+    },
+    "period_end": {
+      "label": "請求期間（終了）"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "customer_address": {
+      "label": "お客様の住所（任意）"
+    },
+    "landmark": {
+      "label": "目印（任意）"
+    },
+    "customer_id": {
+      "label": "お客様ID"
+    },
+    "mobile_number": {
+      "label": "携帯電話番号"
+    },
+    "alternative_number": {
+      "label": "予備の電話番号（任意）"
+    },
+    "email": {
+      "label": "メール（任意）"
+    },
+    "service": {
+      "label": "サービス",
+      "options": {
+        "Prepaid": "プリペイド",
+        "Postpaid": "ポストペイド"
+      }
+    },
+    "payment_in": {
+      "label": "支払時期",
+      "options": {
+        "Advance": "前払い",
+        "Immediate": "即時"
+      }
+    },
+    "bill_cycle": {
+      "label": "請求サイクル",
+      "options": {
+        "Monthly": "月次",
+        "Quarterly": "3か月",
+        "Half-yearly": "半年",
+        "Annual": "年次"
+      }
+    },
+    "theme": {
+      "label": "カラーテーマ",
+      "options": {
+        "Red": "レッド",
+        "Blue": "ブルー",
+        "Yellow": "イエロー",
+        "Green": "グリーン"
+      }
+    },
+    "email_banner": {
+      "label": "バナーのメッセージ（任意）"
+    },
+    "offer_title": {
+      "label": "特典の見出し（任意）"
+    },
+    "offer_text": {
+      "label": "特典の説明（任意）"
+    },
+    "pay_options": {
+      "label": "支払方法（1行に1件）（任意）"
+    },
+    "previous_balance": {
+      "label": "前回の請求（{currency}）（任意）"
+    },
+    "adjustment": {
+      "label": "調整額（{currency}）（任意）"
+    },
+    "amount": {
+      "label": "チャージまたはプラン料金（{currency}）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "amount_after_due": {
+      "label": "期限後の金額（{currency}）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    }
+  },
+  "print": {
+    "original_copy": "お客様控え（原本）— 請求書",
+    "invoice_no": "請求書番号",
+    "billed_to": "請求先",
+    "customer_id": "お客様ID",
+    "mobile_no": "携帯番号",
+    "bill_no": "請求書番号",
+    "bill_date": "請求日",
+    "bill_cycle": "請求サイクル",
+    "bill_period": "請求期間",
+    "to": "〜",
+    "pay_by": "支払い",
+    "alt_no": "予備番号",
+    "email": "メール",
+    "account_summary": "アカウント概要",
+    "previous_bill": "前回請求",
+    "adjustment": "調整額",
+    "this_month": "今月",
+    "service": "サービス",
+    "after_due": "期限後の金額",
+    "payment_method": "支払方法",
+    "month_charge": "今月のご利用料金",
+    "monthly_charges": "月額料金",
+    "tax": "税",
+    "taxable_amount": "課税対象額",
+    "bill_from": "開始日",
+    "total_amount": "合計金額",
+    "tax_note": "適用される規定に基づき、この請求書の{tax}は{rate}%です。",
+    "detach": "この受領証を切り取り、お支払いとともにご提出ください",
+    "pay_on_go": "外出先でお支払い",
+    "provider_details": "事業者情報",
+    "acknowledgement": "受領証",
+    "customer_name": "お客様名",
+    "amount": "金額",
+    "computer_generated": "※この請求書はコンピュータで作成されており、署名は不要です。作成日時：{date} {time}。",
+    "computer_generated_date": "※この請求書はコンピュータで作成されており、署名は不要です。作成日：{date}。"
+  },
+  "sample": {
+    "provider_name": "ジングモバイル",
+    "customer_name": "田中 太郎",
+    "mobile_number": "090-1234-5678",
+    "amount": 2980,
+    "tax_percent": 10,
+    "amount_after_due": 300,
+    "email_banner": "月額の請求書をメールで受け取るには、198 へ SMS：STARTBILL <メールアドレス> を送信してください。",
+    "offer_title": "毎月10GBが無料",
+    "offer_text": "プリペイド回線・テレビ回線ごとにブロードバンドデータ付き",
+    "pay_options": "アプリでお支払い\nZing Pay アプリでお支払い：Play Store または App Store からダウンロード\n公式サイトでお支払い",
+    "landmark": null
+  }
+}
