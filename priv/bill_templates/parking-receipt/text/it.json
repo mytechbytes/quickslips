@@ -1,0 +1,51 @@
+{
+  "title": "Generatore di ricevuta di parcheggio",
+  "name": "Ricevuta di parcheggio",
+  "public_slug": "generatore-ricevuta-parcheggio",
+  "summary": "Ricevuta di parcheggio con posto, ora e importo.",
+  "description": "Genera una ricevuta di parcheggio con nome, indirizzo, posto, ora e importo. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Scontrino"
+  },
+  "fields": {
+    "facility_name": {
+      "label": "Nome del parcheggio"
+    },
+    "facility_address": {
+      "label": "Indirizzo del parcheggio"
+    },
+    "facility_phone": {
+      "label": "Telefono (facoltativo)"
+    },
+    "receipt_number": {
+      "label": "Numero di ricevuta"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "time": {
+      "label": "Ora (facoltativo)"
+    },
+    "space_number": {
+      "label": "Posto"
+    },
+    "thank_you": {
+      "label": "Messaggio di ringraziamento (facoltativo)"
+    },
+    "amount": {
+      "label": "Importo totale ({currency})"
+    }
+  },
+  "print": {
+    "title": "Ricevuta di parcheggio",
+    "space": "Posto",
+    "paid": "Pagato",
+    "tel": "Tel."
+  },
+  "sample": {
+    "facility_name": "Parcheggio Centro",
+    "facility_phone": "06 1234567",
+    "amount": 5,
+    "thank_you": "GRAZIE E BUON VIAGGIO!"
+  }
+}

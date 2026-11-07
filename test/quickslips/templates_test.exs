@@ -29,10 +29,10 @@ defmodule QuickSlips.TemplatesTest do
 
   @categories ["Travel", "Home & utilities", "Health & learning", "Food & shopping", "Work"]
 
-  test "the catalogue has fifteen templates in five categories" do
+  test "the catalogue has sixteen templates in five categories" do
     templates = Templates.list()
 
-    assert length(templates) == 15
+    assert length(templates) == 16
 
     assert templates |> Enum.map(& &1["category"]) |> Enum.uniq() |> Enum.sort() ==
              Enum.sort(@categories)
@@ -106,6 +106,7 @@ defmodule QuickSlips.TemplatesTest do
     "internet-bill" => "internet-bill-generator",
     "medical-bill" => "medical-bill-generator",
     "mobile-bill" => "mobile-bill-generator",
+    "parking-receipt" => "parking-receipt-generator",
     "rent-receipt" => "rent-receipt-generator",
     "restaurant-bill" => "restaurant-bill-generator",
     "school-fee-receipt" => "school-fee-receipt-generator",
@@ -146,8 +147,8 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel Bill and Cab Bill are in every language; the other templates only in English" do
-      for locale <- Locales.live(), slug <- ["fuel-bill", "taxi-receipt"] do
+    test "Fuel, Cab and Parking are in every language; the other templates only in English" do
+      for locale <- Locales.live(), slug <- ["fuel-bill", "taxi-receipt", "parking-receipt"] do
         assert Templates.supports?(slug, locale)
       end
 
@@ -157,10 +158,10 @@ defmodule QuickSlips.TemplatesTest do
 
       for code <- ["hi-in", "es-es", "ja-jp"] do
         slugs = Locales.fetch!(code) |> Templates.list() |> Enum.map(& &1["slug"])
-        assert Enum.sort(slugs) == ["fuel-bill", "taxi-receipt"]
+        assert Enum.sort(slugs) == ["fuel-bill", "parking-receipt", "taxi-receipt"]
       end
 
-      assert length(Templates.list(Locales.fetch!("en-in"))) == 15
+      assert length(Templates.list(Locales.fetch!("en-in"))) == 16
     end
 
     test "get/2 gives the words of the language and keeps the internal slug" do
