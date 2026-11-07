@@ -1,0 +1,175 @@
+{
+  "title": "インターネット料金請求書作成",
+  "name": "インターネット料金請求書",
+  "public_slug": "internet-bill-generator",
+  "summary": "プラン・期間・{tax}を記載したブロードバンド／光回線の請求書。",
+  "description": "プラン、速度、請求期間、料金、{tax}を記載したブロードバンド／光回線の請求書を作成できます。4つのデザイン。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "クラシック",
+    "t2": "インターネット請求書",
+    "t3": "詳細請求書",
+    "t4": "ご利用明細"
+  },
+  "fields": {
+    "provider_name": {
+      "label": "インターネットプロバイダー"
+    },
+    "provider_address": {
+      "label": "住所（任意）"
+    },
+    "provider_email": {
+      "label": "メール（任意）"
+    },
+    "registered_office": {
+      "label": "本店所在地（任意）"
+    },
+    "gstin": {
+      "label": "{tax_id}（任意）"
+    },
+    "bill_number": {
+      "label": "請求書番号"
+    },
+    "account_number": {
+      "label": "お客様番号"
+    },
+    "bill_date": {
+      "label": "請求日"
+    },
+    "due_date": {
+      "label": "支払期限（任意）"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "customer_address": {
+      "label": "お客様の住所（任意）"
+    },
+    "user_name": {
+      "label": "ユーザー名（任意）"
+    },
+    "period_start": {
+      "label": "請求期間（開始）"
+    },
+    "period_end": {
+      "label": "請求期間（終了）"
+    },
+    "plan_name": {
+      "label": "プラン"
+    },
+    "plan_speed": {
+      "label": "プランの速度（任意）"
+    },
+    "plan_package": {
+      "label": "プランの種類（任意）",
+      "options": {
+        "Limited": "従量制",
+        "Unlimited": "使い放題",
+        "FUP": "公平利用"
+      }
+    },
+    "plan_validity": {
+      "label": "プランの期間（任意）",
+      "options": {
+        "Monthly": "月払い",
+        "Quarterly": "3か月払い",
+        "Half-yearly": "半年払い",
+        "Annual": "年払い"
+      }
+    },
+    "service_description": {
+      "label": "サービス内容（任意）"
+    },
+    "plan_charge": {
+      "label": "プラン料金（{currency}）"
+    },
+    "other_charges": {
+      "label": "設置費・その他の料金（{currency}）（任意）"
+    },
+    "discount": {
+      "label": "割引（{currency}）（任意）"
+    },
+    "gst_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "payments_received": {
+      "label": "入金済み（{currency}）（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法（任意）",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "terms": {
+      "label": "利用条件（1行に1件）（任意）"
+    }
+  },
+  "print": {
+    "title": "インターネット料金",
+    "bill_no": "請求書番号",
+    "bill_date": "請求日",
+    "due_date": "支払期限",
+    "account_no": "お客様番号",
+    "billing_period": "請求期間",
+    "billed_to": "請求先",
+    "description": "内容",
+    "amount": "金額",
+    "installation": "設置費・その他の料金",
+    "discount": "割引",
+    "subtotal": "小計",
+    "amount_due": "お支払い金額",
+    "pay_by": "回線を継続してご利用いただくため、{date}までにお支払いください。",
+    "computer_generated": "この請求書はコンピュータで作成されています。",
+    "invoice_title": "インターネット請求書",
+    "customer_name": "お客様名",
+    "customer_address": "お客様の住所",
+    "bill_account": "お客様番号",
+    "receipt_details": "領収情報",
+    "receipt_no": "領収書番号",
+    "date": "日付",
+    "payment_method": "支払方法",
+    "provider_details": "プロバイダー情報",
+    "billing_cycle": "請求サイクル",
+    "plan_summary": "プラン概要",
+    "plan": "プラン",
+    "plan_speed": "速度",
+    "plan_package": "種類",
+    "plan_validity": "期間",
+    "plan_amount": "プラン料金",
+    "total": "合計",
+    "payable_to": "お支払いはすべて次の名義でお願いします：",
+    "no_signature": "この請求書はコンピュータで作成されており、署名は不要です",
+    "receipt_for_recipient": "（お客様控え）",
+    "name": "氏名",
+    "invoice_no": "請求書番号",
+    "taxable_amount": "課税対象額",
+    "rate_pct": "税率 %",
+    "payments_received": "入金済み",
+    "user_name": "ユーザー名",
+    "service_description": "インターネットサービス内容",
+    "amount_incl_tax": "税込金額",
+    "registered_office": "本店所在地",
+    "terms_title": "利用条件",
+    "acknowledgement": "受領証",
+    "subscriber_name": "契約者名",
+    "hello": "こんにちは",
+    "invoice_total": "請求合計",
+    "currency": "通貨",
+    "invoice_amount": "請求金額",
+    "mailing_address": "お問い合わせ先は"
+  },
+  "sample": {
+    "provider_name": "スカイラインブロードバンド",
+    "registered_office": "スカイラインブロードバンド株式会社、東京都新宿区西新宿2-8-1",
+    "customer_name": "田中 太郎",
+    "plan_name": "光ファイバー 200 Mbps・データ使い放題",
+    "service_description": "光ファイバー回線サービス",
+    "plan_charge": 5500,
+    "gst_percent": 10,
+    "terms": "小切手はスカイラインブロードバンド宛にお振り出しください。\n小切手が不渡りの場合、1,000円の手数料がかかります。\n支払期限を過ぎた場合は遅延金をいただきます。\n未払いが続く場合は、サービスを停止することがあります。\nこの請求書はシステムで作成されており、署名・押印は不要です。"
+  }
+}

@@ -160,7 +160,7 @@ defmodule QuickSlips.TemplatesTest do
     test "the bills that have been translated are in every language; the other templates only in English" do
       for locale <- Locales.live(),
           slug <-
-            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill hypermarket-bill book-receipt ecommerce-bill electronics-bill stationery-bill) do
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill hypermarket-bill book-receipt ecommerce-bill electronics-bill stationery-bill internet-bill) do
         assert Templates.supports?(slug, locale)
       end
 
@@ -180,6 +180,7 @@ defmodule QuickSlips.TemplatesTest do
                  "fuel-bill",
                  "grocery-bill",
                  "hypermarket-bill",
+                 "internet-bill",
                  "maintenance-bill",
                  "meal-bill",
                  "medical-bill",

@@ -340,6 +340,28 @@ defmodule QuickSlips.Render.RendererTest do
           )
       }
     },
+    "internet-bill" => %{
+      designs: ~w(t1 t2 t3 t4),
+      optional:
+        ~w(provider_address provider_email registered_office gstin due_date customer_address user_name plan_speed
+           plan_package plan_validity service_description other_charges discount gst_percent payments_received
+           payment_mode terms),
+      long: %{
+        "provider_name" => String.duplicate("Skyline Broadband ", 4),
+        "provider_address" => String.duplicate("Plot 18, Hi-Tech City, Hyderabad, ", 6),
+        "registered_office" => String.duplicate("Skyline Broadband Pvt. Ltd., Plot 18, ", 8),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "customer_address" => String.duplicate("Flat 9B, Green Heights, Kondapur, ", 6),
+        "plan_name" => String.duplicate("Fibre 200 Mbps unlimited ", 3),
+        "service_description" => String.duplicate("Fibre broadband subscription ", 3),
+        "plan_charge" => 99_999_999.99,
+        "terms" =>
+          String.duplicate(
+            "A late fee will be charged if the bill is paid after the due date.\n",
+            12
+          )
+      }
+    },
     "stationery-bill" => %{
       designs: ~w(t1),
       optional: ~w(seller_tax_id tax_percent remarks),
