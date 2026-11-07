@@ -308,6 +308,35 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "medical-bill" => %{
+      designs: ~w(t1 t2),
+      optional:
+        ~w(clinic_address clinic_phone hospital_details registration_number time admit_date discharge_date
+           patient_details patient_issue guardian_name patient_phone patient_address payer_name payer_address
+           doctor_name doctor_designation room insurance remark items consultation_fee medicines_cost
+           tests_cost other_charges discount tax_percent amount_paid),
+      long: %{
+        "clinic_name" => String.duplicate("Sunrise Multispeciality Hospital ", 3),
+        "clinic_address" => String.duplicate("Shop 2, Lake View Road, Kochi, ", 6),
+        "hospital_details" => String.duplicate("24-hour emergency care, pharmacy, ", 5),
+        "patient_name" => String.duplicate("Ramakrishnan ", 5),
+        "patient_address" => String.duplicate("12, Marine Drive, Kochi, ", 7),
+        "payer_address" => String.duplicate("12, Marine Drive, Kochi, ", 7),
+        "doctor_name" => String.duplicate("Venkatasubramanian ", 4),
+        "remark" => String.duplicate("Follow up after 5 days. ", 12),
+        "consultation_fee" => 9_999_999.99,
+        "amount_paid" => 1.5,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Room rent per day ", 5),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99
+            },
+            14
+          )
+      }
+    },
     "meal-bill" => %{
       designs: ~w(t1),
       optional:

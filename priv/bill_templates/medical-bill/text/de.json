@@ -1,0 +1,226 @@
+{
+  "title": "Arztrechnung-Generator",
+  "name": "Arztrechnung",
+  "public_slug": "arztrechnung-generator",
+  "summary": "Rechnung für Krankenhaus, Praxis oder Labor mit {tax}.",
+  "description": "Erstellen Sie eine Rechnung für Krankenhaus, Praxis oder Labor mit Patient, Arzt, Zimmer, Beratung, Medikamenten, Untersuchungen und Einzelpositionen. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Krankenhausrechnung",
+    "t2": "Vorläufige Rechnung"
+  },
+  "fields": {
+    "clinic_name": {
+      "label": "Krankenhaus, Praxis oder Labor"
+    },
+    "clinic_address": {
+      "label": "Adresse (optional)"
+    },
+    "clinic_phone": {
+      "label": "Kontakttelefon (optional)"
+    },
+    "hospital_details": {
+      "label": "Angaben zur Einrichtung (optional)"
+    },
+    "registration_number": {
+      "label": "Registrierungsnummer (optional)"
+    },
+    "bill_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "time": {
+      "label": "Uhrzeit (optional)"
+    },
+    "admit_date": {
+      "label": "Aufnahmedatum (optional)"
+    },
+    "discharge_date": {
+      "label": "Entlassungsdatum (optional)"
+    },
+    "patient_name": {
+      "label": "Name des Patienten"
+    },
+    "patient_details": {
+      "label": "Alter und Geschlecht (optional)"
+    },
+    "patient_issue": {
+      "label": "Beschwerde (optional)"
+    },
+    "guardian_name": {
+      "label": "Name des Erziehungsberechtigten (optional)"
+    },
+    "patient_phone": {
+      "label": "Handy des Patienten (optional)"
+    },
+    "patient_address": {
+      "label": "Adresse des Patienten (optional)"
+    },
+    "payer_name": {
+      "label": "Name des Zahlers (optional)"
+    },
+    "payer_address": {
+      "label": "Adresse des Zahlers (optional)"
+    },
+    "doctor_name": {
+      "label": "Arzt (optional)"
+    },
+    "doctor_designation": {
+      "label": "Funktion (optional)"
+    },
+    "room": {
+      "label": "Zimmerkategorie (optional)",
+      "options": {
+        "Single": "Einzelzimmer",
+        "Semi-private": "Zweibettzimmer",
+        "Private": "Privat",
+        "General": "Allgemein",
+        "ICU": "Intensivstation"
+      }
+    },
+    "insurance": {
+      "label": "Versicherung (optional)",
+      "options": {
+        "Yes": "Ja",
+        "No": "Nein"
+      }
+    },
+    "remark": {
+      "label": "Bemerkung (optional)"
+    },
+    "consultation_fee": {
+      "label": "Beratung ({currency}) (optional)"
+    },
+    "medicines_cost": {
+      "label": "Medikamente ({currency}) (optional)"
+    },
+    "tests_cost": {
+      "label": "Untersuchungen und Eingriffe ({currency}) (optional)"
+    },
+    "other_charges": {
+      "label": "Sonstige Kosten ({currency}) (optional)"
+    },
+    "discount": {
+      "label": "Rabatt ({currency}) (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "amount_paid": {
+      "label": "Gezahlter Betrag ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Bezahlt mit",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Einzelpositionen",
+      "columns": {
+        "name": "Beschreibung",
+        "qty": "Anzahl",
+        "rate": "Preis ({currency})"
+      }
+    }
+  },
+  "print": {
+    "invoice_no": "Rechnungs-Nr.",
+    "contact": "Kontakt",
+    "reg_no": "Reg.-Nr.",
+    "discharge_date": "Entlassungsdatum",
+    "admit_date": "Aufnahmedatum",
+    "patient_info": "Patientendaten",
+    "patient_name": "Name des Patienten",
+    "patient_issue": "Beschwerde",
+    "address": "Adresse",
+    "guardian": "Name des Erziehungsberechtigten",
+    "mobile": "Handy",
+    "insurance": "Versicherung vorhanden",
+    "age": "Alter",
+    "consultant": "Behandelnder Arzt",
+    "room": "Zimmerkategorie",
+    "details": "Details",
+    "price": "Preis",
+    "amount": "Betrag",
+    "units": "Anzahl",
+    "pay_by": "Zahlungsart",
+    "amount_paid": "Gezahlter Betrag",
+    "tax": "Steuer",
+    "taxable": "Steuerpflichtiger Betrag",
+    "net": "Nettobetrag",
+    "total_amount": "Gesamtbetrag",
+    "remark": "Bemerkung",
+    "computer": "* Dies ist eine maschinell erstellte Rechnung; eine Unterschrift ist nicht erforderlich.",
+    "created": "Erstellt am {when}",
+    "phone": "Tel.",
+    "timing": "Uhrzeit",
+    "patient_uid": "Patienten-ID",
+    "name": "Name",
+    "payer": "Angaben zum Zahler",
+    "consulting_doctors": "Konsultierende Ärzte",
+    "date": "Datum",
+    "admission_no": "Aufnahme-Nr.",
+    "admission_date": "Aufnahmedatum",
+    "bed": "Bett(en)",
+    "provisional": "Vorläufige Rechnung",
+    "room_type": "Zimmertyp",
+    "particulars": "Position",
+    "total_bill": "Rechnungssumme",
+    "discount": "Rabatt",
+    "payable": "Zu zahlender Betrag",
+    "balance": "Restbetrag",
+    "breakup": "Detaillierte Aufstellung",
+    "date_time": "Datum und Uhrzeit",
+    "rate": "Preis",
+    "payment_mode": "Zahlungsart",
+    "gst_type": "GST-Art",
+    "intra": "Innerstaatlich (CGST + SGST)",
+    "gst_pct": "Steuersatz",
+    "notes": "Hinweise",
+    "consultation": "Beratung",
+    "medicines": "Medikamente",
+    "tests": "Untersuchungen und Eingriffe",
+    "other": "Sonstige Kosten",
+    "itemised": "Einzelpositionen"
+  },
+  "sample": {
+    "clinic_name": "Praxisklinik Mitte",
+    "doctor_name": "Dr. Thomas Müller",
+    "doctor_designation": "Facharzt für Innere Medizin",
+    "patient_name": "Anna Becker",
+    "guardian_name": "Peter Becker",
+    "payer_name": "Peter Becker",
+    "patient_issue": "Fieber und Husten",
+    "items": [
+      {
+        "name": "Zimmer (pro Tag)",
+        "qty": 2,
+        "rate": 180
+      },
+      {
+        "name": "Pflege (pro Tag)",
+        "qty": 2,
+        "rate": 45
+      }
+    ],
+    "consultation_fee": 80,
+    "medicines_cost": 30,
+    "tests_cost": 55,
+    "discount": 15,
+    "amount_paid": 200,
+    "tax_percent": 19,
+    "hospital_details": "24-Stunden-Notfallversorgung, Apotheke und Labor",
+    "registration_number": "BSNR 123456789",
+    "patient_address": "Lindenstraße 8, 3. OG, 10969 Berlin",
+    "payer_address": "Lindenstraße 8, 3. OG, 10969 Berlin",
+    "clinic_phone": "030 1234567",
+    "patient_details": "42 / W",
+    "remark": "Im Notfall sofort einen Arzt aufsuchen bei Schmerzen, schmerzhaften Bewegungen, Rötung, Eiter oder Blutung. Kontrolle nach 5 Tagen."
+  }
+}

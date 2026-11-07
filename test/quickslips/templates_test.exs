@@ -151,10 +151,10 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper, Restaurant and Meal are in every language; the other templates only in English" do
+    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper, Restaurant, Meal and Medical are in every language; the other templates only in English" do
       for locale <- Locales.live(),
           slug <-
-            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill) do
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill) do
         assert Templates.supports?(slug, locale)
       end
 
@@ -171,6 +171,7 @@ defmodule QuickSlips.TemplatesTest do
                  "fuel-bill",
                  "maintenance-bill",
                  "meal-bill",
+                 "medical-bill",
                  "parking-receipt",
                  "rent-receipt",
                  "restaurant-bill",
