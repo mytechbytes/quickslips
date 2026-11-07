@@ -19,7 +19,8 @@
     {
       "name": "Sunflower oil (1 L)",
       "qty": 2,
-      "rate": 142
+      "rate": 142,
+      "discount": 5
     },
     {
       "name": "Sugar (1 kg)",
@@ -29,7 +30,8 @@
     {
       "name": "Tea powder (500 g)",
       "qty": 1,
-      "rate": 255
+      "rate": 255,
+      "discount": 10
     },
     {
       "name": "Atta (10 kg)",
@@ -37,5 +39,9 @@
       "rate": 482
     }
   ],
-  "payment_mode": "Cash"
+  "payment_mode": "Cash",
+  "store_phone": "0261 245 6789",
+  "time": "10:43",
+  "transaction_id": "TXN-4829173650",
+  "customer_name": "Rohan Mehta"
 }

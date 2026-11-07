@@ -37,6 +37,6 @@ defmodule QuickSlipsWeb.BillViewControllerTest do
     assert conn |> view("fuel-bill", locale: "es-mx") |> json_response(400)
     assert conn |> view("nope", country: "es") |> json_response(404)
     # a template that is not in the language of the page
-    assert conn |> view("grocery-bill", locale: "hi-in") |> json_response(404)
+    assert conn |> view("courier-receipt", locale: "hi-in") |> json_response(404)
   end
 end

@@ -1,0 +1,37 @@
+{
+  "sample": {
+    "store_name": "Green Leaf Market",
+    "items": [
+      {
+        "name": "Basmati rice (2 lb)",
+        "qty": 1,
+        "rate": 4.5
+      },
+      {
+        "name": "Lentils (1 lb)",
+        "qty": 2,
+        "rate": 2.5
+      },
+      {
+        "name": "Sunflower oil (1 L)",
+        "qty": 2,
+        "rate": 6,
+        "discount": 5
+      },
+      {
+        "name": "Sugar (4 lb)",
+        "qty": 3,
+        "rate": 3.5
+      },
+      {
+        "name": "Coffee (12 oz)",
+        "qty": 1,
+        "rate": 8.5,
+        "discount": 10
+      }
+    ],
+    "customer_name": "John Smith",
+    "tax_percent": null,
+    "store_phone": "(512) 555-0142"
+  }
+}

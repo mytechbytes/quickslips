@@ -216,7 +216,9 @@ defmodule QuickSlips.Render.RendererTest do
 
     test "a template that is not in the language is refused" do
       assert {:error, :unsupported_language} =
-               Renderer.render("grocery-bill", "t1", sample("grocery-bill"), locale: "hi-in")
+               Renderer.render("courier-receipt", "t1", sample("courier-receipt"),
+                 locale: "hi-in"
+               )
     end
 
     test "a currency that does not exist is refused" do
@@ -306,6 +308,28 @@ defmodule QuickSlips.Render.RendererTest do
         "articles" => 99_999_999,
         "to_pay" => 99_999_999.99,
         "paid" => 99_999_999.99
+      }
+    },
+    "grocery-bill" => %{
+      designs: ~w(t1 t2),
+      optional:
+        ~w(store_address store_phone gstin fssai_number time transaction_id customer_name discount tax_percent),
+      long: %{
+        "store_name" => String.duplicate("Mehta & Sons Provisions ", 4),
+        "store_address" => String.duplicate("Shop 21, Station Road, Surat, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "transaction_id" => String.duplicate("TXN-4829173650-", 6),
+        "discount" => 1.5,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Basmati rice premium pack ", 4),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "discount" => 12.5
+            },
+            14
+          )
       }
     },
     "pharmacy-bill" => %{
