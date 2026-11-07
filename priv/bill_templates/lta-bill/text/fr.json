@@ -1,0 +1,165 @@
+{
+  "title": "Générateur de billet pour indemnité de voyage (LTA)",
+  "name": "Billet LTA",
+  "public_slug": "generateur-de-billet-lta",
+  "summary": "E-billet de bus ou de train pour une indemnité de voyage.",
+  "description": "Créez un e-billet de bus ou de train pour une indemnité de voyage (LTA) avec l'opérateur, les points d'embarquement et de dépose, les passagers, le siège, le tarif, la {tax} et les conditions d'annulation. Deux modèles ; aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "E-billet",
+    "t2": "E-billet encadré"
+  },
+  "fields": {
+    "travel_name": {
+      "label": "Opérateur de voyage"
+    },
+    "boarding_phone": {
+      "label": "Téléphone du point d'embarquement"
+    },
+    "customer_care": {
+      "label": "Service client"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "ticket_number": {
+      "label": "Numéro de billet"
+    },
+    "pnr_number": {
+      "label": "Numéro PNR (facultatif)"
+    },
+    "travel_type": {
+      "label": "Type de voyage",
+      "options": {
+        "Sleeper": "Couchettes",
+        "AC Sleeper": "Couchettes climatisées",
+        "Semi Sleeper": "Semi-couchettes",
+        "AC Sleeper (2+1)": "Couchettes climatisées (2+1)",
+        "Non Sleeper": "Sièges",
+        "Non AC": "Sans climatisation"
+      }
+    },
+    "location": {
+      "label": "Embarquement : lieu"
+    },
+    "landmark": {
+      "label": "Embarquement : point de repère"
+    },
+    "boarding_address": {
+      "label": "Embarquement : adresse"
+    },
+    "reporting_date": {
+      "label": "Date de présentation"
+    },
+    "departure_time": {
+      "label": "Heure de départ (facultatif)"
+    },
+    "dropping_date": {
+      "label": "Dépose : date"
+    },
+    "dropping_time": {
+      "label": "Dépose : heure (facultatif)"
+    },
+    "dropping_address": {
+      "label": "Dépose : adresse"
+    },
+    "passenger_details": {
+      "label": "Passager : nom, âge, sexe"
+    },
+    "passenger_count": {
+      "label": "Nombre de passagers"
+    },
+    "seat_number": {
+      "label": "Numéro de siège"
+    },
+    "amount": {
+      "label": "Tarif ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "cancellation_charge": {
+      "label": "Frais d'annulation avant le départ ({currency}) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    }
+  },
+  "print": {
+    "t1_banner": "Félicitations ! Vous avez réservé un billet modifiable. Vous pouvez avancer ou reporter ce voyage jusqu'au {when}.",
+    "eticket": "E-BILLET",
+    "type": "Type",
+    "need_help": "Besoin d'aide pour votre voyage ?",
+    "boarding_phone": "Tél. du point d'embarquement",
+    "customer_care": "Service client",
+    "ticket_no": "Billet n°",
+    "pnr_no": "PNR n°",
+    "reporting_date": "Date de présentation",
+    "departure_time": "Heure de départ",
+    "no_passengers": "Nombre de passagers",
+    "boarding_point": "Point d'embarquement",
+    "dropping_point": "Point de dépose",
+    "location": "Lieu",
+    "landmark": "Point de repère",
+    "address": "Adresse",
+    "time": "Heure",
+    "date": "Date",
+    "passenger_details": "Passager (âge, sexe)",
+    "seat_number": "Siège",
+    "mticket_note": "REMARQUE : Cet opérateur accepte les billets sur mobile ; inutile d'imprimer.",
+    "total_fare": "Tarif total",
+    "gst_note": "({rate} % de {tax} et frais de service, le cas échéant)",
+    "net_amount": "Montant net",
+    "taxable_amount": "Base HT",
+    "terms": "Conditions",
+    "t1_term_0": "Veuillez noter la politique de bagages pour votre voyage.",
+    "t1_term_1": "Chaque passager peut emporter un bagage jusqu'à 10 kg et un objet personnel (sacoche d'ordinateur, sac à main, porte-documents) jusqu'à 5 kg.",
+    "t1_term_2": "Il est interdit de transporter des armes, matières inflammables, armes à feu, munitions, drogues, alcool, marchandises de contrebande ou tout autre article interdit par la loi.",
+    "t1_term_3": "L'opérateur peut refuser l'embarquement ou facturer un supplément si le passager dépasse les bagages autorisés.",
+    "t1_term_4": "L'annulation partielle n'est PAS autorisée pour ce billet. Les frais d'annulation du billet complet figurent ci-dessous.",
+    "cancel_time": "Moment de l'annulation",
+    "cancel_charges": "Frais d'annulation",
+    "after": "Après",
+    "before": "Avant",
+    "on": "le",
+    "cut_as_charges": "{amount} seront retenus en frais d'annulation",
+    "t2_banner": "Félicitations ! Votre billet est modifiable jusqu'au {when}.",
+    "lta_month": "Mois de l'indemnité",
+    "boarding_help": "Aide à l'embarquement",
+    "journey_date": "Date du voyage",
+    "passengers": "Passagers",
+    "seat_count": "Siège",
+    "passenger_details_title": "Passager (nom/âge/sexe)",
+    "payment_method": "Mode de paiement",
+    "important_note": "Remarque importante",
+    "note_mticket": "Cet opérateur accepte les billets sur mobile. Le billet imprimé est facultatif.",
+    "note_id": "Munissez-vous d'une pièce d'identité avec photo pour la vérification à l'embarquement.",
+    "note_changes": "Pour toute modification, contactez l'opérateur avant l'heure limite.",
+    "base_fare": "Tarif de base",
+    "tax": "Taxe",
+    "t2_term_1": "Un bagage jusqu'à 10 kg et un sac personnel jusqu'à 5 kg sont autorisés.",
+    "t2_term_2": "N'emportez pas d'articles interdits tels que des armes, des drogues ou des marchandises dangereuses.",
+    "t2_term_3": "L'opérateur peut refuser l'embarquement en cas de non-respect des règles ou de la sécurité.",
+    "t2_term_4": "L'annulation partielle n'est pas disponible pour ce billet.",
+    "cancel_window": "Délai d'annulation",
+    "applicable_charge": "Frais applicables"
+  },
+  "sample": {
+    "travel_name": "Voyages Toujours Verts",
+    "boarding_phone": "01 23 45 67 89",
+    "customer_care": "0 800 123 456",
+    "location": "Gare routière de Paris-Gallieni",
+    "landmark": "En face du métro",
+    "passenger_details": "Camille Martin, 34, femme",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 42,
+    "tax_percent": 10,
+    "cancellation_charge": 8
+  }
+}

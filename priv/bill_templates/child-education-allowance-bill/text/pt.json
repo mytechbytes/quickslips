@@ -1,0 +1,132 @@
+{
+  "title": "Gerador de pedido de auxílio-educação dos filhos",
+  "name": "Auxílio-educação dos filhos",
+  "public_slug": "gerador-de-pedido-de-auxilio-educacao",
+  "summary": "Formulário de reembolso do auxílio-educação dos filhos.",
+  "description": "Preencha o formulário de reembolso do auxílio-educação dos filhos (CEA) ou subsídio de alojamento com o requerente, o cônjuge, os filhos e suas escolas e as despesas. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Formulário"
+  },
+  "fields": {
+    "claim_date": {
+      "label": "Data"
+    },
+    "academic_year": {
+      "label": "Ano letivo"
+    },
+    "name_rank": {
+      "label": "Nome e posto do servidor público"
+    },
+    "personal_number": {
+      "label": "Número pessoal"
+    },
+    "designation": {
+      "label": "Cargo"
+    },
+    "unit": {
+      "label": "Unidade ou órgão"
+    },
+    "spouse_employed": {
+      "label": "Cônjuge empregado no governo, órgão público ou empresa privada"
+    },
+    "spouse_office": {
+      "label": "Cargo e repartição do cônjuge (opcional)"
+    },
+    "child1_name": {
+      "label": "Filho(a) 1: nome"
+    },
+    "child1_dob": {
+      "label": "Filho(a) 1: data de nascimento"
+    },
+    "child1_standard": {
+      "label": "Filho(a) 1: série"
+    },
+    "child1_school": {
+      "label": "Filho(a) 1: nome e local da escola"
+    },
+    "child2_name": {
+      "label": "Filho(a) 2: nome (opcional)"
+    },
+    "child2_dob": {
+      "label": "Filho(a) 2: data de nascimento (opcional)"
+    },
+    "child2_standard": {
+      "label": "Filho(a) 2: série (opcional)"
+    },
+    "child2_school": {
+      "label": "Filho(a) 2: nome e local da escola (opcional)"
+    },
+    "items": {
+      "label": "Reembolso de despesas",
+      "columns": {
+        "code": "N.º",
+        "name": "Período",
+        "qty": "Meses",
+        "rate": "Valor do auxílio ({currency})",
+        "batch": "Observações"
+      }
+    }
+  },
+  "print": {
+    "title": "Formulário de reembolso do auxílio-educação dos filhos",
+    "claim_for": "Pedido para o ano letivo",
+    "intro": "Solicito o reembolso do auxílio-educação / subsídio de alojamento para meu filho/meus filhos; os dados pertinentes seguem abaixo:",
+    "date": "Data",
+    "q1": "Nome e posto do servidor público",
+    "q2": "N.º pessoal",
+    "q3": "Cargo",
+    "q4": "Nome da unidade",
+    "q5": "Se o cônjuge for empregado do governo federal / estadual, autarquia, estatal, órgão local ou empresa privada etc.",
+    "q6": "Cargo, repartição e n.º da unidade do cônjuge (se servidor público)",
+    "children_title": "Dados dos filhos para os quais se solicita o auxílio / subsídio:",
+    "sequence": "N.º",
+    "child_name": "Nome do filho(a)",
+    "dob": "Data de nasc.",
+    "standard": "Série",
+    "ay": "Ano",
+    "school": "Nome e local da escola / instituição",
+    "expenditure_title": "Reembolso de despesas:",
+    "period": "Período",
+    "rate_cea": "Valor",
+    "amount_claimed": "Valor solicitado",
+    "remarks": "Observações",
+    "total_claimed": "Total solicitado",
+    "months": "meses"
+  },
+  "sample": {
+    "name_rank": "Major Arlindo Cunha",
+    "personal_number": "M-48213",
+    "designation": "Oficial de Estado-Maior",
+    "unit": "Quartel-General, São Paulo",
+    "spouse_employed": "Não",
+    "child1_name": "Pedro Cunha",
+    "child2_name": "Júlia Cunha",
+    "child1_school": "Colégio Amanhecer, São Paulo",
+    "child2_school": "Colégio Amanhecer, São Paulo",
+    "child1_standard": "7º ano",
+    "child2_standard": "4º ano",
+    "items": [
+      {
+        "code": "1",
+        "name": "Abril a junho de 2026",
+        "qty": 3,
+        "rate": 400,
+        "batch": "Pedro Cunha"
+      },
+      {
+        "code": "2",
+        "name": "Julho a setembro de 2026",
+        "qty": 3,
+        "rate": 400,
+        "batch": "Pedro Cunha"
+      },
+      {
+        "code": "3",
+        "name": "Abril a setembro de 2026",
+        "qty": 6,
+        "rate": 400,
+        "batch": "Júlia Cunha"
+      }
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "title": "Generatore di fattura per hotel",
+  "name": "Fattura hotel",
+  "public_slug": "generatore-fattura-hotel",
+  "summary": "Fattura del soggiorno con tariffa, extra, acconto e {tax}.",
+  "description": "Crea una fattura per hotel con ospite, camera, check-in e check-out, tariffa per notte, camere o servizi aggiuntivi, acconto e {tax}. Tre modelli; anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Classico",
+    "t2": "Fattura fiscale",
+    "t3": "Modulo a riquadri"
+  },
+  "fields": {
+    "hotel_name": {
+      "label": "Nome dell'hotel"
+    },
+    "hotel_address": {
+      "label": "Indirizzo dell'hotel (facoltativo)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facoltativo)"
+    },
+    "registration_number": {
+      "label": "N. di registrazione / CIN (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "Numero di fattura"
+    },
+    "reservation_number": {
+      "label": "Numero di prenotazione (facoltativo)"
+    },
+    "invoice_date": {
+      "label": "Data della fattura"
+    },
+    "guest_name": {
+      "label": "Nome dell'ospite"
+    },
+    "guest_gender": {
+      "label": "Sesso (facoltativo)",
+      "options": {
+        "Male": "Maschio",
+        "Female": "Femmina",
+        "Transgender": "Transgender"
+      }
+    },
+    "guest_age": {
+      "label": "Età (facoltativo)"
+    },
+    "nationality": {
+      "label": "Nazionalità (facoltativo)"
+    },
+    "guest_address": {
+      "label": "Indirizzo dell'ospite (facoltativo)"
+    },
+    "room_type": {
+      "label": "Tipo di camera",
+      "options": {
+        "Standard": "Standard",
+        "Deluxe": "Deluxe",
+        "Suite": "Suite",
+        "Dormitory": "Dormitorio"
+      }
+    },
+    "room_description": {
+      "label": "Descrizione della camera (facoltativo)"
+    },
+    "room_number": {
+      "label": "Numero di camera (facoltativo)"
+    },
+    "check_in": {
+      "label": "Data di check-in"
+    },
+    "check_in_time": {
+      "label": "Ora di check-in (facoltativo)"
+    },
+    "check_out": {
+      "label": "Data di check-out"
+    },
+    "check_out_time": {
+      "label": "Ora di check-out (facoltativo)"
+    },
+    "tariff_per_night": {
+      "label": "Tariffa per notte ({currency})"
+    },
+    "extra_charges": {
+      "label": "Pasti e altri costi ({currency}) (facoltativo)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (facoltativo)"
+    },
+    "advance_amount": {
+      "label": "Acconto versato ({currency}) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Tipo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Altre camere o servizi",
+      "columns": {
+        "name": "Tipo di camera e descrizione",
+        "rate": "Prezzo ({currency})",
+        "qty": "N. di giorni"
+      }
+    }
+  },
+  "print": {
+    "invoice_title": "Fattura",
+    "invoice_no": "Fattura n.",
+    "invoice_date": "Data fattura",
+    "guest": "Ospite",
+    "room": "Camera",
+    "no": "N.",
+    "check_in": "Check-in",
+    "check_out": "Check-out",
+    "reservation_no": "N. prenotazione",
+    "nationality": "Nazionalità",
+    "guest_address": "Indirizzo dell'ospite",
+    "description": "Descrizione",
+    "nights": "Notti",
+    "rate_per_night": "Tariffa per notte",
+    "amount": "Importo",
+    "room_tariff": "Tariffa della camera",
+    "extra": "Pasti e altri costi",
+    "subtotal": "Subtotale",
+    "less_advance": "Meno acconto",
+    "balance_due": "Saldo da pagare",
+    "total": "Totale",
+    "authorised": "Firmatario autorizzato",
+    "thanks_stay": "Grazie per aver soggiornato da noi. Fattura generata al computer.",
+    "tax_invoice": "Fattura",
+    "bill_no": "Fattura n.",
+    "guest_name": "Nome dell'ospite",
+    "address": "Indirizzo",
+    "res_no": "Pren. n.",
+    "room_no": "Camera n.",
+    "room_type": "Tipo di camera",
+    "pay_type": "Tipo di pagamento",
+    "room_description": "Descrizione",
+    "rate": "Prezzo",
+    "days_nights": "Giorni / notti",
+    "receipt_no": "Ricevuta n.",
+    "check_in_date": "Data di check-in",
+    "total_amount": "Importo totale",
+    "payment_type": "Tipo di pagamento",
+    "receive": "Da incassare",
+    "payment_received": "Pagamento ricevuto",
+    "receptionist": "Receptionist",
+    "guest_signature": "Firma dell'ospite",
+    "thank_visit": "Grazie, arrivederci!",
+    "reg_no": "N. reg.",
+    "departure_date": "Data di partenza",
+    "check_in_time": "Ora di check-in",
+    "check_out_time": "Ora di check-out",
+    "particular": "Voce",
+    "days": "Giorni",
+    "payment_method": "Metodo di pagamento",
+    "refunded_received": "Rimborsato / incassato",
+    "customer_signature": "Firma del cliente",
+    "manager_signature": "Firma del direttore",
+    "thanks": "Grazie",
+    "eoe": "Salvo errori e omissioni"
+  },
+  "sample": {
+    "hotel_name": "Hotel Residenza Loto",
+    "guest_name": "Marco Rossi",
+    "nationality": "Italiana",
+    "room_description": "Camera vista mare con colazione",
+    "items": [
+      {
+        "name": "Letto aggiunto",
+        "rate": 20.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 100,
+    "extra_charges": 28,
+    "gst_percent": 10,
+    "advance_amount": 50
+  }
+}

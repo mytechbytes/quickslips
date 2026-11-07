@@ -181,7 +181,7 @@ defmodule QuickSlips.Templates.Localizer do
     sample
     |> Map.new(fn {key, value} -> {key, adapt_value(key, value, example)} end)
     |> Map.drop(
-      ~w(fssai_number fssai landlord_pan restaurant_fssai platform_pan platform_cin cin seller_pan bank_ifsc supply platform_fssai place_of_supply hsn_code reverse_charge)
+      ~w(fssai_number fssai landlord_pan restaurant_fssai platform_pan platform_cin cin seller_pan bank_ifsc supply registration_number platform_fssai place_of_supply hsn_code reverse_charge)
     )
   end
 
@@ -189,7 +189,7 @@ defmodule QuickSlips.Templates.Localizer do
   defp adapt_value(key, value, example) when is_binary(value) do
     cond do
       String.ends_with?(key, "gstin") or String.ends_with?(key, "tax_id") -> example["tax_id"]
-      String.ends_with?(key, "_address") -> example["address"]
+      key == "address" or String.ends_with?(key, "_address") -> example["address"]
       value == "UPI" -> "Cash"
       true -> value
     end

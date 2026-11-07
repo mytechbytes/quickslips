@@ -1,0 +1,84 @@
+{
+  "title": "Kassenbeleg-Generator",
+  "name": "Kassenbeleg",
+  "public_slug": "kassenbeleg-generator",
+  "summary": "Kassenbeleg mit Positionen, Betrag und Freigabeunterschriften.",
+  "description": "Erstellen Sie einen Kassenbeleg mit Zahlungsempfänger, Positionen und Beträgen, Summe in Ziffern und Worten sowie den Unterschriften für Erstellung, Prüfung, Genehmigung und Empfang. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Beleg mit Feldern"
+  },
+  "fields": {
+    "voucher_number": {
+      "label": "Beleg-Nr."
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "paid_to": {
+      "label": "Gezahlt an"
+    },
+    "address": {
+      "label": "Adresse"
+    },
+    "prepared_by": {
+      "label": "Erstellt von"
+    },
+    "checked_by": {
+      "label": "Geprüft von"
+    },
+    "approved_by": {
+      "label": "Genehmigt von"
+    },
+    "resident_certificate": {
+      "label": "Nr. der Meldebescheinigung (optional)"
+    },
+    "received_date": {
+      "label": "Empfangsdatum (optional)"
+    },
+    "place": {
+      "label": "Ort (optional)"
+    },
+    "items": {
+      "label": "Positionen",
+      "columns": {
+        "name": "Position",
+        "rate": "Betrag ({currency})"
+      }
+    }
+  },
+  "print": {
+    "no": "Nr.",
+    "cash_voucher": "Kassenbeleg",
+    "paid_to": "Gezahlt an",
+    "date": "Datum",
+    "address": "Adresse",
+    "particular": "Position",
+    "amount": "Betrag",
+    "total": "Gesamt",
+    "in_words": "Betrag in Worten",
+    "prepared_by": "Erstellt von",
+    "checked_by": "Geprüft von",
+    "approved_by": "Genehmigt von",
+    "received_by": "Den oben beschriebenen Gesamtbetrag erhalten hat:",
+    "res_cert": "Meldebesch. Nr.",
+    "place": "Ort"
+  },
+  "sample": {
+    "paid_to": "Rainer Kellner",
+    "items": [
+      {
+        "name": "Kauf von Büromaterial",
+        "rate": 64.9
+      },
+      {
+        "name": "Kurierkosten",
+        "rate": 15.5
+      }
+    ],
+    "prepared_by": "S. Jung",
+    "checked_by": "M. Ihle",
+    "approved_by": "A. Dietz",
+    "place": "Berlin",
+    "resident_certificate": "M-3169647"
+  }
+}

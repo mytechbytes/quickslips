@@ -1,0 +1,163 @@
+{
+  "title": "Générateur de reçu de salle de sport",
+  "name": "Reçu de salle de sport",
+  "public_slug": "generateur-de-recu-de-salle-de-sport",
+  "summary": "Reçu ou facture d'abonnement avec formule, période et frais.",
+  "description": "Créez un reçu ou une facture d'abonnement de salle de sport avec la formule, le cycle de facturation, la période, les frais, des articles supplémentaires, la {tax} et les consignes de la salle. Deux modèles ; aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Reçu",
+    "t2": "Facture"
+  },
+  "fields": {
+    "gym_name": {
+      "label": "Salle de sport ou club"
+    },
+    "gym_address": {
+      "label": "Adresse (facultatif)"
+    },
+    "gym_email": {
+      "label": "E-mail de la salle (facultatif)"
+    },
+    "gym_phone": {
+      "label": "Téléphone de la salle (facultatif)"
+    },
+    "gstin": {
+      "label": "{tax_id} (facultatif)"
+    },
+    "receipt_number": {
+      "label": "Numéro de reçu"
+    },
+    "date": {
+      "label": "Date du reçu"
+    },
+    "member_name": {
+      "label": "Nom de l'adhérent"
+    },
+    "member_phone": {
+      "label": "Téléphone de l'adhérent (facultatif)"
+    },
+    "customer_number": {
+      "label": "Numéro de client (facultatif)"
+    },
+    "user_number": {
+      "label": "ID utilisateur (facultatif)"
+    },
+    "member_address": {
+      "label": "Adresse de l'adhérent (facultatif)"
+    },
+    "plan": {
+      "label": "Formule",
+      "options": {
+        "Day pass": "Pass journée",
+        "Monthly": "Mensuel",
+        "Quarterly": "Trimestriel",
+        "Half-yearly": "Semestriel",
+        "Yearly": "Annuel"
+      }
+    },
+    "billing_cycle": {
+      "label": "Cycle de facturation (facultatif)",
+      "options": {
+        "Monthly": "Mensuel",
+        "Quarterly": "Trimestriel",
+        "Half-yearly": "Semestriel",
+        "Annual": "Annuel"
+      }
+    },
+    "start_date": {
+      "label": "Valable du"
+    },
+    "end_date": {
+      "label": "Valable jusqu'au"
+    },
+    "fee": {
+      "label": "Cotisation ({currency})"
+    },
+    "joining_fee": {
+      "label": "Frais d'inscription ({currency}) (facultatif)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "remarks": {
+      "label": "Remarque (facultatif)"
+    },
+    "instructions": {
+      "label": "Consignes pour les adhérents (une par ligne) (facultatif)"
+    },
+    "items": {
+      "label": "Articles supplémentaires",
+      "columns": {
+        "name": "Article et description",
+        "qty": "Unités",
+        "rate": "Prix ({currency})"
+      }
+    }
+  },
+  "print": {
+    "membership_receipt": "Reçu d'adhésion",
+    "receipt_no": "Reçu n°",
+    "date": "Date",
+    "member": "Adhérent",
+    "phone": "Téléphone",
+    "plan": "Formule",
+    "valid": "Valable",
+    "to": "au",
+    "paid_by": "Payé par",
+    "membership_fee": "Cotisation",
+    "joining_fee": "Frais d'inscription",
+    "subtotal": "Sous-total",
+    "authorised": "Signataire autorisé",
+    "stay_fit": "Restez en forme. À bientôt à la salle !",
+    "invoice_no": "Facture n°",
+    "invoice_date": "Date de facture",
+    "user_id": "ID utilisateur",
+    "customer_name": "Nom du client",
+    "address": "Adresse",
+    "mobile": "Mobile",
+    "account_summary": "Récapitulatif du compte",
+    "bill_from_date": "Facturé à partir du",
+    "billing_cycle": "Cycle de facturation",
+    "due_date": "Échéance",
+    "amount": "Montant",
+    "payment_mode": "Mode de paiement",
+    "billing_details": "Détail de facturation",
+    "gym_item": "Désignation",
+    "unit": "Unités",
+    "net_amount": "Montant net",
+    "total": "Total",
+    "tax_pct": "Taxe %",
+    "taxable_amount": "Base HT",
+    "instructions_title": "Consignes de la salle",
+    "remark": "Remarque",
+    "signature": "Signature"
+  },
+  "sample": {
+    "gym_name": "Salle Fer & Forme",
+    "member_name": "Camille Martin",
+    "gym_phone": "01 23 45 67 89",
+    "member_phone": "06 12 34 56 78",
+    "fee": 95,
+    "joining_fee": 20,
+    "gst_percent": 20,
+    "items": [
+      {
+        "name": "Séance de coaching personnel",
+        "qty": 4,
+        "rate": 25
+      }
+    ],
+    "instructions": "Accueil : à votre arrivée, présentez-vous à l'accueil si nécessaire.\nTenue et hygiène : portez une tenue de sport et des chaussures propres. Apportez une serviette pour essuyer les appareils.\nÉchauffement : commencez par 5 à 10 minutes d'échauffement, comme du cardio léger ou des étirements dynamiques.\nÉquipements : si vous débutez, familiarisez-vous avec les machines et demandez conseil au personnel.\nCardio : réglez les machines à votre niveau et essuyez-les avant et après usage.\nHydratation : buvez de l'eau avant, pendant et après l'entraînement.\nRepos : reposez-vous entre les séries, sans monopoliser les appareils aux heures de pointe.\nRetour au calme : terminez par 5 à 10 minutes d'étirements légers.\nAffaires personnelles : rangez vos affaires dans les casiers et ne laissez pas d'objets de valeur sans surveillance.\nProfitez et restez régulier : la régularité est la clé pour atteindre vos objectifs.",
+    "remarks": "Les demandes de suspension nécessitent un préavis de 7 jours."
+  }
+}

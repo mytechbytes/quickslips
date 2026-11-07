@@ -1,0 +1,84 @@
+{
+  "title": "現金出納伝票作成",
+  "name": "現金出納伝票",
+  "public_slug": "cash-voucher-generator",
+  "summary": "内容・金額・承認印つきの現金出納伝票。",
+  "description": "支払先、内容と金額、数字と文字の合計、作成・確認・承認・受領の署名欄を備えた現金出納伝票を作成できます。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "罫線伝票"
+  },
+  "fields": {
+    "voucher_number": {
+      "label": "伝票番号"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "paid_to": {
+      "label": "支払先"
+    },
+    "address": {
+      "label": "住所"
+    },
+    "prepared_by": {
+      "label": "作成者"
+    },
+    "checked_by": {
+      "label": "確認者"
+    },
+    "approved_by": {
+      "label": "承認者"
+    },
+    "resident_certificate": {
+      "label": "住民票番号（任意）"
+    },
+    "received_date": {
+      "label": "受領日（任意）"
+    },
+    "place": {
+      "label": "場所（任意）"
+    },
+    "items": {
+      "label": "内容",
+      "columns": {
+        "name": "内容",
+        "rate": "金額（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "no": "No.",
+    "cash_voucher": "現金出納伝票",
+    "paid_to": "支払先",
+    "date": "日付",
+    "address": "住所",
+    "particular": "内容",
+    "amount": "金額",
+    "total": "合計",
+    "in_words": "金額（文字）",
+    "prepared_by": "作成者",
+    "checked_by": "確認者",
+    "approved_by": "承認者",
+    "received_by": "上記の金額を全額受領しました。受領者：",
+    "res_cert": "住民票番号",
+    "place": "場所"
+  },
+  "sample": {
+    "paid_to": "小林 太郎",
+    "items": [
+      {
+        "name": "事務用品の購入",
+        "rate": 5800
+      },
+      {
+        "name": "宅配便代",
+        "rate": 1200
+      }
+    ],
+    "prepared_by": "佐藤",
+    "checked_by": "伊藤",
+    "approved_by": "渡辺",
+    "place": "東京",
+    "resident_certificate": "T-3169647"
+  }
+}

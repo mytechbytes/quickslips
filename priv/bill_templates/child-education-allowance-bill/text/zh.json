@@ -1,0 +1,132 @@
+{
+  "title": "子女教育津贴报销单生成器",
+  "name": "子女教育津贴报销单",
+  "public_slug": "child-education-allowance-bill-generator",
+  "summary": "子女教育津贴报销申请表。",
+  "description": "填写子女教育津贴（CEA）或住宿补贴报销表，包含申请人、配偶、子女及其学校和支出明细。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "申请表"
+  },
+  "fields": {
+    "claim_date": {
+      "label": "日期"
+    },
+    "academic_year": {
+      "label": "学年"
+    },
+    "name_rank": {
+      "label": "公务员姓名及职级"
+    },
+    "personal_number": {
+      "label": "个人编号"
+    },
+    "designation": {
+      "label": "职务"
+    },
+    "unit": {
+      "label": "单位"
+    },
+    "spouse_employed": {
+      "label": "配偶是否在政府、公共机构或私营单位任职"
+    },
+    "spouse_office": {
+      "label": "配偶职务及单位（选填）"
+    },
+    "child1_name": {
+      "label": "子女1：姓名"
+    },
+    "child1_dob": {
+      "label": "子女1：出生日期"
+    },
+    "child1_standard": {
+      "label": "子女1：年级"
+    },
+    "child1_school": {
+      "label": "子女1：学校名称及所在地"
+    },
+    "child2_name": {
+      "label": "子女2：姓名（选填）"
+    },
+    "child2_dob": {
+      "label": "子女2：出生日期（选填）"
+    },
+    "child2_standard": {
+      "label": "子女2：年级（选填）"
+    },
+    "child2_school": {
+      "label": "子女2：学校名称及所在地（选填）"
+    },
+    "items": {
+      "label": "费用报销",
+      "columns": {
+        "code": "序号",
+        "name": "期间",
+        "qty": "月数",
+        "rate": "津贴标准（{currency}）",
+        "batch": "备注"
+      }
+    }
+  },
+  "print": {
+    "title": "子女教育津贴报销申请表",
+    "claim_for": "申请学年",
+    "intro": "兹申请报销我子女的教育津贴/住宿补贴，相关事项填报如下：",
+    "date": "日期",
+    "q1": "公务员姓名及职级",
+    "q2": "个人编号",
+    "q3": "职务",
+    "q4": "单位名称",
+    "q5": "如配偶在中央 / 地方政府、自治机构、国有企业、地方机构或私营单位等任职",
+    "q6": "配偶职务、单位及编号（如在政府任职）",
+    "children_title": "申请津贴/补贴的子女情况：",
+    "sequence": "序号",
+    "child_name": "子女姓名",
+    "dob": "出生日期",
+    "standard": "年级",
+    "ay": "学年",
+    "school": "学校/机构名称及所在地",
+    "expenditure_title": "费用报销：",
+    "period": "期间",
+    "rate_cea": "津贴标准",
+    "amount_claimed": "申请金额",
+    "remarks": "备注",
+    "total_claimed": "申请总额",
+    "months": "个月"
+  },
+  "sample": {
+    "name_rank": "王建国 少校",
+    "personal_number": "军-48213",
+    "designation": "参谋",
+    "unit": "北京军区司令部",
+    "spouse_employed": "否",
+    "child1_name": "王小明",
+    "child2_name": "王小雅",
+    "child1_school": "朝阳实验学校，北京",
+    "child2_school": "朝阳实验学校，北京",
+    "child1_standard": "七年级",
+    "child2_standard": "四年级",
+    "items": [
+      {
+        "code": "1",
+        "name": "2026年4月至6月",
+        "qty": 3,
+        "rate": 500,
+        "batch": "王小明"
+      },
+      {
+        "code": "2",
+        "name": "2026年7月至9月",
+        "qty": 3,
+        "rate": 500,
+        "batch": "王小明"
+      },
+      {
+        "code": "3",
+        "name": "2026年4月至9月",
+        "qty": 6,
+        "rate": 500,
+        "batch": "王小雅"
+      }
+    ]
+  }
+}

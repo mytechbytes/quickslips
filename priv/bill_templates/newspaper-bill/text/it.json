@@ -1,0 +1,121 @@
+{
+  "title": "Generatore di fattura per giornali",
+  "name": "Fattura giornali",
+  "public_slug": "generatore-fattura-giornali",
+  "summary": "Fattura mensile di consegna giornali con costo del servizio.",
+  "description": "Crea una fattura mensile per la consegna di giornali o riviste con agenzia, mese, testate con prezzo e quantità, costo di consegna a domicilio e totale. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Classico"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "Nome dell'agenzia"
+    },
+    "agency_address": {
+      "label": "Indirizzo dell'agenzia"
+    },
+    "agency_mobile": {
+      "label": "Cellulare (facoltativo)"
+    },
+    "agency_phone": {
+      "label": "Telefono (facoltativo)"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "bill_number": {
+      "label": "Numero di fattura"
+    },
+    "month": {
+      "label": "Mese",
+      "options": {
+        "January": "gennaio",
+        "February": "febbraio",
+        "March": "marzo",
+        "April": "aprile",
+        "May": "maggio",
+        "June": "giugno",
+        "July": "luglio",
+        "August": "agosto",
+        "September": "settembre",
+        "October": "ottobre",
+        "November": "novembre",
+        "December": "dicembre"
+      }
+    },
+    "bill_year": {
+      "label": "Anno della fattura"
+    },
+    "name_prefix": {
+      "label": "Titolo (facoltativo)",
+      "options": {
+        "Mr.": "Sig.",
+        "Mrs.": "Sig.ra"
+      }
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "service_charge": {
+      "label": "Costo del servizio ({currency}) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Tipo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Giornali e riviste",
+      "columns": {
+        "name": "Descrizione",
+        "rate": "Prezzo ({currency})",
+        "qty": "Q.tà"
+      }
+    }
+  },
+  "print": {
+    "mobile": "Cell.",
+    "phone": "Tel.",
+    "month": "Mese",
+    "bill_no": "Fattura n.",
+    "payment": "Pagamento",
+    "qty": "Q.tà",
+    "description": "Descrizione",
+    "rate": "Prezzo",
+    "total": "Totale",
+    "subtotal": "Subtotale",
+    "service": "Servizio",
+    "service_note": "Include il costo della consegna a domicilio.",
+    "grand_total": "Totale complessivo",
+    "date": "Data",
+    "customer_signature": "Firma del cliente"
+  },
+  "sample": {
+    "agency_name": "Agenzia Giornali Centro",
+    "customer_name": "Marco Rossi",
+    "items": [
+      {
+        "name": "Il Mattino (quotidiano)",
+        "rate": 1.7,
+        "qty": 30
+      },
+      {
+        "name": "Supplemento domenicale",
+        "rate": 3,
+        "qty": 4
+      },
+      {
+        "name": "Settimanale Economia",
+        "rate": 4.5,
+        "qty": 4
+      }
+    ],
+    "service_charge": 8,
+    "name_prefix": "Mr."
+  }
+}

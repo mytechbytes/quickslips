@@ -1,0 +1,25 @@
+{
+  "sample": {
+    "agency_name": "City News Agency",
+    "customer_name": "John Smith",
+    "items": [
+      {
+        "name": "Morning Chronicle (daily)",
+        "rate": 2,
+        "qty": 30
+      },
+      {
+        "name": "Sunday Magazine",
+        "rate": 4,
+        "qty": 4
+      },
+      {
+        "name": "Business Weekly",
+        "rate": 6,
+        "qty": 4
+      }
+    ],
+    "service_charge": 10,
+    "name_prefix": "Mr."
+  }
+}

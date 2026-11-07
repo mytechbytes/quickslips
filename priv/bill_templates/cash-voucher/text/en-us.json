@@ -1,0 +1,20 @@
+{
+  "sample": {
+    "paid_to": "Robert Cole",
+    "items": [
+      {
+        "name": "Stationery purchase for the office",
+        "rate": 62.5
+      },
+      {
+        "name": "Courier charges",
+        "rate": 18
+      }
+    ],
+    "prepared_by": "S. Jones",
+    "checked_by": "M. Irving",
+    "approved_by": "A. Davis",
+    "place": "Austin",
+    "resident_certificate": "TX-3169647"
+  }
+}

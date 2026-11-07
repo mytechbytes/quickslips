@@ -1,0 +1,14 @@
+{
+  "sample": {
+    "travel_name": "Evergreen Travels",
+    "boarding_phone": "(512) 555-0142",
+    "customer_care": "1-800-555-0142",
+    "location": "Austin Bus Station",
+    "landmark": "Across from the transit center",
+    "passenger_details": "John Smith, 34, Male",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 59,
+    "tax_percent": null,
+    "cancellation_charge": 12
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "title": "Spendenquittung-Generator",
+  "name": "Spendenquittung",
+  "public_slug": "spendenquittung-generator",
+  "summary": "Quittung für eine Spende an eine Organisation oder Stiftung.",
+  "description": "Erstellen Sie eine Spendenquittung für eine gemeinnützige Organisation oder Stiftung mit Spender, Betrag in Zahlen und Worten, Zahlungsart, Empfänger und einem Dank. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Quittung"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "Name der Organisation"
+    },
+    "registration_number": {
+      "label": "Registriernummer (optional)"
+    },
+    "address": {
+      "label": "Adresse"
+    },
+    "email": {
+      "label": "E-Mail (optional)"
+    },
+    "website": {
+      "label": "Website (optional)"
+    },
+    "phone": {
+      "label": "Telefon / Kontakt (optional)"
+    },
+    "receipt_number": {
+      "label": "Quittungs-Nr."
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "donor_name": {
+      "label": "Name des Spenders"
+    },
+    "amount": {
+      "label": "Gesamtbetrag ({currency})"
+    },
+    "amount_in_words": {
+      "label": "Betrag in Worten (wird bei Leerlassen ausgeschrieben) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "received_by": {
+      "label": "Entgegengenommen von (optional)"
+    },
+    "donation_description": {
+      "label": "Beschreibung der Spende (optional)"
+    }
+  },
+  "print": {
+    "email": "E-Mail",
+    "website": "Website",
+    "phone": "Telefon",
+    "donation_receipt": "Spendenquittung",
+    "receipt_no": "Quittungs-Nr.",
+    "date": "Datum",
+    "received_from": "Erhalten von:",
+    "amount": "Betrag",
+    "sum_of_words": "Der Betrag in Worten",
+    "payment_method": "Zahlungsart",
+    "received_by": "Entgegengenommen von:",
+    "description_of_donation": "Beschreibung der Spende:",
+    "thanks": "Vielen Dank für Ihre Großzügigkeit, wir schätzen Ihre Unterstützung."
+  },
+  "sample": {
+    "organisation_name": "Stiftung Entdeckung und Restaurierung",
+    "registration_number": "Eingetragen im Stiftungsregister Nr. 91/2018",
+    "phone": "+49 30 1234567",
+    "donor_name": "Anna Becker",
+    "amount": 100,
+    "received_by": "Thomas Müller, Schatzmeister",
+    "donation_description": "Spende für die Restaurierung der historischen Bibliothek."
+  }
+}

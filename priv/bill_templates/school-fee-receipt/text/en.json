@@ -1,0 +1,93 @@
+{
+  "title": "School Fee Receipt Generator",
+  "name": "School Fee Receipt",
+  "public_slug": "school-fee-receipt-generator",
+  "summary": "School fee receipt with a breakup of the fees, or a short receipt voucher.",
+  "description": "Generate a school fee receipt with student, class, fee period and a breakup of tuition, transport and other fees, or a short receipt voucher with the amount in words. Two designs; preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Classic",
+    "t2": "Receipt voucher"
+  },
+  "fields": {
+    "school_name": {
+      "label": "School or institute"
+    },
+    "school_address": {
+      "label": "Address (optional)"
+    },
+    "school_phone": {
+      "label": "Contact number (optional)"
+    },
+    "receipt_number": {
+      "label": "Receipt number"
+    },
+    "date": {
+      "label": "Receipt date"
+    },
+    "student_name": {
+      "label": "Student name"
+    },
+    "class_name": {
+      "label": "Class and section"
+    },
+    "admission_number": {
+      "label": "Admission or roll number (optional)"
+    },
+    "parent_name": {
+      "label": "Parent or guardian (optional)"
+    },
+    "fee_period": {
+      "label": "Fee for"
+    },
+    "tuition_fee": {
+      "label": "Tuition fee ({currency})"
+    },
+    "transport_fee": {
+      "label": "Transport fee ({currency}) (optional)"
+    },
+    "other_fee": {
+      "label": "Exam, activity and other fees ({currency}) (optional)"
+    },
+    "late_fee": {
+      "label": "Late fee ({currency}) (optional)"
+    },
+    "amount_in_words": {
+      "label": "Amount in words (written out for you when empty) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Cheque": "Cheque"
+      }
+    }
+  },
+  "print": {
+    "fee_receipt": "Fee receipt",
+    "receipt_no": "Receipt no.",
+    "date": "Date",
+    "student": "Student",
+    "class": "Class",
+    "admission_no": "Admission no.",
+    "parent": "Parent or guardian",
+    "fee_for": "Fee for",
+    "paid_by": "Paid by",
+    "tuition_fee": "Tuition fee",
+    "transport_fee": "Transport fee",
+    "other_fee": "Exam, activity and other fees",
+    "late_fee": "Late fee",
+    "total_received": "Total received",
+    "accounts_office": "Accounts office",
+    "keep_receipt": "Please keep this receipt for your records.",
+    "branches": "Branches",
+    "cell": "Cell",
+    "no": "No",
+    "receipt": "Receipt",
+    "received": "Received with thanks from Mr. / Mrs. {payer}, parent of {pupil}, the sum of {words} towards {purpose} by {mode}.",
+    "signature": "Signature"
+  },
+  "sample": {}
+}

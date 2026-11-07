@@ -11,5 +11,6 @@
   "tuition_fee": 9500,
   "transport_fee": 2000,
   "other_fee": 1000,
-  "payment_mode": "Bank transfer"
+  "payment_mode": "Cash",
+  "school_phone": "0172 456 7890 / 98765 43210"
 }

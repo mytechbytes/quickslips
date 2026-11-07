@@ -1,0 +1,112 @@
+{
+  "title": "Générateur de facture de pressing",
+  "name": "Facture de pressing",
+  "public_slug": "generateur-de-facture-de-pressing",
+  "summary": "Facture de pressing et blanchisserie avec vêtements, quantités et montants.",
+  "description": "Créez une facture de pressing ou de blanchisserie avec les vêtements, les quantités et les prix, la date de livraison, la {tax}, le mode de paiement et vos conditions. Deux modèles ; aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Facture jaune",
+    "t2": "Facture comptant ou crédit"
+  },
+  "fields": {
+    "laundry_name": {
+      "label": "Nom du pressing"
+    },
+    "laundry_address": {
+      "label": "Adresse du pressing (facultatif)"
+    },
+    "invoice_number": {
+      "label": "ID de facture"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "delivery_date": {
+      "label": "Date de livraison"
+    },
+    "customer_name": {
+      "label": "Nom du client"
+    },
+    "customer_address": {
+      "label": "Adresse du client (facultatif)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (facultatif)"
+    },
+    "payment_mode": {
+      "label": "Mode de paiement",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Card": "Carte",
+        "Bank transfer": "Virement bancaire",
+        "Online": "En ligne"
+      }
+    },
+    "terms": {
+      "label": "Conditions (une par ligne) (facultatif)"
+    },
+    "items": {
+      "label": "Vêtements et services",
+      "columns": {
+        "name": "Description",
+        "qty": "Qté",
+        "rate": "Prix ({currency})"
+      }
+    }
+  },
+  "print": {
+    "date": "Date",
+    "delivery_date": "Date de livraison",
+    "bill_to": "Facturé à",
+    "description": "Description",
+    "qty": "Qté",
+    "price": "Prix",
+    "total": "Total",
+    "subtotal": "Sous-total",
+    "tax_pct": "Taxe %",
+    "tax_amount": "Montant de la taxe",
+    "grand_total": "Total général",
+    "payment_method": "Mode de paiement",
+    "terms": "Conditions",
+    "service_title": "Service de pressing et blanchisserie",
+    "cash_credit_invoice": "Facture comptant / crédit",
+    "name": "Nom",
+    "address": "Adresse",
+    "no": "N°",
+    "delivery": "Livraison",
+    "rate": "Prix",
+    "minor": "Cts",
+    "good_condition": "Vérifiez le bon état des articles à la réception.",
+    "no_refund": "Aucun remboursement après paiement.",
+    "amount_in_words": "Montant en lettres"
+  },
+  "sample": {
+    "laundry_name": "Pressing Étincelle",
+    "customer_name": "Camille Martin",
+    "items": [
+      {
+        "name": "Chemise (lavage et repassage)",
+        "qty": 6,
+        "rate": 3.2
+      },
+      {
+        "name": "Pantalon (nettoyage à sec)",
+        "qty": 3,
+        "rate": 10
+      },
+      {
+        "name": "Drap (lavage)",
+        "qty": 2,
+        "rate": 6.5
+      },
+      {
+        "name": "Robe (nettoyage à sec)",
+        "qty": 1,
+        "rate": 15
+      }
+    ],
+    "tax_percent": 20,
+    "terms": "Tous les vêtements, le linge et les tissus sont traités avec le plus grand soin, mais en raison de l'état des articles ou de défauts non visibles de la matière, il existe une POSSIBILITÉ DE DÉCOLORATION OU DE RÉTRÉCISSEMENT. Ces articles sont acceptés pour nettoyage AUX RISQUES DU PROPRIÉTAIRE et l'entreprise décline toute responsabilité.\nL'entreprise fera des efforts raisonnables pour maintenir un haut niveau de qualité pour le lavage, le séchage et le pliage.\nFaute de temps, l'entreprise ne lit pas les étiquettes d'entretien des fabricants et n'est pas responsable des vêtements marqués « lavage à la main uniquement » ou « nettoyage à sec uniquement »."
+  }
+}

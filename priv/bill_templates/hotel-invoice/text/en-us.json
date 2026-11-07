@@ -1,0 +1,19 @@
+{
+  "sample": {
+    "hotel_name": "Lotus Residency Hotel",
+    "guest_name": "John Smith",
+    "nationality": "American",
+    "room_description": "Ocean-view room with breakfast",
+    "items": [
+      {
+        "name": "Extra bed",
+        "rate": 36.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 180,
+    "extra_charges": 45,
+    "gst_percent": 8.25,
+    "advance_amount": 100
+  }
+}

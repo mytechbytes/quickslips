@@ -1,0 +1,102 @@
+{
+  "title": "सामान्य बिल जनरेटर",
+  "name": "सामान्य बिल",
+  "public_slug": "general-bill-generator",
+  "summary": "किसी भी बिक्री या सेवा के लिए सरल बिल, हर वस्तु पर अलग कर दर के साथ।",
+  "description": "जितनी चाहें उतनी वस्तुओं, हर वस्तु की {tax} दर, विक्रेता, ग्राहक और भुगतान के साथ किसी भी बिक्री या सेवा का बिल बनाएं। तुरंत प्रीव्यू देखें और PDF डाउनलोड करें।",
+  "designs": {
+    "t1": "सरल बिल"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "दुकान का नाम"
+    },
+    "shop_address": {
+      "label": "विक्रेता का विवरण"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (वैकल्पिक)"
+    },
+    "invoice_number": {
+      "label": "इनवॉइस नंबर"
+    },
+    "date": {
+      "label": "तारीख"
+    },
+    "order_number": {
+      "label": "ऑर्डर नंबर (वैकल्पिक)"
+    },
+    "customer_name": {
+      "label": "ग्राहक का नाम"
+    },
+    "customer_location": {
+      "label": "ग्राहक का स्थान"
+    },
+    "shipping_address": {
+      "label": "ग्राहक का शिपिंग पता"
+    },
+    "payment_mode": {
+      "label": "भुगतान का तरीका",
+      "options": {
+        "Cash": "नकद",
+        "UPI": "UPI",
+        "Card": "कार्ड",
+        "Bank transfer": "बैंक ट्रांसफ़र",
+        "Online": "ऑनलाइन"
+      }
+    },
+    "items": {
+      "label": "वस्तुएँ",
+      "columns": {
+        "name": "विवरण",
+        "qty": "मात्रा",
+        "rate": "कीमत ({currency})",
+        "tax": "कर %"
+      }
+    }
+  },
+  "print": {
+    "invoice_date": "इनवॉइस की तारीख",
+    "invoice_no": "इनवॉइस नं.",
+    "sold_by": "विक्रेता",
+    "billed_to": "ग्राहक",
+    "description": "विवरण",
+    "qty": "मात्रा",
+    "price": "कीमत",
+    "amt": "राशि",
+    "subtotal": "उप-योग",
+    "payment_info": "भुगतान की जानकारी",
+    "due_by": "देय तारीख",
+    "total_amount": "कुल राशि",
+    "order_no": "ऑर्डर नं.",
+    "payment_method": "भुगतान का तरीका",
+    "thanks": "धन्यवाद! फिर पधारें।"
+  },
+  "sample": {
+    "shop_name": "शर्मा जनरल स्टोर",
+    "customer_name": "रोहन मेहता",
+    "customer_location": "जयपुर",
+    "items": [
+      {
+        "name": "स्टील किचन कंटेनर सेट",
+        "qty": 2,
+        "rate": 650,
+        "tax": 18
+      },
+      {
+        "name": "सूती बेडशीट (डबल)",
+        "qty": 3,
+        "rate": 420,
+        "tax": 5
+      },
+      {
+        "name": "LED बल्ब 9 W (4 का पैक)",
+        "qty": 2,
+        "rate": 280,
+        "tax": 18
+      }
+    ],
+    "shop_address": "12, गांधी रोड, जयपुर, राजस्थान 302001",
+    "shipping_address": "फ्लैट 5, लोटस अपार्टमेंट्स, सी-स्कीम, जयपुर, राजस्थान 302001"
+  }
+}

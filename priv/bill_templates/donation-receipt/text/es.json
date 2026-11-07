@@ -1,0 +1,85 @@
+{
+  "title": "Generador de Recibo de Donación",
+  "name": "Recibo de Donación",
+  "public_slug": "generador-de-recibo-de-donacion",
+  "summary": "Recibo de un donativo a una ONG o fundación.",
+  "description": "Crea un recibo de donación para una ONG, entidad benéfica o fundación con el donante, el importe en cifras y letras, la forma de pago, quién lo recibe y un agradecimiento. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Recibo"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "Nombre de la organización"
+    },
+    "registration_number": {
+      "label": "Número de registro (opcional)"
+    },
+    "address": {
+      "label": "Dirección"
+    },
+    "email": {
+      "label": "Correo electrónico (opcional)"
+    },
+    "website": {
+      "label": "Sitio web (opcional)"
+    },
+    "phone": {
+      "label": "Teléfono / contacto (opcional)"
+    },
+    "receipt_number": {
+      "label": "Recibo n.º"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "donor_name": {
+      "label": "Nombre del donante"
+    },
+    "amount": {
+      "label": "Importe total ({currency})"
+    },
+    "amount_in_words": {
+      "label": "Importe en letras (se escribe solo si se deja vacío) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "received_by": {
+      "label": "Recibido por (opcional)"
+    },
+    "donation_description": {
+      "label": "Descripción de la donación (opcional)"
+    }
+  },
+  "print": {
+    "email": "Correo electrónico",
+    "website": "Sitio web",
+    "phone": "Teléfono",
+    "donation_receipt": "Recibo de donación",
+    "receipt_no": "Recibo n.º",
+    "date": "Fecha",
+    "received_from": "Recibido de:",
+    "amount": "Importe",
+    "sum_of_words": "La suma de importe en letras",
+    "payment_method": "Forma de pago",
+    "received_by": "Recibido por:",
+    "description_of_donation": "Descripción de la donación:",
+    "thanks": "Gracias por su generosidad; agradecemos su apoyo."
+  },
+  "sample": {
+    "organisation_name": "Fundación Descubrimiento y Restauración",
+    "registration_number": "Inscrita en el Registro de Fundaciones n.º 91/2018",
+    "phone": "+34 954 123 456",
+    "donor_name": "Carlos Gómez",
+    "amount": 100,
+    "received_by": "Lucía Fernández, tesorera",
+    "donation_description": "Donativo para la restauración de la biblioteca histórica."
+  }
+}

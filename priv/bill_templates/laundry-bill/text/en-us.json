@@ -1,0 +1,29 @@
+{
+  "sample": {
+    "laundry_name": "Sparkle Dry Cleaning & Laundry",
+    "customer_name": "John Smith",
+    "items": [
+      {
+        "name": "Shirt (wash and iron)",
+        "qty": 6,
+        "rate": 3
+      },
+      {
+        "name": "Trousers (dry clean)",
+        "qty": 3,
+        "rate": 9
+      },
+      {
+        "name": "Bed sheet (wash)",
+        "qty": 2,
+        "rate": 8
+      },
+      {
+        "name": "Dress (dry clean)",
+        "qty": 1,
+        "rate": 14
+      }
+    ],
+    "tax_percent": 8.25
+  }
+}

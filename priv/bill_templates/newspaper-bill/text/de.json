@@ -1,0 +1,121 @@
+{
+  "title": "Zeitungsrechnung-Generator",
+  "name": "Zeitungsrechnung",
+  "public_slug": "zeitungsrechnung-generator",
+  "summary": "Monatliche Zeitungsrechnung mit Zustellgebühr.",
+  "description": "Erstellen Sie eine monatliche Rechnung für die Zustellung von Zeitungen oder Zeitschriften mit Agentur, Monat, Titeln samt Preis und Menge, Zustellgebühr und Gesamtbetrag. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Klassisch"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "Name der Agentur"
+    },
+    "agency_address": {
+      "label": "Adresse der Agentur"
+    },
+    "agency_mobile": {
+      "label": "Mobil (optional)"
+    },
+    "agency_phone": {
+      "label": "Telefon (optional)"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "bill_number": {
+      "label": "Rechnungsnummer"
+    },
+    "month": {
+      "label": "Monat",
+      "options": {
+        "January": "Januar",
+        "February": "Februar",
+        "March": "März",
+        "April": "April",
+        "May": "Mai",
+        "June": "Juni",
+        "July": "Juli",
+        "August": "August",
+        "September": "September",
+        "October": "Oktober",
+        "November": "November",
+        "December": "Dezember"
+      }
+    },
+    "bill_year": {
+      "label": "Rechnungsjahr"
+    },
+    "name_prefix": {
+      "label": "Anrede (optional)",
+      "options": {
+        "Mr.": "Herr",
+        "Mrs.": "Frau"
+      }
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "service_charge": {
+      "label": "Zustellgebühr ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Zeitungen und Zeitschriften",
+      "columns": {
+        "name": "Beschreibung",
+        "rate": "Preis ({currency})",
+        "qty": "Menge"
+      }
+    }
+  },
+  "print": {
+    "mobile": "Mobil",
+    "phone": "Tel.",
+    "month": "Monat",
+    "bill_no": "Rechnung Nr.",
+    "payment": "Zahlung",
+    "qty": "Menge",
+    "description": "Beschreibung",
+    "rate": "Preis",
+    "total": "Gesamt",
+    "subtotal": "Zwischensumme",
+    "service": "Zustellung",
+    "service_note": "Enthält die Gebühr für die Zustellung nach Hause.",
+    "grand_total": "Gesamtsumme",
+    "date": "Datum",
+    "customer_signature": "Unterschrift des Kunden"
+  },
+  "sample": {
+    "agency_name": "Zeitungsvertrieb Stadtmitte",
+    "customer_name": "Anna Becker",
+    "items": [
+      {
+        "name": "Morgenpost (täglich)",
+        "rate": 1.9,
+        "qty": 30
+      },
+      {
+        "name": "Sonntagsmagazin",
+        "rate": 3.5,
+        "qty": 4
+      },
+      {
+        "name": "Wirtschaftswoche",
+        "rate": 5.9,
+        "qty": 4
+      }
+    ],
+    "service_charge": 9,
+    "name_prefix": "Mr."
+  }
+}

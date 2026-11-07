@@ -1,0 +1,186 @@
+{
+  "title": "酒店账单生成器",
+  "name": "酒店账单",
+  "public_slug": "hotel-bill-generator",
+  "summary": "含房价、附加费用、预付款和{tax}的住宿账单。",
+  "description": "生成酒店账单，包含住客、房间、入住与退房、每晚房价、加床或其他服务、预付款和{tax}。三种样式；即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "经典",
+    "t2": "税务发票",
+    "t3": "表格式"
+  },
+  "fields": {
+    "hotel_name": {
+      "label": "酒店名称"
+    },
+    "hotel_address": {
+      "label": "酒店地址（选填）"
+    },
+    "gstin": {
+      "label": "{tax_id}（选填）"
+    },
+    "registration_number": {
+      "label": "注册号 / CIN（选填）"
+    },
+    "invoice_number": {
+      "label": "账单编号"
+    },
+    "reservation_number": {
+      "label": "预订编号（选填）"
+    },
+    "invoice_date": {
+      "label": "账单日期"
+    },
+    "guest_name": {
+      "label": "住客姓名"
+    },
+    "guest_gender": {
+      "label": "性别（选填）",
+      "options": {
+        "Male": "男",
+        "Female": "女",
+        "Transgender": "跨性别"
+      }
+    },
+    "guest_age": {
+      "label": "年龄（选填）"
+    },
+    "nationality": {
+      "label": "国籍（选填）"
+    },
+    "guest_address": {
+      "label": "住客地址（选填）"
+    },
+    "room_type": {
+      "label": "房型",
+      "options": {
+        "Standard": "标准间",
+        "Deluxe": "豪华间",
+        "Suite": "套房",
+        "Dormitory": "多人间"
+      }
+    },
+    "room_description": {
+      "label": "房间说明（选填）"
+    },
+    "room_number": {
+      "label": "房间号（选填）"
+    },
+    "check_in": {
+      "label": "入住日期"
+    },
+    "check_in_time": {
+      "label": "入住时间（选填）"
+    },
+    "check_out": {
+      "label": "退房日期"
+    },
+    "check_out_time": {
+      "label": "退房时间（选填）"
+    },
+    "tariff_per_night": {
+      "label": "每晚房价（{currency}）"
+    },
+    "extra_charges": {
+      "label": "餐饮及其他费用（{currency}）（选填）"
+    },
+    "gst_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "advance_amount": {
+      "label": "已付预付款（{currency}）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "items": {
+      "label": "更多房间或服务",
+      "columns": {
+        "name": "房型及说明",
+        "rate": "单价（{currency}）",
+        "qty": "天数"
+      }
+    }
+  },
+  "print": {
+    "invoice_title": "发票",
+    "invoice_no": "发票号码",
+    "invoice_date": "开票日期",
+    "guest": "住客",
+    "room": "房间",
+    "no": "编号",
+    "check_in": "入住",
+    "check_out": "退房",
+    "reservation_no": "预订号",
+    "nationality": "国籍",
+    "guest_address": "住客地址",
+    "description": "说明",
+    "nights": "晚数",
+    "rate_per_night": "每晚房价",
+    "amount": "金额",
+    "room_tariff": "房费",
+    "extra": "餐饮及其他费用",
+    "subtotal": "小计",
+    "less_advance": "减：预付款",
+    "balance_due": "应付余额",
+    "total": "合计",
+    "authorised": "授权签字人",
+    "thanks_stay": "感谢您的入住。本发票由电脑生成。",
+    "tax_invoice": "税务发票",
+    "bill_no": "账单号",
+    "guest_name": "住客姓名",
+    "address": "地址",
+    "res_no": "预订号",
+    "room_no": "房间号",
+    "room_type": "房型",
+    "pay_type": "支付方式",
+    "room_description": "房间说明",
+    "rate": "单价",
+    "days_nights": "天数 / 晚数",
+    "receipt_no": "收据号码",
+    "check_in_date": "入住日期",
+    "total_amount": "合计金额",
+    "payment_type": "支付方式",
+    "receive": "应收",
+    "payment_received": "已收款",
+    "receptionist": "前台",
+    "guest_signature": "住客签名",
+    "thank_visit": "谢谢，欢迎再来！",
+    "reg_no": "注册号",
+    "departure_date": "离店日期",
+    "check_in_time": "入住时间",
+    "check_out_time": "退房时间",
+    "particular": "项目",
+    "days": "天数",
+    "payment_method": "支付方式",
+    "refunded_received": "退还 / 收取",
+    "customer_signature": "客户签名",
+    "manager_signature": "经理签名",
+    "thanks": "谢谢",
+    "eoe": "如有错漏，以更正为准"
+  },
+  "sample": {
+    "hotel_name": "莲花酒店",
+    "guest_name": "王伟",
+    "nationality": "中国",
+    "room_description": "海景房（含早餐）",
+    "items": [
+      {
+        "name": "加床",
+        "rate": 96.0,
+        "qty": 3
+      }
+    ],
+    "tariff_per_night": 480,
+    "extra_charges": 150,
+    "gst_percent": 6,
+    "advance_amount": 200
+  }
+}

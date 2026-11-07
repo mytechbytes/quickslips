@@ -1,0 +1,121 @@
+{
+  "title": "报纸订阅账单生成器",
+  "name": "报纸订阅账单",
+  "public_slug": "newspaper-bill-generator",
+  "summary": "含送报服务费的月度报纸账单。",
+  "description": "生成月度报纸或杂志投递账单，包含报刊代理、月份、报刊单价与数量、送货上门服务费和合计。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "经典"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "报刊代理名称"
+    },
+    "agency_address": {
+      "label": "代理地址"
+    },
+    "agency_mobile": {
+      "label": "手机（选填）"
+    },
+    "agency_phone": {
+      "label": "电话（选填）"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "bill_number": {
+      "label": "账单编号"
+    },
+    "month": {
+      "label": "月份",
+      "options": {
+        "January": "1月",
+        "February": "2月",
+        "March": "3月",
+        "April": "4月",
+        "May": "5月",
+        "June": "6月",
+        "July": "7月",
+        "August": "8月",
+        "September": "9月",
+        "October": "10月",
+        "November": "11月",
+        "December": "12月"
+      }
+    },
+    "bill_year": {
+      "label": "账单年份"
+    },
+    "name_prefix": {
+      "label": "称谓（选填）",
+      "options": {
+        "Mr.": "先生",
+        "Mrs.": "女士"
+      }
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "service_charge": {
+      "label": "服务费（{currency}）（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "items": {
+      "label": "报纸和杂志",
+      "columns": {
+        "name": "说明",
+        "rate": "单价（{currency}）",
+        "qty": "数量"
+      }
+    }
+  },
+  "print": {
+    "mobile": "手机",
+    "phone": "电话",
+    "month": "月份",
+    "bill_no": "账单号",
+    "payment": "支付",
+    "qty": "数量",
+    "description": "说明",
+    "rate": "单价",
+    "total": "合计",
+    "subtotal": "小计",
+    "service": "服务费",
+    "service_note": "含送货上门服务费。",
+    "grand_total": "总计",
+    "date": "日期",
+    "customer_signature": "客户签名"
+  },
+  "sample": {
+    "agency_name": "城中报刊社",
+    "customer_name": "王伟",
+    "items": [
+      {
+        "name": "晨报（日报）",
+        "rate": 1.5,
+        "qty": 30
+      },
+      {
+        "name": "周日杂志",
+        "rate": 12,
+        "qty": 4
+      },
+      {
+        "name": "财经周刊",
+        "rate": 15,
+        "qty": 4
+      }
+    ],
+    "service_charge": 20,
+    "name_prefix": "Mr."
+  }
+}

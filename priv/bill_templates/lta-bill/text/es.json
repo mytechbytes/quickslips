@@ -1,0 +1,165 @@
+{
+  "title": "Generador de Billete para Ayuda de Viaje (LTA)",
+  "name": "Billete LTA",
+  "public_slug": "generador-de-billete-lta",
+  "summary": "Billete electrónico de autobús o tren para una ayuda de viaje.",
+  "description": "Crea un billete electrónico de autobús o tren para justificar una ayuda de viaje (LTA) con el operador, los puntos de embarque y destino, los pasajeros, el asiento, la tarifa, el {tax} y las condiciones de cancelación. Dos diseños; previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Billete electrónico",
+    "t2": "Billete con cuadros"
+  },
+  "fields": {
+    "travel_name": {
+      "label": "Operador de viajes"
+    },
+    "boarding_phone": {
+      "label": "Teléfono del punto de embarque"
+    },
+    "customer_care": {
+      "label": "Atención al cliente"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "ticket_number": {
+      "label": "Número de billete"
+    },
+    "pnr_number": {
+      "label": "Número PNR (opcional)"
+    },
+    "travel_type": {
+      "label": "Tipo de asiento",
+      "options": {
+        "Sleeper": "Literas",
+        "AC Sleeper": "Literas con A/C",
+        "Semi Sleeper": "Semicama",
+        "AC Sleeper (2+1)": "Literas con A/C (2+1)",
+        "Non Sleeper": "Asiento",
+        "Non AC": "Sin A/C"
+      }
+    },
+    "location": {
+      "label": "Embarque: lugar"
+    },
+    "landmark": {
+      "label": "Embarque: referencia"
+    },
+    "boarding_address": {
+      "label": "Embarque: dirección"
+    },
+    "reporting_date": {
+      "label": "Fecha de presentación"
+    },
+    "departure_time": {
+      "label": "Hora de salida (opcional)"
+    },
+    "dropping_date": {
+      "label": "Destino: fecha"
+    },
+    "dropping_time": {
+      "label": "Destino: hora (opcional)"
+    },
+    "dropping_address": {
+      "label": "Destino: dirección"
+    },
+    "passenger_details": {
+      "label": "Pasajero: nombre, edad, sexo"
+    },
+    "passenger_count": {
+      "label": "Número de pasajeros"
+    },
+    "seat_number": {
+      "label": "Número de asiento"
+    },
+    "amount": {
+      "label": "Tarifa ({currency})"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "cancellation_charge": {
+      "label": "Cargo de cancelación antes de la salida ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    }
+  },
+  "print": {
+    "t1_banner": "¡Enhorabuena! Has reservado un billete reprogramable. Puedes adelantar o aplazar este viaje hasta {when}.",
+    "eticket": "BILLETE ELECTRÓNICO",
+    "type": "Tipo",
+    "need_help": "¿Necesitas ayuda con tu viaje?",
+    "boarding_phone": "Tel. del punto de embarque",
+    "customer_care": "Atención al cliente",
+    "ticket_no": "Billete n.º",
+    "pnr_no": "PNR n.º",
+    "reporting_date": "Fecha de presentación",
+    "departure_time": "Hora de salida",
+    "no_passengers": "N.º de pasajeros",
+    "boarding_point": "Punto de embarque",
+    "dropping_point": "Punto de destino",
+    "location": "Lugar",
+    "landmark": "Referencia",
+    "address": "Dirección",
+    "time": "Hora",
+    "date": "Fecha",
+    "passenger_details": "Datos del pasajero (edad, sexo)",
+    "seat_number": "Asiento",
+    "mticket_note": "NOTA: Este operador acepta billetes en el móvil; no necesitas llevar una copia impresa.",
+    "total_fare": "Tarifa total",
+    "gst_note": "(se aplica un {rate} % de {tax} y cargo por servicio, si procede)",
+    "net_amount": "Importe neto",
+    "taxable_amount": "Base imponible",
+    "terms": "Términos y condiciones",
+    "t1_term_0": "Ten en cuenta la política de equipaje para tu viaje.",
+    "t1_term_1": "Cada pasajero puede llevar una maleta de hasta 10 kg y un objeto personal (bolso de portátil, bolso de mano o maletín) de hasta 5 kg.",
+    "t1_term_2": "Está prohibido llevar armas, materiales inflamables, armas de fuego, municiones, drogas, licores, contrabando u otros artículos prohibidos por la ley.",
+    "t1_term_3": "El operador puede denegar el embarque o cobrar un suplemento si el pasajero lleva más equipaje del permitido.",
+    "t1_term_4": "No se permite la cancelación parcial de este billete. Los cargos por cancelar el billete completo se indican abajo.",
+    "cancel_time": "Momento de cancelación",
+    "cancel_charges": "Cargos de cancelación",
+    "after": "Después de",
+    "before": "Antes de",
+    "on": "el",
+    "cut_as_charges": "Se descontarán {amount} como cargos de cancelación",
+    "t2_banner": "¡Enhorabuena! Tu billete es reprogramable hasta {when}.",
+    "lta_month": "Mes de la ayuda de viaje",
+    "boarding_help": "Ayuda de embarque",
+    "journey_date": "Fecha del viaje",
+    "passengers": "Pasajeros",
+    "seat_count": "Asiento",
+    "passenger_details_title": "Datos del pasajero (nombre/edad/sexo)",
+    "payment_method": "Forma de pago",
+    "important_note": "Nota importante",
+    "note_mticket": "Este operador acepta billetes en el móvil. Llevar el billete impreso es opcional.",
+    "note_id": "Lleva un documento de identidad con foto válido para la verificación al embarcar.",
+    "note_changes": "Para cambios en el viaje, contacta con el operador antes de la hora límite.",
+    "base_fare": "Tarifa base",
+    "tax": "Impuesto",
+    "t2_term_1": "Se permite una maleta de hasta 10 kg y un bolso personal de hasta 5 kg.",
+    "t2_term_2": "No lleves artículos prohibidos como armas, drogas o mercancías peligrosas.",
+    "t2_term_3": "El operador puede denegar el embarque en caso de incumplir las normas o la seguridad.",
+    "t2_term_4": "Este billete no admite cancelación parcial.",
+    "cancel_window": "Plazo de cancelación",
+    "applicable_charge": "Cargo aplicable"
+  },
+  "sample": {
+    "travel_name": "Viajes Siempre Verde",
+    "boarding_phone": "954 123 456",
+    "customer_care": "900 123 456",
+    "location": "Estación de autobuses de Sevilla",
+    "landmark": "Frente al Metro",
+    "passenger_details": "Carlos Gómez, 34, Hombre",
+    "travel_type": "AC Sleeper (2+1)",
+    "amount": 45,
+    "tax_percent": 10,
+    "cancellation_charge": 9
+  }
+}

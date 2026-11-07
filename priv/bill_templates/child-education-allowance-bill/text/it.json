@@ -1,0 +1,132 @@
+{
+  "title": "Generatore di richiesta indennità istruzione figli",
+  "name": "Indennità istruzione figli",
+  "public_slug": "generatore-richiesta-indennita-istruzione-figli",
+  "summary": "Modulo di rimborso dell'indennità per l'istruzione dei figli.",
+  "description": "Compila il modulo di rimborso dell'indennità per l'istruzione dei figli (CEA) o del contributo per il convitto con richiedente, coniuge, figli e relative scuole e spese. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Modulo"
+  },
+  "fields": {
+    "claim_date": {
+      "label": "Data"
+    },
+    "academic_year": {
+      "label": "Anno scolastico"
+    },
+    "name_rank": {
+      "label": "Nome e grado del dipendente pubblico"
+    },
+    "personal_number": {
+      "label": "Numero personale"
+    },
+    "designation": {
+      "label": "Qualifica"
+    },
+    "unit": {
+      "label": "Unità o ente"
+    },
+    "spouse_employed": {
+      "label": "Coniuge impiegato presso pubblica amministrazione, ente pubblico o privato"
+    },
+    "spouse_office": {
+      "label": "Qualifica e ufficio del coniuge (facoltativo)"
+    },
+    "child1_name": {
+      "label": "Figlio/a 1: nome"
+    },
+    "child1_dob": {
+      "label": "Figlio/a 1: data di nascita"
+    },
+    "child1_standard": {
+      "label": "Figlio/a 1: classe"
+    },
+    "child1_school": {
+      "label": "Figlio/a 1: nome e sede della scuola"
+    },
+    "child2_name": {
+      "label": "Figlio/a 2: nome (facoltativo)"
+    },
+    "child2_dob": {
+      "label": "Figlio/a 2: data di nascita (facoltativo)"
+    },
+    "child2_standard": {
+      "label": "Figlio/a 2: classe (facoltativo)"
+    },
+    "child2_school": {
+      "label": "Figlio/a 2: nome e sede della scuola (facoltativo)"
+    },
+    "items": {
+      "label": "Rimborso delle spese",
+      "columns": {
+        "code": "N.",
+        "name": "Periodo",
+        "qty": "Mesi",
+        "rate": "Importo dell'indennità ({currency})",
+        "batch": "Note"
+      }
+    }
+  },
+  "print": {
+    "title": "Modulo di rimborso dell'indennità per l'istruzione dei figli",
+    "claim_for": "Richiesta per l'anno scolastico",
+    "intro": "Con la presente chiedo il rimborso dell'indennità per l'istruzione / contributo per il convitto per mio figlio/miei figli; i dati pertinenti sono riportati di seguito:",
+    "date": "Data",
+    "q1": "Nome e grado del dipendente pubblico",
+    "q2": "N. personale",
+    "q3": "Qualifica",
+    "q4": "Nome dell'unità",
+    "q5": "Se il coniuge è impiegato presso amministrazione statale / regionale, ente autonomo, impresa pubblica, ente locale o privato, ecc.",
+    "q6": "Qualifica, ufficio e n. unità del coniuge (se dipendente pubblico)",
+    "children_title": "Dati dei figli per i quali si chiede l'indennità / il contributo:",
+    "sequence": "N.",
+    "child_name": "Nome del figlio/a",
+    "dob": "Data di nascita",
+    "standard": "Classe",
+    "ay": "A.S.",
+    "school": "Nome e sede della scuola / istituto",
+    "expenditure_title": "Rimborso delle spese:",
+    "period": "Periodo",
+    "rate_cea": "Importo",
+    "amount_claimed": "Importo richiesto",
+    "remarks": "Note",
+    "total_claimed": "Totale richiesto",
+    "months": "mesi"
+  },
+  "sample": {
+    "name_rank": "Maggiore Arturo Conti",
+    "personal_number": "M-48213",
+    "designation": "Ufficiale di stato maggiore",
+    "unit": "Comando generale, Roma",
+    "spouse_employed": "No",
+    "child1_name": "Matteo Conti",
+    "child2_name": "Giulia Conti",
+    "child1_school": "Scuola Alba, Roma",
+    "child2_school": "Scuola Alba, Roma",
+    "child1_standard": "1ª media",
+    "child2_standard": "4ª elementare",
+    "items": [
+      {
+        "code": "1",
+        "name": "Aprile-giugno 2026",
+        "qty": 3,
+        "rate": 80,
+        "batch": "Matteo Conti"
+      },
+      {
+        "code": "2",
+        "name": "Luglio-settembre 2026",
+        "qty": 3,
+        "rate": 80,
+        "batch": "Matteo Conti"
+      },
+      {
+        "code": "3",
+        "name": "Aprile-settembre 2026",
+        "qty": 6,
+        "rate": 80,
+        "batch": "Giulia Conti"
+      }
+    ]
+  }
+}

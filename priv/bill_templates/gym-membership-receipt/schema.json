@@ -5,24 +5,248 @@
   "category": "Health & learning",
   "icon": "hero-trophy",
   "number_field": "receipt_number",
-  "summary": "Membership or monthly fee receipt.",
-  "description": "Create a gym membership receipt with member, plan, validity dates, fee and {tax}. Preview instantly and download as PDF.",
-  "tax": { "default": "added" },
-  "templates": [{ "id": "t1", "name": "Classic" }],
+  "summary": "Gym membership receipt or invoice with plan, period and fees.",
+  "description": "Create a gym membership receipt or invoice with plan, billing cycle, period, fees, extra items, {tax} and the gym's instructions. Two designs; preview instantly and download as PDF.",
+  "tax": {
+    "default": "added",
+    "es": "included",
+    "de": "included",
+    "fr": "included",
+    "it": "included",
+    "gb": "included",
+    "jp": "included",
+    "cn": "included"
+  },
+  "templates": [
+    {
+      "id": "t1"
+    },
+    {
+      "id": "t2"
+    }
+  ],
   "fields": [
-    { "key": "gym_name", "group": "business", "label": "Gym or fitness club", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "gym_address", "group": "business", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
-    { "key": "gstin", "group": "registration", "label": "{tax_id} (optional)", "type": "text", "required": false, "max_length": 20, "prefill": "business.gstin" },
-    { "key": "receipt_number", "group": "document", "label": "Receipt number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "date", "group": "document", "label": "Receipt date", "type": "date", "required": true },
-    { "key": "member_name", "group": "customer", "label": "Member name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "member_phone", "group": "customer", "label": "Member phone (optional)", "type": "text", "required": false, "max_length": 15 },
-    { "key": "plan", "group": "details", "label": "Plan", "type": "select", "options": ["Day pass", "Monthly", "Quarterly", "Half-yearly", "Yearly"], "required": true },
-    { "key": "start_date", "group": "details", "label": "Valid from", "type": "date", "required": true },
-    { "key": "end_date", "group": "details", "label": "Valid till", "type": "date", "required": true },
-    { "key": "fee", "group": "charges", "label": "Membership fee ({currency})", "type": "number", "required": true, "min": 0 },
-    { "key": "joining_fee", "group": "charges", "label": "Joining fee ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "gst_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
-    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer"], "required": true }
+    {
+      "key": "gym_name",
+      "group": "business",
+      "label": "Gym or fitness club",
+      "type": "text",
+      "required": true,
+      "max_length": 80,
+      "prefill": "business.name"
+    },
+    {
+      "key": "gym_address",
+      "group": "business",
+      "label": "Address (optional)",
+      "type": "textarea",
+      "required": false,
+      "max_length": 200,
+      "prefill": "business.address"
+    },
+    {
+      "key": "gym_email",
+      "group": "business",
+      "label": "Gym email (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 80
+    },
+    {
+      "key": "gym_phone",
+      "group": "business",
+      "label": "Gym phone (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 20
+    },
+    {
+      "key": "gstin",
+      "group": "registration",
+      "label": "{tax_id} (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 20,
+      "prefill": "business.gstin"
+    },
+    {
+      "key": "receipt_number",
+      "group": "document",
+      "label": "Receipt number",
+      "type": "text",
+      "required": true,
+      "max_length": 30
+    },
+    {
+      "key": "date",
+      "group": "document",
+      "label": "Receipt date",
+      "type": "date",
+      "required": true
+    },
+    {
+      "key": "member_name",
+      "group": "customer",
+      "label": "Member name",
+      "type": "text",
+      "required": true,
+      "max_length": 80
+    },
+    {
+      "key": "member_phone",
+      "group": "customer",
+      "label": "Member phone (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 15
+    },
+    {
+      "key": "customer_number",
+      "group": "customer",
+      "label": "Customer number (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 20
+    },
+    {
+      "key": "user_number",
+      "group": "customer",
+      "label": "User ID (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 20
+    },
+    {
+      "key": "member_address",
+      "group": "customer",
+      "label": "Member address (optional)",
+      "type": "textarea",
+      "required": false,
+      "max_length": 200
+    },
+    {
+      "key": "plan",
+      "group": "details",
+      "label": "Plan",
+      "type": "select",
+      "options": [
+        "Day pass",
+        "Monthly",
+        "Quarterly",
+        "Half-yearly",
+        "Yearly"
+      ],
+      "required": true
+    },
+    {
+      "key": "billing_cycle",
+      "group": "details",
+      "label": "Billing cycle (optional)",
+      "type": "select",
+      "options": [
+        "Monthly",
+        "Quarterly",
+        "Half-yearly",
+        "Annual"
+      ],
+      "required": false
+    },
+    {
+      "key": "start_date",
+      "group": "details",
+      "label": "Valid from",
+      "type": "date",
+      "required": true
+    },
+    {
+      "key": "end_date",
+      "group": "details",
+      "label": "Valid till",
+      "type": "date",
+      "required": true
+    },
+    {
+      "key": "fee",
+      "group": "charges",
+      "label": "Membership fee ({currency})",
+      "type": "number",
+      "required": true,
+      "min": 0
+    },
+    {
+      "key": "joining_fee",
+      "group": "charges",
+      "label": "Joining fee ({currency}) (optional)",
+      "type": "number",
+      "required": false,
+      "min": 0
+    },
+    {
+      "key": "gst_percent",
+      "group": "charges",
+      "label": "{tax} (%) (optional)",
+      "type": "tax_rate",
+      "required": false
+    },
+    {
+      "key": "items",
+      "group": "items",
+      "label": "Extra items (optional)",
+      "type": "items",
+      "required": false,
+      "max_rows": 20,
+      "name_max_length": 100,
+      "cells": [
+        "name",
+        "qty",
+        "rate"
+      ],
+      "columns": {
+        "name": "Item and description",
+        "qty": "Unit",
+        "rate": "Price ({currency})"
+      }
+    },
+    {
+      "key": "payment_mode",
+      "group": "payment",
+      "label": "Payment method",
+      "type": "select",
+      "options": [
+        "Cash",
+        "UPI",
+        "Card",
+        "Bank transfer",
+        "Online"
+      ],
+      "required": true
+    },
+    {
+      "key": "remarks",
+      "group": "details",
+      "label": "Remark (optional)",
+      "type": "textarea",
+      "required": false,
+      "max_length": 200
+    },
+    {
+      "key": "instructions",
+      "group": "details",
+      "label": "Instructions for members (optional, one per line)",
+      "type": "textarea",
+      "required": false,
+      "max_length": 2500
+    }
+  ],
+  "languages": [
+    "en",
+    "hi",
+    "es",
+    "de",
+    "fr",
+    "it",
+    "pt",
+    "zh",
+    "ja"
   ]
 }

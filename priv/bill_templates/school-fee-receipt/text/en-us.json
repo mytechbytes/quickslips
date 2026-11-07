@@ -1,0 +1,13 @@
+{
+  "sample": {
+    "school_name": "Sunrise Academy",
+    "student_name": "Aiden Smith",
+    "parent_name": "John Smith",
+    "tuition_fee": 2400,
+    "transport_fee": 400,
+    "other_fee": 200,
+    "class_name": "Grade 7-B",
+    "fee_period": "Term 2, 2026-27",
+    "school_phone": "(512) 555-0142"
+  }
+}

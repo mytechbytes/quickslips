@@ -1,0 +1,163 @@
+{
+  "title": "ジム会費領収書作成",
+  "name": "ジム会費領収書",
+  "public_slug": "gym-membership-receipt-generator",
+  "summary": "プラン・期間・料金を記載したジム会費の領収書・請求書。",
+  "description": "プラン、請求サイクル、期間、料金、追加項目、{tax}、ジムのご利用案内を記載した会費の領収書または請求書を作成できます。2つのデザイン。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "領収書",
+    "t2": "請求書"
+  },
+  "fields": {
+    "gym_name": {
+      "label": "ジムまたはフィットネスクラブ"
+    },
+    "gym_address": {
+      "label": "住所（任意）"
+    },
+    "gym_email": {
+      "label": "ジムのメール（任意）"
+    },
+    "gym_phone": {
+      "label": "ジムの電話番号（任意）"
+    },
+    "gstin": {
+      "label": "{tax_id}（任意）"
+    },
+    "receipt_number": {
+      "label": "領収書番号"
+    },
+    "date": {
+      "label": "領収日"
+    },
+    "member_name": {
+      "label": "会員名"
+    },
+    "member_phone": {
+      "label": "会員の電話番号（任意）"
+    },
+    "customer_number": {
+      "label": "お客様番号（任意）"
+    },
+    "user_number": {
+      "label": "ユーザーID（任意）"
+    },
+    "member_address": {
+      "label": "会員の住所（任意）"
+    },
+    "plan": {
+      "label": "プラン",
+      "options": {
+        "Day pass": "1日券",
+        "Monthly": "月会員",
+        "Quarterly": "3か月会員",
+        "Half-yearly": "半年会員",
+        "Yearly": "年会員"
+      }
+    },
+    "billing_cycle": {
+      "label": "請求サイクル（任意）",
+      "options": {
+        "Monthly": "月次",
+        "Quarterly": "3か月",
+        "Half-yearly": "半年",
+        "Annual": "年次"
+      }
+    },
+    "start_date": {
+      "label": "有効期間（開始）"
+    },
+    "end_date": {
+      "label": "有効期間（終了）"
+    },
+    "fee": {
+      "label": "会費（{currency}）"
+    },
+    "joining_fee": {
+      "label": "入会金（{currency}）（任意）"
+    },
+    "gst_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "remarks": {
+      "label": "備考（任意）"
+    },
+    "instructions": {
+      "label": "会員向けご案内（1行に1件）（任意）"
+    },
+    "items": {
+      "label": "追加項目",
+      "columns": {
+        "name": "項目と内容",
+        "qty": "数量",
+        "rate": "単価（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "membership_receipt": "会費領収書",
+    "receipt_no": "領収書番号",
+    "date": "日付",
+    "member": "会員",
+    "phone": "電話",
+    "plan": "プラン",
+    "valid": "有効期間",
+    "to": "〜",
+    "paid_by": "支払方法",
+    "membership_fee": "会費",
+    "joining_fee": "入会金",
+    "subtotal": "小計",
+    "authorised": "認可署名者",
+    "stay_fit": "健康第一。ジムでお会いしましょう。",
+    "invoice_no": "請求書番号",
+    "invoice_date": "請求日",
+    "user_id": "ユーザーID",
+    "customer_name": "お客様名",
+    "address": "住所",
+    "mobile": "携帯電話",
+    "account_summary": "アカウント概要",
+    "bill_from_date": "請求開始日",
+    "billing_cycle": "請求サイクル",
+    "due_date": "支払期限",
+    "amount": "金額",
+    "payment_mode": "支払方法",
+    "billing_details": "請求内容",
+    "gym_item": "項目",
+    "unit": "数量",
+    "net_amount": "正味金額",
+    "total": "合計",
+    "tax_pct": "税率 %",
+    "taxable_amount": "課税対象額",
+    "instructions_title": "ジムのご利用案内",
+    "remark": "備考",
+    "signature": "署名"
+  },
+  "sample": {
+    "gym_name": "アイアンワークス・フィットネス",
+    "member_name": "田中 太郎",
+    "gym_phone": "03-1234-5678",
+    "member_phone": "090-1234-5678",
+    "fee": 24000,
+    "joining_fee": 3000,
+    "gst_percent": 10,
+    "items": [
+      {
+        "name": "パーソナルトレーニング",
+        "qty": 4,
+        "rate": 5000
+      }
+    ],
+    "instructions": "受付：到着時に必要であればフロントで受付をしてください。\n服装と衛生：運動に適した服装と清潔なシューズで。器具を拭くタオルをお持ちください。\nウォームアップ：軽い有酸素運動や動的ストレッチなど、5〜10分のウォームアップから始めましょう。\n器具：初めての方は器具の配置を確認し、スタッフにお尋ねください。\n有酸素マシン：体力に合わせて調整し、使用前後に拭いてください。\n水分補給：運動の前後と最中にこまめに水を飲みましょう。\n休憩：セット間は休みつつ、混雑時は器具を占有しないでください。\nクールダウン：5〜10分の軽いストレッチで終えましょう。\n持ち物：ロッカーに保管し、貴重品を放置しないでください。\n楽しく継続：継続が目標達成の鍵です。",
+    "remarks": "休会の申請は7日前までにお願いします。"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "title": "クリーニング請求書作成",
+  "name": "クリーニング請求書",
+  "public_slug": "laundry-bill-generator",
+  "summary": "衣類・数量・金額を記載したクリーニングの請求書。",
+  "description": "衣類、数量、単価、お渡し日、{tax}、支払方法、ご利用条件を記載したクリーニング・洗濯の請求書を作成できます。2つのデザイン。すぐにプレビューして、PDFでダウンロードできます。",
+  "designs": {
+    "t1": "イエロー請求書",
+    "t2": "現金・掛け請求書"
+  },
+  "fields": {
+    "laundry_name": {
+      "label": "クリーニング店名"
+    },
+    "laundry_address": {
+      "label": "店舗の住所（任意）"
+    },
+    "invoice_number": {
+      "label": "請求書ID"
+    },
+    "date": {
+      "label": "日付"
+    },
+    "delivery_date": {
+      "label": "お渡し日"
+    },
+    "customer_name": {
+      "label": "お客様名"
+    },
+    "customer_address": {
+      "label": "お客様の住所（任意）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（任意）"
+    },
+    "payment_mode": {
+      "label": "支払方法",
+      "options": {
+        "Cash": "現金",
+        "UPI": "UPI",
+        "Card": "カード",
+        "Bank transfer": "銀行振込",
+        "Online": "オンライン"
+      }
+    },
+    "terms": {
+      "label": "ご利用条件（1行に1件）（任意）"
+    },
+    "items": {
+      "label": "衣類とサービス",
+      "columns": {
+        "name": "内容",
+        "qty": "数量",
+        "rate": "単価（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "date": "日付",
+    "delivery_date": "お渡し日",
+    "bill_to": "請求先",
+    "description": "内容",
+    "qty": "数量",
+    "price": "単価",
+    "total": "合計",
+    "subtotal": "小計",
+    "tax_pct": "税率 %",
+    "tax_amount": "税額",
+    "grand_total": "総合計",
+    "payment_method": "支払方法",
+    "terms": "利用条件",
+    "service_title": "クリーニング・洗濯サービス",
+    "cash_credit_invoice": "現金・掛け請求書",
+    "name": "氏名",
+    "address": "住所",
+    "no": "番号",
+    "delivery": "お渡し",
+    "rate": "単価",
+    "minor": "銭",
+    "good_condition": "お受け取りの際は状態をご確認ください。",
+    "no_refund": "お支払い後の返金はできません。",
+    "amount_in_words": "金額（文字）"
+  },
+  "sample": {
+    "laundry_name": "スパークルクリーニング",
+    "customer_name": "田中 太郎",
+    "items": [
+      {
+        "name": "ワイシャツ（洗濯・アイロン）",
+        "qty": 6,
+        "rate": 250
+      },
+      {
+        "name": "スラックス（ドライクリーニング）",
+        "qty": 3,
+        "rate": 700
+      },
+      {
+        "name": "シーツ（洗濯）",
+        "qty": 2,
+        "rate": 600
+      },
+      {
+        "name": "ワンピース（ドライクリーニング）",
+        "qty": 1,
+        "rate": 1200
+      }
+    ],
+    "tax_percent": 10,
+    "terms": "すべての衣類・リネン・生地は細心の注意をもって取り扱いますが、品物の状態や素材の目に見えない欠陥により、変色や縮みが生じる可能性があります。そのような衣類は持ち主の責任でお預かりし、当社は一切の責任を負いません。\n当社は洗濯・乾燥・たたみの品質を高い水準に保つよう合理的な努力をいたします。\n時間の都合上、メーカーの取扱表示は確認しておらず、「手洗いのみ」「ドライクリーニングのみ」と表示された衣類については責任を負いません。"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "title": "Gym Membership Receipt Generator",
+  "name": "Gym Membership Receipt",
+  "public_slug": "gym-membership-receipt-generator",
+  "summary": "Gym membership receipt or invoice with plan, period and fees.",
+  "description": "Create a gym membership receipt or invoice with plan, billing cycle, period, fees, extra items, {tax} and the gym's instructions. Two designs; preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Receipt",
+    "t2": "Invoice"
+  },
+  "fields": {
+    "gym_name": {
+      "label": "Gym or fitness club"
+    },
+    "gym_address": {
+      "label": "Address (optional)"
+    },
+    "gym_email": {
+      "label": "Gym email (optional)"
+    },
+    "gym_phone": {
+      "label": "Gym phone (optional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (optional)"
+    },
+    "receipt_number": {
+      "label": "Receipt number"
+    },
+    "date": {
+      "label": "Receipt date"
+    },
+    "member_name": {
+      "label": "Member name"
+    },
+    "member_phone": {
+      "label": "Member phone (optional)"
+    },
+    "customer_number": {
+      "label": "Customer number (optional)"
+    },
+    "user_number": {
+      "label": "User ID (optional)"
+    },
+    "member_address": {
+      "label": "Member address (optional)"
+    },
+    "plan": {
+      "label": "Plan",
+      "options": {
+        "Day pass": "Day pass",
+        "Monthly": "Monthly",
+        "Quarterly": "Quarterly",
+        "Half-yearly": "Half-yearly",
+        "Yearly": "Yearly"
+      }
+    },
+    "billing_cycle": {
+      "label": "Billing cycle (optional)",
+      "options": {
+        "Monthly": "Monthly",
+        "Quarterly": "Quarterly",
+        "Half-yearly": "Half-yearly",
+        "Annual": "Annual"
+      }
+    },
+    "start_date": {
+      "label": "Valid from"
+    },
+    "end_date": {
+      "label": "Valid till"
+    },
+    "fee": {
+      "label": "Membership fee ({currency})"
+    },
+    "joining_fee": {
+      "label": "Joining fee ({currency}) (optional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment method",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "remarks": {
+      "label": "Remark (optional)"
+    },
+    "instructions": {
+      "label": "Instructions for members (one per line) (optional)"
+    },
+    "items": {
+      "label": "Extra items",
+      "columns": {
+        "name": "Item and description",
+        "qty": "Unit",
+        "rate": "Price ({currency})"
+      }
+    }
+  },
+  "print": {
+    "membership_receipt": "Membership receipt",
+    "receipt_no": "Receipt no.",
+    "date": "Date",
+    "member": "Member",
+    "phone": "Phone",
+    "plan": "Plan",
+    "valid": "Valid",
+    "to": "to",
+    "paid_by": "Paid by",
+    "membership_fee": "Membership fee",
+    "joining_fee": "Joining fee",
+    "subtotal": "Subtotal",
+    "authorised": "Authorised signatory",
+    "stay_fit": "Stay fit. See you at the gym.",
+    "invoice_no": "Invoice #",
+    "invoice_date": "Invoice date",
+    "user_id": "User ID",
+    "customer_name": "Customer name",
+    "address": "Address",
+    "mobile": "Mobile",
+    "account_summary": "Account summary",
+    "bill_from_date": "Bill from date",
+    "billing_cycle": "Billing cycle",
+    "due_date": "Due date",
+    "amount": "Amount",
+    "payment_mode": "Payment mode",
+    "billing_details": "Billing details",
+    "gym_item": "Gym item",
+    "unit": "Unit",
+    "net_amount": "Net amount",
+    "total": "Total",
+    "tax_pct": "Tax %",
+    "taxable_amount": "Taxable amount",
+    "instructions_title": "Instructions for the gym",
+    "remark": "Remark",
+    "signature": "Signature"
+  },
+  "sample": {}
+}

@@ -1,0 +1,27 @@
+{
+  "sample": {
+    "shop_name": "High Street General Store",
+    "customer_name": "James Taylor",
+    "customer_location": "London",
+    "items": [
+      {
+        "name": "Steel kitchen container set",
+        "qty": 2,
+        "rate": 18,
+        "tax": 20
+      },
+      {
+        "name": "Cotton bed sheet (double)",
+        "qty": 3,
+        "rate": 22,
+        "tax": 20
+      },
+      {
+        "name": "LED bulb 9 W (pack of 4)",
+        "qty": 2,
+        "rate": 7,
+        "tax": 20
+      }
+    ]
+  }
+}

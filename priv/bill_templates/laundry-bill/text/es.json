@@ -1,0 +1,112 @@
+{
+  "title": "Generador de Factura de Lavandería",
+  "name": "Factura de Lavandería",
+  "public_slug": "generador-de-factura-de-lavanderia",
+  "summary": "Factura de lavandería y tintorería con prendas, cantidades e importes.",
+  "description": "Crea una factura de lavandería o tintorería con las prendas, cantidades y precios, la fecha de entrega, el {tax}, la forma de pago y tus condiciones. Dos diseños; previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura amarilla",
+    "t2": "Factura al contado o a crédito"
+  },
+  "fields": {
+    "laundry_name": {
+      "label": "Nombre de la lavandería"
+    },
+    "laundry_address": {
+      "label": "Dirección de la lavandería (opcional)"
+    },
+    "invoice_number": {
+      "label": "ID de factura"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "delivery_date": {
+      "label": "Fecha de entrega"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "customer_address": {
+      "label": "Dirección del cliente (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "terms": {
+      "label": "Términos y condiciones (uno por línea) (opcional)"
+    },
+    "items": {
+      "label": "Prendas y servicios",
+      "columns": {
+        "name": "Descripción",
+        "qty": "Cant.",
+        "rate": "Precio ({currency})"
+      }
+    }
+  },
+  "print": {
+    "date": "Fecha",
+    "delivery_date": "Fecha de entrega",
+    "bill_to": "Cliente",
+    "description": "Descripción",
+    "qty": "Cant.",
+    "price": "Precio",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "tax_pct": "Impuesto %",
+    "tax_amount": "Importe del impuesto",
+    "grand_total": "Total general",
+    "payment_method": "Forma de pago",
+    "terms": "Términos y condiciones",
+    "service_title": "Servicio de tintorería y lavandería",
+    "cash_credit_invoice": "Factura al contado / a crédito",
+    "name": "Nombre",
+    "address": "Dirección",
+    "no": "N.º",
+    "delivery": "Entrega",
+    "rate": "Precio",
+    "minor": "Cts.",
+    "good_condition": "Reciba las prendas en buen estado.",
+    "no_refund": "No se devuelve el dinero una vez pagado.",
+    "amount_in_words": "Importe en letras"
+  },
+  "sample": {
+    "laundry_name": "Tintorería Chispa",
+    "customer_name": "Carlos Gómez",
+    "items": [
+      {
+        "name": "Camisa (lavado y planchado)",
+        "qty": 6,
+        "rate": 2.5
+      },
+      {
+        "name": "Pantalón (limpieza en seco)",
+        "qty": 3,
+        "rate": 9
+      },
+      {
+        "name": "Sábana (lavado)",
+        "qty": 2,
+        "rate": 6
+      },
+      {
+        "name": "Vestido (limpieza en seco)",
+        "qty": 1,
+        "rate": 14
+      }
+    ],
+    "tax_percent": 21,
+    "terms": "Todas las prendas, la ropa de cama y los tejidos se tratan con el mayor cuidado, pero por el estado de los artículos o por defectos no visibles del material existe la POSIBILIDAD DE DECOLORACIÓN O ENCOGIMIENTO. Dichas prendas se aceptan para su limpieza BAJO RESPONSABILIDAD DEL PROPIETARIO y la empresa no asumirá responsabilidad alguna.\nLa empresa hará esfuerzos razonables para mantener un alto nivel de calidad en el lavado, secado y doblado.\nPor falta de tiempo, la empresa no lee las etiquetas de cuidado del fabricante y no se hace responsable de las prendas etiquetadas «solo lavado a mano» o «solo limpieza en seco»."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "title": "Newspaper Bill Generator",
+  "name": "Newspaper Bill",
+  "public_slug": "newspaper-bill-generator",
+  "summary": "Monthly newspaper delivery bill with a service charge.",
+  "description": "Create a monthly newspaper or magazine delivery bill with the agency, the month, the papers with their rate and quantity, a home-delivery service charge and the total. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Classic"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "Agency name"
+    },
+    "agency_address": {
+      "label": "Agency address"
+    },
+    "agency_mobile": {
+      "label": "Mobile (optional)"
+    },
+    "agency_phone": {
+      "label": "Phone (optional)"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "bill_number": {
+      "label": "Bill number"
+    },
+    "month": {
+      "label": "Month",
+      "options": {
+        "January": "January",
+        "February": "February",
+        "March": "March",
+        "April": "April",
+        "May": "May",
+        "June": "June",
+        "July": "July",
+        "August": "August",
+        "September": "September",
+        "October": "October",
+        "November": "November",
+        "December": "December"
+      }
+    },
+    "bill_year": {
+      "label": "Bill year"
+    },
+    "name_prefix": {
+      "label": "Title (optional)",
+      "options": {
+        "Mr.": "Mr.",
+        "Mrs.": "Mrs."
+      }
+    },
+    "customer_name": {
+      "label": "Customer name"
+    },
+    "service_charge": {
+      "label": "Service charge ({currency}) (optional)"
+    },
+    "payment_mode": {
+      "label": "Payment type",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Newspapers and magazines",
+      "columns": {
+        "name": "Description",
+        "rate": "Rate ({currency})",
+        "qty": "Qty"
+      }
+    }
+  },
+  "print": {
+    "mobile": "Mobile",
+    "phone": "Phone",
+    "month": "Month",
+    "bill_no": "Bill no.",
+    "payment": "Payment",
+    "qty": "Qty",
+    "description": "Description",
+    "rate": "Rate",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "service": "Service",
+    "service_note": "This includes the delivery charge for home service.",
+    "grand_total": "Grand total",
+    "date": "Date",
+    "customer_signature": "Customer signature"
+  },
+  "sample": {}
+}

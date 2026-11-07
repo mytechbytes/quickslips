@@ -1,0 +1,28 @@
+{
+  "sample": {
+    "shop_name": "Bazar du Centre",
+    "customer_name": "Julie Tremblay",
+    "customer_location": "Montréal",
+    "items": [
+      {
+        "name": "Ensemble de contenants de cuisine en acier",
+        "qty": 2,
+        "rate": 28,
+        "tax": 5
+      },
+      {
+        "name": "Drap en coton (lit double)",
+        "qty": 3,
+        "rate": 36,
+        "tax": 5
+      },
+      {
+        "name": "Ampoule DEL 9 W (paquet de 4)",
+        "qty": 2,
+        "rate": 12,
+        "tax": 5
+      }
+    ],
+    "shop_address": "250 rue Sainte-Catherine, Montréal, QC H2X 1L6"
+  }
+}

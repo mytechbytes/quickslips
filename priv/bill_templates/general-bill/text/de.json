@@ -1,0 +1,100 @@
+{
+  "title": "Allgemeine-Rechnung-Generator",
+  "name": "Allgemeine Rechnung",
+  "public_slug": "allgemeine-rechnung-generator",
+  "summary": "Einfache Rechnung für jeden Verkauf oder jede Leistung mit Steuersatz je Posten.",
+  "description": "Erstellen Sie eine Rechnung für jeden Verkauf oder jede Leistung mit beliebig vielen Posten, einem {tax}-Satz je Posten, Verkäufer, Kunde und Zahlung. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Einfache Rechnung"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Name des Geschäfts"
+    },
+    "shop_address": {
+      "label": "Angaben zum Verkäufer"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "invoice_number": {
+      "label": "Rechnungsnummer"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "order_number": {
+      "label": "Bestellnummer (optional)"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "customer_location": {
+      "label": "Ort des Kunden"
+    },
+    "shipping_address": {
+      "label": "Lieferadresse des Kunden"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Artikel",
+      "columns": {
+        "name": "Beschreibung",
+        "qty": "Menge",
+        "rate": "Preis ({currency})",
+        "tax": "Steuer %"
+      }
+    }
+  },
+  "print": {
+    "invoice_date": "Rechnungsdatum",
+    "invoice_no": "Rechnungs-Nr.",
+    "sold_by": "Verkauft von",
+    "billed_to": "Rechnung an",
+    "description": "Beschreibung",
+    "qty": "Menge",
+    "price": "Preis",
+    "amt": "Betrag",
+    "subtotal": "Zwischensumme",
+    "payment_info": "Zahlungsinformationen",
+    "due_by": "Fällig am",
+    "total_amount": "Gesamtbetrag",
+    "order_no": "Bestell-Nr.",
+    "payment_method": "Zahlungsart",
+    "thanks": "Danke! Bis zum nächsten Mal."
+  },
+  "sample": {
+    "shop_name": "Gemischtwaren Linde",
+    "customer_name": "Anna Becker",
+    "customer_location": "Berlin",
+    "items": [
+      {
+        "name": "Küchenbehälter-Set aus Edelstahl",
+        "qty": 2,
+        "rate": 24.9,
+        "tax": 19
+      },
+      {
+        "name": "Baumwoll-Bettlaken (Doppelbett)",
+        "qty": 3,
+        "rate": 29.9,
+        "tax": 19
+      },
+      {
+        "name": "LED-Lampe 9 W (4er-Pack)",
+        "qty": 2,
+        "rate": 9.9,
+        "tax": 19
+      }
+    ]
+  }
+}

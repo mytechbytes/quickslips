@@ -1,0 +1,85 @@
+{
+  "title": "Generatore di ricevuta per donazioni",
+  "name": "Ricevuta di donazione",
+  "public_slug": "generatore-ricevuta-donazione",
+  "summary": "Ricevuta per una donazione a un'associazione o fondazione.",
+  "description": "Crea una ricevuta di donazione per un'associazione, un ente benefico o una fondazione con donatore, importo in cifre e lettere, metodo di pagamento, chi ha ricevuto e un ringraziamento. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Ricevuta"
+  },
+  "fields": {
+    "organisation_name": {
+      "label": "Nome dell'organizzazione"
+    },
+    "registration_number": {
+      "label": "Numero di registrazione (facoltativo)"
+    },
+    "address": {
+      "label": "Indirizzo"
+    },
+    "email": {
+      "label": "Email (facoltativo)"
+    },
+    "website": {
+      "label": "Sito web (facoltativo)"
+    },
+    "phone": {
+      "label": "Telefono / contatto (facoltativo)"
+    },
+    "receipt_number": {
+      "label": "Ricevuta n."
+    },
+    "date": {
+      "label": "Data"
+    },
+    "donor_name": {
+      "label": "Nome del donatore"
+    },
+    "amount": {
+      "label": "Importo totale ({currency})"
+    },
+    "amount_in_words": {
+      "label": "Importo in lettere (scritto in automatico se vuoto) (facoltativo)"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    },
+    "received_by": {
+      "label": "Ricevuto da (facoltativo)"
+    },
+    "donation_description": {
+      "label": "Descrizione della donazione (facoltativo)"
+    }
+  },
+  "print": {
+    "email": "Email",
+    "website": "Sito web",
+    "phone": "Telefono",
+    "donation_receipt": "Ricevuta di donazione",
+    "receipt_no": "Ricevuta n.",
+    "date": "Data",
+    "received_from": "Ricevuto da:",
+    "amount": "Importo",
+    "sum_of_words": "La somma in lettere",
+    "payment_method": "Metodo di pagamento",
+    "received_by": "Ricevuto da:",
+    "description_of_donation": "Descrizione della donazione:",
+    "thanks": "Grazie per la sua generosità, apprezziamo il suo sostegno."
+  },
+  "sample": {
+    "organisation_name": "Fondazione Scoperta e Restauro",
+    "registration_number": "Iscritta al registro n. 91/2018",
+    "phone": "+39 06 1234567",
+    "donor_name": "Marco Rossi",
+    "amount": 100,
+    "received_by": "Luca Bianchi, tesoriere",
+    "donation_description": "Donazione per il restauro della biblioteca storica."
+  }
+}

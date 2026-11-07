@@ -1,0 +1,19 @@
+{
+  "agency_name": "City News Agency",
+  "agency_address": "Shop 2, Market Road, Nashik, Maharashtra 422001",
+  "agency_mobile": "98200 12345",
+  "agency_phone": "0253 245 6789",
+  "date": "2026-11-07",
+  "bill_number": "3282",
+  "month": "November",
+  "bill_year": "2026",
+  "name_prefix": "Mr.",
+  "customer_name": "Rohan Mehta",
+  "items": [
+    { "name": "Morning Chronicle (daily)", "rate": 6, "qty": 30 },
+    { "name": "Sunday Magazine", "rate": 15, "qty": 4 },
+    { "name": "Business Weekly", "rate": 20, "qty": 4 }
+  ],
+  "service_charge": 50,
+  "payment_mode": "Cash"
+}

@@ -12,5 +12,22 @@
   "check_out": "2026-10-14",
   "tariff_per_night": 4000,
   "extra_charges": 1200,
-  "gst_percent": 12
+  "gst_percent": 12,
+  "registration_number": "U55101GA2012PTC123456",
+  "reservation_number": "RES-7629",
+  "guest_gender": "Male",
+  "guest_age": "34",
+  "nationality": "Indian",
+  "room_description": "Sea-facing room with breakfast",
+  "check_in_time": "12:00",
+  "check_out_time": "11:00",
+  "items": [
+    {
+      "name": "Extra bed",
+      "rate": 800,
+      "qty": 3
+    }
+  ],
+  "advance_amount": 2000,
+  "payment_mode": "UPI"
 }

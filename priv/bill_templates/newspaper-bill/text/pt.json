@@ -1,0 +1,121 @@
+{
+  "title": "Gerador de nota de jornais",
+  "name": "Nota de jornais",
+  "public_slug": "gerador-de-nota-de-jornais",
+  "summary": "Nota mensal de entrega de jornais com taxa de serviço.",
+  "description": "Crie uma nota mensal de entrega de jornais ou revistas com a agência, o mês, os títulos com preço e quantidade, taxa de entrega em domicílio e o total. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Clássico"
+  },
+  "fields": {
+    "agency_name": {
+      "label": "Nome da agência"
+    },
+    "agency_address": {
+      "label": "Endereço da agência"
+    },
+    "agency_mobile": {
+      "label": "Celular (opcional)"
+    },
+    "agency_phone": {
+      "label": "Telefone (opcional)"
+    },
+    "date": {
+      "label": "Data"
+    },
+    "bill_number": {
+      "label": "Número da nota"
+    },
+    "month": {
+      "label": "Mês",
+      "options": {
+        "January": "janeiro",
+        "February": "fevereiro",
+        "March": "março",
+        "April": "abril",
+        "May": "maio",
+        "June": "junho",
+        "July": "julho",
+        "August": "agosto",
+        "September": "setembro",
+        "October": "outubro",
+        "November": "novembro",
+        "December": "dezembro"
+      }
+    },
+    "bill_year": {
+      "label": "Ano da nota"
+    },
+    "name_prefix": {
+      "label": "Tratamento (opcional)",
+      "options": {
+        "Mr.": "Sr.",
+        "Mrs.": "Sra."
+      }
+    },
+    "customer_name": {
+      "label": "Nome do cliente"
+    },
+    "service_charge": {
+      "label": "Taxa de serviço ({currency}) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Tipo de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "items": {
+      "label": "Jornais e revistas",
+      "columns": {
+        "name": "Descrição",
+        "rate": "Preço ({currency})",
+        "qty": "Qtd."
+      }
+    }
+  },
+  "print": {
+    "mobile": "Celular",
+    "phone": "Tel.",
+    "month": "Mês",
+    "bill_no": "Nota n.º",
+    "payment": "Pagamento",
+    "qty": "Qtd.",
+    "description": "Descrição",
+    "rate": "Preço",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "service": "Serviço",
+    "service_note": "Inclui a taxa de entrega em domicílio.",
+    "grand_total": "Total geral",
+    "date": "Data",
+    "customer_signature": "Assinatura do cliente"
+  },
+  "sample": {
+    "agency_name": "Banca de Jornais Central",
+    "customer_name": "Ana Souza",
+    "items": [
+      {
+        "name": "Jornal da Manhã (diário)",
+        "rate": 4,
+        "qty": 30
+      },
+      {
+        "name": "Revista de domingo",
+        "rate": 12,
+        "qty": 4
+      },
+      {
+        "name": "Semanário de Negócios",
+        "rate": 15,
+        "qty": 4
+      }
+    ],
+    "service_charge": 25,
+    "name_prefix": "Mr."
+  }
+}

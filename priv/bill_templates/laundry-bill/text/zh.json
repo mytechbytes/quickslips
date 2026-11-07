@@ -1,0 +1,112 @@
+{
+  "title": "洗衣店账单生成器",
+  "name": "洗衣店账单",
+  "public_slug": "laundry-bill-generator",
+  "summary": "含衣物、数量和金额的洗衣干洗账单。",
+  "description": "生成洗衣或干洗账单，包含衣物、数量与单价、取衣日期、{tax}、付款方式和您的条款。两种样式；即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "黄色账单",
+    "t2": "现金/赊账发票"
+  },
+  "fields": {
+    "laundry_name": {
+      "label": "洗衣店名称"
+    },
+    "laundry_address": {
+      "label": "洗衣店地址（选填）"
+    },
+    "invoice_number": {
+      "label": "发票编号"
+    },
+    "date": {
+      "label": "日期"
+    },
+    "delivery_date": {
+      "label": "取衣日期"
+    },
+    "customer_name": {
+      "label": "客户姓名"
+    },
+    "customer_address": {
+      "label": "客户地址（选填）"
+    },
+    "tax_percent": {
+      "label": "{tax} (%)（选填）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Card": "银行卡",
+        "Bank transfer": "银行转账",
+        "Online": "在线支付"
+      }
+    },
+    "terms": {
+      "label": "条款和条件（每行一条）（选填）"
+    },
+    "items": {
+      "label": "衣物和服务",
+      "columns": {
+        "name": "说明",
+        "qty": "数量",
+        "rate": "单价（{currency}）"
+      }
+    }
+  },
+  "print": {
+    "date": "日期",
+    "delivery_date": "取衣日期",
+    "bill_to": "购买人",
+    "description": "说明",
+    "qty": "数量",
+    "price": "单价",
+    "total": "合计",
+    "subtotal": "小计",
+    "tax_pct": "税率 %",
+    "tax_amount": "税额",
+    "grand_total": "总计",
+    "payment_method": "支付方式",
+    "terms": "条款和条件",
+    "service_title": "干洗与洗衣服务",
+    "cash_credit_invoice": "现金 / 赊账发票",
+    "name": "姓名",
+    "address": "地址",
+    "no": "编号",
+    "delivery": "取衣",
+    "rate": "单价",
+    "minor": "分",
+    "good_condition": "请检查衣物完好后再收取。",
+    "no_refund": "付款后概不退款。",
+    "amount_in_words": "大写金额"
+  },
+  "sample": {
+    "laundry_name": "闪亮洗衣店",
+    "customer_name": "王伟",
+    "items": [
+      {
+        "name": "衬衫（水洗熨烫）",
+        "qty": 6,
+        "rate": 10
+      },
+      {
+        "name": "长裤（干洗）",
+        "qty": 3,
+        "rate": 25
+      },
+      {
+        "name": "床单（水洗）",
+        "qty": 2,
+        "rate": 20
+      },
+      {
+        "name": "连衣裙（干洗）",
+        "qty": 1,
+        "rate": 40
+      }
+    ],
+    "tax_percent": 6,
+    "terms": "所有衣物、床品和面料均会小心处理，但由于物品本身状况或面料中不可见的瑕疵，可能出现褪色或缩水。此类衣物按物主自担风险接收清洗，本公司对此不承担任何责任。\n本公司将合理努力保证洗涤、烘干和折叠的服务质量。\n因时间所限，本公司不逐一查看厂家的洗涤标签，对标有“仅可手洗”或“仅可干洗”的衣物不承担责任。"
+  }
+}

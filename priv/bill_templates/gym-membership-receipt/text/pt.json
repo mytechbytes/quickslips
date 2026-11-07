@@ -1,0 +1,163 @@
+{
+  "title": "Gerador de recibo de academia",
+  "name": "Recibo de academia",
+  "public_slug": "gerador-de-recibo-de-academia",
+  "summary": "Recibo ou fatura de academia com plano, período e valores.",
+  "description": "Crie um recibo ou fatura de academia com plano, ciclo de cobrança, período, valores, itens adicionais, {tax} e as instruções da academia. Dois modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Recibo",
+    "t2": "Fatura"
+  },
+  "fields": {
+    "gym_name": {
+      "label": "Academia ou clube"
+    },
+    "gym_address": {
+      "label": "Endereço (opcional)"
+    },
+    "gym_email": {
+      "label": "E-mail da academia (opcional)"
+    },
+    "gym_phone": {
+      "label": "Telefone da academia (opcional)"
+    },
+    "gstin": {
+      "label": "{tax_id} (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número do recibo"
+    },
+    "date": {
+      "label": "Data do recibo"
+    },
+    "member_name": {
+      "label": "Nome do aluno"
+    },
+    "member_phone": {
+      "label": "Telefone do aluno (opcional)"
+    },
+    "customer_number": {
+      "label": "Número do cliente (opcional)"
+    },
+    "user_number": {
+      "label": "ID de usuário (opcional)"
+    },
+    "member_address": {
+      "label": "Endereço do aluno (opcional)"
+    },
+    "plan": {
+      "label": "Plano",
+      "options": {
+        "Day pass": "Diária",
+        "Monthly": "Mensal",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
+    },
+    "billing_cycle": {
+      "label": "Ciclo de cobrança (opcional)",
+      "options": {
+        "Monthly": "Mensal",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Annual": "Anual"
+      }
+    },
+    "start_date": {
+      "label": "Válido de"
+    },
+    "end_date": {
+      "label": "Válido até"
+    },
+    "fee": {
+      "label": "Mensalidade ({currency})"
+    },
+    "joining_fee": {
+      "label": "Taxa de matrícula ({currency}) (opcional)"
+    },
+    "gst_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "remarks": {
+      "label": "Observação (opcional)"
+    },
+    "instructions": {
+      "label": "Instruções para os alunos (uma por linha) (opcional)"
+    },
+    "items": {
+      "label": "Itens adicionais",
+      "columns": {
+        "name": "Item e descrição",
+        "qty": "Unidades",
+        "rate": "Preço ({currency})"
+      }
+    }
+  },
+  "print": {
+    "membership_receipt": "Recibo de matrícula",
+    "receipt_no": "Recibo n.º",
+    "date": "Data",
+    "member": "Aluno",
+    "phone": "Telefone",
+    "plan": "Plano",
+    "valid": "Válido",
+    "to": "a",
+    "paid_by": "Pago com",
+    "membership_fee": "Mensalidade",
+    "joining_fee": "Taxa de matrícula",
+    "subtotal": "Subtotal",
+    "authorised": "Signatário autorizado",
+    "stay_fit": "Mantenha-se em forma. Até a próxima na academia!",
+    "invoice_no": "Fatura n.º",
+    "invoice_date": "Data da fatura",
+    "user_id": "ID de usuário",
+    "customer_name": "Nome do cliente",
+    "address": "Endereço",
+    "mobile": "Celular",
+    "account_summary": "Resumo da conta",
+    "bill_from_date": "Cobrança desde",
+    "billing_cycle": "Ciclo de cobrança",
+    "due_date": "Vencimento",
+    "amount": "Valor",
+    "payment_mode": "Forma de pagamento",
+    "billing_details": "Detalhes da cobrança",
+    "gym_item": "Item",
+    "unit": "Unid.",
+    "net_amount": "Valor líquido",
+    "total": "Total",
+    "tax_pct": "Imposto %",
+    "taxable_amount": "Base de cálculo",
+    "instructions_title": "Instruções da academia",
+    "remark": "Observação",
+    "signature": "Assinatura"
+  },
+  "sample": {
+    "gym_name": "Academia Ferro Forte",
+    "member_name": "Ana Souza",
+    "gym_phone": "(11) 3456-7890",
+    "member_phone": "(11) 91234-5678",
+    "fee": 270,
+    "joining_fee": 50,
+    "gst_percent": null,
+    "items": [
+      {
+        "name": "Sessão de personal trainer",
+        "qty": 4,
+        "rate": 60
+      }
+    ],
+    "instructions": "Check-in: ao chegar, apresente-se na recepção, se necessário.\nRoupa e higiene: use roupa de treino e tênis limpos. Leve uma toalha para limpar os aparelhos.\nAquecimento: comece com 5 a 10 minutos de aquecimento, como cardio leve ou alongamento dinâmico.\nEquipamentos: se for novo, conheça os aparelhos e peça ajuda à equipe.\nCardio: ajuste as máquinas ao seu nível e limpe-as antes e depois do uso.\nHidratação: beba água antes, durante e depois do treino.\nDescanso: descanse entre as séries, mas não monopolize os aparelhos em horários de pico.\nVolta à calma: termine com 5 a 10 minutos de alongamento leve.\nPertences: guarde suas coisas nos armários e não deixe objetos de valor sem vigilância.\nAproveite e seja constante: a constância é a chave para alcançar seus objetivos.",
+    "remarks": "Pedidos de trancamento exigem aviso com 7 dias de antecedência."
+  }
+}

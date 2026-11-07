@@ -340,6 +340,187 @@ defmodule QuickSlips.Render.RendererTest do
           )
       }
     },
+    "newspaper-bill" => %{
+      designs: ~w(t1),
+      optional: ~w(agency_mobile agency_phone name_prefix service_charge),
+      long: %{
+        "agency_name" => String.duplicate("Quick City News Agency ", 4),
+        "agency_address" => String.duplicate("Shop 2, Market Road, Nashik, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "service_charge" => 99_999_999.99,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Morning Chronicle daily edition ", 3),
+              "rate" => 9_999_999.99,
+              "qty" => 9_999.99
+            },
+            12
+          )
+      }
+    },
+    "lta-bill" => %{
+      designs: ~w(t1 t2),
+      optional:
+        ~w(seller_tax_id pnr_number departure_time dropping_time tax_percent cancellation_charge),
+      long: %{
+        "travel_name" => String.duplicate("Evergreen Travels ", 4),
+        "location" => String.duplicate("Madiwala Bus Stop, Bengaluru, ", 6),
+        "landmark" => String.duplicate("Opposite the Metro station, ", 6),
+        "boarding_address" => String.duplicate("Hosur Road, Madiwala, Bengaluru, ", 6),
+        "dropping_address" => String.duplicate("Jubilee Bus Station, Secunderabad, ", 6),
+        "passenger_details" => String.duplicate("Rohan Mehta, 34, Male; ", 6),
+        "amount" => 99_999_999.99,
+        "cancellation_charge" => 99_999_999.99
+      }
+    },
+    "hotel-invoice" => %{
+      designs: ~w(t1 t2 t3),
+      optional:
+        ~w(hotel_address gstin registration_number reservation_number guest_gender guest_age nationality guest_address room_description room_number check_in_time check_out_time extra_charges gst_percent advance_amount),
+      long: %{
+        "hotel_name" => String.duplicate("Lotus Residency ", 2),
+        "hotel_address" => String.duplicate("4, Beach Road, Candolim, Goa ", 2),
+        "guest_name" => String.duplicate("Ramakrishnan ", 2),
+        "guest_address" => String.duplicate("22, Hill Road, Bandra West, Mumbai ", 2),
+        "room_description" => String.duplicate("Sea-facing room with breakfast ", 2),
+        "tariff_per_night" => 99_999_999.99,
+        "advance_amount" => 99_999_999.99,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Extra bed with linen and breakfast ", 2),
+              "rate" => 9_999_999.99,
+              "qty" => 9_999.99
+            },
+            3
+          )
+      }
+    },
+    "gym-membership-receipt" => %{
+      designs: ~w(t1 t2),
+      optional:
+        ~w(gym_address gym_email gym_phone gstin member_phone customer_number user_number member_address billing_cycle joining_fee gst_percent remarks instructions),
+      long: %{
+        "gym_name" => "IronWorks Fitness",
+        "gym_address" => "2nd Floor, City Mall, Noida",
+        "member_name" => "Vikram Rao",
+        "member_address" => String.duplicate("B-14, Sector 62, Noida, ", 2),
+        "remarks" => String.duplicate("Freeze requests need 7 days notice. ", 2),
+        "instructions" => String.duplicate("Warm-up: start with a 5-10 minute warm-up. \n", 2),
+        "fee" => 99_999_999.99,
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => "Personal training",
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99
+            },
+            2
+          )
+      }
+    },
+    "general-bill" => %{
+      designs: ~w(t1),
+      optional: ~w(seller_tax_id order_number),
+      long: %{
+        "shop_name" => String.duplicate("Sharma General Store ", 4),
+        "shop_address" => String.duplicate("12, Gandhi Road, Jaipur, ", 7),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "shipping_address" => String.duplicate("Flat 5, Lotus Apartments, C-Scheme, ", 6),
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Steel kitchen container set ", 3),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99,
+              "tax" => 18
+            },
+            12
+          )
+      }
+    },
+    "donation-receipt" => %{
+      designs: ~w(t1),
+      optional: ~w(registration_number email website phone received_by donation_description),
+      long: %{
+        "organisation_name" => String.duplicate("The Discovery and Restoration Trust ", 3),
+        "address" => String.duplicate("21, Heritage Lane, Pune, ", 7),
+        "donor_name" => String.duplicate("Ramakrishnan ", 5),
+        "donation_description" =>
+          String.duplicate("Donation towards the restoration of the heritage library. ", 5),
+        "received_by" => String.duplicate("Meera Iyer, Treasurer ", 3),
+        "amount" => 99_999_999.99
+      }
+    },
+    "laundry-bill" => %{
+      designs: ~w(t1 t2),
+      optional: ~w(laundry_address customer_address terms),
+      long: %{
+        "laundry_name" => String.duplicate("Sparkle Dry Cleaning ", 4),
+        "laundry_address" => String.duplicate("Shop 9, Station Road, Thane, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "customer_address" => String.duplicate("Flat 12, Sunrise Apartments, Station Road, ", 6),
+        "terms" => String.duplicate("All garments are handled with the greatest care.\n", 12),
+        "items" =>
+          List.duplicate(
+            %{
+              "name" => String.duplicate("Trousers dry clean with pressing ", 3),
+              "qty" => 9_999.99,
+              "rate" => 9_999_999.99
+            },
+            12
+          )
+      }
+    },
+    "school-fee-receipt" => %{
+      designs: ~w(t1 t2),
+      optional:
+        ~w(school_address school_phone admission_number parent_name transport_fee other_fee),
+      long: %{
+        "school_name" => String.duplicate("Sunrise Public School ", 2),
+        "school_address" => String.duplicate("Sector 14, Chandigarh, ", 2),
+        "student_name" => String.duplicate("Aarav Gupta ", 2),
+        "parent_name" => String.duplicate("Neha Gupta ", 2),
+        "fee_period" => String.duplicate("Term 2, 2026-27 ", 2),
+        "amount_in_words" => String.duplicate("Twelve thousand five hundred rupees only ", 2),
+        "tuition_fee" => 99_999_999.99
+      }
+    },
+    "child-education-allowance-bill" => %{
+      designs: ~w(t1),
+      optional: ~w(child2_name child2_dob child2_standard child2_school),
+      long: %{
+        "name_rank" => String.duplicate("Major Arvind Kumar ", 5),
+        "designation" => String.duplicate("Staff Officer ", 6),
+        "unit" => String.duplicate("Headquarters, 21 Corps, Pune ", 4),
+        "spouse_employed" => String.duplicate("Employed with a private organisation ", 3),
+        "spouse_office" => String.duplicate("Senior manager, head office ", 5),
+        "child1_school" => String.duplicate("Sunrise Public School, Pune ", 5),
+        "child2_school" => String.duplicate("Sunrise Public School, Pune ", 5)
+      }
+    },
+    "cash-voucher" => %{
+      designs: ~w(t1),
+      optional: ~w(resident_certificate received_date place),
+      long: %{
+        "paid_to" => String.duplicate("Ramesh Kulkarni ", 5),
+        "address" => String.duplicate("14, Shivaji Nagar, Pune, ", 7),
+        "prepared_by" => String.duplicate("S. Joshi ", 6),
+        "checked_by" => String.duplicate("M. Iyer ", 6),
+        "approved_by" => String.duplicate("A. Deshmukh ", 6),
+        "place" => String.duplicate("Pune ", 10),
+        "items" =>
+          List.duplicate(
+            %{
+              "name" =>
+                String.duplicate("Stationery purchase for the office, long description ", 3),
+              "rate" => 9_999_999.99
+            },
+            14
+          )
+      }
+    },
     "recharge-bill" => %{
       designs: ~w(t1),
       optional:

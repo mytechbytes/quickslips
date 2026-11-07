@@ -1,0 +1,112 @@
+{
+  "title": "Wäscherei-Rechnung-Generator",
+  "name": "Wäscherei-Rechnung",
+  "public_slug": "waescherei-rechnung-generator",
+  "summary": "Rechnung für Wäscherei und Reinigung mit Kleidungsstücken, Mengen und Beträgen.",
+  "description": "Erstellen Sie eine Rechnung für Wäscherei oder chemische Reinigung mit Kleidungsstücken, Mengen und Preisen, Lieferdatum, {tax}, Zahlungsart und Ihren Bedingungen. Zwei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "designs": {
+    "t1": "Gelbe Rechnung",
+    "t2": "Bar-/Kreditrechnung"
+  },
+  "fields": {
+    "laundry_name": {
+      "label": "Name der Wäscherei"
+    },
+    "laundry_address": {
+      "label": "Adresse der Wäscherei (optional)"
+    },
+    "invoice_number": {
+      "label": "Rechnungs-ID"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "delivery_date": {
+      "label": "Lieferdatum"
+    },
+    "customer_name": {
+      "label": "Kundenname"
+    },
+    "customer_address": {
+      "label": "Kundenadresse (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "payment_mode": {
+      "label": "Zahlungsart",
+      "options": {
+        "Cash": "Bar",
+        "UPI": "UPI",
+        "Card": "Karte",
+        "Bank transfer": "Überweisung",
+        "Online": "Online"
+      }
+    },
+    "terms": {
+      "label": "Bedingungen (eine pro Zeile) (optional)"
+    },
+    "items": {
+      "label": "Kleidungsstücke und Leistungen",
+      "columns": {
+        "name": "Beschreibung",
+        "qty": "Menge",
+        "rate": "Preis ({currency})"
+      }
+    }
+  },
+  "print": {
+    "date": "Datum",
+    "delivery_date": "Lieferdatum",
+    "bill_to": "Rechnung an",
+    "description": "Beschreibung",
+    "qty": "Menge",
+    "price": "Preis",
+    "total": "Gesamt",
+    "subtotal": "Zwischensumme",
+    "tax_pct": "Steuer %",
+    "tax_amount": "Steuerbetrag",
+    "grand_total": "Gesamtsumme",
+    "payment_method": "Zahlungsart",
+    "terms": "Bedingungen",
+    "service_title": "Reinigung und Wäscheservice",
+    "cash_credit_invoice": "Bar- / Kreditrechnung",
+    "name": "Name",
+    "address": "Adresse",
+    "no": "Nr.",
+    "delivery": "Lieferung",
+    "rate": "Preis",
+    "minor": "Ct.",
+    "good_condition": "Bitte prüfen Sie die Ware beim Erhalt.",
+    "no_refund": "Nach der Zahlung keine Rückerstattung.",
+    "amount_in_words": "Betrag in Worten"
+  },
+  "sample": {
+    "laundry_name": "Reinigung Funkel",
+    "customer_name": "Anna Becker",
+    "items": [
+      {
+        "name": "Hemd (waschen und bügeln)",
+        "qty": 6,
+        "rate": 3.5
+      },
+      {
+        "name": "Hose (chemische Reinigung)",
+        "qty": 3,
+        "rate": 11
+      },
+      {
+        "name": "Bettlaken (waschen)",
+        "qty": 2,
+        "rate": 7.5
+      },
+      {
+        "name": "Kleid (chemische Reinigung)",
+        "qty": 1,
+        "rate": 16
+      }
+    ],
+    "tax_percent": 19,
+    "terms": "Alle Kleidungsstücke, Wäsche und Stoffe werden mit größter Sorgfalt behandelt; aufgrund des Zustands der Artikel oder nicht sichtbarer Materialfehler besteht jedoch die MÖGLICHKEIT VON FARBVERÄNDERUNG ODER EINLAUFEN. Solche Stücke werden auf EIGENE GEFAHR DES EIGENTÜMERS zur Reinigung angenommen; das Unternehmen übernimmt dafür keine Haftung.\nDas Unternehmen bemüht sich in angemessener Weise, Waschen, Trocknen und Falten auf hohem Qualitätsniveau zu halten.\nAus Zeitgründen liest das Unternehmen die Pflegeetiketten der Hersteller nicht und haftet nicht für Kleidung mit dem Hinweis „nur Handwäsche“ oder „nur chemische Reinigung“."
+  }
+}

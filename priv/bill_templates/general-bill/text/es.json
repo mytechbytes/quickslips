@@ -1,0 +1,100 @@
+{
+  "title": "Generador de Factura General",
+  "name": "Factura General",
+  "public_slug": "generador-de-factura-general",
+  "summary": "Factura sencilla para cualquier venta o servicio, con un tipo de impuesto por artículo.",
+  "description": "Crea una factura para cualquier venta o servicio con todos los artículos que necesites, un tipo de {tax} para cada uno, el vendedor, el cliente y el pago. Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Factura sencilla"
+  },
+  "fields": {
+    "shop_name": {
+      "label": "Nombre de la tienda"
+    },
+    "shop_address": {
+      "label": "Datos del vendedor"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de factura"
+    },
+    "date": {
+      "label": "Fecha"
+    },
+    "order_number": {
+      "label": "Número de pedido (opcional)"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "customer_location": {
+      "label": "Localidad del cliente"
+    },
+    "shipping_address": {
+      "label": "Dirección de envío del cliente"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    },
+    "items": {
+      "label": "Artículos",
+      "columns": {
+        "name": "Descripción",
+        "qty": "Cant.",
+        "rate": "Precio ({currency})",
+        "tax": "Impuesto %"
+      }
+    }
+  },
+  "print": {
+    "invoice_date": "Fecha de factura",
+    "invoice_no": "Factura n.º",
+    "sold_by": "Vendido por",
+    "billed_to": "Facturado a",
+    "description": "Descripción",
+    "qty": "Cant.",
+    "price": "Precio",
+    "amt": "Imp.",
+    "subtotal": "Subtotal",
+    "payment_info": "Datos de pago",
+    "due_by": "Vencimiento",
+    "total_amount": "Importe total",
+    "order_no": "Pedido n.º",
+    "payment_method": "Forma de pago",
+    "thanks": "¡Gracias! Vuelva pronto."
+  },
+  "sample": {
+    "shop_name": "Tienda General Sol",
+    "customer_name": "Carlos Gómez",
+    "customer_location": "Sevilla",
+    "items": [
+      {
+        "name": "Juego de recipientes de cocina de acero",
+        "qty": 2,
+        "rate": 18,
+        "tax": 21
+      },
+      {
+        "name": "Sábana de algodón (cama doble)",
+        "qty": 3,
+        "rate": 24,
+        "tax": 21
+      },
+      {
+        "name": "Bombilla LED 9 W (pack de 4)",
+        "qty": 2,
+        "rate": 6.5,
+        "tax": 21
+      }
+    ]
+  }
+}
