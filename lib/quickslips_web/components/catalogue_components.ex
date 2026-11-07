@@ -120,9 +120,13 @@ defmodule QuickSlipsWeb.CatalogueComponents do
         <span class="block text-base/6 font-semibold text-ink">{@template["title"]}</span>
         <span class="mt-0.5 block text-sm/5 text-ink-muted">{@template["summary"]}</span>
       </span>
-      <span class="absolute top-5 right-5 bg-primary text-on-primary px-2 py-1 rounded-button text-xs capitalize">{@template["category"]}</span>
+      <span class="absolute top-5 right-5 bg-primary text-on-primary px-2 py-1 rounded-button text-xs capitalize">{@template[
+        "category"
+      ]}</span>
       <span class="min-w-0 block">
-        <span class="size-5 text-ink-faint text-sm text-primary font-semibold">{gettext("Generate Now")}</span>
+        <span class="size-5 text-ink-faint text-sm text-primary font-semibold">{gettext(
+          "Generate Now"
+        )}</span>
         <.icon
           name="hero-arrow-right"
           class="size-5 text-ink-faint group-hover:text-primary motion-safe:transition motion-safe:group-hover:translate-x-0.5"

@@ -33,5 +33,77 @@
     "Health & learning": "Saúde e educação",
     "Food & shopping": "Comida e compras",
     "Work": "Trabalho"
+  },
+  "in_words": {
+    "label": "Valor por extenso",
+    "and": "e",
+    "only": "",
+    "joiner": "",
+    "currencies": {
+      "INR": {
+        "one": "rupia",
+        "other": "rupias",
+        "minor_one": "paisa",
+        "minor_other": "paisas",
+        "gender": "f",
+        "minor_gender": "f"
+      },
+      "EUR": {
+        "one": "euro",
+        "other": "euros",
+        "minor_one": "centavo",
+        "minor_other": "centavos",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "USD": {
+        "one": "dólar",
+        "other": "dólares",
+        "minor_one": "centavo",
+        "minor_other": "centavos",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "CNY": {
+        "one": "yuan",
+        "other": "yuans",
+        "minor_one": "fen",
+        "minor_other": "fens",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "JPY": {
+        "one": "iene",
+        "other": "ienes",
+        "minor_one": "sen",
+        "minor_other": "sens",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "GBP": {
+        "one": "libra",
+        "other": "libras",
+        "minor_one": "pêni",
+        "minor_other": "pence",
+        "gender": "f",
+        "minor_gender": "m"
+      },
+      "BRL": {
+        "one": "real",
+        "other": "reais",
+        "minor_one": "centavo",
+        "minor_other": "centavos",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "CAD": {
+        "one": "dólar canadense",
+        "other": "dólares canadenses",
+        "minor_one": "centavo",
+        "minor_other": "centavos",
+        "gender": "m",
+        "minor_gender": "m"
+      }
+    }
   }
 }

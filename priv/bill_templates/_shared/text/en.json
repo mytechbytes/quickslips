@@ -7,5 +7,61 @@
     "Health & learning": "Health & learning",
     "Food & shopping": "Food & shopping",
     "Work": "Work"
+  },
+  "in_words": {
+    "label": "Amount in words",
+    "and": "and",
+    "only": "only",
+    "joiner": "and",
+    "currencies": {
+      "INR": {
+        "one": "rupee",
+        "other": "rupees",
+        "minor_one": "paisa",
+        "minor_other": "paise"
+      },
+      "EUR": {
+        "one": "euro",
+        "other": "euros",
+        "minor_one": "cent",
+        "minor_other": "cents"
+      },
+      "USD": {
+        "one": "dollar",
+        "other": "dollars",
+        "minor_one": "cent",
+        "minor_other": "cents"
+      },
+      "CNY": {
+        "one": "yuan",
+        "other": "yuan",
+        "minor_one": "fen",
+        "minor_other": "fen"
+      },
+      "JPY": {
+        "one": "yen",
+        "other": "yen",
+        "minor_one": "sen",
+        "minor_other": "sen"
+      },
+      "GBP": {
+        "one": "pound",
+        "other": "pounds",
+        "minor_one": "penny",
+        "minor_other": "pence"
+      },
+      "BRL": {
+        "one": "real",
+        "other": "reais",
+        "minor_one": "centavo",
+        "minor_other": "centavos"
+      },
+      "CAD": {
+        "one": "dollar",
+        "other": "dollars",
+        "minor_one": "cent",
+        "minor_other": "cents"
+      }
+    }
   }
 }

@@ -33,5 +33,64 @@
     "Health & learning": "健康与教育",
     "Food & shopping": "餐饮与购物",
     "Work": "工作"
+  },
+  "in_words": {
+    "label": "大写金额",
+    "and": "",
+    "only": "",
+    "joiner": "",
+    "whole_only": "整",
+    "currencies": {
+      "INR": {
+        "one": "卢比",
+        "other": "卢比",
+        "minor_one": "派萨",
+        "minor_other": "派萨"
+      },
+      "EUR": {
+        "one": "欧元",
+        "other": "欧元",
+        "minor_one": "欧分",
+        "minor_other": "欧分"
+      },
+      "USD": {
+        "one": "美元",
+        "other": "美元",
+        "minor_one": "美分",
+        "minor_other": "美分"
+      },
+      "CNY": {
+        "one": "元",
+        "other": "元",
+        "minor_one": "分",
+        "minor_other": "分",
+        "prefix": "人民币",
+        "minor_tenth": "角"
+      },
+      "JPY": {
+        "one": "日元",
+        "other": "日元",
+        "minor_one": "钱",
+        "minor_other": "钱"
+      },
+      "GBP": {
+        "one": "英镑",
+        "other": "英镑",
+        "minor_one": "便士",
+        "minor_other": "便士"
+      },
+      "BRL": {
+        "one": "雷亚尔",
+        "other": "雷亚尔",
+        "minor_one": "分",
+        "minor_other": "分"
+      },
+      "CAD": {
+        "one": "加元",
+        "other": "加元",
+        "minor_one": "加分",
+        "minor_other": "加分"
+      }
+    }
   }
 }
