@@ -1,0 +1,27 @@
+{
+  "sample": {
+    "operator_name": "Thames Cabs",
+    "passenger_name": "James Taylor",
+    "driver_name": "Oliver Smith",
+    "pickup": "King's Cross Station, London",
+    "drop": "Heathrow Airport Terminal 5",
+    "vehicle_number": "AB12 CDE",
+    "vehicle_model": "Toyota Prius",
+    "customer_phone": "07700 900123",
+    "receipt_number": "T-007731",
+    "distance_km": 17.5,
+    "base_fare": 62,
+    "toll": 0,
+    "airport_charge": 7,
+    "advance_paid": 0,
+    "tax_percent": 20
+  },
+  "print": {
+    "unit": "mi"
+  },
+  "fields": {
+    "distance_km": {
+      "label": "Distance (miles)"
+    }
+  }
+}

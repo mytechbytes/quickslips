@@ -1,0 +1,174 @@
+{
+  "title": "Generador de Factura de Taxi",
+  "name": "Factura de Taxi",
+  "public_slug": "generador-de-factura-de-taxi",
+  "summary": "Factura de un viaje en taxi o VTC con tarifa, peajes y {tax}.",
+  "description": "Genera una factura de taxi o VTC con lugar de recogida y de destino, distancia, tarifa, peajes e impuestos ({tax}). Previsualízala al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Recibo del viaje",
+    "t2": "Viaje y factura",
+    "t3": "Factura",
+    "t4": "Recibo sencillo"
+  },
+  "fields": {
+    "operator_name": {
+      "label": "Nombre de la empresa de taxi o del conductor"
+    },
+    "operator_address": {
+      "label": "Dirección (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número de recibo"
+    },
+    "date": {
+      "label": "Fecha del viaje"
+    },
+    "drop_date": {
+      "label": "Fecha de llegada (opcional)"
+    },
+    "passenger_name": {
+      "label": "Nombre del pasajero (opcional)"
+    },
+    "customer_phone": {
+      "label": "Móvil del pasajero (opcional)"
+    },
+    "customer_address": {
+      "label": "Dirección del pasajero (opcional)"
+    },
+    "driver_name": {
+      "label": "Nombre del conductor (opcional)"
+    },
+    "vehicle_number": {
+      "label": "Matrícula del vehículo (opcional)"
+    },
+    "vehicle_model": {
+      "label": "Modelo del vehículo (opcional)"
+    },
+    "pickup": {
+      "label": "Lugar de recogida"
+    },
+    "pickup_time": {
+      "label": "Hora de recogida (opcional)"
+    },
+    "drop": {
+      "label": "Lugar de destino"
+    },
+    "drop_time": {
+      "label": "Hora de llegada (opcional)"
+    },
+    "distance_km": {
+      "label": "Distancia (km)"
+    },
+    "base_fare": {
+      "label": "Tarifa ({currency})"
+    },
+    "toll": {
+      "label": "Peaje y tarifa de servicio ({currency}) (opcional)"
+    },
+    "airport_charge": {
+      "label": "Recargo de aeropuerto ({currency}) (opcional)"
+    },
+    "advance_paid": {
+      "label": "Anticipo pagado ({currency}) (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pagado con",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    }
+  },
+  "print": {
+    "receipt_title": "Este es el recibo de su viaje,",
+    "enjoyed": "Esperamos que haya disfrutado del viaje.",
+    "trip_total": "Tarifa total del viaje",
+    "trip_fare": "Tarifa del viaje",
+    "subtotal": "Subtotal",
+    "toll": "Peaje y tarifa de servicio",
+    "airport": "Recargo por recogida en aeropuerto",
+    "payments": "Pagos",
+    "includes": "El total de {total} incluye {tax} por {amount}.",
+    "rode_with": "Viajó con",
+    "plate": "Matrícula",
+    "fares_incl": "Las tarifas incluyen impuestos.",
+    "pickup": "Recogida",
+    "drop": "Destino",
+    "thanks_travel": "Gracias por viajar con nosotros,",
+    "ride_details": "Detalles del viaje",
+    "bill_details": "Detalles de la factura",
+    "total_bill": "Total a pagar",
+    "includes_taxes": "Incluye {amount} de impuestos",
+    "promise": "Hemos cumplido nuestra promesa de llevarle a su destino por la tarifa total acordada. Cambiar el destino o la ruta puede modificar esta tarifa.",
+    "complaint": "Para cualquier reclamación sobre esta factura, escríbanos a",
+    "payment": "Pago",
+    "paid_by": "Pagado con",
+    "original": "Factura original",
+    "driver_invoice": "Factura del conductor",
+    "service": "Servicio: viaje en taxi",
+    "invoice_id": "N.º de factura",
+    "invoice_date": "Fecha de factura",
+    "customer": "Nombre del cliente",
+    "mobile": "Móvil",
+    "pickup_address": "Dirección de recogida",
+    "description": "Concepto",
+    "amount": "Importe",
+    "ride_fee": "Tarifa del viaje",
+    "note": "Tenga en cuenta: 1. Esta factura se emite en nombre del proveedor del servicio de transporte. 2. Es una factura generada electrónicamente y no requiere firma.",
+    "tax_invoice": "Factura",
+    "invoice_no": "N.º de factura",
+    "date": "Fecha",
+    "billed_to": "Facturado a",
+    "trip_details": "Datos del viaje",
+    "driver": "Conductor",
+    "vehicle_no": "Matrícula",
+    "vehicle": "Vehículo",
+    "date_time": "Fecha y hora",
+    "particulars": "Concepto",
+    "period": "Periodo de viaje",
+    "until": "al",
+    "distance": "Distancia",
+    "rate": "Tarifa",
+    "pick_point": "Punto de recogida",
+    "drop_point": "Punto de destino",
+    "advance": "Menos: anticipo pagado",
+    "balance": "Saldo pendiente",
+    "total_amount": "Importe total",
+    "signatory": "Firma autorizada",
+    "thanks_riding": "Gracias por viajar,",
+    "before_tax": "Antes de impuestos",
+    "fees": "Peajes, aeropuerto y tasas",
+    "trip_id": "ID del viaje",
+    "cab_no": "Taxi n.º",
+    "time": "Hora del viaje",
+    "paid": "Pagado",
+    "total": "Total",
+    "unit": "km"
+  },
+  "sample": {
+    "operator_name": "Taxi Giralda",
+    "passenger_name": "Lucía Fernández",
+    "driver_name": "Javier Ortiz",
+    "pickup": "Estación de Santa Justa, Sevilla",
+    "drop": "Aeropuerto de Sevilla",
+    "vehicle_number": "4521 LMN",
+    "vehicle_model": "Toyota Corolla",
+    "customer_phone": "612 345 678",
+    "receipt_number": "T-007731",
+    "distance_km": 12.5,
+    "base_fare": 22.4,
+    "toll": 2.5,
+    "airport_charge": 5,
+    "advance_paid": 0,
+    "tax_percent": 10
+  }
+}

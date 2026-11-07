@@ -1,0 +1,173 @@
+{
+  "title": "Gerador de recibo de táxi",
+  "name": "Recibo de táxi",
+  "public_slug": "gerador-de-recibo-de-taxi",
+  "summary": "Recibo de corrida de táxi ou aplicativo com tarifa, pedágio e {tax}.",
+  "description": "Gere um recibo de táxi ou carro de aplicativo com local de embarque e destino, distância, tarifa, pedágio e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Recibo da corrida",
+    "t2": "Corrida e fatura",
+    "t3": "Fatura",
+    "t4": "Recibo simples"
+  },
+  "fields": {
+    "operator_name": {
+      "label": "Nome da empresa de táxi ou do motorista"
+    },
+    "operator_address": {
+      "label": "Endereço (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número do recibo"
+    },
+    "date": {
+      "label": "Data da corrida"
+    },
+    "drop_date": {
+      "label": "Data de chegada (opcional)"
+    },
+    "passenger_name": {
+      "label": "Nome do passageiro (opcional)"
+    },
+    "customer_phone": {
+      "label": "Celular do passageiro (opcional)"
+    },
+    "customer_address": {
+      "label": "Endereço do passageiro (opcional)"
+    },
+    "driver_name": {
+      "label": "Nome do motorista (opcional)"
+    },
+    "vehicle_number": {
+      "label": "Placa do veículo (opcional)"
+    },
+    "vehicle_model": {
+      "label": "Modelo do veículo (opcional)"
+    },
+    "pickup": {
+      "label": "Local de embarque"
+    },
+    "pickup_time": {
+      "label": "Hora de embarque (opcional)"
+    },
+    "drop": {
+      "label": "Local de destino"
+    },
+    "drop_time": {
+      "label": "Hora de chegada (opcional)"
+    },
+    "distance_km": {
+      "label": "Distância (km)"
+    },
+    "base_fare": {
+      "label": "Tarifa ({currency})"
+    },
+    "toll": {
+      "label": "Pedágio e taxa de conveniência ({currency}) (opcional)"
+    },
+    "airport_charge": {
+      "label": "Taxa de aeroporto ({currency}) (opcional)"
+    },
+    "advance_paid": {
+      "label": "Adiantamento pago ({currency}) (opcional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "payment_mode": {
+      "label": "Pago com",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "receipt_title": "Aqui está o recibo da sua corrida,",
+    "enjoyed": "Esperamos que tenha gostado da corrida.",
+    "trip_total": "Tarifa total da corrida",
+    "trip_fare": "Tarifa da corrida",
+    "subtotal": "Subtotal",
+    "toll": "Pedágio e taxa de conveniência",
+    "airport": "Taxa de embarque no aeroporto",
+    "payments": "Pagamentos",
+    "includes": "O total de {total} inclui {tax} de {amount}.",
+    "rode_with": "Você viajou com",
+    "plate": "Placa",
+    "fares_incl": "As tarifas incluem impostos.",
+    "pickup": "Embarque",
+    "drop": "Destino",
+    "thanks_travel": "Obrigado por viajar conosco,",
+    "ride_details": "Detalhes da corrida",
+    "bill_details": "Detalhes da cobrança",
+    "total_bill": "Total a pagar",
+    "includes_taxes": "Inclui {amount} de impostos",
+    "promise": "Cumprimos a promessa de levar você ao destino pela tarifa total combinada. Alterar o destino ou o trajeto pode mudar esta tarifa.",
+    "complaint": "Em caso de reclamação sobre esta fatura, escreva para",
+    "payment": "Pagamento",
+    "paid_by": "Pago com",
+    "original": "Fatura original",
+    "driver_invoice": "Fatura do motorista",
+    "service": "Serviço: corrida de táxi",
+    "invoice_id": "N.º da fatura",
+    "invoice_date": "Data da fatura",
+    "customer": "Nome do cliente",
+    "mobile": "Celular",
+    "pickup_address": "Endereço de embarque",
+    "description": "Descrição",
+    "amount": "Valor",
+    "ride_fee": "Tarifa da corrida",
+    "note": "Observação: 1. Esta fatura é emitida em nome do prestador do serviço de transporte. 2. É gerada eletronicamente e não exige assinatura.",
+    "tax_invoice": "Fatura",
+    "invoice_no": "N.º da fatura",
+    "date": "Data",
+    "billed_to": "Cobrado de",
+    "trip_details": "Dados da viagem",
+    "driver": "Motorista",
+    "vehicle_no": "Placa",
+    "vehicle": "Veículo",
+    "date_time": "Data e hora",
+    "particulars": "Descrição",
+    "period": "Período da viagem",
+    "until": "a",
+    "distance": "Distância",
+    "rate": "Tarifa",
+    "pick_point": "Local de embarque",
+    "drop_point": "Local de desembarque",
+    "advance": "Menos: adiantamento pago",
+    "balance": "Saldo a pagar",
+    "total_amount": "Valor total",
+    "signatory": "Assinatura autorizada",
+    "thanks_riding": "Obrigado por viajar,",
+    "before_tax": "Antes dos impostos",
+    "fees": "Pedágios, aeroporto e taxas",
+    "trip_id": "ID da corrida",
+    "cab_no": "N.º do carro",
+    "time": "Horário da corrida",
+    "paid": "Pago",
+    "total": "Total",
+    "unit": "km"
+  },
+  "sample": {
+    "operator_name": "Táxi Paulista",
+    "passenger_name": "Ana Souza",
+    "driver_name": "Carlos Lima",
+    "pickup": "Estação da Luz, São Paulo",
+    "drop": "Aeroporto de Congonhas",
+    "vehicle_number": "ABC-1D23",
+    "vehicle_model": "Chevrolet Onix",
+    "customer_phone": "(11) 91234-5678",
+    "receipt_number": "T-007731",
+    "distance_km": 14.2,
+    "base_fare": 58,
+    "toll": 8.5,
+    "airport_charge": 0,
+    "advance_paid": 0
+  }
+}

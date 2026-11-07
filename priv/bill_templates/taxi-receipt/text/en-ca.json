@@ -1,0 +1,19 @@
+{
+  "sample": {
+    "operator_name": "Maple Cabs",
+    "passenger_name": "Emma Wilson",
+    "driver_name": "David Tremblay",
+    "pickup": "Union Station, Toronto",
+    "drop": "Toronto Pearson Airport",
+    "vehicle_number": "ABCD 123",
+    "vehicle_model": "Toyota Camry",
+    "customer_phone": "(416) 555-0187",
+    "receipt_number": "T-007731",
+    "distance_km": 27,
+    "base_fare": 62,
+    "toll": 0,
+    "airport_charge": 5,
+    "advance_paid": 0,
+    "tax_percent": 13
+  }
+}

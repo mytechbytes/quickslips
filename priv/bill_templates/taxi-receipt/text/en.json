@@ -1,0 +1,160 @@
+{
+  "title": "Cab Bill Generator",
+  "name": "Cab Bill",
+  "public_slug": "cab-bill-generator",
+  "summary": "Cab or auto trip bill with fare, toll and {tax}.",
+  "description": "Generate a cab, taxi or auto-rickshaw bill with pickup and drop, distance, fare, toll and {tax}. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Trip receipt",
+    "t2": "Ride and invoice",
+    "t3": "Tax invoice",
+    "t4": "Simple receipt"
+  },
+  "fields": {
+    "operator_name": {
+      "label": "Cab company or driver name"
+    },
+    "operator_address": {
+      "label": "Address (optional)"
+    },
+    "receipt_number": {
+      "label": "Receipt number"
+    },
+    "date": {
+      "label": "Trip date"
+    },
+    "drop_date": {
+      "label": "Drop date (optional)"
+    },
+    "passenger_name": {
+      "label": "Passenger name (optional)"
+    },
+    "customer_phone": {
+      "label": "Passenger mobile (optional)"
+    },
+    "customer_address": {
+      "label": "Passenger address (optional)"
+    },
+    "driver_name": {
+      "label": "Driver name (optional)"
+    },
+    "vehicle_number": {
+      "label": "Vehicle number (optional)"
+    },
+    "vehicle_model": {
+      "label": "Vehicle model (optional)"
+    },
+    "pickup": {
+      "label": "Pickup"
+    },
+    "pickup_time": {
+      "label": "Pickup time (optional)"
+    },
+    "drop": {
+      "label": "Drop"
+    },
+    "drop_time": {
+      "label": "Drop time (optional)"
+    },
+    "distance_km": {
+      "label": "Distance (km)"
+    },
+    "base_fare": {
+      "label": "Fare ({currency})"
+    },
+    "toll": {
+      "label": "Toll and convenience fee ({currency}) (optional)"
+    },
+    "airport_charge": {
+      "label": "Airport pickup charge ({currency}) (optional)"
+    },
+    "advance_paid": {
+      "label": "Advance paid ({currency}) (optional)"
+    },
+    "tax_percent": {
+      "label": "{tax} (%) (optional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (optional)"
+    },
+    "payment_mode": {
+      "label": "Paid by",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Card": "Card",
+        "Bank transfer": "Bank transfer",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "receipt_title": "Here's your receipt for your ride,",
+    "enjoyed": "We hope you enjoyed your ride.",
+    "trip_total": "Trip total fare",
+    "trip_fare": "Trip fare",
+    "subtotal": "Subtotal",
+    "toll": "Toll & convenience fee",
+    "airport": "Airport pickup charge",
+    "payments": "Payments",
+    "includes": "The total of {total} includes {tax} of {amount}.",
+    "rode_with": "You rode with",
+    "plate": "License plate",
+    "fares_incl": "Fares include tax.",
+    "pickup": "Pickup",
+    "drop": "Drop",
+    "thanks_travel": "Thanks for travelling with us,",
+    "ride_details": "Ride details",
+    "bill_details": "Bill details",
+    "total_bill": "Total bill",
+    "includes_taxes": "Includes {amount} taxes",
+    "promise": "We've fulfilled our promise to take you to your destination for the pre-agreed total fare. Changing the drop-off or the route can change this fare.",
+    "complaint": "In case of any complaint or grievance about this invoice, write to us at",
+    "payment": "Payment",
+    "paid_by": "Paid by",
+    "original": "Original tax invoice",
+    "driver_invoice": "Driver trip invoice",
+    "service": "Service: cab ride",
+    "invoice_id": "Invoice ID",
+    "invoice_date": "Invoice date",
+    "customer": "Customer name",
+    "mobile": "Mobile number",
+    "pickup_address": "Pickup address",
+    "description": "Description",
+    "amount": "Amount",
+    "ride_fee": "Ride fee",
+    "note": "Please note: 1. This invoice is issued on behalf of the transport service provider. 2. This is an electronically generated invoice and does not require a signature.",
+    "tax_invoice": "Tax invoice",
+    "invoice_no": "Invoice no.",
+    "date": "Date",
+    "billed_to": "Billed to",
+    "trip_details": "Trip details",
+    "driver": "Driver",
+    "vehicle_no": "Vehicle no.",
+    "vehicle": "Vehicle",
+    "date_time": "Date & time",
+    "particulars": "Particulars",
+    "period": "Travel period",
+    "until": "to",
+    "distance": "Distance",
+    "rate": "Rate",
+    "pick_point": "Pickup point",
+    "drop_point": "Drop point",
+    "advance": "Less: advance paid",
+    "balance": "Balance due",
+    "total_amount": "Total bill amount",
+    "signatory": "Authorised signatory",
+    "thanks_riding": "Thanks for riding,",
+    "before_tax": "Before taxes",
+    "fees": "Tolls, airport charge & fees",
+    "trip_id": "Trip ID",
+    "cab_no": "Cab no.",
+    "time": "Trip time",
+    "paid": "Paid",
+    "total": "Total",
+    "unit": "km"
+  },
+  "sample": {
+    "tax_percent": 5
+  }
+}
