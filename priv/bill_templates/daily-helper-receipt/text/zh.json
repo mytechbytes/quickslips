@@ -1,0 +1,76 @@
+{
+  "title": "家政人员工资收据生成器",
+  "name": "家政人员工资收据",
+  "public_slug": "daily-helper-receipt-generator",
+  "summary": "为家政人员生成月度工资收据。",
+  "description": "为保洁、做饭等家政人员生成工资收据，包含职务、月份、金额和支付方式。即时预览，并可下载为 PDF。",
+  "designs": {
+    "t1": "报销用",
+    "t2": "附收款确认",
+    "t3": "雇主声明"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "雇主姓名"
+    },
+    "employer_address": {
+      "label": "雇主地址（选填）"
+    },
+    "helper_name": {
+      "label": "家政人员姓名"
+    },
+    "working_as": {
+      "label": "职务"
+    },
+    "declaration": {
+      "label": "声明（选填）"
+    },
+    "month": {
+      "label": "工资月份"
+    },
+    "receipt_date": {
+      "label": "收据日期"
+    },
+    "salary": {
+      "label": "工资金额（{currency}）"
+    },
+    "payment_mode": {
+      "label": "支付方式",
+      "options": {
+        "Cash": "现金",
+        "UPI": "UPI",
+        "Bank transfer": "银行转账",
+        "Cheque": "支票",
+        "Card": "银行卡",
+        "Online": "在线支付"
+      }
+    }
+  },
+  "print": {
+    "title": "家政人员工资收据",
+    "date": "日期",
+    "certify": "兹证明 {employer} 已向担任{role}的 {helper} 支付 {month} 的工资 {amount}（附收款确认单）。",
+    "certify_self": "兹证明本人已向担任{role}的 {helper} 支付 {month} 的工资 {amount}（附收款确认单）。",
+    "reimburse": "请报销上述金额。本人另声明以上内容真实无误。",
+    "payment_method": "支付方式",
+    "helper_name": "家政人员姓名",
+    "working_as": "职务",
+    "employer_name": "雇主姓名",
+    "employer_signature": "雇主签字",
+    "revenue_stamp": "印花税票",
+    "salary_month": "工资月份",
+    "amount_paid": "已付金额",
+    "received_text": "{helper}（{role}）已收到 {employer} 支付的 {month} 工资 {amount}。",
+    "ack_title": "收款确认",
+    "receipt_date_of": "收款日期",
+    "for_month": "所属月份",
+    "received_sum": "已收到 {employer} 支付的 {month} 工资 {amount}。"
+  },
+  "sample": {
+    "employer_name": "李强",
+    "helper_name": "王芳",
+    "working_as": "保洁员",
+    "salary": 3500,
+    "declaration": "本人另声明，该人员仅用于公务。"
+  }
+}

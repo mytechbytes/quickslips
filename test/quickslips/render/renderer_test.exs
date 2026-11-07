@@ -308,6 +308,18 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "daily-helper-receipt" => %{
+      designs: ~w(t1 t2 t3),
+      optional: ~w(employer_address declaration),
+      long: %{
+        "employer_name" => String.duplicate("Venkatasubramanian ", 4),
+        "helper_name" => String.duplicate("Ramakrishnan ", 5),
+        "working_as" => String.duplicate("Housekeeper ", 5),
+        "declaration" =>
+          String.duplicate("The helper is exclusively used for official purposes. ", 5),
+        "salary" => 99_999_999.99
+      }
+    },
     "driver-salary-receipt" => %{
       designs: ~w(t1 t2 t3 t4 t5 t6),
       # t4 is a receipt for each month of the sample's period: July to September is three pages

@@ -1,0 +1,76 @@
+{
+  "title": "Generatore di ricevuta per aiuto domestico",
+  "name": "Ricevuta aiuto domestico",
+  "public_slug": "generatore-ricevuta-aiuto-domestico",
+  "summary": "Ricevuta mensile di stipendio per un aiuto domestico.",
+  "description": "Crea una ricevuta di stipendio per un aiuto domestico, come colf o cuoco, con mansione, mese, importo e metodo di pagamento. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Rimborso",
+    "t2": "Con conferma di ricevuta",
+    "t3": "Dichiarazione del datore"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Nome del datore di lavoro"
+    },
+    "employer_address": {
+      "label": "Indirizzo del datore di lavoro (facoltativo)"
+    },
+    "helper_name": {
+      "label": "Nome dell'aiuto domestico"
+    },
+    "working_as": {
+      "label": "Mansione"
+    },
+    "declaration": {
+      "label": "Dichiarazione (facoltativo)"
+    },
+    "month": {
+      "label": "Stipendio del mese"
+    },
+    "receipt_date": {
+      "label": "Data della ricevuta"
+    },
+    "salary": {
+      "label": "Importo dello stipendio ({currency})"
+    },
+    "payment_mode": {
+      "label": "Pagato con",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Bank transfer": "Bonifico bancario",
+        "Cheque": "Assegno",
+        "Card": "Carta",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Ricevuta per aiuto domestico",
+    "date": "Data",
+    "certify": "Si certifica che {employer} ha versato {amount} a {helper}, che lavora come {role}, a titolo di stipendio per il mese di {month} (ricevuta allegata).",
+    "certify_self": "Certifico di aver versato {amount} a {helper}, che lavora come {role}, per il mese di {month} (ricevuta allegata).",
+    "reimburse": "Si prega di rimborsare l'importo indicato. Dichiaro inoltre che quanto sopra è corretto e veritiero.",
+    "payment_method": "Metodo di pagamento",
+    "helper_name": "Nome dell'aiuto domestico",
+    "working_as": "Mansione",
+    "employer_name": "Nome del datore di lavoro",
+    "employer_signature": "Firma del datore di lavoro",
+    "revenue_stamp": "Marca da bollo",
+    "salary_month": "Stipendio del mese",
+    "amount_paid": "Importo pagato",
+    "received_text": "Ricevuto da {employer} l'importo di {amount} da {helper} ({role}) a titolo di stipendio per il mese di {month}.",
+    "ack_title": "Conferma di ricevuta",
+    "receipt_date_of": "Data di ricezione",
+    "for_month": "Per il mese di",
+    "received_sum": "Ricevuta la somma di {amount} per il mese di {month} da {employer}."
+  },
+  "sample": {
+    "employer_name": "Luca Bianchi",
+    "helper_name": "Olga Ivanova",
+    "working_as": "collaboratrice domestica",
+    "salary": 650,
+    "declaration": "Dichiaro inoltre che l'aiuto domestico è impiegato esclusivamente per scopi di lavoro."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "title": "Daily Helper Receipt Generator",
+  "name": "Daily Helper Receipt",
+  "public_slug": "daily-helper-receipt-generator",
+  "summary": "Monthly pay receipt for a household helper.",
+  "description": "Create a salary receipt for a daily helper such as a maid or a cook, with the role, month, amount and payment mode. Preview instantly and download as PDF.",
+  "designs": {
+    "t1": "Reimbursement",
+    "t2": "With acknowledgement",
+    "t3": "Employer's declaration"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Employer name"
+    },
+    "employer_address": {
+      "label": "Employer address (optional)"
+    },
+    "helper_name": {
+      "label": "Helper name"
+    },
+    "working_as": {
+      "label": "Working as"
+    },
+    "declaration": {
+      "label": "Declaration (optional)"
+    },
+    "month": {
+      "label": "Salary for month"
+    },
+    "receipt_date": {
+      "label": "Receipt date"
+    },
+    "salary": {
+      "label": "Salary amount ({currency})"
+    },
+    "payment_mode": {
+      "label": "Paid by",
+      "options": {
+        "Cash": "Cash",
+        "UPI": "UPI",
+        "Bank transfer": "Bank transfer",
+        "Cheque": "Cheque",
+        "Card": "Card",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Daily Helper Receipt",
+    "date": "Date",
+    "certify": "This is to certify that {employer} has paid {amount} to {helper}, who is working as {role}, towards salary for the month of {month} (acknowledged receipt enclosed).",
+    "certify_self": "This is to certify that I have paid {amount} to {helper}, who is working as {role}, for the month of {month} (acknowledged receipt enclosed).",
+    "reimburse": "Please reimburse the above amount. I further declare that what is stated above is correct and true.",
+    "payment_method": "Payment method",
+    "helper_name": "Helper name",
+    "working_as": "Working as",
+    "employer_name": "Employer name",
+    "employer_signature": "Employer signature",
+    "revenue_stamp": "Revenue stamp",
+    "salary_month": "Salary of the month",
+    "amount_paid": "Amount paid",
+    "received_text": "Received from {employer} the sum of {amount} by {helper} ({role}) towards salary for the month of {month}.",
+    "ack_title": "Receipt acknowledgement",
+    "receipt_date_of": "Date of receipt",
+    "for_month": "For the month of",
+    "received_sum": "Received a sum of {amount} only for the month of {month} from {employer}."
+  },
+  "sample": {
+    "declaration": "I also declare that the helper is exclusively utilized for official purposes only."
+  }
+}

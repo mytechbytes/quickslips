@@ -1,0 +1,76 @@
+{
+  "title": "Générateur de reçu d'aide à domicile",
+  "name": "Reçu d'aide à domicile",
+  "public_slug": "generateur-de-recu-d-aide-a-domicile",
+  "summary": "Reçu de salaire mensuel pour une aide à domicile.",
+  "description": "Créez un reçu de salaire pour une aide à domicile, comme une femme de ménage ou un cuisinier, avec la fonction, le mois, le montant et le mode de paiement. Aperçu instantané et téléchargement en PDF.",
+  "designs": {
+    "t1": "Remboursement",
+    "t2": "Avec accusé de réception",
+    "t3": "Déclaration de l'employeur"
+  },
+  "fields": {
+    "employer_name": {
+      "label": "Nom de l'employeur"
+    },
+    "employer_address": {
+      "label": "Adresse de l'employeur (facultatif)"
+    },
+    "helper_name": {
+      "label": "Nom de l'aide à domicile"
+    },
+    "working_as": {
+      "label": "Fonction"
+    },
+    "declaration": {
+      "label": "Déclaration (facultatif)"
+    },
+    "month": {
+      "label": "Salaire du mois"
+    },
+    "receipt_date": {
+      "label": "Date de la quittance"
+    },
+    "salary": {
+      "label": "Montant du salaire ({currency})"
+    },
+    "payment_mode": {
+      "label": "Payé par",
+      "options": {
+        "Cash": "Espèces",
+        "UPI": "UPI",
+        "Bank transfer": "Virement bancaire",
+        "Cheque": "Chèque",
+        "Card": "Carte",
+        "Online": "En ligne"
+      }
+    }
+  },
+  "print": {
+    "title": "Reçu d'aide à domicile",
+    "date": "Date",
+    "certify": "Il est certifié que {employer} a versé {amount} à {helper}, qui travaille comme {role}, au titre du salaire du mois de {month} (reçu joint).",
+    "certify_self": "Je certifie avoir versé {amount} à {helper}, qui travaille comme {role}, pour le mois de {month} (reçu joint).",
+    "reimburse": "Veuillez rembourser le montant ci-dessus. Je déclare en outre que ce qui précède est exact et sincère.",
+    "payment_method": "Mode de paiement",
+    "helper_name": "Nom de l'aide à domicile",
+    "working_as": "Fonction",
+    "employer_name": "Nom de l'employeur",
+    "employer_signature": "Signature de l'employeur",
+    "revenue_stamp": "Timbre fiscal",
+    "salary_month": "Salaire du mois",
+    "amount_paid": "Montant versé",
+    "received_text": "Reçu de {employer} la somme de {amount} par {helper} ({role}) au titre du salaire du mois de {month}.",
+    "ack_title": "Accusé de réception",
+    "receipt_date_of": "Date de réception",
+    "for_month": "Pour le mois de",
+    "received_sum": "Somme de {amount} reçue de {employer} pour le mois de {month}."
+  },
+  "sample": {
+    "employer_name": "Pierre Dubois",
+    "helper_name": "Maria Silva",
+    "working_as": "femme de ménage",
+    "salary": 700,
+    "declaration": "Je déclare en outre que l'aide à domicile est employée exclusivement à des fins professionnelles."
+  }
+}
