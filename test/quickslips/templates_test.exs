@@ -32,7 +32,7 @@ defmodule QuickSlips.TemplatesTest do
   test "the catalogue has twenty-one templates in five categories" do
     templates = Templates.list()
 
-    assert length(templates) == 21
+    assert length(templates) == 22
 
     assert templates |> Enum.map(& &1["category"]) |> Enum.uniq() |> Enum.sort() ==
              Enum.sort(@categories)
@@ -104,6 +104,7 @@ defmodule QuickSlips.TemplatesTest do
     "grocery-bill" => "grocery-bill-generator",
     "gym-membership-receipt" => "gym-membership-receipt-generator",
     "hotel-invoice" => "hotel-bill-generator",
+    "hypermarket-bill" => "hypermarket-bill-generator",
     "internet-bill" => "internet-bill-generator",
     "maintenance-bill" => "maintenance-bill-generator",
     "meal-bill" => "meal-bill-generator",
@@ -152,10 +153,10 @@ defmodule QuickSlips.TemplatesTest do
   end
 
   describe "locales" do
-    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper, Restaurant, Meal, Medical, Pharmacy and Grocery are in every language; the other templates only in English" do
+    test "Fuel, Cab, Parking, Maintenance, Transport, Rent, Driver Salary, Daily Helper, Restaurant, Meal, Medical, Pharmacy, Grocery and Hypermarket are in every language; the other templates only in English" do
       for locale <- Locales.live(),
           slug <-
-            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill) do
+            ~w(fuel-bill taxi-receipt parking-receipt maintenance-bill transport-bill rent-receipt driver-salary-receipt daily-helper-receipt restaurant-bill meal-bill medical-bill pharmacy-bill grocery-bill hypermarket-bill) do
         assert Templates.supports?(slug, locale)
       end
 
@@ -171,6 +172,7 @@ defmodule QuickSlips.TemplatesTest do
                  "driver-salary-receipt",
                  "fuel-bill",
                  "grocery-bill",
+                 "hypermarket-bill",
                  "maintenance-bill",
                  "meal-bill",
                  "medical-bill",
@@ -183,7 +185,7 @@ defmodule QuickSlips.TemplatesTest do
                ]
       end
 
-      assert length(Templates.list(Locales.fetch!("en-in"))) == 21
+      assert length(Templates.list(Locales.fetch!("en-in"))) == 22
     end
 
     test "get/2 gives the words of the language and keeps the internal slug" do

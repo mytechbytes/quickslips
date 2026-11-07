@@ -1,0 +1,175 @@
+{
+  "title": "Gerador de nota de hipermercado",
+  "name": "Nota de hipermercado",
+  "public_slug": "gerador-de-nota-de-hipermercado",
+  "summary": "Nota de hipermercado com alíquota por item.",
+  "description": "Crie uma nota de hipermercado ou supermercado com uma alíquota de {tax} para cada item, o detalhamento do imposto por alíquota, os dados do pedido e da entrega e a sua economia. Veja a pré-visualização na hora e baixe o PDF.",
+  "designs": {
+    "t1": "Nota fiscal"
+  },
+  "fields": {
+    "brand_name": {
+      "label": "Marca da loja"
+    },
+    "company_name": {
+      "label": "Razão social"
+    },
+    "company_address": {
+      "label": "Endereço da empresa (opcional)"
+    },
+    "phone": {
+      "label": "Telefone do atendimento (opcional)"
+    },
+    "email": {
+      "label": "E-mail do atendimento (opcional)"
+    },
+    "website": {
+      "label": "Endereço web dos termos (opcional)"
+    },
+    "cin": {
+      "label": "CIN (opcional)"
+    },
+    "seller_tax_id": {
+      "label": "{tax_id} (opcional)"
+    },
+    "fssai": {
+      "label": "N.º FSSAI (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número da nota"
+    },
+    "date": {
+      "label": "Data da nota"
+    },
+    "order_number": {
+      "label": "Número do pedido (opcional)"
+    },
+    "order_date": {
+      "label": "Data do pedido (opcional)"
+    },
+    "delivery_date": {
+      "label": "Data de entrega (opcional)"
+    },
+    "delivery_time": {
+      "label": "Horário de entrega (opcional)"
+    },
+    "payment_mode": {
+      "label": "Forma de pagamento",
+      "options": {
+        "Cash": "Dinheiro",
+        "UPI": "UPI",
+        "Card": "Cartão",
+        "Bank transfer": "Transferência bancária",
+        "Online": "Online"
+      }
+    },
+    "customer_name": {
+      "label": "Nome do cliente (opcional)"
+    },
+    "customer_phone": {
+      "label": "Celular (opcional)"
+    },
+    "delivery_mode": {
+      "label": "Modo de entrega",
+      "options": {
+        "Self pick-up": "Retirada na loja",
+        "Home delivery": "Entrega em casa"
+      }
+    },
+    "delivery_address": {
+      "label": "Endereço de retirada / entrega (opcional)"
+    },
+    "savings": {
+      "label": "Economia sobre o preço de lista ({currency}) (opcional)"
+    },
+    "payment_note": {
+      "label": "Instrução de pagamento (opcional)"
+    },
+    "items": {
+      "label": "Itens",
+      "columns": {
+        "name": "Item",
+        "hsn": "Código HS",
+        "qty": "Qtd.",
+        "rate": "Preço ({currency})",
+        "tax": "Imposto %"
+      }
+    }
+  },
+  "print": {
+    "tax_invoice": "Nota fiscal",
+    "invoice_no": "Nota n.º",
+    "invoice_date": "Data",
+    "hsn": "HS",
+    "particulars": "Descrição",
+    "qty": "Qtd.",
+    "rate": "Preço",
+    "value": "Valor",
+    "items": "Itens",
+    "amt": "Total",
+    "your_savings": "Sua economia",
+    "on_list": "sobre o preço de lista",
+    "breakup": "Detalhamento de impostos",
+    "amount_in": "Valores em",
+    "rate_col": "Alíquota",
+    "taxable": "Base",
+    "total": "Total",
+    "order_details": "Dados do pedido",
+    "order_number": "Número do pedido",
+    "order_date": "Data do pedido",
+    "delivery_date": "Data de entrega",
+    "delivery_time": "Horário de entrega",
+    "payment_mode": "Forma de pagamento",
+    "customer_delivery": "Cliente e entrega",
+    "customer_name": "Nome do cliente",
+    "mobile": "Celular",
+    "delivery_mode": "Modo de entrega",
+    "address": "Endereço de retirada / entrega",
+    "collect": "{amount} a receber no momento da entrega",
+    "computer_generated": "Nota gerada por computador.",
+    "exempt": "Isento"
+  },
+  "sample": {
+    "brand_name": "Hiper Verde",
+    "company_name": "Hiper Verde Comércio Ltda.",
+    "phone": "0800 123 4567",
+    "delivery_time": "18h às 21h",
+    "payment_note": "Pagamento na entrega (dinheiro ou cartão)",
+    "customer_name": "Ana Souza",
+    "customer_phone": "(11) 91234-5678",
+    "items": [
+      {
+        "name": "Arroz (5 kg)",
+        "qty": 1,
+        "rate": 32,
+        "tax": 0
+      },
+      {
+        "name": "Óleo de soja (900 ml)",
+        "qty": 2,
+        "rate": 7.5,
+        "tax": 0
+      },
+      {
+        "name": "Biscoito recheado (140 g)",
+        "qty": 3,
+        "rate": 4.5,
+        "tax": 12
+      },
+      {
+        "name": "Detergente (500 ml)",
+        "qty": 1,
+        "rate": 3.2,
+        "tax": 18
+      },
+      {
+        "name": "Tomate (1 kg)",
+        "qty": 2,
+        "rate": 8,
+        "tax": 0
+      }
+    ],
+    "savings": 4.5,
+    "delivery_mode": "Home delivery"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "sample": {
+    "brand_name": "FreshMart",
+    "company_name": "FreshMart Retail Ltd",
+    "phone": "0800 123 4567",
+    "delivery_time": "6 pm - 9 pm",
+    "payment_note": "Pay on delivery (cash or card)",
+    "customer_name": "James Taylor",
+    "customer_phone": "07700 900123",
+    "items": [
+      {
+        "name": "Basmati rice (1 kg)",
+        "qty": 1,
+        "rate": 2.5,
+        "tax": 0
+      },
+      {
+        "name": "Sunflower oil (1 L)",
+        "qty": 2,
+        "rate": 2.4,
+        "tax": 0
+      },
+      {
+        "name": "Cream biscuits (300 g)",
+        "qty": 3,
+        "rate": 1.2,
+        "tax": 0
+      },
+      {
+        "name": "Washing-up liquid (500 ml)",
+        "qty": 1,
+        "rate": 1.8,
+        "tax": 20
+      },
+      {
+        "name": "Fresh tomatoes (500 g)",
+        "qty": 2,
+        "rate": 1.1,
+        "tax": 0
+      }
+    ],
+    "savings": 0.8,
+    "delivery_mode": "Home delivery"
+  }
+}
