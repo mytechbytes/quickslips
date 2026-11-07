@@ -1,11 +1,109 @@
 {
-  "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-  "months_short": ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+  "months": [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre"
+  ],
+  "months_short": [
+    "ene",
+    "feb",
+    "mar",
+    "abr",
+    "may",
+    "jun",
+    "jul",
+    "ago",
+    "sep",
+    "oct",
+    "nov",
+    "dic"
+  ],
   "categories": {
     "Travel": "Viajes",
     "Home & utilities": "Hogar y suministros",
     "Health & learning": "Salud y formación",
     "Food & shopping": "Comida y compras",
     "Work": "Trabajo"
+  },
+  "in_words": {
+    "label": "Importe en letras",
+    "and": "con",
+    "only": "",
+    "joiner": "",
+    "currencies": {
+      "INR": {
+        "one": "rupia",
+        "other": "rupias",
+        "minor_one": "paisa",
+        "minor_other": "paisas",
+        "gender": "f",
+        "minor_gender": "f"
+      },
+      "EUR": {
+        "one": "euro",
+        "other": "euros",
+        "minor_one": "céntimo",
+        "minor_other": "céntimos",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "USD": {
+        "one": "dólar",
+        "other": "dólares",
+        "minor_one": "centavo",
+        "minor_other": "centavos",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "CNY": {
+        "one": "yuan",
+        "other": "yuanes",
+        "minor_one": "fen",
+        "minor_other": "fen",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "JPY": {
+        "one": "yen",
+        "other": "yenes",
+        "minor_one": "sen",
+        "minor_other": "sen",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "GBP": {
+        "one": "libra",
+        "other": "libras",
+        "minor_one": "penique",
+        "minor_other": "peniques",
+        "gender": "f",
+        "minor_gender": "m"
+      },
+      "BRL": {
+        "one": "real",
+        "other": "reales",
+        "minor_one": "centavo",
+        "minor_other": "centavos",
+        "gender": "m",
+        "minor_gender": "m"
+      },
+      "CAD": {
+        "one": "dólar canadiense",
+        "other": "dólares canadienses",
+        "minor_one": "centavo",
+        "minor_other": "centavos",
+        "gender": "m",
+        "minor_gender": "m"
+      }
+    }
   }
 }

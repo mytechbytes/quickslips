@@ -121,8 +121,8 @@ defmodule QuickSlips.Templates.Localizer do
 
   @doc """
   What the Typst helpers read as `text.json` for a document in `locale`: the language, the names of the months,
-  the words the layout prints and the names of the options of the select fields. `localized` is the result of
-  `localize/4`.
+  the words of the amount in words, the words the layout prints and the names of the options of the select
+  fields. `localized` is the result of `localize/4`.
   """
   def print_text(localized, texts, shared, locale) do
     text = merged(texts, locale)
@@ -143,6 +143,7 @@ defmodule QuickSlips.Templates.Localizer do
       "tax_mode" => mode,
       "months" => words["months"],
       "months_short" => words["months_short"],
+      "in_words" => words["in_words"],
       "print" => text["print"] || %{},
       "options" => options
     }

@@ -51,6 +51,8 @@
   v(1mm)
 }
 #align(right)[#text(size: 12pt, weight: "bold")[#t.total: #money(total)]]
+#let words = amount-words-line(total)
+#if words != none [#v(1.5mm) #words]
 
 #if opt(data, "signature") != none [
   #v(8mm)
