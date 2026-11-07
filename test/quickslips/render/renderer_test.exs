@@ -310,6 +310,21 @@ defmodule QuickSlips.Render.RendererTest do
         "paid" => 99_999_999.99
       }
     },
+    "book-receipt" => %{
+      designs: ~w(t1 t2),
+      optional: ~w(store_address author description),
+      long: %{
+        "store_name" => String.duplicate("Page & Leaf Books ", 4),
+        "store_address" => String.duplicate("Shop 4, Station Road, Pune, ", 6),
+        "customer_name" => String.duplicate("Ramakrishnan ", 5),
+        "book_name" => String.duplicate("The Guide to Everything ", 4),
+        "author" => String.duplicate("R. K. Narayan ", 5),
+        "publisher" => String.duplicate("Sunrise Press ", 6),
+        "description" => String.duplicate("Paperback, 2nd edition, illustrated. ", 5),
+        "quantity" => 9_999_999,
+        "book_price" => 99_999_999.99
+      }
+    },
     "hypermarket-bill" => %{
       designs: ~w(t1),
       optional:

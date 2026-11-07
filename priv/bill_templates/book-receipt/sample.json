@@ -1,0 +1,14 @@
+{
+  "store_name": "Page & Leaf Books",
+  "store_address": "Shop 4, Station Road, Pune, Maharashtra 411001",
+  "receipt_number": "R08998",
+  "date": "2026-11-07",
+  "customer_name": "Rohan Mehta",
+  "book_name": "The Guide",
+  "author": "R. K. Narayan",
+  "publisher": "Sunrise Press",
+  "description": "Paperback, 2nd edition",
+  "quantity": 2,
+  "book_price": 299,
+  "payment_mode": "Cash"
+}

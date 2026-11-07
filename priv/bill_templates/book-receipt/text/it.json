@@ -1,0 +1,92 @@
+{
+  "title": "Generatore di ricevuta per libreria",
+  "name": "Ricevuta libreria",
+  "public_slug": "generatore-ricevuta-libreria",
+  "summary": "Ricevuta di libreria con titolo, autore e pagamento.",
+  "description": "Crea una ricevuta di libreria con titolo, autore ed editore del libro, quantità, prezzo e metodo di pagamento. Anteprima immediata e download in PDF.",
+  "designs": {
+    "t1": "Classico",
+    "t2": "Con il venditore"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Nome della libreria"
+    },
+    "store_address": {
+      "label": "Indirizzo della libreria (facoltativo)"
+    },
+    "receipt_number": {
+      "label": "Numero di ricevuta"
+    },
+    "date": {
+      "label": "Data di acquisto"
+    },
+    "customer_name": {
+      "label": "Nome del cliente"
+    },
+    "book_name": {
+      "label": "Titolo del libro"
+    },
+    "author": {
+      "label": "Autore (facoltativo)"
+    },
+    "publisher": {
+      "label": "Editore"
+    },
+    "description": {
+      "label": "Descrizione (facoltativo)"
+    },
+    "quantity": {
+      "label": "Quantità"
+    },
+    "book_price": {
+      "label": "Prezzo di un libro ({currency})"
+    },
+    "payment_mode": {
+      "label": "Metodo di pagamento",
+      "options": {
+        "Cash": "Contanti",
+        "UPI": "UPI",
+        "Card": "Carta",
+        "Bank transfer": "Bonifico bancario",
+        "Online": "Online"
+      }
+    }
+  },
+  "print": {
+    "title": "Ricevuta libreria",
+    "bill_to": "Intestato a",
+    "receipt_details": "Dati della ricevuta",
+    "receipt_no": "Ricevuta n.",
+    "receipt_date": "Data",
+    "customer_name": "Nome del cliente",
+    "book_name": "Titolo",
+    "author": "Autore",
+    "publisher": "Editore",
+    "payment_method": "Metodo di pagamento",
+    "receipt_summary": "Riepilogo",
+    "item": "Articolo",
+    "description": "Descrizione",
+    "qty": "Q.tà",
+    "price": "Prezzo",
+    "total": "Totale",
+    "sold_by": "Venduto da",
+    "store_name": "Nome",
+    "store_address": "Indirizzo",
+    "thanks": "Grazie! Arrivederci.",
+    "quote_1": "Una stanza senza libri è come un corpo senza anima.",
+    "quote_2": "Portati un buon libro a letto: i libri non russano.",
+    "quote_3": "I libri sono gli amici più silenziosi e costanti; sono i consiglieri più accessibili e saggi, e i maestri più pazienti.",
+    "quote_4": "I libri sono una buona compagnia, nei momenti tristi e in quelli felici, perché i libri sono persone – persone che sono riuscite a restare in vita nascondendosi tra le pagine di un libro."
+  },
+  "sample": {
+    "store_name": "Libreria La Pagina",
+    "customer_name": "Marco Rossi",
+    "book_name": "Il barone rampante",
+    "author": "Italo Calvino",
+    "publisher": "Edizioni Sole",
+    "description": "Brossura, edizione tascabile",
+    "quantity": 1,
+    "book_price": 12
+  }
+}

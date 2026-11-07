@@ -1,0 +1,92 @@
+{
+  "title": "Generador de Recibo de Librería",
+  "name": "Recibo de Librería",
+  "public_slug": "generador-de-recibo-de-libreria",
+  "summary": "Recibo de librería con título, autor y pago.",
+  "description": "Crea un recibo de librería con el título, el autor y la editorial del libro, la cantidad, el precio y la forma de pago. Previsualízalo al instante y descarga el PDF.",
+  "designs": {
+    "t1": "Clásico",
+    "t2": "Con el vendedor"
+  },
+  "fields": {
+    "store_name": {
+      "label": "Nombre de la librería"
+    },
+    "store_address": {
+      "label": "Dirección de la librería (opcional)"
+    },
+    "receipt_number": {
+      "label": "Número de recibo"
+    },
+    "date": {
+      "label": "Fecha de compra"
+    },
+    "customer_name": {
+      "label": "Nombre del cliente"
+    },
+    "book_name": {
+      "label": "Título del libro"
+    },
+    "author": {
+      "label": "Autor (opcional)"
+    },
+    "publisher": {
+      "label": "Editorial"
+    },
+    "description": {
+      "label": "Descripción (opcional)"
+    },
+    "quantity": {
+      "label": "Cantidad"
+    },
+    "book_price": {
+      "label": "Precio de un libro ({currency})"
+    },
+    "payment_mode": {
+      "label": "Forma de pago",
+      "options": {
+        "Cash": "Efectivo",
+        "UPI": "UPI",
+        "Card": "Tarjeta",
+        "Bank transfer": "Transferencia bancaria",
+        "Online": "En línea"
+      }
+    }
+  },
+  "print": {
+    "title": "Recibo de librería",
+    "bill_to": "Cliente",
+    "receipt_details": "Datos del recibo",
+    "receipt_no": "Recibo n.º",
+    "receipt_date": "Fecha",
+    "customer_name": "Nombre del cliente",
+    "book_name": "Título",
+    "author": "Autor",
+    "publisher": "Editorial",
+    "payment_method": "Forma de pago",
+    "receipt_summary": "Resumen del recibo",
+    "item": "Artículo",
+    "description": "Descripción",
+    "qty": "Cant.",
+    "price": "Precio",
+    "total": "Total",
+    "sold_by": "Vendido por",
+    "store_name": "Nombre",
+    "store_address": "Dirección",
+    "thanks": "¡Gracias! Vuelva pronto.",
+    "quote_1": "Una habitación sin libros es como un cuerpo sin alma.",
+    "quote_2": "Llévate un buen libro a la cama: los libros no roncan.",
+    "quote_3": "Los libros son los amigos más callados y constantes; los consejeros más accesibles y sabios, y los maestros más pacientes.",
+    "quote_4": "Los libros son buena compañía, en los momentos tristes y en los felices, porque los libros son personas: personas que han logrado seguir vivas escondiéndose entre las tapas de un libro."
+  },
+  "sample": {
+    "store_name": "Librería La Página",
+    "customer_name": "Carlos Gómez",
+    "book_name": "Don Quijote de la Mancha",
+    "author": "Miguel de Cervantes",
+    "publisher": "Editorial Sol",
+    "description": "Tapa blanda, edición de bolsillo",
+    "quantity": 1,
+    "book_price": 18.9
+  }
+}
