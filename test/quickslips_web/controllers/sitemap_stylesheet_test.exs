@@ -65,7 +65,9 @@ defmodule QuickSlipsWeb.SitemapStylesheetTest do
     xml = Path.join(dir, "sitemap.xml")
     File.write!(xml, conn |> get(~p"/sitemap.xml") |> response(200))
 
-    {html, 0} = System.cmd(@xsltproc, ["priv/sitemap.xsl", xml])
+    # looked up here and not in a module attribute: where xsltproc is missing (CI) that would be a nil the compiler
+    # sees in a call to System.cmd/2, and `--warnings-as-errors` fails the run
+    {html, 0} = System.cmd(System.find_executable("xsltproc"), ["priv/sitemap.xsl", xml])
     doc = LazyHTML.from_document(html)
     count = fn selector -> doc |> LazyHTML.query(selector) |> Enum.count() end
 
