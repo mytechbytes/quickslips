@@ -51,7 +51,6 @@ defmodule QuickSlips.MixProject do
       {:lazy_html, ">= 0.1.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.9.1"},
       {:esbuild, "~> 0.10", runtime: Mix.env() == :dev},
-      {:tailwind, "~> 0.5", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.2.0",
@@ -88,7 +87,6 @@ defmodule QuickSlips.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": [
-        "tailwind.install --if-missing",
         "esbuild.install --if-missing",
         "cmd mkdir -p priv/static/wasm",
         "cmd cp assets/node_modules/@myriaddreamin/typst-ts-web-compiler/pkg/typst_ts_web_compiler_bg.wasm priv/static/wasm/",
@@ -97,9 +95,13 @@ defmodule QuickSlips.MixProject do
         "cmd mkdir -p priv/static/fonts",
         "cmd cp -R priv/fonts/. priv/static/fonts/"
       ],
-      "assets.build": ["compile", "tailwind quickslips", "esbuild quickslips"],
+      "assets.build": [
+        "compile",
+        "cmd npm --prefix assets run css:build",
+        "esbuild quickslips"
+      ],
       "assets.deploy": [
-        "tailwind quickslips --minify",
+        "cmd npm --prefix assets run css:deploy",
         "esbuild quickslips --minify",
         "phx.digest"
       ],

@@ -6,6 +6,12 @@
     "@tailwindplus/elements": "^1.0.22"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0",
     "typescript": "^7.0.2"
+  },
+  "scripts": {
+    "css:build": "tailwindcss -i css/app.css -o ../priv/static/assets/app.css",
+    "css:deploy": "tailwindcss -i css/app.css -o ../priv/static/assets/app.css --minify"
   }
 }
