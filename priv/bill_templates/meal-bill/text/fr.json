@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-de-livraison-de-repas",
   "summary": "Facture de livraison de repas avec {tax} sur chaque ligne.",
   "description": "Générez une facture de livraison de repas au nom d'un restaurant, avec l'adresse de livraison, la taxe par ligne, les mentions légales de la plateforme et un signataire. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture de livraison de repas est la facture avec taxe d'une commande de restaurant ou de livraison. Elle indique l'adresse de livraison, la taxe de chaque ligne, les informations légales de la plateforme et un signataire.",
   "designs": {
     "t1": "Facture de livraison"
   },

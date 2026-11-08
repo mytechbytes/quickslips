@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-donazione",
   "summary": "Ricevuta per una donazione a un'associazione o fondazione.",
   "description": "Crea una ricevuta di donazione per un'associazione, un ente benefico o una fondazione con donatore, importo in cifre e lettere, metodo di pagamento, chi ha ricevuto e un ringraziamento. Anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta di donazione è ciò che una ONG, un ente benefico o una fondazione rilascia a un donatore per confermare un'offerta. Mostra chi ha donato, quanto, con quale metodo di pagamento e chi l'ha ricevuta.",
   "designs": {
     "t1": "Ricevuta"
   },

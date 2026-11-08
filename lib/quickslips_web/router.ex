@@ -49,6 +49,14 @@ defmodule QuickSlipsWeb.Router do
     post "/businesses", BusinessController, :create
   end
 
+  # What search engines read. No session and no cookie: a crawler gets the same answer as everybody, whatever it asks
+  # for (the `:browser` pipeline only takes HTML). Like /healthz, these single-segment addresses must come above
+  # `/:locale`, which would take them for a locale.
+  scope "/", QuickSlipsWeb do
+    get "/robots.txt", RobotsController, :show
+    get "/sitemap.xml", SitemapController, :show
+  end
+
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:quickslips, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put

@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-geral",
   "summary": "Nota simples para qualquer venda ou serviço, com alíquota por item.",
   "description": "Crie uma nota para qualquer venda ou serviço com quantos itens precisar, uma alíquota de {tax} para cada um, o vendedor, o cliente e o pagamento. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota geral serve para qualquer venda ou serviço. Lista os itens com quantidades e preços e uma alíquota para cada um, e indica o vendedor, o cliente e o pagamento.",
   "designs": {
     "t1": "Nota simples"
   },

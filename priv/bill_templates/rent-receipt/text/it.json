@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-affitto",
   "summary": "Ricevute di affitto mensili come prova di pagamento.",
   "description": "Crea una ricevuta d'affitto, o fino a 12 ricevute per un periodo, con inquilino, proprietario, immobile e importo. Anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta d'affitto è la prova scritta che un inquilino ha pagato l'affitto a un proprietario per un periodo. Indica l'inquilino, il proprietario e l'immobile, e mostra l'importo e come è stato pagato.",
   "designs": {
     "t1": "Rimborso",
     "t2": "Con conferma di ricevuta",

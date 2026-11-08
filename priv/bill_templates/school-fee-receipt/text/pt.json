@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-recibo-escolar",
   "summary": "Recibo de mensalidade com detalhamento, ou recibo curto.",
   "description": "Gere um recibo de mensalidade escolar com aluno, turma, período e detalhamento de mensalidade, transporte e outras taxas, ou um recibo curto com o valor por extenso. Dois modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Um recibo escolar confirma que as mensalidades foram pagas. Mostra o aluno, a turma, o período e os valores de mensalidade, transporte e outras taxas.",
   "designs": {
     "t1": "Clássico",
     "t2": "Recibo curto"

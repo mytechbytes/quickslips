@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-mercado",
   "summary": "Itens, quantidades e totais.",
   "description": "Crie uma nota de mercado com quantos itens precisar, quantidades, preços, desconto e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de mercado lista o que foi comprado em um mercado ou supermercado. Mostra os itens, as quantidades e os preços, um eventual desconto e o imposto.",
   "designs": {
     "t1": "Nota de varejo",
     "t2": "Nota com economia"

@@ -4,6 +4,7 @@
   "public_slug": "restaurant-bill-generator",
   "summary": "Dine-in or takeaway bill with items and {tax}.",
   "description": "Generate a restaurant bill with any number of items, quantities, service charge and {tax}. Preview instantly and download as PDF.",
+  "intro": "A restaurant bill lists what was ordered and what it cost. It shows the items and quantities, a service charge and the tax.",
   "designs": {
     "t1": "Pixel slip",
     "t2": "Dashed receipt",

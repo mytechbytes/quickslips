@@ -4,6 +4,7 @@
   "public_slug": "generador-de-recibo-de-gimnasio",
   "summary": "Recibo o factura de gimnasio con plan, periodo y cuotas.",
   "description": "Crea un recibo o factura de gimnasio con el plan, el ciclo de facturación, el periodo, las cuotas, artículos adicionales, el {tax} y las normas del gimnasio. Dos diseños; previsualízalo al instante y descarga el PDF.",
+  "intro": "Un recibo de gimnasio confirma el pago de un plan. Muestra al socio, el plan y su ciclo de facturación, el período, las cuotas, los conceptos extra y el impuesto.",
   "designs": {
     "t1": "Recibo",
     "t2": "Factura"

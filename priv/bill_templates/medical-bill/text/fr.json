@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-medicale",
   "summary": "Facture d'hôpital, de clinique ou de laboratoire avec {tax}.",
   "description": "Générez une facture d'hôpital, de clinique ou de laboratoire avec patient, médecin, chambre, consultation, médicaments, examens et frais détaillés. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture médicale détaille ce qu'un hôpital, une clinique ou un laboratoire a facturé. Elle indique le patient et le médecin, la chambre, la consultation, les médicaments, les examens et les autres frais.",
   "designs": {
     "t1": "Facture d'hôpital",
     "t2": "Facture provisoire"

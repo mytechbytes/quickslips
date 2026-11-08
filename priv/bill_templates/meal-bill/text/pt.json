@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-entrega-de-refeicao",
   "summary": "Nota fiscal de entrega de refeição com {tax} em cada linha.",
   "description": "Gere uma nota de entrega de refeição em nome de um restaurante, com endereço de entrega, imposto por linha, dados legais da plataforma e um signatário. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de entrega de refeição é a nota com impostos de um pedido de restaurante ou de entrega. Mostra o endereço de entrega, o imposto de cada linha, os dados legais da plataforma e um signatário.",
   "designs": {
     "t1": "Nota de entrega"
   },

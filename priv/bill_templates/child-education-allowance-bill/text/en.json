@@ -4,6 +4,7 @@
   "public_slug": "child-education-allowance-bill-generator",
   "summary": "Claim form for the reimbursement of a children education allowance.",
   "description": "Fill in the proforma for the reimbursement of a children education allowance (CEA) or hostel subsidy with the claimant, the spouse, the children and their schools and the expenditure. Preview instantly and download as PDF.",
+  "intro": "A children education allowance (CEA) bill is the proforma in which an employee lists their children, their schools and the money spent, to be reimbursed under the employer's rules. It also covers a hostel subsidy and the details of the spouse.",
   "designs": {
     "t1": "Proforma"
   },

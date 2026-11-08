@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-farmacia",
   "summary": "Nota de farmácia com lote, validade e preço.",
   "description": "Gere uma nota de farmácia com medicamentos, fabricante, lote, validade e preço máximo, {tax} no preço, desconto e dados de licença da filial. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de farmácia lista os medicamentos vendidos por uma farmácia. Mostra o fabricante, o lote, a validade e o preço máximo, o imposto incluído no preço, um eventual desconto e os dados da licença da filial.",
   "designs": {
     "t1": "Nota fiscal"
   },

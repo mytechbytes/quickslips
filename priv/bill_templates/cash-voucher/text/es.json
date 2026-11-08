@@ -4,6 +4,7 @@
   "public_slug": "generador-de-vale-de-caja",
   "summary": "Vale de caja con conceptos, importe y firmas de aprobación.",
   "description": "Crea un vale de caja con el beneficiario, los conceptos e importes, el total en cifras y letras, y las firmas de elaboración, revisión, aprobación y recepción. Previsualízalo al instante y descarga el PDF.",
+  "intro": "Un vale de caja registra un pago hecho en efectivo: a quién se pagó, por qué concepto y cuánto. Lleva las firmas de quienes lo prepararon, revisaron, aprobaron y recibieron.",
   "designs": {
     "t1": "Vale con cuadros"
   },

@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-note-de-restaurant",
   "summary": "Note de restaurant sur place ou à emporter avec articles et {tax}.",
   "description": "Générez une note de restaurant avec autant d'articles que vous voulez, les quantités, le service et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une note de restaurant énumère ce qui a été commandé et ce que cela a coûté. Elle indique les articles et les quantités, un service et la taxe.",
   "designs": {
     "t1": "Ticket pixel",
     "t2": "Reçu pointillé",

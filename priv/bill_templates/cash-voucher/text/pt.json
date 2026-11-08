@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-vale-de-caixa",
   "summary": "Vale de caixa com itens, valor e assinaturas de aprovação.",
   "description": "Crie um vale de caixa com o beneficiário, os itens e valores, o total em números e por extenso, e as assinaturas de elaboração, conferência, aprovação e recebimento. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Um vale de caixa registra um pagamento feito em dinheiro: quem recebeu, por quê e quanto. Leva as assinaturas de quem o preparou, conferiu, aprovou e recebeu.",
   "designs": {
     "t1": "Vale em quadros"
   },

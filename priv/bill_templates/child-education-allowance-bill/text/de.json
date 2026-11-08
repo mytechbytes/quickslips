@@ -4,6 +4,7 @@
   "public_slug": "kinderbildungszuschuss-antrag-generator",
   "summary": "Antragsformular zur Erstattung eines Kinderbildungszuschusses.",
   "description": "Füllen Sie das Formular zur Erstattung eines Kinderbildungszuschusses (CEA) oder Internatszuschusses mit Antragsteller, Ehepartner, Kindern, Schulen und Ausgaben aus. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Ein Kinderbildungszuschuss-Antrag (CEA) ist das Formular, in dem Beschäftigte ihre Kinder, deren Schulen und die entstandenen Kosten angeben, um sie nach den Regeln des Arbeitgebers erstattet zu bekommen. Er umfasst auch einen Internatszuschuss und die Angaben zum Ehepartner.",
   "designs": {
     "t1": "Formular"
   },

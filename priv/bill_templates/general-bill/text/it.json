@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-generica",
   "summary": "Fattura semplice per qualsiasi vendita o servizio, con aliquota per articolo.",
   "description": "Crea una fattura per qualsiasi vendita o servizio con tutti gli articoli che servono, un'aliquota {tax} per ciascuno, venditore, cliente e pagamento. Anteprima immediata e download in PDF.",
+  "intro": "Una fattura generica va bene per qualsiasi vendita o servizio. Elenca gli articoli con quantità e prezzi e un'aliquota per ciascuno, e indica il venditore, il cliente e il pagamento.",
   "designs": {
     "t1": "Fattura semplice"
   },

@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-recu-de-don",
   "summary": "Reçu pour un don à une association ou une fondation.",
   "description": "Créez un reçu de don pour une association, une œuvre caritative ou une fondation avec le donateur, le montant en chiffres et en lettres, le mode de paiement, le bénéficiaire et un remerciement. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un reçu de don est ce qu'une association, une organisation caritative ou une fondation remet à un donateur pour confirmer son don. Il indique qui a donné, combien, par quel moyen de paiement et qui l'a reçu.",
   "designs": {
     "t1": "Reçu"
   },

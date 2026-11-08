@@ -4,6 +4,7 @@
   "public_slug": "generatore-scontrino-alimentari",
   "summary": "Articoli, quantità e totali.",
   "description": "Crea uno scontrino per alimentari con tutti gli articoli che servono, quantità, prezzi, sconto e {tax}. Anteprima immediata e download in PDF.",
+  "intro": "Uno scontrino alimentari elenca ciò che è stato acquistato in un negozio di alimentari o in un supermercato. Mostra gli articoli, le quantità e i prezzi, un eventuale sconto e l'imposta.",
   "designs": {
     "t1": "Fattura al dettaglio",
     "t2": "Scontrino con risparmio"

@@ -4,6 +4,7 @@
   "public_slug": "tankrechnung-generator",
   "summary": "Erstellen Sie eine Tankrechnung für Benzin oder Diesel als PDF.",
   "description": "Erstellen Sie eine übersichtliche Tankrechnung mit Name der Tankstelle, Datum, Kraftstoffart, Menge und Preis. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Tankrechnung ist der Beleg, den eine Tankstelle für Benzin oder Diesel ausstellt. Sie zeigt die Tankstelle, das Datum, die Kraftstoffart, die Menge und den Preis sowie den gezahlten Gesamtbetrag.",
   "designs": {
     "t1": "Quittung",
     "t2": "Zapfsäulenbeleg",

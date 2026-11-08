@@ -4,6 +4,7 @@
   "public_slug": "ecommerce-bill-generator",
   "summary": "Online order invoice with a tax rate per item and shipping.",
   "description": "Create an invoice for an online order with products, quantities, a {tax} rate for each item, shipping, the seller, the marketplace and the customer's addresses. Four designs; preview instantly and download as PDF.",
+  "intro": "An e-commerce bill is the invoice for an order placed online. It shows the products and quantities, the tax on each item, shipping, the seller and the customer's addresses.",
   "designs": {
     "t1": "Payment receipt",
     "t2": "Order confirmed",

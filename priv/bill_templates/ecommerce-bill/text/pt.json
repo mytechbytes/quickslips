@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-e-commerce",
   "summary": "Nota de pedido online com alíquota por item e frete.",
   "description": "Crie uma nota para um pedido online com produtos, quantidades, uma alíquota de {tax} para cada item, frete, o vendedor, o marketplace e os endereços do cliente. Quatro modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de e-commerce é a nota de um pedido feito on-line. Mostra os produtos e as quantidades, o imposto de cada item, o frete, o vendedor e os endereços do cliente.",
   "designs": {
     "t1": "Recibo de pagamento",
     "t2": "Pedido confirmado",

@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-lavanderia",
   "summary": "Fattura di lavanderia e lavaggio a secco con capi, quantità e importi.",
   "description": "Crea una fattura per lavanderia o lavaggio a secco con capi, quantità e prezzi, data di consegna, {tax}, metodo di pagamento e le tue condizioni. Due modelli; anteprima immediata e download in PDF.",
+  "intro": "Una fattura lavanderia elenca i capi consegnati per il lavaggio o il lavaggio a secco. Mostra le quantità e i prezzi, la data di consegna, l'imposta, il metodo di pagamento e le condizioni del negozio.",
   "designs": {
     "t1": "Fattura gialla",
     "t2": "Fattura per contanti o credito"

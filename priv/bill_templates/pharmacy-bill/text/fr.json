@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-ticket-de-pharmacie",
   "summary": "Ticket de pharmacie avec lot, péremption et prix.",
   "description": "Générez un ticket de pharmacie avec médicaments, fabricant, lot, péremption et prix public, {tax} incluse dans le prix, une remise et les informations d'autorisation de la succursale. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un ticket de pharmacie énumère les médicaments vendus par une pharmacie. Il indique le fabricant, le lot, la date de péremption et le prix maximum de vente, la taxe comprise dans le prix, une remise éventuelle et les informations de licence de l'officine.",
   "designs": {
     "t1": "Facture"
   },

@@ -4,6 +4,7 @@
   "public_slug": "transport-bill-generator",
   "summary": "Goods consignment note with consignor, consignee, weight and freight.",
   "description": "Generate a goods transport bill or consignment note with origin and destination, consignor and consignee, number of articles, weight and to-pay or paid freight. Preview instantly and download as PDF.",
+  "intro": "A transport bill, also called a consignment note, covers goods carried by road. It shows the origin and the destination, the consignor and the consignee, the number of articles, the weight and the freight, to pay or paid.",
   "designs": {
     "t1": "Consignment note"
   },

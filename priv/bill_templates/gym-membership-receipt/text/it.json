@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-palestra",
   "summary": "Ricevuta o fattura di abbonamento con piano, periodo e quote.",
   "description": "Crea una ricevuta o fattura di abbonamento palestra con piano, ciclo di fatturazione, periodo, quote, articoli aggiuntivi, {tax} e le istruzioni della palestra. Due modelli; anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta palestra conferma il pagamento di un abbonamento. Mostra il socio, il piano e il suo ciclo di fatturazione, il periodo, le quote, le voci aggiuntive e l'imposta.",
   "designs": {
     "t1": "Ricevuta",
     "t2": "Fattura"

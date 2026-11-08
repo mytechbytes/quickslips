@@ -4,6 +4,7 @@
   "public_slug": "hypermarkt-rechnung-generator",
   "summary": "Hypermarkt-Rechnung mit Steuersatz je Artikel.",
   "description": "Erstellen Sie eine Hypermarkt- oder Supermarkt-Rechnung mit einem {tax}-Satz für jeden Artikel, der Steueraufschlüsselung nach Satz, Bestell- und Lieferdaten und Ihrer Ersparnis. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Hypermarkt-Rechnung ist die Rechnung mit Steuerausweis für einen Einkauf. Sie zeigt jeden Artikel mit seinem Steuersatz, die nach Satz aufgeschlüsselte Steuer, Bestell- und Lieferdaten und die Ersparnis.",
   "designs": {
     "t1": "Rechnung"
   },

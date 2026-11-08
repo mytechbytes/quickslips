@@ -16,6 +16,64 @@ defmodule QuickSlipsWeb.Layouts do
   defp html_lang(nil), do: "en"
   defp html_lang(locale), do: QuickSlips.Locales.hreflang(locale)
 
+  attr :title, :string, required: true
+  attr :description, :string, required: true
+  attr :url, :string, required: true, doc: "the canonical address of the page"
+  attr :locale, :map, default: nil
+  attr :alternates, :list, default: [], doc: "`[{hreflang, url}]`, the same page in other locales"
+
+  # What a link preview is made of (Open Graph, which Facebook, WhatsApp and LinkedIn read, and the Twitter card).
+  # The picture is the mark of the site; a page with a picture of its own would say so here.
+  defp social_tags(assigns) do
+    assigns =
+      assigns
+      |> assign(:image, QuickSlipsWeb.Seo.social_image())
+      |> assign(:site_name, QuickSlipsWeb.Seo.site_name())
+      |> assign(:og_locale, og_locale(assigns.locale))
+      |> assign(:og_alternates, og_alternates(assigns.alternates, assigns.locale))
+
+    ~H"""
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={@site_name} />
+    <meta property="og:title" content={@title} />
+    <meta property="og:description" content={@description} />
+    <meta property="og:url" content={@url} />
+    <meta :if={@og_locale} property="og:locale" content={@og_locale} />
+    <meta :for={other <- @og_alternates} property="og:locale:alternate" content={other} />
+    <meta property="og:image" content={@image} />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content={@site_name} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={@title} />
+    <meta name="twitter:description" content={@description} />
+    <meta name="twitter:image" content={@image} />
+    """
+  end
+
+  # Open Graph writes a locale with an underscore: `hi_IN`.
+  defp og_locale(nil), do: nil
+  defp og_locale(locale), do: locale |> QuickSlips.Locales.hreflang() |> String.replace("-", "_")
+
+  # The other locales the page is in, as `hi_IN`; `x-default` is not a locale.
+  defp og_alternates(alternates, locale) do
+    own = og_locale(locale)
+
+    for {hreflang, _url} <- alternates,
+        hreflang != "x-default",
+        other = String.replace(hreflang, "-", "_"),
+        other != own,
+        do: other
+  end
+
+  # The structured data of a page (`QuickSlipsWeb.Seo`): a `<script>` that holds JSON, which a browser does not run.
+  # The JSON is already made safe to sit in a script (no `<` in it), so it goes in as it is.
+  defp json_ld_tag(nil), do: ""
+
+  defp json_ld_tag(json) do
+    Phoenix.HTML.raw([~s(<script type="application/ld+json">), json, "</script>"])
+  end
+
   @doc """
   Renders your app layout. Every page starts with it.
 

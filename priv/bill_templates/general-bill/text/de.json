@@ -4,6 +4,7 @@
   "public_slug": "allgemeine-rechnung-generator",
   "summary": "Einfache Rechnung für jeden Verkauf oder jede Leistung mit Steuersatz je Posten.",
   "description": "Erstellen Sie eine Rechnung für jeden Verkauf oder jede Leistung mit beliebig vielen Posten, einem {tax}-Satz je Posten, Verkäufer, Kunde und Zahlung. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine allgemeine Rechnung passt für jeden Verkauf und jede Leistung. Sie listet die Posten mit Mengen und Preisen und einem Steuersatz je Posten auf und nennt Verkäufer, Kunde und Zahlung.",
   "designs": {
     "t1": "Einfache Rechnung"
   },

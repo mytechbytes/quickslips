@@ -4,6 +4,7 @@
   "public_slug": "taxirechnung-generator",
   "summary": "Taxirechnung mit Fahrpreis, Maut und {tax} als PDF.",
   "description": "Erstellen Sie eine Taxi- oder Mietwagenrechnung mit Abhol- und Zielort, Strecke, Fahrpreis, Maut und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Taxirechnung ist der Beleg für eine Fahrt mit Taxi, Mietwagen oder Autorikscha. Sie zeigt Abholort und Ziel, die Strecke, den Fahrpreis, eine eventuelle Maut und die Steuer.",
   "designs": {
     "t1": "Fahrtbeleg",
     "t2": "Fahrt und Rechnung",

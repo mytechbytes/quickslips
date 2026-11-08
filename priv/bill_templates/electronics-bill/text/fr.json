@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-d-electronique",
   "summary": "Facture d'électronique avec numéros de série et détail des taxes.",
   "description": "Générez une facture pour téléphones, appareils électroménagers et autres produits électroniques avec numéros de série, codes HS, {tax} incluse dans le prix, les parties facturée et livrée, les détails de paiement et le montant en lettres. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture d'électronique est la facture avec taxe d'un téléphone, d'un appareil ou d'un autre produit électronique. Elle indique les numéros de série, la taxe comprise dans le prix, l'acheteur et le vendeur, et le paiement.",
   "designs": {
     "t1": "Facture"
   },

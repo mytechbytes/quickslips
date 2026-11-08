@@ -4,6 +4,7 @@
   "public_slug": "generador-de-recibo-de-alquiler",
   "summary": "Recibos de alquiler mensuales para justificar el pago.",
   "description": "Crea un recibo de alquiler, o hasta 12 recibos de un periodo, con inquilino, propietario, inmueble e importe. Previsualízalo al instante y descarga el PDF.",
+  "intro": "Un recibo de alquiler es la prueba escrita de que un inquilino pagó el alquiler a un propietario por un período. Nombra al inquilino, al propietario y el inmueble, e indica el importe y cómo se pagó.",
   "designs": {
     "t1": "Reembolso",
     "t2": "Con acuse de recibo",

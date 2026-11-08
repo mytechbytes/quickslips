@@ -4,6 +4,7 @@
   "public_slug": "arztrechnung-generator",
   "summary": "Rechnung für Krankenhaus, Praxis oder Labor mit {tax}.",
   "description": "Erstellen Sie eine Rechnung für Krankenhaus, Praxis oder Labor mit Patient, Arzt, Zimmer, Beratung, Medikamenten, Untersuchungen und Einzelpositionen. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Arztrechnung schlüsselt auf, was ein Krankenhaus, eine Praxis oder ein Labor berechnet hat. Sie zeigt Patient und Arzt, das Zimmer, die Beratung, Medikamente, Untersuchungen und weitere Posten.",
   "designs": {
     "t1": "Krankenhausrechnung",
     "t2": "Vorläufige Rechnung"

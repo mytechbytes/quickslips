@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-de-presse",
   "summary": "Facture mensuelle de portage de presse avec frais de service.",
   "description": "Créez une facture mensuelle de portage de journaux ou de magazines avec l'agence, le mois, les titres avec leur prix et leur quantité, des frais de livraison à domicile et le total. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture de presse est le compte mensuel de la livraison d'un journal ou d'un magazine. Elle indique l'agence, le mois, chaque titre avec son prix et sa quantité, des frais de livraison à domicile et le total.",
   "designs": {
     "t1": "Classique"
   },

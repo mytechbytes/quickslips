@@ -4,6 +4,7 @@
   "public_slug": "schreibwaren-kassenbon-generator",
   "summary": "Kassenbon für Schreibwaren mit Artikeln, Preisen und Summen.",
   "description": "Erstellen Sie einen Kassenbon für ein Schreibwarengeschäft mit Stiften, Papier und anderem Bedarf, Mengen, Preisen und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Ein Schreibwaren-Kassenbon ist der Beleg für Stifte, Papier und anderen Bedarf aus einem Schreibwarenladen. Er zeigt die Artikel, Mengen, Preise und die Steuer.",
   "designs": {
     "t1": "Kassenbon"
   },

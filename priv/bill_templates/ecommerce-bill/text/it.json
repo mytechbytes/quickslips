@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-e-commerce",
   "summary": "Fattura di un ordine online con aliquota per articolo e spedizione.",
   "description": "Crea una fattura per un ordine online con prodotti, quantità, un'aliquota {tax} per ogni articolo, spedizione, venditore, marketplace e indirizzi del cliente. Quattro modelli; anteprima immediata e download in PDF.",
+  "intro": "Una fattura e-commerce è la fattura di un ordine fatto online. Mostra i prodotti e le quantità, l'imposta su ogni articolo, la spedizione, il venditore e gli indirizzi del cliente.",
   "designs": {
     "t1": "Ricevuta di pagamento",
     "t2": "Ordine confermato",

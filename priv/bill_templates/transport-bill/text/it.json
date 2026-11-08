@@ -4,6 +4,7 @@
   "public_slug": "generatore-lettera-di-vettura",
   "summary": "Lettera di vettura con mittente, destinatario, peso e nolo.",
   "description": "Genera una lettera di vettura per il trasporto di merci con partenza e arrivo, mittente e destinatario, numero di colli, peso e porto franco o assegnato. Anteprima immediata e download in PDF.",
+  "intro": "Una lettera di vettura accompagna le merci trasportate su strada. Mostra l'origine e la destinazione, il mittente e il destinatario, il numero di colli, il peso e il nolo, pagato o da pagare.",
   "designs": {
     "t1": "Lettera di vettura"
   },

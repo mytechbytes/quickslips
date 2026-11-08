@@ -4,6 +4,7 @@
   "public_slug": "generador-de-factura-de-taxi",
   "summary": "Factura de un viaje en taxi o VTC con tarifa, peajes y {tax}.",
   "description": "Genera una factura de taxi o VTC con lugar de recogida y de destino, distancia, tarifa, peajes e impuestos ({tax}). Previsualízala al instante y descarga el PDF.",
+  "intro": "Una factura de taxi es el comprobante de un viaje en taxi, en coche con conductor o en mototaxi. Muestra la recogida y el destino, la distancia, la tarifa, el peaje, si lo hay, y el impuesto.",
   "designs": {
     "t1": "Recibo del viaje",
     "t2": "Viaje y factura",

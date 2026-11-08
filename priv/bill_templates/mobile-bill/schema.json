@@ -7,6 +7,7 @@
   "number_field": "bill_number",
   "summary": "Prepaid recharge or postpaid plan bill.",
   "description": "Generate a mobile bill or recharge receipt with number, plan, validity, charges and {tax}. Preview instantly and download as PDF.",
+  "intro": "A mobile bill shows what a phone connection cost for a period. It lists the number, the plan, the validity, the charges and the tax.",
   "tax": { "default": "added" },
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [

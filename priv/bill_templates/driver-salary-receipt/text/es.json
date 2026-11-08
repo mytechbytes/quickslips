@@ -4,6 +4,7 @@
   "public_slug": "generador-de-recibo-de-sueldo-del-conductor",
   "summary": "Recibo mensual de sueldo para un conductor.",
   "description": "Crea un recibo de sueldo para un conductor con sueldo mensual, horas extra, complementos y deducciones. Previsualízalo al instante y descarga el PDF.",
+  "intro": "Un recibo de sueldo del conductor registra lo que se pagó a un conductor por un período. Muestra el sueldo mensual, las horas extra, los complementos y las deducciones.",
   "designs": {
     "t1": "Reembolso",
     "t2": "Con acuse de recibo",

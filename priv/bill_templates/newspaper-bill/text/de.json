@@ -4,6 +4,7 @@
   "public_slug": "zeitungsrechnung-generator",
   "summary": "Monatliche Zeitungsrechnung mit Zustellgebühr.",
   "description": "Erstellen Sie eine monatliche Rechnung für die Zustellung von Zeitungen oder Zeitschriften mit Agentur, Monat, Titeln samt Preis und Menge, Zustellgebühr und Gesamtbetrag. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Zeitungsrechnung ist die Monatsabrechnung für die Lieferung einer Zeitung oder Zeitschrift. Sie zeigt die Agentur, den Monat, jede Zeitung mit Preis und Menge, eine Zustellgebühr und die Summe.",
   "designs": {
     "t1": "Klassisch"
   },

@@ -4,6 +4,7 @@
   "public_slug": "restaurant-bill-generator",
   "summary": "包含菜品和{tax}的堂食或外带账单。",
   "description": "生成包含任意数量菜品、数量、服务费和{tax}的餐厅账单。即时预览，并可下载为 PDF。",
+  "intro": "餐厅账单列出所点的菜品及费用，包括品名和数量、服务费和税额。",
   "designs": {
     "t1": "像素小票",
     "t2": "虚线收据",

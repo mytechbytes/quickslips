@@ -4,6 +4,7 @@
   "public_slug": "laundry-bill-generator",
   "summary": "Laundry and dry-cleaning bill with garments, quantities and amounts.",
   "description": "Create a laundry or dry-cleaning bill with the garments, quantities and prices, a delivery date, {tax}, the payment method and your terms and conditions. Two designs; preview instantly and download as PDF.",
+  "intro": "A laundry bill lists the garments handed in for washing or dry cleaning. It shows the quantities and prices, the delivery date, the tax and the payment method, with the shop's terms.",
   "designs": {
     "t1": "Yellow bill",
     "t2": "Cash or credit invoice"

@@ -4,6 +4,7 @@
   "public_slug": "hotelrechnung-generator",
   "summary": "Hotelrechnung mit Preis pro Nacht, Extras, Anzahlung und {tax}.",
   "description": "Erstellen Sie eine Hotelrechnung mit Gast, Zimmer, An- und Abreise, Preis pro Nacht, weiteren Zimmern und Leistungen, Anzahlung und {tax}. Drei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Hotelrechnung hält einen Aufenthalt fest. Sie zeigt den Gast, das Zimmer, An- und Abreisedatum, den Preis pro Nacht, zusätzliche Zimmer und Leistungen, eine geleistete Anzahlung und die Steuer.",
   "designs": {
     "t1": "Klassisch",
     "t2": "Steuerrechnung",

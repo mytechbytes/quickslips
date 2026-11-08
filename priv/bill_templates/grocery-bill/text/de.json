@@ -4,6 +4,7 @@
   "public_slug": "lebensmittel-kassenbon-generator",
   "summary": "Artikel, Mengen und Summen.",
   "description": "Erstellen Sie einen Lebensmittel-Kassenbon mit beliebig vielen Artikeln, Mengen, Preisen, Rabatt und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Ein Lebensmittel-Kassenbon listet auf, was in einem Lebensmittelgeschäft oder Supermarkt gekauft wurde. Er zeigt die Artikel, Mengen und Preise, einen eventuellen Rabatt und die Steuer.",
   "designs": {
     "t1": "Einzelhandelsrechnung",
     "t2": "Rechnung mit Ersparnis"

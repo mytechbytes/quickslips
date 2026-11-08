@@ -145,6 +145,70 @@ defmodule QuickSlips.TemplatesTest do
     assert %{"t2" => false} = signs.("internet-bill")
   end
 
+  describe "the words under every page" do
+    # Every bill in every language it is in, as a visitor of each live locale sees it.
+    defp every_page do
+      for locale <- Locales.live(), schema <- Templates.list(locale), do: {locale, schema}
+    end
+
+    test "every page says what its bill is, in its own words" do
+      for {locale, schema} <- every_page() do
+        intro = schema["intro"]
+        where = "#{locale.code} #{schema["slug"]}"
+
+        assert is_binary(intro) and intro =~ ~r/\S{3}/, "#{where}: no intro"
+        refute intro =~ ~r/[{}]/, "#{where}: a place in the intro was not filled in"
+        # not the same words as the line under the title, which is about the form
+        refute intro == schema["description"], where
+      end
+    end
+
+    test "the intros of two bills are never the same" do
+      for locale <- Locales.live() do
+        intros = for schema <- Templates.list(locale), do: schema["intro"]
+        assert intros == Enum.uniq(intros), locale.code
+      end
+    end
+
+    test "every page has its questions, each with an answer and nothing left to fill in" do
+      for {locale, schema} <- every_page() do
+        where = "#{locale.code} #{schema["slug"]}"
+        faq = schema["faq"]
+
+        # how to use it, what it needs, whether it is free, other countries, whether it is official: at least
+        assert length(faq) >= 5, where
+
+        for %{"q" => question, "a" => answer} <- faq do
+          assert question =~ ~r/\S{2}/ and answer =~ ~r/\S{2}/, where
+          refute question =~ ~r/\{\w+\}/, "#{where}: #{question}"
+          refute answer =~ ~r/\{\w+\}/, "#{where}: #{answer}"
+        end
+
+        questions = Enum.map(faq, & &1["q"])
+        assert questions == Enum.uniq(questions), where
+      end
+    end
+
+    test "the first question names the page, in its language" do
+      for {locale, schema} <- every_page() do
+        assert hd(schema["faq"])["q"] =~ schema["title"], "#{locale.code} #{schema["slug"]}"
+      end
+    end
+
+    test "the question about tax is asked of a bill that has a tax rate, the one about signatures of a bill that has a place to sign" do
+      for {locale, schema} <- every_page() do
+        taxed? = Enum.any?(schema["fields"], &(&1["type"] == "tax_rate"))
+        signing? = Enum.any?(schema["templates"], &(&1["signature"] == true))
+
+        # always asked: how to use it, what it needs, whether it is free, other countries, whether it is official
+        expected = 5 + if(taxed?, do: 1, else: 0) + if(signing?, do: 1, else: 0)
+
+        assert length(schema["faq"]) == expected,
+               "#{locale.code} #{schema["slug"]}: #{inspect(Enum.map(schema["faq"], & &1["q"]))}"
+      end
+    end
+  end
+
   describe "public slugs" do
     test "are the confirmed ones" do
       assert Map.new(Templates.list(), &{&1["slug"], &1["public_slug"]}) == @public_slugs

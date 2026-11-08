@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-consegna-pasti",
   "summary": "Fattura di consegna pasti con {tax} su ogni riga.",
   "description": "Genera una fattura di consegna pasti per conto di un ristorante, con indirizzo di consegna, imposta per riga, dati legali della piattaforma e un firmatario. Anteprima immediata e download in PDF.",
+  "intro": "Una fattura consegna pasti è la fattura con imposta per un ordine di ristorante o di consegna a domicilio. Mostra l'indirizzo di consegna, l'imposta di ogni riga, i dati legali della piattaforma e un firmatario.",
   "designs": {
     "t1": "Fattura di consegna"
   },

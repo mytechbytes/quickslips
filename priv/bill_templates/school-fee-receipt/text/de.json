@@ -4,6 +4,7 @@
   "public_slug": "schulgeldquittung-generator",
   "summary": "Schulgeldquittung mit Aufschlüsselung oder kurze Quittung.",
   "description": "Erstellen Sie eine Schulgeldquittung mit Schüler, Klasse, Zeitraum und Aufschlüsselung von Schulgeld, Fahrtkosten und sonstigen Gebühren oder eine kurze Quittung mit dem Betrag in Worten. Zwei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Schulgeldquittung bestätigt, dass Gebühren bezahlt wurden. Sie zeigt den Schüler, die Klasse, den Zeitraum und die Beträge für Schulgeld, Transport und weitere Gebühren.",
   "designs": {
     "t1": "Klassisch",
     "t2": "Kurzquittung"

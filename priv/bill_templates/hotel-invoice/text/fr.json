@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-d-hotel",
   "summary": "Facture de séjour avec tarif, extras, acompte et {tax}.",
   "description": "Créez une facture d'hôtel avec le client, la chambre, l'arrivée et le départ, le tarif par nuit, des chambres ou services supplémentaires, l'acompte et la {tax}. Trois modèles ; aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture d'hôtel enregistre un séjour. Elle indique le client, la chambre, les dates d'arrivée et de départ, le tarif par nuit, les chambres et services en plus, l'acompte versé et la taxe.",
   "designs": {
     "t1": "Classique",
     "t2": "Facture fiscale",

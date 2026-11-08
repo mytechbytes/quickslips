@@ -4,6 +4,7 @@
   "public_slug": "elektronik-rechnung-generator",
   "summary": "Rechnung für Elektronik mit Seriennummern und Steueraufschlüsselung.",
   "description": "Erstellen Sie eine Rechnung für Handys, Haushaltsgeräte und andere Elektronik mit Seriennummern, HS-Codes, {tax} im Preis, Rechnungs- und Lieferpartei, Zahlungsdaten und dem Betrag in Worten. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Elektronik-Rechnung ist die Rechnung mit Steuerausweis für ein Telefon, ein Gerät oder andere Elektronik. Sie zeigt die Seriennummern, die im Preis enthaltene Steuer, Käufer und Verkäufer sowie die Zahlung.",
   "designs": {
     "t1": "Rechnung"
   },

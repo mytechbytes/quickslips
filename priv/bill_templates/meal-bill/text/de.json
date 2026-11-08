@@ -4,6 +4,7 @@
   "public_slug": "essenslieferung-rechnung-generator",
   "summary": "Rechnung für Essenslieferungen mit {tax} je Position.",
   "description": "Erstellen Sie eine Rechnung für eine Essenslieferung im Namen eines Restaurants mit Lieferadresse, Steuer je Position, den rechtlichen Angaben der Plattform und einem Unterzeichner. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Rechnung für Essenslieferung ist die Rechnung mit Steuerausweis für eine Restaurant- oder Lieferbestellung. Sie zeigt die Lieferadresse, die Steuer je Zeile, die rechtlichen Angaben der Plattform und einen Unterzeichner.",
   "designs": {
     "t1": "Lieferrechnung"
   },

@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-ipermercato",
   "summary": "Fattura per ipermercato con un'aliquota per articolo.",
   "description": "Crea una fattura per ipermercato o supermercato con un'aliquota {tax} per ogni articolo, il dettaglio dell'imposta per aliquota, i dati dell'ordine e della consegna e il tuo risparmio. Anteprima immediata e download in PDF.",
+  "intro": "Una fattura ipermercato è la fattura con imposta per una spesa. Mostra ogni articolo con la sua aliquota, l'imposta ripartita per aliquota, i dati dell'ordine e della consegna e quanto si è risparmiato.",
   "designs": {
     "t1": "Fattura"
   },

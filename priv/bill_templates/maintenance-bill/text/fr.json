@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-d-atelier",
   "summary": "Devis ou facture d'atelier avec pièces, main-d'œuvre et {tax}.",
   "description": "Générez un devis, une facture ou un ordre de réparation d'atelier auto ou moto avec le client et le véhicule, les pièces avec remise, la main-d'œuvre et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture d'atelier est le devis, la facture ou l'ordre de réparation d'un garage pour une voiture ou une moto. Elle indique le client et le véhicule, les pièces avec remises, la main-d'œuvre et la taxe.",
   "designs": {
     "t1": "Fiche d'atelier"
   },

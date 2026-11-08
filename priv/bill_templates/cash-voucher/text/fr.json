@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-bon-de-caisse",
   "summary": "Bon de caisse avec désignations, montant et signatures d'approbation.",
   "description": "Créez un bon de caisse avec le bénéficiaire, les désignations et montants, le total en chiffres et en lettres, et les signatures d'établissement, de vérification, d'approbation et de réception. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un bon de caisse enregistre un paiement en espèces : qui a été payé, pour quoi et combien. Il porte les signatures de ceux qui l'ont préparé, vérifié, approuvé et reçu.",
   "designs": {
     "t1": "Bon à cases"
   },

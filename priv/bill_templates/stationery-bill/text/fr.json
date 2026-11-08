@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-ticket-de-papeterie",
   "summary": "Ticket de papeterie avec articles, prix et totaux.",
   "description": "Créez un ticket de papeterie avec stylos, papier et autres fournitures, quantités, prix et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un ticket de papeterie est le justificatif de stylos, de papier et d'autres fournitures achetés dans une papeterie. Il indique les articles, les quantités, les prix et la taxe.",
   "designs": {
     "t1": "Ticket"
   },

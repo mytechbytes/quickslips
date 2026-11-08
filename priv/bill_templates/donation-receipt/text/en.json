@@ -4,6 +4,7 @@
   "public_slug": "donation-receipt-generator",
   "summary": "Receipt for a donation to an NGO or trust.",
   "description": "Create a donation receipt for an NGO, charity or trust with the donor, the amount in figures and words, the payment method, who received it and a thank-you. Preview instantly and download as PDF.",
+  "intro": "A donation receipt is what an NGO, a charity or a trust gives a donor to confirm a gift. It shows who gave, how much, by which payment method and who received it.",
   "designs": {
     "t1": "Receipt"
   },

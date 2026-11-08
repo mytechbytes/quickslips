@@ -4,6 +4,7 @@
   "public_slug": "generador-de-ayuda-por-estudios-de-hijos",
   "summary": "Formulario de reembolso de la ayuda por estudios de los hijos.",
   "description": "Rellena el formulario de reembolso de una ayuda por estudios de los hijos (CEA) o subsidio de residencia con el solicitante, el cónyuge, los hijos y sus colegios y los gastos. Previsualízalo al instante y descarga el PDF.",
+  "intro": "Una solicitud de ayuda por estudios de los hijos (CEA) es el formulario en el que un empleado detalla a sus hijos, sus colegios y el gasto realizado para que se le reembolse según las normas de la empresa. Incluye también un subsidio de internado y los datos del cónyuge.",
   "designs": {
     "t1": "Formulario"
   },

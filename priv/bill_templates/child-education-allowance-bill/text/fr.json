@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-demande-d-allocation-d-etudes",
   "summary": "Formulaire de remboursement de l'allocation d'études des enfants.",
   "description": "Remplissez le formulaire de remboursement d'une allocation d'études des enfants (CEA) ou d'une aide à l'internat avec le demandeur, le conjoint, les enfants et leurs écoles et les dépenses. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une demande d'allocation d'études des enfants (CEA) est le formulaire dans lequel un salarié détaille ses enfants, leurs écoles et les dépenses engagées, afin d'être remboursé selon les règles de l'employeur. Elle comprend aussi une aide pour l'internat et les informations sur le conjoint.",
   "designs": {
     "t1": "Formulaire"
   },

@@ -4,6 +4,7 @@
   "public_slug": "leave-travel-allowance-bill-generator",
   "summary": "Bus or train e-ticket for a leave travel allowance claim.",
   "description": "Create a bus or train e-ticket for a leave travel allowance (LTA) claim with the operator, boarding and dropping points, passengers, seat, fare, {tax} and the cancellation terms. Two designs; preview instantly and download as PDF.",
+  "intro": "A bus or train e-ticket records a journey. In India it is the kind of document attached to a leave travel allowance (LTA) claim: it shows the operator, the boarding and dropping points, the passengers, the seat, the fare and the cancellation terms.",
   "designs": {
     "t1": "E-ticket",
     "t2": "Boxed e-ticket"

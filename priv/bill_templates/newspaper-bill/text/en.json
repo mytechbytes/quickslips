@@ -4,6 +4,7 @@
   "public_slug": "newspaper-bill-generator",
   "summary": "Monthly newspaper delivery bill with a service charge.",
   "description": "Create a monthly newspaper or magazine delivery bill with the agency, the month, the papers with their rate and quantity, a home-delivery service charge and the total. Preview instantly and download as PDF.",
+  "intro": "A newspaper bill is the monthly account for a newspaper or magazine delivery. It shows the agency, the month, each paper with its rate and quantity, a home-delivery charge and the total.",
   "designs": {
     "t1": "Classic"
   },

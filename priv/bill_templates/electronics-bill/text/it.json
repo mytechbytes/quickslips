@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-elettronica",
   "summary": "Fattura per elettronica con numeri di serie e dettaglio delle imposte.",
   "description": "Genera una fattura per telefoni, elettrodomestici e altra elettronica con numeri di serie, codici HS, {tax} inclusa nel prezzo, le parti di fatturazione e spedizione, i dati di pagamento e l'importo in lettere. Anteprima immediata e download in PDF.",
+  "intro": "Una fattura per elettronica è la fattura con imposta per un telefono, un elettrodomestico o altri prodotti elettronici. Mostra i numeri di serie, l'imposta compresa nel prezzo, l'acquirente e il venditore e il pagamento.",
   "designs": {
     "t1": "Fattura"
   },

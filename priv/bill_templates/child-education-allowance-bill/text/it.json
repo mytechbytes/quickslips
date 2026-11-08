@@ -4,6 +4,7 @@
   "public_slug": "generatore-richiesta-indennita-istruzione-figli",
   "summary": "Modulo di rimborso dell'indennità per l'istruzione dei figli.",
   "description": "Compila il modulo di rimborso dell'indennità per l'istruzione dei figli (CEA) o del contributo per il convitto con richiedente, coniuge, figli e relative scuole e spese. Anteprima immediata e download in PDF.",
+  "intro": "Una richiesta di indennità per l'istruzione dei figli (CEA) è il modulo in cui un dipendente elenca i figli, le loro scuole e le spese sostenute, da rimborsare secondo le regole del datore di lavoro. Comprende anche un contributo per il convitto e i dati del coniuge.",
   "designs": {
     "t1": "Modulo"
   },

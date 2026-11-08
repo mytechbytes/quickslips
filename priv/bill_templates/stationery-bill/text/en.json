@@ -4,6 +4,7 @@
   "public_slug": "stationery-bill-generator",
   "summary": "Stationery shop bill with items, rates and totals.",
   "description": "Create a stationery shop bill with pens, paper and other supplies, quantities, rates and {tax}. Preview instantly and download as PDF.",
+  "intro": "A stationery bill is the receipt for pens, paper and other supplies from a stationery shop. It shows the items, the quantities, the rates and the tax.",
   "designs": {
     "t1": "Receipt"
   },

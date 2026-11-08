@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-libreria",
   "summary": "Ricevuta di libreria con titolo, autore e pagamento.",
   "description": "Crea una ricevuta di libreria con titolo, autore ed editore del libro, quantità, prezzo e metodo di pagamento. Anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta libreria è la prova d'acquisto che una libreria rilascia per un libro. Mostra il titolo, l'autore e l'editore, il prezzo e come è stato pagato.",
   "designs": {
     "t1": "Classico",
     "t2": "Con il venditore"

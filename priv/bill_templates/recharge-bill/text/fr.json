@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-de-recharge",
   "summary": "Facture de recharge mobile, téléphone ou TV avec récapitulatif du compte.",
   "description": "Créez une facture de recharge pour une ligne mobile, fixe ou TV avec l'opérateur, le forfait, le cycle de facturation, le récapitulatif du compte, la {tax} et un accusé de réception, en quatre thèmes de couleur. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture de recharge est la facture d'une recharge de mobile, de téléphone ou de télévision par satellite (DTH). Elle indique l'opérateur, le forfait, le cycle de facturation, un récapitulatif du compte, la taxe et un accusé de réception.",
   "designs": {
     "t1": "Facture"
   },

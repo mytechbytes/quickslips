@@ -4,6 +4,7 @@
   "public_slug": "medical-bill-generator",
   "summary": "Hospital, clinic or lab bill with {tax}.",
   "description": "Create a hospital, clinic or lab bill with patient, doctor, room, consultation, medicines, tests and itemised charges. Preview instantly and download as PDF.",
+  "intro": "A medical bill itemises what a hospital, a clinic or a laboratory charged. It shows the patient and the doctor, the room, the consultation, medicines, tests and other charges.",
   "designs": {
     "t1": "Hospital invoice",
     "t2": "Provisional bill"

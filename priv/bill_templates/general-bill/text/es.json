@@ -4,6 +4,7 @@
   "public_slug": "generador-de-factura-general",
   "summary": "Factura sencilla para cualquier venta o servicio, con un tipo de impuesto por artículo.",
   "description": "Crea una factura para cualquier venta o servicio con todos los artículos que necesites, un tipo de {tax} para cada uno, el vendedor, el cliente y el pago. Previsualízala al instante y descarga el PDF.",
+  "intro": "Una factura general sirve para cualquier venta o servicio. Enumera los artículos con sus cantidades y precios y un tipo de impuesto para cada uno, e indica el vendedor, el cliente y el pago.",
   "designs": {
     "t1": "Factura sencilla"
   },

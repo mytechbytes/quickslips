@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-sanitaria",
   "summary": "Fattura di ospedale, clinica o laboratorio con {tax}.",
   "description": "Genera una fattura di ospedale, clinica o laboratorio con paziente, medico, camera, visita, farmaci, esami e addebiti dettagliati. Anteprima immediata e download in PDF.",
+  "intro": "Una fattura sanitaria dettaglia quanto ha addebitato un ospedale, una clinica o un laboratorio. Mostra il paziente e il medico, la stanza, la visita, i farmaci, gli esami e altri costi.",
   "designs": {
     "t1": "Fattura ospedaliera",
     "t2": "Fattura provvisoria"

@@ -7,6 +7,7 @@
   "number_field": "tracking_number",
   "summary": "Parcel booking receipt with weight and freight.",
   "description": "Make a courier booking receipt with tracking number, sender, receiver, weight, service and freight charge. Preview instantly and download as PDF.",
+  "intro": "A courier receipt is given when a parcel is booked. It shows the tracking number, the sender and the receiver, the weight, the service chosen and the freight charge.",
   "tax": { "default": "added" },
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [

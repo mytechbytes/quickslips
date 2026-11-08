@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-generale",
   "summary": "Facture simple pour toute vente ou prestation, avec un taux de taxe par article.",
   "description": "Créez une facture pour toute vente ou prestation avec autant d'articles que nécessaire, un taux de {tax} par article, le vendeur, le client et le paiement. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture générale convient à toute vente ou prestation. Elle énumère les articles avec leurs quantités et leurs prix et un taux de taxe pour chacun, et nomme le vendeur, le client et le paiement.",
   "designs": {
     "t1": "Facture simple"
   },

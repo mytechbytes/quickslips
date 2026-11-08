@@ -4,6 +4,7 @@
   "public_slug": "kassenbeleg-generator",
   "summary": "Kassenbeleg mit Positionen, Betrag und Freigabeunterschriften.",
   "description": "Erstellen Sie einen Kassenbeleg mit Zahlungsempfänger, Positionen und Beträgen, Summe in Ziffern und Worten sowie den Unterschriften für Erstellung, Prüfung, Genehmigung und Empfang. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Ein Kassenbeleg hält eine Barzahlung fest: wer wofür wie viel bekommen hat. Er trägt die Unterschriften derer, die ihn erstellt, geprüft, genehmigt und empfangen haben.",
   "designs": {
     "t1": "Beleg mit Feldern"
   },

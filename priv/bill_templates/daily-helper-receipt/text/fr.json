@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-recu-d-aide-a-domicile",
   "summary": "Reçu de salaire mensuel pour une aide à domicile.",
   "description": "Créez un reçu de salaire pour une aide à domicile, comme une femme de ménage ou un cuisinier, avec la fonction, le mois, le montant et le mode de paiement. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un reçu d'aide à domicile enregistre le salaire mensuel d'une femme de ménage, d'un cuisinier ou d'une autre personne qui aide à la maison. Il indique la fonction, le mois, le montant et le mode de paiement.",
   "designs": {
     "t1": "Remboursement",
     "t2": "Avec accusé de réception",

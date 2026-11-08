@@ -4,6 +4,7 @@
   "public_slug": "haushaltshilfe-quittung-generator",
   "summary": "Monatliche Gehaltsquittung für eine Haushaltshilfe.",
   "description": "Erstellen Sie eine Gehaltsquittung für eine Haushaltshilfe, etwa Reinigungskraft oder Köchin, mit Tätigkeit, Monat, Betrag und Zahlungsart. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Haushaltshilfe-Quittung hält den Monatslohn einer Haushaltshilfe, einer Köchin oder einer anderen Hilfskraft im Haushalt fest. Sie zeigt die Tätigkeit, den Monat, den Betrag und die Zahlungsart.",
   "designs": {
     "t1": "Erstattung",
     "t2": "Mit Empfangsbestätigung",

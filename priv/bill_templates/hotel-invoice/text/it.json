@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-hotel",
   "summary": "Fattura del soggiorno con tariffa, extra, acconto e {tax}.",
   "description": "Crea una fattura per hotel con ospite, camera, check-in e check-out, tariffa per notte, camere o servizi aggiuntivi, acconto e {tax}. Tre modelli; anteprima immediata e download in PDF.",
+  "intro": "Una fattura hotel registra un soggiorno. Mostra l'ospite, la camera, le date di arrivo e partenza, la tariffa per notte, le camere e i servizi extra, l'anticipo versato e l'imposta.",
   "designs": {
     "t1": "Classico",
     "t2": "Fattura fiscale",

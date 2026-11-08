@@ -4,6 +4,7 @@
   "public_slug": "generatore-conto-ristorante",
   "summary": "Conto per consumazione al tavolo o da asporto con articoli e {tax}.",
   "description": "Genera un conto del ristorante con un numero qualsiasi di articoli, quantità, servizio e {tax}. Anteprima immediata e download in PDF.",
+  "intro": "Un conto del ristorante elenca ciò che è stato ordinato e quanto è costato. Mostra gli articoli e le quantità, il servizio e l'imposta.",
   "designs": {
     "t1": "Scontrino pixel",
     "t2": "Ricevuta tratteggiata",

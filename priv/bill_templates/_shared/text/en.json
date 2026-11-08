@@ -63,5 +63,42 @@
         "minor_other": "cents"
       }
     }
+  },
+  "faq": {
+    "separator": ", ",
+    "joiner": " ",
+    "how": {
+      "q": "How do I use the {title}?",
+      "a": "Fill in the form, watch the preview change as you type, and download the PDF.",
+      "designs": "Choose one of the {count} designs: {designs}."
+    },
+    "required": {
+      "q": "Which details do I need to fill in?",
+      "a": "You need: {required}. Everything else is optional.",
+      "a_more": "Among others, you need: {required}. Everything else is optional."
+    },
+    "tax": {
+      "q": "Does it work out the tax ({tax})?",
+      "rates": "Choose the rate your country uses ({rates}), or type your own.",
+      "typed": "Type the rate that applies to you.",
+      "added": "The tax is added to the prices, and the document shows the amount before tax, the tax and the total.",
+      "included": "The prices already include the tax, and the document shows how much of the total is tax."
+    },
+    "signature": {
+      "q": "Can I add my signature?",
+      "a": "Yes, when you are logged in. Save your signatures once, then choose one on the document; choose “No signature” to leave the place empty and sign by hand. A logo is saved with your business."
+    },
+    "free": {
+      "q": "Is it free, and do I need an account?",
+      "a": "You can make a few documents every day without an account. A free account gives you more downloads, and keeps your businesses, signatures and documents so you can use them again."
+    },
+    "country": {
+      "q": "Can I make it for another country or currency?",
+      "a": "Yes. Choose the country, the language and the currency in the menu at the top of the page; the form, the tax and the way numbers and dates are written follow your choice."
+    },
+    "official": {
+      "q": "Is this an official document?",
+      "a": "No. QuickSlips makes the document from the details you enter. It is not issued by a tax authority or by an e-invoicing system, and you are responsible for the accuracy of what you enter and for using the document lawfully, for real transactions only."
+    }
   }
 }

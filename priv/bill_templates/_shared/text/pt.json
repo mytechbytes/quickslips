@@ -105,5 +105,42 @@
         "minor_gender": "m"
       }
     }
+  },
+  "faq": {
+    "separator": ", ",
+    "joiner": " ",
+    "how": {
+      "q": "Como usar o {title}?",
+      "a": "Preencha o formulário, veja a prévia mudar enquanto você digita e baixe o PDF.",
+      "designs": "Escolha um dos {count} modelos: {designs}."
+    },
+    "required": {
+      "q": "Quais dados preciso preencher?",
+      "a": "Você precisa de: {required}. Todo o resto é opcional.",
+      "a_more": "Você precisa, entre outros, de: {required}. Todo o resto é opcional."
+    },
+    "tax": {
+      "q": "Ele calcula o imposto ({tax})?",
+      "rates": "Escolha a alíquota usada no seu país ({rates}) ou digite a sua.",
+      "typed": "Digite a alíquota que vale para você.",
+      "added": "O imposto é somado aos preços, e o documento mostra o valor sem imposto, o imposto e o total.",
+      "included": "Os preços já incluem o imposto, e o documento mostra quanto do total é imposto."
+    },
+    "signature": {
+      "q": "Posso adicionar a minha assinatura?",
+      "a": "Sim, quando você estiver logado. Salve suas assinaturas uma vez e escolha uma no documento; escolha “Sem assinatura” para deixar o espaço vazio e assinar à mão. O logotipo é salvo com a sua empresa."
+    },
+    "free": {
+      "q": "É grátis? Preciso de uma conta?",
+      "a": "Você pode criar alguns documentos por dia sem conta. Uma conta gratuita dá mais downloads e guarda suas empresas, assinaturas e documentos para você usar de novo."
+    },
+    "country": {
+      "q": "Posso fazer para outro país ou outra moeda?",
+      "a": "Sim. Escolha o país, o idioma e a moeda no menu no topo da página; o formulário, o imposto e a forma de escrever números e datas seguem a sua escolha."
+    },
+    "official": {
+      "q": "É um documento oficial?",
+      "a": "Não. O QuickSlips cria o documento com os dados que você informa. Ele não é emitido por uma autoridade fiscal nem por um sistema de nota fiscal eletrônica, e você é responsável pela exatidão do que informa e por usá-lo de forma lícita, apenas em transações reais."
+    }
   }
 }

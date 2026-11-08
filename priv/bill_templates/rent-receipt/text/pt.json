@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-recibo-de-aluguel",
   "summary": "Recibos de aluguel mensais como comprovante de pagamento.",
   "description": "Crie um recibo de aluguel, ou até 12 recibos de um período, com inquilino, proprietário, imóvel e valor. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Um recibo de aluguel é a prova escrita de que um inquilino pagou o aluguel a um proprietário por um período. Indica o inquilino, o proprietário e o imóvel, e mostra o valor e a forma de pagamento.",
   "designs": {
     "t1": "Reembolso",
     "t2": "Com confirmação de recebimento",

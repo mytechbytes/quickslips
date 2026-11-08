@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-jornais",
   "summary": "Nota mensal de entrega de jornais com taxa de serviço.",
   "description": "Crie uma nota mensal de entrega de jornais ou revistas com a agência, o mês, os títulos com preço e quantidade, taxa de entrega em domicílio e o total. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de jornais é a conta mensal da entrega de um jornal ou de uma revista. Mostra a agência, o mês, cada publicação com preço e quantidade, uma taxa de entrega em domicílio e o total.",
   "designs": {
     "t1": "Clássico"
   },

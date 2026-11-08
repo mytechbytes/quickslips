@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-pedido-de-auxilio-educacao",
   "summary": "Formulário de reembolso do auxílio-educação dos filhos.",
   "description": "Preencha o formulário de reembolso do auxílio-educação dos filhos (CEA) ou subsídio de alojamento com o requerente, o cônjuge, os filhos e suas escolas e as despesas. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Um pedido de auxílio-educação dos filhos (CEA) é o formulário em que um funcionário lista os filhos, as escolas e os gastos, para ser reembolsado conforme as regras do empregador. Inclui também um auxílio de alojamento e os dados do cônjuge.",
   "designs": {
     "t1": "Formulário"
   },

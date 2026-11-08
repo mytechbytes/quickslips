@@ -4,6 +4,7 @@
   "public_slug": "generatore-scontrino-cartoleria",
   "summary": "Scontrino di cartoleria con articoli, prezzi e totali.",
   "description": "Crea uno scontrino per cartoleria con penne, carta e altro materiale, quantità, prezzi e {tax}. Anteprima immediata e download in PDF.",
+  "intro": "Uno scontrino cartoleria è la ricevuta di penne, carta e altro materiale acquistato in una cartoleria. Mostra gli articoli, le quantità, i prezzi e l'imposta.",
   "designs": {
     "t1": "Scontrino"
   },

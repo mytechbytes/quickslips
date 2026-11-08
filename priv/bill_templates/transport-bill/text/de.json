@@ -4,6 +4,7 @@
   "public_slug": "frachtbrief-generator",
   "summary": "Frachtbrief mit Absender, Empfänger, Gewicht und Fracht als PDF.",
   "description": "Erstellen Sie einen Frachtbrief für den Gütertransport mit Abgangs- und Bestimmungsort, Absender und Empfänger, Anzahl der Packstücke, Gewicht und Fracht (bezahlt oder zu zahlen). Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Ein Frachtbrief begleitet Güter, die auf der Straße befördert werden. Er zeigt Abgangs- und Bestimmungsort, Absender und Empfänger, die Anzahl der Packstücke, das Gewicht und die Fracht, bezahlt oder zu zahlen.",
   "designs": {
     "t1": "Frachtbrief"
   },

@@ -4,6 +4,7 @@
   "public_slug": "recharge-bill-generator",
   "summary": "Mobile, phone or DTH recharge invoice with account summary.",
   "description": "Create a recharge invoice for a mobile, phone or DTH connection with the operator, plan, billing cycle, account summary, {tax} and an acknowledgement slip, in four colour themes. Preview instantly and download as PDF.",
+  "intro": "A recharge bill is the invoice for a mobile, phone or DTH recharge. It shows the operator, the plan, the billing cycle, an account summary, the tax and an acknowledgement slip.",
   "designs": {
     "t1": "Tax invoice"
   },

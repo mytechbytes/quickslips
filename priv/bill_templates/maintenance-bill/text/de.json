@@ -4,6 +4,7 @@
   "public_slug": "werkstattrechnung-generator",
   "summary": "Werkstatt-Kostenvoranschlag oder -Rechnung mit Teilen, Arbeit und {tax}.",
   "description": "Erstellen Sie einen Kostenvoranschlag, eine Rechnung oder einen Werkstattauftrag für Auto oder Motorrad mit Kunde und Fahrzeug, Ersatzteilen mit Rabatt, Arbeitsleistungen und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Werkstattrechnung ist der Kostenvoranschlag, die Rechnung oder der Arbeitsauftrag einer Werkstatt für ein Auto oder Motorrad. Sie zeigt den Kunden und das Fahrzeug, Ersatzteile mit Rabatten, die Arbeiten und die Steuer.",
   "designs": {
     "t1": "Werkstattbeleg"
   },

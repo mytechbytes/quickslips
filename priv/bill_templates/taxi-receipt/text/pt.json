@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-recibo-de-taxi",
   "summary": "Recibo de corrida de táxi ou aplicativo com tarifa, pedágio e {tax}.",
   "description": "Gere um recibo de táxi ou carro de aplicativo com local de embarque e destino, distância, tarifa, pedágio e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Um recibo de táxi é o comprovante de uma corrida de táxi, de carro por aplicativo ou de moto-táxi. Mostra o embarque e o destino, a distância, a tarifa, um eventual pedágio e o imposto.",
   "designs": {
     "t1": "Recibo da corrida",
     "t2": "Corrida e fatura",

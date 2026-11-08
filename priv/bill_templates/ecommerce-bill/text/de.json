@@ -4,6 +4,7 @@
   "public_slug": "onlineshop-rechnung-generator",
   "summary": "Rechnung für Online-Bestellungen mit Steuersatz je Artikel und Versand.",
   "description": "Erstellen Sie eine Rechnung für eine Online-Bestellung mit Produkten, Mengen, einem {tax}-Satz für jeden Artikel, Versand, Verkäufer, Marktplatz und den Adressen des Kunden. Vier Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Onlineshop-Rechnung ist die Rechnung für eine Online-Bestellung. Sie zeigt die Produkte und Mengen, die Steuer je Artikel, den Versand, den Verkäufer und die Adressen des Kunden.",
   "designs": {
     "t1": "Zahlungsbeleg",
     "t2": "Bestellbestätigung",

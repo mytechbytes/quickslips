@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-lavanderia",
   "summary": "Nota de lavanderia e lavagem a seco com peças, quantidades e valores.",
   "description": "Crie uma nota de lavanderia ou lavagem a seco com as peças, quantidades e preços, a data de entrega, o {tax}, a forma de pagamento e as suas condições. Dois modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de lavanderia lista as peças entregues para lavar ou lavar a seco. Mostra as quantidades e os preços, a data de entrega, o imposto, a forma de pagamento e as condições do estabelecimento.",
   "designs": {
     "t1": "Nota amarela",
     "t2": "Nota à vista ou a prazo"

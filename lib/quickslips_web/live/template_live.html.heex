@@ -28,7 +28,7 @@
       data-signed-in={to_string(@signed_in?)}
       data-signatures={Jason.encode!(@signatures)}
       data-signature-id={@document && @document.signature_id}
-      data-schema={Jason.encode!(@schema)}
+      data-schema={Jason.encode!(Map.drop(@schema, ["intro", "faq"]))}
       data-sample={Jason.encode!(@sample)}
       data-worker={~p"/assets/js/preview_worker.js"}
       data-turnstile-site-key={turnstile_site_key(@current_scope)}
@@ -147,5 +147,31 @@
         </.button>
       </div>
     </div>
+
+    <%!-- What the bill is, and what people ask about it: words for the reader, and for a search engine. --%>
+    <section
+      :if={@schema["intro"] || @schema["faq"] != []}
+      id="bill-about"
+      class="mt-10 max-w-3xl border-t border-line pt-8"
+    >
+      <div :if={@schema["intro"]} id="bill-intro">
+        <h2 class="font-display text-xl font-semibold tracking-tight text-ink">
+          {@schema["name"]}
+        </h2>
+        <p class="mt-2 text-base/7 text-ink">{@schema["intro"]}</p>
+      </div>
+
+      <div :if={@schema["faq"] != []} id="bill-faq" class="mt-8">
+        <h2 class="font-display text-xl font-semibold tracking-tight text-ink">
+          {gettext("Frequently asked questions")}
+        </h2>
+        <div class="mt-4 divide-y divide-line border-y border-line">
+          <div :for={item <- @schema["faq"]} class="py-4">
+            <h3 class="text-base/6 font-semibold text-ink">{item["q"]}</h3>
+            <p class="mt-1.5 text-sm/6 text-ink-muted">{item["a"]}</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </article>
 </Layouts.app>

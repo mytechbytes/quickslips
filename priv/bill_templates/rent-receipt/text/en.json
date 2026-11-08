@@ -4,6 +4,7 @@
   "public_slug": "rent-receipt-generator",
   "summary": "Monthly rent receipts, ready to submit for HRA.",
   "description": "Create a rent receipt, or a set of up to 12 for a period, with tenant, landlord, property and amount. Preview instantly and download as PDF.",
+  "intro": "A rent receipt is written proof that a tenant paid rent to a landlord for a period. It names the tenant, the landlord and the property, and shows the amount and how it was paid.",
   "designs": {
     "t1": "Reimbursement",
     "t2": "With acknowledgement",

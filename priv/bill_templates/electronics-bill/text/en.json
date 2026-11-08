@@ -4,6 +4,7 @@
   "public_slug": "electronics-bill-generator",
   "summary": "Tax invoice for electronics with serial numbers and the tax breakup.",
   "description": "Generate a tax invoice for phones, appliances and other electronics with serial numbers, HSN codes, {tax} in the price, the bill-to and ship-to parties, payment details and the amount in words. Preview instantly and download as PDF.",
+  "intro": "An electronics bill is the tax invoice for a phone, an appliance or other electronics. It shows the serial numbers, the tax in the price, the buyer and the seller, and the payment.",
   "designs": {
     "t1": "Tax invoice"
   },

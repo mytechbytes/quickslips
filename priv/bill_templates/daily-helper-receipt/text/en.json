@@ -4,6 +4,7 @@
   "public_slug": "daily-helper-receipt-generator",
   "summary": "Monthly pay receipt for a household helper.",
   "description": "Create a salary receipt for a daily helper such as a maid or a cook, with the role, month, amount and payment mode. Preview instantly and download as PDF.",
+  "intro": "A daily helper receipt records the monthly pay of a maid, a cook or another household helper. It shows the role, the month, the amount and how it was paid.",
   "designs": {
     "t1": "Reimbursement",
     "t2": "With acknowledgement",

@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-oficina",
   "summary": "Orçamento ou nota de oficina com peças, mão de obra e {tax}.",
   "description": "Gere um orçamento, nota ou ordem de serviço de oficina de carro ou moto com cliente e veículo, peças com desconto, mão de obra e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de oficina é o orçamento, a nota ou a ordem de serviço de uma oficina para um carro ou uma moto. Mostra o cliente e o veículo, as peças com descontos, a mão de obra e o imposto.",
   "designs": {
     "t1": "Ficha de oficina"
   },

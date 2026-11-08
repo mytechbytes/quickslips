@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-recibo-de-academia",
   "summary": "Recibo ou fatura de academia com plano, período e valores.",
   "description": "Crie um recibo ou fatura de academia com plano, ciclo de cobrança, período, valores, itens adicionais, {tax} e as instruções da academia. Dois modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Um recibo de academia confirma o pagamento de um plano. Mostra o aluno, o plano e seu ciclo de cobrança, o período, as mensalidades, os itens extras e o imposto.",
   "designs": {
     "t1": "Recibo",
     "t2": "Fatura"

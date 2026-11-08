@@ -4,6 +4,7 @@
   "public_slug": "maintenance-bill-generator",
   "summary": "Workshop estimate or invoice with parts, labour and {tax}.",
   "description": "Generate a car or bike workshop estimate, invoice or job card with the customer and vehicle, spare parts with discounts, labour jobs and {tax}. Preview instantly and download as PDF.",
+  "intro": "A maintenance bill is a workshop's estimate, invoice or job card for a car or a bike. It shows the customer and the vehicle, the spare parts with discounts, the labour jobs and the tax.",
   "designs": {
     "t1": "Workshop sheet"
   },

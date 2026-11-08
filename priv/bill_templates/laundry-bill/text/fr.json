@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-de-pressing",
   "summary": "Facture de pressing et blanchisserie avec vêtements, quantités et montants.",
   "description": "Créez une facture de pressing ou de blanchisserie avec les vêtements, les quantités et les prix, la date de livraison, la {tax}, le mode de paiement et vos conditions. Deux modèles ; aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture de pressing énumère les vêtements déposés pour le lavage ou le nettoyage à sec. Elle indique les quantités et les prix, la date de livraison, la taxe, le mode de paiement et les conditions de l'établissement.",
   "designs": {
     "t1": "Facture jaune",
     "t2": "Facture comptant ou crédit"

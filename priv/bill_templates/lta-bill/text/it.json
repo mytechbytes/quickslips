@@ -4,6 +4,7 @@
   "public_slug": "generatore-biglietto-lta",
   "summary": "E-ticket di autobus o treno per un'indennità di viaggio.",
   "description": "Crea un e-ticket di autobus o treno per un'indennità di viaggio (LTA) con operatore, punti di salita e discesa, passeggeri, posto, tariffa, {tax} e condizioni di cancellazione. Due modelli; anteprima immediata e download in PDF.",
+  "intro": "Un biglietto di autobus o di treno registra un viaggio. In India è il tipo di documento che si allega a una richiesta di indennità di viaggio per le ferie (LTA): mostra il vettore, i punti di salita e discesa, i passeggeri, il posto, la tariffa e le condizioni di cancellazione.",
   "designs": {
     "t1": "E-ticket",
     "t2": "E-ticket a riquadri"

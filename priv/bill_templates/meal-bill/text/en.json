@@ -4,6 +4,7 @@
   "public_slug": "meal-bill-generator",
   "summary": "Food-delivery tax invoice with {tax} on each line.",
   "description": "Generate a food-delivery or meal tax invoice on behalf of a restaurant, with the delivery address, tax on each line, the platform's legal details and a signatory. Preview instantly and download as PDF.",
+  "intro": "A meal bill is the tax invoice for a restaurant or food-delivery order. It shows the delivery address, the tax on each line, the platform's legal details and a signatory.",
   "designs": {
     "t1": "Delivery tax invoice"
   },

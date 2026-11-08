@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-papelaria",
   "summary": "Nota de papelaria com itens, preços e totais.",
   "description": "Crie uma nota de papelaria com canetas, papel e outros materiais, quantidades, preços e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de papelaria é o comprovante de canetas, papel e outros materiais comprados em uma papelaria. Mostra os itens, as quantidades, os preços e o imposto.",
   "designs": {
     "t1": "Nota"
   },

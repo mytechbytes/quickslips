@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-scolastica",
   "summary": "Ricevuta di retta scolastica con dettaglio, o ricevuta breve.",
   "description": "Genera una ricevuta di retta scolastica con alunno, classe, periodo e dettaglio di retta, trasporto e altre quote, oppure una ricevuta breve con l'importo in lettere. Due modelli; anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta scolastica conferma che le rette sono state pagate. Mostra lo studente, la classe, il periodo e gli importi di retta, trasporto e altre quote.",
   "designs": {
     "t1": "Classico",
     "t2": "Ricevuta breve"

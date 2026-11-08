@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-ricarica",
   "summary": "Fattura di ricarica mobile, telefono o TV con riepilogo del conto.",
   "description": "Crea una fattura di ricarica per una linea mobile, fissa o TV con operatore, piano, ciclo di fatturazione, riepilogo del conto, {tax} e ricevuta di pagamento, in quattro temi colore. Anteprima immediata e download in PDF.",
+  "intro": "Una fattura di ricarica è la fattura per la ricarica di un cellulare, di un telefono o della TV satellitare (DTH). Mostra l'operatore, il piano, il ciclo di fatturazione, un riepilogo del conto, l'imposta e una ricevuta di conferma.",
   "designs": {
     "t1": "Fattura"
   },

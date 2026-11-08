@@ -105,5 +105,42 @@
         "minor_gender": "m"
       }
     }
+  },
+  "faq": {
+    "separator": ", ",
+    "joiner": " ",
+    "how": {
+      "q": "¿Cómo uso el {title}?",
+      "a": "Rellena el formulario, mira cómo cambia la vista previa mientras escribes y descarga el PDF.",
+      "designs": "Elige uno de los {count} diseños: {designs}."
+    },
+    "required": {
+      "q": "¿Qué datos tengo que rellenar?",
+      "a": "Necesitas: {required}. Todo lo demás es opcional.",
+      "a_more": "Necesitas, entre otros: {required}. Todo lo demás es opcional."
+    },
+    "tax": {
+      "q": "¿Calcula el impuesto ({tax})?",
+      "rates": "Elige el tipo que se usa en tu país ({rates}) o escribe el tuyo.",
+      "typed": "Escribe el tipo que te corresponde.",
+      "added": "El impuesto se suma a los precios, y el documento muestra el importe sin impuesto, el impuesto y el total.",
+      "included": "Los precios ya incluyen el impuesto, y el documento muestra cuánto del total es impuesto."
+    },
+    "signature": {
+      "q": "¿Puedo añadir mi firma?",
+      "a": "Sí, si has iniciado sesión. Guarda tus firmas una vez y elige una en el documento; elige «Sin firma» para dejar el espacio vacío y firmar a mano. El logotipo se guarda con tu empresa."
+    },
+    "free": {
+      "q": "¿Es gratis? ¿Necesito una cuenta?",
+      "a": "Puedes crear unos cuantos documentos al día sin cuenta. Una cuenta gratuita te da más descargas y guarda tus empresas, firmas y documentos para que los uses de nuevo."
+    },
+    "country": {
+      "q": "¿Puedo hacerlo para otro país u otra moneda?",
+      "a": "Sí. Elige el país, el idioma y la moneda en el menú de la parte superior de la página; el formulario, el impuesto y la forma de escribir números y fechas siguen tu elección."
+    },
+    "official": {
+      "q": "¿Es un documento oficial?",
+      "a": "No. QuickSlips crea el documento con los datos que introduces. No lo emite ninguna autoridad tributaria ni un sistema de facturación electrónica, y tú eres responsable de que los datos sean correctos y de usarlo de forma lícita, solo para operaciones reales."
+    }
   }
 }

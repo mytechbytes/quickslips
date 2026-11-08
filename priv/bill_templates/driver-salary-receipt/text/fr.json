@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-recu-de-salaire-de-chauffeur",
   "summary": "Reçu de salaire mensuel pour un chauffeur.",
   "description": "Créez un reçu de salaire pour un chauffeur avec salaire mensuel, heures supplémentaires, indemnités et retenues. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un reçu de salaire de chauffeur enregistre ce qu'un chauffeur a perçu pour une période. Il indique le salaire mensuel, les heures supplémentaires, les indemnités et les retenues.",
   "designs": {
     "t1": "Remboursement",
     "t2": "Avec accusé de réception",

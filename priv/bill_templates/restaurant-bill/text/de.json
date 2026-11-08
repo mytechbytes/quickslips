@@ -4,6 +4,7 @@
   "public_slug": "restaurantrechnung-generator",
   "summary": "Rechnung für Essen im Haus oder zum Mitnehmen mit Positionen und {tax}.",
   "description": "Erstellen Sie eine Restaurantrechnung mit beliebig vielen Positionen, Mengen, Bedienungsgeld und {tax}. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Restaurantrechnung listet auf, was bestellt wurde und was es gekostet hat. Sie zeigt die Posten und Mengen, einen Servicezuschlag und die Steuer.",
   "designs": {
     "t1": "Pixelbon",
     "t2": "Beleg mit Strichlinien",

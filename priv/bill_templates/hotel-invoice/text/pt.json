@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-hotel",
   "summary": "Nota de hospedagem com diária, extras, adiantamento e {tax}.",
   "description": "Crie uma nota de hotel com hóspede, quarto, check-in e check-out, diária, quartos ou serviços adicionais, adiantamento e {tax}. Três modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de hotel registra uma hospedagem. Mostra o hóspede, o quarto, as datas de entrada e saída, a diária, os quartos e serviços extras, o adiantamento pago e o imposto.",
   "designs": {
     "t1": "Clássico",
     "t2": "Nota fiscal",

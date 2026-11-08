@@ -4,6 +4,7 @@
   "public_slug": "gym-membership-receipt-generator",
   "summary": "Gym membership receipt or invoice with plan, period and fees.",
   "description": "Create a gym membership receipt or invoice with plan, billing cycle, period, fees, extra items, {tax} and the gym's instructions. Two designs; preview instantly and download as PDF.",
+  "intro": "A gym membership receipt confirms a payment for a plan. It shows the member, the plan and its billing cycle, the period, the fees, any extra items and the tax.",
   "designs": {
     "t1": "Receipt",
     "t2": "Invoice"

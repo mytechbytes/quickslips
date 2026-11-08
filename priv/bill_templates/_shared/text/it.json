@@ -105,5 +105,42 @@
         "minor_gender": "m"
       }
     }
+  },
+  "faq": {
+    "separator": ", ",
+    "joiner": " ",
+    "how": {
+      "q": "Come si usa il {title}?",
+      "a": "Compila il modulo, guarda l'anteprima cambiare mentre scrivi e scarica il PDF.",
+      "designs": "Scegli uno dei {count} modelli: {designs}."
+    },
+    "required": {
+      "q": "Quali dati devo compilare?",
+      "a": "Ti servono: {required}. Tutto il resto è facoltativo.",
+      "a_more": "Ti servono, tra gli altri: {required}. Tutto il resto è facoltativo."
+    },
+    "tax": {
+      "q": "Calcola l'imposta ({tax})?",
+      "rates": "Scegli l'aliquota usata nel tuo paese ({rates}) oppure scrivi la tua.",
+      "typed": "Scrivi l'aliquota che ti riguarda.",
+      "added": "L'imposta viene aggiunta ai prezzi, e il documento mostra l'importo senza imposta, l'imposta e il totale.",
+      "included": "I prezzi comprendono già l'imposta, e il documento mostra quanta parte del totale è imposta."
+    },
+    "signature": {
+      "q": "Posso aggiungere la mia firma?",
+      "a": "Sì, dopo aver effettuato l'accesso. Salva le tue firme una volta sola, poi scegline una sul documento; scegli «Nessuna firma» per lasciare lo spazio vuoto e firmare a mano. Il logo viene salvato con la tua attività."
+    },
+    "free": {
+      "q": "È gratuito e serve un account?",
+      "a": "Puoi creare alcuni documenti al giorno senza account. Un account gratuito dà più download e conserva le tue attività, le firme e i documenti, così puoi riutilizzarli."
+    },
+    "country": {
+      "q": "Posso crearlo per un altro paese o un'altra valuta?",
+      "a": "Sì. Scegli il paese, la lingua e la valuta nel menu in alto nella pagina; il modulo, l'imposta e il modo di scrivere numeri e date seguono la tua scelta."
+    },
+    "official": {
+      "q": "È un documento ufficiale?",
+      "a": "No. QuickSlips crea il documento con i dati che inserisci. Non è emesso da un'autorità fiscale né da un sistema di fatturazione elettronica, e sei tu il responsabile dell'esattezza dei dati inseriti e dell'uso lecito del documento, solo per operazioni reali."
+    }
   }
 }

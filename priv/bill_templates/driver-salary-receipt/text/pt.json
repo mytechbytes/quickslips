@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-recibo-de-salario-de-motorista",
   "summary": "Recibo mensal de salário para um motorista.",
   "description": "Crie um recibo de salário para um motorista com salário mensal, horas extras, adicionais e descontos. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Um recibo de salário de motorista registra o que foi pago a um motorista por um período. Mostra o salário mensal, as horas extras, os adicionais e os descontos.",
   "designs": {
     "t1": "Reembolso",
     "t2": "Com confirmação de recebimento",

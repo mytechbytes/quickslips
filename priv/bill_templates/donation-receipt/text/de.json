@@ -4,6 +4,7 @@
   "public_slug": "spendenquittung-generator",
   "summary": "Quittung für eine Spende an eine Organisation oder Stiftung.",
   "description": "Erstellen Sie eine Spendenquittung für eine gemeinnützige Organisation oder Stiftung mit Spender, Betrag in Zahlen und Worten, Zahlungsart, Empfänger und einem Dank. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Spendenquittung bestätigt einem Spender die Spende, ausgestellt von einer Hilfsorganisation, einer gemeinnützigen Einrichtung oder einer Stiftung. Sie zeigt, wer gespendet hat, wie viel, auf welche Art gezahlt wurde und wer sie erhalten hat.",
   "designs": {
     "t1": "Quittung"
   },

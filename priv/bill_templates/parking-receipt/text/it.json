@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-parcheggio",
   "summary": "Ricevuta di parcheggio con posto, ora e importo.",
   "description": "Genera una ricevuta di parcheggio con nome, indirizzo, posto, ora e importo. Anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta di parcheggio conferma una sosta in un parcheggio. Mostra la struttura e il suo indirizzo, il numero del posto, l'ora di entrata e di uscita e la tariffa.",
   "designs": {
     "t1": "Scontrino"
   },

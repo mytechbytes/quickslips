@@ -4,6 +4,7 @@
   "public_slug": "stationery-bill-generator",
   "summary": "含商品、单价和合计的文具店小票。",
   "description": "生成包含钢笔、纸张等文具、数量、单价和{tax}的文具店小票。即时预览，并可下载为 PDF。",
+  "intro": "文具店小票是在文具店购买笔、纸等用品的凭证，列明品名、数量、单价和税额。",
   "designs": {
     "t1": "小票"
   },

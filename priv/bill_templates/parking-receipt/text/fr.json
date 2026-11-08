@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-recu-de-parking",
   "summary": "Reçu de parking avec place, heure et montant.",
   "description": "Générez un reçu de parking avec le nom, l'adresse, la place, l'heure et le montant. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un reçu de parking confirme un séjour dans un parc de stationnement. Il indique l'établissement et son adresse, le numéro de place, l'heure d'entrée et de sortie et le tarif.",
   "designs": {
     "t1": "Ticket"
   },

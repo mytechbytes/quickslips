@@ -4,6 +4,7 @@
   "public_slug": "reisekostenzuschuss-ticket-generator",
   "summary": "Bus- oder Bahn-E-Ticket für einen Reisekostenzuschuss.",
   "description": "Erstellen Sie ein Bus- oder Bahn-E-Ticket für einen Reisekostenzuschuss (LTA) mit Anbieter, Einstiegs- und Ausstiegsort, Fahrgästen, Sitzplatz, Fahrpreis, {tax} und Stornobedingungen. Zwei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Ein Bus- oder Bahnticket hält eine Reise fest. In Indien ist es die Art von Dokument, die einem Antrag auf Urlaubsreisezuschuss (LTA) beigefügt wird: Es zeigt das Verkehrsunternehmen, Ein- und Ausstiegsort, die Fahrgäste, den Sitzplatz, den Fahrpreis und die Stornobedingungen.",
   "designs": {
     "t1": "E-Ticket",
     "t2": "E-Ticket mit Feldern"

@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-carburante",
   "summary": "Crea una ricevuta di rifornimento (benzina o gasolio) in PDF.",
   "description": "Genera una ricevuta di carburante ordinata con nome del distributore, data, tipo di carburante, quantità e prezzo. Anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta carburante è il documento che un distributore rilascia per benzina o gasolio. Mostra la stazione, la data, il tipo di carburante, la quantità e il prezzo, e il totale pagato.",
   "designs": {
     "t1": "Ricevuta",
     "t2": "Scontrino della pompa",

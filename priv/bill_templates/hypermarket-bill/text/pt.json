@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-hipermercado",
   "summary": "Nota de hipermercado com alíquota por item.",
   "description": "Crie uma nota de hipermercado ou supermercado com uma alíquota de {tax} para cada item, o detalhamento do imposto por alíquota, os dados do pedido e da entrega e a sua economia. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de hipermercado é a nota com impostos de uma compra. Mostra cada item com sua alíquota, o imposto discriminado por alíquota, os dados do pedido e da entrega e quanto se economizou.",
   "designs": {
     "t1": "Nota fiscal"
   },

@@ -4,6 +4,7 @@
   "public_slug": "general-bill-generator",
   "summary": "A simple bill for any sale or service, with a tax rate per item.",
   "description": "Make a bill for any sale or service with as many items as you need, a {tax} rate for each item, the seller, the customer and the payment. Preview instantly and download as PDF.",
+  "intro": "A general bill suits any sale or service. It lists the items with their quantities and prices and a tax rate for each, and names the seller, the customer and the payment.",
   "designs": {
     "t1": "Simple bill"
   },

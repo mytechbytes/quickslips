@@ -4,6 +4,7 @@
   "public_slug": "generador-de-recibo-de-donacion",
   "summary": "Recibo de un donativo a una ONG o fundación.",
   "description": "Crea un recibo de donación para una ONG, entidad benéfica o fundación con el donante, el importe en cifras y letras, la forma de pago, quién lo recibe y un agradecimiento. Previsualízalo al instante y descarga el PDF.",
+  "intro": "Un recibo de donación es lo que una ONG, una entidad benéfica o una fundación entrega a un donante para confirmar su aportación. Muestra quién dio, cuánto, con qué forma de pago y quién lo recibió.",
   "designs": {
     "t1": "Recibo"
   },

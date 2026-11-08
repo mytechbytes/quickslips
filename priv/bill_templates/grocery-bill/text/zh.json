@@ -4,6 +4,7 @@
   "public_slug": "grocery-bill-generator",
   "summary": "商品、数量和合计。",
   "description": "生成包含任意数量商品、数量、单价、折扣和{tax}的超市小票。即时预览，并可下载为 PDF。",
+  "intro": "超市小票列出在杂货店或超市购买的商品，包括品名、数量和价格、折扣（如有）以及税额。",
   "designs": {
     "t1": "零售发票",
     "t2": "优惠小票"

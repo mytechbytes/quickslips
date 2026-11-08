@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-d-hypermarche",
   "summary": "Facture d'hypermarché avec un taux de taxe par article.",
   "description": "Créez une facture d'hypermarché ou de supermarché avec un taux de {tax} pour chaque article, le détail de la taxe par taux, les informations de commande et de livraison et vos économies. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture d'hypermarché est la facture avec taxe d'un panier de courses. Elle indique chaque article avec son taux de taxe, la taxe ventilée par taux, les informations de commande et de livraison et les économies réalisées.",
   "designs": {
     "t1": "Facture"
   },

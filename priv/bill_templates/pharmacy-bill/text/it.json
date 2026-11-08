@@ -4,6 +4,7 @@
   "public_slug": "generatore-scontrino-farmacia",
   "summary": "Scontrino di farmacia con lotto, scadenza e prezzo.",
   "description": "Genera uno scontrino di farmacia con farmaci, produttore, lotto, scadenza e prezzo, {tax} inclusa nel prezzo, sconto e dati di autorizzazione della filiale. Anteprima immediata e download in PDF.",
+  "intro": "Uno scontrino di farmacia elenca i medicinali venduti da una farmacia. Mostra il produttore, il lotto, la data di scadenza e il prezzo massimo di vendita, l'imposta compresa nel prezzo, un eventuale sconto e i dati della licenza della sede.",
   "designs": {
     "t1": "Fattura"
   },

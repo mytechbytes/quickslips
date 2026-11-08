@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-passagem-lta",
   "summary": "E-ticket de ônibus ou trem para um auxílio-viagem.",
   "description": "Crie um e-ticket de ônibus ou trem para um auxílio-viagem (LTA) com a operadora, os pontos de embarque e desembarque, os passageiros, o assento, a tarifa, o {tax} e as condições de cancelamento. Dois modelos; veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma passagem de ônibus ou de trem registra uma viagem. Na Índia, é o tipo de documento anexado a um pedido de auxílio-viagem nas férias (LTA): mostra a empresa, os pontos de embarque e desembarque, os passageiros, o assento, a tarifa e as condições de cancelamento.",
   "designs": {
     "t1": "E-ticket",
     "t2": "E-ticket em quadros"

@@ -4,6 +4,7 @@
   "public_slug": "pharmacy-bill-generator",
   "summary": "Medical store bill with batch, expiry and MRP.",
   "description": "Generate a pharmacy or chemist bill with medicines, manufacturer, batch, expiry and MRP, {tax} included in the price, a discount and the branch's licence details. Preview instantly and download as PDF.",
+  "intro": "A pharmacy bill lists the medicines a chemist sold. It shows the manufacturer, the batch, the expiry date and the maximum retail price, the tax included in the price, any discount and the branch's licence details.",
   "designs": {
     "t1": "Invoice"
   },

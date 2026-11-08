@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-aiuto-domestico",
   "summary": "Ricevuta mensile di stipendio per un aiuto domestico.",
   "description": "Crea una ricevuta di stipendio per un aiuto domestico, come colf o cuoco, con mansione, mese, importo e metodo di pagamento. Anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta per l'aiuto domestico registra la paga mensile di una colf, di un cuoco o di un altro aiuto in casa. Mostra la mansione, il mese, l'importo e come è stato pagato.",
   "designs": {
     "t1": "Rimborso",
     "t2": "Con conferma di ricevuta",

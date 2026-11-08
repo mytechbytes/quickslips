@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-stipendio-autista",
   "summary": "Ricevuta mensile di stipendio per un autista.",
   "description": "Crea una ricevuta di stipendio per un autista con stipendio mensile, straordinari, indennità e trattenute. Anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta di stipendio per autista registra quanto è stato pagato a un autista per un periodo. Mostra la paga mensile, gli straordinari, le indennità e le trattenute.",
   "designs": {
     "t1": "Rimborso",
     "t2": "Con conferma di ricevuta",

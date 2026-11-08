@@ -4,6 +4,7 @@
   "public_slug": "aufladung-rechnung-generator",
   "summary": "Rechnung für Handy-, Telefon- oder TV-Aufladung mit Kontoübersicht.",
   "description": "Erstellen Sie eine Aufladungsrechnung für einen Mobilfunk-, Telefon- oder TV-Anschluss mit Anbieter, Tarif, Abrechnungszyklus, Kontoübersicht, {tax} und Zahlungsbestätigung, in vier Farbthemen. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Aufladungsrechnung ist die Rechnung für das Aufladen eines Handys, eines Telefons oder eines Satellitenfernsehens (DTH). Sie zeigt den Anbieter, den Tarif, den Abrechnungszyklus, eine Kontoübersicht, die Steuer und eine Empfangsbestätigung.",
   "designs": {
     "t1": "Rechnung"
   },

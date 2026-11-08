@@ -4,6 +4,7 @@
   "public_slug": "parking-receipt-generator",
   "summary": "Parking slip with the space, time and fee.",
   "description": "Generate a parking receipt with the facility, address, space number, time and fee. Preview instantly and download as PDF.",
+  "intro": "A parking receipt confirms a stay in a car park. It shows the facility and its address, the space number, the time in and out and the fee.",
   "designs": {
     "t1": "Receipt slip"
   },

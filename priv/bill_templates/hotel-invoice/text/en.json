@@ -4,6 +4,7 @@
   "public_slug": "hotel-bill-generator",
   "summary": "Room stay bill with tariff, extras, advance and {tax}.",
   "description": "Create a hotel bill with guest, room, check-in and check-out, tariff per night, extra rooms and services, advance and {tax}. Three designs; preview instantly and download as PDF.",
+  "intro": "A hotel bill records a stay. It shows the guest, the room, the check-in and check-out dates, the tariff per night, extra rooms and services, any advance paid and the tax.",
   "designs": {
     "t1": "Classic",
     "t2": "Tax invoice",

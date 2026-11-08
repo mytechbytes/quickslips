@@ -4,6 +4,7 @@
   "public_slug": "internet-bill-generator",
   "summary": "Broadband or fibre bill with plan, period and {tax}.",
   "description": "Create a broadband or fibre internet bill with plan, speed, billing period, charges and {tax}. Four designs; preview instantly and download as PDF.",
+  "intro": "An internet bill is what a broadband or fibre provider sends for a billing period. It shows the plan and the speed, the charges, the tax and the payments received.",
   "designs": {
     "t1": "Classic",
     "t2": "Internet invoice",

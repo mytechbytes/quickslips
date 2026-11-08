@@ -4,6 +4,7 @@
   "public_slug": "fitnessstudio-beleg-generator",
   "summary": "Mitgliedsbeleg oder Rechnung mit Tarif, Zeitraum und Beiträgen.",
   "description": "Erstellen Sie einen Mitgliedsbeleg oder eine Rechnung für ein Fitnessstudio mit Tarif, Abrechnungszyklus, Zeitraum, Beiträgen, zusätzlichen Posten, {tax} und den Hinweisen des Studios. Zwei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Ein Fitnessstudio-Beleg bestätigt die Zahlung für einen Tarif. Er zeigt das Mitglied, den Tarif und seinen Abrechnungszeitraum, die Gebühren, zusätzliche Posten und die Steuer.",
   "designs": {
     "t1": "Beleg",
     "t2": "Rechnung"

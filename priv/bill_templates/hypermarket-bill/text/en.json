@@ -4,6 +4,7 @@
   "public_slug": "hypermarket-bill-generator",
   "summary": "Hypermarket tax invoice with a tax rate per item.",
   "description": "Create a hypermarket or supermarket tax invoice with HSN codes, a tax rate for each item, the {tax} breakup by rate, order and delivery details and your savings. Preview instantly and download as PDF.",
+  "intro": "A hypermarket or supermarket bill is the tax invoice for a shopping basket. It shows each item with its tax rate, the tax broken down by rate, the order and delivery details and what was saved.",
   "designs": {
     "t1": "Tax invoice"
   },

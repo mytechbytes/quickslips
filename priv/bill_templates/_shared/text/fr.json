@@ -105,5 +105,42 @@
         "minor_gender": "m"
       }
     }
+  },
+  "faq": {
+    "separator": ", ",
+    "joiner": " ",
+    "how": {
+      "q": "Comment utiliser le {title} ?",
+      "a": "Remplissez le formulaire, regardez l'aperçu changer pendant que vous saisissez, puis téléchargez le PDF.",
+      "designs": "Choisissez l'un des {count} modèles : {designs}."
+    },
+    "required": {
+      "q": "Quelles informations dois-je renseigner ?",
+      "a": "Il vous faut : {required}. Tout le reste est facultatif.",
+      "a_more": "Il vous faut notamment : {required}. Tout le reste est facultatif."
+    },
+    "tax": {
+      "q": "Calcule-t-il la taxe ({tax}) ?",
+      "rates": "Choisissez le taux utilisé dans votre pays ({rates}) ou saisissez le vôtre.",
+      "typed": "Saisissez le taux qui s'applique à vous.",
+      "added": "La taxe s'ajoute aux prix, et le document indique le montant hors taxe, la taxe et le total.",
+      "included": "Les prix incluent déjà la taxe, et le document indique quelle part du total est de la taxe."
+    },
+    "signature": {
+      "q": "Puis-je ajouter ma signature ?",
+      "a": "Oui, après connexion. Enregistrez vos signatures une seule fois, puis choisissez-en une sur le document ; choisissez « Pas de signature » pour laisser l'emplacement vide et signer à la main. Le logo est enregistré avec votre entreprise."
+    },
+    "free": {
+      "q": "Est-ce gratuit, et faut-il un compte ?",
+      "a": "Vous pouvez créer quelques documents par jour sans compte. Un compte gratuit donne plus de téléchargements et conserve vos entreprises, vos signatures et vos documents pour les réutiliser."
+    },
+    "country": {
+      "q": "Puis-je le faire pour un autre pays ou une autre devise ?",
+      "a": "Oui. Choisissez le pays, la langue et la devise dans le menu en haut de la page ; le formulaire, la taxe et la façon d'écrire les nombres et les dates suivent votre choix."
+    },
+    "official": {
+      "q": "S'agit-il d'un document officiel ?",
+      "a": "Non. QuickSlips crée le document à partir des informations que vous saisissez. Il n'est émis ni par une administration fiscale ni par un système de facturation électronique, et vous êtes responsable de l'exactitude de ce que vous saisissez et de son usage licite, pour de vraies transactions uniquement."
+    }
   }
 }

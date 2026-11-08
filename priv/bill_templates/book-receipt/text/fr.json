@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-recu-de-librairie",
   "summary": "Reçu de librairie avec titre, auteur et paiement.",
   "description": "Créez un reçu de librairie avec le titre, l'auteur et l'éditeur du livre, la quantité, le prix et le mode de paiement. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un reçu de librairie est le justificatif d'achat qu'une librairie remet pour un livre. Il indique le titre, l'auteur et l'éditeur, le prix et le mode de paiement.",
   "designs": {
     "t1": "Classique",
     "t2": "Avec le vendeur"

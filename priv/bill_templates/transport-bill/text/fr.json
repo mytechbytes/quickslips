@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-lettre-de-voiture",
   "summary": "Lettre de voiture avec expéditeur, destinataire, poids et port.",
   "description": "Générez une lettre de voiture pour le transport de marchandises avec départ et arrivée, expéditeur et destinataire, nombre de colis, poids et port payé ou dû. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une lettre de voiture accompagne des marchandises transportées par la route. Elle indique l'origine et la destination, l'expéditeur et le destinataire, le nombre de colis, le poids et le prix du transport, payé ou à payer.",
   "designs": {
     "t1": "Lettre de voiture"
   },

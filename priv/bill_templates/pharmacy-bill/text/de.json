@@ -4,6 +4,7 @@
   "public_slug": "apothekenbeleg-generator",
   "summary": "Apothekenbeleg mit Charge, Verfall und Preis.",
   "description": "Erstellen Sie einen Apothekenbeleg mit Medikamenten, Hersteller, Charge, Verfall und Verkaufspreis, {tax} im Preis enthalten, Rabatt und den Zulassungsangaben der Filiale. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Ein Apothekenbeleg listet die Medikamente auf, die eine Apotheke verkauft hat. Er zeigt Hersteller, Charge, Verfallsdatum und den Höchstpreis, die im Preis enthaltene Steuer, einen Rabatt und die Lizenzangaben der Filiale.",
   "designs": {
     "t1": "Rechnung"
   },

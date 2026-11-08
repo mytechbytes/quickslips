@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-billet-lta",
   "summary": "E-billet de bus ou de train pour une indemnité de voyage.",
   "description": "Créez un e-billet de bus ou de train pour une indemnité de voyage (LTA) avec l'opérateur, les points d'embarquement et de dépose, les passagers, le siège, le tarif, la {tax} et les conditions d'annulation. Deux modèles ; aperçu instantané et téléchargement en PDF.",
+  "intro": "Un billet de bus ou de train enregistre un voyage. En Inde, c'est le genre de document joint à une demande d'indemnité de voyage en congé (LTA) : il indique le transporteur, les points de montée et de descente, les passagers, le siège, le tarif et les conditions d'annulation.",
   "designs": {
     "t1": "E-billet",
     "t2": "E-billet encadré"

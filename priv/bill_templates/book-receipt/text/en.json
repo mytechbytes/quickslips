@@ -4,6 +4,7 @@
   "public_slug": "book-receipt-generator",
   "summary": "Bookstore receipt with title, author and payment.",
   "description": "Create a bookstore receipt with the book's title, author and publisher, quantity, price and payment method. Preview instantly and download as PDF.",
+  "intro": "A book receipt is the proof of purchase a bookstore gives for a book. It shows the title, the author and the publisher, the price and how it was paid for.",
   "designs": {
     "t1": "Classic",
     "t2": "With the seller"

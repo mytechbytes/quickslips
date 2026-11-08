@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-conta-de-restaurante",
   "summary": "Conta de restaurante no local ou para viagem com itens e {tax}.",
   "description": "Gere uma conta de restaurante com qualquer número de itens, quantidades, taxa de serviço e {tax}. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma conta de restaurante lista o que foi pedido e quanto custou. Mostra os itens e as quantidades, uma taxa de serviço e o imposto.",
   "designs": {
     "t1": "Cupom pixel",
     "t2": "Recibo tracejado",

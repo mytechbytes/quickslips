@@ -4,6 +4,7 @@
   "public_slug": "generatore-buono-di-cassa",
   "summary": "Buono di cassa con voci, importo e firme di approvazione.",
   "description": "Crea un buono di cassa con beneficiario, voci e importi, totale in cifre e lettere, e le firme di preparazione, controllo, approvazione e ricezione. Anteprima immediata e download in PDF.",
+  "intro": "Un buono di cassa registra un pagamento in contanti: chi è stato pagato, per cosa e quanto. Reca le firme di chi lo ha preparato, controllato, approvato e ricevuto.",
   "designs": {
     "t1": "Buono a riquadri"
   },

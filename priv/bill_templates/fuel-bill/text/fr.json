@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-carburant",
   "summary": "Créez une facture de carburant (essence ou gazole) en PDF.",
   "description": "Générez une facture de carburant claire avec le nom de la station, la date, le type de carburant, la quantité et le prix. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture carburant est le justificatif que remet une station-service pour de l'essence ou du gazole. Elle indique la station, la date, le type de carburant, la quantité et le prix, et le total payé.",
   "designs": {
     "t1": "Reçu",
     "t2": "Ticket de pompe",

@@ -4,6 +4,7 @@
   "public_slug": "generador-de-ticket-de-papeleria",
   "summary": "Ticket de papelería con artículos, precios y totales.",
   "description": "Crea un ticket de papelería con bolígrafos, papel y otros artículos, cantidades, precios y {tax}. Previsualízalo al instante y descarga el PDF.",
+  "intro": "Un ticket de papelería es el comprobante de bolígrafos, papel y otros materiales comprados en una papelería. Muestra los artículos, las cantidades, los precios y el impuesto.",
   "designs": {
     "t1": "Ticket"
   },

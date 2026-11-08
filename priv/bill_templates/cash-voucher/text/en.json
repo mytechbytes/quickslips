@@ -4,6 +4,7 @@
   "public_slug": "cash-voucher-generator",
   "summary": "Cash voucher with particulars, amount and approval signatures.",
   "description": "Create a cash voucher with the payee, the particulars and amounts, the total in figures and words, and the prepared, checked, approved and received signatures. Preview instantly and download as PDF.",
+  "intro": "A cash voucher records a payment made in cash: who was paid, for what and how much. It carries the signatures of the people who prepared, checked, approved and received it.",
   "designs": {
     "t1": "Ruled voucher"
   },

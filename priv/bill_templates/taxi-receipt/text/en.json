@@ -4,6 +4,7 @@
   "public_slug": "cab-bill-generator",
   "summary": "Cab or auto trip bill with fare, toll and {tax}.",
   "description": "Generate a cab, taxi or auto-rickshaw bill with pickup and drop, distance, fare, toll and {tax}. Preview instantly and download as PDF.",
+  "intro": "A cab bill is the receipt for a taxi, cab or auto-rickshaw ride. It shows the pickup and the drop, the distance, the fare, any toll and the tax.",
   "designs": {
     "t1": "Trip receipt",
     "t2": "Ride and invoice",

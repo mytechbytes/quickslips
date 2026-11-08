@@ -4,6 +4,7 @@
   "public_slug": "internetrechnung-generator",
   "summary": "Breitband- oder Glasfaserrechnung mit Tarif, Zeitraum und {tax}.",
   "description": "Erstellen Sie eine Internetrechnung für Breitband oder Glasfaser mit Tarif, Geschwindigkeit, Abrechnungszeitraum, Entgelten und {tax}. Vier Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Internetrechnung schickt ein Breitband- oder Glasfaser-Anbieter für einen Abrechnungszeitraum. Sie zeigt den Tarif und die Geschwindigkeit, die Entgelte, die Steuer und die eingegangenen Zahlungen.",
   "designs": {
     "t1": "Klassisch",
     "t2": "Internetrechnung",

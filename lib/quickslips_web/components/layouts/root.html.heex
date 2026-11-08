@@ -18,6 +18,18 @@
       hreflang={hreflang}
       href={href}
     />
+    <%!-- Only a public page has a canonical address, and only those are shared and found. --%>
+    <.social_tags
+      :if={assigns[:canonical_url]}
+      title={assigns[:page_title] || "QuickSlips"}
+      description={
+        assigns[:meta_description] || gettext("Create bills and receipts as PDF in seconds.")
+      }
+      url={@canonical_url}
+      locale={assigns[:locale]}
+      alternates={assigns[:alternates] || []}
+    />
+    {json_ld_tag(assigns[:json_ld])}
     <link rel="icon" href={~p"/favicon.ico"} sizes="32x32" />
     <link rel="icon" href={~p"/images/favicon.svg"} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={~p"/images/apple-touch-icon.png"} />

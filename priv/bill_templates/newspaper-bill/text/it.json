@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-giornali",
   "summary": "Fattura mensile di consegna giornali con costo del servizio.",
   "description": "Crea una fattura mensile per la consegna di giornali o riviste con agenzia, mese, testate con prezzo e quantità, costo di consegna a domicilio e totale. Anteprima immediata e download in PDF.",
+  "intro": "Una fattura giornali è il conto mensile per la consegna di un quotidiano o di una rivista. Mostra l'agenzia, il mese, ogni testata con prezzo e quantità, un costo di consegna a domicilio e il totale.",
   "designs": {
     "t1": "Classico"
   },

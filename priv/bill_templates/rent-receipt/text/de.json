@@ -4,6 +4,7 @@
   "public_slug": "mietquittung-generator",
   "summary": "Monatliche Mietquittungen als Zahlungsnachweis.",
   "description": "Erstellen Sie eine Mietquittung oder bis zu 12 Quittungen für einen Zeitraum mit Mieter, Vermieter, Mietobjekt und Betrag. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Mietquittung ist der schriftliche Nachweis, dass ein Mieter einem Vermieter die Miete für einen Zeitraum gezahlt hat. Sie nennt Mieter, Vermieter und Objekt und zeigt den Betrag und die Zahlungsart.",
   "designs": {
     "t1": "Erstattung",
     "t2": "Mit Empfangsbestätigung",

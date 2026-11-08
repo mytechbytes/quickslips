@@ -4,6 +4,7 @@
   "public_slug": "child-education-allowance-bill-generator",
   "summary": "子女教育津贴报销申请表。",
   "description": "填写子女教育津贴（CEA）或住宿补贴报销表，包含申请人、配偶、子女及其学校和支出明细。即时预览，并可下载为 PDF。",
+  "intro": "子女教育津贴报销单是员工按用人单位规定申请报销时填写的表格，列明子女、所在学校和已发生的费用，也包括住宿补贴和配偶信息。",
   "designs": {
     "t1": "申请表"
   },

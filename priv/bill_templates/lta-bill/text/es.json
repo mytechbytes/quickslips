@@ -4,6 +4,7 @@
   "public_slug": "generador-de-billete-lta",
   "summary": "Billete electrónico de autobús o tren para una ayuda de viaje.",
   "description": "Crea un billete electrónico de autobús o tren para justificar una ayuda de viaje (LTA) con el operador, los puntos de embarque y destino, los pasajeros, el asiento, la tarifa, el {tax} y las condiciones de cancelación. Dos diseños; previsualízalo al instante y descarga el PDF.",
+  "intro": "Un billete de autobús o de tren registra un viaje. En la India es el tipo de documento que se adjunta a una solicitud de ayuda de viaje por vacaciones (LTA): muestra la empresa de transporte, los puntos de subida y bajada, los pasajeros, el asiento, la tarifa y las condiciones de cancelación.",
   "designs": {
     "t1": "Billete electrónico",
     "t2": "Billete con cuadros"

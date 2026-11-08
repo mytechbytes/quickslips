@@ -4,6 +4,7 @@
   "public_slug": "generador-de-recibo-de-aparcamiento",
   "summary": "Recibo de aparcamiento con plaza, hora e importe.",
   "description": "Genera un recibo de aparcamiento con el nombre, la dirección, la plaza, la hora y el importe. Previsualízalo al instante y descarga el PDF.",
+  "intro": "Un recibo de aparcamiento confirma una estancia en un aparcamiento. Muestra el establecimiento y su dirección, el número de plaza, la hora de entrada y de salida y la tarifa.",
   "designs": {
     "t1": "Ticket"
   },

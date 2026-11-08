@@ -4,6 +4,7 @@
   "public_slug": "generador-de-factura-de-hotel",
   "summary": "Factura de estancia con tarifa, extras, anticipo y {tax}.",
   "description": "Crea una factura de hotel con el huésped, la habitación, la entrada y la salida, la tarifa por noche, habitaciones o servicios adicionales, el anticipo y el {tax}. Tres diseños; previsualízala al instante y descarga el PDF.",
+  "intro": "Una factura de hotel registra una estancia. Muestra al huésped, la habitación, las fechas de entrada y salida, la tarifa por noche, las habitaciones y servicios extra, el anticipo pagado y el impuesto.",
   "designs": {
     "t1": "Clásico",
     "t2": "Factura con impuestos",

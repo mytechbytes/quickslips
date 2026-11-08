@@ -4,6 +4,7 @@
   "public_slug": "buchquittung-generator",
   "summary": "Quittung der Buchhandlung mit Titel, Autor und Zahlung.",
   "description": "Erstellen Sie eine Buchhandlungs-Quittung mit Titel, Autor und Verlag des Buches, Menge, Preis und Zahlungsart. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Buchquittung ist der Kaufbeleg, den eine Buchhandlung für ein Buch ausstellt. Sie zeigt Titel, Autor und Verlag, den Preis und die Zahlungsart.",
   "designs": {
     "t1": "Klassisch",
     "t2": "Mit Verkäufer"

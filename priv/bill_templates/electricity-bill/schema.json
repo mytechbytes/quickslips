@@ -7,6 +7,7 @@
   "number_field": "bill_number",
   "summary": "Units used, rate and charges for a month.",
   "description": "Create an electricity bill with meter readings, units used, rate per unit, fixed charge and tax. Preview instantly and download as PDF.",
+  "intro": "An electricity bill states what a household or a business owes for the power it used. It shows the meter readings, the units used, the rate per unit, the fixed charge and the tax.",
   "templates": [{ "id": "t1", "name": "Classic" }],
   "fields": [
     { "key": "issuer_name", "group": "business", "label": "Electricity provider or landlord", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },

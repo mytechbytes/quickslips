@@ -4,6 +4,7 @@
   "public_slug": "waescherei-rechnung-generator",
   "summary": "Rechnung für Wäscherei und Reinigung mit Kleidungsstücken, Mengen und Beträgen.",
   "description": "Erstellen Sie eine Rechnung für Wäscherei oder chemische Reinigung mit Kleidungsstücken, Mengen und Preisen, Lieferdatum, {tax}, Zahlungsart und Ihren Bedingungen. Zwei Designs; sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Wäscherei-Rechnung listet die zum Waschen oder zur chemischen Reinigung abgegebenen Kleidungsstücke auf. Sie zeigt Mengen und Preise, das Lieferdatum, die Steuer, die Zahlungsart und die Bedingungen des Betriebs.",
   "designs": {
     "t1": "Gelbe Rechnung",
     "t2": "Bar-/Kreditrechnung"

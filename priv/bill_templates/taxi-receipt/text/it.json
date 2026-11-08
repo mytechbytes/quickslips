@@ -4,6 +4,7 @@
   "public_slug": "generatore-ricevuta-taxi",
   "summary": "Ricevuta di una corsa in taxi con tariffa, pedaggio e {tax}.",
   "description": "Genera una ricevuta di taxi o NCC con punto di ritiro e di arrivo, distanza, tariffa, pedaggio e {tax}. Anteprima immediata e download in PDF.",
+  "intro": "Una ricevuta taxi è il documento di una corsa in taxi, con autista o in risciò a motore. Mostra il punto di partenza e quello di arrivo, la distanza, la tariffa, un eventuale pedaggio e l'imposta.",
   "designs": {
     "t1": "Ricevuta della corsa",
     "t2": "Corsa e fattura",

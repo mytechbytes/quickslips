@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-conhecimento-de-transporte",
   "summary": "Conhecimento de transporte com remetente, destinatário, peso e frete.",
   "description": "Gere um conhecimento de transporte de cargas com origem e destino, remetente e destinatário, número de volumes, peso e frete pago ou a pagar. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Um conhecimento de transporte acompanha mercadorias transportadas por estrada. Mostra a origem e o destino, o remetente e o destinatário, o número de volumes, o peso e o frete, pago ou a pagar.",
   "designs": {
     "t1": "Conhecimento"
   },

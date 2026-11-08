@@ -4,6 +4,7 @@
   "public_slug": "school-fee-receipt-generator",
   "summary": "School fee receipt with a breakup of the fees, or a short receipt voucher.",
   "description": "Generate a school fee receipt with student, class, fee period and a breakup of tuition, transport and other fees, or a short receipt voucher with the amount in words. Two designs; preview instantly and download as PDF.",
+  "intro": "A school fee receipt confirms that fees were paid. It shows the student, the class, the fee period and the amounts for tuition, transport and other fees.",
   "designs": {
     "t1": "Classic",
     "t2": "Receipt voucher"

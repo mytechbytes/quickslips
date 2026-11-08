@@ -4,6 +4,7 @@
   "public_slug": "driver-salary-receipt-generator",
   "summary": "Monthly pay receipt for a driver.",
   "description": "Create a salary receipt for a driver with monthly pay, overtime, allowances and deductions. Preview instantly and download as PDF.",
+  "intro": "A driver salary receipt records the pay of a driver for a period. It shows the monthly pay, overtime, allowances and deductions.",
   "designs": {
     "t1": "Reimbursement",
     "t2": "With acknowledgement",

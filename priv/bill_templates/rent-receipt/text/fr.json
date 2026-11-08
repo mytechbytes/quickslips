@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-quittance-de-loyer",
   "summary": "Quittances de loyer mensuelles, prêtes à présenter.",
   "description": "Créez une quittance de loyer, ou jusqu'à 12 quittances pour une période, avec locataire, propriétaire, logement et montant. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une quittance de loyer est la preuve écrite qu'un locataire a payé son loyer à un propriétaire pour une période. Elle nomme le locataire, le propriétaire et le bien, et indique le montant et le mode de paiement.",
   "designs": {
     "t1": "Remboursement",
     "t2": "Avec accusé de réception",

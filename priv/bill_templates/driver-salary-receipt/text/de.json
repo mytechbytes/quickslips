@@ -4,6 +4,7 @@
   "public_slug": "fahrer-gehaltsquittung-generator",
   "summary": "Monatliche Gehaltsquittung für einen Fahrer.",
   "description": "Erstellen Sie eine Gehaltsquittung für einen Fahrer mit Monatsgehalt, Überstunden, Zulagen und Abzügen. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Fahrer-Gehaltsquittung hält fest, was ein Fahrer für einen Zeitraum bekommen hat. Sie zeigt das Monatsgehalt, Überstunden, Zulagen und Abzüge.",
   "designs": {
     "t1": "Erstattung",
     "t2": "Mit Empfangsbestätigung",

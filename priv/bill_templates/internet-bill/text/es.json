@@ -4,6 +4,7 @@
   "public_slug": "generador-de-factura-de-internet",
   "summary": "Factura de banda ancha o fibra con tarifa, periodo y {tax}.",
   "description": "Crea una factura de internet de banda ancha o fibra con la tarifa, la velocidad, el periodo de facturación, los cargos y el {tax}. Cuatro diseños; previsualízala al instante y descarga el PDF.",
+  "intro": "Una factura de internet es la que envía un proveedor de banda ancha o fibra por un período de facturación. Muestra el plan y la velocidad, los cargos, el impuesto y los pagos recibidos.",
   "designs": {
     "t1": "Clásico",
     "t2": "Factura de internet",

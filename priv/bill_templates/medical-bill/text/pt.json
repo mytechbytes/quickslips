@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-medica",
   "summary": "Nota de hospital, clínica ou laboratório com {tax}.",
   "description": "Gere uma nota de hospital, clínica ou laboratório com paciente, médico, quarto, consulta, medicamentos, exames e cobranças detalhadas. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota médica detalha o que um hospital, uma clínica ou um laboratório cobrou. Mostra o paciente e o médico, o quarto, a consulta, os medicamentos, os exames e outras cobranças.",
   "designs": {
     "t1": "Nota hospitalar",
     "t2": "Nota provisória"

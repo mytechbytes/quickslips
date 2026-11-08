@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-facture-de-taxi",
   "summary": "Facture de course en taxi ou VTC avec tarif, péage et {tax}.",
   "description": "Générez une facture de taxi ou de VTC avec lieux de prise en charge et de dépose, distance, tarif, péage et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Une facture de taxi est le justificatif d'une course en taxi, en VTC ou en tuk-tuk. Elle indique la prise en charge et la destination, la distance, le tarif, un éventuel péage et la taxe.",
   "designs": {
     "t1": "Reçu de course",
     "t2": "Course et facture",

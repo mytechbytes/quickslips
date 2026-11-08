@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-recarga",
   "summary": "Nota de recarga de celular, telefone ou TV com resumo da conta.",
   "description": "Crie uma nota de recarga para uma linha de celular, telefone ou TV com operadora, plano, ciclo de cobrança, resumo da conta, {tax} e comprovante de pagamento, em quatro temas de cor. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de recarga é a nota de uma recarga de celular, de telefone ou de TV por satélite (DTH). Mostra a operadora, o plano, o ciclo de cobrança, um resumo da conta, o imposto e um comprovante de recebimento.",
   "designs": {
     "t1": "Nota fiscal"
   },

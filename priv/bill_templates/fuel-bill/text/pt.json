@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-combustivel",
   "summary": "Crie uma nota de abastecimento de gasolina ou diesel em PDF.",
   "description": "Gere uma nota de combustível organizada com nome do posto, data, tipo de combustível, quantidade e preço. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de combustível é o comprovante que um posto dá por gasolina ou diesel. Mostra o posto, a data, o tipo de combustível, a quantidade e o preço, e o total pago.",
   "designs": {
     "t1": "Recibo",
     "t2": "Cupom da bomba",

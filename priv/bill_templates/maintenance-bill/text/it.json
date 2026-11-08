@@ -4,6 +4,7 @@
   "public_slug": "generatore-fattura-officina",
   "summary": "Preventivo o fattura di officina con ricambi, manodopera e {tax}.",
   "description": "Genera un preventivo, una fattura o un ordine di lavoro per un'officina auto o moto con cliente e veicolo, ricambi con sconto, manodopera e {tax}. Anteprima immediata e download in PDF.",
+  "intro": "Una fattura officina è il preventivo, la fattura o la scheda di lavoro di un'officina per un'auto o una moto. Mostra il cliente e il veicolo, i ricambi con sconti, la manodopera e l'imposta.",
   "designs": {
     "t1": "Scheda officina"
   },

@@ -4,6 +4,7 @@
   "public_slug": "generateur-de-ticket-de-supermarche",
   "summary": "Articles, quantités et totaux.",
   "description": "Créez un ticket de supermarché avec autant d'articles que nécessaire, les quantités, les prix, une remise et {tax}. Aperçu instantané et téléchargement en PDF.",
+  "intro": "Un ticket de supermarché énumère ce qui a été acheté dans une épicerie ou un supermarché. Il indique les articles, les quantités et les prix, une éventuelle remise et la taxe.",
   "designs": {
     "t1": "Facture de détail",
     "t2": "Ticket avec économies"

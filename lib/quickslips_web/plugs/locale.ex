@@ -84,14 +84,14 @@ defmodule QuickSlipsWeb.Plugs.Locale do
     end
   end
 
-  # The head of a bill's page: its description, its canonical address and its other languages. A template that
-  # is not in this locale is a 404.
+  # The head of a bill's page: its description, its canonical address, its other languages and its structured
+  # data. A template that is not in this locale is a 404.
   defp bill_head(conn, locale, public_slug) do
     case Templates.get_public(locale, public_slug) do
       {:ok, schema} ->
         conn
         |> assign(:meta_description, schema["description"])
-        |> merge_assigns(Seo.bill(locale, schema["slug"]))
+        |> merge_assigns(Seo.bill(locale, schema))
 
       {:error, :not_found} ->
         raise QuickSlipsWeb.NotFoundError

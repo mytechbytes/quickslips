@@ -14,6 +14,7 @@ defmodule QuickSlips.Templates.Localizer do
       {
         "title": "Fuel Bill Generator", "name": "Fuel Bill", "public_slug": "fuel-bill-generator",
         "summary": "...", "description": "...",
+        "intro": "What the document is, in two sentences, for the reader and for a search engine.",
         "designs": {"t1": "Classic"},
         "fields": {"fuel_type": {"label": "Fuel type", "options": {"Petrol": "Petrol"}}},
         "print": {"total": "Total"},      // the words the layout prints, as `t.total`
@@ -21,10 +22,15 @@ defmodule QuickSlips.Templates.Localizer do
       }
 
   Which file a word comes from is decided by `QuickSlips.Locales.chain/1`: `es-mx`, then `es`, then `en`.
+
+  The page of a bill also shows its `intro` and a list of questions and answers (`"faq"` in the result). The
+  questions are the same for every bill: their sentences are `faq` in the shared text files, and
+  `QuickSlips.Templates.Faq` puts what is true of the bill in them.
   """
 
   alias QuickSlips.Locales
   alias QuickSlips.Regions
+  alias QuickSlips.Templates.Faq
 
   @doc "The text files of a template (or the shared ones) as one map for `locale`: the most specific file wins."
   def merged(texts, locale) do
@@ -44,24 +50,31 @@ defmodule QuickSlips.Templates.Localizer do
     title = text["title"] || schema["title"]
     mode = tax_mode(schema, locale.country)
 
-    Map.merge(schema, %{
-      "tax_mode" => mode,
-      "locale" => locale.code,
-      "language" => locale.language,
-      "public_slug" => text["public_slug"] || schema["public_slug"] || schema["slug"],
-      "title" => title,
-      "name" => text["name"] || (title && String.replace_suffix(title, " Generator", "")),
-      "summary" => with_tax(text["summary"] || schema["summary"], tax(locale)),
-      "description" => with_tax(text["description"] || schema["description"], tax(locale)),
-      "category_name" => category_name(schema, shared, locale),
-      "languages" => schema["languages"] || ["en"],
-      "templates" => Enum.map(schema["templates"], &localize_design(&1, text["designs"] || %{})),
-      "fields" =>
-        schema["fields"]
-        |> Enum.filter(&in_country?(&1, locale.country))
-        |> Enum.reject(&(&1["type"] == "tax_rate" and mode == "none"))
-        |> Enum.map(&localize_field(&1, text["fields"] || %{}, tax(locale)))
-    })
+    localized =
+      Map.merge(schema, %{
+        "tax_mode" => mode,
+        "locale" => locale.code,
+        "language" => locale.language,
+        "public_slug" => text["public_slug"] || schema["public_slug"] || schema["slug"],
+        "title" => title,
+        "name" => text["name"] || (title && String.replace_suffix(title, " Generator", "")),
+        "summary" => with_tax(text["summary"] || schema["summary"], tax(locale)),
+        "description" => with_tax(text["description"] || schema["description"], tax(locale)),
+        "intro" => with_tax(text["intro"] || schema["intro"], tax(locale)),
+        "category_name" => category_name(schema, shared, locale),
+        "languages" => schema["languages"] || ["en"],
+        "templates" =>
+          Enum.map(schema["templates"], &localize_design(&1, text["designs"] || %{})),
+        "fields" =>
+          schema["fields"]
+          |> Enum.filter(&in_country?(&1, locale.country))
+          |> Enum.reject(&(&1["type"] == "tax_rate" and mode == "none"))
+          |> Enum.map(&localize_field(&1, text["fields"] || %{}, tax(locale)))
+      })
+
+    # The questions under the page are worked out from the bill as it is in this locale (its designs, its required
+    # details, its tax), with the sentences of the language.
+    Map.put(localized, "faq", Faq.build(localized, merged(shared, locale)["faq"], locale))
   end
 
   # `{tax}` in a summary or a description is what the country calls its tax: "GST", "IVA", "VAT".

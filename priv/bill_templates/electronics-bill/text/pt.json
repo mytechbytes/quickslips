@@ -4,6 +4,7 @@
   "public_slug": "gerador-de-nota-de-eletronicos",
   "summary": "Nota de eletrônicos com números de série e detalhamento de impostos.",
   "description": "Gere uma nota para celulares, eletrodomésticos e outros eletrônicos com números de série, códigos HS, {tax} no preço, as partes de cobrança e entrega, os dados de pagamento e o valor por extenso. Veja a pré-visualização na hora e baixe o PDF.",
+  "intro": "Uma nota de eletrônicos é a nota com impostos de um telefone, de um eletrodoméstico ou de outro aparelho eletrônico. Mostra os números de série, o imposto incluído no preço, o comprador e o vendedor e o pagamento.",
   "designs": {
     "t1": "Nota fiscal"
   },

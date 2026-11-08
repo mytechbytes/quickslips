@@ -4,6 +4,7 @@
   "public_slug": "generador-de-ticket-de-supermercado",
   "summary": "Artículos, cantidades y totales.",
   "description": "Crea un ticket de supermercado con los artículos que necesites, cantidades, precios, descuento y {tax}. Previsualízalo al instante y descarga el PDF.",
+  "intro": "Un ticket de supermercado enumera lo que se compró en una tienda de comestibles o un supermercado. Muestra los artículos, las cantidades y los precios, el descuento, si lo hay, y el impuesto.",
   "designs": {
     "t1": "Factura minorista",
     "t2": "Ticket con ahorro"

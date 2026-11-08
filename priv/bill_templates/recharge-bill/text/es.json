@@ -4,6 +4,7 @@
   "public_slug": "generador-de-factura-de-recarga",
   "summary": "Factura de recarga de móvil, teléfono o TV con resumen de cuenta.",
   "description": "Crea una factura de recarga para una línea móvil, fija o de TV con el operador, la tarifa, el ciclo de facturación, el resumen de cuenta, el {tax} y un justificante de pago, en cuatro temas de color. Previsualízala al instante y descarga el PDF.",
+  "intro": "Una factura de recarga es la factura de una recarga de móvil, de teléfono o de televisión por satélite (DTH). Muestra el operador, el plan, el ciclo de facturación, un resumen de la cuenta, el impuesto y un justificante de recepción.",
   "designs": {
     "t1": "Factura"
   },

@@ -105,5 +105,42 @@
         "minor_gender": "m"
       }
     }
+  },
+  "faq": {
+    "separator": ", ",
+    "joiner": " ",
+    "how": {
+      "q": "Wie nutze ich den {title}?",
+      "a": "Füllen Sie das Formular aus, beobachten Sie, wie sich die Vorschau beim Tippen ändert, und laden Sie das PDF herunter.",
+      "designs": "Wählen Sie eines der {count} Designs: {designs}."
+    },
+    "required": {
+      "q": "Welche Angaben muss ich machen?",
+      "a": "Sie brauchen: {required}. Alles andere ist optional.",
+      "a_more": "Sie brauchen unter anderem: {required}. Alles andere ist optional."
+    },
+    "tax": {
+      "q": "Berechnet er die Steuer ({tax})?",
+      "rates": "Wählen Sie den Satz Ihres Landes ({rates}) oder geben Sie einen eigenen ein.",
+      "typed": "Geben Sie den Satz ein, der für Sie gilt.",
+      "added": "Die Steuer wird auf die Preise aufgeschlagen, und das Dokument zeigt den Betrag ohne Steuer, die Steuer und die Summe.",
+      "included": "Die Preise enthalten die Steuer bereits, und das Dokument zeigt, wie viel der Summe Steuer ist."
+    },
+    "signature": {
+      "q": "Kann ich meine Unterschrift hinzufügen?",
+      "a": "Ja, wenn Sie angemeldet sind. Speichern Sie Ihre Unterschriften einmal und wählen Sie im Dokument eine aus; wählen Sie „Keine Unterschrift“, um das Feld leer zu lassen und von Hand zu unterschreiben. Ein Logo wird mit Ihrem Unternehmen gespeichert."
+    },
+    "free": {
+      "q": "Ist es kostenlos, und brauche ich ein Konto?",
+      "a": "Ohne Konto können Sie jeden Tag einige Dokumente erstellen. Ein kostenloses Konto bringt mehr Downloads und speichert Ihre Unternehmen, Unterschriften und Dokumente, damit Sie sie wieder verwenden können."
+    },
+    "country": {
+      "q": "Kann ich ihn für ein anderes Land oder eine andere Währung erstellen?",
+      "a": "Ja. Wählen Sie Land, Sprache und Währung im Menü oben auf der Seite; das Formular, die Steuer und die Schreibweise von Zahlen und Daten richten sich nach Ihrer Wahl."
+    },
+    "official": {
+      "q": "Ist das ein offizielles Dokument?",
+      "a": "Nein. QuickSlips erstellt das Dokument aus den Angaben, die Sie eingeben. Es wird nicht von einer Steuerbehörde oder einem E-Rechnungssystem ausgestellt, und Sie sind für die Richtigkeit Ihrer Angaben und für die rechtmäßige Verwendung verantwortlich, nur für echte Geschäftsvorgänge."
+    }
   }
 }

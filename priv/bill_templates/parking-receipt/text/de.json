@@ -4,6 +4,7 @@
   "public_slug": "parkquittung-generator",
   "summary": "Parkquittung mit Stellplatz, Uhrzeit und Gebühr als PDF.",
   "description": "Erstellen Sie eine Parkquittung mit Name und Adresse des Parkplatzes, Stellplatz, Uhrzeit und Gebühr. Sofort in der Vorschau ansehen und als PDF herunterladen.",
+  "intro": "Eine Parkquittung bestätigt einen Aufenthalt auf einem Parkplatz. Sie zeigt die Anlage und ihre Adresse, die Stellplatznummer, die Ein- und Ausfahrtszeit und die Gebühr.",
   "designs": {
     "t1": "Parkbeleg"
   },
