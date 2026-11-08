@@ -55,6 +55,7 @@ defmodule QuickSlipsWeb.Router do
   scope "/", QuickSlipsWeb do
     get "/robots.txt", RobotsController, :show
     get "/sitemap.xml", SitemapController, :show
+    get "/sitemap.xsl", SitemapController, :stylesheet
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
@@ -143,6 +144,15 @@ defmodule QuickSlipsWeb.Router do
       live "/users/register", UserLive.Registration, :new
       live "/users/log-in", UserLive.Login, :new
       live "/users/log-in/:token", UserLive.Confirmation, :new
+
+      # The sitemap for people; the one for search engines is /sitemap.xml (a controller, above). Like every
+      # single-segment address, it comes above `/:locale`.
+      live "/sitemap", SitemapLive, :index
+
+      # The legal pages: English only, one address each (not under a locale), above `/:locale` like the others.
+      live "/terms", LegalLive, :terms
+      live "/privacy", LegalLive, :privacy
+      live "/disclaimer", LegalLive, :disclaimer
 
       # The catalogue of a locale: /en-in, /hi-in, /es-es. An old template address (/fuel-bill) also arrives
       # here, and the locale plug moves it to its new page.

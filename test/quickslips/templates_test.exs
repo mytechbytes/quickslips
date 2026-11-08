@@ -145,6 +145,38 @@ defmodule QuickSlips.TemplatesTest do
     assert %{"t2" => false} = signs.("internet-bill")
   end
 
+  describe "names/1" do
+    test "is what a link to a bill needs, in the language of the locale" do
+      assert %{
+               name: "Fuel Bill",
+               title: "Fuel Bill Generator",
+               public_slug: "fuel-bill-generator",
+               category: "Travel",
+               category_name: "Travel"
+             } = Templates.names(Locales.fetch!("en-in"))["fuel-bill"]
+
+      assert %{name: "Factura de Gasolina", public_slug: "generador-de-factura-de-gasolina"} =
+               Templates.names(Locales.fetch!("es-es"))["fuel-bill"]
+    end
+
+    test "is small: no fields, no words of the layout" do
+      [entry | _] = Map.values(Templates.names(Locales.fetch!("en-in")))
+
+      assert entry |> Map.keys() |> Enum.sort() ==
+               [:category, :category_name, :name, :public_slug, :title]
+    end
+
+    test "has the bills of the locale and no others" do
+      english = Templates.names(Locales.fetch!("en-in"))
+      hindi = Templates.names(Locales.fetch!("hi-in"))
+
+      assert map_size(english) == length(Templates.list(Locales.fetch!("en-in")))
+      assert Map.has_key?(english, "courier-receipt")
+      # the courier receipt is only in English
+      refute Map.has_key?(hindi, "courier-receipt")
+    end
+  end
+
   describe "the words under every page" do
     # Every bill in every language it is in, as a visitor of each live locale sees it.
     defp every_page do

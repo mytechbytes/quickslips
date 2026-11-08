@@ -230,21 +230,125 @@ defmodule QuickSlipsWeb.Layouts do
         {render_slot(@inner_block)}
       </main>
 
-      <footer class="border-t border-line">
-        <div class="mx-auto max-w-8xl space-y-3 px-4 py-5 sm:px-6 lg:px-8">
-          <.locale_picker id="footer-locale" locale={@locale} />
-          <p class="text-sm/6 text-ink-muted">
-            {gettext(
-              "© %{year} QuickSlips. We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully.",
-              year: Date.utc_today().year
-            )}
-          </p>
-        </div>
-      </footer>
+      <.site_footer locale={@locale} />
     </div>
 
     <.flash_group flash={@flash} />
     """
+  end
+
+  ## The footer of the public pages
+
+  attr :locale, :map, required: true
+
+  # What a visitor can go on to from any public page: the bills people ask for most, the whole catalogue, the pages
+  # about the site, and then the language and country switch and the notice that the visitor answers for what the
+  # documents say. The links to bills are in the language and at the addresses of the locale of the page.
+  defp site_footer(assigns) do
+    assigns =
+      assigns
+      |> assign(:popular, QuickSlipsWeb.Footer.popular(assigns.locale))
+      |> assign(:more, QuickSlipsWeb.Footer.more(assigns.locale))
+      |> assign(:site, site_links(assigns.locale))
+
+    ~H"""
+    <footer id="site-footer" class="border-t border-line bg-surface">
+      <div class="mx-auto max-w-8xl px-4 py-10 sm:px-6 lg:px-8">
+        <div class="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))]">
+          <div class="sm:col-span-2 lg:col-span-1">
+            <.wordmark id="footer-logo" navigate={home_path(@locale)} />
+            <p id="footer-tagline" class="mt-4 max-w-sm text-sm/6 text-ink-muted">
+              {gettext(
+                "Make a clean bill or receipt as a PDF in seconds: fill in the form, check the preview, download. Nothing to install."
+              )}
+            </p>
+            <p id="footer-copyright" class="mt-4 text-sm/6 text-ink-muted">
+              {gettext("© %{year} QuickSlips. All rights reserved.", year: Date.utc_today().year)}
+            </p>
+          </div>
+
+          <.footer_links id="footer-popular" title={gettext("Popular bills")} links={@popular} />
+
+          <.footer_links id="footer-more" title={gettext("More templates")} links={@more}>
+            <:extra>
+              <.link
+                id="footer-all-templates"
+                navigate={home_path(@locale)}
+                class={
+                  footer_link_class() ++ ["inline-flex items-center gap-x-1 font-medium text-primary"]
+                }
+              >
+                {gettext("View all templates")} <.icon name="hero-arrow-right" class="size-4" />
+              </.link>
+            </:extra>
+          </.footer_links>
+
+          <.footer_links id="footer-site" title="QuickSlips" links={@site} />
+        </div>
+
+        <div class="mt-10 flex flex-col gap-4 border-t border-line pt-6 lg:flex-row lg:items-center lg:justify-between">
+          <.locale_picker id="footer-locale" locale={@locale} />
+          <p id="footer-notice" class="max-w-2xl text-sm/6 text-ink-muted lg:text-right">
+            {gettext(
+              "We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
+            )}
+          </p>
+        </div>
+      </div>
+    </footer>
+    """
+  end
+
+  # The pages about QuickSlips itself, and a way to write to its owner when there is an address (`CONTACT_EMAIL`).
+  defp site_links(locale) do
+    [
+      %{label: gettext("Templates"), to: home_path(locale)},
+      %{label: gettext("Sitemap"), to: ~p"/sitemap"},
+      %{label: gettext("Terms"), to: ~p"/terms"},
+      %{label: gettext("Privacy"), to: ~p"/privacy"},
+      %{label: gettext("Disclaimer"), to: ~p"/disclaimer"}
+    ] ++ contact_links()
+  end
+
+  defp contact_links do
+    case QuickSlips.Site.contact_email() do
+      nil -> []
+      email -> [%{label: gettext("Contact"), href: "mailto:" <> email}]
+    end
+  end
+
+  attr :id, :string, required: true
+  attr :title, :string, required: true
+
+  attr :links, :list,
+    default: [],
+    doc: "`[%{label: _, to: path}]`, or `%{label: _, href: url}` for a link that leaves the app"
+
+  slot :extra, doc: "one more line after the links"
+
+  defp footer_links(assigns) do
+    ~H"""
+    <nav id={@id} aria-labelledby={"#{@id}-title"}>
+      <h2 id={"#{@id}-title"} class="text-sm/6 font-semibold text-ink">{@title}</h2>
+      <ul class="mt-3 space-y-2">
+        <li :for={link <- @links}>
+          <.link :if={Map.has_key?(link, :to)} navigate={link.to} class={footer_link_class()}>
+            {link.label}
+          </.link>
+          <.link :if={Map.has_key?(link, :href)} href={link.href} class={footer_link_class()}>
+            {link.label}
+          </.link>
+        </li>
+        <li :if={@extra != []}>{render_slot(@extra)}</li>
+      </ul>
+    </nav>
+    """
+  end
+
+  defp footer_link_class do
+    [
+      "rounded-field text-sm/6 text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+    ]
   end
 
   ## The app shell (logged-in users)

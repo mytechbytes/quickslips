@@ -16,7 +16,7 @@ defmodule QuickSlips.Templates.Registry do
   # live templates still lead somewhere, so the names stay taken.
   @reserved ~w(users auth dashboard dev api assets images fonts wasm uploads source
                history documents businesses credits bulk bulk-import templates
-               healthz sitemap.xml sw.js favicon.ico robots.txt admin)
+               healthz sitemap sitemap.xml sitemap.xsl terms privacy disclaimer sw.js favicon.ico robots.txt admin)
 
   # Field keys the server fills in itself (the names of a business's pictures), so a template can't use them.
   @reserved_keys ~w(logo signature)
@@ -57,6 +57,13 @@ defmodule QuickSlips.Templates.Registry do
   @doc "The categories of a locale's templates, `[%{key: \"Travel\", name: \"यात्रा\"}, ...]`, by key."
   def categories(locale_code, server \\ __MODULE__),
     do: GenServer.call(server, {:categories, locale_code})
+
+  @doc """
+  What a link to each template of a locale needs: `%{"fuel-bill" => %{name: "Fuel Bill", title: _, public_slug: _,
+  category: "Travel", category_name: _}}`. It is small on purpose: a whole schema is big to copy out of the registry,
+  and a footer asks on every page.
+  """
+  def names(locale_code, server \\ __MODULE__), do: GenServer.call(server, {:names, locale_code})
 
   ## Server callbacks
 
@@ -125,6 +132,22 @@ defmodule QuickSlips.Templates.Registry do
       for {{^id, code}, view} <- state.views, into: %{}, do: {code, view.schema["public_slug"]}
 
     {:reply, slugs, state}
+  end
+
+  def handle_call({:names, code}, _from, state) do
+    names =
+      for {{id, ^code}, %{schema: schema}} <- state.views, into: %{} do
+        {id,
+         %{
+           name: schema["name"],
+           title: schema["title"],
+           public_slug: schema["public_slug"],
+           category: schema["category"],
+           category_name: schema["category_name"]
+         }}
+      end
+
+    {:reply, names, state}
   end
 
   def handle_call({:categories, code}, _from, state) do

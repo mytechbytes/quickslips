@@ -25,6 +25,12 @@ defmodule QuickSlips.Templates do
   @doc "The categories of the templates of a locale: `[%{key: \"Travel\", name: \"Viajes\"}, ...]`."
   def categories(%{code: code}), do: Registry.categories(code)
 
+  @doc """
+  The name, public slug and category of each template of a locale, by internal id (see `Registry.names/2`): enough
+  to link to a bill, much lighter than `list/1`.
+  """
+  def names(%{code: code}), do: Registry.names(code)
+
   @doc "`{:ok, schema}` of a template (default locale) by its internal id, or `{:error, :not_found}`."
   def get(slug) when is_binary(slug), do: Registry.fetch(slug)
 

@@ -43,6 +43,10 @@ config :quickslips,
        |> String.split(",", trim: true)
        |> Enum.map(&(&1 |> String.trim() |> String.downcase()))
 
+# The address people write to about their data, their account or the terms. The footer and the legal pages show it
+# when it is set, and say nothing about contacting anyone when it is not: set it before the pages are public.
+config :quickslips, :contact_email, System.get_env("CONTACT_EMAIL")
+
 if config_env() == :dev do
   # Reload browser tabs when matching files change.
   config :quickslips, QuickSlipsWeb.Endpoint,

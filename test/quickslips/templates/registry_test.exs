@@ -61,6 +61,16 @@ defmodule QuickSlips.Templates.RegistryTest do
     end
   end
 
+  test "refuses a slug that is an address of the site", %{tmp_dir: dir} do
+    # /sitemap and the legal pages are pages of their own, above /:locale
+    for slug <- ["sitemap", "terms", "privacy", "disclaimer"] do
+      File.rm_rf!(dir)
+      write_schema(dir, slug, [])
+
+      assert start_error(dir) =~ ~s("#{slug}" is reserved or not a valid slug)
+    end
+  end
+
   test "refuses a slug that is a locale, since that address is a catalogue", %{tmp_dir: dir} do
     write_schema(dir, "en-in", [])
 

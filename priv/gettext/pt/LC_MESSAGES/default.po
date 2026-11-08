@@ -41,8 +41,8 @@ msgstr "Todas"
 msgid "Already have an account?"
 msgstr "Já tem uma conta?"
 
-#: lib/quickslips_web/components/layouts.ex:446
-#: lib/quickslips_web/components/layouts.ex:461
+#: lib/quickslips_web/components/layouts.ex:550
+#: lib/quickslips_web/components/layouts.ex:565
 #, elixir-autogen, elixir-format
 msgid "Attempting to reconnect"
 msgstr "Tentando reconectar"
@@ -258,7 +258,7 @@ msgstr "Entrar no QuickSlips"
 msgid "Log me in only this time"
 msgstr "Entrar somente desta vez"
 
-#: lib/quickslips_web/components/layouts.ex:319
+#: lib/quickslips_web/components/layouts.ex:423
 #: lib/quickslips_web/components/ui.ex:799
 #, elixir-autogen, elixir-format
 msgid "Log out"
@@ -282,8 +282,8 @@ msgid "Magic link is invalid or it has expired."
 msgstr "O link mágico é inválido ou expirou."
 
 #: lib/quickslips_web/components/layouts.ex:143
-#: lib/quickslips_web/components/layouts.ex:258
-#: lib/quickslips_web/components/layouts.ex:331
+#: lib/quickslips_web/components/layouts.ex:362
+#: lib/quickslips_web/components/layouts.ex:435
 #, elixir-autogen, elixir-format
 msgid "Main"
 msgstr "Principal"
@@ -293,8 +293,8 @@ msgstr "Principal"
 msgid "Need more than 2 downloads a day?"
 msgstr "Precisa de mais de 2 downloads por dia?"
 
-#: lib/quickslips_web/components/layouts.ex:282
-#: lib/quickslips_web/components/layouts.ex:339
+#: lib/quickslips_web/components/layouts.ex:386
+#: lib/quickslips_web/components/layouts.ex:443
 #, elixir-autogen, elixir-format
 msgid "New document"
 msgstr "Novo documento"
@@ -310,7 +310,7 @@ msgid "No template matches your search."
 msgstr "Nenhum modelo corresponde à sua busca."
 
 #: lib/quickslips_web/components/layouts.ex:176
-#: lib/quickslips_web/components/layouts.ex:272
+#: lib/quickslips_web/components/layouts.ex:376
 #, elixir-autogen, elixir-format
 msgid "Open main menu"
 msgstr "Abrir menu principal"
@@ -377,8 +377,8 @@ msgstr "Buscar modelos"
 msgid "Search templates, like fuel or rent"
 msgstr "Buscar modelos, como combustível ou aluguel"
 
-#: lib/quickslips_web/components/layouts.ex:311
-#: lib/quickslips_web/components/layouts.ex:366
+#: lib/quickslips_web/components/layouts.ex:415
+#: lib/quickslips_web/components/layouts.ex:470
 #: lib/quickslips_web/components/ui.ex:791
 #, elixir-autogen, elixir-format
 msgid "Settings"
@@ -395,7 +395,7 @@ msgstr "Configurações"
 msgid "Sign up"
 msgstr "Cadastrar-se"
 
-#: lib/quickslips_web/components/layouts.ex:453
+#: lib/quickslips_web/components/layouts.ex:557
 #, elixir-autogen, elixir-format
 msgid "Something went wrong!"
 msgstr "Algo deu errado!"
@@ -417,6 +417,7 @@ msgstr "Sistema"
 
 #: lib/quickslips_web/components/layouts.ex:154
 #: lib/quickslips_web/components/layouts.ex:211
+#: lib/quickslips_web/components/layouts.ex:305
 #: lib/quickslips_web/live/home_live.ex:81
 #: lib/quickslips_web/live/template_live.html.heex:8
 #, elixir-autogen, elixir-format
@@ -468,7 +469,7 @@ msgstr "Atualizando a pré-visualização…"
 msgid "User confirmed successfully."
 msgstr "Usuário confirmado com sucesso."
 
-#: lib/quickslips_web/components/layouts.ex:438
+#: lib/quickslips_web/components/layouts.ex:542
 #, elixir-autogen, elixir-format
 msgid "We can't find the internet"
 msgstr "Não encontramos a internet"
@@ -546,11 +547,6 @@ msgstr "fechar"
 #, elixir-autogen, elixir-format
 msgid "or"
 msgstr "ou"
-
-#: lib/quickslips_web/components/layouts.ex:237
-#, elixir-autogen, elixir-format
-msgid "© %{year} QuickSlips. We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
-msgstr "© %{year} QuickSlips. Criamos documentos a partir dos dados que você informa. Você é responsável pela exatidão deles e por usá-los de forma legal."
 
 #: lib/quickslips_web/live/user_live/registration.ex:111
 #, elixir-autogen, elixir-format
@@ -795,3 +791,85 @@ msgstr "Você pode guardar até %{max} assinaturas. Antes, exclua uma na página
 #, elixir-autogen, elixir-format
 msgid "Frequently asked questions"
 msgstr "Perguntas frequentes"
+
+#: lib/quickslips_web/live/sitemap_live.ex:34
+#, elixir-autogen, elixir-format
+msgid "Every page of QuickSlips, by language and country."
+msgstr "Todas as páginas do QuickSlips, por idioma e país."
+
+#: lib/quickslips_web/live/sitemap_live.ex:42
+#, elixir-autogen, elixir-format
+msgid "Languages and countries: %{count}"
+msgstr "Idiomas e países: %{count}"
+
+#: lib/quickslips_web/components/layouts.ex:261
+#, elixir-autogen, elixir-format
+msgid "Make a clean bill or receipt as a PDF in seconds: fill in the form, check the preview, download. Nothing to install."
+msgstr "Crie uma nota ou um recibo limpo em PDF em segundos: preencha o formulário, confira a prévia e baixe. Nada para instalar."
+
+#: lib/quickslips_web/components/layouts.ex:272
+#, elixir-autogen, elixir-format
+msgid "More templates"
+msgstr "Mais modelos"
+
+#: lib/quickslips_web/live/sitemap_live.ex:39
+#, elixir-autogen, elixir-format
+msgid "Pages: %{count}"
+msgstr "Páginas: %{count}"
+
+#: lib/quickslips_web/components/layouts.ex:270
+#, elixir-autogen, elixir-format
+msgid "Popular bills"
+msgstr "Documentos populares"
+
+#: lib/quickslips_web/components/layouts.ex:306
+#: lib/quickslips_web/live/sitemap_live.ex:21
+#: lib/quickslips_web/live/sitemap_live.ex:32
+#, elixir-autogen, elixir-format
+msgid "Sitemap"
+msgstr "Mapa do site"
+
+#: lib/quickslips_web/live/sitemap_live.ex:45
+#, elixir-autogen, elixir-format
+msgid "The same list, as search engines read it:"
+msgstr "A mesma lista, como os buscadores a leem:"
+
+#: lib/quickslips_web/components/layouts.ex:281
+#, elixir-autogen, elixir-format
+msgid "View all templates"
+msgstr "Ver todos os modelos"
+
+#: lib/quickslips_web/components/layouts.ex:292
+#, elixir-autogen, elixir-format
+msgid "We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
+msgstr "Criamos documentos a partir dos dados que você informa. Você é responsável pela exatidão deles e por usá-los de forma legal."
+
+#: lib/quickslips_web/components/layouts.ex:266
+#, elixir-autogen, elixir-format
+msgid "© %{year} QuickSlips. All rights reserved."
+msgstr "© %{year} QuickSlips. Todos os direitos reservados."
+
+#: lib/quickslips_web/components/layouts.ex:316
+#, elixir-autogen, elixir-format
+msgid "Contact"
+msgstr "Contato"
+
+#: lib/quickslips_web/components/layouts.ex:309
+#, elixir-autogen, elixir-format
+msgid "Disclaimer"
+msgstr "Isenção de responsabilidade"
+
+#: lib/quickslips_web/components/layouts.ex:308
+#, elixir-autogen, elixir-format
+msgid "Privacy"
+msgstr "Privacidade"
+
+#: lib/quickslips_web/components/layouts.ex:307
+#, elixir-autogen, elixir-format
+msgid "Terms"
+msgstr "Termos de uso"
+
+#: lib/quickslips_web/live/legal_live.ex:36
+#, elixir-autogen, elixir-format
+msgid "This page is only available in English."
+msgstr "Esta página só está disponível em inglês."
