@@ -13,6 +13,8 @@ defmodule QuickSlips.Application do
       QuickSlips.Templates.Registry,
       {DNSCluster, query: Application.get_env(:quickslips, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: QuickSlips.PubSub},
+      # For work that should not hold a visitor up, like the e-mails that follow a message of the contact form.
+      {Task.Supervisor, name: QuickSlips.TaskSupervisor},
       # Start a worker by calling: QuickSlips.Worker.start_link(arg)
       # {QuickSlips.Worker, arg},
       # Start to serve requests, typically the last entry

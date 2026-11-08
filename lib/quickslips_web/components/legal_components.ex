@@ -62,6 +62,14 @@ defmodule QuickSlipsWeb.LegalComponents do
     """
   end
 
+  # The way in to the contact form, inside a sentence. Only the sentences that are shown when there is an address
+  # to send to use it, and the form is there when there is one.
+  defp contact_link(assigns) do
+    ~H"""
+    <.link navigate={~p"/contact"}>contact form</.link>
+    """
+  end
+
   ## The terms of use
 
   attr :contact_email, :string, default: nil
@@ -169,7 +177,7 @@ defmodule QuickSlipsWeb.LegalComponents do
           these terms, misuse the service or put it or other people at risk.
         </p>
         <p :if={@contact_email}>
-          To close your account and have your data deleted, write to
+          To close your account and have your data deleted, use the <.contact_link /> or write to
           <.mail_link email={@contact_email} />.
         </p>
       </.legal_section>
@@ -183,7 +191,10 @@ defmodule QuickSlipsWeb.LegalComponents do
       </.legal_section>
 
       <.legal_section :if={@contact_email} title="Contact">
-        <p>Questions about these terms? Write to <.mail_link email={@contact_email} />.</p>
+        <p>
+          Questions about these terms? Use the <.contact_link /> or write to
+          <.mail_link email={@contact_email} />.
+        </p>
       </.legal_section>
     </.legal_page>
     """
@@ -223,7 +234,8 @@ defmodule QuickSlipsWeb.LegalComponents do
         <p>
           QuickSlips is run by the people behind this website, called “we” on this page.
           <span :if={@contact_email}>
-            You can reach us at <.mail_link email={@contact_email} />.
+            You can reach us through the <.contact_link /> or at
+            <.mail_link email={@contact_email} />.
           </span>
         </p>
       </.legal_section>
@@ -262,6 +274,19 @@ defmodule QuickSlipsWeb.LegalComponents do
           each document you download while logged in, we keep the details you entered and the template you used, not
           the PDF, so that you can download it again or edit it. We keep your latest 200 documents and delete older
           ones automatically. Pictures you upload are kept in private storage and are shown only to you.
+        </p>
+        <p :if={@contact_email} id="legal-contact-messages">
+          <strong>Messages you send us.</strong>
+          If you use the contact form, we receive what you write: the kind of message, your e-mail address, your
+          name if you give it, and your message. We also receive the language and country of the page you were on,
+          the page you wrote about if you came from one, and, if you are logged in, the e-mail address of your
+          account. We keep the message in our database, under a reference that we give you, so that we can find it
+          again; we are told of it by e-mail, and we send a confirmation to the address you gave (it holds the
+          reference and the kind of message, not your words). We use it only to read it and to answer you. Everybody
+          who uses the form passes the Turnstile check described above, because the confirmation goes to the
+          address that was typed. To limit abuse we count the messages sent each day, in all, for each logged-in
+          account and for each address that a confirmation goes to; the count of an address is kept under a
+          scrambled form of it, not under the address itself.
         </p>
         <p>
           <strong>Errors.</strong>
@@ -306,7 +331,9 @@ defmodule QuickSlipsWeb.LegalComponents do
         <p>
           We use other companies to run QuickSlips: a hosting provider for our servers and database, Cloudflare to
           protect and speed up the site and for the Turnstile check, an e-mail provider to send log-in and account
-          e-mails, and, only if you choose “Continue with Google”, Google to sign you in. They may handle data in
+          e-mails<span :if={@contact_email}>
+            and to deliver the messages of the contact form to us and their confirmations to the people who wrote them
+          </span>, and, only if you choose “Continue with Google”, Google to sign you in. They may handle data in
           other countries. We do not sell your data and we do not share it for advertising. We may share data if the
           law requires it.
         </p>
@@ -318,6 +345,10 @@ defmodule QuickSlipsWeb.LegalComponents do
             Your account and what you saved: until you delete it, or until your account is closed.
           </li>
           <li>Your document history: your latest 200 documents.</li>
+          <li :if={@contact_email}>
+            Messages from the contact form, in our database and in our mailbox: for as long as we need them to deal
+            with your request and to keep a record of it. You can ask us to delete one.
+          </li>
           <li>
             The daily counters and the technical logs: for as long as we need them to enforce the limits and to keep
             the service secure and working.
@@ -337,7 +368,7 @@ defmodule QuickSlipsWeb.LegalComponents do
           protection authority.
         </p>
         <p :if={@contact_email}>
-          To use these rights, or to close your account, write to
+          To use these rights, or to close your account, use the <.contact_link /> or write to
           <.mail_link email={@contact_email} />.
         </p>
       </.legal_section>
@@ -364,7 +395,10 @@ defmodule QuickSlipsWeb.LegalComponents do
       </.legal_section>
 
       <.legal_section :if={@contact_email} title="Contact">
-        <p>Questions about your data? Write to <.mail_link email={@contact_email} />.</p>
+        <p>
+          Questions about your data? Use the <.contact_link /> or write to
+          <.mail_link email={@contact_email} />.
+        </p>
       </.legal_section>
     </.legal_page>
     """
@@ -436,7 +470,7 @@ defmodule QuickSlipsWeb.LegalComponents do
       </.legal_section>
 
       <.legal_section :if={@contact_email} title="Contact">
-        <p>Questions? Write to <.mail_link email={@contact_email} />.</p>
+        <p>Questions? Use the <.contact_link /> or write to <.mail_link email={@contact_email} />.</p>
       </.legal_section>
     </.legal_page>
     """

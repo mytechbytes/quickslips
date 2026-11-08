@@ -32,6 +32,9 @@ config :quickslips, :quota, anonymous: 2, user: 3, ip: 5
 # Pictures uploaded by the tests go here, outside the project. The tests remove what they store.
 config :quickslips, :uploads_dir, Path.join(System.tmp_dir!(), "quickslips-test-uploads")
 
+# No contact address unless a test sets one (QuickSlips.SiteHelpers)
+config :quickslips, :contact_email, nil
+
 # turnstile
 config :quickslips, :turnstile, site_key: "test", secret_key: "test"
 config :quickslips, :turnstile_req_options, plug: {Req.Test, QuickSlips.Turnstile}

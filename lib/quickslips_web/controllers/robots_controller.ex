@@ -5,12 +5,14 @@ defmodule QuickSlipsWeb.RobotsController do
   site.
 
   What is kept out: the endpoints scripts call, the private pictures, the page sources the preview reads, the log-in
-  and account pages, and the pages of a logged-in user. The scripts and styles (`/assets`, `/fonts`, `/wasm`) are not
-  in the list on purpose: a crawler that draws a page needs them.
+  and account pages, the pages of a logged-in user, and the contact form with a query (`/contact?topic=...&about=...`,
+  which every bill page links to: the same page as many times as there are bills; `/contact` itself is open). The
+  scripts and styles (`/assets`, `/fonts`, `/wasm`) are not in the list on purpose: a crawler that draws a page needs
+  them.
   """
   use QuickSlipsWeb, :controller
 
-  @disallowed ~w(/api/ /uploads/ /source/ /auth/ /users/ /dashboard /businesses /signatures /history /admin/ /dev/ /locale /healthz)
+  @disallowed ~w(/api/ /uploads/ /source/ /auth/ /users/ /dashboard /businesses /signatures /history /admin/ /dev/ /locale /healthz /contact?)
 
   def show(conn, _params) do
     conn

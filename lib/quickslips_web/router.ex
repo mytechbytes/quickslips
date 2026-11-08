@@ -141,6 +141,15 @@ defmodule QuickSlipsWeb.Router do
         live "/history", HistoryLive, :index
       end
 
+      # What visitors wrote in the contact form: for the people in ADMIN_EMAILS only. A plug sends everybody else to a
+      # 404 on the first load, and each LiveView checks again (`on_mount :require_admin`) for a live navigation.
+      scope "/admin", Admin do
+        pipe_through [:require_authenticated_user, :require_admin]
+
+        live "/messages", MessageLive.Index, :index
+        live "/messages/:id", MessageLive.Show, :show
+      end
+
       live "/users/register", UserLive.Registration, :new
       live "/users/log-in", UserLive.Login, :new
       live "/users/log-in/:token", UserLive.Confirmation, :new
@@ -148,6 +157,10 @@ defmodule QuickSlipsWeb.Router do
       # The sitemap for people; the one for search engines is /sitemap.xml (a controller, above). Like every
       # single-segment address, it comes above `/:locale`.
       live "/sitemap", SitemapLive, :index
+
+      # The contact form: for visitors and logged-in users alike, in the language of the visitor, above `/:locale`
+      # like every single-segment address.
+      live "/contact", ContactLive, :new
 
       # The legal pages: English only, one address each (not under a locale), above `/:locale` like the others.
       live "/terms", LegalLive, :terms

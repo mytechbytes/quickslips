@@ -11,12 +11,12 @@ msgstr ""
 "Language: hi\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: lib/quickslips_web/live/template_live.ex:125
+#: lib/quickslips_web/live/template_live.ex:132
 #, elixir-autogen, elixir-format
 msgid "%{remaining} of %{limit} downloads left today"
 msgstr "आज %{limit} में से %{remaining} डाउनलोड बचे हैं"
 
-#: lib/quickslips_web/live/template_live.ex:120
+#: lib/quickslips_web/live/template_live.ex:127
 #, elixir-autogen, elixir-format
 msgid "%{remaining} of %{limit} free downloads left today"
 msgstr "आज %{limit} में से %{remaining} मुफ़्त डाउनलोड बचे हैं"
@@ -41,8 +41,8 @@ msgstr "सभी"
 msgid "Already have an account?"
 msgstr "पहले से खाता है?"
 
-#: lib/quickslips_web/components/layouts.ex:550
-#: lib/quickslips_web/components/layouts.ex:565
+#: lib/quickslips_web/components/layouts.ex:606
+#: lib/quickslips_web/components/layouts.ex:621
 #, elixir-autogen, elixir-format
 msgid "Attempting to reconnect"
 msgstr "फिर से जुड़ने की कोशिश हो रही है"
@@ -57,7 +57,7 @@ msgstr "बिल और रसीदें, कुछ ही सेकंड �
 msgid "Categories"
 msgstr "श्रेणियाँ"
 
-#: lib/quickslips_web/live/template_live.ex:151
+#: lib/quickslips_web/live/template_live.ex:158
 #, elixir-autogen, elixir-format
 msgid "Choose a saved business…"
 msgstr "सहेजा हुआ व्यवसाय चुनें…"
@@ -115,7 +115,7 @@ msgstr "अपना खाता बनाएं"
 msgid "Creating account..."
 msgstr "खाता बन रहा है..."
 
-#: lib/quickslips_web/live/template_live.ex:129
+#: lib/quickslips_web/live/template_live.ex:136
 #, elixir-autogen, elixir-format
 msgid "Creating your PDF…"
 msgstr "आपका PDF बन रहा है…"
@@ -130,7 +130,7 @@ msgstr "डार्क"
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
 
-#: lib/quickslips_web/live/template_live.ex:138
+#: lib/quickslips_web/live/template_live.ex:145
 #, elixir-autogen, elixir-format
 msgid "Document preview"
 msgstr "दस्तावेज़ का प्रीव्यू"
@@ -145,7 +145,7 @@ msgstr "दस्तावेज़"
 msgid "Download PDF"
 msgstr "PDF डाउनलोड करें"
 
-#: lib/quickslips_web/live/template_live.ex:130
+#: lib/quickslips_web/live/template_live.ex:137
 #, elixir-autogen, elixir-format
 msgid "Downloaded."
 msgstr "डाउनलोड हो गया।"
@@ -167,7 +167,7 @@ msgstr "ईमेल लिंक"
 msgid "Email me a link"
 msgstr "मुझे लिंक ईमेल करें"
 
-#: lib/quickslips_web/live/template_live.ex:152
+#: lib/quickslips_web/live/template_live.ex:159
 #, elixir-autogen, elixir-format
 msgid "Fill from a saved business"
 msgstr "सहेजे हुए व्यवसाय से भरें"
@@ -258,7 +258,7 @@ msgstr "QuickSlips में लॉग इन करें"
 msgid "Log me in only this time"
 msgstr "मुझे सिर्फ़ इस बार लॉग इन करें"
 
-#: lib/quickslips_web/components/layouts.ex:423
+#: lib/quickslips_web/components/layouts.ex:457
 #: lib/quickslips_web/components/ui.ex:799
 #, elixir-autogen, elixir-format
 msgid "Log out"
@@ -282,8 +282,8 @@ msgid "Magic link is invalid or it has expired."
 msgstr "यह लिंक मान्य नहीं है या इसकी समय-सीमा समाप्त हो गई है।"
 
 #: lib/quickslips_web/components/layouts.ex:143
-#: lib/quickslips_web/components/layouts.ex:362
-#: lib/quickslips_web/components/layouts.ex:435
+#: lib/quickslips_web/components/layouts.ex:376
+#: lib/quickslips_web/components/layouts.ex:469
 #, elixir-autogen, elixir-format
 msgid "Main"
 msgstr "मुख्य"
@@ -293,8 +293,8 @@ msgstr "मुख्य"
 msgid "Need more than 2 downloads a day?"
 msgstr "दिन में 2 से ज़्यादा डाउनलोड चाहिए?"
 
-#: lib/quickslips_web/components/layouts.ex:386
-#: lib/quickslips_web/components/layouts.ex:443
+#: lib/quickslips_web/components/layouts.ex:400
+#: lib/quickslips_web/components/layouts.ex:477
 #, elixir-autogen, elixir-format
 msgid "New document"
 msgstr "नया दस्तावेज़"
@@ -310,7 +310,7 @@ msgid "No template matches your search."
 msgstr "आपकी खोज से कोई टेम्पलेट नहीं मिला।"
 
 #: lib/quickslips_web/components/layouts.ex:176
-#: lib/quickslips_web/components/layouts.ex:376
+#: lib/quickslips_web/components/layouts.ex:390
 #, elixir-autogen, elixir-format
 msgid "Open main menu"
 msgstr "मुख्य मेन्यू खोलें"
@@ -347,12 +347,12 @@ msgstr "टेम्पलेट चुनें, फ़ॉर्म भरे�
 msgid "Pick one to start a new document."
 msgstr "नया दस्तावेज़ शुरू करने के लिए एक चुनें।"
 
-#: lib/quickslips_web/live/template_live.ex:131
+#: lib/quickslips_web/live/template_live.ex:138
 #, elixir-autogen, elixir-format
 msgid "Please fix the highlighted fields."
 msgstr "कृपया चिह्नित फ़ील्ड ठीक करें।"
 
-#: lib/quickslips_web/live/template_live.ex:137
+#: lib/quickslips_web/live/template_live.ex:144
 #, elixir-autogen, elixir-format
 msgid "Preview could not be rendered."
 msgstr "प्रीव्यू नहीं बन सका।"
@@ -377,8 +377,8 @@ msgstr "टेम्पलेट खोजें"
 msgid "Search templates, like fuel or rent"
 msgstr "टेम्पलेट खोजें, जैसे पेट्रोल या किराया"
 
-#: lib/quickslips_web/components/layouts.ex:415
-#: lib/quickslips_web/components/layouts.ex:470
+#: lib/quickslips_web/components/layouts.ex:429
+#: lib/quickslips_web/components/layouts.ex:504
 #: lib/quickslips_web/components/ui.ex:791
 #, elixir-autogen, elixir-format
 msgid "Settings"
@@ -395,12 +395,12 @@ msgstr "सेटिंग्स"
 msgid "Sign up"
 msgstr "साइन अप"
 
-#: lib/quickslips_web/components/layouts.ex:557
+#: lib/quickslips_web/components/layouts.ex:613
 #, elixir-autogen, elixir-format
 msgid "Something went wrong!"
 msgstr "कुछ गड़बड़ हो गई!"
 
-#: lib/quickslips_web/live/template_live.ex:135
+#: lib/quickslips_web/live/template_live.ex:142
 #, elixir-autogen, elixir-format
 msgid "Something went wrong. Please try again."
 msgstr "कुछ गड़बड़ हो गई। कृपया फिर कोशिश करें।"
@@ -417,7 +417,7 @@ msgstr "सिस्टम"
 
 #: lib/quickslips_web/components/layouts.ex:154
 #: lib/quickslips_web/components/layouts.ex:211
-#: lib/quickslips_web/components/layouts.ex:305
+#: lib/quickslips_web/components/layouts.ex:316
 #: lib/quickslips_web/live/home_live.ex:81
 #: lib/quickslips_web/live/template_live.html.heex:8
 #, elixir-autogen, elixir-format
@@ -459,7 +459,7 @@ msgstr "यूनाइटेड किंगडम"
 msgid "United States"
 msgstr "संयुक्त राज्य अमेरिका"
 
-#: lib/quickslips_web/live/template_live.ex:136
+#: lib/quickslips_web/live/template_live.ex:143
 #, elixir-autogen, elixir-format
 msgid "Updating preview…"
 msgstr "प्रीव्यू अपडेट हो रहा है…"
@@ -469,7 +469,7 @@ msgstr "प्रीव्यू अपडेट हो रहा है…"
 msgid "User confirmed successfully."
 msgstr "खाता सफलतापूर्वक पक्का हो गया।"
 
-#: lib/quickslips_web/components/layouts.ex:542
+#: lib/quickslips_web/components/layouts.ex:598
 #, elixir-autogen, elixir-format
 msgid "We can't find the internet"
 msgstr "इंटरनेट नहीं मिल रहा"
@@ -479,7 +479,7 @@ msgstr "इंटरनेट नहीं मिल रहा"
 msgid "We couldn't sign you in with Google. Please try again."
 msgstr "हम आपको Google से साइन इन नहीं कर सके। कृपया फिर कोशिश करें।"
 
-#: lib/quickslips_web/live/template_live.ex:134
+#: lib/quickslips_web/live/template_live.ex:141
 #, elixir-autogen, elixir-format
 msgid "We couldn't verify your browser. Turn off your ad blocker, or log in."
 msgstr "हम आपके ब्राउज़र की पुष्टि नहीं कर सके। अपना ऐड ब्लॉकर बंद करें, या लॉग इन करें।"
@@ -526,7 +526,7 @@ msgstr "इस पेज को देखने के लिए आपको �
 msgid "You need to reauthenticate to perform sensitive actions on your account."
 msgstr "अपने खाते पर संवेदनशील कार्रवाई करने के लिए आपको दोबारा पुष्टि करनी होगी।"
 
-#: lib/quickslips_web/live/template_live.ex:132
+#: lib/quickslips_web/live/template_live.ex:139
 #, elixir-autogen, elixir-format
 msgid "You've used today's free downloads."
 msgstr "आपने आज के मुफ़्त डाउनलोड इस्तेमाल कर लिए हैं।"
@@ -553,22 +553,22 @@ msgstr "या"
 msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account."
 msgstr "%{email} पर एक ईमेल भेजा गया है। उसे खोलें और अभी चुना हुआ पासवर्ड डालकर अपना खाता पक्का करें।"
 
-#: lib/quickslips_web/live/template_live.ex:147
+#: lib/quickslips_web/live/template_live.ex:154
 #, elixir-autogen, elixir-format
 msgid "Add item"
 msgstr "आइटम जोड़ें"
 
-#: lib/quickslips_web/live/template_live.ex:150
+#: lib/quickslips_web/live/template_live.ex:157
 #, elixir-autogen, elixir-format
 msgid "Amount"
 msgstr "राशि"
 
-#: lib/quickslips_web/live/template_live.ex:148
+#: lib/quickslips_web/live/template_live.ex:155
 #, elixir-autogen, elixir-format
 msgid "Remove item %{number}"
 msgstr "आइटम %{number} हटाएं"
 
-#: lib/quickslips_web/live/template_live.ex:149
+#: lib/quickslips_web/live/template_live.ex:156
 #, elixir-autogen, elixir-format
 msgid "Subtotal"
 msgstr "उप-कुल"
@@ -618,37 +618,37 @@ msgstr "मुद्रा"
 msgid "Template"
 msgstr "टेम्पलेट"
 
-#: lib/quickslips_web/live/template_live.ex:139
+#: lib/quickslips_web/live/template_live.ex:146
 #, elixir-autogen, elixir-format
 msgid "Business"
 msgstr "व्यवसाय"
 
-#: lib/quickslips_web/live/template_live.ex:145
+#: lib/quickslips_web/live/template_live.ex:152
 #, elixir-autogen, elixir-format
 msgid "Charges"
 msgstr "शुल्क"
 
-#: lib/quickslips_web/live/template_live.ex:142
+#: lib/quickslips_web/live/template_live.ex:149
 #, elixir-autogen, elixir-format
 msgid "Customer"
 msgstr "ग्राहक"
 
-#: lib/quickslips_web/live/template_live.ex:144
+#: lib/quickslips_web/live/template_live.ex:151
 #, elixir-autogen, elixir-format
 msgid "Details"
 msgstr "विवरण"
 
-#: lib/quickslips_web/live/template_live.ex:141
+#: lib/quickslips_web/live/template_live.ex:148
 #, elixir-autogen, elixir-format
 msgid "Document"
 msgstr "दस्तावेज़"
 
-#: lib/quickslips_web/live/template_live.ex:146
+#: lib/quickslips_web/live/template_live.ex:153
 #, elixir-autogen, elixir-format
 msgid "Payment"
 msgstr "भुगतान"
 
-#: lib/quickslips_web/live/template_live.ex:140
+#: lib/quickslips_web/live/template_live.ex:147
 #, elixir-autogen, elixir-format
 msgid "Registration"
 msgstr "पंजीकरण"
@@ -665,7 +665,7 @@ msgstr "देश और भाषा"
 msgid "Language, Country & Currency"
 msgstr "भाषा, देश और मुद्रा"
 
-#: lib/quickslips_web/live/template_live.ex:143
+#: lib/quickslips_web/live/template_live.ex:150
 #, elixir-autogen, elixir-format
 msgid "Item Details"
 msgstr "वस्तु विवरण"
@@ -675,27 +675,27 @@ msgstr "वस्तु विवरण"
 msgid "Generate Now"
 msgstr "अभी बनाएँ"
 
-#: lib/quickslips_web/live/template_live.ex:153
+#: lib/quickslips_web/live/template_live.ex:160
 #, elixir-autogen, elixir-format
 msgid "Other rate…"
 msgstr "अन्य दर…"
 
-#: lib/quickslips_web/live/template_live.ex:154
+#: lib/quickslips_web/live/template_live.ex:161
 #, elixir-autogen, elixir-format
 msgid "Type the rate in %"
 msgstr "दर % में लिखें"
 
-#: lib/quickslips_web/live/template_live.ex:166
+#: lib/quickslips_web/live/template_live.ex:173
 #, elixir-autogen, elixir-format
 msgid "Choose a picture first."
 msgstr "पहले एक चित्र चुनें।"
 
-#: lib/quickslips_web/live/template_live.ex:170
+#: lib/quickslips_web/live/template_live.ex:177
 #, elixir-autogen, elixir-format
 msgid "Fill in the seller's name first."
 msgstr "पहले विक्रेता का नाम भरें।"
 
-#: lib/quickslips_web/live/template_live.ex:156
+#: lib/quickslips_web/live/template_live.ex:163
 #, elixir-autogen, elixir-format
 msgid "Give the signature a name."
 msgstr "हस्ताक्षर को एक नाम दें।"
@@ -722,7 +722,7 @@ msgstr "PNG या JPG चित्र, 1 MB तक"
 msgid "Save a new signature"
 msgstr "नया हस्ताक्षर सहेजें"
 
-#: lib/quickslips_web/live/template_live.ex:167
+#: lib/quickslips_web/live/template_live.ex:174
 #, elixir-autogen, elixir-format
 msgid "Save seller details"
 msgstr "विक्रेता का विवरण सहेजें"
@@ -732,12 +732,12 @@ msgstr "विक्रेता का विवरण सहेजें"
 msgid "Save signature"
 msgstr "हस्ताक्षर सहेजें"
 
-#: lib/quickslips_web/live/template_live.ex:168
+#: lib/quickslips_web/live/template_live.ex:175
 #, elixir-autogen, elixir-format
 msgid "Seller details saved."
 msgstr "विक्रेता का विवरण सहेज लिया गया।"
 
-#: lib/quickslips_web/live/template_live.ex:169
+#: lib/quickslips_web/live/template_live.ex:176
 #, elixir-autogen, elixir-format
 msgid "Seller details updated."
 msgstr "विक्रेता का विवरण अपडेट किया गया।"
@@ -747,7 +747,7 @@ msgstr "विक्रेता का विवरण अपडेट कि�
 msgid "Signature"
 msgstr "हस्ताक्षर"
 
-#: lib/quickslips_web/live/template_live.ex:155
+#: lib/quickslips_web/live/template_live.ex:162
 #, elixir-autogen, elixir-format
 msgid "Signature saved."
 msgstr "हस्ताक्षर सहेज लिया गया।"
@@ -757,32 +757,32 @@ msgstr "हस्ताक्षर सहेज लिया गया।"
 msgid "Signatures"
 msgstr "हस्ताक्षर"
 
-#: lib/quickslips_web/live/template_live.ex:172
+#: lib/quickslips_web/live/template_live.ex:179
 #, elixir-autogen, elixir-format
 msgid "The %{label} is not valid. Check it, or leave it empty."
 msgstr "%{label} सही नहीं है। इसे जाँचें, या खाली छोड़ दें।"
 
-#: lib/quickslips_web/live/template_live.ex:165
+#: lib/quickslips_web/live/template_live.ex:172
 #, elixir-autogen, elixir-format
 msgid "This file is too big. The limit is 1 MB."
 msgstr "यह फ़ाइल बहुत बड़ी है। सीमा 1 MB है।"
 
-#: lib/quickslips_web/live/template_live.ex:162
+#: lib/quickslips_web/live/template_live.ex:169
 #, elixir-autogen, elixir-format
 msgid "This is not a real PNG or JPG picture."
 msgstr "यह असली PNG या JPG चित्र नहीं है।"
 
-#: lib/quickslips_web/live/template_live.ex:164
+#: lib/quickslips_web/live/template_live.ex:171
 #, elixir-autogen, elixir-format
 msgid "This picture is too big: at most 4000 pixels on a side."
 msgstr "यह चित्र बहुत बड़ा है: एक तरफ़ अधिकतम 4000 पिक्सेल।"
 
-#: lib/quickslips_web/live/template_live.ex:157
+#: lib/quickslips_web/live/template_live.ex:164
 #, elixir-autogen, elixir-format
 msgid "You already have a signature with this name."
 msgstr "इस नाम का हस्ताक्षर आपके पास पहले से है।"
 
-#: lib/quickslips_web/live/template_live.ex:159
+#: lib/quickslips_web/live/template_live.ex:166
 #, elixir-autogen, elixir-format
 msgid "You can keep up to %{max} signatures. Delete one on the Signatures page first."
 msgstr "आप अधिकतम %{max} हस्ताक्षर रख सकते हैं। पहले हस्ताक्षर पेज पर से एक हटाएँ।"
@@ -802,12 +802,12 @@ msgstr "QuickSlips के सभी पेज, भाषा और देश क
 msgid "Languages and countries: %{count}"
 msgstr "भाषाएँ और देश: %{count}"
 
-#: lib/quickslips_web/components/layouts.ex:261
+#: lib/quickslips_web/components/layouts.ex:262
 #, elixir-autogen, elixir-format
 msgid "Make a clean bill or receipt as a PDF in seconds: fill in the form, check the preview, download. Nothing to install."
 msgstr "सेकंडों में साफ़-सुथरा बिल या रसीद PDF में बनाएँ: फ़ॉर्म भरें, प्रीव्यू देखें, डाउनलोड करें। कुछ इंस्टॉल करने की ज़रूरत नहीं।"
 
-#: lib/quickslips_web/components/layouts.ex:272
+#: lib/quickslips_web/components/layouts.ex:283
 #, elixir-autogen, elixir-format
 msgid "More templates"
 msgstr "और टेम्पलेट"
@@ -817,12 +817,12 @@ msgstr "और टेम्पलेट"
 msgid "Pages: %{count}"
 msgstr "पेज: %{count}"
 
-#: lib/quickslips_web/components/layouts.ex:270
+#: lib/quickslips_web/components/layouts.ex:281
 #, elixir-autogen, elixir-format
 msgid "Popular bills"
 msgstr "लोकप्रिय बिल"
 
-#: lib/quickslips_web/components/layouts.ex:306
+#: lib/quickslips_web/components/layouts.ex:317
 #: lib/quickslips_web/live/sitemap_live.ex:21
 #: lib/quickslips_web/live/sitemap_live.ex:32
 #, elixir-autogen, elixir-format
@@ -834,37 +834,40 @@ msgstr "साइटमैप"
 msgid "The same list, as search engines read it:"
 msgstr "वही सूची, जैसी सर्च इंजन पढ़ते हैं:"
 
-#: lib/quickslips_web/components/layouts.ex:281
+#: lib/quickslips_web/components/layouts.ex:292
 #, elixir-autogen, elixir-format
 msgid "View all templates"
 msgstr "सभी टेम्पलेट देखें"
 
-#: lib/quickslips_web/components/layouts.ex:292
+#: lib/quickslips_web/components/layouts.ex:303
 #, elixir-autogen, elixir-format
 msgid "We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
 msgstr "हम आपके दिए गए विवरण से दस्तावेज़ बनाते हैं। उनकी सटीकता और उन्हें कानून के अनुसार इस्तेमाल करने की ज़िम्मेदारी आपकी है।"
 
-#: lib/quickslips_web/components/layouts.ex:266
+#: lib/quickslips_web/components/layouts.ex:277
 #, elixir-autogen, elixir-format
 msgid "© %{year} QuickSlips. All rights reserved."
 msgstr "© %{year} QuickSlips. सर्वाधिकार सुरक्षित।"
 
-#: lib/quickslips_web/components/layouts.ex:316
+#: lib/quickslips_web/components/layouts.ex:326
+#: lib/quickslips_web/components/layouts.ex:447
+#: lib/quickslips_web/components/layouts.ex:524
+#: lib/quickslips_web/live/contact_live.ex:40
 #, elixir-autogen, elixir-format
 msgid "Contact"
 msgstr "संपर्क करें"
 
-#: lib/quickslips_web/components/layouts.ex:309
+#: lib/quickslips_web/components/layouts.ex:320
 #, elixir-autogen, elixir-format
 msgid "Disclaimer"
 msgstr "अस्वीकरण"
 
-#: lib/quickslips_web/components/layouts.ex:308
+#: lib/quickslips_web/components/layouts.ex:319
 #, elixir-autogen, elixir-format
 msgid "Privacy"
 msgstr "गोपनीयता"
 
-#: lib/quickslips_web/components/layouts.ex:307
+#: lib/quickslips_web/components/layouts.ex:318
 #, elixir-autogen, elixir-format
 msgid "Terms"
 msgstr "शर्तें"
@@ -873,3 +876,230 @@ msgstr "शर्तें"
 #, elixir-autogen, elixir-format
 msgid "This page is only available in English."
 msgstr "यह पेज केवल अंग्रेज़ी में उपलब्ध है।"
+
+#: lib/quickslips/contact/topic.ex:21
+#, elixir-autogen, elixir-format
+msgid "A disagreement about a document, an account or your data."
+msgstr "किसी दस्तावेज़, खाते या आपके डेटा को लेकर असहमति।"
+
+#: lib/quickslips/contact/topic.ex:18
+#, elixir-autogen, elixir-format
+msgid "A new template, a missing field, another language or country."
+msgstr "नया टेम्पलेट, कोई छूटा हुआ फ़ील्ड, या कोई और भाषा या देश।"
+
+#: lib/quickslips_web/live/contact_live.ex:219
+#, elixir-autogen, elixir-format
+msgid "About this page: %{path}"
+msgstr "इस पेज के बारे में: %{path}"
+
+#: lib/quickslips/contact/topic.ex:22
+#, elixir-autogen, elixir-format
+msgid "Anything that does not fit the other kinds."
+msgstr "ऐसी कोई भी बात जो बाकी प्रकारों में नहीं आती।"
+
+#: lib/quickslips/contact/topic.ex:11
+#, elixir-autogen, elixir-format
+msgid "Ask for a change"
+msgstr "बदलाव माँगें"
+
+#: lib/quickslips_web/live/contact_live.ex:360
+#, elixir-autogen, elixir-format
+msgid "Back to templates"
+msgstr "टेम्पलेट पर वापस जाएँ"
+
+#: lib/quickslips/contact/topic.ex:14
+#, elixir-autogen, elixir-format
+msgid "Complaint or dispute"
+msgstr "शिकायत या विवाद"
+
+#: lib/quickslips/contact/topic.ex:12
+#, elixir-autogen, elixir-format
+msgid "Give feedback"
+msgstr "फ़ीडबैक दें"
+
+#: lib/quickslips_web/live/contact_live.ex:174
+#, elixir-autogen, elixir-format
+msgid "How can we help?"
+msgstr "हम कैसे मदद कर सकते हैं?"
+
+#: lib/quickslips_web/live/template_live.html.heex:185
+#, elixir-autogen, elixir-format
+msgid "Is something missing or wrong in this template?"
+msgstr "क्या इस टेम्पलेट में कुछ छूटा है या गलत है?"
+
+#: lib/quickslips_web/live/contact_live.ex:311
+#, elixir-autogen, elixir-format
+msgid "Prefer e-mail?"
+msgstr "ईमेल से लिखना चाहते हैं?"
+
+#: lib/quickslips/contact/topic.ex:13
+#, elixir-autogen, elixir-format
+msgid "Report a problem"
+msgstr "समस्या बताएँ"
+
+#: lib/quickslips_web/live/contact_live.ex:308
+#, elixir-autogen, elixir-format
+msgid "Send message"
+msgstr "संदेश भेजें"
+
+#: lib/quickslips_web/live/contact_live.ex:307
+#, elixir-autogen, elixir-format
+msgid "Sending…"
+msgstr "भेजा जा रहा है…"
+
+#: lib/quickslips/contact/topic.ex:15
+#, elixir-autogen, elixir-format
+msgid "Something else"
+msgstr "कुछ और"
+
+#: lib/quickslips/contact/topic.ex:20
+#, elixir-autogen, elixir-format
+msgid "Something is broken, wrong or confusing."
+msgstr "कुछ टूटा हुआ, गलत या उलझाने वाला है।"
+
+#: lib/quickslips_web/components/layouts.ex:273
+#: lib/quickslips_web/live/template_live.html.heex:199
+#, elixir-autogen, elixir-format
+msgid "Tell us"
+msgstr "हमें बताएँ"
+
+#: lib/quickslips_web/live/template_live.html.heex:188
+#, elixir-autogen, elixir-format
+msgid "Tell us what you would like changed or added, or report a mistake. We read every message."
+msgstr "बताइए कि आप क्या बदलवाना या जुड़वाना चाहते हैं, या कोई गलती बताइए। हम हर संदेश पढ़ते हैं।"
+
+#: lib/quickslips_web/live/contact_live.ex:343
+#, elixir-autogen, elixir-format
+msgid "Thank you, your message is on its way"
+msgstr "धन्यवाद, आपका संदेश भेज दिया गया है"
+
+#: lib/quickslips_web/live/contact_live.ex:163
+#, elixir-autogen, elixir-format
+msgid "The contact form is not available at the moment."
+msgstr "संपर्क फ़ॉर्म अभी उपलब्ध नहीं है।"
+
+#: lib/quickslips_web/live/contact_live.ex:275
+#, elixir-autogen, elixir-format
+msgid "The more you tell us, the better we can help. Please do not write passwords or card numbers."
+msgstr "आप जितना ज़्यादा बताएँगे, हम उतनी बेहतर मदद कर पाएँगे। कृपया पासवर्ड या कार्ड नंबर न लिखें।"
+
+#: lib/quickslips_web/live/contact_live.ex:155
+#, elixir-autogen, elixir-format
+msgid "Too many messages have been sent today. Please try again tomorrow."
+msgstr "आज बहुत ज़्यादा संदेश भेजे जा चुके हैं। कृपया कल फिर कोशिश करें।"
+
+#: lib/quickslips_web/components/layouts.ex:267
+#, elixir-autogen, elixir-format
+msgid "Want a change, have feedback, or hit a problem?"
+msgstr "बदलाव चाहिए, सुझाव देना है, या कोई समस्या आई?"
+
+#: lib/quickslips_web/live/contact_live.ex:177
+#, elixir-autogen, elixir-format
+msgid "Want something changed or added? Have feedback? Something not working, or a dispute to sort out? Tell us here and we will read your message."
+msgstr "कुछ बदलवाना या जुड़वाना चाहते हैं? सुझाव देना है? कुछ काम नहीं कर रहा, या किसी विवाद का हल निकालना है? यहाँ बताइए, हम आपका संदेश पढ़ेंगे।"
+
+#: lib/quickslips_web/live/contact_live.ex:149
+#, elixir-autogen, elixir-format
+msgid "We could not confirm that you are not a robot. Wait a moment and try again, or reload the page."
+msgstr "हम यह पक्का नहीं कर पाए कि आप रोबोट नहीं हैं। थोड़ी देर रुककर फिर कोशिश करें, या पेज दोबारा लोड करें।"
+
+#: lib/quickslips_web/live/contact_live.ex:158
+#, elixir-autogen, elixir-format
+msgid "We could not send your message just now. Please try again in a little while, or write to us by e-mail."
+msgstr "हम आपका संदेश अभी नहीं भेज पाए। कृपया थोड़ी देर बाद फिर कोशिश करें, या हमें ईमेल से लिखें।"
+
+#: lib/quickslips_web/live/contact_live.ex:356
+#, elixir-autogen, elixir-format
+msgid "We read every message. If we reply, it will be to the e-mail address you gave."
+msgstr "हम हर संदेश पढ़ते हैं। अगर हम जवाब देंगे, तो वह आपके दिए ईमेल पते पर आएगा।"
+
+#: lib/quickslips_web/live/contact_live.ex:263
+#, elixir-autogen, elixir-format
+msgid "We use it only to answer you."
+msgstr "हम इसका उपयोग केवल आपको जवाब देने के लिए करते हैं।"
+
+#: lib/quickslips_web/live/contact_live.ex:223
+#, elixir-autogen, elixir-format
+msgid "What is it about?"
+msgstr "यह किस बारे में है?"
+
+#: lib/quickslips/contact/topic.ex:19
+#, elixir-autogen, elixir-format
+msgid "What works well, and what could be better."
+msgstr "क्या अच्छा चल रहा है, और क्या बेहतर हो सकता है।"
+
+#: lib/quickslips_web/live/contact_live.ex:363
+#, elixir-autogen, elixir-format
+msgid "Write another message"
+msgstr "एक और संदेश लिखें"
+
+#: lib/quickslips_web/live/contact_live.ex:262
+#, elixir-autogen, elixir-format
+msgid "Your e-mail"
+msgstr "आपका ईमेल"
+
+#: lib/quickslips_web/live/contact_live.ex:273
+#, elixir-autogen, elixir-format
+msgid "Your message"
+msgstr "आपका संदेश"
+
+#: lib/quickslips_web/live/contact_live.ex:255
+#, elixir-autogen, elixir-format
+msgid "Your name (optional)"
+msgstr "आपका नाम (वैकल्पिक)"
+
+#: lib/quickslips_web/live/contact_live.ex:350
+#, elixir-autogen, elixir-format
+msgid "A confirmation is on its way to %{email}. If it does not arrive, look in your spam folder."
+msgstr "%{email} पर पुष्टि भेजी जा रही है। न मिले तो स्पैम फ़ोल्डर देखें।"
+
+#: lib/quickslips/contact/notifier.ex:132
+#, elixir-autogen, elixir-format
+msgid "Hello,"
+msgstr "नमस्ते,"
+
+#: lib/quickslips/contact/notifier.ex:142
+#, elixir-autogen, elixir-format
+msgid "If we reply, it will be to this e-mail address. Please quote the reference if you write to us again."
+msgstr "अगर हम जवाब देंगे, तो वह इसी ईमेल पते पर आएगा। दोबारा लिखें तो कृपया संदर्भ का उल्लेख करें।"
+
+#: lib/quickslips/contact/notifier.ex:146
+#, elixir-autogen, elixir-format
+msgid "If you did not send this message, please ignore this e-mail."
+msgstr "अगर आपने यह संदेश नहीं भेजा है, तो कृपया इस ईमेल को अनदेखा करें।"
+
+#: lib/quickslips/contact/notifier.ex:140
+#, elixir-autogen, elixir-format
+msgid "Received: %{time}"
+msgstr "प्राप्त हुआ: %{time}"
+
+#: lib/quickslips/contact/notifier.ex:138
+#, elixir-autogen, elixir-format
+msgid "Reference: %{reference}"
+msgstr "संदर्भ: %{reference}"
+
+#: lib/quickslips/contact/notifier.ex:134
+#, elixir-autogen, elixir-format
+msgid "Thank you for writing to QuickSlips. We have received your message and we will read it."
+msgstr "QuickSlips को लिखने के लिए धन्यवाद। हमें आपका संदेश मिल गया है और हम इसे पढ़ेंगे।"
+
+#: lib/quickslips/contact/notifier.ex:139
+#, elixir-autogen, elixir-format
+msgid "Topic: %{topic}"
+msgstr "विषय: %{topic}"
+
+#: lib/quickslips/contact/notifier.ex:46
+#, elixir-autogen, elixir-format
+msgid "Your message to QuickSlips (%{reference})"
+msgstr "QuickSlips को आपका संदेश (%{reference})"
+
+#: lib/quickslips_web/live/contact_live.ex:346
+#, elixir-autogen, elixir-format
+msgid "Your reference:"
+msgstr "आपका संदर्भ:"
+
+#: lib/quickslips_web/components/layouts.ex:438
+#: lib/quickslips_web/components/layouts.ex:514
+#, elixir-autogen, elixir-format
+msgid "Messages"
+msgstr "संदेश"

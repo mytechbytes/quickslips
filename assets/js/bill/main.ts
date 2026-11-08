@@ -3,7 +3,7 @@ import { createPreview } from "./preview"
 import { downloadPdf } from "./download"
 import { saveSeller } from "./saved"
 import { createSignaturePicker } from "./signatures"
-import { createTurnstile } from "./turnstile"
+import { createTurnstile } from "../turnstile"
 import { loadStrings, t } from "./i18n"
 import { chosenCurrency } from "../locale"
 

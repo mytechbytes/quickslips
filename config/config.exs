@@ -92,6 +92,11 @@ config :quickslips, :typst_bin, "typst"
 # limits of quota for downloads PDF
 config :quickslips, :quota, anonymous: 2, user: 10, ip: 20
 
+# Messages of the contact form in a day: for one logged-in user and for the whole site (a mailbox can be flooded), and
+# the confirmations that one address may be sent (it may not be the sender's). Everybody passes the Turnstile check
+# as well.
+config :quickslips, :contact_limits, user: 5, all: 100, to: 3
+
 # Upload directory
 config :quickslips, :uploads_dir, Path.expand("../priv/uploads", __DIR__)
 

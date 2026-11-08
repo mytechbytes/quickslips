@@ -26,6 +26,7 @@ import {hooks as colocatedHooks} from "phoenix-colocated/quickslips"
 import topbar from "../vendor/topbar"
 import "@tailwindplus/elements";
 import {mountBillApp} from "./bill/main"
+import {mountContactCheck} from "./contact"
 import "./locale"
 
 // The form and the preview of a bill's page (`TemplateLive`): started when the page is there, stopped when it goes.
@@ -34,12 +35,22 @@ const BillApp = {
   destroyed() { this.stop?.() },
 }
 
+// The Turnstile check of the contact form (`ContactLive`): each token goes to the server, which asks for a new one
+// (`turnstile:reset`) after it has used one.
+const ContactTurnstile = {
+  mounted() {
+    this.check = mountContactCheck(this.el, token => this.pushEvent("turnstile", {token}))
+    this.handleEvent("turnstile:reset", () => this.check.reset())
+  },
+  destroyed() { this.check?.stop() },
+}
+
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 const liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
   // The locale of the page the visitor is on goes along when a LiveView connects (see `Plugs.Locale.on_mount/4`).
   params: () => ({_csrf_token: csrfToken, locale: document.documentElement.dataset.locale}),
-  hooks: {...colocatedHooks, BillApp},
+  hooks: {...colocatedHooks, BillApp, ContactTurnstile},
 })
 
 // Show progress bar on live navigation and form submits

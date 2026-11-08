@@ -56,7 +56,8 @@ defmodule QuickSlipsWeb.TemplateLive do
             fonts: QuickSlips.Fonts.urls(locale.language),
             signed_in?: signed_in?(scope),
             businesses: saved_businesses(scope),
-            signatures: saved_signatures(scope)
+            signatures: saved_signatures(scope),
+            feedback_path: feedback_path("/#{locale.code}/#{public_slug}")
           )
 
         {:ok, tell_locale(socket, locale)}
@@ -64,6 +65,12 @@ defmodule QuickSlipsWeb.TemplateLive do
       {:error, :not_found} ->
         raise QuickSlipsWeb.NotFoundError
     end
+  end
+
+  # The way to ask for a change to this template: the contact form with the kind of message chosen and this page
+  # named, or nothing when there is no address to write to.
+  defp feedback_path(page) do
+    if QuickSlips.Contact.available?(), do: ~p"/contact?#{[topic: "change", about: page]}"
   end
 
   # Tells the page which locale it is in, for the LiveViews that have none in their address (see `locale.ts`).

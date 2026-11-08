@@ -3,6 +3,7 @@ defmodule QuickSlipsWeb.FooterTest do
   use QuickSlipsWeb.ConnCase, async: false
 
   import Phoenix.LiveViewTest
+  import QuickSlips.SiteHelpers
 
   alias QuickSlips.Locales
   alias QuickSlipsWeb.Endpoint
@@ -25,19 +26,6 @@ defmodule QuickSlipsWeb.FooterTest do
     do: doc |> LazyHTML.query(selector) |> LazyHTML.text() |> String.trim()
 
   defp page(conn, path), do: conn |> get(path) |> html_response(200) |> document()
-
-  # The contact address is a setting of the whole application; a test that sets it puts it back.
-  defp contact(email) do
-    previous = Application.fetch_env(:quickslips, :contact_email)
-    Application.put_env(:quickslips, :contact_email, email)
-
-    on_exit(fn ->
-      case previous do
-        {:ok, value} -> Application.put_env(:quickslips, :contact_email, value)
-        :error -> Application.delete_env(:quickslips, :contact_email)
-      end
-    end)
-  end
 
   # The paths of the sitemap, which are the pages that exist.
   defp sitemap_paths do
@@ -96,25 +84,40 @@ defmodule QuickSlipsWeb.FooterTest do
       assert text(doc, "#footer-site h2") == "QuickSlips"
     end
 
-    test "has a way to write to the owner once there is an address, and not before", %{conn: conn} do
-      contact(nil)
+    test "has the contact form once there is an address to send to, and not before", %{conn: conn} do
+      put_contact_email(nil)
 
-      refute {"Contact", "mailto:hello@example.org"} in links(
-               page(conn, ~p"/en-in"),
-               "#footer-site"
-             )
+      refute {"Contact", "/contact"} in links(page(conn, ~p"/en-in"), "#footer-site")
 
       assert page(conn, ~p"/en-in")
-             |> LazyHTML.query("#footer-site a[href^='mailto:']")
+             |> LazyHTML.query("#footer-site a[href='/contact']")
              |> Enum.count() == 0
 
-      contact("hello@example.org")
+      put_contact_email("hello@example.org")
 
-      assert List.last(links(page(conn, ~p"/en-in"), "#footer-site")) ==
-               {"Contact", "mailto:hello@example.org"}
+      assert List.last(links(page(conn, ~p"/en-in"), "#footer-site")) == {"Contact", "/contact"}
+      assert List.last(links(page(conn, ~p"/es-es"), "#footer-site")) == {"Contacto", "/contact"}
+    end
 
-      assert List.last(links(page(conn, ~p"/es-es"), "#footer-site")) ==
-               {"Contacto", "mailto:hello@example.org"}
+    test "asks the visitor for changes, feedback and problems when there is a form for them", %{
+      conn: conn
+    } do
+      put_contact_email(nil)
+      assert page(conn, ~p"/en-in") |> LazyHTML.query("#footer-feedback") |> Enum.count() == 0
+
+      put_contact_email("hello@example.org")
+      doc = page(conn, ~p"/en-in")
+
+      assert text(doc, "#footer-feedback") =~ "Want a change, have feedback, or hit a problem?"
+      assert links(doc, "#footer-feedback") == [{"Tell us", "/contact"}]
+    end
+
+    test "the contact link is a live navigation", %{conn: conn} do
+      put_contact_email("hello@example.org")
+      {:ok, view, _html} = live(conn, ~p"/en-in")
+
+      assert {:error, {:live_redirect, %{to: "/contact"}}} =
+               view |> element("#footer-site a", "Contact") |> render_click()
     end
 
     test "every link to a page of the site itself leads to a page", %{conn: conn} do

@@ -3,13 +3,17 @@ defmodule QuickSlips.Turnstile do
 
   @verify_url "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
+  # The address of the visitor is optional for Cloudflare. A page that is a LiveView does not have it behind the
+  # proxy (only the controllers do), so it asks without.
+  def verify(token, ip \\ nil)
+
   def verify(token, ip) when is_binary(token) and token != "" do
     secret = Application.get_env(:quickslips, :turnstile)[:secret_key]
 
     options =
       [
         url: @verify_url,
-        form: [secret: secret, response: token, remoteip: ip],
+        form: [secret: secret, response: token] ++ if(ip, do: [remoteip: ip], else: []),
         retry: false,
         receive_timeout: 5_000
       ] ++

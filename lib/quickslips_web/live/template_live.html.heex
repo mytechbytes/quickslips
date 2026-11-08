@@ -173,5 +173,31 @@
         </div>
       </div>
     </section>
+
+    <%!-- Missing a field, a country or a language? The people who use a template know best. --%>
+    <aside
+      :if={@feedback_path}
+      id="bill-feedback"
+      class="mt-10 max-w-3xl rounded-card border border-line bg-surface-muted p-5 sm:flex sm:items-center sm:justify-between sm:gap-x-6"
+    >
+      <div>
+        <h2 class="text-base/6 font-semibold text-ink">
+          {gettext("Is something missing or wrong in this template?")}
+        </h2>
+        <p class="mt-1 text-sm/6 text-ink-muted">
+          {gettext(
+            "Tell us what you would like changed or added, or report a mistake. We read every message."
+          )}
+        </p>
+      </div>
+      <.button
+        id="bill-feedback-link"
+        variant="secondary"
+        navigate={@feedback_path}
+        class="mt-4 shrink-0 sm:mt-0"
+      >
+        {gettext("Tell us")}
+      </.button>
+    </aside>
   </article>
 </Layouts.app>

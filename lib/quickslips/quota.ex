@@ -1,6 +1,7 @@
 defmodule QuickSlips.Quota do
   @moduledoc """
-  Daily download counters, one row per (key, IST day).
+  Daily counters, one row per (key, IST day): the free downloads of a visitor, an address or a user, and the
+  messages of the contact form (`QuickSlips.Contact`, keys that start with `contact:`).
   """
   import Ecto.Query
 

@@ -4,6 +4,7 @@ defmodule QuickSlipsWeb.LegalLiveTest do
 
   import Phoenix.LiveViewTest
   import QuickSlips.AccountsFixtures
+  import QuickSlips.SiteHelpers
 
   # The terms of use, the privacy policy and the disclaimer. The tests look at what the pages promise to say (that
   # they are there, that they agree with each other and with what the app does), not at the wording, which is a
@@ -29,18 +30,6 @@ defmodule QuickSlipsWeb.LegalLiveTest do
     |> LazyHTML.text()
     |> String.split()
     |> Enum.join(" ")
-  end
-
-  defp contact(email) do
-    previous = Application.fetch_env(:quickslips, :contact_email)
-    Application.put_env(:quickslips, :contact_email, email)
-
-    on_exit(fn ->
-      case previous do
-        {:ok, value} -> Application.put_env(:quickslips, :contact_email, value)
-        :error -> Application.delete_env(:quickslips, :contact_email)
-      end
-    end)
   end
 
   describe "each page" do
@@ -170,7 +159,7 @@ defmodule QuickSlipsWeb.LegalLiveTest do
          %{
            conn: conn
          } do
-      contact(nil)
+      put_contact_email(nil)
 
       for {path, id, _title} <- @pages do
         doc = page(conn, path)
@@ -181,7 +170,7 @@ defmodule QuickSlipsWeb.LegalLiveTest do
     end
 
     test "is on every page, as a link, once it is set", %{conn: conn} do
-      contact("hello@example.org")
+      put_contact_email("hello@example.org")
 
       for {path, id, _title} <- @pages do
         doc = page(conn, path)
@@ -194,11 +183,52 @@ defmodule QuickSlipsWeb.LegalLiveTest do
       end
     end
 
+    test "leads to the contact form from every page once it is set, and from none before", %{
+      conn: conn
+    } do
+      put_contact_email(nil)
+
+      for {path, id, _title} <- @pages do
+        refute conn |> page(path) |> LazyHTML.query("##{id} a[href='/contact']") |> Enum.any?(),
+               path
+      end
+
+      put_contact_email("hello@example.org")
+
+      for {path, id, _title} <- @pages do
+        assert conn |> page(path) |> LazyHTML.query("##{id} a[href='/contact']") |> Enum.any?(),
+               path
+      end
+    end
+
+    test "is what the account of the contact form in the privacy policy refers to", %{conn: conn} do
+      put_contact_email(nil)
+      refute conn |> page("/privacy") |> LazyHTML.query("#legal-contact-messages") |> Enum.any?()
+      refute words(conn, "/privacy", "legal-privacy") =~ "contact form"
+
+      put_contact_email("hello@example.org")
+      text = words(conn, "/privacy", "legal-contact-messages")
+
+      assert text =~ "Messages you send us."
+      assert text =~ "We keep the message in our database, under a reference that we give you"
+      assert text =~ "we send a confirmation to the address you gave"
+      assert text =~ "not your words"
+      assert text =~ "Everybody who uses the form passes the Turnstile check"
+      assert text =~ "scrambled form of it, not under the address itself"
+
+      privacy = words(conn, "/privacy", "legal-privacy")
+
+      assert privacy =~
+               "Messages from the contact form, in our database and in our mailbox: for as long as we need them"
+
+      assert privacy =~ "their confirmations to the people who wrote them"
+    end
+
     test "is what the promises of deleting an account refer to", %{conn: conn} do
-      contact(nil)
+      put_contact_email(nil)
       refute words(conn, "/privacy", "legal-privacy") =~ "close your account"
 
-      contact("hello@example.org")
+      put_contact_email("hello@example.org")
       assert words(conn, "/privacy", "legal-privacy") =~ "close your account"
     end
   end

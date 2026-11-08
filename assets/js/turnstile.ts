@@ -3,6 +3,7 @@ declare global {
     turnstile?: {
       render: (el: HTMLElement, options: Record<string, unknown>) => string
       reset: (widgetId?: string) => void
+      remove: (widgetId?: string) => void
     }
   }
 }
@@ -54,5 +55,34 @@ export async function createTurnstile(container: HTMLElement, siteKey: string) {
       }
       return new Promise((resolve) => (waiting = resolve))
     },
+  }
+}
+
+/**
+ * Renders the widget for a form on the page. `onToken` gets each fresh token, and `null` when the widget has none
+ * to give (it expired, or the check failed). The widget shows itself only if Cloudflare needs the visitor to do
+ * something. `reset` asks for a new token (one is good for one check) and `remove` takes the widget away.
+ */
+export async function renderTurnstile(
+  container: HTMLElement,
+  siteKey: string,
+  onToken: (token: string | null) => void,
+) {
+  await loadScript()
+
+  const widgetId = window.turnstile!.render(container, {
+    sitekey: siteKey,
+    appearance: "interaction-only",
+    callback: (token: string) => onToken(token),
+    "expired-callback": () => onToken(null),
+    "error-callback": () => {
+      onToken(null)
+      return true // handled: the page says what to do, the console need not
+    },
+  })
+
+  return {
+    reset: () => window.turnstile!.reset(widgetId),
+    remove: () => window.turnstile!.remove(widgetId),
   }
 }

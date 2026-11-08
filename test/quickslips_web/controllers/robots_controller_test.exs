@@ -37,6 +37,12 @@ defmodule QuickSlipsWeb.RobotsControllerTest do
     end
   end
 
+  test "keeps out the contact form with a query, which is one page that bills link to many times, and not the form",
+       %{lines: lines} do
+    assert "Disallow: /contact?" in lines
+    refute "Disallow: /contact" in lines
+  end
+
   test "leaves the scripts and the styles alone, since a crawler that draws a page needs them", %{
     body: body
   } do

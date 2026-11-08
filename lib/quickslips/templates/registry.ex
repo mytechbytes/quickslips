@@ -16,7 +16,7 @@ defmodule QuickSlips.Templates.Registry do
   # live templates still lead somewhere, so the names stay taken.
   @reserved ~w(users auth dashboard dev api assets images fonts wasm uploads source
                history documents businesses credits bulk bulk-import templates
-               healthz sitemap sitemap.xml sitemap.xsl terms privacy disclaimer sw.js favicon.ico robots.txt admin)
+               healthz sitemap sitemap.xml sitemap.xsl terms privacy disclaimer contact sw.js favicon.ico robots.txt admin)
 
   # Field keys the server fills in itself (the names of a business's pictures), so a template can't use them.
   @reserved_keys ~w(logo signature)

@@ -29,10 +29,13 @@ config :ueberauth, Ueberauth.Strategy.Google.OAuth,
   client_secret: System.get_env("GOOGLE_CLIENT_SECRET")
 
 # Cloudflare Turnstile. Locally the keys come from .env (Cloudflare's dummy pair); the prod block below
-# makes the release refuse to start without the real ones.
-config :quickslips, :turnstile,
-  site_key: System.get_env("TURNSTILE_SITE_KEY"),
-  secret_key: System.get_env("TURNSTILE_SECRET_KEY")
+# makes the release refuse to start without the real ones. The tests have keys of their own (config/test.exs)
+# and do not read these, so that the shell of whoever runs them cannot change what they check.
+if config_env() != :test do
+  config :quickslips, :turnstile,
+    site_key: System.get_env("TURNSTILE_SITE_KEY"),
+    secret_key: System.get_env("TURNSTILE_SECRET_KEY")
+end
 
 # The people who may open the error dashboard (/admin/errors): e-mail addresses, comma-separated.
 # Nobody can open it while this is empty.
@@ -43,9 +46,13 @@ config :quickslips,
        |> String.split(",", trim: true)
        |> Enum.map(&(&1 |> String.trim() |> String.downcase()))
 
-# The address people write to about their data, their account or the terms. The footer and the legal pages show it
-# when it is set, and say nothing about contacting anyone when it is not: set it before the pages are public.
-config :quickslips, :contact_email, System.get_env("CONTACT_EMAIL")
+# The address that the contact form sends to, and that the legal pages give for questions about data, accounts and
+# the terms. The footer, the contact page and the legal pages show it when it is set, and say nothing about
+# contacting anyone when it is not: set it before the site is public. The tests do not read it (they set it where
+# they need it), so that what is in the shell of whoever runs them cannot change what they check.
+if config_env() != :test do
+  config :quickslips, :contact_email, System.get_env("CONTACT_EMAIL")
+end
 
 if config_env() == :dev do
   # Reload browser tabs when matching files change.

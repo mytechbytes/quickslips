@@ -250,6 +250,7 @@ defmodule QuickSlipsWeb.Layouts do
       |> assign(:popular, QuickSlipsWeb.Footer.popular(assigns.locale))
       |> assign(:more, QuickSlipsWeb.Footer.more(assigns.locale))
       |> assign(:site, site_links(assigns.locale))
+      |> assign(:contact?, QuickSlips.Contact.available?())
 
     ~H"""
     <footer id="site-footer" class="border-t border-line bg-surface">
@@ -261,6 +262,16 @@ defmodule QuickSlipsWeb.Layouts do
               {gettext(
                 "Make a clean bill or receipt as a PDF in seconds: fill in the form, check the preview, download. Nothing to install."
               )}
+            </p>
+            <p :if={@contact?} id="footer-feedback" class="mt-3 text-sm/6 text-ink-muted">
+              {gettext("Want a change, have feedback, or hit a problem?")}
+              <.link
+                id="footer-feedback-link"
+                navigate={~p"/contact"}
+                class="rounded-field font-medium text-primary hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+              >
+                {gettext("Tell us")}
+              </.link>
             </p>
             <p id="footer-copyright" class="mt-4 text-sm/6 text-ink-muted">
               {gettext("© %{year} QuickSlips. All rights reserved.", year: Date.utc_today().year)}
@@ -299,7 +310,7 @@ defmodule QuickSlipsWeb.Layouts do
     """
   end
 
-  # The pages about QuickSlips itself, and a way to write to its owner when there is an address (`CONTACT_EMAIL`).
+  # The pages about QuickSlips itself, and the contact form when there is an address to send to (`CONTACT_EMAIL`).
   defp site_links(locale) do
     [
       %{label: gettext("Templates"), to: home_path(locale)},
@@ -311,10 +322,9 @@ defmodule QuickSlipsWeb.Layouts do
   end
 
   defp contact_links do
-    case QuickSlips.Site.contact_email() do
-      nil -> []
-      email -> [%{label: gettext("Contact"), href: "mailto:" <> email}]
-    end
+    if QuickSlips.Contact.available?(),
+      do: [%{label: gettext("Contact"), to: ~p"/contact"}],
+      else: []
   end
 
   attr :id, :string, required: true
@@ -354,7 +364,11 @@ defmodule QuickSlipsWeb.Layouts do
   ## The app shell (logged-in users)
 
   defp app_shell(assigns) do
-    assigns = assign(assigns, :user, assigns.current_scope.user)
+    assigns =
+      assigns
+      |> assign(:user, assigns.current_scope.user)
+      |> assign(:contact?, QuickSlips.Contact.available?())
+      |> assign(:admin?, QuickSlips.Accounts.admin?(assigns.current_scope.user))
 
     ~H"""
     <%!-- Phone: a dark top bar with a menu --%>
@@ -415,6 +429,26 @@ defmodule QuickSlipsWeb.Layouts do
                 <.icon name="hero-cog-6-tooth" class="size-5 shrink-0" /> {gettext("Settings")}
               </.link>
               <.link
+                :if={@admin?}
+                id="m-messages"
+                navigate={~p"/admin/messages"}
+                aria-current={@active == :messages && "page"}
+                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+              >
+                <.icon name="hero-inbox" class="size-5 shrink-0" /> {gettext("Messages")}
+              </.link>
+              <.link
+                :if={@contact?}
+                id="m-contact"
+                navigate={~p"/contact"}
+                aria-current={@active == :contact && "page"}
+                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+              >
+                <.icon name="hero-chat-bubble-left-right" class="size-5 shrink-0" /> {gettext(
+                  "Contact"
+                )}
+              </.link>
+              <.link
                 id="m-logout"
                 href={~p"/users/log-out"}
                 method="delete"
@@ -468,6 +502,28 @@ defmodule QuickSlipsWeb.Layouts do
                     class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
                   >
                     <.icon name="hero-cog-6-tooth" class="size-6 shrink-0" /> {gettext("Settings")}
+                  </.link>
+                </li>
+                <li :if={@admin?}>
+                  <.link
+                    id="nav-messages"
+                    navigate={~p"/admin/messages"}
+                    aria-current={@active == :messages && "page"}
+                    class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                  >
+                    <.icon name="hero-inbox" class="size-6 shrink-0" /> {gettext("Messages")}
+                  </.link>
+                </li>
+                <li :if={@contact?}>
+                  <.link
+                    id="nav-contact"
+                    navigate={~p"/contact"}
+                    aria-current={@active == :contact && "page"}
+                    class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                  >
+                    <.icon name="hero-chat-bubble-left-right" class="size-6 shrink-0" /> {gettext(
+                      "Contact"
+                    )}
                   </.link>
                 </li>
               </ul>
