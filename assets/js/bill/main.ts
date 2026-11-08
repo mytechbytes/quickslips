@@ -3,6 +3,7 @@ import { createPreview } from "./preview"
 import { downloadPdf } from "./download"
 import { saveSeller } from "./saved"
 import { createSignaturePicker } from "./signatures"
+import { createStampPicker } from "./stamps"
 import { createTurnstile } from "../turnstile"
 import { loadStrings, t } from "./i18n"
 import { chosenCurrency } from "../locale"
@@ -56,6 +57,8 @@ export function mountBillApp(root: HTMLElement): () => void {
   preview.renderNow(sample)
   // The signature of the bill: one of the saved ones or none, chosen apart from the business.
   const signature = createSignaturePicker(root, (url) => preview.setSignature(url))
+  // The revenue stamp of the bill: the empty box, the default stamp of the site, or a saved one.
+  const stamp = createStampPicker(root, (url) => preview.setStamp(url))
   // The saved business the user picked, if any: its logo goes on the preview and the PDF, and its default signature
   // is chosen for the bill (the visitor can choose another).
   let business: Business | null = null
@@ -110,6 +113,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     template = templateSelect.value
     preview.setTemplate(template)
     signature.showFor(schema.templates?.find((design) => design.id === template))
+    stamp.showFor(schema.templates?.find((design) => design.id === template), region.country)
   })
 
   // Another currency: the money of the form, the preview and the PDF is written in it. The server says what the
@@ -149,6 +153,8 @@ export function mountBillApp(root: HTMLElement): () => void {
   }
   // ... and with the signature it had (or none), which is not always the default of its business.
   if (root.dataset.edit === "true") signature.use(root.dataset.signatureId ? Number(root.dataset.signatureId) : null)
+  // ... and with the revenue stamp it had.
+  if (root.dataset.edit === "true") stamp.use(root.dataset.stampChoice ?? "")
   // const ui = buildForm(form, schema, sample, (data) => console.log("changed", data))
   // console.log("initial", ui.read())
 
@@ -185,7 +191,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     const result = await downloadPdf(schema.slug, template, ui.read(), turnstileToken, business?.id, locale, {
       country: region.country,
       currency: region.currency.code,
-    }, signature.id)
+    }, signature.id, stamp.choice)
     button.disabled = false
 
     if (result.ok) {

@@ -129,7 +129,8 @@ defmodule QuickSlipsWeb.Layouts do
       {:dashboard, gettext("Dashboard"), "hero-squares-2x2", ~p"/dashboard"},
       {:history, gettext("Documents"), "hero-document-text", ~p"/history"},
       {:businesses, gettext("Saved businesses"), "hero-building-storefront", ~p"/businesses"},
-      {:signatures, gettext("Signatures"), "hero-pencil", ~p"/signatures"}
+      {:signatures, gettext("Signatures"), "hero-pencil", ~p"/signatures"},
+      {:stamps, gettext("Stamps"), "hero-ticket", ~p"/stamps"}
     ]
   end
 

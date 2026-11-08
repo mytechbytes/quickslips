@@ -9,6 +9,7 @@ defmodule QuickSlipsWeb.GenerateController do
   alias QuickSlips.Locales
   alias QuickSlips.Regions
   alias QuickSlips.Signatures
+  alias QuickSlips.Stamps
   alias QuickSlips.Templates.Items
   alias QuickSlips.Templates.Validator
   alias QuickSlips.Templates
@@ -27,11 +28,12 @@ defmodule QuickSlipsWeb.GenerateController do
          {:ok, clean} <- validate(schema, data, locale),
          {:ok, business} <- load_business(conn, params),
          {:ok, signature} <- load_signature(conn, params),
+         {:ok, stamp} <- load_stamp(conn, params),
          :ok <- verify_human(conn, params),
          {:ok, grant} <- Downloads.reserve(caller(conn)),
-         pictures = Businesses.render_assets(business, signature),
+         pictures = Businesses.render_assets(business, signature, stamp),
          {:ok, pdf} <- render_or_refund(slug, template, clean, pictures, locale, currency, grant) do
-      remember(conn, schema, template, clean, {business, signature}, locale, currency)
+      remember(conn, schema, template, clean, {business, signature, stamp}, locale, currency)
 
       conn
       |> put_resp_header("x-downloads-remaining", Integer.to_string(grant.remaining))
@@ -86,6 +88,21 @@ defmodule QuickSlipsWeb.GenerateController do
 
   defp load_signature(_conn, _params), do: {:ok, nil}
 
+  # The revenue stamp: "system:<name>" (one the site provides, for anybody), the id of one of the user's saved ones, or nothing (the
+  # empty box). A saved one is looked up through the scope, so somebody else's is a 404; a visitor has none.
+  defp load_stamp(_conn, %{"stamp" => "system:" <> id}) do
+    if Stamps.system_stamp(id), do: {:ok, {:system, id}}, else: {:ok, nil}
+  end
+
+  defp load_stamp(conn, %{"stamp" => id}) when id not in [nil, ""] do
+    case conn.assigns[:current_scope] do
+      %{user: %{}} = scope -> {:ok, Stamps.get_stamp!(scope, id)}
+      _anonymous -> {:ok, nil}
+    end
+  end
+
+  defp load_stamp(_conn, _params), do: {:ok, nil}
+
   # The page's locale decides the language; the document may be for another country (and currency), chosen in the
   # "Region & tax" panel of the page.
   defp document_region(locale, params) do
@@ -134,7 +151,7 @@ defmodule QuickSlipsWeb.GenerateController do
     end
   end
 
-  defp remember(conn, schema, template, clean, {business, signature}, locale, currency) do
+  defp remember(conn, schema, template, clean, {business, signature, stamp}, locale, currency) do
     with %{user: %{}} = scope <- conn.assigns[:current_scope],
          attrs = %{
            "slug" => schema["slug"],
@@ -144,7 +161,8 @@ defmodule QuickSlipsWeb.GenerateController do
            "language" => locale.language,
            "options" => %{"country" => locale.country, "currency" => currency}
          },
-         {:error, changeset} <- Documents.create_document(scope, attrs, business, signature) do
+         {:error, changeset} <-
+           Documents.create_document(scope, attrs, business, signature, stamp) do
       Logger.warning("could not save a document in the history: #{inspect(changeset.errors)}")
     end
 

@@ -10,7 +10,7 @@
 #let declaration = opt(data, "declaration")
 // The revenue stamp is stuck on a receipt in India only.
 #let stamp(width: 24mm, height: 28mm) = if region.country == "in" {
-  box(width: width, height: height, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"), inset: 2mm, align(center + horizon, text(size: 7.5pt, fill: muted, t.revenue_stamp)))
+  revenue-stamp(data, t.revenue_stamp, width: width, height: height)
 }
 #let heading(content) = align(center, block(text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
 

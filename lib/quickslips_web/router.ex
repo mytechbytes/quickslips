@@ -46,6 +46,7 @@ defmodule QuickSlipsWeb.Router do
 
     # Saved from a bill's page without leaving it. A logged-in user only: the controllers say 401 otherwise.
     post "/signatures", SignatureController, :create
+    post "/stamps", StampController, :create
     post "/businesses", BusinessController, :create
   end
 
@@ -56,6 +57,9 @@ defmodule QuickSlipsWeb.Router do
     get "/robots.txt", RobotsController, :show
     get "/sitemap.xml", SitemapController, :show
     get "/sitemap.xsl", SitemapController, :stylesheet
+
+    # The stamps the site provides: files of priv/images/stamps (`/images/*` itself is served from priv/static).
+    get "/images/stamps/:file", StampController, :system
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
@@ -138,6 +142,7 @@ defmodule QuickSlipsWeb.Router do
         live "/businesses/:id", BusinessLive.Show, :show
         live "/businesses/:id/edit", BusinessLive.Form, :edit
         live "/signatures", SignatureLive.Index, :index
+        live "/stamps", StampLive.Index, :index
         live "/history", HistoryLive, :index
       end
 

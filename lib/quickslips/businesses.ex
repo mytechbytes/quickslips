@@ -257,11 +257,17 @@ defmodule QuickSlips.Businesses do
   An image whose file has gone missing is left out, so the document is made without it. `nil` for the business
   has no logo.
   """
-  def render_assets(business, signature \\ nil) do
-    logo = logo_assets(business)
-    picture = Signatures.render_assets(signature)
+  def render_assets(business, signature \\ nil, stamp \\ nil) do
+    pictures = [
+      logo_assets(business),
+      Signatures.render_assets(signature),
+      QuickSlips.Stamps.render_assets(stamp)
+    ]
 
-    %{data: Map.merge(logo.data, picture.data), files: Map.merge(logo.files, picture.files)}
+    %{
+      data: Enum.reduce(pictures, %{}, &Map.merge(&2, &1.data)),
+      files: Enum.reduce(pictures, %{}, &Map.merge(&2, &1.files))
+    }
   end
 
   defp logo_assets(%Business{logo_path: relative}) when is_binary(relative) do

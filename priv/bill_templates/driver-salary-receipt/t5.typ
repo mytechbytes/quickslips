@@ -11,7 +11,7 @@
 // What the driver is paid in a month, and the revenue stamp (stuck on a receipt in India only).
 #let net = data.basic_salary + overtime + allowance - deductions
 #let stamp(width: 24mm, height: 28mm) = if region.country == "in" {
-  box(width: width, height: height, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"), inset: 2mm, align(center + horizon, text(size: 7.5pt, fill: muted, t.revenue_stamp)))
+  revenue-stamp(data, t.revenue_stamp, width: width, height: height)
 }
 #let vehicle = opt(data, "vehicle_number")
 #let declaration = opt(data, "declaration")

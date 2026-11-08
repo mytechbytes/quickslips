@@ -15,6 +15,8 @@ export async function downloadPdf(
   region?: { country: string; currency: string },
   // The saved signature to draw (none: the place to sign by hand).
   signatureId?: number | null,
+  // The revenue stamp: "system:<name>", the id of a saved one (as text), or "" for the empty box.
+  stamp?: string,
 ): Promise<DownloadResult> {
   const csrf = document.querySelector<HTMLMetaElement>("meta[name='csrf-token']")?.content ?? ""
 
@@ -28,6 +30,7 @@ export async function downloadPdf(
       turnstile_token: turnstileToken,
       business_id: businessId,
       signature_id: signatureId,
+      stamp,
     }),
   })
 

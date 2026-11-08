@@ -17,6 +17,10 @@ defmodule QuickSlips.Documents.Document do
     # The signature that was drawn on the document (a saved one, or none: the place to sign by hand).
     field :signature_id, :id
 
+    # The revenue stamp that was drawn on it: a saved one, the default stamp of the site, or neither (the empty box).
+    field :stamp_id, :id
+    field :stamp_system, :string
+
     timestamps(type: :utc_datetime)
   end
 
@@ -40,4 +44,9 @@ defmodule QuickSlips.Documents.Document do
   @doc "Sets the signature that was drawn on the document, found through the user's scope like the business."
   def put_signature(changeset, nil), do: changeset
   def put_signature(changeset, %{id: id}), do: put_change(changeset, :signature_id, id)
+
+  @doc "Sets the revenue stamp: `nil` (the empty box), `{:system, id}` (one the site provides), or a saved stamp."
+  def put_stamp(changeset, nil), do: changeset
+  def put_stamp(changeset, {:system, id}), do: put_change(changeset, :stamp_system, id)
+  def put_stamp(changeset, %{id: id}), do: put_change(changeset, :stamp_id, id)
 end

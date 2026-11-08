@@ -100,12 +100,14 @@ defmodule QuickSlipsWeb.TranslationTest do
         strings = Jason.decode!(json)
 
         assert Map.keys(strings) |> Enum.sort() ==
-                 ~w(add_item amount creating downloaded error fill_business fix_fields group_business group_charges group_customer group_details group_document group_items group_payment group_registration limit_reached other_rate pick_business preview_alt preview_failed preview_updating quota_anonymous quota_user remove_item save_seller seller_created seller_error_name_blank seller_error_tax_id_invalid seller_updated signature_error_file_too_large signature_error_limit_reached signature_error_name_blank signature_error_name_taken signature_error_no_file signature_error_too_large signature_error_unsupported_type signature_saved subtotal type_rate verify_failed)
+                 ~w(add_item amount creating downloaded error fill_business fix_fields group_business group_charges group_customer group_details group_document group_items group_payment group_registration limit_reached other_rate pick_business preview_alt preview_failed preview_updating quota_anonymous quota_user remove_item save_seller seller_created seller_error_name_blank seller_error_tax_id_invalid seller_updated signature_error_file_too_large signature_error_limit_reached signature_error_name_blank signature_error_name_taken signature_error_no_file signature_error_too_large signature_error_unsupported_type signature_saved stamp_error_limit_reached stamp_error_name_blank stamp_error_name_taken stamp_saved subtotal type_rate verify_failed)
 
         # The name of the registration number is filled in by the script; the most signatures is filled in here.
         assert strings["seller_error_tax_id_invalid"] =~ "{label}", language
         refute strings["seller_error_tax_id_invalid"] =~ "%{"
         assert strings["signature_error_limit_reached"] =~ "20"
+        assert strings["stamp_error_limit_reached"] =~ "10"
+        refute strings["stamp_error_limit_reached"] =~ "%{"
         refute strings["signature_error_limit_reached"] =~ "%{"
 
         # The script fills `{remaining}` and `{limit}` in, so they must survive the translation.

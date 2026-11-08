@@ -5,6 +5,7 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
   import QuickSlips.BusinessesFixtures
   import QuickSlips.DocumentsFixtures
   import QuickSlips.SignaturesFixtures
+  import QuickSlips.StampsFixtures
   import QuickSlips.UploadsFixtures
 
   @moduletag :typst
@@ -93,6 +94,30 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
       branded_pdf = conn |> get(~p"/history/#{branded.id}/download") |> response(200)
 
       assert byte_size(branded_pdf) > byte_size(plain_pdf)
+    end
+
+    test "draws the revenue stamp the document was made with: a saved one, or one of the site's",
+         %{
+           conn: conn,
+           scope: scope
+         } do
+      stamp = stamp_fixture(scope, %{}, jpg_bytes())
+      data = sample("rent-receipt")
+      attrs = %{data: data, slug: "rent-receipt"}
+      plain = document_fixture(scope, attrs)
+      saved = document_fixture(scope, attrs, nil, nil, stamp)
+
+      default =
+        document_fixture(scope, attrs, nil, nil, {:system, "india-rupee-one-revenue-stamp"})
+
+      pdf = fn doc -> conn |> get(~p"/history/#{doc.id}/download") |> response(200) end
+
+      assert byte_size(pdf.(saved)) > byte_size(pdf.(plain))
+      assert pdf.(default) != pdf.(plain)
+
+      # and a stamp that was deleted since leaves the empty box, without failing
+      {:ok, _} = QuickSlips.Stamps.delete_stamp(scope, stamp)
+      assert pdf.(saved) == pdf.(plain)
     end
 
     test "draws the signature the document was made with", %{conn: conn, scope: scope} do

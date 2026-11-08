@@ -11,7 +11,7 @@
 #let receiver = if receiver == none { data.landlord_name } else { receiver }
 #let role = option-label("received_by", data.at("received_by", default: "Landlord"))
 #let stamp = if region.country == "in" {
-  box(width: 22mm, height: 26mm, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"), inset: 2mm, align(center + horizon, text(size: 7.5pt, fill: muted, t.revenue_stamp)))
+  revenue-stamp(data, t.revenue_stamp, width: 22mm, height: 26mm)
 }
 #let heading(content) = align(center, block(text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
 

@@ -29,7 +29,7 @@ export type Field = {
   name_max_length?: number
 }
 // A design of the bill; `signature` says whether its layout has a place for a signature.
-export type Design = { id: string; name?: string; signature?: boolean }
+export type Design = { id: string; name?: string; signature?: boolean; stamp?: boolean }
 export type Schema = { slug: string; title: string; fields: Field[]; templates?: Design[] }
 export type BillData = Record<string, string | number | ItemRow[]>
 export type Business = {

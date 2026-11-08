@@ -5,6 +5,7 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
   import QuickSlips.BusinessesFixtures
   import QuickSlips.DocumentsFixtures
   import QuickSlips.SignaturesFixtures
+  import QuickSlips.StampsFixtures
 
   test "shows a template", %{conn: conn} do
     conn = get(conn, ~p"/en-in/fuel-bill-generator")
@@ -299,6 +300,78 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
                "t5" => true,
                "t6" => false
              }
+    end
+
+    test "the revenue stamp: empty box, the default one, then the saved ones; for a receipt for India only",
+         %{
+           conn: conn
+         } do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      stamp_fixture(scope, %{name: "Landlord"})
+      theirs = stamp_fixture(user_scope_fixture(), %{name: "Somebody Else's"})
+
+      html = conn |> get(~p"/en-in/rent-receipt-generator") |> html_response(200)
+      options = html |> LazyHTML.from_document() |> LazyHTML.query("#stamp-select option")
+
+      assert LazyHTML.attribute(options, "value") |> Enum.take(2) == [
+               "",
+               "system:india-rupee-one-revenue-stamp"
+             ]
+
+      assert LazyHTML.text(options) =~ "Empty box (placeholder only)"
+      assert LazyHTML.text(options) =~ "India rupee one revenue stamp"
+      assert LazyHTML.text(options) =~ "Landlord"
+      refute html =~ "Somebody Else"
+      refute html =~ "/uploads/#{theirs.path}"
+      refute hd(attrs(html, "#stamp-section", "class")) =~ "hidden"
+      assert [_] = attrs(html, "#stamp-save", "id")
+
+      # a bill with no place for it, and a receipt made for another country, do not offer it
+      fuel = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      assert hd(attrs(fuel, "#stamp-section", "class")) =~ "hidden"
+
+      spanish = conn |> get(~p"/es-es/generador-de-recibo-de-alquiler") |> html_response(200)
+      assert hd(attrs(spanish, "#stamp-section", "class")) =~ "hidden"
+      assert spanish =~ "Sello fiscal"
+    end
+
+    test "a visitor can choose a stamp of the site but has no saved ones and no form to save one",
+         %{
+           conn: conn
+         } do
+      html = conn |> get(~p"/en-in/rent-receipt-generator") |> html_response(200)
+
+      assert [_] = attrs(html, "#stamp-select", "id")
+      # only the stamps of the site are on the page: no saved ones
+      [stamps] = html |> attrs("#bill-app", "data-stamps") |> Enum.map(&Jason.decode!/1)
+      assert Enum.all?(stamps, &String.starts_with?(&1["id"], "system:"))
+      assert attrs(html, "#stamp-save", "id") == []
+    end
+
+    test "the stamp of an earlier document is chosen again", %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      saved = stamp_fixture(scope, %{name: "Landlord"})
+      kept = document_fixture(scope, %{slug: "rent-receipt", data: %{}}, nil, nil, saved)
+
+      default =
+        document_fixture(
+          scope,
+          %{slug: "rent-receipt", data: %{}},
+          nil,
+          nil,
+          {:system, "india-rupee-one-revenue-stamp"}
+        )
+
+      plain = document_fixture(scope, %{slug: "rent-receipt", data: %{}})
+
+      for {doc, choice} <- [
+            {kept, to_string(saved.id)},
+            {default, "system:india-rupee-one-revenue-stamp"},
+            {plain, ""}
+          ] do
+        html = conn |> get(~p"/en-in/rent-receipt-generator?from=#{doc.id}") |> html_response(200)
+        assert attrs(html, "#bill-app", "data-stamp-choice") == [choice]
+      end
     end
 
     test "a visitor has none: no choice, and an empty list", %{conn: conn} do

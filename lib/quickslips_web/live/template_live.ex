@@ -14,10 +14,12 @@ defmodule QuickSlipsWeb.TemplateLive do
   alias QuickSlips.Locales
   alias QuickSlips.Regions
   alias QuickSlips.Signatures
+  alias QuickSlips.Stamps
   alias QuickSlips.Templates
   alias QuickSlips.Templates.Items
   alias QuickSlipsWeb.BusinessController
   alias QuickSlipsWeb.SignatureController
+  alias QuickSlipsWeb.StampController
 
   @impl true
   def mount(%{"locale" => code, "slug" => public_slug} = params, _session, socket) do
@@ -57,6 +59,9 @@ defmodule QuickSlipsWeb.TemplateLive do
             signed_in?: signed_in?(scope),
             businesses: saved_businesses(scope),
             signatures: saved_signatures(scope),
+            stamps: saved_stamps(scope),
+            system_stamps: Enum.map(Stamps.system_stamps(), &StampController.system_payload/1),
+            stamp_choice: stamp_choice(document),
             feedback_path: feedback_path("/#{locale.code}/#{public_slug}")
           )
 
@@ -113,6 +118,24 @@ defmodule QuickSlipsWeb.TemplateLive do
   end
 
   defp saved_signatures(_visitor), do: []
+
+  # The revenue stamps to choose from. Only a logged-in user has any (the site's default is for everybody).
+  defp saved_stamps(%{user: %{}} = scope) do
+    scope |> Stamps.list_stamps() |> Enum.map(&StampController.payload/1)
+  end
+
+  defp saved_stamps(_visitor), do: []
+
+  # What a document that is edited had: "system:<name>", the id of a saved stamp, or "" for the empty box.
+  defp stamp_choice(%{stamp_system: id}) when is_binary(id), do: "system:" <> id
+  defp stamp_choice(%{stamp_id: id}) when not is_nil(id), do: to_string(id)
+  defp stamp_choice(_none), do: ""
+
+  # Whether the chosen design has a place for a revenue stamp, and the document is for India (see `Templates.Registry`).
+  defp stamp_design?(schema, template, region) do
+    region["country"] == "in" and
+      Enum.any?(schema["templates"], &(&1["id"] == template and &1["stamp"] == true))
+  end
 
   # Whether the chosen design of the bill has a place for a signature (see `Templates.Registry`).
   defp signature_design?(schema, template) do
@@ -171,6 +194,13 @@ defmodule QuickSlipsWeb.TemplateLive do
         gettext("This picture is too big: at most 4000 pixels on a side."),
       "signature_error_file_too_large" => gettext("This file is too big. The limit is 1 MB."),
       "signature_error_no_file" => gettext("Choose a picture first."),
+      "stamp_saved" => gettext("Stamp saved."),
+      "stamp_error_name_blank" => gettext("Give the stamp a name."),
+      "stamp_error_name_taken" => gettext("You already have a stamp with this name."),
+      "stamp_error_limit_reached" =>
+        gettext("You can keep up to %{max} stamps. Delete one on the Stamps page first.",
+          max: Stamps.max_per_user()
+        ),
       "save_seller" => gettext("Save seller details"),
       "seller_created" => gettext("Seller details saved."),
       "seller_updated" => gettext("Seller details updated."),

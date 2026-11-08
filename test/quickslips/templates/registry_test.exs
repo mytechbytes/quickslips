@@ -54,7 +54,7 @@ defmodule QuickSlips.Templates.RegistryTest do
   end
 
   test "refuses a field named like a business picture", %{tmp_dir: dir} do
-    for key <- ["logo", "signature"] do
+    for key <- ["logo", "signature", "stamp"] do
       write_schema(dir, "bad", [%{key: key, label: "Picture", type: "text"}])
 
       assert start_error(dir) =~ "reserved for business pictures"
@@ -174,6 +174,30 @@ defmodule QuickSlips.Templates.RegistryTest do
       write_shared(dir, "es", %{})
 
       assert start_error(dir) =~ "_shared/text/es.json is missing months"
+    end
+  end
+
+  describe "a place for a revenue stamp" do
+    test "a design has one when its layout uses the revenue-stamp helper", %{tmp_dir: dir} do
+      write_schema(dir, "bill", [], %{templates: [%{id: "t1"}, %{id: "t2"}]})
+      write_layout(dir, "bill", "t1", ~S|#revenue-stamp(data, t.revenue_stamp)|)
+      write_layout(dir, "bill", "t2", ~S|// a time stamp: stamp("check_in")|)
+      registry = start_supervised!({Registry, dir: dir, name: :registry_stamp})
+
+      assert {:ok, schema} = Registry.fetch("bill", registry)
+
+      assert Map.new(schema["templates"], &{&1["id"], &1["stamp"]}) ==
+               %{"t1" => true, "t2" => false}
+    end
+
+    test "is true for the designs of the receipts that have the box, and for no other bill" do
+      {:ok, rent} = QuickSlips.Templates.get("rent-receipt")
+      {:ok, fuel} = QuickSlips.Templates.get("fuel-bill")
+
+      assert Map.new(rent["templates"], &{&1["id"], &1["stamp"]}) ==
+               %{"t1" => true, "t2" => true, "t3" => true, "t4" => false}
+
+      refute Enum.any?(fuel["templates"], & &1["stamp"])
     end
   end
 

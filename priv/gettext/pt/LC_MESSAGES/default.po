@@ -11,12 +11,12 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: lib/quickslips_web/live/template_live.ex:132
+#: lib/quickslips_web/live/template_live.ex:155
 #, elixir-autogen, elixir-format
 msgid "%{remaining} of %{limit} downloads left today"
 msgstr "Restam %{remaining} de %{limit} downloads hoje"
 
-#: lib/quickslips_web/live/template_live.ex:127
+#: lib/quickslips_web/live/template_live.ex:150
 #, elixir-autogen, elixir-format
 msgid "%{remaining} of %{limit} free downloads left today"
 msgstr "Restam %{remaining} de %{limit} downloads gratuitos hoje"
@@ -41,8 +41,8 @@ msgstr "Todas"
 msgid "Already have an account?"
 msgstr "Já tem uma conta?"
 
-#: lib/quickslips_web/components/layouts.ex:606
-#: lib/quickslips_web/components/layouts.ex:621
+#: lib/quickslips_web/components/layouts.ex:607
+#: lib/quickslips_web/components/layouts.ex:622
 #, elixir-autogen, elixir-format
 msgid "Attempting to reconnect"
 msgstr "Tentando reconectar"
@@ -57,12 +57,12 @@ msgstr "Notas e recibos, prontos em segundos"
 msgid "Categories"
 msgstr "Categorias"
 
-#: lib/quickslips_web/live/template_live.ex:158
+#: lib/quickslips_web/live/template_live.ex:181
 #, elixir-autogen, elixir-format
 msgid "Choose a saved business…"
 msgstr "Escolha uma empresa salva…"
 
-#: lib/quickslips_web/components/layouts.ex:199
+#: lib/quickslips_web/components/layouts.ex:200
 #, elixir-autogen, elixir-format
 msgid "Close menu"
 msgstr "Fechar menu"
@@ -115,7 +115,7 @@ msgstr "Crie sua conta"
 msgid "Creating account..."
 msgstr "Criando a conta..."
 
-#: lib/quickslips_web/live/template_live.ex:136
+#: lib/quickslips_web/live/template_live.ex:159
 #, elixir-autogen, elixir-format
 msgid "Creating your PDF…"
 msgstr "Criando seu PDF…"
@@ -130,7 +130,7 @@ msgstr "Escuro"
 msgid "Dashboard"
 msgstr "Painel"
 
-#: lib/quickslips_web/live/template_live.ex:145
+#: lib/quickslips_web/live/template_live.ex:168
 #, elixir-autogen, elixir-format
 msgid "Document preview"
 msgstr "Pré-visualização do documento"
@@ -140,12 +140,12 @@ msgstr "Pré-visualização do documento"
 msgid "Documents"
 msgstr "Documentos"
 
-#: lib/quickslips_web/live/template_live.html.heex:146
+#: lib/quickslips_web/live/template_live.html.heex:212
 #, elixir-autogen, elixir-format
 msgid "Download PDF"
 msgstr "Baixar PDF"
 
-#: lib/quickslips_web/live/template_live.ex:137
+#: lib/quickslips_web/live/template_live.ex:160
 #, elixir-autogen, elixir-format
 msgid "Downloaded."
 msgstr "Baixado."
@@ -167,7 +167,7 @@ msgstr "Link por e-mail"
 msgid "Email me a link"
 msgstr "Enviar um link por e-mail"
 
-#: lib/quickslips_web/live/template_live.ex:159
+#: lib/quickslips_web/live/template_live.ex:182
 #, elixir-autogen, elixir-format
 msgid "Fill from a saved business"
 msgstr "Preencher com uma empresa salva"
@@ -222,10 +222,10 @@ msgstr "Manter-me conectado neste dispositivo"
 msgid "Light"
 msgstr "Claro"
 
-#: lib/quickslips_web/components/layouts.ex:163
-#: lib/quickslips_web/components/layouts.ex:216
+#: lib/quickslips_web/components/layouts.ex:164
+#: lib/quickslips_web/components/layouts.ex:217
 #: lib/quickslips_web/live/home_live.ex:151
-#: lib/quickslips_web/live/template_live.html.heex:138
+#: lib/quickslips_web/live/template_live.html.heex:204
 #: lib/quickslips_web/live/user_live/confirmation.ex:57
 #: lib/quickslips_web/live/user_live/login.ex:119
 #: lib/quickslips_web/live/user_live/registration.ex:67
@@ -258,7 +258,7 @@ msgstr "Entrar no QuickSlips"
 msgid "Log me in only this time"
 msgstr "Entrar somente desta vez"
 
-#: lib/quickslips_web/components/layouts.ex:457
+#: lib/quickslips_web/components/layouts.ex:458
 #: lib/quickslips_web/components/ui.ex:799
 #, elixir-autogen, elixir-format
 msgid "Log out"
@@ -281,9 +281,9 @@ msgstr "Entrando..."
 msgid "Magic link is invalid or it has expired."
 msgstr "O link mágico é inválido ou expirou."
 
-#: lib/quickslips_web/components/layouts.ex:143
-#: lib/quickslips_web/components/layouts.ex:376
-#: lib/quickslips_web/components/layouts.ex:469
+#: lib/quickslips_web/components/layouts.ex:144
+#: lib/quickslips_web/components/layouts.ex:377
+#: lib/quickslips_web/components/layouts.ex:470
 #, elixir-autogen, elixir-format
 msgid "Main"
 msgstr "Principal"
@@ -293,8 +293,8 @@ msgstr "Principal"
 msgid "Need more than 2 downloads a day?"
 msgstr "Precisa de mais de 2 downloads por dia?"
 
-#: lib/quickslips_web/components/layouts.ex:400
-#: lib/quickslips_web/components/layouts.ex:477
+#: lib/quickslips_web/components/layouts.ex:401
+#: lib/quickslips_web/components/layouts.ex:478
 #, elixir-autogen, elixir-format
 msgid "New document"
 msgstr "Novo documento"
@@ -309,8 +309,8 @@ msgstr "Novo por aqui?"
 msgid "No template matches your search."
 msgstr "Nenhum modelo corresponde à sua busca."
 
-#: lib/quickslips_web/components/layouts.ex:176
-#: lib/quickslips_web/components/layouts.ex:390
+#: lib/quickslips_web/components/layouts.ex:177
+#: lib/quickslips_web/components/layouts.ex:391
 #, elixir-autogen, elixir-format
 msgid "Open main menu"
 msgstr "Abrir menu principal"
@@ -347,17 +347,17 @@ msgstr "Escolha um modelo, preencha o formulário e baixe o PDF. Não precisa de
 msgid "Pick one to start a new document."
 msgstr "Escolha um para começar um novo documento."
 
-#: lib/quickslips_web/live/template_live.ex:138
+#: lib/quickslips_web/live/template_live.ex:161
 #, elixir-autogen, elixir-format
 msgid "Please fix the highlighted fields."
 msgstr "Corrija os campos destacados."
 
-#: lib/quickslips_web/live/template_live.ex:144
+#: lib/quickslips_web/live/template_live.ex:167
 #, elixir-autogen, elixir-format
 msgid "Preview could not be rendered."
 msgstr "Não foi possível gerar a pré-visualização."
 
-#: lib/quickslips_web/live/template_live.html.heex:127
+#: lib/quickslips_web/live/template_live.html.heex:193
 #, elixir-autogen, elixir-format
 msgid "Preview loads here…"
 msgstr "A pré-visualização aparece aqui…"
@@ -377,17 +377,17 @@ msgstr "Buscar modelos"
 msgid "Search templates, like fuel or rent"
 msgstr "Buscar modelos, como combustível ou aluguel"
 
-#: lib/quickslips_web/components/layouts.ex:429
-#: lib/quickslips_web/components/layouts.ex:504
+#: lib/quickslips_web/components/layouts.ex:430
+#: lib/quickslips_web/components/layouts.ex:505
 #: lib/quickslips_web/components/ui.ex:791
 #, elixir-autogen, elixir-format
 msgid "Settings"
 msgstr "Configurações"
 
-#: lib/quickslips_web/components/layouts.ex:166
-#: lib/quickslips_web/components/layouts.ex:219
+#: lib/quickslips_web/components/layouts.ex:167
+#: lib/quickslips_web/components/layouts.ex:220
 #: lib/quickslips_web/live/home_live.ex:154
-#: lib/quickslips_web/live/template_live.html.heex:140
+#: lib/quickslips_web/live/template_live.html.heex:206
 #: lib/quickslips_web/live/user_live/login.ex:103
 #: lib/quickslips_web/live/user_live/registration.ex:51
 #: lib/quickslips_web/live/user_live/registration.ex:91
@@ -395,12 +395,12 @@ msgstr "Configurações"
 msgid "Sign up"
 msgstr "Cadastrar-se"
 
-#: lib/quickslips_web/components/layouts.ex:613
+#: lib/quickslips_web/components/layouts.ex:614
 #, elixir-autogen, elixir-format
 msgid "Something went wrong!"
 msgstr "Algo deu errado!"
 
-#: lib/quickslips_web/live/template_live.ex:142
+#: lib/quickslips_web/live/template_live.ex:165
 #, elixir-autogen, elixir-format
 msgid "Something went wrong. Please try again."
 msgstr "Algo deu errado. Tente novamente."
@@ -415,9 +415,9 @@ msgstr "Espanha"
 msgid "System"
 msgstr "Sistema"
 
-#: lib/quickslips_web/components/layouts.ex:154
-#: lib/quickslips_web/components/layouts.ex:211
-#: lib/quickslips_web/components/layouts.ex:316
+#: lib/quickslips_web/components/layouts.ex:155
+#: lib/quickslips_web/components/layouts.ex:212
+#: lib/quickslips_web/components/layouts.ex:317
 #: lib/quickslips_web/live/home_live.ex:81
 #: lib/quickslips_web/live/template_live.html.heex:8
 #, elixir-autogen, elixir-format
@@ -459,7 +459,7 @@ msgstr "Reino Unido"
 msgid "United States"
 msgstr "Estados Unidos"
 
-#: lib/quickslips_web/live/template_live.ex:143
+#: lib/quickslips_web/live/template_live.ex:166
 #, elixir-autogen, elixir-format
 msgid "Updating preview…"
 msgstr "Atualizando a pré-visualização…"
@@ -469,7 +469,7 @@ msgstr "Atualizando a pré-visualização…"
 msgid "User confirmed successfully."
 msgstr "Usuário confirmado com sucesso."
 
-#: lib/quickslips_web/components/layouts.ex:598
+#: lib/quickslips_web/components/layouts.ex:599
 #, elixir-autogen, elixir-format
 msgid "We can't find the internet"
 msgstr "Não encontramos a internet"
@@ -479,7 +479,7 @@ msgstr "Não encontramos a internet"
 msgid "We couldn't sign you in with Google. Please try again."
 msgstr "Não foi possível entrar com o Google. Tente novamente."
 
-#: lib/quickslips_web/live/template_live.ex:141
+#: lib/quickslips_web/live/template_live.ex:164
 #, elixir-autogen, elixir-format
 msgid "We couldn't verify your browser. Turn off your ad blocker, or log in."
 msgstr "Não foi possível verificar seu navegador. Desative o bloqueador de anúncios ou entre na conta."
@@ -526,12 +526,12 @@ msgstr "Você precisa se autenticar novamente para acessar esta página."
 msgid "You need to reauthenticate to perform sensitive actions on your account."
 msgstr "Você precisa se autenticar novamente para realizar ações sensíveis na sua conta."
 
-#: lib/quickslips_web/live/template_live.ex:139
+#: lib/quickslips_web/live/template_live.ex:162
 #, elixir-autogen, elixir-format
 msgid "You've used today's free downloads."
 msgstr "Você usou os downloads gratuitos de hoje."
 
-#: lib/quickslips_web/live/template_live.html.heex:133
+#: lib/quickslips_web/live/template_live.html.heex:199
 #, elixir-autogen, elixir-format
 msgid "You've used your free downloads for today. Log in or sign up to keep going, and come back tomorrow for more."
 msgstr "Você usou seus downloads gratuitos de hoje. Entre ou cadastre-se para continuar e volte amanhã para mais."
@@ -553,22 +553,22 @@ msgstr "ou"
 msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account."
 msgstr "Enviamos um e-mail para %{email}. Abra-o e use a senha que você acabou de escolher para confirmar sua conta."
 
-#: lib/quickslips_web/live/template_live.ex:154
+#: lib/quickslips_web/live/template_live.ex:177
 #, elixir-autogen, elixir-format
 msgid "Add item"
 msgstr "Adicionar item"
 
-#: lib/quickslips_web/live/template_live.ex:157
+#: lib/quickslips_web/live/template_live.ex:180
 #, elixir-autogen, elixir-format
 msgid "Amount"
 msgstr "Valor"
 
-#: lib/quickslips_web/live/template_live.ex:155
+#: lib/quickslips_web/live/template_live.ex:178
 #, elixir-autogen, elixir-format
 msgid "Remove item %{number}"
 msgstr "Remover item %{number}"
 
-#: lib/quickslips_web/live/template_live.ex:156
+#: lib/quickslips_web/live/template_live.ex:179
 #, elixir-autogen, elixir-format
 msgid "Subtotal"
 msgstr "Subtotal"
@@ -613,42 +613,42 @@ msgstr "Japão"
 msgid "Currency"
 msgstr "Moeda"
 
-#: lib/quickslips_web/live/template_live.html.heex:45
+#: lib/quickslips_web/live/template_live.html.heex:47
 #, elixir-autogen, elixir-format
 msgid "Template"
 msgstr "Modelo"
 
-#: lib/quickslips_web/live/template_live.ex:146
+#: lib/quickslips_web/live/template_live.ex:169
 #, elixir-autogen, elixir-format
 msgid "Business"
 msgstr "Empresa"
 
-#: lib/quickslips_web/live/template_live.ex:152
+#: lib/quickslips_web/live/template_live.ex:175
 #, elixir-autogen, elixir-format
 msgid "Charges"
 msgstr "Valores"
 
-#: lib/quickslips_web/live/template_live.ex:149
+#: lib/quickslips_web/live/template_live.ex:172
 #, elixir-autogen, elixir-format
 msgid "Customer"
 msgstr "Cliente"
 
-#: lib/quickslips_web/live/template_live.ex:151
+#: lib/quickslips_web/live/template_live.ex:174
 #, elixir-autogen, elixir-format
 msgid "Details"
 msgstr "Detalhes"
 
-#: lib/quickslips_web/live/template_live.ex:148
+#: lib/quickslips_web/live/template_live.ex:171
 #, elixir-autogen, elixir-format
 msgid "Document"
 msgstr "Documento"
 
-#: lib/quickslips_web/live/template_live.ex:153
+#: lib/quickslips_web/live/template_live.ex:176
 #, elixir-autogen, elixir-format
 msgid "Payment"
 msgstr "Pagamento"
 
-#: lib/quickslips_web/live/template_live.ex:147
+#: lib/quickslips_web/live/template_live.ex:170
 #, elixir-autogen, elixir-format
 msgid "Registration"
 msgstr "Registro"
@@ -665,7 +665,7 @@ msgstr "País e idioma"
 msgid "Language, Country & Currency"
 msgstr "Idioma, país e moeda"
 
-#: lib/quickslips_web/live/template_live.ex:150
+#: lib/quickslips_web/live/template_live.ex:173
 #, elixir-autogen, elixir-format
 msgid "Item Details"
 msgstr "Detalhes dos itens"
@@ -675,79 +675,81 @@ msgstr "Detalhes dos itens"
 msgid "Generate Now"
 msgstr "Gerar agora"
 
-#: lib/quickslips_web/live/template_live.ex:160
+#: lib/quickslips_web/live/template_live.ex:183
 #, elixir-autogen, elixir-format
 msgid "Other rate…"
 msgstr "Outra alíquota…"
 
-#: lib/quickslips_web/live/template_live.ex:161
+#: lib/quickslips_web/live/template_live.ex:184
 #, elixir-autogen, elixir-format
 msgid "Type the rate in %"
 msgstr "Digite a alíquota em %"
 
-#: lib/quickslips_web/live/template_live.ex:173
+#: lib/quickslips_web/live/template_live.ex:196
 #, elixir-autogen, elixir-format
 msgid "Choose a picture first."
 msgstr "Escolha uma imagem primeiro."
 
-#: lib/quickslips_web/live/template_live.ex:177
+#: lib/quickslips_web/live/template_live.ex:207
 #, elixir-autogen, elixir-format
 msgid "Fill in the seller's name first."
 msgstr "Preencha primeiro o nome do vendedor."
 
-#: lib/quickslips_web/live/template_live.ex:163
+#: lib/quickslips_web/live/template_live.ex:186
 #, elixir-autogen, elixir-format
 msgid "Give the signature a name."
 msgstr "Dê um nome à assinatura."
 
-#: lib/quickslips_web/live/template_live.html.heex:101
-#: lib/quickslips_web/live/template_live.html.heex:102
+#: lib/quickslips_web/live/template_live.html.heex:167
+#: lib/quickslips_web/live/template_live.html.heex:168
 #, elixir-autogen, elixir-format
 msgid "Name, like Owner"
 msgstr "Nome, por exemplo Proprietário"
 
-#: lib/quickslips_web/live/template_live.html.heex:82
+#: lib/quickslips_web/live/template_live.html.heex:148
 #, elixir-autogen, elixir-format
 msgid "No signature (placeholder only)"
 msgstr "Sem assinatura (apenas o espaço)"
 
-#: lib/quickslips_web/live/template_live.html.heex:109
-#: lib/quickslips_web/live/template_live.html.heex:112
+#: lib/quickslips_web/live/template_live.html.heex:120
+#: lib/quickslips_web/live/template_live.html.heex:123
+#: lib/quickslips_web/live/template_live.html.heex:175
+#: lib/quickslips_web/live/template_live.html.heex:178
 #, elixir-autogen, elixir-format
 msgid "PNG or JPG picture, up to 1 MB"
 msgstr "Imagem PNG ou JPG, de até 1 MB"
 
-#: lib/quickslips_web/live/template_live.html.heex:93
+#: lib/quickslips_web/live/template_live.html.heex:159
 #, elixir-autogen, elixir-format
 msgid "Save a new signature"
 msgstr "Salvar uma nova assinatura"
 
-#: lib/quickslips_web/live/template_live.ex:174
+#: lib/quickslips_web/live/template_live.ex:204
 #, elixir-autogen, elixir-format
 msgid "Save seller details"
 msgstr "Salvar dados do vendedor"
 
-#: lib/quickslips_web/live/template_live.html.heex:113
+#: lib/quickslips_web/live/template_live.html.heex:179
 #, elixir-autogen, elixir-format
 msgid "Save signature"
 msgstr "Salvar assinatura"
 
-#: lib/quickslips_web/live/template_live.ex:175
+#: lib/quickslips_web/live/template_live.ex:205
 #, elixir-autogen, elixir-format
 msgid "Seller details saved."
 msgstr "Dados do vendedor salvos."
 
-#: lib/quickslips_web/live/template_live.ex:176
+#: lib/quickslips_web/live/template_live.ex:206
 #, elixir-autogen, elixir-format
 msgid "Seller details updated."
 msgstr "Dados do vendedor atualizados."
 
-#: lib/quickslips_web/live/template_live.html.heex:74
+#: lib/quickslips_web/live/template_live.html.heex:140
 #, elixir-autogen, elixir-format
 msgid "Signature"
 msgstr "Assinatura"
 
-#: lib/quickslips_web/live/template_live.ex:162
+#: lib/quickslips_web/live/template_live.ex:185
 #, elixir-autogen, elixir-format
 msgid "Signature saved."
 msgstr "Assinatura salva."
@@ -757,37 +759,37 @@ msgstr "Assinatura salva."
 msgid "Signatures"
 msgstr "Assinaturas"
 
-#: lib/quickslips_web/live/template_live.ex:179
+#: lib/quickslips_web/live/template_live.ex:209
 #, elixir-autogen, elixir-format
 msgid "The %{label} is not valid. Check it, or leave it empty."
 msgstr "%{label} não é válido. Confira ou deixe em branco."
 
-#: lib/quickslips_web/live/template_live.ex:172
+#: lib/quickslips_web/live/template_live.ex:195
 #, elixir-autogen, elixir-format
 msgid "This file is too big. The limit is 1 MB."
 msgstr "Este arquivo é grande demais. O limite é 1 MB."
 
-#: lib/quickslips_web/live/template_live.ex:169
+#: lib/quickslips_web/live/template_live.ex:192
 #, elixir-autogen, elixir-format
 msgid "This is not a real PNG or JPG picture."
 msgstr "Esta não é uma imagem PNG ou JPG válida."
 
-#: lib/quickslips_web/live/template_live.ex:171
+#: lib/quickslips_web/live/template_live.ex:194
 #, elixir-autogen, elixir-format
 msgid "This picture is too big: at most 4000 pixels on a side."
 msgstr "Esta imagem é grande demais: no máximo 4000 pixels por lado."
 
-#: lib/quickslips_web/live/template_live.ex:164
+#: lib/quickslips_web/live/template_live.ex:187
 #, elixir-autogen, elixir-format
 msgid "You already have a signature with this name."
 msgstr "Você já tem uma assinatura com esse nome."
 
-#: lib/quickslips_web/live/template_live.ex:166
+#: lib/quickslips_web/live/template_live.ex:189
 #, elixir-autogen, elixir-format
 msgid "You can keep up to %{max} signatures. Delete one on the Signatures page first."
 msgstr "Você pode guardar até %{max} assinaturas. Antes, exclua uma na página Assinaturas."
 
-#: lib/quickslips_web/live/template_live.html.heex:166
+#: lib/quickslips_web/live/template_live.html.heex:232
 #, elixir-autogen, elixir-format
 msgid "Frequently asked questions"
 msgstr "Perguntas frequentes"
@@ -802,12 +804,12 @@ msgstr "Todas as páginas do QuickSlips, por idioma e país."
 msgid "Languages and countries: %{count}"
 msgstr "Idiomas e países: %{count}"
 
-#: lib/quickslips_web/components/layouts.ex:262
+#: lib/quickslips_web/components/layouts.ex:263
 #, elixir-autogen, elixir-format
 msgid "Make a clean bill or receipt as a PDF in seconds: fill in the form, check the preview, download. Nothing to install."
 msgstr "Crie uma nota ou um recibo limpo em PDF em segundos: preencha o formulário, confira a prévia e baixe. Nada para instalar."
 
-#: lib/quickslips_web/components/layouts.ex:283
+#: lib/quickslips_web/components/layouts.ex:284
 #, elixir-autogen, elixir-format
 msgid "More templates"
 msgstr "Mais modelos"
@@ -817,12 +819,12 @@ msgstr "Mais modelos"
 msgid "Pages: %{count}"
 msgstr "Páginas: %{count}"
 
-#: lib/quickslips_web/components/layouts.ex:281
+#: lib/quickslips_web/components/layouts.ex:282
 #, elixir-autogen, elixir-format
 msgid "Popular bills"
 msgstr "Documentos populares"
 
-#: lib/quickslips_web/components/layouts.ex:317
+#: lib/quickslips_web/components/layouts.ex:318
 #: lib/quickslips_web/live/sitemap_live.ex:21
 #: lib/quickslips_web/live/sitemap_live.ex:32
 #, elixir-autogen, elixir-format
@@ -834,40 +836,40 @@ msgstr "Mapa do site"
 msgid "The same list, as search engines read it:"
 msgstr "A mesma lista, como os buscadores a leem:"
 
-#: lib/quickslips_web/components/layouts.ex:292
+#: lib/quickslips_web/components/layouts.ex:293
 #, elixir-autogen, elixir-format
 msgid "View all templates"
 msgstr "Ver todos os modelos"
 
-#: lib/quickslips_web/components/layouts.ex:303
+#: lib/quickslips_web/components/layouts.ex:304
 #, elixir-autogen, elixir-format
 msgid "We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
 msgstr "Criamos documentos a partir dos dados que você informa. Você é responsável pela exatidão deles e por usá-los de forma legal."
 
-#: lib/quickslips_web/components/layouts.ex:277
+#: lib/quickslips_web/components/layouts.ex:278
 #, elixir-autogen, elixir-format
 msgid "© %{year} QuickSlips. All rights reserved."
 msgstr "© %{year} QuickSlips. Todos os direitos reservados."
 
-#: lib/quickslips_web/components/layouts.ex:326
-#: lib/quickslips_web/components/layouts.ex:447
-#: lib/quickslips_web/components/layouts.ex:524
+#: lib/quickslips_web/components/layouts.ex:327
+#: lib/quickslips_web/components/layouts.ex:448
+#: lib/quickslips_web/components/layouts.ex:525
 #: lib/quickslips_web/live/contact_live.ex:40
 #, elixir-autogen, elixir-format
 msgid "Contact"
 msgstr "Contato"
 
-#: lib/quickslips_web/components/layouts.ex:320
+#: lib/quickslips_web/components/layouts.ex:321
 #, elixir-autogen, elixir-format
 msgid "Disclaimer"
 msgstr "Isenção de responsabilidade"
 
-#: lib/quickslips_web/components/layouts.ex:319
+#: lib/quickslips_web/components/layouts.ex:320
 #, elixir-autogen, elixir-format
 msgid "Privacy"
 msgstr "Privacidade"
 
-#: lib/quickslips_web/components/layouts.ex:318
+#: lib/quickslips_web/components/layouts.ex:319
 #, elixir-autogen, elixir-format
 msgid "Terms"
 msgstr "Termos de uso"
@@ -922,7 +924,7 @@ msgstr "Dar sua opinião"
 msgid "How can we help?"
 msgstr "Como podemos ajudar?"
 
-#: lib/quickslips_web/live/template_live.html.heex:185
+#: lib/quickslips_web/live/template_live.html.heex:251
 #, elixir-autogen, elixir-format
 msgid "Is something missing or wrong in this template?"
 msgstr "Falta algo ou há algo errado neste modelo?"
@@ -957,13 +959,13 @@ msgstr "Outro assunto"
 msgid "Something is broken, wrong or confusing."
 msgstr "Algo está quebrado, errado ou confuso."
 
-#: lib/quickslips_web/components/layouts.ex:273
-#: lib/quickslips_web/live/template_live.html.heex:199
+#: lib/quickslips_web/components/layouts.ex:274
+#: lib/quickslips_web/live/template_live.html.heex:265
 #, elixir-autogen, elixir-format
 msgid "Tell us"
 msgstr "Fale conosco"
 
-#: lib/quickslips_web/live/template_live.html.heex:188
+#: lib/quickslips_web/live/template_live.html.heex:254
 #, elixir-autogen, elixir-format
 msgid "Tell us what you would like changed or added, or report a mistake. We read every message."
 msgstr "Conte o que você gostaria de mudar ou acrescentar, ou informe um erro. Lemos todas as mensagens."
@@ -988,7 +990,7 @@ msgstr "Quanto mais você contar, melhor poderemos ajudar. Por favor, não escre
 msgid "Too many messages have been sent today. Please try again tomorrow."
 msgstr "Muitas mensagens foram enviadas hoje. Tente novamente amanhã."
 
-#: lib/quickslips_web/components/layouts.ex:267
+#: lib/quickslips_web/components/layouts.ex:268
 #, elixir-autogen, elixir-format
 msgid "Want a change, have feedback, or hit a problem?"
 msgstr "Quer uma alteração, tem uma opinião ou encontrou um problema?"
@@ -1098,8 +1100,8 @@ msgstr "Sua mensagem para o QuickSlips (%{reference})"
 msgid "Your reference:"
 msgstr "Sua referência:"
 
-#: lib/quickslips_web/components/layouts.ex:438
-#: lib/quickslips_web/components/layouts.ex:514
+#: lib/quickslips_web/components/layouts.ex:439
+#: lib/quickslips_web/components/layouts.ex:515
 #, elixir-autogen, elixir-format
 msgid "Messages"
 msgstr "Mensagens"
@@ -1113,3 +1115,54 @@ msgstr "Olá %{name},"
 #, elixir-autogen, elixir-format
 msgid "Your message:"
 msgstr "Sua mensagem:"
+
+#: lib/quickslips_web/live/template_live.html.heex:85
+#, elixir-autogen, elixir-format
+msgid "Empty box (placeholder only)"
+msgstr "Caixa vazia (apenas o espaço)"
+
+#: lib/quickslips_web/live/template_live.ex:198
+#, elixir-autogen, elixir-format
+msgid "Give the stamp a name."
+msgstr "Dê um nome ao selo."
+
+#: lib/quickslips_web/live/template_live.html.heex:112
+#: lib/quickslips_web/live/template_live.html.heex:113
+#, elixir-autogen, elixir-format
+msgid "Name, like Rent receipts"
+msgstr "Nome, como Recibos de aluguel"
+
+#: lib/quickslips_web/live/template_live.html.heex:76
+#, elixir-autogen, elixir-format
+msgid "Revenue stamp"
+msgstr "Selo fiscal"
+
+#: lib/quickslips_web/live/template_live.html.heex:104
+#, elixir-autogen, elixir-format
+msgid "Save a new stamp"
+msgstr "Salvar um novo selo"
+
+#: lib/quickslips_web/live/template_live.html.heex:124
+#, elixir-autogen, elixir-format
+msgid "Save stamp"
+msgstr "Salvar selo"
+
+#: lib/quickslips_web/live/template_live.ex:197
+#, elixir-autogen, elixir-format
+msgid "Stamp saved."
+msgstr "Selo salvo."
+
+#: lib/quickslips_web/components/layouts.ex:133
+#, elixir-autogen, elixir-format
+msgid "Stamps"
+msgstr "Selos"
+
+#: lib/quickslips_web/live/template_live.ex:199
+#, elixir-autogen, elixir-format
+msgid "You already have a stamp with this name."
+msgstr "Você já tem um selo com este nome."
+
+#: lib/quickslips_web/live/template_live.ex:201
+#, elixir-autogen, elixir-format
+msgid "You can keep up to %{max} stamps. Delete one on the Stamps page first."
+msgstr "Você pode guardar até %{max} selos. Exclua um antes na página Selos."

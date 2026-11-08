@@ -12,7 +12,7 @@ defmodule QuickSlipsWeb.RobotsController do
   """
   use QuickSlipsWeb, :controller
 
-  @disallowed ~w(/api/ /uploads/ /source/ /auth/ /users/ /dashboard /businesses /signatures /history /admin/ /dev/ /locale /healthz /contact?)
+  @disallowed ~w(/api/ /uploads/ /source/ /auth/ /users/ /dashboard /businesses /signatures /stamps /history /admin/ /dev/ /locale /healthz /contact?)
 
   def show(conn, _params) do
     conn

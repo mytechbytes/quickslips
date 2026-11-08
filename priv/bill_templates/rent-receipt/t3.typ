@@ -10,7 +10,7 @@
 #let periods = receipt-periods(data)
 #let count = periods.len()
 #let stamp = if region.country == "in" {
-  box(width: 24mm, height: 28mm, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"), inset: 2mm, align(center + horizon, text(size: 7.5pt, fill: muted, t.revenue_stamp)))
+  revenue-stamp(data, t.revenue_stamp, width: 24mm, height: 28mm)
 }
 
 #for (i, receipt) in periods.enumerate() {

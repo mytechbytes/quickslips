@@ -19,7 +19,7 @@ defmodule QuickSlips.Templates.Registry do
                healthz sitemap sitemap.xml sitemap.xsl terms privacy disclaimer contact sw.js favicon.ico robots.txt admin)
 
   # Field keys the server fills in itself (the names of a business's pictures), so a template can't use them.
-  @reserved_keys ~w(logo signature)
+  @reserved_keys ~w(logo signature stamp)
 
   ## Client API
 
@@ -222,7 +222,7 @@ defmodule QuickSlips.Templates.Registry do
       Map.update!(
         schema,
         "templates",
-        &Enum.map(&1, fn design -> mark_signature(design, dir) end)
+        &Enum.map(&1, fn design -> design |> mark_signature(dir) |> mark_stamp(dir) end)
       )
 
     {folder, %{schema: schema, texts: texts, sample: read_sample(dir)}}
@@ -245,6 +245,13 @@ defmodule QuickSlips.Templates.Registry do
       {:error, reason} ->
         raise "#{file}: the layout of the design #{inspect(id)} can't be read (#{:file.format_error(reason)})"
     end
+  end
+
+  # Whether a design has a place for a revenue stamp, as `"stamp": true` on it: it uses the `revenue-stamp` helper.
+  # The page offers the choice of a stamp only for those (and only for a document made for India).
+  defp mark_stamp(%{"id" => id} = design, dir) do
+    source = File.read!(Path.join(dir, id <> ".typ"))
+    Map.put(design, "stamp", String.contains?(source, "revenue-stamp("))
   end
 
   # A template that declares a language must be translated into it completely: every key of its English text

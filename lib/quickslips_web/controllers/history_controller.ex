@@ -6,6 +6,7 @@ defmodule QuickSlipsWeb.HistoryController do
   alias QuickSlips.Locales
   alias QuickSlips.Render.Renderer
   alias QuickSlips.Signatures
+  alias QuickSlips.Stamps
   alias QuickSlips.Templates
   alias QuickSlips.Templates.Items
   alias QuickSlips.Templates.Validator
@@ -23,7 +24,14 @@ defmodule QuickSlipsWeb.HistoryController do
     # The signature that was chosen when the document was made. If it has been deleted since, the column is empty
     # (the database does that), and the document is made with the place to sign by hand.
     signature = Signatures.get_signature(scope, document.signature_id)
-    %{data: image_names, files: files} = Businesses.render_assets(business, signature)
+
+    # The revenue stamp the same way: a saved one that is gone is the empty box, and the site's default is a flag.
+    stamp =
+      if document.stamp_system,
+        do: {:system, document.stamp_system},
+        else: Stamps.get_stamp(scope, document.stamp_id)
+
+    %{data: image_names, files: files} = Businesses.render_assets(business, signature, stamp)
 
     # The document is made again in the language and for the country it was made for.
     locale = Locales.for_document(document.language, document.options)

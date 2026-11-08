@@ -10,6 +10,7 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
 
   import QuickSlips.BusinessesFixtures
   import QuickSlips.SignaturesFixtures
+  import QuickSlips.StampsFixtures
   import QuickSlips.UploadsFixtures
 
   defp sample, do: "priv/bill_templates/fuel-bill/sample.json" |> File.read!() |> Jason.decode!()
@@ -139,6 +140,98 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
       })
 
     assert "%PDF" <> _ = response(conn, 200)
+  end
+
+  describe "the revenue stamp of a receipt for India" do
+    defp rent_sample,
+      do: "priv/bill_templates/rent-receipt/sample.json" |> File.read!() |> Jason.decode!()
+
+    defp generate_rent(conn, extra \\ %{}) do
+      post(
+        conn,
+        ~p"/api/generate",
+        Map.merge(
+          %{
+            slug: "rent-receipt",
+            template: "t1",
+            data: rent_sample(),
+            locale: "en-in",
+            turnstile_token: "test"
+          },
+          extra
+        )
+      )
+    end
+
+    test "is the empty box, unless another is chosen", %{conn: conn} do
+      empty = conn |> generate_rent() |> response(200)
+      same = conn |> generate_rent(%{stamp: ""}) |> response(200)
+
+      assert "%PDF" <> _ = empty
+      assert byte_size(empty) == byte_size(same)
+    end
+
+    test "can be a stamp that the site provides, for a visitor too", %{conn: conn} do
+      empty = conn |> generate_rent() |> response(200)
+
+      default =
+        conn |> generate_rent(%{stamp: "system:india-rupee-one-revenue-stamp"}) |> response(200)
+
+      assert "%PDF" <> _ = default
+      assert default != empty
+    end
+
+    test "a visitor has no saved stamps: the choice is ignored", %{conn: conn} do
+      empty = conn |> generate_rent() |> response(200)
+
+      assert conn |> generate_rent(%{stamp: "1"}) |> response(200) |> byte_size() ==
+               byte_size(empty)
+    end
+
+    test "a user's saved stamp is drawn, and kept with the document", %{conn: conn} do
+      user = QuickSlips.AccountsFixtures.user_fixture()
+      scope = QuickSlips.Accounts.Scope.for_user(user)
+      conn = log_in_user(conn, user)
+      stamp = stamp_fixture(scope, %{}, jpg_bytes())
+
+      empty = conn |> generate_rent() |> response(200)
+      stamped = conn |> generate_rent(%{stamp: to_string(stamp.id)}) |> response(200)
+
+      assert byte_size(stamped) > byte_size(empty)
+      assert [newest | _] = QuickSlips.Documents.list_documents(scope)
+      assert newest.stamp_id == stamp.id
+      assert newest.stamp_system == nil
+    end
+
+    test "a stamp of the site is kept with the document too", %{conn: conn} do
+      user = QuickSlips.AccountsFixtures.user_fixture()
+      scope = QuickSlips.Accounts.Scope.for_user(user)
+      conn = log_in_user(conn, user)
+
+      conn |> generate_rent(%{stamp: "system:india-rupee-one-revenue-stamp"}) |> response(200)
+
+      assert [%{stamp_system: "india-rupee-one-revenue-stamp", stamp_id: nil}] =
+               QuickSlips.Documents.list_documents(scope)
+    end
+
+    test "a stamp of somebody else is a 404, and costs no download", %{conn: conn} do
+      user = QuickSlips.AccountsFixtures.user_fixture()
+      conn = log_in_user(conn, user)
+      theirs = stamp_fixture(QuickSlips.AccountsFixtures.user_scope_fixture())
+
+      assert {404, _headers, _body} =
+               assert_error_sent(404, fn -> generate_rent(conn, %{stamp: theirs.id}) end)
+
+      assert %{remaining: 3} = QuickSlips.Downloads.status(%{user: user})
+    end
+
+    test "a name for a stamp in the data is ignored", %{conn: conn} do
+      data = Map.merge(rent_sample(), %{"stamp" => "../../etc/passwd"})
+      empty = conn |> generate_rent() |> response(200)
+
+      assert conn |> generate_rent(%{data: data}) |> response(200) |> byte_size() ==
+               byte_size(empty)
+    end
   end
 
   describe "the history" do

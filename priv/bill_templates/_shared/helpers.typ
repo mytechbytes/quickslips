@@ -876,5 +876,17 @@
   text(size: 9pt, fill: muted, label)
 }))
 
+// The revenue stamp of a receipt (stuck on a receipt in India only: the layout calls this for India). The picture of
+// the stamp that was chosen, one of the user's or one the site provides, is named in the data under "stamp"; with none
+// chosen the empty dashed box is drawn, to stick a real stamp on.
+#let revenue-stamp(data, label, width: 24mm, height: 28mm) = {
+  let name = data.at("stamp", default: none)
+  if name != none {
+    box(width: width, height: height, image("/" + name, width: 100%, height: 100%, fit: "contain"))
+  } else {
+    box(width: width, height: height, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"), inset: 2mm, align(center + horizon, text(size: 7.5pt, fill: muted, label)))
+  }
+}
+
 // A line of small print at the bottom of the page.
 #let footnote(content) = place(bottom + center, text(size: 8pt, fill: muted, content))

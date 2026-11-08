@@ -29,7 +29,7 @@ export function createPreview(opts: {
   let lastData: BillData | null = null
   // The pictures on the document: where the logo (of the chosen business) and the signature (the chosen one) are,
   // then their bytes by file name, and the names to put in the data.
-  const urls: Record<"logo" | "signature", string | null> = { logo: null, signature: null }
+  const urls: Record<"logo" | "signature" | "stamp", string | null> = { logo: null, signature: null, stamp: null }
   let images: Record<string, Uint8Array> = {}
   let imageNames: Record<string, string> = {}
   let pictureToken = 0
@@ -133,6 +133,11 @@ export function createPreview(opts: {
     /** Use the signature at this address (or the empty place to sign) in the preview. */
     setSignature(url: string | null) {
       urls.signature = url
+      return loadPictures()
+    },
+    /** Use the revenue stamp at this address, or (none) the empty box in the preview. */
+    setStamp(url: string | null) {
+      urls.stamp = url
       return loadPictures()
     },
     /** The page is going away: stop the worker and let go of the last picture. */

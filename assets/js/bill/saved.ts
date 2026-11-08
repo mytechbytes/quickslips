@@ -3,6 +3,7 @@ import type { Business } from "./form"
 // What a logged-in user can save from a bill's page without leaving it: a signature and the seller details.
 
 export type Signature = { id: number; name: string; url: string }
+export type Stamp = { id: number | string; name: string; url: string }
 
 /** A save that did not happen: the `code` the server gave (`name_taken`, `tax_id_invalid`), or `null` when there is none (offline). */
 export type Refused = { ok: false; code: string | null }
@@ -29,6 +30,15 @@ export async function saveSignature(name: string, file: File): Promise<{ ok: tru
   // No content type: the browser writes it, with the boundary of the form data.
   const result = await post("/api/signatures", body)
   return result.ok ? { ok: true, signature: result.data.signature as Signature } : result
+}
+
+/** Saves the picture as a revenue stamp called `name`. */
+export async function saveStamp(name: string, file: File): Promise<{ ok: true; stamp: Stamp } | Refused> {
+  const body = new FormData()
+  body.set("name", name)
+  body.set("file", file)
+  const result = await post("/api/stamps", body)
+  return result.ok ? { ok: true, stamp: result.data.stamp as Stamp } : result
 }
 
 export type SellerDetails = { name: string; address: string; gstin: string }

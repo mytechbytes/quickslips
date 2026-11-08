@@ -7,7 +7,7 @@ defmodule QuickSlipsWeb.ImageComponents do
   alias QuickSlipsWeb.UploadController
 
   attr :id, :string, required: true
-  attr :kind, :string, required: true, values: ~w(logo signature)
+  attr :kind, :string, required: true, values: ~w(logo signature stamp)
   attr :label, :string, required: true
   attr :upload, Phoenix.LiveView.UploadConfig, required: true
   attr :path, :string, default: nil, doc: "the stored image, when there already is one"
