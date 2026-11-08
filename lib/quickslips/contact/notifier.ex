@@ -6,10 +6,10 @@ defmodule QuickSlips.Contact.Notifier do
   has agreed to send for) and has the sender's address as Reply-To, so answering it from the mailbox answers the
   visitor. The owner reads it, so it is in English whatever the language of the page was.
 
-  *To the sender* (`deliver_confirmation/3`): in the language of the page, to say that the message arrived and what
-  its reference is. It leaves out everything the sender typed (the name and the words), because the address may be
-  somebody else's: a text that anybody could put into an e-mail from our address would be a way to say whatever they
-  like to a stranger in our name. Its Reply-To is the owner's, so an answer to it is read.
+  *To the sender* (`deliver_confirmation/3`): in the language of the page, to greet them by name, say that the
+  message arrived, what its reference is, and to give their words back. The address may be somebody else's, so this
+  is limited (Turnstile for everybody, and a few confirmations a day to one address); the e-mail says to ignore it
+  if it was not sent by them. Its Reply-To is the owner's, so an answer to it is read.
   """
   use Gettext, backend: QuickSlipsWeb.Gettext
 
@@ -129,7 +129,7 @@ defmodule QuickSlips.Contact.Notifier do
 
   defp confirmation_body(%Message{} = message, context) do
     [
-      gettext("Hello,"),
+      greeting(message),
       "",
       gettext(
         "Thank you for writing to QuickSlips. We have received your message and we will read it."
@@ -138,6 +138,11 @@ defmodule QuickSlips.Contact.Notifier do
       gettext("Reference: %{reference}", reference: message.reference),
       gettext("Topic: %{topic}", topic: Topic.label(message.topic)),
       gettext("Received: %{time}", time: time(message.inserted_at)),
+      "",
+      gettext("Your message:"),
+      String.duplicate("-", 40),
+      message.message,
+      String.duplicate("-", 40),
       "",
       gettext(
         "If we reply, it will be to this e-mail address. Please quote the reference if you write to us again."
@@ -152,6 +157,9 @@ defmodule QuickSlips.Contact.Notifier do
     ]
     |> Enum.join("\n")
   end
+
+  defp greeting(%Message{name: nil}), do: gettext("Hello,")
+  defp greeting(%Message{name: name}), do: gettext("Hello %{name},", name: name)
 
   defp time(%DateTime{} = time), do: Calendar.strftime(time, "%Y-%m-%d %H:%M UTC")
 end

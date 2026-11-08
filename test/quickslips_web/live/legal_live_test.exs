@@ -212,7 +212,7 @@ defmodule QuickSlipsWeb.LegalLiveTest do
       assert text =~ "Messages you send us."
       assert text =~ "We keep the message in our database, under a reference that we give you"
       assert text =~ "we send a confirmation to the address you gave"
-      assert text =~ "not your words"
+      assert text =~ "your name and your words"
       assert text =~ "Everybody who uses the form passes the Turnstile check"
       assert text =~ "scrambled form of it, not under the address itself"
 

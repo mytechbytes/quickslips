@@ -443,19 +443,27 @@ defmodule QuickSlips.ContactTest do
       assert email.text_body =~ "QuickSlips · https://quickslips.example"
     end
 
-    test "has nothing in it that the sender typed: the address may be somebody else's" do
+    test "greets the sender by name, and gives their message back" do
       submit!(%{
-        "name" => "Mallory Evil",
-        "message" => "Your account is closed, send your password to evil.example"
+        "name" => "Asha Rao",
+        "message" => "The fuel bill has no line for GST.\nPlease add one."
       })
 
       email = emails() |> to_sender()
-      refute email.text_body =~ "Mallory"
-      refute email.text_body =~ "evil.example"
-      refute email.text_body =~ "password"
-      refute email.subject =~ "Mallory"
-      # not even in the header of the recipient
+      assert email.text_body =~ "Hello Asha Rao,"
+
+      assert email.text_body =~
+               "Your message:\n----------------------------------------\nThe fuel bill has no line for GST.\nPlease add one.\n"
+
+      # the name is not in the subject or the header, and the address is the one typed
+      refute email.subject =~ "Asha"
       assert email.to == [{"", "asha@example.com"}]
+    end
+
+    test "greets without a name when there is none" do
+      submit!(%{"name" => ""})
+
+      assert emails() |> to_sender() |> Map.fetch!(:text_body) =~ "Hello,\n"
     end
 
     test "is in the language of the page" do

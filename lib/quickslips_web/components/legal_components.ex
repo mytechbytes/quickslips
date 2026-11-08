@@ -282,7 +282,7 @@ defmodule QuickSlipsWeb.LegalComponents do
           the page you wrote about if you came from one, and, if you are logged in, the e-mail address of your
           account. We keep the message in our database, under a reference that we give you, so that we can find it
           again; we are told of it by e-mail, and we send a confirmation to the address you gave (it holds the
-          reference and the kind of message, not your words). We use it only to read it and to answer you. Everybody
+          reference, the kind of message, your name and your words). We use it only to read it and to answer you. Everybody
           who uses the form passes the Turnstile check described above, because the confirmation goes to the
           address that was typed. To limit abuse we count the messages sent each day, in all, for each logged-in
           account and for each address that a confirmation goes to; the count of an address is kept under a

@@ -1053,17 +1053,17 @@ msgstr "Votre nom (facultatif)"
 msgid "A confirmation is on its way to %{email}. If it does not arrive, look in your spam folder."
 msgstr "Une confirmation est en route vers %{email}. Si elle n'arrive pas, regardez dans vos courriers indésirables."
 
-#: lib/quickslips/contact/notifier.ex:132
+#: lib/quickslips/contact/notifier.ex:161
 #, elixir-autogen, elixir-format
 msgid "Hello,"
 msgstr "Bonjour,"
 
-#: lib/quickslips/contact/notifier.ex:142
+#: lib/quickslips/contact/notifier.ex:147
 #, elixir-autogen, elixir-format
 msgid "If we reply, it will be to this e-mail address. Please quote the reference if you write to us again."
 msgstr "Si nous répondons, ce sera à cette adresse e-mail. Merci d'indiquer la référence si vous nous écrivez à nouveau."
 
-#: lib/quickslips/contact/notifier.ex:146
+#: lib/quickslips/contact/notifier.ex:151
 #, elixir-autogen, elixir-format
 msgid "If you did not send this message, please ignore this e-mail."
 msgstr "Si vous n'avez pas envoyé ce message, veuillez ignorer cet e-mail."
@@ -1103,3 +1103,13 @@ msgstr "Votre référence :"
 #, elixir-autogen, elixir-format
 msgid "Messages"
 msgstr "Messages"
+
+#: lib/quickslips/contact/notifier.ex:162
+#, elixir-autogen, elixir-format
+msgid "Hello %{name},"
+msgstr "Bonjour %{name},"
+
+#: lib/quickslips/contact/notifier.ex:142
+#, elixir-autogen, elixir-format
+msgid "Your message:"
+msgstr "Votre message :"
