@@ -68,16 +68,16 @@ config :esbuild,
   ]
 
 # Configure tailwind (the version is required)
-# config :tailwind,
-#   version: "4.3.3",
-#   quickslips: [
-#     args: ~w(
-#       --input=assets/css/app.css
-#       --output=priv/static/assets/css/app.css
-#     ),
-#     cd: Path.expand("..", __DIR__),
-#     env: %{"NODE_PATH" => [Path.expand("../deps", __DIR__), Mix.Project.build_path()]}
-#   ]
+config :tailwind,
+  version: "4.3.3",
+  quickslips: [
+    args: ~w(
+      --input=assets/css/app.css
+      --output=priv/static/assets/css/app.css
+    ),
+    cd: Path.expand("..", __DIR__),
+    env: %{"NODE_PATH" => [Path.expand("../deps", __DIR__), Mix.Project.build_path()]}
+  ]
 
 # Configure Elixir's Logger
 config :logger, :default_formatter,

@@ -51,6 +51,7 @@ defmodule QuickSlips.MixProject do
       {:lazy_html, ">= 0.1.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.9.1"},
       {:esbuild, "~> 0.10", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.5", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.2.0",
@@ -87,6 +88,7 @@ defmodule QuickSlips.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": [
+        "tailwind.install --if-missing",
         "esbuild.install --if-missing",
         "cmd mkdir -p priv/static/wasm",
         "cmd cp assets/node_modules/@myriaddreamin/typst-ts-web-compiler/pkg/typst_ts_web_compiler_bg.wasm priv/static/wasm/",
@@ -97,16 +99,11 @@ defmodule QuickSlips.MixProject do
       ],
       "assets.build": [
         "compile",
-        "cmd mkdir -p assets/node_modules",
-        "cmd ln -sfn ../../priv/phoenix_colocated assets/node_modules/phoenix-colocated",
-        "cmd npm --prefix assets run css:build",
+        "tailwind quickslips",
         "esbuild quickslips"
       ],
       "assets.deploy": [
-        "compile",
-        "cmd mkdir -p assets/node_modules",
-        "cmd ln -sfn ../../priv/phoenix_colocated assets/node_modules/phoenix-colocated",
-        "cmd npm --prefix assets run css:deploy",
+        "tailwind quickslips --minify",
         "esbuild quickslips --minify",
         "phx.digest"
       ],
