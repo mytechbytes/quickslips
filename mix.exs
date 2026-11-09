@@ -97,10 +97,15 @@ defmodule QuickSlips.MixProject do
       ],
       "assets.build": [
         "compile",
+        "cmd mkdir -p assets/node_modules",
+        "cmd ln -sfn ../../priv/phoenix_colocated assets/node_modules/phoenix-colocated",
         "cmd npm --prefix assets run css:build",
         "esbuild quickslips"
       ],
       "assets.deploy": [
+        "compile",
+        "cmd mkdir -p assets/node_modules",
+        "cmd ln -sfn ../../priv/phoenix_colocated assets/node_modules/phoenix-colocated",
         "cmd npm --prefix assets run css:deploy",
         "esbuild quickslips --minify",
         "phx.digest"
