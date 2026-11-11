@@ -92,6 +92,30 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
       assert byte_size(signed) > byte_size(plain)
     end
 
+    test "draws the driver's signature too, on a design that has a place for it", %{
+      conn: conn,
+      scope: scope
+    } do
+      signature = signature_fixture(scope, %{}, jpg_bytes())
+
+      data =
+        "priv/bill_templates/driver-salary-receipt/sample.json" |> File.read!() |> Jason.decode!()
+
+      body = %{slug: "driver-salary-receipt", template: "t2", data: data}
+
+      plain = conn |> generate(body) |> response(200)
+
+      driver =
+        conn |> generate(Map.put(body, :driver_signature_id, signature.id)) |> response(200)
+
+      assert byte_size(driver) > byte_size(plain)
+
+      assert {404, _, _} =
+               assert_error_sent(404, fn ->
+                 generate(conn, %{driver_signature_id: signature.id + 1000})
+               end)
+    end
+
     test "the default signature of a business is drawn only when it is the one chosen", %{
       conn: conn,
       scope: scope
@@ -140,6 +164,53 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
       })
 
     assert "%PDF" <> _ = response(conn, 200)
+  end
+
+  describe "the paper" do
+    defp width_of(pdf) do
+      [width] = Regex.run(~r|/MediaBox\[0 0 ([\d.]+) |, pdf, capture: :all_but_first)
+      width |> Float.parse() |> elem(0) |> Float.round()
+    end
+
+    test "is the sheet that was chosen, for a design that is not a roll", %{conn: conn} do
+      own = conn |> generate(%{turnstile_token: "test"}) |> response(200)
+      a4 = conn |> generate(%{turnstile_token: "test", paper: "a4"}) |> response(200)
+
+      assert width_of(a4) == 595.0
+      assert width_of(own) < 595.0
+    end
+
+    test "is not changed for a roll receipt, and a sheet that is not offered is ignored", %{
+      conn: conn
+    } do
+      roll = conn |> generate(%{template: "t2", turnstile_token: "test"}) |> response(200)
+
+      chosen =
+        conn |> generate(%{template: "t2", turnstile_token: "test", paper: "a4"}) |> response(200)
+
+      odd = conn |> generate(%{turnstile_token: "test", paper: "a0"}) |> response(200)
+
+      assert width_of(chosen) == width_of(roll)
+      assert width_of(odd) < 595.0
+    end
+
+    test "is kept with the document, so the history makes it again on the same sheet", %{
+      conn: conn
+    } do
+      user = QuickSlips.AccountsFixtures.user_fixture()
+      scope = QuickSlips.Accounts.Scope.for_user(user)
+      conn = log_in_user(conn, user)
+
+      conn |> generate(%{paper: "us-letter"}) |> response(200)
+      conn |> generate(%{template: "t2", paper: "a4"}) |> response(200)
+
+      assert [roll, sheet] = QuickSlips.Documents.list_documents(scope)
+      assert sheet.options["paper"] == "us-letter"
+      refute Map.has_key?(roll.options, "paper")
+
+      again = conn |> get(~p"/history/#{sheet.id}/download") |> response(200)
+      assert width_of(again) == 612.0
+    end
   end
 
   describe "the revenue stamp of a receipt for India" do

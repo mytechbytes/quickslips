@@ -48,6 +48,7 @@ defmodule QuickSlipsWeb.StampLive.Index do
           label="Picture"
           upload={@uploads.stamp}
         />
+        <.rights_check id="stamp-rights" name="stamp[rights]" checked={@rights} />
         <.button phx-disable-with="Saving..." variant="primary">Save stamp</.button>
       </.form>
       <p :if={@count >= @max} id="stamp-limit" class="mb-8 text-sm/6 text-ink-muted">
@@ -88,6 +89,7 @@ defmodule QuickSlipsWeb.StampLive.Index do
     {:ok,
      socket
      |> assign(:page_title, "Stamps")
+     |> assign(:rights, false)
      |> assign(:max, Stamps.max_per_user())
      |> allow_upload(:stamp,
        accept: ~w(.png .jpg .jpeg),
@@ -102,6 +104,7 @@ defmodule QuickSlipsWeb.StampLive.Index do
 
   defp assign_form(socket, params) do
     scope = socket.assigns.current_scope
+    socket = assign(socket, :rights, params["rights"] == "true")
     changeset = Stamps.change_stamp(scope, new_stamp(scope), params)
     assign(socket, :form, to_form(changeset, as: :stamp, action: :validate))
   end
@@ -129,6 +132,9 @@ defmodule QuickSlipsWeb.StampLive.Index do
       Enum.any?(socket.assigns.uploads.stamp.entries, &(not &1.valid?)) ->
         {:noreply,
          put_flash(socket, :error, "Remove the file that was rejected, or choose another.")}
+
+      params["rights"] != "true" ->
+        {:noreply, put_flash(socket, :error, rights_message())}
 
       socket.assigns.uploads.stamp.entries == [] ->
         {:noreply, put_flash(socket, :error, "Choose a picture of the stamp first.")}

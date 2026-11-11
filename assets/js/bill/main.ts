@@ -1,8 +1,8 @@
-import { buildForm, type Business, type BillData, type SaveSeller, type Schema } from "./form"
+import { buildForm, type Business, type BillData, type Design, type SaveSeller, type SavedSections, type Schema } from "./form"
 import { createPreview } from "./preview"
 import { downloadPdf } from "./download"
-import { saveSeller } from "./saved"
-import { createSignaturePicker } from "./signatures"
+import { saveSection, saveSeller } from "./saved"
+import { createDriverSignaturePicker, createSignaturePicker } from "./signatures"
 import { createStampPicker } from "./stamps"
 import { createTurnstile } from "../turnstile"
 import { loadStrings, t } from "./i18n"
@@ -57,6 +57,8 @@ export function mountBillApp(root: HTMLElement): () => void {
   preview.renderNow(sample)
   // The signature of the bill: one of the saved ones or none, chosen apart from the business.
   const signature = createSignaturePicker(root, (url) => preview.setSignature(url))
+  // The driver's signature, the second one, on a design that has a place for it.
+  const driverSignature = createDriverSignaturePicker(root, (url) => preview.setDriverSignature(url))
   // The revenue stamp of the bill: the empty box, the default stamp of the site, or a saved one.
   const stamp = createStampPicker(root, (url) => preview.setStamp(url))
   // The saved business the user picked, if any: its logo goes on the preview and the PDF, and its default signature
@@ -90,6 +92,23 @@ export function mountBillApp(root: HTMLElement): () => void {
   // `UI.locale_dialog/1`), for every page. The country is the page's; the currency is the visitor's choice, or the
   // country's own (see `followChoice` below).
 
+  // The employees or drivers a user keeps for this bill, and how to save the ones typed in a section.
+  const savedSections: SavedSections = {
+    entries: JSON.parse(root.dataset.savedEntries ?? "{}"),
+    save:
+      root.dataset.signedIn === "true"
+        ? async (group, data, id) => {
+            const result = await saveSection(schema.slug, group, data, id)
+            if (!result.ok) {
+              if (result.code === "limit_reached") return { error: t("saved_error_limit_reached") }
+              if (result.code === "name_taken") return { error: t("saved_error_name_taken") }
+              return { error: result.code === "name_blank" ? t("saved_error_name_blank") : t("error") }
+            }
+            return { entry: result.entry, message: t(result.created ? "saved_created" : "saved_updated") }
+          }
+        : null,
+  }
+
   const mountForm = (initial: BillData) => {
     const built = buildForm(
       form,
@@ -101,6 +120,7 @@ export function mountBillApp(root: HTMLElement): () => void {
       { currency: region.currency.symbol, tax: region.tax?.name, tax_id: region.tax?.id?.label },
       (amount) => money.format(amount),
       saveSellerDetails,
+      savedSections,
     )
     return built
   }
@@ -108,13 +128,35 @@ export function mountBillApp(root: HTMLElement): () => void {
 
   // The design of the bill: its own layout, drawn again in the preview, and sent with the download.
   let template = root.dataset.template!
-  const templateSelect = root.querySelector<HTMLSelectElement>("#template-select")!
-  templateSelect.addEventListener("change", () => {
-    template = templateSelect.value
+  const designPicker = root.querySelector<HTMLElement>("#design-picker")!
+  const paperSelect = root.querySelector<HTMLSelectElement>("#paper-select")!
+  const marginSelect = root.querySelector<HTMLSelectElement>("#margin-select")!
+  const paperThermal = root.querySelector<HTMLElement>("#paper-thermal")!
+  // A design made for a thermal roll has no paper to choose; the others do.
+  const showPaper = (design: Design | undefined) => {
+    const roll = design?.thermal === true
+    paperSelect.classList.toggle("hidden", roll)
+    marginSelect.classList.toggle("hidden", roll)
+    paperThermal.classList.toggle("hidden", !roll)
+  }
+  designPicker.addEventListener("change", (event) => {
+    template = (event.target as HTMLInputElement).value
+    const design = schema.templates?.find((d) => d.id === template)
     preview.setTemplate(template)
-    signature.showFor(schema.templates?.find((design) => design.id === template))
-    stamp.showFor(schema.templates?.find((design) => design.id === template), region.country)
+    signature.showFor(design)
+    driverSignature.showFor(design)
+    stamp.showFor(design, region.country)
+    showPaper(design)
   })
+  paperSelect.addEventListener("change", () => preview.setPaper(paperSelect.value))
+  marginSelect.addEventListener("change", () => preview.setMargin(marginSelect.value))
+  // "Edit and regenerate": the margins the document was made with.
+  if (root.dataset.margin) {
+    marginSelect.value = root.dataset.margin
+    preview.setMargin(root.dataset.margin)
+  }
+  // "Edit and regenerate": the sheet the document was made on.
+  if (root.dataset.paper) preview.setPaper(root.dataset.paper)
 
   // Another currency: the money of the form, the preview and the PDF is written in it. The server says what the
   // region is (and the words the layout prints); the values typed so far stay.
@@ -152,7 +194,10 @@ export function mountBillApp(root: HTMLElement): () => void {
     useBusiness(earlier)
   }
   // ... and with the signature it had (or none), which is not always the default of its business.
-  if (root.dataset.edit === "true") signature.use(root.dataset.signatureId ? Number(root.dataset.signatureId) : null)
+  if (root.dataset.edit === "true") {
+    signature.use(root.dataset.signatureId ? Number(root.dataset.signatureId) : null)
+    driverSignature.use(root.dataset.driverSignatureId ? Number(root.dataset.driverSignatureId) : null)
+  }
   // ... and with the revenue stamp it had.
   if (root.dataset.edit === "true") stamp.use(root.dataset.stampChoice ?? "")
   // const ui = buildForm(form, schema, sample, (data) => console.log("changed", data))
@@ -191,7 +236,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     const result = await downloadPdf(schema.slug, template, ui.read(), turnstileToken, business?.id, locale, {
       country: region.country,
       currency: region.currency.code,
-    }, signature.id, stamp.choice)
+    }, signature.id, stamp.choice, paperSelect.value, marginSelect.value, driverSignature.id)
     button.disabled = false
 
     if (result.ok) {

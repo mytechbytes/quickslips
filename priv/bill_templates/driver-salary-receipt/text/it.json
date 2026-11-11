@@ -8,17 +8,19 @@
   "designs": {
     "t1": "Rimborso",
     "t2": "Con conferma di ricevuta",
-    "t3": "Dichiarazione del datore",
-    "t4": "Più mesi",
+    "t3": "Dichiarazione del dipendente",
     "t5": "Voucher di paga",
     "t6": "Registro semplice"
   },
   "fields": {
     "employer_name": {
-      "label": "Nome del datore di lavoro"
+      "label": "Nome del dipendente"
+    },
+    "employee_code": {
+      "label": "Codice dipendente (facoltativo)"
     },
     "employer_address": {
-      "label": "Indirizzo del datore di lavoro (facoltativo)"
+      "label": "Indirizzo del dipendente (facoltativo)"
     },
     "driver_name": {
       "label": "Nome dell'autista"
@@ -28,27 +30,6 @@
     },
     "declaration": {
       "label": "Dichiarazione (facoltativo)"
-    },
-    "month": {
-      "label": "Stipendio del mese"
-    },
-    "from_date": {
-      "label": "Periodo dal (facoltativo)"
-    },
-    "to_date": {
-      "label": "Periodo al (facoltativo)"
-    },
-    "bill_by": {
-      "label": "Fattura per",
-      "options": {
-        "Monthly": "Mensile",
-        "Quarterly": "Trimestrale",
-        "Half-yearly": "Semestrale",
-        "Yearly": "Annuale"
-      }
-    },
-    "receipt_date": {
-      "label": "Data della ricevuta"
     },
     "basic_salary": {
       "label": "Stipendio mensile ({currency})"
@@ -72,33 +53,49 @@
         "Card": "Carta",
         "Online": "Online"
       }
+    },
+    "periods": {
+      "label": "Periodo dello stipendio",
+      "options": {
+        "Monthly": "Mensile",
+        "Quarterly": "Trimestrale",
+        "Half-yearly": "Semestrale",
+        "Yearly": "Annuale"
+      }
     }
   },
   "print": {
     "title": "Ricevuta di stipendio dell'autista",
     "date": "Data",
-    "certify": "Si certifica che {employer} ha versato {amount} all'autista {driver} a titolo di stipendio per il mese di {month} (ricevuta allegata).",
-    "certify_period": "Si certifica che {employer} ha versato {amount} all'autista {driver} a titolo di stipendio per il periodo {period} (ricevuta allegata).",
-    "certify_self": "Certifico di aver versato {amount} all'autista {driver} per il mese di {month} (ricevuta allegata).",
-    "reimburse": "Si prega di rimborsare l'importo indicato. Dichiaro inoltre che quanto sopra è corretto e veritiero.",
     "vehicle_no": "Targa",
     "driver_name": "Nome dell'autista",
-    "employer_name": "Nome del datore di lavoro",
-    "employer_signature": "Firma del datore di lavoro",
+    "employer_name": "Nome del dipendente",
+    "employer_signature": "Firma del dipendente",
     "revenue_stamp": "Marca da bollo",
     "salary_month": "Stipendio del mese",
     "amount_paid": "Importo pagato",
-    "received_text": "Ricevuto da {employer} l'importo di {amount} dall'autista {driver} a titolo di stipendio per il mese di {month}.",
+    "for_month": "Per il mese di",
+    "period": "Periodo",
+    "receipt_date": "Data della ricevuta",
+    "employee_code": "Codice dipendente",
+    "certify_plain": "Si certifica che ho pagato {amount} all'autista {driver} per il mese di {month}.",
+    "certify_plain_period": "Si certifica che ho pagato {amount} all'autista {driver} per il periodo {month}.",
+    "certify_self": "Certifico di aver versato {amount} all'autista {driver} per il mese di {month} (ricevuta allegata).",
+    "reimburse": "Si prega di rimborsare l'importo indicato. Dichiaro inoltre che quanto sopra è corretto e veritiero.",
     "ack_title": "Conferma di ricevuta",
     "receipt_date_of": "Data di ricezione",
-    "for_month": "Per il mese di",
-    "received_sum": "Ricevuta la somma di {amount} per il mese di {month} da {employer}.",
-    "period": "Periodo",
-    "receipt_of": "Ricevuta {number} di {total}",
+    "received_sum": "Ho ricevuto la somma di {amount} per il mese di {month} da {employer}.",
+    "ack_certify": "Si certifica che ho pagato {amount} all'autista {driver} per il mese di {month} (ricevuta di conferma allegata sotto).",
+    "ack_certify_period": "Si certifica che ho pagato {amount} all'autista {driver} per il periodo {month} (ricevuta di conferma allegata sotto).",
+    "ack_reimburse": "Si prega di rimborsare l'importo sopra indicato sul mio conto.",
+    "ack_further": "Dichiaro inoltre che quanto sopra è corretto e veritiero per quanto a mia conoscenza e convinzione.",
+    "ack_heading": "Ricevuta di pagamento e conferma (da firmare dall'autista)",
+    "ack_received": "Ricevuta la somma di {amount} ({words}) per il mese di {month} da {employer}.",
+    "ack_received_period": "Ricevuta la somma di {amount} ({words}) per il periodo {month} da {employer}.",
+    "ack_thumb": "Firma / impronta del pollice dell'autista",
+    "employee_address": "Indirizzo del dipendente",
     "payroll_voucher": "Voucher di paga",
     "voucher_sub": "Distinta di pagamento dello stipendio dell'autista",
-    "payer": "Pagatore",
-    "driver": "Autista",
     "acknowledgement": "Conferma",
     "ack_voucher": "Ricevuto da {driver} da {employer} a titolo di stipendio di {month}.",
     "received_by": "Ricevuto da",
@@ -106,7 +103,6 @@
     "name": "Nome",
     "record_title": "Registro dello stipendio dell'autista",
     "record_sub": "Formato semplice di conferma",
-    "payer_name": "Nome del pagatore",
     "declaration_label": "Dichiarazione",
     "confirm": "Confermo di aver ricevuto dal pagatore l'importo dello stipendio indicato sopra per il mese riportato in questo registro.",
     "notes": "Note",
@@ -128,5 +124,11 @@
     "allowance": 80,
     "deductions": 50,
     "declaration": "Dichiaro inoltre che l'autista è impiegato esclusivamente per scopi di lavoro."
+  },
+  "groups": {
+    "business": "Dipendente",
+    "document": "Periodo dello stipendio",
+    "customer": "Autista",
+    "details": "Veicolo"
   }
 }

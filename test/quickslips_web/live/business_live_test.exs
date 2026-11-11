@@ -160,7 +160,8 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
       assert {:ok, _index_live, html} =
                form_live
                |> form("#business-form",
-                 business: Map.put(@create_attrs, :signature_id, signature.id)
+                 business:
+                   Map.merge(@create_attrs, %{signature_id: signature.id, logo_rights: "true"})
                )
                |> render_submit()
                |> follow_redirect(conn, ~p"/businesses")
@@ -237,7 +238,10 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
 
       choose(form_live, :logo, "logo.png", "this is only text", "image/png")
 
-      html = form_live |> form("#business-form", business: @create_attrs) |> render_submit()
+      html =
+        form_live
+        |> form("#business-form", business: Map.put(@create_attrs, :logo_rights, "true"))
+        |> render_submit()
 
       assert html =~ "The logo is not a real PNG or JPG picture."
       assert Businesses.list_businesses(scope) == []
@@ -277,7 +281,10 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
 
       choose(form_live, :logo, "logo.png", png_bytes(), "image/png")
 
-      html = form_live |> form("#business-form", business: @invalid_attrs) |> render_submit()
+      html =
+        form_live
+        |> form("#business-form", business: Map.put(@invalid_attrs, :logo_rights, "true"))
+        |> render_submit()
 
       assert html =~ "can&#39;t be blank"
       assert html =~ "logo.png"
@@ -299,7 +306,7 @@ defmodule QuickSlipsWeb.BusinessLiveTest do
 
       assert {:ok, _index_live, _html} =
                form_live
-               |> form("#business-form", business: %{name: "Renamed"})
+               |> form("#business-form", business: %{name: "Renamed", logo_rights: "true"})
                |> render_submit()
                |> follow_redirect(conn, ~p"/businesses")
 

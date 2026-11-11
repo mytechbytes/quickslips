@@ -1,7 +1,10 @@
-// Driver salary receipt, design t2: the receipt, and below it an acknowledgement slip for the driver to keep.
+// Driver salary receipt, design t2: the certificate of the employee, and below it the payment receipt and
+// acknowledgement that the driver signs.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
 #show: base.with(width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
+// On an A5 sheet the two parts do not fit one page: the acknowledgement starts the next one.
+#let small-sheet = data.at("paper_size", default: none) == "a5"
 #set par(leading: 0.75em)
 
 #let overtime = num(data, "overtime")
@@ -18,38 +21,61 @@
 #let breakdown = (
   (t.monthly_salary, data.basic_salary), (t.overtime, overtime), (t.allowance, allowance), (t.deductions, -deductions),
 ).filter(row => row.at(1) != 0)
+#let code = opt(data, "employee_code")
+#let employee = data.employer_name + if code != none { " (" + code + ")" } else { "" }
+// A receipt for each month chosen, or one for the quarter, half-year or year (see `salary-periods` of the helpers), one on
+// each page of the PDF.
+#let receipts = salary-periods(data)
+#for (i, receipt) in receipts.enumerate() [
+#if i > 0 { pagebreak() }
+#let month = receipt.label
+#let when = receipt.date
+#let net = net * receipt.months
+#let breakdown = breakdown.map(((label, amount)) => (label, amount * receipt.months))
+#let heading(content) = align(center, block(width: 100%, text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
+#let period = receipt.months > 1
+#let address = opt(data, "employer_address")
 
-#let month = month-label(data.month)
-#let heading(content) = align(center, block(text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
-
-#align(right)[#t.date: #fmt-date(data.receipt_date)]
 #v(1mm)
 #align(center, box(width: 60mm, heading(t.title)))
-#v(2mm)
-#if vehicle != none [*#t.vehicle_no:* #vehicle \ ]
-*#t.salary_month:* #month \
-*#t.amount_paid:* #money(net) \
-*#t.date:* #fmt-date(data.receipt_date)
-#v(2mm)
-#say(t.received_text, (employer: data.employer_name, amount: money(net), driver: data.driver_name, month: month))
+#v(3mm)
+#say(if period { t.ack_certify_period } else { t.ack_certify }, (amount: money(net), driver: data.driver_name, month: month))
+#if declaration != none [ #v(1mm) #lines(declaration)]
 #v(1mm)
-#align(right)[*#t.employer_name:* #data.employer_name]
+#t.ack_reimburse
+#v(1mm)
+#t.ack_further
+#v(3mm)
+*#t.employer_name:* #data.employer_name
+#if code != none [ \ *#t.employee_code:* #code]
+#if address != none [ \ *#t.employee_address:* #lines(address)]
+#v(1mm)
+#grid(
+  columns: (1fr, auto),
+  [],
+  align(bottom, signature-block(data, t.employer_signature, name: employee)),
+)
 
-#v(3mm)
-#line(length: 100%, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"))
-#v(3mm)
-#align(center, box(width: 70mm, heading(t.ack_title)))
+#if small-sheet { pagebreak() } else [
+  #v(2mm)
+  #line(length: 100%, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"))
+  #v(3mm)
+]
+#heading(t.ack_heading)
 #v(2mm)
+#if when != none [*#t.receipt_date:* #fmt-date(when) \ ]
 *#t.salary_month:* #month \
-*#t.amount_paid:* #money(net) \
-*#t.date:* #fmt-date(data.receipt_date)
+*#t.driver_name:* #data.driver_name#if vehicle != none [ \ *#t.vehicle_no:* #vehicle]
 #v(2mm)
-#say(t.received_text, (employer: data.employer_name, amount: money(net), driver: data.driver_name, month: month))
-#v(1mm)
-#align(right)[*#t.driver_name:* #data.driver_name]
-#v(3mm)
+#let words = amount-words(net)
+#let received = if period { t.ack_received_period } else { t.ack_received }
+#let received = if words == none { received.replace(" ({words})", "").replace("（{words}）", "") } else { received }
+#say(received, (amount: money(net), words: if words == none { "" } else { words }, month: month, employer: data.employer_name))
+#v(2mm)
 #grid(
   columns: (1fr, auto),
   stamp(),
-  align(bottom, signature-block(data, t.employer_signature, name: data.employer_name)),
+  align(bottom, signature-block(data, t.ack_thumb, key: "driver_signature")),
 )
+#align(right)[*#t.driver_name:* #data.driver_name]
+]

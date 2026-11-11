@@ -60,6 +60,7 @@ defmodule QuickSlips.TemplatesTest do
                  "date",
                  "time",
                  "month",
+                 "periods",
                  "select",
                  "items",
                  "tax_rate",

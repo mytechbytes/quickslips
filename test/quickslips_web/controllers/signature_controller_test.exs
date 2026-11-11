@@ -11,7 +11,8 @@ defmodule QuickSlipsWeb.SignatureControllerTest do
   end
 
   test "a visitor is told to log in, and nothing is saved", %{conn: conn} do
-    conn = post(conn, ~p"/api/signatures", %{name: "Owner", file: upload(png_bytes())})
+    conn =
+      post(conn, ~p"/api/signatures", %{name: "Owner", rights: "true", file: upload(png_bytes())})
 
     assert %{"error" => "log in first"} = json_response(conn, 401)
     assert QuickSlips.Repo.aggregate(Signatures.Signature, :count) == 0
@@ -31,7 +32,12 @@ defmodule QuickSlipsWeb.SignatureControllerTest do
       user: user,
       scope: scope
     } do
-      conn = post(conn, ~p"/api/signatures", %{name: "Owner", file: upload(png_bytes())})
+      conn =
+        post(conn, ~p"/api/signatures", %{
+          name: "Owner",
+          rights: "true",
+          file: upload(png_bytes())
+        })
 
       assert %{"signature" => %{"id" => id, "name" => "Owner", "url" => url} = signature} =
                json_response(conn, 201)
@@ -42,7 +48,13 @@ defmodule QuickSlipsWeb.SignatureControllerTest do
     end
 
     test "the picture is served at that address, to its owner", %{conn: conn} do
-      conn = post(conn, ~p"/api/signatures", %{name: "Owner", file: upload(jpg_bytes())})
+      conn =
+        post(conn, ~p"/api/signatures", %{
+          name: "Owner",
+          rights: "true",
+          file: upload(jpg_bytes())
+        })
+
       %{"signature" => %{"url" => url}} = json_response(conn, 201)
 
       conn = get(recycle(conn), url)
@@ -52,7 +64,12 @@ defmodule QuickSlipsWeb.SignatureControllerTest do
     end
 
     test "trims the name", %{conn: conn} do
-      conn = post(conn, ~p"/api/signatures", %{name: "  Manager ", file: upload(png_bytes())})
+      conn =
+        post(conn, ~p"/api/signatures", %{
+          name: "  Manager ",
+          rights: "true",
+          file: upload(png_bytes())
+        })
 
       assert %{"signature" => %{"name" => "Manager"}} = json_response(conn, 201)
     end
@@ -61,7 +78,10 @@ defmodule QuickSlipsWeb.SignatureControllerTest do
       conn: conn,
       scope: scope
     } do
-      for params <- [%{file: upload(png_bytes())}, %{name: "  ", file: upload(png_bytes())}] do
+      for params <- [
+            %{rights: "true", file: upload(png_bytes())},
+            %{name: "  ", rights: "true", file: upload(png_bytes())}
+          ] do
         conn = post(conn, ~p"/api/signatures", params)
         assert %{"code" => "name_blank"} = json_response(conn, 422)
       end
@@ -75,16 +95,40 @@ defmodule QuickSlipsWeb.SignatureControllerTest do
     } do
       signature_fixture(scope, %{name: "Owner"})
 
-      conn = post(conn, ~p"/api/signatures", %{name: "OWNER", file: upload(png_bytes())})
+      conn =
+        post(conn, ~p"/api/signatures", %{
+          name: "OWNER",
+          rights: "true",
+          file: upload(png_bytes())
+        })
 
       assert %{"code" => "name_taken"} = json_response(conn, 422)
       assert Signatures.count_signatures(scope) == 1
+    end
+
+    test "says rights_not_confirmed, and keeps nothing, when the box was not ticked", %{
+      conn: conn,
+      scope: scope
+    } do
+      for params <- [%{}, %{rights: "false"}] do
+        conn =
+          post(
+            conn,
+            ~p"/api/signatures",
+            Map.merge(%{name: "Owner", file: upload(png_bytes())}, params)
+          )
+
+        assert %{"code" => "rights_not_confirmed"} = json_response(conn, 422)
+      end
+
+      assert QuickSlips.Signatures.count_signatures(scope) == 0
     end
 
     test "says name_too_long for 41 letters", %{conn: conn} do
       conn =
         post(conn, ~p"/api/signatures", %{
           name: String.duplicate("a", 41),
+          rights: "true",
           file: upload(png_bytes())
         })
 
@@ -92,20 +136,30 @@ defmodule QuickSlipsWeb.SignatureControllerTest do
     end
 
     test "says unsupported_type for a file that is not a picture", %{conn: conn} do
-      conn = post(conn, ~p"/api/signatures", %{name: "Owner", file: upload("only text")})
+      conn =
+        post(conn, ~p"/api/signatures", %{
+          name: "Owner",
+          rights: "true",
+          file: upload("only text")
+        })
 
       assert %{"code" => "unsupported_type"} = json_response(conn, 422)
     end
 
     test "says too_large for a picture with too many pixels", %{conn: conn} do
-      conn = post(conn, ~p"/api/signatures", %{name: "Owner", file: upload(png_of_size(4_001))})
+      conn =
+        post(conn, ~p"/api/signatures", %{
+          name: "Owner",
+          rights: "true",
+          file: upload(png_of_size(4_001))
+        })
 
       assert %{"code" => "too_large"} = json_response(conn, 422)
     end
 
     test "says file_too_large for a file over 1 MB", %{conn: conn} do
       big = png_bytes() <> :binary.copy(<<0>>, QuickSlips.Uploads.max_file_size())
-      conn = post(conn, ~p"/api/signatures", %{name: "Owner", file: upload(big)})
+      conn = post(conn, ~p"/api/signatures", %{name: "Owner", rights: "true", file: upload(big)})
 
       assert %{"code" => "file_too_large"} = json_response(conn, 422)
     end
@@ -119,7 +173,12 @@ defmodule QuickSlipsWeb.SignatureControllerTest do
     test "says limit_reached when the user keeps the most", %{conn: conn, scope: scope} do
       for n <- 1..Signatures.max_per_user(), do: signature_fixture(scope, %{name: "Sig #{n}"})
 
-      conn = post(conn, ~p"/api/signatures", %{name: "One more", file: upload(png_bytes())})
+      conn =
+        post(conn, ~p"/api/signatures", %{
+          name: "One more",
+          rights: "true",
+          file: upload(png_bytes())
+        })
 
       assert %{"code" => "limit_reached"} = json_response(conn, 422)
     end

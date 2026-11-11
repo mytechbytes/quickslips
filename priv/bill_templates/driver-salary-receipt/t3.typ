@@ -19,24 +19,33 @@
 #let breakdown = (
   (t.monthly_salary, data.basic_salary), (t.overtime, overtime), (t.allowance, allowance), (t.deductions, -deductions),
 ).filter(row => row.at(1) != 0)
-
-#let month = month-label(data.month)
+#let code = opt(data, "employee_code")
+#let employee = data.employer_name + if code != none { " (" + code + ")" } else { "" }
+// A receipt for each month chosen, or one for the quarter, half-year or year (see `salary-periods` of the helpers), one on
+// each page of the PDF.
+#let receipts = salary-periods(data)
+#for (i, receipt) in receipts.enumerate() [
+#if i > 0 { pagebreak() }
+#let month = receipt.label
+#let when = receipt.date
+#let net = net * receipt.months
+#let breakdown = breakdown.map(((label, amount)) => (label, amount * receipt.months))
 
 #align(center, text(size: 14pt, weight: "bold", t.title))
 #v(3mm)
+#let address = opt(data, "employer_address")
 #say(t.certify_self, (amount: money(net), driver: data.driver_name, month: month))
 #if declaration != none [ #declaration]
 #t.reimburse
 #v(2mm)
-*#t.employer_name:* #data.employer_name \
-*#t.date:* #fmt-date(data.receipt_date)
+*#t.employer_name:* #data.employer_name#if code != none [ \ *#t.employee_code:* #code]#if address != none [ \ *#t.employee_address:* #lines(address)]#if when != none [ \ *#t.date:* #fmt-date(when)]
 
 #v(3mm)
 #line(length: 100%, stroke: 1.4pt)
 #v(3mm)
 #align(center, text(size: 12pt, weight: "bold", t.ack_title))
 #v(2mm)
-*#t.receipt_date_of:* #fmt-date(data.receipt_date) \
+#if when != none [*#t.receipt_date_of:* #fmt-date(when) \ ]
 *#t.for_month:* #month \
 *#t.driver_name:* #data.driver_name \
 #if vehicle != none [*#t.vehicle_no:* #vehicle \ ]
@@ -46,5 +55,6 @@
 #grid(
   columns: (1fr, auto),
   stamp(),
-  align(bottom, signature-block(data, t.employer_signature, name: data.employer_name)),
+  align(bottom, signature-block(data, t.employer_signature, name: employee)),
 )
+]

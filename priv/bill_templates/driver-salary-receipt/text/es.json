@@ -8,17 +8,19 @@
   "designs": {
     "t1": "Reembolso",
     "t2": "Con acuse de recibo",
-    "t3": "Declaración del empleador",
-    "t4": "Varios meses",
+    "t3": "Declaración del empleado",
     "t5": "Comprobante de nómina",
     "t6": "Registro sencillo"
   },
   "fields": {
     "employer_name": {
-      "label": "Nombre del empleador"
+      "label": "Nombre del empleado"
+    },
+    "employee_code": {
+      "label": "Código de empleado (opcional)"
     },
     "employer_address": {
-      "label": "Dirección del empleador (opcional)"
+      "label": "Dirección del empleado (opcional)"
     },
     "driver_name": {
       "label": "Nombre del conductor"
@@ -28,27 +30,6 @@
     },
     "declaration": {
       "label": "Declaración (opcional)"
-    },
-    "month": {
-      "label": "Sueldo del mes"
-    },
-    "from_date": {
-      "label": "Periodo desde (opcional)"
-    },
-    "to_date": {
-      "label": "Periodo hasta (opcional)"
-    },
-    "bill_by": {
-      "label": "Facturar por",
-      "options": {
-        "Monthly": "Mensual",
-        "Quarterly": "Trimestral",
-        "Half-yearly": "Semestral",
-        "Yearly": "Anual"
-      }
-    },
-    "receipt_date": {
-      "label": "Fecha del recibo"
     },
     "basic_salary": {
       "label": "Sueldo mensual ({currency})"
@@ -72,33 +53,49 @@
         "Card": "Tarjeta",
         "Online": "En línea"
       }
+    },
+    "periods": {
+      "label": "Período del sueldo",
+      "options": {
+        "Monthly": "Mensual",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
     }
   },
   "print": {
     "title": "Recibo de sueldo del conductor",
     "date": "Fecha",
-    "certify": "Se certifica que {employer} ha pagado {amount} al conductor {driver} en concepto de sueldo del mes de {month} (se adjunta recibo de conformidad).",
-    "certify_period": "Se certifica que {employer} ha pagado {amount} al conductor {driver} en concepto de sueldo del periodo {period} (se adjunta recibo de conformidad).",
-    "certify_self": "Certifico que he pagado {amount} al conductor {driver} por el mes de {month} (se adjunta recibo de conformidad).",
-    "reimburse": "Solicito el reembolso del importe anterior. Declaro además que lo indicado es correcto y veraz.",
     "vehicle_no": "Matrícula",
     "driver_name": "Nombre del conductor",
-    "employer_name": "Nombre del empleador",
-    "employer_signature": "Firma del empleador",
+    "employer_name": "Nombre del empleado",
+    "employer_signature": "Firma del empleado",
     "revenue_stamp": "Timbre fiscal",
     "salary_month": "Sueldo del mes",
     "amount_paid": "Importe pagado",
-    "received_text": "Recibido de {employer} la cantidad de {amount} por el conductor {driver} en concepto de sueldo del mes de {month}.",
+    "for_month": "Por el mes de",
+    "period": "Periodo",
+    "receipt_date": "Fecha del recibo",
+    "employee_code": "Código de empleado",
+    "certify_plain": "Se certifica que he pagado {amount} al conductor {driver} por el mes de {month}.",
+    "certify_plain_period": "Se certifica que he pagado {amount} al conductor {driver} por el periodo {month}.",
+    "certify_self": "Certifico que he pagado {amount} al conductor {driver} por el mes de {month} (se adjunta recibo de conformidad).",
+    "reimburse": "Solicito el reembolso del importe anterior. Declaro además que lo indicado es correcto y veraz.",
     "ack_title": "Acuse de recibo",
     "receipt_date_of": "Fecha de recepción",
-    "for_month": "Por el mes de",
-    "received_sum": "Recibida la suma de {amount} por el mes de {month} de {employer}.",
-    "period": "Periodo",
-    "receipt_of": "Recibo {number} de {total}",
+    "received_sum": "He recibido la suma de {amount} por el mes de {month} de {employer}.",
+    "ack_certify": "Se certifica que he pagado {amount} al conductor {driver} por el mes de {month} (se adjunta abajo el recibo de conformidad).",
+    "ack_certify_period": "Se certifica que he pagado {amount} al conductor {driver} por el periodo {month} (se adjunta abajo el recibo de conformidad).",
+    "ack_reimburse": "Por favor, reembolse el importe anterior en mi cuenta.",
+    "ack_further": "Declaro además que lo indicado anteriormente es correcto y verdadero según mi leal saber y entender.",
+    "ack_heading": "Recibo de pago y conformidad (a firmar por el conductor)",
+    "ack_received": "Recibida la suma de {amount} ({words}) por el mes de {month} de {employer}.",
+    "ack_received_period": "Recibida la suma de {amount} ({words}) por el periodo {month} de {employer}.",
+    "ack_thumb": "Firma / huella dactilar del conductor",
+    "employee_address": "Dirección del empleado",
     "payroll_voucher": "Comprobante de nómina",
     "voucher_sub": "Justificante de pago del sueldo del conductor",
-    "payer": "Pagador",
-    "driver": "Conductor",
     "acknowledgement": "Acuse de recibo",
     "ack_voucher": "Recibido por {driver} de {employer} en concepto de sueldo de {month}.",
     "received_by": "Recibido por",
@@ -106,7 +103,6 @@
     "name": "Nombre",
     "record_title": "Registro de sueldo del conductor",
     "record_sub": "Formato sencillo de acuse de recibo",
-    "payer_name": "Nombre del pagador",
     "declaration_label": "Declaración",
     "confirm": "Confirmo haber recibido del pagador el importe del sueldo indicado arriba por el mes que figura en este registro.",
     "notes": "Notas",
@@ -128,5 +124,11 @@
     "allowance": 80,
     "deductions": 50,
     "declaration": "Declaro además que el conductor se utiliza exclusivamente para fines oficiales."
+  },
+  "groups": {
+    "business": "Empleado",
+    "document": "Período del sueldo",
+    "customer": "Conductor",
+    "details": "Vehículo"
   }
 }

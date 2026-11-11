@@ -19,14 +19,25 @@
 #let breakdown = (
   (t.monthly_salary, data.basic_salary), (t.overtime, overtime), (t.allowance, allowance), (t.deductions, -deductions),
 ).filter(row => row.at(1) != 0)
-
-#let month = month-label(data.month)
+#let code = opt(data, "employee_code")
+#let employee = data.employer_name + if code != none { " (" + code + ")" } else { "" }
+// A receipt for each month chosen, or one for the quarter, half-year or year (see `salary-periods` of the helpers), one on
+// each page of the PDF.
+#let receipts = salary-periods(data)
+#for (i, receipt) in receipts.enumerate() [
+#if i > 0 { pagebreak() }
+#let month = receipt.label
+#let when = receipt.date
+#let net = net * receipt.months
+#let breakdown = breakdown.map(((label, amount)) => (label, amount * receipt.months))
 #let grey = luma(244)
 #let rows = (
-  (t.payer, data.employer_name),
-  (t.driver, data.driver_name),
+  (t.employer_name, data.employer_name),
+  ..if code != none { ((t.employee_code, code),) } else { () },
+  (t.driver_name, data.driver_name),
   ..if vehicle != none { ((t.vehicle_no, vehicle),) } else { () },
   (t.salary_month, month),
+  ..if when != none { ((t.receipt_date, fmt-date(when)),) } else { () },
   ..breakdown.map(((label, amount)) => (text(fill: muted, label), text(fill: muted, money(amount)))),
   (strong(t.amount_paid), strong(money(net))),
 )
@@ -35,7 +46,7 @@
   columns: (1fr, auto),
   align: (left + bottom, right + top),
   [#text(size: 20pt, weight: "bold", tracking: 1pt, upper(t.payroll_voucher)) \ #text(size: 8.5pt, fill: muted, t.voucher_sub)],
-  text(size: 8.5pt)[#t.date: #fmt-date(data.receipt_date)],
+  [],
 )
 #v(3mm)
 #table(
@@ -58,11 +69,15 @@
   columns: (1fr, 1fr, 1fr),
   column-gutter: 3mm,
   ..(
-    [#text(size: 8pt, weight: "bold", upper(t.received_by)) \ #v(1mm) #t.name: #data.driver_name],
+    [#text(size: 8pt, weight: "bold", upper(t.received_by)) \ #v(1mm) #t.name: #data.driver_name \ #{
+      let signature = picture(data, "driver_signature", 11mm)
+      if signature != none { signature }
+    }],
     [#text(size: 8pt, weight: "bold", upper(t.revenue_stamp)) \ #v(1mm) #stamp(width: 100%, height: 22mm)],
-    [#text(size: 8pt, weight: "bold", upper(t.prepared_by)) \ #v(1mm) #t.name: #data.employer_name \ #{
+    [#text(size: 8pt, weight: "bold", upper(t.prepared_by)) \ #v(1mm) #t.name: #data.employer_name#if code != none [ \ #t.employee_code: #code] \ #{
       let signature = picture(data, "signature", 11mm)
       if signature != none { signature }
     }],
   ).map(cell => block(width: 100%, height: 38mm, stroke: 0.6pt + luma(190), inset: 3mm, radius: 1.5mm, cell)),
 )
+]

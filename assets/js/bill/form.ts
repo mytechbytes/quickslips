@@ -1,11 +1,12 @@
 import { t } from "./i18n"
 import { createItemsField, type ItemRow } from "./items"
+import { createPeriodsField, type PeriodsValue } from "./periods"
 import { INPUT_CLASS, SECONDARY_BUTTON_CLASS } from "./styles"
 
 export type Field = {
   key: string
   label: string
-  type: "text" | "textarea" | "number" | "date" | "time" | "month" | "select" | "items" | "tax_rate" | "tax_id"
+  type: "text" | "textarea" | "number" | "date" | "time" | "month" | "select" | "items" | "periods" | "tax_rate" | "tax_id"
   required?: boolean
   max_length?: number
   min?: number
@@ -29,9 +30,18 @@ export type Field = {
   name_max_length?: number
 }
 // A design of the bill; `signature` says whether its layout has a place for a signature.
-export type Design = { id: string; name?: string; signature?: boolean; stamp?: boolean }
-export type Schema = { slug: string; title: string; fields: Field[]; templates?: Design[] }
-export type BillData = Record<string, string | number | ItemRow[]>
+export type Design = { id: string; name?: string; signature?: boolean; driver_signature?: boolean; stamp?: boolean; thermal?: boolean }
+// `groups` names the sections of the form where this bill has its own words ("Employee" for the business of a salary receipt).
+export type Schema = {
+  slug: string
+  title: string
+  fields: Field[]
+  templates?: Design[]
+  groups?: Record<string, string>
+  // The sections whose details a logged-in user may save and pick again (the employee, the driver).
+  saved_groups?: string[]
+}
+export type BillData = Record<string, string | number | ItemRow[] | PeriodsValue>
 export type Business = {
   id: number
   name: string
@@ -40,6 +50,18 @@ export type Business = {
   logo_url: string | null
   // The signature that is chosen for a bill when this business is (the id of a saved signature).
   signature_id: number | null
+}
+
+/** The details of one section that a user saved: what the picker shows, and the value of each field of the section. */
+export type SavedEntry = { id: number; name: string; data: Record<string, string> }
+
+/**
+ * The saved details of the sections of a bill (`entries`, by section) and how to save the ones typed (`null` for a
+ * visitor, who cannot).
+ */
+export type SavedSections = {
+  entries: Record<string, SavedEntry[]>
+  save: ((group: string, data: Record<string, string>, id?: number) => Promise<{ entry: SavedEntry; message: string } | { error: string }>) | null
 }
 
 /**
@@ -54,7 +76,8 @@ export type SaveSeller = (details: {
 
 // The sections of the form, in the order they appear; a field says which one it is in. The titles are ui strings
 // (`group_business`, ...), so every language has them.
-const GROUPS = ["business", "registration", "document", "customer", "items", "details", "charges", "payment"]
+// "additional" comes last: the details that do not belong to one of the others (a declaration, a note).
+const GROUPS = ["business", "registration", "document", "customer", "items", "details", "charges", "payment", "additional"]
 
 type Control = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
@@ -76,6 +99,7 @@ function addSavedDetails(
   const sellerFields = schema.fields.filter((field) => field.prefill?.startsWith("business."))
   const canSave = saveSeller !== null && sellerFields.some((field) => field.prefill === "business.name")
   if (businesses.length === 0 && !canSave) return // a visitor, or a bill with no seller
+  if (schema.saved_groups?.includes("business")) return // the business section has its own saved details
 
   const select = document.createElement("select")
   select.id = "business-select"
@@ -152,6 +176,110 @@ function addSavedDetails(
   form.prepend(wrapper)
 }
 
+/**
+ * At the top of a section whose details may be saved (the employee, the driver): a list of the saved ones and a
+ * button that saves what is typed in the section. Choosing one fills every field of the section.
+ */
+function addSavedSection(
+  grid: HTMLElement,
+  group: string,
+  fields: Field[],
+  controls: Map<string, Control>,
+  saved: SavedSections,
+  notify: () => void,
+) {
+  const entries = saved.entries[group] ?? []
+  if (entries.length === 0 && !saved.save) return // a visitor with nothing to pick
+
+  const row = document.createElement("div")
+  row.className = "sm:col-span-2"
+  row.dataset.savedSection = group
+
+  const select = document.createElement("select")
+  select.id = `saved-${group}`
+  select.className = INPUT_CLASS
+  select.setAttribute("aria-label", t("pick_saved"))
+  const show = (selected?: number) => {
+    select.replaceChildren(new Option(t("pick_saved"), ""))
+    for (const entry of entries) select.append(new Option(entry.name, String(entry.id)))
+    if (selected !== undefined) select.value = String(selected)
+    select.hidden = entries.length === 0
+  }
+  show()
+
+  select.addEventListener("change", () => {
+    const entry = entries.find((e) => String(e.id) === select.value)
+    if (!entry) return
+    fill(entry)
+  })
+
+  function fill(entry: SavedEntry) {
+    for (const field of fields) {
+      const control = controls.get(field.key)
+      if (!control) continue
+      const text = entry.data[field.key] ?? ""
+      control.value = field.max_length ? text.slice(0, field.max_length) : text
+    }
+    notify()
+  }
+
+  row.append(select)
+  grid.prepend(row)
+
+  // The button and its message close the section, under the fields that it saves.
+  const message = document.createElement("p")
+  message.setAttribute("role", "status")
+  message.className = "text-sm/6"
+
+  if (saved.save) {
+    // "Update" changes the saved details that are chosen in the list; "Create new" always makes a new entry.
+    const makeButton = (suffix: string, text: string) => {
+      const b = document.createElement("button")
+      b.type = "button"
+      b.id = `save-${group}-${suffix}`
+      b.className = SECONDARY_BUTTON_CLASS + " disabled:cursor-not-allowed disabled:opacity-50"
+      b.textContent = text
+      return b
+    }
+    const update = makeButton("update", t("saved_update"))
+    const create = makeButton("create", t("saved_create"))
+    const sync = () => {
+      update.disabled = select.value === ""
+    }
+    sync()
+    select.addEventListener("change", sync)
+
+    const keep = async (id?: number) => {
+      const data: Record<string, string> = {}
+      for (const field of fields) data[field.key] = controls.get(field.key)?.value.trim() ?? ""
+
+      update.disabled = true
+      create.disabled = true
+      const result = await saved.save!(group, data, id)
+      create.disabled = false
+      sync()
+
+      message.className = "text-sm/6 " + ("error" in result ? "text-danger" : "text-ink-muted")
+      message.textContent = "error" in result ? result.error : result.message
+      if ("error" in result) return
+
+      const at = entries.findIndex((e) => e.id === result.entry.id)
+      if (at >= 0) entries[at] = result.entry
+      else entries.push(result.entry)
+      entries.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
+      show(result.entry.id)
+      sync()
+    }
+    update.addEventListener("click", () => keep(Number(select.value)))
+    create.addEventListener("click", () => keep())
+    const foot = document.createElement("div")
+    foot.className = "flex flex-wrap items-center gap-3 sm:col-span-2"
+    foot.dataset.savedSectionSave = group
+    foot.append(update, create, message)
+    grid.append(foot)
+  }
+}
+
 // The value of the "Other rate…" line of a list of tax rates: the typed rate is read from the box beside it.
 const OTHER_RATE = "other"
 
@@ -212,11 +340,13 @@ export function buildForm(
   vars: { currency?: string; tax?: string; tax_id?: string } = {},
   formatMoney: (amount: number) => string = String,
   saveSeller: SaveSeller | null = null,
+  savedSections: SavedSections = { entries: {}, save: null },
 ) {
   const controls = new Map<string, Control>()
   const typedRates = new Map<string, HTMLInputElement>() // the box of "Other rate…", by field key
   const errorEls = new Map<string, HTMLElement>()
   const tables = new Map<string, ReturnType<typeof createItemsField>>()
+  const periods = new Map<string, ReturnType<typeof createPeriodsField>>()
   const sections = new Map<string, HTMLElement>()
 
   // The grid of a section, with its heading (a bar, the title, a hairline), made when its first field comes.
@@ -229,7 +359,7 @@ export function buildForm(
       section.innerHTML =
         `<div class="mb-3 flex items-center gap-3"><h3 class="border-l-2 border-accent pl-2 text-xs font-semibold uppercase tracking-wider text-ink"></h3><span class="h-px flex-1 bg-line"></span></div>` +
         `<div class="grid gap-x-3 gap-y-2.5 sm:grid-cols-2"></div>`
-      section.querySelector("h3")!.textContent = t(`group_${id}`)
+      section.querySelector("h3")!.textContent = schema.groups?.[id] || t(`group_${id}`)
       grid = section.querySelector<HTMLElement>("div:last-child")!
       sections.set(id, grid)
     }
@@ -247,6 +377,13 @@ export function buildForm(
       table.element.classList.add("sm:col-span-2")
       sectionOf(field).append(table.element)
       tables.set(field.key, table)
+      continue
+    }
+
+    if (field.type === "periods") {
+      const picker = createPeriodsField(field, initial[field.key] as PeriodsValue | undefined, () => onChange(read()))
+      sectionOf(field).append(picker.element)
+      periods.set(field.key, picker)
       continue
     }
 
@@ -304,6 +441,12 @@ export function buildForm(
     errorEls.set(field.key, error)
   }
 
+  for (const group of schema.saved_groups ?? []) {
+    const grid = sections.get(group)
+    const fields = schema.fields.filter((f) => f.group === group && controls.has(f.key))
+    if (grid && fields.length > 0) addSavedSection(grid, group, fields, controls, savedSections, () => onChange(read()))
+  }
+
   for (const id of GROUPS) {
     const grid = sections.get(id)
     if (grid) form.append(grid.parentElement!)
@@ -316,6 +459,11 @@ export function buildForm(
       if (table) {
         const rows = table.read()
         if (rows.length > 0) data[field.key] = rows
+        continue
+      }
+      const picker = periods.get(field.key)
+      if (picker) {
+        data[field.key] = picker.read()
         continue
       }
       const control = controls.get(field.key)!
@@ -341,6 +489,7 @@ export function buildForm(
     showErrors(errors: Record<string, string[]>) {
       for (const [key, el] of errorEls) el.textContent = (errors[key] ?? []).join(", ")
       for (const table of tables.values()) table.showErrors(errors)
+      for (const picker of periods.values()) picker.showErrors(errors)
     },
   }
 }

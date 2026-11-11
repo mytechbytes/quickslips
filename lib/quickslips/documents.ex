@@ -109,7 +109,8 @@ defmodule QuickSlips.Documents do
   @doc """
   Creates a document. `business` is the saved business whose logo was drawn on it, or `nil`, and `signature` the
   saved signature that was drawn on it, or `nil` for none. `stamp` is the revenue stamp: `nil` (the empty box),
-  `{:system, id}` (a stamp the site provides) or a saved stamp. All are remembered, so the history can draw them again.
+  `{:system, id}` (a stamp the site provides) or a saved stamp. `driver_signature` is the second signature of a
+  receipt (the driver's), or `nil`. All are remembered, so the history can draw them again.
 
   ## Examples
 
@@ -120,12 +121,20 @@ defmodule QuickSlips.Documents do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_document(%Scope{} = scope, attrs, business \\ nil, signature \\ nil, stamp \\ nil) do
+  def create_document(
+        %Scope{} = scope,
+        attrs,
+        business \\ nil,
+        signature \\ nil,
+        stamp \\ nil,
+        driver_signature \\ nil
+      ) do
     with {:ok, document = %Document{}} <-
            %Document{}
            |> Document.changeset(attrs, scope)
            |> Document.put_business(business)
            |> Document.put_signature(signature)
+           |> Document.put_driver_signature(driver_signature)
            |> Document.put_stamp(stamp)
            |> Repo.insert() do
       delete_oldest(scope)

@@ -36,9 +36,10 @@ export function createStampPicker(root: HTMLElement, drawn: (url: string | null)
 
   const name = root.querySelector<HTMLInputElement>("#stamp-name")
   const file = root.querySelector<HTMLInputElement>("#stamp-file")
+  const rights = root.querySelector<HTMLInputElement>("#stamp-rights")
   const button = root.querySelector<HTMLButtonElement>("#stamp-save")
   const message = root.querySelector<HTMLElement>("#stamp-message")
-  if (name && file && button && message) {
+  if (name && file && rights && button && message) {
     const say = (text: string, error: boolean) => {
       message.textContent = text
       message.className = "text-sm/6 " + (error ? "text-danger" : "text-ink-muted")
@@ -48,9 +49,10 @@ export function createStampPicker(root: HTMLElement, drawn: (url: string | null)
       const picture = file.files?.[0]
       if (!name.value.trim()) return say(t("stamp_error_name_blank"), true)
       if (!picture) return say(t("signature_error_no_file"), true)
+      if (!rights.checked) return say(t("rights_required"), true)
 
       button.disabled = true
-      const result = await saveStamp(name.value.trim(), picture)
+      const result = await saveStamp(name.value.trim(), picture, rights.checked)
       button.disabled = false
 
       if (!result.ok) {
@@ -69,6 +71,7 @@ export function createStampPicker(root: HTMLElement, drawn: (url: string | null)
       use(String(result.stamp.id)) // the stamp that was just saved is the one the visitor wants
       name.value = ""
       file.value = ""
+      rights.checked = false
       say(t("stamp_saved"), false)
     })
   }

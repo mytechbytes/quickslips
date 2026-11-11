@@ -48,6 +48,7 @@ defmodule QuickSlipsWeb.Router do
     post "/signatures", SignatureController, :create
     post "/stamps", StampController, :create
     post "/businesses", BusinessController, :create
+    post "/saved-entries", SavedEntryController, :create
   end
 
   # What search engines read. No session and no cookie: a crawler gets the same answer as everybody, whatever it asks
@@ -60,6 +61,8 @@ defmodule QuickSlipsWeb.Router do
 
     # The stamps the site provides: files of priv/images/stamps (`/images/*` itself is served from priv/static).
     get "/images/stamps/:file", StampController, :system
+    # A small picture of a design, for the picker on a bill's page.
+    get "/thumbnails/:slug/:design", ThumbnailController, :show
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

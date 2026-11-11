@@ -16,6 +16,8 @@ defmodule QuickSlips.Documents.Document do
 
     # The signature that was drawn on the document (a saved one, or none: the place to sign by hand).
     field :signature_id, :id
+    # The driver's signature, on a design that has a place for it.
+    field :driver_signature_id, :id
 
     # The revenue stamp that was drawn on it: a saved one, the default stamp of the site, or neither (the empty box).
     field :stamp_id, :id
@@ -44,6 +46,12 @@ defmodule QuickSlips.Documents.Document do
   @doc "Sets the signature that was drawn on the document, found through the user's scope like the business."
   def put_signature(changeset, nil), do: changeset
   def put_signature(changeset, %{id: id}), do: put_change(changeset, :signature_id, id)
+
+  @doc "Sets the driver's signature that was drawn on the document."
+  def put_driver_signature(changeset, nil), do: changeset
+
+  def put_driver_signature(changeset, %{id: id}),
+    do: put_change(changeset, :driver_signature_id, id)
 
   @doc "Sets the revenue stamp: `nil` (the empty box), `{:system, id}` (one the site provides), or a saved stamp."
   def put_stamp(changeset, nil), do: changeset

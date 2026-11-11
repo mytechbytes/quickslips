@@ -87,6 +87,33 @@ defmodule QuickSlipsWeb.ImageComponents do
     """
   end
 
+  @doc """
+  The box a user ticks to say that the picture is theirs to use: every picture that is uploaded (a logo, a signature, a
+  stamp) needs it. `name` is the name of the field in the form.
+  """
+  attr :id, :string, required: true
+  attr :name, :string, required: true
+  attr :checked, :boolean, default: false
+
+  def rights_check(assigns) do
+    ~H"""
+    <label for={@id} class="mb-4 flex items-start gap-2 text-sm/6 text-ink">
+      <input
+        id={@id}
+        type="checkbox"
+        name={@name}
+        value="true"
+        checked={@checked}
+        class="mt-1 size-4 rounded border-line-strong text-primary focus:outline-2 focus:outline-focus"
+      />
+      <span>I confirm I have the rights to use this image</span>
+    </label>
+    """
+  end
+
+  @doc "What to say when the box was not ticked."
+  def rights_message, do: "Confirm that you have the rights to use this image."
+
   @doc "What to tell the user about a file LiveView refused (`upload_errors/1`)."
   def upload_error(:too_large), do: "This file is too big. The limit is 1 MB."
   def upload_error(:not_accepted), do: "Only PNG and JPG files can be used."

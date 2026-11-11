@@ -131,6 +131,24 @@ defmodule QuickSlipsWeb.HistoryControllerTest do
       assert byte_size(signed_pdf) > byte_size(plain_pdf)
     end
 
+    test "draws the driver's signature the document was made with", %{conn: conn, scope: scope} do
+      signature = signature_fixture(scope, %{}, jpg_bytes())
+
+      attrs = %{
+        slug: "driver-salary-receipt",
+        template: "t2",
+        data: sample("driver-salary-receipt")
+      }
+
+      plain = document_fixture(scope, attrs)
+      signed = document_fixture(scope, attrs, nil, nil, nil, signature)
+
+      plain_pdf = conn |> get(~p"/history/#{plain.id}/download") |> response(200)
+      signed_pdf = conn |> get(~p"/history/#{signed.id}/download") |> response(200)
+
+      assert byte_size(signed_pdf) > byte_size(plain_pdf)
+    end
+
     test "draws that signature and not the default one of the business", %{
       conn: conn,
       scope: scope

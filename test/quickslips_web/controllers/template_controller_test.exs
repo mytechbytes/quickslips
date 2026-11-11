@@ -547,13 +547,62 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
       document = LazyHTML.from_document(html)
 
-      assert document |> LazyHTML.query("#template-select option") |> LazyHTML.attribute("value") ==
+      assert document |> LazyHTML.query("#design-picker input") |> LazyHTML.attribute("value") ==
                ~w(t1 t2 t3 t4 t5 t6)
 
-      assert document |> LazyHTML.query("#template-select option[selected]") |> LazyHTML.text() =~
-               "Receipt"
+      assert document
+             |> LazyHTML.query("#design-picker input[checked]")
+             |> LazyHTML.attribute("value") == ["t1"]
+
+      assert document |> LazyHTML.query("#design-picker") |> LazyHTML.text() =~ "Receipt"
 
       assert attrs(html, "#bill-app", "data-template") == ["t1"]
+    end
+
+    test "has a small picture of each design, from the thumbnail address", %{conn: conn} do
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+
+      assert attrs(html, "#design-picker img", "src") ==
+               for(n <- 1..6, do: "/thumbnails/fuel-bill/t#{n}")
+    end
+
+    test "has the paper to choose for a design that is not a roll, and says why there is none for a roll",
+         %{
+           conn: conn
+         } do
+      sheet = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      options = sheet |> LazyHTML.from_document() |> LazyHTML.query("#paper-select option")
+
+      assert LazyHTML.attribute(options, "value") == ["", "a4", "a5", "us-letter"]
+      refute hd(attrs(sheet, "#paper-select", "class")) =~ "hidden"
+      assert hd(attrs(sheet, "#paper-thermal", "class")) =~ "hidden"
+
+      # fuel bill design 2 is made for a thermal printer
+      [schema] = sheet |> attrs("#bill-app", "data-schema") |> Enum.map(&Jason.decode!/1)
+      thermal = Map.new(schema["templates"], &{&1["id"], &1["thermal"]})
+
+      assert thermal == %{
+               "t1" => false,
+               "t2" => true,
+               "t3" => true,
+               "t4" => true,
+               "t5" => true,
+               "t6" => true
+             }
+    end
+
+    test "starts with the sheet of the document that is edited", %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      doc = earlier(scope, %{options: %{"paper" => "a5"}})
+
+      html = conn |> get(~p"/en-in/fuel-bill-generator?from=#{doc.id}") |> html_response(200)
+
+      assert attrs(html, "#bill-app", "data-paper") == ["a5"]
+
+      selected =
+        html |> LazyHTML.from_document() |> LazyHTML.query("#paper-select option[selected]")
+
+      assert LazyHTML.attribute(selected, "value") == ["a5"]
     end
 
     test "is there even when a bill has one template", %{conn: conn} do
@@ -561,7 +610,7 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
 
       assert html
              |> LazyHTML.from_document()
-             |> LazyHTML.query("#template-select option")
+             |> LazyHTML.query("#design-picker input")
              |> LazyHTML.attribute("value") == ["t1"]
     end
 
@@ -570,13 +619,38 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
 
       assert html
              |> LazyHTML.from_document()
-             |> LazyHTML.query("#template-select option")
+             |> LazyHTML.query("#design-picker")
              |> LazyHTML.text() =~ "पंप स्लिप"
     end
   end
 
+  describe "the page of a bill" do
+    test "puts the saved pictures after the form, and the advanced settings last", %{conn: conn} do
+      conn = log_in_user(conn, user_fixture())
+      html = conn |> get(~p"/en-in/driver-salary-receipt-generator") |> html_response(200)
+      position = fn id -> :binary.match(html, ~s(id="#{id}")) |> elem(0) end
+
+      assert position.("design-picker") < position.("signature-rights")
+      assert position.("signature-rights") < position.("stamp-rights")
+      assert position.("stamp-rights") < position.("advanced-settings")
+      assert position.("advanced-settings") < position.("paper-select")
+    end
+
+    test "offers six designs to a row on a wide screen, and a box to confirm the rights", %{
+      conn: conn
+    } do
+      conn = log_in_user(conn, user_fixture())
+      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      doc = LazyHTML.from_document(html)
+
+      assert LazyHTML.query(doc, "#design-picker.sm\\:grid-cols-6") |> Enum.count() == 1
+      assert LazyHTML.query(doc, "#signature-rights[type=checkbox]") |> Enum.count() == 1
+      assert LazyHTML.query(doc, "#stamp-rights[type=checkbox]") |> Enum.count() == 1
+    end
+  end
+
   describe "the sections of the form" do
-    @groups ~w(business registration document customer items details charges payment)
+    @groups ~w(business registration document customer items details charges payment additional)
 
     test "every field of every bill is in a section the form knows" do
       for %{"slug" => slug} <- QuickSlips.Templates.list(),

@@ -11,12 +11,12 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: lib/quickslips_web/live/template_live.ex:155
+#: lib/quickslips_web/live/template_live.ex:174
 #, elixir-autogen, elixir-format
 msgid "%{remaining} of %{limit} downloads left today"
 msgstr "本日の残りダウンロード数：%{remaining} / %{limit}"
 
-#: lib/quickslips_web/live/template_live.ex:150
+#: lib/quickslips_web/live/template_live.ex:169
 #, elixir-autogen, elixir-format
 msgid "%{remaining} of %{limit} free downloads left today"
 msgstr "本日の無料ダウンロード残り：%{remaining} / %{limit}"
@@ -57,7 +57,7 @@ msgstr "請求書・領収書を数秒で作成"
 msgid "Categories"
 msgstr "カテゴリ"
 
-#: lib/quickslips_web/live/template_live.ex:181
+#: lib/quickslips_web/live/template_live.ex:225
 #, elixir-autogen, elixir-format
 msgid "Choose a saved business…"
 msgstr "保存済みの事業者を選択…"
@@ -115,7 +115,7 @@ msgstr "アカウントを作成"
 msgid "Creating account..."
 msgstr "アカウントを作成中..."
 
-#: lib/quickslips_web/live/template_live.ex:159
+#: lib/quickslips_web/live/template_live.ex:178
 #, elixir-autogen, elixir-format
 msgid "Creating your PDF…"
 msgstr "PDFを作成中…"
@@ -130,7 +130,7 @@ msgstr "ダーク"
 msgid "Dashboard"
 msgstr "ダッシュボード"
 
-#: lib/quickslips_web/live/template_live.ex:168
+#: lib/quickslips_web/live/template_live.ex:187
 #, elixir-autogen, elixir-format
 msgid "Document preview"
 msgstr "書類のプレビュー"
@@ -140,12 +140,12 @@ msgstr "書類のプレビュー"
 msgid "Documents"
 msgstr "書類"
 
-#: lib/quickslips_web/live/template_live.html.heex:212
+#: lib/quickslips_web/live/template_live.html.heex:345
 #, elixir-autogen, elixir-format
 msgid "Download PDF"
 msgstr "PDFをダウンロード"
 
-#: lib/quickslips_web/live/template_live.ex:160
+#: lib/quickslips_web/live/template_live.ex:179
 #, elixir-autogen, elixir-format
 msgid "Downloaded."
 msgstr "ダウンロードしました。"
@@ -167,7 +167,7 @@ msgstr "メールリンク"
 msgid "Email me a link"
 msgstr "リンクをメールで送る"
 
-#: lib/quickslips_web/live/template_live.ex:182
+#: lib/quickslips_web/live/template_live.ex:226
 #, elixir-autogen, elixir-format
 msgid "Fill from a saved business"
 msgstr "保存済みの事業者から入力"
@@ -225,7 +225,7 @@ msgstr "ライト"
 #: lib/quickslips_web/components/layouts.ex:164
 #: lib/quickslips_web/components/layouts.ex:217
 #: lib/quickslips_web/live/home_live.ex:151
-#: lib/quickslips_web/live/template_live.html.heex:204
+#: lib/quickslips_web/live/template_live.html.heex:337
 #: lib/quickslips_web/live/user_live/confirmation.ex:57
 #: lib/quickslips_web/live/user_live/login.ex:119
 #: lib/quickslips_web/live/user_live/registration.ex:67
@@ -347,17 +347,17 @@ msgstr "テンプレートを選び、フォームに入力して、PDFをダウ
 msgid "Pick one to start a new document."
 msgstr "新しい書類を始めるには、1つ選んでください。"
 
-#: lib/quickslips_web/live/template_live.ex:161
+#: lib/quickslips_web/live/template_live.ex:180
 #, elixir-autogen, elixir-format
 msgid "Please fix the highlighted fields."
 msgstr "強調表示された項目を修正してください。"
 
-#: lib/quickslips_web/live/template_live.ex:167
+#: lib/quickslips_web/live/template_live.ex:186
 #, elixir-autogen, elixir-format
 msgid "Preview could not be rendered."
 msgstr "プレビューを表示できませんでした。"
 
-#: lib/quickslips_web/live/template_live.html.heex:193
+#: lib/quickslips_web/live/template_live.html.heex:326
 #, elixir-autogen, elixir-format
 msgid "Preview loads here…"
 msgstr "ここにプレビューが表示されます…"
@@ -387,7 +387,7 @@ msgstr "設定"
 #: lib/quickslips_web/components/layouts.ex:167
 #: lib/quickslips_web/components/layouts.ex:220
 #: lib/quickslips_web/live/home_live.ex:154
-#: lib/quickslips_web/live/template_live.html.heex:206
+#: lib/quickslips_web/live/template_live.html.heex:339
 #: lib/quickslips_web/live/user_live/login.ex:103
 #: lib/quickslips_web/live/user_live/registration.ex:51
 #: lib/quickslips_web/live/user_live/registration.ex:91
@@ -400,7 +400,7 @@ msgstr "新規登録"
 msgid "Something went wrong!"
 msgstr "問題が発生しました！"
 
-#: lib/quickslips_web/live/template_live.ex:165
+#: lib/quickslips_web/live/template_live.ex:184
 #, elixir-autogen, elixir-format
 msgid "Something went wrong. Please try again."
 msgstr "問題が発生しました。もう一度お試しください。"
@@ -459,7 +459,7 @@ msgstr "イギリス"
 msgid "United States"
 msgstr "アメリカ"
 
-#: lib/quickslips_web/live/template_live.ex:166
+#: lib/quickslips_web/live/template_live.ex:185
 #, elixir-autogen, elixir-format
 msgid "Updating preview…"
 msgstr "プレビューを更新中…"
@@ -479,7 +479,7 @@ msgstr "インターネットに接続できません"
 msgid "We couldn't sign you in with Google. Please try again."
 msgstr "Googleでログインできませんでした。もう一度お試しください。"
 
-#: lib/quickslips_web/live/template_live.ex:164
+#: lib/quickslips_web/live/template_live.ex:183
 #, elixir-autogen, elixir-format
 msgid "We couldn't verify your browser. Turn off your ad blocker, or log in."
 msgstr "ブラウザを確認できませんでした。広告ブロッカーをオフにするか、ログインしてください。"
@@ -526,12 +526,12 @@ msgstr "このページを表示するには再認証が必要です。"
 msgid "You need to reauthenticate to perform sensitive actions on your account."
 msgstr "アカウントの重要な操作には再認証が必要です。"
 
-#: lib/quickslips_web/live/template_live.ex:162
+#: lib/quickslips_web/live/template_live.ex:181
 #, elixir-autogen, elixir-format
 msgid "You've used today's free downloads."
 msgstr "本日の無料ダウンロードを使い切りました。"
 
-#: lib/quickslips_web/live/template_live.html.heex:199
+#: lib/quickslips_web/live/template_live.html.heex:332
 #, elixir-autogen, elixir-format
 msgid "You've used your free downloads for today. Log in or sign up to keep going, and come back tomorrow for more."
 msgstr "本日の無料ダウンロードを使い切りました。続けるにはログインまたは登録してください。明日またご利用いただけます。"
@@ -553,22 +553,22 @@ msgstr "または"
 msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account."
 msgstr "%{email} にメールを送信しました。メールを開き、先ほど設定したパスワードでアカウントを確認してください。"
 
-#: lib/quickslips_web/live/template_live.ex:177
+#: lib/quickslips_web/live/template_live.ex:221
 #, elixir-autogen, elixir-format
 msgid "Add item"
 msgstr "項目を追加"
 
-#: lib/quickslips_web/live/template_live.ex:180
+#: lib/quickslips_web/live/template_live.ex:224
 #, elixir-autogen, elixir-format
 msgid "Amount"
 msgstr "金額"
 
-#: lib/quickslips_web/live/template_live.ex:178
+#: lib/quickslips_web/live/template_live.ex:222
 #, elixir-autogen, elixir-format
 msgid "Remove item %{number}"
 msgstr "項目 %{number} を削除"
 
-#: lib/quickslips_web/live/template_live.ex:179
+#: lib/quickslips_web/live/template_live.ex:223
 #, elixir-autogen, elixir-format
 msgid "Subtotal"
 msgstr "小計"
@@ -613,42 +613,42 @@ msgstr "日本"
 msgid "Currency"
 msgstr "通貨"
 
-#: lib/quickslips_web/live/template_live.html.heex:47
+#: lib/quickslips_web/live/template_live.html.heex:51
 #, elixir-autogen, elixir-format
 msgid "Template"
 msgstr "テンプレート"
 
-#: lib/quickslips_web/live/template_live.ex:169
+#: lib/quickslips_web/live/template_live.ex:188
 #, elixir-autogen, elixir-format
 msgid "Business"
 msgstr "事業者"
 
-#: lib/quickslips_web/live/template_live.ex:175
+#: lib/quickslips_web/live/template_live.ex:219
 #, elixir-autogen, elixir-format
 msgid "Charges"
 msgstr "金額・料金"
 
-#: lib/quickslips_web/live/template_live.ex:172
+#: lib/quickslips_web/live/template_live.ex:191
 #, elixir-autogen, elixir-format
 msgid "Customer"
 msgstr "顧客"
 
-#: lib/quickslips_web/live/template_live.ex:174
+#: lib/quickslips_web/live/template_live.ex:193
 #, elixir-autogen, elixir-format
 msgid "Details"
 msgstr "詳細"
 
-#: lib/quickslips_web/live/template_live.ex:171
+#: lib/quickslips_web/live/template_live.ex:190
 #, elixir-autogen, elixir-format
 msgid "Document"
 msgstr "書類"
 
-#: lib/quickslips_web/live/template_live.ex:176
+#: lib/quickslips_web/live/template_live.ex:220
 #, elixir-autogen, elixir-format
 msgid "Payment"
 msgstr "支払い"
 
-#: lib/quickslips_web/live/template_live.ex:170
+#: lib/quickslips_web/live/template_live.ex:189
 #, elixir-autogen, elixir-format
 msgid "Registration"
 msgstr "登録情報"
@@ -665,7 +665,7 @@ msgstr "国と言語"
 msgid "Language, Country & Currency"
 msgstr "言語・国・通貨"
 
-#: lib/quickslips_web/live/template_live.ex:173
+#: lib/quickslips_web/live/template_live.ex:192
 #, elixir-autogen, elixir-format
 msgid "Item Details"
 msgstr "品目の詳細"
@@ -675,81 +675,82 @@ msgstr "品目の詳細"
 msgid "Generate Now"
 msgstr "今すぐ作成"
 
-#: lib/quickslips_web/live/template_live.ex:183
+#: lib/quickslips_web/live/template_live.ex:227
 #, elixir-autogen, elixir-format
 msgid "Other rate…"
 msgstr "その他の税率…"
 
-#: lib/quickslips_web/live/template_live.ex:184
+#: lib/quickslips_web/live/template_live.ex:228
 #, elixir-autogen, elixir-format
 msgid "Type the rate in %"
 msgstr "税率を%で入力"
 
-#: lib/quickslips_web/live/template_live.ex:196
+#: lib/quickslips_web/live/template_live.ex:242
 #, elixir-autogen, elixir-format
 msgid "Choose a picture first."
 msgstr "先に画像を選んでください。"
 
-#: lib/quickslips_web/live/template_live.ex:207
+#: lib/quickslips_web/live/template_live.ex:253
 #, elixir-autogen, elixir-format
 msgid "Fill in the seller's name first."
 msgstr "先に販売者名を入力してください。"
 
-#: lib/quickslips_web/live/template_live.ex:186
+#: lib/quickslips_web/live/template_live.ex:232
 #, elixir-autogen, elixir-format
 msgid "Give the signature a name."
 msgstr "署名に名前を付けてください。"
 
-#: lib/quickslips_web/live/template_live.html.heex:167
-#: lib/quickslips_web/live/template_live.html.heex:168
+#: lib/quickslips_web/live/template_live.html.heex:128
+#: lib/quickslips_web/live/template_live.html.heex:129
 #, elixir-autogen, elixir-format
 msgid "Name, like Owner"
 msgstr "名前（例：代表者）"
 
-#: lib/quickslips_web/live/template_live.html.heex:148
+#: lib/quickslips_web/live/template_live.html.heex:109
+#: lib/quickslips_web/live/template_live.html.heex:173
 #, elixir-autogen, elixir-format
 msgid "No signature (placeholder only)"
 msgstr "署名なし（署名欄のみ）"
 
-#: lib/quickslips_web/live/template_live.html.heex:120
-#: lib/quickslips_web/live/template_live.html.heex:123
-#: lib/quickslips_web/live/template_live.html.heex:175
-#: lib/quickslips_web/live/template_live.html.heex:178
+#: lib/quickslips_web/live/template_live.html.heex:136
+#: lib/quickslips_web/live/template_live.html.heex:139
+#: lib/quickslips_web/live/template_live.html.heex:238
+#: lib/quickslips_web/live/template_live.html.heex:241
 #, elixir-autogen, elixir-format
 msgid "PNG or JPG picture, up to 1 MB"
 msgstr "PNGまたはJPG画像（1 MBまで）"
 
-#: lib/quickslips_web/live/template_live.html.heex:159
+#: lib/quickslips_web/live/template_live.html.heex:120
 #, elixir-autogen, elixir-format
 msgid "Save a new signature"
 msgstr "新しい署名を保存"
 
-#: lib/quickslips_web/live/template_live.ex:204
+#: lib/quickslips_web/live/template_live.ex:250
 #, elixir-autogen, elixir-format
 msgid "Save seller details"
 msgstr "販売者情報を保存"
 
-#: lib/quickslips_web/live/template_live.html.heex:179
+#: lib/quickslips_web/live/template_live.html.heex:148
 #, elixir-autogen, elixir-format
 msgid "Save signature"
 msgstr "署名を保存"
 
-#: lib/quickslips_web/live/template_live.ex:205
+#: lib/quickslips_web/live/template_live.ex:251
 #, elixir-autogen, elixir-format
 msgid "Seller details saved."
 msgstr "販売者情報を保存しました。"
 
-#: lib/quickslips_web/live/template_live.ex:206
+#: lib/quickslips_web/live/template_live.ex:252
 #, elixir-autogen, elixir-format
 msgid "Seller details updated."
 msgstr "販売者情報を更新しました。"
 
-#: lib/quickslips_web/live/template_live.html.heex:140
+#: lib/quickslips_web/live/template_live.html.heex:101
 #, elixir-autogen, elixir-format
 msgid "Signature"
 msgstr "署名"
 
-#: lib/quickslips_web/live/template_live.ex:185
+#: lib/quickslips_web/live/template_live.ex:231
 #, elixir-autogen, elixir-format
 msgid "Signature saved."
 msgstr "署名を保存しました。"
@@ -759,37 +760,37 @@ msgstr "署名を保存しました。"
 msgid "Signatures"
 msgstr "署名"
 
-#: lib/quickslips_web/live/template_live.ex:209
+#: lib/quickslips_web/live/template_live.ex:255
 #, elixir-autogen, elixir-format
 msgid "The %{label} is not valid. Check it, or leave it empty."
 msgstr "%{label}が正しくありません。確認するか、空欄のままにしてください。"
 
-#: lib/quickslips_web/live/template_live.ex:195
+#: lib/quickslips_web/live/template_live.ex:241
 #, elixir-autogen, elixir-format
 msgid "This file is too big. The limit is 1 MB."
 msgstr "このファイルは大きすぎます。上限は1 MBです。"
 
-#: lib/quickslips_web/live/template_live.ex:192
+#: lib/quickslips_web/live/template_live.ex:238
 #, elixir-autogen, elixir-format
 msgid "This is not a real PNG or JPG picture."
 msgstr "有効なPNGまたはJPG画像ではありません。"
 
-#: lib/quickslips_web/live/template_live.ex:194
+#: lib/quickslips_web/live/template_live.ex:240
 #, elixir-autogen, elixir-format
 msgid "This picture is too big: at most 4000 pixels on a side."
 msgstr "この画像は大きすぎます。一辺は4000ピクセルまでです。"
 
-#: lib/quickslips_web/live/template_live.ex:187
+#: lib/quickslips_web/live/template_live.ex:233
 #, elixir-autogen, elixir-format
 msgid "You already have a signature with this name."
 msgstr "この名前の署名はすでにあります。"
 
-#: lib/quickslips_web/live/template_live.ex:189
+#: lib/quickslips_web/live/template_live.ex:235
 #, elixir-autogen, elixir-format
 msgid "You can keep up to %{max} signatures. Delete one on the Signatures page first."
 msgstr "署名は最大%{max}件まで保存できます。先に「署名」ページで1件削除してください。"
 
-#: lib/quickslips_web/live/template_live.html.heex:232
+#: lib/quickslips_web/live/template_live.html.heex:365
 #, elixir-autogen, elixir-format
 msgid "Frequently asked questions"
 msgstr "よくある質問"
@@ -924,7 +925,7 @@ msgstr "ご意見を送る"
 msgid "How can we help?"
 msgstr "どのようなご用件ですか？"
 
-#: lib/quickslips_web/live/template_live.html.heex:251
+#: lib/quickslips_web/live/template_live.html.heex:384
 #, elixir-autogen, elixir-format
 msgid "Is something missing or wrong in this template?"
 msgstr "このテンプレートに足りないものや誤りはありますか？"
@@ -960,12 +961,12 @@ msgid "Something is broken, wrong or confusing."
 msgstr "動かない、間違っている、またはわかりにくい点。"
 
 #: lib/quickslips_web/components/layouts.ex:274
-#: lib/quickslips_web/live/template_live.html.heex:265
+#: lib/quickslips_web/live/template_live.html.heex:398
 #, elixir-autogen, elixir-format
 msgid "Tell us"
 msgstr "お知らせください"
 
-#: lib/quickslips_web/live/template_live.html.heex:254
+#: lib/quickslips_web/live/template_live.html.heex:387
 #, elixir-autogen, elixir-format
 msgid "Tell us what you would like changed or added, or report a mistake. We read every message."
 msgstr "変更や追加してほしいこと、または間違いをお知らせください。すべてのメッセージに目を通しています。"
@@ -1116,38 +1117,38 @@ msgstr "%{name}様、こんにちは。"
 msgid "Your message:"
 msgstr "メッセージ内容："
 
-#: lib/quickslips_web/live/template_live.html.heex:85
+#: lib/quickslips_web/live/template_live.html.heex:203
 #, elixir-autogen, elixir-format
 msgid "Empty box (placeholder only)"
 msgstr "空の枠（場所のみ）"
 
-#: lib/quickslips_web/live/template_live.ex:198
+#: lib/quickslips_web/live/template_live.ex:244
 #, elixir-autogen, elixir-format
 msgid "Give the stamp a name."
 msgstr "印紙に名前を付けてください。"
 
-#: lib/quickslips_web/live/template_live.html.heex:112
-#: lib/quickslips_web/live/template_live.html.heex:113
+#: lib/quickslips_web/live/template_live.html.heex:230
+#: lib/quickslips_web/live/template_live.html.heex:231
 #, elixir-autogen, elixir-format
 msgid "Name, like Rent receipts"
 msgstr "名前（例：家賃の領収書）"
 
-#: lib/quickslips_web/live/template_live.html.heex:76
+#: lib/quickslips_web/live/template_live.html.heex:194
 #, elixir-autogen, elixir-format
 msgid "Revenue stamp"
 msgstr "収入印紙"
 
-#: lib/quickslips_web/live/template_live.html.heex:104
+#: lib/quickslips_web/live/template_live.html.heex:222
 #, elixir-autogen, elixir-format
 msgid "Save a new stamp"
 msgstr "新しい印紙を保存"
 
-#: lib/quickslips_web/live/template_live.html.heex:124
+#: lib/quickslips_web/live/template_live.html.heex:250
 #, elixir-autogen, elixir-format
 msgid "Save stamp"
 msgstr "印紙を保存"
 
-#: lib/quickslips_web/live/template_live.ex:197
+#: lib/quickslips_web/live/template_live.ex:243
 #, elixir-autogen, elixir-format
 msgid "Stamp saved."
 msgstr "印紙を保存しました。"
@@ -1157,12 +1158,165 @@ msgstr "印紙を保存しました。"
 msgid "Stamps"
 msgstr "印紙"
 
-#: lib/quickslips_web/live/template_live.ex:199
+#: lib/quickslips_web/live/template_live.ex:245
 #, elixir-autogen, elixir-format
 msgid "You already have a stamp with this name."
 msgstr "この名前の印紙はすでにあります。"
 
-#: lib/quickslips_web/live/template_live.ex:201
+#: lib/quickslips_web/live/template_live.ex:247
 #, elixir-autogen, elixir-format
 msgid "You can keep up to %{max} stamps. Delete one on the Stamps page first."
 msgstr "印紙は最大%{max}件まで保存できます。先に「印紙」ページで1件削除してください。"
+
+#: lib/quickslips_web/live/template_live.html.heex:282
+#: lib/quickslips_web/live/template_live.html.heex:311
+#, elixir-autogen, elixir-format
+msgid "As designed"
+msgstr "テンプレートのまま"
+
+#: lib/quickslips_web/live/template_live.html.heex:291
+#, elixir-autogen, elixir-format
+msgid "Made for a thermal receipt printer, so there is no paper to choose."
+msgstr "感熱式レシートプリンター用のため、用紙の選択はありません。"
+
+#: lib/quickslips_web/live/template_live.html.heex:271
+#, elixir-autogen, elixir-format
+msgid "Paper"
+msgstr "用紙"
+
+#: lib/quickslips_web/live/template_live.ex:194
+#, elixir-autogen, elixir-format
+msgid "Additional options"
+msgstr "追加オプション"
+
+#: lib/quickslips_web/live/template_live.html.heex:261
+#, elixir-autogen, elixir-format
+msgid "Advanced settings"
+msgstr "詳細設定"
+
+#: lib/quickslips_web/live/template_live.ex:210
+#, elixir-autogen, elixir-format
+msgid "Bill by"
+msgstr "請求単位"
+
+#: lib/quickslips_web/live/template_live.ex:218
+#: lib/quickslips_web/live/template_live.ex:230
+#, elixir-autogen, elixir-format
+msgid "Confirm that you have the rights to use this image."
+msgstr "この画像を使用する権利があることを確認してください。"
+
+#: lib/quickslips_web/live/template_live.html.heex:146
+#: lib/quickslips_web/live/template_live.html.heex:248
+#, elixir-autogen, elixir-format
+msgid "I confirm I have the rights to use this image"
+msgstr "この画像を使用する権利があることを確認します"
+
+#: lib/quickslips_web/live/template_live.html.heex:300
+#, elixir-autogen, elixir-format
+msgid "Margins"
+msgstr "余白"
+
+#: lib/quickslips_web/live/template_live.ex:216
+#, elixir-autogen, elixir-format
+msgid "Months"
+msgstr "月"
+
+#: lib/quickslips_web/live/template_live.html.heex:312
+#, elixir-autogen, elixir-format
+msgid "Narrow"
+msgstr "狭い"
+
+#: lib/quickslips_web/live/template_live.ex:217
+#, elixir-autogen, elixir-format
+msgid "Receipt date (optional)"
+msgstr "領収日(任意)"
+
+#: lib/quickslips_web/live/template_live.html.heex:313
+#, elixir-autogen, elixir-format
+msgid "Wide"
+msgstr "広い"
+
+#: lib/quickslips_web/live/template_live.ex:195
+#, elixir-autogen, elixir-format
+msgid "Choose saved details…"
+msgstr "保存した内容を選ぶ…"
+
+#: lib/quickslips_web/live/template_live.ex:205
+#, elixir-autogen, elixir-format
+msgid "Details saved."
+msgstr "内容を保存しました。"
+
+#: lib/quickslips_web/live/template_live.ex:206
+#, elixir-autogen, elixir-format
+msgid "Details updated."
+msgstr "内容を更新しました。"
+
+#: lib/quickslips_web/live/template_live.ex:207
+#, elixir-autogen, elixir-format
+msgid "Fill in the name first, then save."
+msgstr "先に名前を入力してから保存してください。"
+
+#: lib/quickslips_web/live/template_live.ex:215
+#, elixir-autogen, elixir-format
+msgid "Period"
+msgstr "期間"
+
+#: lib/quickslips_web/live/template_live.ex:209
+#, elixir-autogen, elixir-format
+msgid "You have saved as many as you can keep here. Update one that is saved."
+msgstr "ここに保存できる上限に達しました。保存済みの項目を更新してください。"
+
+#: lib/quickslips_web/live/template_live.ex:214
+#, elixir-autogen, elixir-format
+msgid "Check or uncheck all"
+msgstr "すべて選択または解除"
+
+#: lib/quickslips_web/live/template_live.ex:213
+#, elixir-autogen, elixir-format
+msgid "Day"
+msgstr "日"
+
+#: lib/quickslips_web/live/template_live.ex:211
+#, elixir-autogen, elixir-format
+msgid "Month"
+msgstr "月"
+
+#: lib/quickslips_web/live/template_live.ex:212
+#, elixir-autogen, elixir-format
+msgid "Multiple receipts"
+msgstr "複数の領収書"
+
+#: lib/quickslips_web/live/template_live.ex:197
+#, elixir-autogen, elixir-format
+msgid "Create new"
+msgstr "新規作成"
+
+#: lib/quickslips_web/live/template_live.ex:199
+#, elixir-autogen, elixir-format
+msgid "Details with this name are already saved. Change the name, or choose them in the list and use Update."
+msgstr "この名前の内容はすでに保存されています。名前を変えるか、リストから選んで「更新」を使ってください。"
+
+#: lib/quickslips_web/live/template_live.ex:203
+#, elixir-autogen, elixir-format
+msgid "Next page"
+msgstr "次のページ"
+
+#: lib/quickslips_web/live/template_live.ex:204
+#, elixir-autogen, elixir-format
+msgid "Page %{page} of %{total}"
+msgstr "%{page} / %{total} ページ"
+
+#: lib/quickslips_web/live/template_live.ex:202
+#, elixir-autogen, elixir-format
+msgid "Previous page"
+msgstr "前のページ"
+
+#: lib/quickslips_web/live/template_live.ex:196
+#, elixir-autogen, elixir-format
+msgid "Update"
+msgstr "更新"
+
+#: lib/quickslips_web/live/template_live.html.heex:165
+#, elixir-autogen, elixir-format
+msgid "Driver signature"
+msgstr "ドライバーの署名"

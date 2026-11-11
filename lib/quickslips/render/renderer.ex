@@ -17,13 +17,15 @@ defmodule QuickSlips.Render.Renderer do
   Options:
 
     * `mode: :final | :preview` (preview adds the watermark).
+    * `format: :pdf | :png` (default `:pdf`). `:png` draws the first page as a picture, for a thumbnail; `ppi:` (default 50)
+      says how sharp.
     * `assets: %{"logo.png" => "/abs/path/to/the/file"}`: pictures to copy next to the template, so it can
       draw them with `#image("logo.png")`. The names come from our code, never from a user.
     * `locale: "hi-in"`: the language of the words and the country of the numbers and dates (default `en-in`).
     * `country: "jp"`: the document is made for another country than the locale's (its numbers, dates, tax).
     * `currency: "EUR"`: a currency other than the country's own.
 
-  Returns `{:ok, pdf_binary}` or `{:error, reason}`.
+  Returns `{:ok, bytes}` (a PDF, or a PNG) or `{:error, reason}`.
   """
   def render(slug, template_id, data, opts \\ []) when is_map(data) do
     mode = Keyword.get(opts, :mode, :final)
@@ -38,7 +40,7 @@ defmodule QuickSlips.Render.Renderer do
            Regions.build(locale.country, Keyword.get(opts, :currency), locale.language),
          {:ok, typst} <- typst_executable() do
       words = %{"text.json" => text, "region.json" => region}
-      run_in_tmp_dir(typst, slug, template_id, data, words, mode, assets)
+      run_in_tmp_dir(typst, slug, template_id, data, words, {mode, picture(opts)}, assets)
     end
   end
 
@@ -74,6 +76,12 @@ defmodule QuickSlips.Render.Renderer do
     end
   end
 
+  defp picture(opts) do
+    if Keyword.get(opts, :format, :pdf) == :png,
+      do: {:png, Keyword.get(opts, :ppi, 50)},
+      else: :pdf
+  end
+
   defp run_in_tmp_dir(typst, slug, template_id, data, words, mode, assets) do
     tmp = Path.join(System.tmp_dir!(), "quickslips-" <> random_id())
     File.mkdir_p!(tmp)
@@ -99,8 +107,8 @@ defmodule QuickSlips.Render.Renderer do
     end
   end
 
-  defp compile(typst, tmp, mode) do
-    out = Path.join(tmp, "out.pdf")
+  defp compile(typst, tmp, {mode, picture}) do
+    out = Path.join(tmp, if(picture == :pdf, do: "out.pdf", else: "out-{p}.png"))
 
     args = [
       "compile",
@@ -110,16 +118,24 @@ defmodule QuickSlips.Render.Renderer do
       fonts_dir(),
       "--ignore-system-fonts",
       "--input",
-      "mode=#{mode}",
-      Path.join(tmp, "main.typ"),
-      out
+      "mode=#{mode}"
     ]
+
+    args =
+      args ++
+        case picture do
+          :pdf -> []
+          {:png, ppi} -> ["--format", "png", "--ppi", Integer.to_string(ppi), "--pages", "1"]
+        end ++ [Path.join(tmp, "main.typ"), out]
 
     task = Task.async(fn -> System.cmd(typst, args, stderr_to_stdout: true) end)
 
     case Task.yield(task, @timeout_ms) || Task.shutdown(task, :brutal_kill) do
       {:ok, {_output, 0}} ->
-        File.read(out)
+        case picture do
+          :pdf -> File.read(out)
+          {:png, _ppi} -> tmp |> Path.join("out-*.png") |> Path.wildcard() |> read_first()
+        end
 
       {:ok, {output, status}} ->
         Logger.warning("typst exited with #{status}: #{String.slice(output, 0, 2000)}")
@@ -133,6 +149,9 @@ defmodule QuickSlips.Render.Renderer do
         {:error, {:crashed, reason}}
     end
   end
+
+  defp read_first([file | _]), do: File.read(file)
+  defp read_first([]), do: {:error, :compile_failed}
 
   defp fonts_dir, do: Application.app_dir(:quickslips, "priv/fonts")
 

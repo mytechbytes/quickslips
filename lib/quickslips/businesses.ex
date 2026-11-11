@@ -257,10 +257,11 @@ defmodule QuickSlips.Businesses do
   An image whose file has gone missing is left out, so the document is made without it. `nil` for the business
   has no logo.
   """
-  def render_assets(business, signature \\ nil, stamp \\ nil) do
+  def render_assets(business, signature \\ nil, stamp \\ nil, driver_signature \\ nil) do
     pictures = [
       logo_assets(business),
       Signatures.render_assets(signature),
+      Signatures.render_assets(driver_signature, "driver_signature"),
       QuickSlips.Stamps.render_assets(stamp)
     ]
 

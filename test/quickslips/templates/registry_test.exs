@@ -54,7 +54,7 @@ defmodule QuickSlips.Templates.RegistryTest do
   end
 
   test "refuses a field named like a business picture", %{tmp_dir: dir} do
-    for key <- ["logo", "signature", "stamp"] do
+    for key <- ["logo", "signature", "stamp", "paper_size"] do
       write_schema(dir, "bad", [%{key: key, label: "Picture", type: "text"}])
 
       assert start_error(dir) =~ "reserved for business pictures"
@@ -177,6 +177,64 @@ defmodule QuickSlips.Templates.RegistryTest do
     end
   end
 
+  describe "the page of a design" do
+    test "is read from its layout: a roll for a thermal printer, a slip of another width, a named sheet",
+         %{tmp_dir: dir} do
+      write_schema(dir, "bill", [], %{templates: for(n <- 1..5, do: %{id: "t#{n}"})})
+
+      write_layout(
+        dir,
+        "bill",
+        "t1",
+        ~S|#show: base.with(width: 80mm, margin: (x: 5mm, y: 6mm), size: 8pt)|
+      )
+
+      write_layout(dir, "bill", "t2", ~S|#show: base.with(width: 90mm, margin: 3mm)|)
+
+      write_layout(
+        dir,
+        "bill",
+        "t3",
+        ~S|#show: base.with(width: 120.5mm, margin: (x: 8mm, y: 8mm))|
+      )
+
+      write_layout(
+        dir,
+        "bill",
+        "t4",
+        ~S|#show: base.with(paper: "a4", margin: 18mm, size: 10.5pt)|
+      )
+
+      write_layout(dir, "bill", "t5", "#text[no page line]")
+      registry = start_supervised!({Registry, dir: dir, name: :registry_page})
+
+      assert {:ok, schema} = Registry.fetch("bill", registry)
+
+      pages =
+        Map.new(schema["templates"], &{&1["id"], {&1["thermal"], &1["slip_width"], &1["paper"]}})
+
+      assert pages == %{
+               "t1" => {true, 80.0, nil},
+               "t2" => {true, 90.0, nil},
+               "t3" => {false, 120.5, nil},
+               "t4" => {false, nil, "a4"},
+               "t5" => {false, nil, nil}
+             }
+    end
+
+    test "is told for every design that exists: the roll receipts are the ones made for 64 to 86 mm" do
+      rolls =
+        for %{"slug" => slug} <- QuickSlips.Templates.list(),
+            {:ok, schema} = QuickSlips.Templates.get(slug),
+            %{"thermal" => true, "id" => id, "slip_width" => width} <- schema["templates"],
+            do: {slug, id, width}
+
+      assert length(rolls) == 8
+      assert Enum.all?(rolls, fn {_, _, width} -> width >= 64 and width <= 86 end)
+      assert {"parking-receipt", "t1", 74.0} in rolls
+    end
+  end
+
   describe "a place for a revenue stamp" do
     test "a design has one when its layout uses the revenue-stamp helper", %{tmp_dir: dir} do
       write_schema(dir, "bill", [], %{templates: [%{id: "t1"}, %{id: "t2"}]})
@@ -225,6 +283,27 @@ defmodule QuickSlips.Templates.RegistryTest do
 
       assert Map.new(schema["templates"], &{&1["id"], &1["signature"]}) ==
                %{"t1" => true, "t2" => true, "t3" => false, "t4" => false}
+    end
+
+    test "a design has a place for the driver's signature when its layout reads that picture", %{
+      tmp_dir: dir
+    } do
+      write_schema(dir, "bill", [], %{templates: [%{id: "t1"}, %{id: "t2"}]})
+
+      write_layout(
+        dir,
+        "bill",
+        "t1",
+        ~S|#signature-block(data, "Driver", key: "driver_signature")|
+      )
+
+      write_layout(dir, "bill", "t2", ~S|#signature-block(data, "Signatory")|)
+      registry = start_supervised!({Registry, dir: dir, name: :registry_driver_signature})
+
+      assert {:ok, schema} = Registry.fetch("bill", registry)
+
+      assert Map.new(schema["templates"], &{&1["id"], &1["driver_signature"]}) ==
+               %{"t1" => true, "t2" => false}
     end
 
     test "is said in every locale the template is in", %{tmp_dir: dir} do

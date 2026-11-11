@@ -37,6 +37,7 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
           upload={@uploads.logo}
           path={@business.logo_path}
         />
+        <.rights_check id="logo-rights" name="business[logo_rights]" checked={@rights} />
         <.input
           field={@form[:signature_id]}
           type="select"
@@ -65,6 +66,7 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
   def mount(params, _session, socket) do
     {:ok,
      socket
+     |> assign(:rights, false)
      |> allow_upload(:logo,
        accept: ~w(.png .jpg .jpeg),
        max_entries: 1,
@@ -98,6 +100,8 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
 
   @impl true
   def handle_event("validate", %{"business" => business_params}, socket) do
+    socket = assign(socket, :rights, business_params["logo_rights"] == "true")
+
     changeset =
       Businesses.change_business(
         socket.assigns.current_scope,
@@ -118,16 +122,22 @@ defmodule QuickSlipsWeb.BusinessLive.Form do
 
     # The files are looked at only when the text fields are fine, so a typo in the GSTIN does not
     # throw away the pictures the user has already chosen.
-    if changeset.valid? do
-      case store_images(socket) do
-        {:ok, images} ->
-          save_business(socket, socket.assigns.live_action, business_params, images)
+    cond do
+      # a picture that is uploaded must be one the user may use
+      socket.assigns.uploads.logo.entries != [] and business_params["logo_rights"] != "true" ->
+        {:noreply, socket |> assign(:rights, false) |> put_flash(:error, rights_message())}
 
-        {:error, message} ->
-          {:noreply, put_flash(socket, :error, message)}
-      end
-    else
-      {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
+      changeset.valid? ->
+        case store_images(socket) do
+          {:ok, images} ->
+            save_business(socket, socket.assigns.live_action, business_params, images)
+
+          {:error, message} ->
+            {:noreply, put_flash(socket, :error, message)}
+        end
+
+      true ->
+        {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
     end
   end
 

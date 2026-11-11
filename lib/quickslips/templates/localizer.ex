@@ -62,6 +62,9 @@ defmodule QuickSlips.Templates.Localizer do
         "description" => with_tax(text["description"] || schema["description"], tax(locale)),
         "intro" => with_tax(text["intro"] || schema["intro"], tax(locale)),
         "category_name" => category_name(schema, shared, locale),
+        # The names of the sections of the form where a bill has its own ("Employee" for the business of a salary
+        # receipt); a section with none is named by the page.
+        "groups" => Map.merge(schema["groups"] || %{}, text["groups"] || %{}),
         "languages" => schema["languages"] || ["en"],
         "templates" =>
           Enum.map(schema["templates"], &localize_design(&1, text["designs"] || %{})),

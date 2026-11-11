@@ -5,6 +5,12 @@ defmodule QuickSlips.Templates.Validator do
   Returns `{:ok, clean}` (only known fields, trimmed, optional blanks removed) or
   `{:error, {:validation, %{"field_key" => ["message"]}}}`.
 
+  A field of type `periods` is the period a salary or rent receipt is for: `%{"bill_by" => "Monthly", "months" =>
+  ["2026-07", "2026-08"], "dates" => ["2026-07-31", ""]}`. `bill_by` is one of the field's `"options"` (Monthly,
+  Quarterly, Half-yearly, Yearly). Billed monthly it lists 1 to 12 months (a receipt for each); billed by a longer
+  period it names the one month the period starts in (one receipt covers the whole period). `dates` holds the date of
+  each receipt (`""` for none), whatever was sent, cut or filled out to the number of receipts.
+
   A field of type `items` is a list of rows. A row has the cells the field names in `"cells"` (`["name", "qty",
   "rate"]` unless it says otherwise): `name`, `qty`, `rate`, and for a table of parts or jobs a `code`, a `billing`
   type (one of the field's `"billing_options"`), a `discount` and a `tax` rate in percent, and the short text cells `hsn`,
@@ -34,6 +40,7 @@ defmodule QuickSlips.Templates.Validator do
   def validate(_schema, _data), do: {:error, {:validation, %{"data" => ["must be an object"]}}}
 
   defp validate_field(%{"type" => "items"} = field, value), do: validate_items(field, value)
+  defp validate_field(%{"type" => "periods"} = field, value), do: validate_periods(field, value)
 
   defp validate_field(field, value) do
     cond do
@@ -44,6 +51,82 @@ defmodule QuickSlips.Templates.Validator do
   end
 
   @max_rows 50
+
+  @max_months 12
+  @max_years 10
+  # The months a period of each kind covers: a receipt is made for each period chosen, and `months` holds the month each starts in.
+  @steps %{"Monthly" => 1, "Quarterly" => 3, "Half-yearly" => 6, "Yearly" => 12}
+
+  defp validate_periods(field, value) do
+    cond do
+      blank?(value) and field["required"] == true -> {:error, "is required"}
+      blank?(value) -> :skip
+      not is_map(value) -> {:error, "must be an object"}
+      true -> check_periods(field, value)
+    end
+  end
+
+  defp check_periods(field, value) do
+    by = Map.get(value, "bill_by", "Monthly")
+    options = field["options"] || ["Monthly"]
+    months = value["months"]
+
+    cond do
+      by not in options ->
+        {:error, "bill by must be one of: #{Enum.join(options, ", ")}"}
+
+      not (is_list(months) and Enum.all?(months, &valid_month?/1)) ->
+        {:error, "months must be like 2026-10"}
+
+      months == [] or length(Enum.uniq(months)) > max_periods(by) ->
+        {:error, "choose from 1 to #{max_periods(by)} periods"}
+
+      by != "Yearly" and not within_a_year?(months) ->
+        {:error, "the periods must fall within twelve months"}
+
+      true ->
+        months = months |> Enum.uniq() |> Enum.sort()
+        receipts = length(months)
+
+        case clean_dates(value["dates"], receipts) do
+          {:ok, dates} -> {:ok, %{"bill_by" => by, "months" => months, "dates" => dates}}
+          :error -> {:error, "dates must be like 2026-10-31"}
+        end
+    end
+  end
+
+  # A year or less of months for the shorter periods; billed by the year, one receipt for each of up to ten years.
+  defp max_periods("Yearly"), do: @max_years
+  defp max_periods(by), do: div(@max_months, Map.get(@steps, by, 1))
+
+  defp within_a_year?(months) do
+    indexes =
+      for <<year::binary-size(4), "-", month::binary-size(2)>> <- months,
+          do: String.to_integer(year) * 12 + String.to_integer(month)
+
+    Enum.max(indexes) - Enum.min(indexes) < @max_months
+  end
+
+  defp valid_month?(month),
+    do: is_binary(month) and Regex.match?(~r/^\d{4}-(0[1-9]|1[0-2])$/, month)
+
+  # One date or "" for each receipt; the list sent is cut or filled out to the number of receipts.
+  defp clean_dates(dates, receipts) do
+    list = if is_list(dates), do: dates, else: []
+
+    cleaned =
+      for date <- Enum.take(list ++ List.duplicate("", receipts), receipts) do
+        cond do
+          blank?(date) -> {:ok, ""}
+          is_binary(date) and match?({:ok, _}, Date.from_iso8601(date)) -> {:ok, date}
+          true -> :error
+        end
+      end
+
+    if Enum.all?(cleaned, &match?({:ok, _}, &1)),
+      do: {:ok, Enum.map(cleaned, &elem(&1, 1))},
+      else: :error
+  end
 
   defp validate_items(field, value) do
     key = field["key"]

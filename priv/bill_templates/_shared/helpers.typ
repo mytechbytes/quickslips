@@ -36,17 +36,38 @@
 
 // The page: size, margins, font, and the watermark of the preview. Use it with `#show: base.with(...)`.
 // A slip (a till receipt) has its own `width`, and a `height` that is `auto`: the paper is as long as the text.
+//
+// The user may choose a sheet for the document (`"paper_size"` in the data: "a4", "a5" or "us-letter"). A layout made
+// for a named paper then uses that paper; a slip is put at the top of the sheet at its own width. A roll receipt (a
+// slip of 90 mm or less, made for a thermal printer) keeps its own width whatever is chosen.
 #let base(paper: "a5", width: none, height: auto, margin: 14mm, size: 10pt, body) = {
   let slip = width != none
-  set page(
-    ..if slip { (width: width, height: height) } else { (paper: paper) },
-    margin: margin,
-    background: if preview {
-      rotate(-30deg, text(size: if slip and width < 100mm { 22pt } else { 54pt }, weight: "bold", fill: luma(225))[QUICK SLIPS])
-    },
-  )
-  set text(font: text-data.at("fonts", default: ("Noto Sans",)), size: size, lang: text-data.at("lang", default: "en"))
-  body
+  let roll = slip and width <= 90mm
+  let chosen = json("/data.json").at("paper_size", default: none)
+  let sheet = if chosen != none and not roll { chosen } else { none }
+  // The margins the user chose (`"margin_size"`: "narrow" or "wide") scale those of the layout; a roll keeps its own.
+  let scale = if roll { 1 } else { (narrow: 0.6, wide: 1.5).at(json("/data.json").at("margin_size", default: ""), default: 1) }
+  let margin = if type(margin) == dictionary { margin.pairs().map(((key, value)) => (key, value * scale)).to-dict() } else { margin * scale }
+  let mark = if preview {
+    rotate(-30deg, text(size: if slip and width < 100mm { 22pt } else { 54pt }, weight: "bold", fill: luma(225))[QUICK SLIPS])
+  }
+  if sheet != none and slip {
+    // The slip sits in the middle of the sheet: the margins at the sides are what is left of the sheet's width. The
+    // body is not in a block (a block cannot hold a page break, and a design may make a page for each receipt).
+    let side = if type(margin) == dictionary { margin.at("x", default: 14mm) } else { margin }
+    let across = (a4: 210mm, a5: 148mm, "us-letter": 215.9mm).at(sheet, default: 210mm)
+    set page(paper: sheet, margin: (x: calc.max((across - (width - 2 * side)) / 2, 15mm * scale), y: 15mm * scale), background: mark)
+    set text(font: text-data.at("fonts", default: ("Noto Sans",)), size: size, lang: text-data.at("lang", default: "en"))
+    body
+  } else {
+    set page(
+      ..if sheet != none { (paper: sheet) } else if slip { (width: width, height: height) } else { (paper: paper) },
+      margin: margin,
+      background: mark,
+    )
+    set text(font: text-data.at("fonts", default: ("Noto Sans",)), size: size, lang: text-data.at("lang", default: "en"))
+    body
+  }
 }
 
 /// Data
@@ -135,6 +156,25 @@
     }
     (label: label, months: length)
   })
+}
+
+// The receipts of a salary receipt's period (`data.periods`, see the `periods` field): an array of
+// `(label: "October 2026 – December 2026", months: 3, date: "2026-12-31" or none)`. Billed monthly there is a receipt
+// for each month chosen (up to 12); billed by the quarter, half-year or year there is a receipt for each period
+// chosen (`months` holds the month each period starts in). The date of a receipt is optional.
+#let salary-periods(data) = {
+  let periods = data.periods
+  let by = periods.at("bill_by", default: "Monthly")
+  let step = (Monthly: 1, Quarterly: 3, "Half-yearly": 6, Yearly: 12).at(by, default: 1)
+  let date-at(i) = {
+    let date = periods.at("dates", default: ()).at(i, default: "")
+    if date == "" { none } else { date }
+  }
+  periods.months.enumerate().map(((i, month)) => (
+    label: if step == 1 { month-label(month) } else { month-label(month) + " – " + month-label(ym-str(ym-int(month) + step - 1)) },
+    months: step,
+    date: date-at(i),
+  ))
 }
 
 // Whole days from one date to another, at least 1 (for nights in a hotel, days in a plan).
@@ -867,8 +907,8 @@
 
 // The signature of a saved business above a line, with who it is. With no picture the space is left to
 // sign by hand.
-#let signature-block(data, label, name: none) = align(right, block(width: 52mm, {
-  let signature = picture(data, "signature", 13mm)
+#let signature-block(data, label, name: none, key: "signature") = align(right, block(width: 52mm, {
+  let signature = picture(data, key, 13mm)
   if signature != none { signature } else { v(13mm) }
   line(length: 100%, stroke: 0.5pt)
   v(-1mm)

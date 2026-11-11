@@ -136,12 +136,15 @@ defmodule QuickSlips.Signatures do
   `%{data: %{"signature" => "signature.png"}, files: %{"signature.png" => "/abs/path"}}`. A signature whose file has
   gone missing, or none at all, gives nothing, so the document is made with the empty place to sign by hand.
   """
-  def render_assets(nil), do: %{data: %{}, files: %{}}
+  def render_assets(signature, key \\ "signature")
 
-  def render_assets(%Signature{path: relative}) do
+  def render_assets(nil, _key), do: %{data: %{}, files: %{}}
+
+  def render_assets(%Signature{path: relative}, key) do
     if File.regular?(Uploads.path(relative)) do
-      name = "signature" <> Path.extname(relative)
-      %{data: %{"signature" => name}, files: %{name => Uploads.path(relative)}}
+      # `key` is "signature", or "driver_signature" for the second signature of a receipt: the data names its file.
+      name = key <> Path.extname(relative)
+      %{data: %{key => name}, files: %{name => Uploads.path(relative)}}
     else
       %{data: %{}, files: %{}}
     end

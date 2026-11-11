@@ -28,12 +28,28 @@ defmodule QuickSlipsWeb.GenerateController do
          {:ok, clean} <- validate(schema, data, locale),
          {:ok, business} <- load_business(conn, params),
          {:ok, signature} <- load_signature(conn, params),
+         {:ok, driver_signature} <- load_driver_signature(conn, params),
          {:ok, stamp} <- load_stamp(conn, params),
          :ok <- verify_human(conn, params),
          {:ok, grant} <- Downloads.reserve(caller(conn)),
-         pictures = Businesses.render_assets(business, signature, stamp),
+         paper =
+           Map.merge(
+             Templates.paper_data(schema, template, params["paper"]),
+             Templates.margin_data(schema, template, params["margin"])
+           ),
+         pictures = Businesses.render_assets(business, signature, stamp, driver_signature),
+         pictures = %{pictures | data: Map.merge(pictures.data, paper)},
          {:ok, pdf} <- render_or_refund(slug, template, clean, pictures, locale, currency, grant) do
-      remember(conn, schema, template, clean, {business, signature, stamp}, locale, currency)
+      remember(
+        conn,
+        schema,
+        template,
+        clean,
+        {business, signature, stamp, driver_signature},
+        locale,
+        currency,
+        paper
+      )
 
       conn
       |> put_resp_header("x-downloads-remaining", Integer.to_string(grant.remaining))
@@ -87,6 +103,16 @@ defmodule QuickSlipsWeb.GenerateController do
   end
 
   defp load_signature(_conn, _params), do: {:ok, nil}
+
+  # The driver's signature, the second one of a receipt: one of the user's saved signatures too.
+  defp load_driver_signature(conn, %{"driver_signature_id" => id}) when id not in [nil, ""] do
+    case conn.assigns[:current_scope] do
+      %{user: %{}} = scope -> {:ok, Signatures.get_signature!(scope, id)}
+      _anonymous -> {:ok, nil}
+    end
+  end
+
+  defp load_driver_signature(_conn, _params), do: {:ok, nil}
 
   # The revenue stamp: "system:<name>" (one the site provides, for anybody), the id of one of the user's saved ones, or nothing (the
   # empty box). A saved one is looked up through the scope, so somebody else's is a 404; a visitor has none.
@@ -151,7 +177,16 @@ defmodule QuickSlipsWeb.GenerateController do
     end
   end
 
-  defp remember(conn, schema, template, clean, {business, signature, stamp}, locale, currency) do
+  defp remember(
+         conn,
+         schema,
+         template,
+         clean,
+         {business, signature, stamp, driver_signature},
+         locale,
+         currency,
+         paper
+       ) do
     with %{user: %{}} = scope <- conn.assigns[:current_scope],
          attrs = %{
            "slug" => schema["slug"],
@@ -159,10 +194,19 @@ defmodule QuickSlipsWeb.GenerateController do
            "title" => Documents.build_title(schema, clean, short_months(schema, locale)),
            "data" => clean,
            "language" => locale.language,
-           "options" => %{"country" => locale.country, "currency" => currency}
+           "options" =>
+             Map.merge(
+               %{"country" => locale.country, "currency" => currency},
+               for(
+                 {key, name} <- [{"paper_size", "paper"}, {"margin_size", "margin"}],
+                 paper[key],
+                 into: %{},
+                 do: {name, paper[key]}
+               )
+             )
          },
          {:error, changeset} <-
-           Documents.create_document(scope, attrs, business, signature, stamp) do
+           Documents.create_document(scope, attrs, business, signature, stamp, driver_signature) do
       Logger.warning("could not save a document in the history: #{inspect(changeset.errors)}")
     end
 

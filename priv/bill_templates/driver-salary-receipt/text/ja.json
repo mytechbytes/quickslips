@@ -8,17 +8,19 @@
   "designs": {
     "t1": "精算用",
     "t2": "受領確認付き",
-    "t3": "雇用主の申告",
-    "t4": "複数月",
+    "t3": "従業員の申告",
     "t5": "給与伝票",
     "t6": "簡易記録"
   },
   "fields": {
     "employer_name": {
-      "label": "雇用主の氏名"
+      "label": "従業員の氏名"
+    },
+    "employee_code": {
+      "label": "従業員コード（任意）"
     },
     "employer_address": {
-      "label": "雇用主の住所（任意）"
+      "label": "従業員の住所（任意）"
     },
     "driver_name": {
       "label": "運転手名"
@@ -28,27 +30,6 @@
     },
     "declaration": {
       "label": "申告（任意）"
-    },
-    "month": {
-      "label": "給与の対象月"
-    },
-    "from_date": {
-      "label": "期間の開始（任意）"
-    },
-    "to_date": {
-      "label": "期間の終了（任意）"
-    },
-    "bill_by": {
-      "label": "発行単位",
-      "options": {
-        "Monthly": "毎月",
-        "Quarterly": "四半期ごと",
-        "Half-yearly": "半年ごと",
-        "Yearly": "毎年"
-      }
-    },
-    "receipt_date": {
-      "label": "領収日"
     },
     "basic_salary": {
       "label": "月給（{currency}）"
@@ -72,33 +53,49 @@
         "Card": "カード",
         "Online": "オンライン"
       }
+    },
+    "periods": {
+      "label": "給与の期間",
+      "options": {
+        "Monthly": "毎月",
+        "Quarterly": "四半期ごと",
+        "Half-yearly": "半年ごと",
+        "Yearly": "毎年"
+      }
     }
   },
   "print": {
     "title": "運転手給与領収書",
     "date": "日付",
-    "certify": "{employer} が運転手 {driver} に {month} 分の給与として {amount} を支払ったことを証明します（受領書を添付）。",
-    "certify_period": "{employer} が運転手 {driver} に {period} 分の給与として {amount} を支払ったことを証明します（受領書を添付）。",
-    "certify_self": "私は運転手 {driver} に {month} 分として {amount} を支払ったことを証明します（受領書を添付）。",
-    "reimburse": "上記金額の精算をお願いします。上記の内容が正確かつ真実であることを申し添えます。",
     "vehicle_no": "車両ナンバー",
     "driver_name": "運転手名",
-    "employer_name": "雇用主の氏名",
-    "employer_signature": "雇用主の署名",
+    "employer_name": "従業員の氏名",
+    "employer_signature": "従業員の署名",
     "revenue_stamp": "収入印紙",
     "salary_month": "給与の対象月",
     "amount_paid": "支払金額",
-    "received_text": "運転手 {driver} は {employer} から {month} 分の給与として {amount} を受領しました。",
+    "for_month": "対象月",
+    "period": "期間",
+    "receipt_date": "領収日",
+    "employee_code": "従業員コード",
+    "certify_plain": "私は運転手{driver}に{month}分として{amount}を支払ったことを証明します。",
+    "certify_plain_period": "私は運転手{driver}に{month}の期間分として{amount}を支払ったことを証明します。",
+    "certify_self": "私は運転手 {driver} に {month} 分として {amount} を支払ったことを証明します（受領書を添付）。",
+    "reimburse": "上記金額の精算をお願いします。上記の内容が正確かつ真実であることを申し添えます。",
     "ack_title": "受領確認",
     "receipt_date_of": "受領日",
-    "for_month": "対象月",
-    "received_sum": "{employer} から {month} 分として {amount} を受領しました。",
-    "period": "期間",
-    "receipt_of": "{total} 枚中 {number} 枚目",
+    "received_sum": "私は{employer}から{month}分として{amount}を受領しました。",
+    "ack_certify": "私は運転手{driver}に{month}分として{amount}を支払ったことを証明します（受領確認書を下に添付）。",
+    "ack_certify_period": "私は運転手{driver}に{month}の期間分として{amount}を支払ったことを証明します（受領確認書を下に添付）。",
+    "ack_reimburse": "上記の金額を私の口座に払い戻してください。",
+    "ack_further": "上記の内容は、私の知る限り正確かつ真実であることを重ねて申告します。",
+    "ack_heading": "支払領収書および受領確認（運転手が署名）",
+    "ack_received": "{employer}から{month}分として{amount}（{words}）を受領しました。",
+    "ack_received_period": "{employer}から{month}の期間分として{amount}（{words}）を受領しました。",
+    "ack_thumb": "運転手の署名/拇印",
+    "employee_address": "従業員の住所",
     "payroll_voucher": "給与伝票",
     "voucher_sub": "運転手給与支払票",
-    "payer": "支払者",
-    "driver": "運転手",
     "acknowledgement": "受領確認",
     "ack_voucher": "{driver} は {employer} から {month} 分の給与を受領しました。",
     "received_by": "受領者",
@@ -106,7 +103,6 @@
     "name": "氏名",
     "record_title": "運転手給与記録",
     "record_sub": "簡易受領確認書式",
-    "payer_name": "支払者名",
     "declaration_label": "申告",
     "confirm": "上記の給与額を、本記録に記載の月分として支払者から受領したことを確認します。",
     "notes": "注記",
@@ -128,5 +124,11 @@
     "allowance": 10000,
     "deductions": 5000,
     "declaration": "なお、この運転手は業務のみに使用されていることを申し添えます。"
+  },
+  "groups": {
+    "business": "従業員",
+    "document": "給与の期間",
+    "customer": "運転手",
+    "details": "車両"
   }
 }

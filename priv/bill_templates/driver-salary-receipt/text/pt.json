@@ -8,17 +8,19 @@
   "designs": {
     "t1": "Reembolso",
     "t2": "Com confirmação de recebimento",
-    "t3": "Declaração do empregador",
-    "t4": "Vários meses",
+    "t3": "Declaração do funcionário",
     "t5": "Comprovante de folha",
     "t6": "Registro simples"
   },
   "fields": {
     "employer_name": {
-      "label": "Nome do empregador"
+      "label": "Nome do funcionário"
+    },
+    "employee_code": {
+      "label": "Código do funcionário (opcional)"
     },
     "employer_address": {
-      "label": "Endereço do empregador (opcional)"
+      "label": "Endereço do funcionário (opcional)"
     },
     "driver_name": {
       "label": "Nome do motorista"
@@ -28,27 +30,6 @@
     },
     "declaration": {
       "label": "Declaração (opcional)"
-    },
-    "month": {
-      "label": "Salário do mês"
-    },
-    "from_date": {
-      "label": "Período de (opcional)"
-    },
-    "to_date": {
-      "label": "Período até (opcional)"
-    },
-    "bill_by": {
-      "label": "Cobrar por",
-      "options": {
-        "Monthly": "Mensal",
-        "Quarterly": "Trimestral",
-        "Half-yearly": "Semestral",
-        "Yearly": "Anual"
-      }
-    },
-    "receipt_date": {
-      "label": "Data do recibo"
     },
     "basic_salary": {
       "label": "Salário mensal ({currency})"
@@ -72,33 +53,49 @@
         "Card": "Cartão",
         "Online": "Online"
       }
+    },
+    "periods": {
+      "label": "Período do salário",
+      "options": {
+        "Monthly": "Mensal",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
     }
   },
   "print": {
     "title": "Recibo de salário do motorista",
     "date": "Data",
-    "certify": "Certifica-se que {employer} pagou {amount} ao motorista {driver} referente ao salário do mês de {month} (recibo de quitação anexo).",
-    "certify_period": "Certifica-se que {employer} pagou {amount} ao motorista {driver} referente ao salário do período {period} (recibo de quitação anexo).",
-    "certify_self": "Certifico que paguei {amount} ao motorista {driver} pelo mês de {month} (recibo de quitação anexo).",
-    "reimburse": "Solicito o reembolso do valor acima. Declaro ainda que o que consta acima é correto e verdadeiro.",
     "vehicle_no": "Placa",
     "driver_name": "Nome do motorista",
-    "employer_name": "Nome do empregador",
-    "employer_signature": "Assinatura do empregador",
+    "employer_name": "Nome do funcionário",
+    "employer_signature": "Assinatura do funcionário",
     "revenue_stamp": "Selo fiscal",
     "salary_month": "Salário do mês",
     "amount_paid": "Valor pago",
-    "received_text": "Recebido de {employer} a quantia de {amount} pelo motorista {driver} referente ao salário do mês de {month}.",
+    "for_month": "Pelo mês de",
+    "period": "Período",
+    "receipt_date": "Data do recibo",
+    "employee_code": "Código do funcionário",
+    "certify_plain": "Certifico que paguei {amount} ao motorista {driver} referente ao mês de {month}.",
+    "certify_plain_period": "Certifico que paguei {amount} ao motorista {driver} referente ao período {month}.",
+    "certify_self": "Certifico que paguei {amount} ao motorista {driver} pelo mês de {month} (recibo de quitação anexo).",
+    "reimburse": "Solicito o reembolso do valor acima. Declaro ainda que o que consta acima é correto e verdadeiro.",
     "ack_title": "Confirmação de recebimento",
     "receipt_date_of": "Data de recebimento",
-    "for_month": "Pelo mês de",
-    "received_sum": "Recebida a quantia de {amount} pelo mês de {month} de {employer}.",
-    "period": "Período",
-    "receipt_of": "Recibo {number} de {total}",
+    "received_sum": "Recebi a quantia de {amount} referente ao mês de {month} de {employer}.",
+    "ack_certify": "Certifico que paguei {amount} ao motorista {driver} referente ao mês de {month} (recibo de confirmação anexo abaixo).",
+    "ack_certify_period": "Certifico que paguei {amount} ao motorista {driver} referente ao período {month} (recibo de confirmação anexo abaixo).",
+    "ack_reimburse": "Por favor, reembolse o valor acima na minha conta.",
+    "ack_further": "Declaro ainda que o acima exposto é correto e verdadeiro, até onde sei e acredito.",
+    "ack_heading": "Recibo de pagamento e confirmação (a ser assinado pelo motorista)",
+    "ack_received": "Recebi a quantia de {amount} ({words}) referente ao mês de {month} de {employer}.",
+    "ack_received_period": "Recebi a quantia de {amount} ({words}) referente ao período {month} de {employer}.",
+    "ack_thumb": "Assinatura / impressão digital do polegar do motorista",
+    "employee_address": "Endereço do funcionário",
     "payroll_voucher": "Comprovante de folha",
     "voucher_sub": "Comprovante de pagamento do salário do motorista",
-    "payer": "Pagador",
-    "driver": "Motorista",
     "acknowledgement": "Confirmação",
     "ack_voucher": "Recebido por {driver} de {employer} referente ao salário de {month}.",
     "received_by": "Recebido por",
@@ -106,7 +103,6 @@
     "name": "Nome",
     "record_title": "Registro de salário do motorista",
     "record_sub": "Formato simples de confirmação",
-    "payer_name": "Nome do pagador",
     "declaration_label": "Declaração",
     "confirm": "Confirmo o recebimento do valor do salário indicado acima, pago pelo pagador, referente ao mês deste registro.",
     "notes": "Observações",
@@ -128,5 +124,11 @@
     "allowance": 200,
     "deductions": 100,
     "declaration": "Declaro ainda que o motorista é utilizado exclusivamente para fins profissionais."
+  },
+  "groups": {
+    "business": "Funcionário",
+    "document": "Período do salário",
+    "customer": "Motorista",
+    "details": "Veículo"
   }
 }

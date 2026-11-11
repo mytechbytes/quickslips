@@ -8,47 +8,28 @@
   "designs": {
     "t1": "Reimbursement",
     "t2": "With acknowledgement",
-    "t3": "Employer's declaration",
-    "t4": "Several months",
+    "t3": "Employee's declaration",
     "t5": "Payroll voucher",
     "t6": "Simple record"
   },
   "fields": {
     "employer_name": {
-      "label": "Employer name"
+      "label": "Employee Name"
+    },
+    "employee_code": {
+      "label": "Employee Code (optional)"
     },
     "employer_address": {
-      "label": "Employer address (optional)"
+      "label": "Employee Address (optional)"
     },
     "driver_name": {
-      "label": "Driver name"
+      "label": "Driver Name"
     },
     "vehicle_number": {
-      "label": "Vehicle number (optional)"
+      "label": "Vehicle Number (optional)"
     },
     "declaration": {
       "label": "Declaration (optional)"
-    },
-    "month": {
-      "label": "Salary for month"
-    },
-    "from_date": {
-      "label": "Period from (optional)"
-    },
-    "to_date": {
-      "label": "Period to (optional)"
-    },
-    "bill_by": {
-      "label": "Bill by",
-      "options": {
-        "Monthly": "Monthly",
-        "Quarterly": "Quarterly",
-        "Half-yearly": "Half-yearly",
-        "Yearly": "Yearly"
-      }
-    },
-    "receipt_date": {
-      "label": "Receipt date"
     },
     "basic_salary": {
       "label": "Monthly salary ({currency})"
@@ -72,48 +53,63 @@
         "Card": "Card",
         "Online": "Online"
       }
+    },
+    "periods": {
+      "label": "Salary period",
+      "options": {
+        "Monthly": "Monthly",
+        "Quarterly": "Quarterly",
+        "Half-yearly": "Half-yearly",
+        "Yearly": "Yearly"
+      }
     }
   },
   "print": {
     "title": "Driver Salary Receipt",
     "date": "Date",
-    "certify": "This is to certify that {employer} has paid {amount} to driver {driver} towards salary for the month of {month} (acknowledged receipt enclosed).",
-    "certify_period": "This is to certify that {employer} has paid {amount} to driver {driver} towards salary for the period {period} (acknowledged receipt enclosed).",
+    "vehicle_no": "Vehicle Number",
+    "driver_name": "Driver Name",
+    "employer_name": "Employee Name",
+    "employer_signature": "Employee Signature",
+    "revenue_stamp": "Revenue Stamp",
+    "salary_month": "Salary of the Month",
+    "amount_paid": "Amount Paid",
+    "for_month": "For the Month of",
+    "period": "Period",
+    "receipt_date": "Receipt Date",
+    "employee_code": "Employee Code",
+    "certify_plain": "This is to certify that I have paid {amount} to the driver, {driver}, for the month of {month}.",
+    "certify_plain_period": "This is to certify that I have paid {amount} to the driver, {driver}, for the period {month}.",
     "certify_self": "This is to certify that I have paid {amount} to driver {driver} for the month of {month} (acknowledged receipt enclosed).",
     "reimburse": "Please reimburse the above amount. I further declare that what is stated above is correct and true.",
-    "vehicle_no": "Vehicle number",
-    "driver_name": "Driver name",
-    "employer_name": "Employer name",
-    "employer_signature": "Employer signature",
-    "revenue_stamp": "Revenue stamp",
-    "salary_month": "Salary of the month",
-    "amount_paid": "Amount paid",
-    "received_text": "Received from {employer} the sum of {amount} by driver {driver} towards salary for the month of {month}.",
     "ack_title": "Receipt acknowledgement",
-    "receipt_date_of": "Date of receipt",
-    "for_month": "For the month of",
-    "received_sum": "Received a sum of {amount} only for the month of {month} from {employer}.",
-    "period": "Period",
-    "receipt_of": "Receipt {number} of {total}",
+    "receipt_date_of": "Date of Receipt",
+    "received_sum": "I have received a sum of {amount} only for the month of {month} from {employer}.",
+    "ack_certify": "This is to certify that I have paid {amount} to the driver, {driver}, for the month of {month} (Acknowledged receipt enclosed below).",
+    "ack_certify_period": "This is to certify that I have paid {amount} to the driver, {driver}, for the period {month} (Acknowledged receipt enclosed below).",
+    "ack_reimburse": "Please reimburse the above amount to my account.",
+    "ack_further": "I further declare that what is stated above is correct and true to the best of my knowledge and belief.",
+    "ack_heading": "Payment Receipt & Acknowledgement (to be signed by the driver)",
+    "ack_received": "Received a sum of {amount} ({words}) for the month of {month} from {employer}.",
+    "ack_received_period": "Received a sum of {amount} ({words}) for the period {month} from {employer}.",
+    "ack_thumb": "Signature / Thumb Impression of Driver",
+    "employee_address": "Employee Address",
     "payroll_voucher": "Payroll voucher",
     "voucher_sub": "Driver salary disbursement slip",
-    "payer": "Payer",
-    "driver": "Driver",
     "acknowledgement": "Acknowledgement",
     "ack_voucher": "Received by {driver} from {employer} towards salary for {month}.",
-    "received_by": "Received by",
-    "prepared_by": "Prepared by",
+    "received_by": "Received By",
+    "prepared_by": "Prepared By",
     "name": "Name",
     "record_title": "Driver salary record",
     "record_sub": "Simple typed acknowledgement format",
-    "payer_name": "Payer name",
     "declaration_label": "Declaration",
     "confirm": "I confirm receipt of the salary amount stated above from the payer for the month mentioned in this record.",
     "notes": "Notes",
     "note_1": "Salary covers the stated month only.",
     "note_2": "Overtime and allowances are included only where listed.",
-    "payer_details": "Payer details",
-    "driver_signature": "Driver signature",
+    "payer_details": "Employee Details",
+    "driver_signature": "Driver Signature",
     "monthly_salary": "Monthly salary",
     "overtime": "Overtime",
     "allowance": "Allowance",
@@ -121,5 +117,11 @@
   },
   "sample": {
     "declaration": "I also declare that the driver is exclusively utilized for official purpose only."
+  },
+  "groups": {
+    "business": "Employee",
+    "document": "Salary period",
+    "customer": "Driver",
+    "details": "Vehicle"
   }
 }

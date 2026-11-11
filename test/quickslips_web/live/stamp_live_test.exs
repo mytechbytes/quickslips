@@ -63,7 +63,8 @@ defmodule QuickSlipsWeb.StampLiveTest do
       {:ok, view, _html} = live(conn, ~p"/stamps")
       choose(view, "sign.png", png_bytes())
 
-      html = view |> form("#stamp-form", stamp: %{name: "Owner"}) |> render_submit()
+      html =
+        view |> form("#stamp-form", stamp: %{name: "Owner", rights: "true"}) |> render_submit()
 
       assert html =~ "Stamp saved."
       assert [%{name: "Owner", path: path}] = Stamps.list_stamps(scope)
@@ -79,7 +80,7 @@ defmodule QuickSlipsWeb.StampLiveTest do
       {:ok, view, _html} = live(conn, ~p"/stamps")
       choose(view, "sign.png", png_bytes())
 
-      html = view |> form("#stamp-form", stamp: %{name: "  "}) |> render_submit()
+      html = view |> form("#stamp-form", stamp: %{name: "  ", rights: "true"}) |> render_submit()
 
       assert html =~ "can&#39;t be blank"
       assert html =~ "sign.png"
@@ -96,7 +97,8 @@ defmodule QuickSlipsWeb.StampLiveTest do
       {:ok, view, _html} = live(conn, ~p"/stamps")
       choose(view, "second.png", png_bytes())
 
-      html = view |> form("#stamp-form", stamp: %{name: "owner"}) |> render_submit()
+      html =
+        view |> form("#stamp-form", stamp: %{name: "owner", rights: "true"}) |> render_submit()
 
       assert html =~ "is already used by another of your stamps"
       assert html =~ "second.png"
@@ -104,7 +106,8 @@ defmodule QuickSlipsWeb.StampLiveTest do
       assert length(stored_files(user)) == 1
 
       # With another name, the same file goes through.
-      html = view |> form("#stamp-form", stamp: %{name: "Manager"}) |> render_submit()
+      html =
+        view |> form("#stamp-form", stamp: %{name: "Manager", rights: "true"}) |> render_submit()
 
       assert html =~ "Stamp saved."
       assert Stamps.count_stamps(scope) == 2
@@ -113,7 +116,8 @@ defmodule QuickSlipsWeb.StampLiveTest do
     test "a picture is needed", %{conn: conn, scope: scope} do
       {:ok, view, _html} = live(conn, ~p"/stamps")
 
-      html = view |> form("#stamp-form", stamp: %{name: "Owner"}) |> render_submit()
+      html =
+        view |> form("#stamp-form", stamp: %{name: "Owner", rights: "true"}) |> render_submit()
 
       assert html =~ "Choose a picture of the stamp first."
       assert Stamps.list_stamps(scope) == []
@@ -127,7 +131,8 @@ defmodule QuickSlipsWeb.StampLiveTest do
       {:ok, view, _html} = live(conn, ~p"/stamps")
       choose(view, "sign.png", "this is only text")
 
-      html = view |> form("#stamp-form", stamp: %{name: "Owner"}) |> render_submit()
+      html =
+        view |> form("#stamp-form", stamp: %{name: "Owner", rights: "true"}) |> render_submit()
 
       assert html =~ "The stamp is not a real PNG or JPG picture."
       assert Stamps.list_stamps(scope) == []

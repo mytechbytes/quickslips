@@ -16,6 +16,43 @@ defmodule QuickSlips.Templates do
   @doc "Directory of one template."
   def template_dir(slug), do: Path.join(root_dir(), slug)
 
+  @papers ~w(a4 a5 us-letter)
+
+  @doc "The sheets a user may choose for a document that is not made for a roll: the names Typst knows."
+  def papers, do: @papers
+
+  @doc """
+  What the choice of a sheet adds to the data of a document: `%{"paper_size" => "a4"}`, or nothing. Nothing when the
+  choice is not one of `papers/0` (including "", the layout's own size), and nothing for a design made for a thermal
+  roll, which keeps its width whatever was chosen. The schema is the localized one of `get/1`.
+  """
+  def paper_data(schema, template, choice) when choice in @papers do
+    case Enum.find(schema["templates"], &(&1["id"] == template)) do
+      %{"thermal" => false} -> %{"paper_size" => choice}
+      _roll_or_unknown -> %{}
+    end
+  end
+
+  def paper_data(_schema, _template, _choice), do: %{}
+
+  @margins ~w(narrow wide)
+
+  @doc "The margins a user may choose, besides the layout's own."
+  def margins, do: @margins
+
+  @doc """
+  What the choice of margins adds to the data: `%{"margin_size" => "narrow"}`, or nothing, with the same rules as
+  `paper_data/3`: a design made for a thermal roll keeps its own margins.
+  """
+  def margin_data(schema, template, choice) when choice in @margins do
+    case Enum.find(schema["templates"], &(&1["id"] == template)) do
+      %{"thermal" => false} -> %{"margin_size" => choice}
+      _roll_or_unknown -> %{}
+    end
+  end
+
+  def margin_data(_schema, _template, _choice), do: %{}
+
   @doc "Every template as a visitor of the default locale (English, India) sees it."
   def list, do: Registry.list()
 

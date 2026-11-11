@@ -2,12 +2,54 @@ import type { Design } from "./form"
 import { t } from "./i18n"
 import { saveSignature, type Signature } from "./saved"
 
+/** Told when a signature is saved on the page, so the other select of signatures lists it too. */
+export const SIGNATURE_SAVED = "signature-saved"
+
 export type SignaturePicker = {
   /** The id of the chosen saved signature, or `null` for none: the place to sign by hand. */
   readonly id: number | null
   use(id: number | null): void
   /** The choice is shown while the chosen design of the bill has a place for a signature. */
   showFor(design: Design | undefined): void
+}
+
+/**
+ * The driver's signature, the second one of a receipt: a select of the same saved signatures (the server draws it in
+ * `#driver-signature-section`), shown while the chosen design has a place for it. `drawn` is told the address of the
+ * chosen picture, or `null`, for the preview.
+ */
+export function createDriverSignaturePicker(root: HTMLElement, drawn: (url: string | null) => void): SignaturePicker {
+  const section = root.querySelector<HTMLElement>("#driver-signature-section")
+  const select = root.querySelector<HTMLSelectElement>("#driver-signature-select")
+  if (!section || !select) return NO_PICKER
+
+  const signatures: Signature[] = JSON.parse(root.dataset.signatures ?? "[]")
+  let chosen: number | null = null
+
+  function use(id: number | null) {
+    const signature = signatures.find((s) => s.id === id) ?? null
+    chosen = signature ? signature.id : null
+    select!.value = signature ? String(signature.id) : ""
+    drawn(signature?.url ?? null)
+  }
+  select.addEventListener("change", () => use(select.value ? Number(select.value) : null))
+  // A signature saved in the first picker is listed here too, in the same order, keeping the choice.
+  root.addEventListener(SIGNATURE_SAVED, (event) => {
+    signatures.push((event as CustomEvent<Signature>).detail)
+    signatures.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
+    select.replaceChildren(select.options[0], ...signatures.map((s) => new Option(s.name, String(s.id))))
+    select.value = chosen ? String(chosen) : ""
+  })
+
+  return {
+    get id() {
+      return chosen
+    },
+    use,
+    showFor(design) {
+      section.classList.toggle("hidden", !design?.driver_signature)
+    },
+  }
 }
 
 // A visitor has no signatures: nothing to choose and nothing to draw.
@@ -36,6 +78,7 @@ export function createSignaturePicker(root: HTMLElement, drawn: (url: string | n
 
   const name = root.querySelector<HTMLInputElement>("#signature-name")!
   const file = root.querySelector<HTMLInputElement>("#signature-file")!
+  const rights = root.querySelector<HTMLInputElement>("#signature-rights")!
   const button = root.querySelector<HTMLButtonElement>("#signature-save")!
   const message = root.querySelector<HTMLElement>("#signature-message")!
   const say = (text: string, error: boolean) => {
@@ -47,9 +90,10 @@ export function createSignaturePicker(root: HTMLElement, drawn: (url: string | n
     const picture = file.files?.[0]
     if (!name.value.trim()) return say(t("signature_error_name_blank"), true)
     if (!picture) return say(t("signature_error_no_file"), true)
+    if (!rights.checked) return say(t("rights_required"), true)
 
     button.disabled = true
-    const result = await saveSignature(name.value.trim(), picture)
+    const result = await saveSignature(name.value.trim(), picture, rights.checked)
     button.disabled = false
 
     if (!result.ok) {
@@ -61,9 +105,11 @@ export function createSignaturePicker(root: HTMLElement, drawn: (url: string | n
     signatures.push(result.signature)
     signatures.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
     select.replaceChildren(select.options[0], ...signatures.map((s) => new Option(s.name, String(s.id))))
+    root.dispatchEvent(new CustomEvent(SIGNATURE_SAVED, { detail: result.signature }))
     use(result.signature.id) // the signature that was just saved is the one the visitor wants
     name.value = ""
     file.value = ""
+    rights.checked = false
     say(t("signature_saved"), false)
   })
 

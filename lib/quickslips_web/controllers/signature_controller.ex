@@ -5,7 +5,7 @@ defmodule QuickSlipsWeb.SignatureController do
 
   The answer is the signature (`%{signature: %{id, name, url}}`), or an error with a `code` the page turns into a
   sentence in its own language (`name_blank`, `name_taken`, `name_too_long`, `limit_reached`, `unsupported_type`,
-  `too_large`, `file_too_large`, `no_file`).
+  `too_large`, `file_too_large`, `no_file`, `rights_not_confirmed`).
   """
   use QuickSlipsWeb, :controller
 
@@ -19,7 +19,8 @@ defmodule QuickSlipsWeb.SignatureController do
     %{id: signature.id, name: signature.name, url: UploadController.path(signature.path)}
   end
 
-  def create(conn, %{"file" => %Plug.Upload{path: path}} = params) do
+  # A picture is kept only when the user says it is theirs to use (`rights=true`).
+  def create(conn, %{"file" => %Plug.Upload{path: path}, "rights" => "true"} = params) do
     with {:ok, scope} <- fetch_scope(conn) do
       case Signatures.create_signature(scope, %{"name" => params["name"]}, path) do
         {:ok, signature} ->
@@ -32,6 +33,10 @@ defmodule QuickSlipsWeb.SignatureController do
           refuse(conn, Atom.to_string(reason))
       end
     end
+  end
+
+  def create(conn, %{"file" => %Plug.Upload{}}) do
+    with {:ok, _scope} <- fetch_scope(conn), do: refuse(conn, "rights_not_confirmed")
   end
 
   def create(conn, _params) do

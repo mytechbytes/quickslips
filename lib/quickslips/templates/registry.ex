@@ -16,10 +16,10 @@ defmodule QuickSlips.Templates.Registry do
   # live templates still lead somewhere, so the names stay taken.
   @reserved ~w(users auth dashboard dev api assets images fonts wasm uploads source
                history documents businesses credits bulk bulk-import templates
-               healthz sitemap sitemap.xml sitemap.xsl terms privacy disclaimer contact sw.js favicon.ico robots.txt admin)
+               healthz thumbnails sitemap sitemap.xml sitemap.xsl terms privacy disclaimer contact sw.js favicon.ico robots.txt admin)
 
   # Field keys the server fills in itself (the names of a business's pictures), so a template can't use them.
-  @reserved_keys ~w(logo signature stamp)
+  @reserved_keys ~w(logo signature driver_signature stamp paper_size margin_size)
 
   ## Client API
 
@@ -222,7 +222,13 @@ defmodule QuickSlips.Templates.Registry do
       Map.update!(
         schema,
         "templates",
-        &Enum.map(&1, fn design -> design |> mark_signature(dir) |> mark_stamp(dir) end)
+        &Enum.map(&1, fn design ->
+          design
+          |> mark_signature(dir)
+          |> mark_driver_signature(dir)
+          |> mark_stamp(dir)
+          |> mark_page(dir)
+        end)
       )
 
     {folder, %{schema: schema, texts: texts, sample: read_sample(dir)}}
@@ -247,11 +253,50 @@ defmodule QuickSlips.Templates.Registry do
     end
   end
 
+  # Whether a design has a place for a second signature, the driver's, as `"driver_signature": true`: it reads the
+  # `"driver_signature"` picture. The page offers a second choice of a saved signature only for those.
+  defp mark_driver_signature(%{"id" => id} = design, dir) do
+    source = File.read!(Path.join(dir, id <> ".typ"))
+    Map.put(design, "driver_signature", String.contains?(source, ~s("driver_signature")))
+  end
+
   # Whether a design has a place for a revenue stamp, as `"stamp": true` on it: it uses the `revenue-stamp` helper.
   # The page offers the choice of a stamp only for those (and only for a document made for India).
   defp mark_stamp(%{"id" => id} = design, dir) do
     source = File.read!(Path.join(dir, id <> ".typ"))
     Map.put(design, "stamp", String.contains?(source, "revenue-stamp("))
+  end
+
+  # The widest a till roll is (a thermal printer takes 58 or 80 mm paper, which the layouts draw at 64 to 86 mm).
+  @thermal_max_width 90
+
+  # What the layout says of its page, from its `#show: base.with(...)` line, as the page needs it to decide whether to
+  # offer a choice of paper: `"thermal": true` for a roll receipt (made for the printer, so no paper to choose),
+  # `"slip_width"` (mm) for a till-style slip, and `"paper"` for a layout made for a named sheet ("a4", "a5").
+  defp mark_page(%{"id" => id} = design, dir) do
+    source = File.read!(Path.join(dir, id <> ".typ"))
+    args = with [_, args] <- Regex.run(~r/^#show:\s*base\.with\((.*)\)\s*$/m, source), do: args
+
+    width =
+      with args when is_binary(args) <- args,
+           [_, mm] <- Regex.run(~r/width:\s*(\d+(?:\.\d+)?)mm/, args) do
+        mm |> Float.parse() |> elem(0)
+      else
+        _ -> nil
+      end
+
+    paper =
+      with args when is_binary(args) <- args,
+           [_, name] <- Regex.run(~r/paper:\s*"([a-z0-9-]+)"/, args) do
+        name
+      else
+        _ -> nil
+      end
+
+    design
+    |> Map.put("thermal", width != nil and width <= @thermal_max_width)
+    |> Map.put("slip_width", width)
+    |> Map.put("paper", paper)
   end
 
   # A template that declares a language must be translated into it completely: every key of its English text

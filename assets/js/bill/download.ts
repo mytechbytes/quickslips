@@ -17,6 +17,12 @@ export async function downloadPdf(
   signatureId?: number | null,
   // The revenue stamp: "system:<name>", the id of a saved one (as text), or "" for the empty box.
   stamp?: string,
+  // The sheet ("a4", "a5", "us-letter"), or "" for the layout's own size.
+  paper?: string,
+  // The margins ("narrow", "wide"), or "" for the layout's own.
+  margin?: string,
+  // The driver's signature, the second one of a receipt (none: the place to sign by hand).
+  driverSignatureId?: number | null,
 ): Promise<DownloadResult> {
   const csrf = document.querySelector<HTMLMetaElement>("meta[name='csrf-token']")?.content ?? ""
 
@@ -30,7 +36,10 @@ export async function downloadPdf(
       turnstile_token: turnstileToken,
       business_id: businessId,
       signature_id: signatureId,
+      driver_signature_id: driverSignatureId,
       stamp,
+      paper,
+      margin,
     }),
   })
 

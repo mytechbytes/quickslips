@@ -1,4 +1,4 @@
-import type { Business } from "./form"
+import type { Business, SavedEntry } from "./form"
 
 // What a logged-in user can save from a bill's page without leaving it: a signature and the seller details.
 
@@ -23,22 +23,35 @@ async function post(url: string, body: BodyInit, headers: Record<string, string>
 }
 
 /** Saves the picture as a signature called `name`. */
-export async function saveSignature(name: string, file: File): Promise<{ ok: true; signature: Signature } | Refused> {
+export async function saveSignature(name: string, file: File, rights: boolean): Promise<{ ok: true; signature: Signature } | Refused> {
   const body = new FormData()
   body.set("name", name)
   body.set("file", file)
+  if (rights) body.set("rights", "true")
   // No content type: the browser writes it, with the boundary of the form data.
   const result = await post("/api/signatures", body)
   return result.ok ? { ok: true, signature: result.data.signature as Signature } : result
 }
 
 /** Saves the picture as a revenue stamp called `name`. */
-export async function saveStamp(name: string, file: File): Promise<{ ok: true; stamp: Stamp } | Refused> {
+export async function saveStamp(name: string, file: File, rights: boolean): Promise<{ ok: true; stamp: Stamp } | Refused> {
   const body = new FormData()
   body.set("name", name)
   body.set("file", file)
+  if (rights) body.set("rights", "true")
   const result = await post("/api/stamps", body)
   return result.ok ? { ok: true, stamp: result.data.stamp as Stamp } : result
+}
+
+/** Saves the details of a section of the bill (`group`): a new entry, or with the `id` of a saved one that entry again. */
+export async function saveSection(
+  slug: string,
+  group: string,
+  data: Record<string, string>,
+  id?: number,
+): Promise<{ ok: true; entry: SavedEntry; created: boolean } | Refused> {
+  const result = await post("/api/saved-entries", JSON.stringify({ slug, group, data, id }), { "content-type": "application/json" })
+  return result.ok ? { ok: true, entry: result.data.entry as SavedEntry, created: result.data.outcome === "created" } : result
 }
 
 export type SellerDetails = { name: string; address: string; gstin: string }

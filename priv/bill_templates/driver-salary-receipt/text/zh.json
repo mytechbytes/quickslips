@@ -8,17 +8,19 @@
   "designs": {
     "t1": "报销用",
     "t2": "附收款确认",
-    "t3": "雇主声明",
-    "t4": "多个月份",
+    "t3": "员工声明",
     "t5": "工资凭证",
     "t6": "简易记录"
   },
   "fields": {
     "employer_name": {
-      "label": "雇主姓名"
+      "label": "员工姓名"
+    },
+    "employee_code": {
+      "label": "员工编号（选填）"
     },
     "employer_address": {
-      "label": "雇主地址（选填）"
+      "label": "员工地址（选填）"
     },
     "driver_name": {
       "label": "司机姓名"
@@ -28,27 +30,6 @@
     },
     "declaration": {
       "label": "声明（选填）"
-    },
-    "month": {
-      "label": "工资月份"
-    },
-    "from_date": {
-      "label": "期间起（选填）"
-    },
-    "to_date": {
-      "label": "期间止（选填）"
-    },
-    "bill_by": {
-      "label": "按周期开具",
-      "options": {
-        "Monthly": "按月",
-        "Quarterly": "按季度",
-        "Half-yearly": "按半年",
-        "Yearly": "按年"
-      }
-    },
-    "receipt_date": {
-      "label": "收据日期"
     },
     "basic_salary": {
       "label": "月工资（{currency}）"
@@ -72,33 +53,49 @@
         "Card": "银行卡",
         "Online": "在线支付"
       }
+    },
+    "periods": {
+      "label": "工资周期",
+      "options": {
+        "Monthly": "按月",
+        "Quarterly": "按季度",
+        "Half-yearly": "按半年",
+        "Yearly": "按年"
+      }
     }
   },
   "print": {
     "title": "司机工资收据",
     "date": "日期",
-    "certify": "兹证明 {employer} 已向司机 {driver} 支付 {month} 的工资 {amount}（附收款确认单）。",
-    "certify_period": "兹证明 {employer} 已向司机 {driver} 支付 {period} 期间的工资 {amount}（附收款确认单）。",
-    "certify_self": "兹证明本人已向司机 {driver} 支付 {month} 的工资 {amount}（附收款确认单）。",
-    "reimburse": "请报销上述金额。本人另声明以上内容真实无误。",
     "vehicle_no": "车牌号",
     "driver_name": "司机姓名",
-    "employer_name": "雇主姓名",
-    "employer_signature": "雇主签字",
+    "employer_name": "员工姓名",
+    "employer_signature": "员工签字",
     "revenue_stamp": "印花税票",
     "salary_month": "工资月份",
     "amount_paid": "已付金额",
-    "received_text": "司机 {driver} 已收到 {employer} 支付的 {month} 工资 {amount}。",
+    "for_month": "所属月份",
+    "period": "期间",
+    "receipt_date": "收据日期",
+    "employee_code": "员工编号",
+    "certify_plain": "兹证明本人已向司机{driver}支付{month}的工资{amount}。",
+    "certify_plain_period": "兹证明本人已向司机{driver}支付{month}期间的工资{amount}。",
+    "certify_self": "兹证明本人已向司机 {driver} 支付 {month} 的工资 {amount}（附收款确认单）。",
+    "reimburse": "请报销上述金额。本人另声明以上内容真实无误。",
     "ack_title": "收款确认",
     "receipt_date_of": "收款日期",
-    "for_month": "所属月份",
-    "received_sum": "已收到 {employer} 支付的 {month} 工资 {amount}。",
-    "period": "期间",
-    "receipt_of": "第 {number} 张，共 {total} 张",
+    "received_sum": "本人已收到{employer}支付的{month}工资{amount}。",
+    "ack_certify": "兹证明本人已向司机{driver}支付{month}的工资{amount}（收款确认回执附于下方）。",
+    "ack_certify_period": "兹证明本人已向司机{driver}支付{month}期间的工资{amount}（收款确认回执附于下方）。",
+    "ack_reimburse": "请将上述金额报销至我的账户。",
+    "ack_further": "本人进一步声明，以上所述就本人所知所信均真实无误。",
+    "ack_heading": "付款收据及确认（由司机签署）",
+    "ack_received": "已收到{employer}支付的{month}工资{amount}（{words}）。",
+    "ack_received_period": "已收到{employer}支付的{month}期间工资{amount}（{words}）。",
+    "ack_thumb": "司机签名 / 指纹",
+    "employee_address": "员工地址",
     "payroll_voucher": "工资凭证",
     "voucher_sub": "司机工资发放单",
-    "payer": "付款人",
-    "driver": "司机",
     "acknowledgement": "确认",
     "ack_voucher": "{driver} 已收到 {employer} 支付的 {month} 工资。",
     "received_by": "收款人",
@@ -106,7 +103,6 @@
     "name": "姓名",
     "record_title": "司机工资记录",
     "record_sub": "简易确认格式",
-    "payer_name": "付款人姓名",
     "declaration_label": "声明",
     "confirm": "本人确认已收到付款人支付的上述工资，所属月份见本记录。",
     "notes": "备注",
@@ -128,5 +124,11 @@
     "allowance": 400,
     "deductions": 200,
     "declaration": "本人另声明，该司机仅用于公务。"
+  },
+  "groups": {
+    "business": "员工",
+    "document": "工资周期",
+    "customer": "司机",
+    "details": "车辆"
   }
 }

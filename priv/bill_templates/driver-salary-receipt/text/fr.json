@@ -8,17 +8,19 @@
   "designs": {
     "t1": "Remboursement",
     "t2": "Avec accusé de réception",
-    "t3": "Déclaration de l'employeur",
-    "t4": "Plusieurs mois",
+    "t3": "Déclaration de l'employé",
     "t5": "Bon de paie",
     "t6": "Relevé simple"
   },
   "fields": {
     "employer_name": {
-      "label": "Nom de l'employeur"
+      "label": "Nom de l'employé"
+    },
+    "employee_code": {
+      "label": "Code employé (facultatif)"
     },
     "employer_address": {
-      "label": "Adresse de l'employeur (facultatif)"
+      "label": "Adresse de l'employé (facultatif)"
     },
     "driver_name": {
       "label": "Nom du chauffeur"
@@ -28,27 +30,6 @@
     },
     "declaration": {
       "label": "Déclaration (facultatif)"
-    },
-    "month": {
-      "label": "Salaire du mois"
-    },
-    "from_date": {
-      "label": "Période du (facultatif)"
-    },
-    "to_date": {
-      "label": "Période au (facultatif)"
-    },
-    "bill_by": {
-      "label": "Facturer par",
-      "options": {
-        "Monthly": "Mensuel",
-        "Quarterly": "Trimestriel",
-        "Half-yearly": "Semestriel",
-        "Yearly": "Annuel"
-      }
-    },
-    "receipt_date": {
-      "label": "Date de la quittance"
     },
     "basic_salary": {
       "label": "Salaire mensuel ({currency})"
@@ -72,33 +53,49 @@
         "Card": "Carte",
         "Online": "En ligne"
       }
+    },
+    "periods": {
+      "label": "Période de salaire",
+      "options": {
+        "Monthly": "Mensuel",
+        "Quarterly": "Trimestriel",
+        "Half-yearly": "Semestriel",
+        "Yearly": "Annuel"
+      }
     }
   },
   "print": {
     "title": "Reçu de salaire du chauffeur",
     "date": "Date",
-    "certify": "Il est certifié que {employer} a versé {amount} au chauffeur {driver} au titre du salaire du mois de {month} (reçu joint).",
-    "certify_period": "Il est certifié que {employer} a versé {amount} au chauffeur {driver} au titre du salaire de la période {period} (reçu joint).",
-    "certify_self": "Je certifie avoir versé {amount} au chauffeur {driver} pour le mois de {month} (reçu joint).",
-    "reimburse": "Veuillez rembourser le montant ci-dessus. Je déclare en outre que ce qui précède est exact et sincère.",
     "vehicle_no": "Immatriculation",
     "driver_name": "Nom du chauffeur",
-    "employer_name": "Nom de l'employeur",
-    "employer_signature": "Signature de l'employeur",
+    "employer_name": "Nom de l'employé",
+    "employer_signature": "Signature de l'employé",
     "revenue_stamp": "Timbre fiscal",
     "salary_month": "Salaire du mois",
     "amount_paid": "Montant versé",
-    "received_text": "Reçu de {employer} la somme de {amount} par le chauffeur {driver} au titre du salaire du mois de {month}.",
+    "for_month": "Pour le mois de",
+    "period": "Période",
+    "receipt_date": "Date du reçu",
+    "employee_code": "Code employé",
+    "certify_plain": "Je certifie avoir versé {amount} au chauffeur {driver} pour le mois de {month}.",
+    "certify_plain_period": "Je certifie avoir versé {amount} au chauffeur {driver} pour la période {month}.",
+    "certify_self": "Je certifie avoir versé {amount} au chauffeur {driver} pour le mois de {month} (reçu joint).",
+    "reimburse": "Veuillez rembourser le montant ci-dessus. Je déclare en outre que ce qui précède est exact et sincère.",
     "ack_title": "Accusé de réception",
     "receipt_date_of": "Date de réception",
-    "for_month": "Pour le mois de",
-    "received_sum": "Somme de {amount} reçue de {employer} pour le mois de {month}.",
-    "period": "Période",
-    "receipt_of": "Quittance {number} sur {total}",
+    "received_sum": "J'ai reçu la somme de {amount} pour le mois de {month} de la part de {employer}.",
+    "ack_certify": "Je certifie avoir versé {amount} au chauffeur {driver} pour le mois de {month} (reçu d'accusé de réception joint ci-dessous).",
+    "ack_certify_period": "Je certifie avoir versé {amount} au chauffeur {driver} pour la période {month} (reçu d'accusé de réception joint ci-dessous).",
+    "ack_reimburse": "Veuillez rembourser le montant ci-dessus sur mon compte.",
+    "ack_further": "Je déclare en outre que ce qui précède est exact et véridique, au meilleur de ma connaissance.",
+    "ack_heading": "Reçu de paiement et accusé de réception (à signer par le chauffeur)",
+    "ack_received": "Somme de {amount} ({words}) reçue pour le mois de {month} de la part de {employer}.",
+    "ack_received_period": "Somme de {amount} ({words}) reçue pour la période {month} de la part de {employer}.",
+    "ack_thumb": "Signature / empreinte du pouce du chauffeur",
+    "employee_address": "Adresse de l'employé",
     "payroll_voucher": "Bon de paie",
     "voucher_sub": "Bordereau de paiement du salaire du chauffeur",
-    "payer": "Payeur",
-    "driver": "Chauffeur",
     "acknowledgement": "Accusé de réception",
     "ack_voucher": "Reçu par {driver} de la part de {employer} au titre du salaire de {month}.",
     "received_by": "Reçu par",
@@ -106,7 +103,6 @@
     "name": "Nom",
     "record_title": "Relevé de salaire du chauffeur",
     "record_sub": "Format simple d'accusé de réception",
-    "payer_name": "Nom du payeur",
     "declaration_label": "Déclaration",
     "confirm": "Je confirme avoir reçu du payeur le montant du salaire indiqué ci-dessus pour le mois mentionné dans ce relevé.",
     "notes": "Remarques",
@@ -128,5 +124,11 @@
     "allowance": 90,
     "deductions": 60,
     "declaration": "Je déclare en outre que le chauffeur est utilisé exclusivement à des fins professionnelles."
+  },
+  "groups": {
+    "business": "Employé",
+    "document": "Période de salaire",
+    "customer": "Chauffeur",
+    "details": "Véhicule"
   }
 }

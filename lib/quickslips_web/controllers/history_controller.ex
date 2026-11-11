@@ -24,6 +24,7 @@ defmodule QuickSlipsWeb.HistoryController do
     # The signature that was chosen when the document was made. If it has been deleted since, the column is empty
     # (the database does that), and the document is made with the place to sign by hand.
     signature = Signatures.get_signature(scope, document.signature_id)
+    driver_signature = Signatures.get_signature(scope, document.driver_signature_id)
 
     # The revenue stamp the same way: a saved one that is gone is the empty box, and the site's default is a flag.
     stamp =
@@ -31,7 +32,8 @@ defmodule QuickSlipsWeb.HistoryController do
         do: {:system, document.stamp_system},
         else: Stamps.get_stamp(scope, document.stamp_id)
 
-    %{data: image_names, files: files} = Businesses.render_assets(business, signature, stamp)
+    %{data: image_names, files: files} =
+      Businesses.render_assets(business, signature, stamp, driver_signature)
 
     # The document is made again in the language and for the country it was made for.
     locale = Locales.for_document(document.language, document.options)
@@ -42,7 +44,17 @@ defmodule QuickSlipsWeb.HistoryController do
     with {:ok, schema} <- Templates.get(document.slug, locale),
          {:ok, clean} <- Validator.validate(schema, Items.upgrade(schema, document.data)),
          {:ok, pdf} <-
-           Renderer.render(document.slug, document.template, Map.merge(clean, image_names),
+           Renderer.render(
+             document.slug,
+             document.template,
+             clean
+             |> Map.merge(image_names)
+             |> Map.merge(
+               Templates.paper_data(schema, document.template, document.options["paper"])
+             )
+             |> Map.merge(
+               Templates.margin_data(schema, document.template, document.options["margin"])
+             ),
              assets: files,
              locale: Locales.for_document(document.language, document.options).code,
              country: country,

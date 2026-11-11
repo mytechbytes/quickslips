@@ -63,7 +63,10 @@ defmodule QuickSlipsWeb.SignatureLiveTest do
       {:ok, view, _html} = live(conn, ~p"/signatures")
       choose(view, "sign.png", png_bytes())
 
-      html = view |> form("#signature-form", signature: %{name: "Owner"}) |> render_submit()
+      html =
+        view
+        |> form("#signature-form", signature: %{name: "Owner", rights: "true"})
+        |> render_submit()
 
       assert html =~ "Signature saved."
       assert [%{name: "Owner", path: path}] = Signatures.list_signatures(scope)
@@ -79,7 +82,10 @@ defmodule QuickSlipsWeb.SignatureLiveTest do
       {:ok, view, _html} = live(conn, ~p"/signatures")
       choose(view, "sign.png", png_bytes())
 
-      html = view |> form("#signature-form", signature: %{name: "  "}) |> render_submit()
+      html =
+        view
+        |> form("#signature-form", signature: %{name: "  ", rights: "true"})
+        |> render_submit()
 
       assert html =~ "can&#39;t be blank"
       assert html =~ "sign.png"
@@ -96,7 +102,10 @@ defmodule QuickSlipsWeb.SignatureLiveTest do
       {:ok, view, _html} = live(conn, ~p"/signatures")
       choose(view, "second.png", png_bytes())
 
-      html = view |> form("#signature-form", signature: %{name: "owner"}) |> render_submit()
+      html =
+        view
+        |> form("#signature-form", signature: %{name: "owner", rights: "true"})
+        |> render_submit()
 
       assert html =~ "is already used by another of your signatures"
       assert html =~ "second.png"
@@ -104,7 +113,10 @@ defmodule QuickSlipsWeb.SignatureLiveTest do
       assert length(stored_files(user)) == 1
 
       # With another name, the same file goes through.
-      html = view |> form("#signature-form", signature: %{name: "Manager"}) |> render_submit()
+      html =
+        view
+        |> form("#signature-form", signature: %{name: "Manager", rights: "true"})
+        |> render_submit()
 
       assert html =~ "Signature saved."
       assert Signatures.count_signatures(scope) == 2
@@ -113,7 +125,10 @@ defmodule QuickSlipsWeb.SignatureLiveTest do
     test "a picture is needed", %{conn: conn, scope: scope} do
       {:ok, view, _html} = live(conn, ~p"/signatures")
 
-      html = view |> form("#signature-form", signature: %{name: "Owner"}) |> render_submit()
+      html =
+        view
+        |> form("#signature-form", signature: %{name: "Owner", rights: "true"})
+        |> render_submit()
 
       assert html =~ "Choose a picture of the signature first."
       assert Signatures.list_signatures(scope) == []
@@ -127,7 +142,10 @@ defmodule QuickSlipsWeb.SignatureLiveTest do
       {:ok, view, _html} = live(conn, ~p"/signatures")
       choose(view, "sign.png", "this is only text")
 
-      html = view |> form("#signature-form", signature: %{name: "Owner"}) |> render_submit()
+      html =
+        view
+        |> form("#signature-form", signature: %{name: "Owner", rights: "true"})
+        |> render_submit()
 
       assert html =~ "The signature is not a real PNG or JPG picture."
       assert Signatures.list_signatures(scope) == []

@@ -11,6 +11,61 @@ defmodule QuickSlips.Render.RendererTest do
   # Needs the typst binary. Run `mix test --exclude typst` on a machine without it.
   @moduletag :typst
 
+  defp sample(slug),
+    do: "priv/bill_templates/#{slug}/sample.json" |> File.read!() |> Jason.decode!()
+
+  defp media_box(pdf),
+    do:
+      Regex.run(~r|/MediaBox\[0 0 ([\d.]+) ([\d.]+)\]|, pdf, capture: :all_but_first)
+      |> Enum.map(&(&1 |> Float.parse() |> elem(0)))
+
+  describe "the sheet" do
+    test "is the layout's own, unless one is chosen" do
+      # the gym receipt is made for an A5 sheet
+      gym = sample("gym-membership-receipt")
+      {:ok, own} = Renderer.render("gym-membership-receipt", "t1", gym)
+
+      {:ok, a4} =
+        Renderer.render("gym-membership-receipt", "t1", Map.put(gym, "paper_size", "a4"))
+
+      {:ok, letter} =
+        Renderer.render("gym-membership-receipt", "t1", Map.put(gym, "paper_size", "us-letter"))
+
+      # A5, A4 and US Letter, in points
+      assert [420.0, 595.0] = media_box(own) |> Enum.map(&Float.round(&1))
+      assert [595.0, 842.0] = media_box(a4) |> Enum.map(&Float.round(&1))
+      assert [612.0, 792.0] = media_box(letter) |> Enum.map(&Float.round(&1))
+    end
+
+    test "puts a slip at the top of the chosen sheet, at its own width" do
+      {:ok, slip} = Renderer.render("fuel-bill", "t1", sample("fuel-bill"))
+
+      {:ok, a4} =
+        Renderer.render("fuel-bill", "t1", Map.put(sample("fuel-bill"), "paper_size", "a4"))
+
+      [slip_width, _] = media_box(slip)
+      assert slip_width < 595
+      assert [595.0, 842.0] = media_box(a4) |> Enum.map(&Float.round(&1))
+    end
+
+    test "is not changed for a roll receipt, which keeps its width" do
+      {:ok, roll} = Renderer.render("fuel-bill", "t2", sample("fuel-bill"))
+
+      {:ok, chosen} =
+        Renderer.render("fuel-bill", "t2", Map.put(sample("fuel-bill"), "paper_size", "a4"))
+
+      assert media_box(roll) |> Enum.at(0) == media_box(chosen) |> Enum.at(0)
+      assert media_box(chosen) |> Enum.at(0) < 200
+    end
+  end
+
+  test "can draw the first page as a picture" do
+    assert {:ok, <<0x89, "PNG", _::binary>> = png} =
+             Renderer.render("rent-receipt", "t1", sample("rent-receipt"), format: :png, ppi: 40)
+
+    assert byte_size(png) > 1_000
+  end
+
   # One test per (template folder, design) pair, generated when this file compiles.
   for path <- Path.wildcard("priv/bill_templates/*/schema.json") do
     slug = path |> Path.dirname() |> Path.basename()
@@ -108,6 +163,9 @@ defmodule QuickSlips.Render.RendererTest do
           %{"type" => "month"} ->
             sample[field["key"]] || "2026-12"
 
+          %{"type" => "periods"} ->
+            sample[field["key"]]
+
           %{"type" => "date"} ->
             sample[field["key"]] || "2026-12-31"
 
@@ -125,9 +183,6 @@ defmodule QuickSlips.Render.RendererTest do
   end
 
   describe "pictures" do
-    defp sample(slug),
-      do: "priv/bill_templates/#{slug}/sample.json" |> File.read!() |> Jason.decode!()
-
     test "a template draws the logo and signature that were copied next to it" do
       logo = tmp_file(png_bytes())
       signature = tmp_file(jpg_bytes())
@@ -793,11 +848,9 @@ defmodule QuickSlips.Render.RendererTest do
       }
     },
     "driver-salary-receipt" => %{
-      designs: ~w(t1 t2 t3 t4 t5 t6),
-      # t4 is a receipt for each month of the sample's period: July to September is three pages
-      pages: %{"t4" => 3},
+      designs: ~w(t1 t2 t3 t5 t6),
       optional:
-        ~w(employer_address vehicle_number declaration from_date to_date bill_by overtime allowance deductions),
+        ~w(employer_address employee_code vehicle_number declaration overtime allowance deductions),
       long: %{
         "employer_name" => String.duplicate("Venkatasubramanian ", 4),
         "driver_name" => String.duplicate("Ramakrishnan ", 5),
@@ -845,6 +898,68 @@ defmodule QuickSlips.Render.RendererTest do
       }
     }
   }
+
+  describe "the driver salary receipt for several months" do
+    @tag :typst
+    test "is a page for each period chosen, in every design" do
+      sample = sample("driver-salary-receipt")
+      months = ["2026-01", "2026-02", "2026-03"]
+
+      for design <- ~w(t1 t2 t3 t5 t6) do
+        many =
+          Map.put(sample, "periods", %{
+            "bill_by" => "Monthly",
+            "months" => months,
+            "dates" => ["", "", ""]
+          })
+
+        assert {:ok, pdf} = Renderer.render("driver-salary-receipt", design, many)
+        assert length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf)) == 3, design
+
+        quarter =
+          Map.put(sample, "periods", %{
+            "bill_by" => "Quarterly",
+            "months" => ["2026-04"],
+            "dates" => [""]
+          })
+
+        assert {:ok, pdf} = Renderer.render("driver-salary-receipt", design, quarter)
+        assert length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf)) == 1, design
+
+        two_quarters =
+          Map.put(sample, "periods", %{
+            "bill_by" => "Quarterly",
+            "months" => ["2026-04", "2026-07"],
+            "dates" => ["2026-06-30", ""]
+          })
+
+        assert {:ok, pdf} = Renderer.render("driver-salary-receipt", design, two_quarters)
+        assert length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf)) == 2, design
+      end
+    end
+  end
+
+  describe "the driver salary receipt on a sheet of the user's choice" do
+    @tag :typst
+    test "is a page for each period in every design, on every paper and with every margin" do
+      sample = sample("driver-salary-receipt")
+
+      many =
+        Map.put(sample, "periods", %{
+          "bill_by" => "Monthly",
+          "months" => ["2026-01", "2026-02"],
+          "dates" => ["", ""]
+        })
+
+      for design <- ~w(t1 t2 t3 t5 t6),
+          paper <- ["a4", "a5", "us-letter"],
+          margin <- ["narrow", "wide"] do
+        data = Map.merge(many, %{"paper_size" => paper, "margin_size" => margin})
+        assert {:ok, pdf} = Renderer.render("driver-salary-receipt", design, data)
+        assert length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf)) >= 2, "#{design} #{paper} #{margin}"
+      end
+    end
+  end
 
   describe "the designs of a bill that has several" do
     defp pages(pdf), do: length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf))

@@ -58,10 +58,13 @@ defmodule QuickSlipsWeb.TemplateLive do
             fonts: QuickSlips.Fonts.urls(locale.language),
             signed_in?: signed_in?(scope),
             businesses: saved_businesses(scope),
+            saved_entries: saved_entries(scope, slug),
             signatures: saved_signatures(scope),
             stamps: saved_stamps(scope),
             system_stamps: Enum.map(Stamps.system_stamps(), &StampController.system_payload/1),
             stamp_choice: stamp_choice(document),
+            paper: (document && document.options["paper"]) || "",
+            margin: (document && document.options["margin"]) || "",
             feedback_path: feedback_path("/#{locale.code}/#{public_slug}")
           )
 
@@ -112,6 +115,12 @@ defmodule QuickSlipsWeb.TemplateLive do
 
   defp saved_businesses(_visitor), do: []
 
+  # The saved details of the sections of this bill that may be saved (the employees, the drivers).
+  defp saved_entries(%{user: %{}} = scope, slug),
+    do: QuickSlips.SavedEntries.list_entries(scope, slug)
+
+  defp saved_entries(_visitor, _slug), do: %{}
+
   # The signatures to choose from. Only a logged-in user has any.
   defp saved_signatures(%{user: %{}} = scope) do
     scope |> Signatures.list_signatures() |> Enum.map(&SignatureController.payload/1)
@@ -137,9 +146,19 @@ defmodule QuickSlipsWeb.TemplateLive do
       Enum.any?(schema["templates"], &(&1["id"] == template and &1["stamp"] == true))
   end
 
+  # Whether the chosen design has a paper to choose: all but the designs made for a thermal roll.
+  defp paper_choice?(schema, template) do
+    Enum.any?(schema["templates"], &(&1["id"] == template and &1["thermal"] == false))
+  end
+
   # Whether the chosen design of the bill has a place for a signature (see `Templates.Registry`).
   defp signature_design?(schema, template) do
     Enum.any?(schema["templates"], &(&1["id"] == template and &1["signature"] == true))
+  end
+
+  # Whether it has a place for a second signature, the driver's.
+  defp driver_signature_design?(schema, template) do
+    Enum.any?(schema["templates"], &(&1["id"] == template and &1["driver_signature"] == true))
   end
 
   # What the form's script says to the visitor (`assets/js/bill/i18n.ts`), in the language of the page. A
@@ -172,6 +191,31 @@ defmodule QuickSlipsWeb.TemplateLive do
       "group_customer" => gettext("Customer"),
       "group_items" => gettext("Item Details"),
       "group_details" => gettext("Details"),
+      "group_additional" => gettext("Additional options"),
+      "pick_saved" => gettext("Choose saved details…"),
+      "saved_update" => gettext("Update"),
+      "saved_create" => gettext("Create new"),
+      "saved_error_name_taken" =>
+        gettext(
+          "Details with this name are already saved. Change the name, or choose them in the list and use Update."
+        ),
+      "preview_prev" => gettext("Previous page"),
+      "preview_next" => gettext("Next page"),
+      "preview_page" => gettext("Page %{page} of %{total}", page: "{page}", total: "{total}"),
+      "saved_created" => gettext("Details saved."),
+      "saved_updated" => gettext("Details updated."),
+      "saved_error_name_blank" => gettext("Fill in the name first, then save."),
+      "saved_error_limit_reached" =>
+        gettext("You have saved as many as you can keep here. Update one that is saved."),
+      "periods_bill_by" => gettext("Bill by"),
+      "periods_start_month" => gettext("Month"),
+      "periods_multiple" => gettext("Multiple receipts"),
+      "periods_day" => gettext("Day"),
+      "periods_check_all" => gettext("Check or uncheck all"),
+      "periods_period" => gettext("Period"),
+      "periods_months" => gettext("Months"),
+      "periods_date" => gettext("Receipt date (optional)"),
+      "rights_required" => gettext("Confirm that you have the rights to use this image."),
       "group_charges" => gettext("Charges"),
       "group_payment" => gettext("Payment"),
       "add_item" => gettext("Add item"),
@@ -182,6 +226,8 @@ defmodule QuickSlipsWeb.TemplateLive do
       "fill_business" => gettext("Fill from a saved business"),
       "other_rate" => gettext("Other rate…"),
       "type_rate" => gettext("Type the rate in %"),
+      "signature_error_rights_not_confirmed" =>
+        gettext("Confirm that you have the rights to use this image."),
       "signature_saved" => gettext("Signature saved."),
       "signature_error_name_blank" => gettext("Give the signature a name."),
       "signature_error_name_taken" => gettext("You already have a signature with this name."),

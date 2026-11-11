@@ -8,17 +8,19 @@
   "designs": {
     "t1": "Erstattung",
     "t2": "Mit Empfangsbestätigung",
-    "t3": "Erklärung des Arbeitgebers",
-    "t4": "Mehrere Monate",
+    "t3": "Erklärung des Mitarbeiters",
     "t5": "Lohnbeleg",
     "t6": "Einfacher Nachweis"
   },
   "fields": {
     "employer_name": {
-      "label": "Name des Arbeitgebers"
+      "label": "Name des Mitarbeiters"
+    },
+    "employee_code": {
+      "label": "Mitarbeitercode (optional)"
     },
     "employer_address": {
-      "label": "Adresse des Arbeitgebers (optional)"
+      "label": "Adresse des Mitarbeiters (optional)"
     },
     "driver_name": {
       "label": "Name des Fahrers"
@@ -28,27 +30,6 @@
     },
     "declaration": {
       "label": "Erklärung (optional)"
-    },
-    "month": {
-      "label": "Gehalt für den Monat"
-    },
-    "from_date": {
-      "label": "Zeitraum von (optional)"
-    },
-    "to_date": {
-      "label": "Zeitraum bis (optional)"
-    },
-    "bill_by": {
-      "label": "Abrechnung",
-      "options": {
-        "Monthly": "Monatlich",
-        "Quarterly": "Vierteljährlich",
-        "Half-yearly": "Halbjährlich",
-        "Yearly": "Jährlich"
-      }
-    },
-    "receipt_date": {
-      "label": "Datum der Quittung"
     },
     "basic_salary": {
       "label": "Monatsgehalt ({currency})"
@@ -72,33 +53,49 @@
         "Card": "Karte",
         "Online": "Online"
       }
+    },
+    "periods": {
+      "label": "Gehaltszeitraum",
+      "options": {
+        "Monthly": "Monatlich",
+        "Quarterly": "Vierteljährlich",
+        "Half-yearly": "Halbjährlich",
+        "Yearly": "Jährlich"
+      }
     }
   },
   "print": {
     "title": "Gehaltsquittung für den Fahrer",
     "date": "Datum",
-    "certify": "Hiermit wird bestätigt, dass {employer} an den Fahrer {driver} für den Monat {month} ein Gehalt von {amount} gezahlt hat (Empfangsbestätigung liegt bei).",
-    "certify_period": "Hiermit wird bestätigt, dass {employer} an den Fahrer {driver} für den Zeitraum {period} ein Gehalt von {amount} gezahlt hat (Empfangsbestätigung liegt bei).",
-    "certify_self": "Ich bestätige, dass ich an den Fahrer {driver} für den Monat {month} {amount} gezahlt habe (Empfangsbestätigung liegt bei).",
-    "reimburse": "Bitte erstatten Sie den obigen Betrag. Ich erkläre außerdem, dass die obigen Angaben richtig und wahr sind.",
     "vehicle_no": "Kennzeichen",
     "driver_name": "Name des Fahrers",
-    "employer_name": "Name des Arbeitgebers",
-    "employer_signature": "Unterschrift des Arbeitgebers",
+    "employer_name": "Name des Mitarbeiters",
+    "employer_signature": "Unterschrift des Mitarbeiters",
     "revenue_stamp": "Stempelmarke",
     "salary_month": "Gehalt für den Monat",
     "amount_paid": "Gezahlter Betrag",
-    "received_text": "Erhalten von {employer}: {amount} durch den Fahrer {driver} als Gehalt für den Monat {month}.",
+    "for_month": "Für den Monat",
+    "period": "Zeitraum",
+    "receipt_date": "Belegdatum",
+    "employee_code": "Mitarbeiternummer",
+    "certify_plain": "Hiermit wird bestätigt, dass ich dem Fahrer {driver} für den Monat {month} {amount} gezahlt habe.",
+    "certify_plain_period": "Hiermit wird bestätigt, dass ich dem Fahrer {driver} für den Zeitraum {month} {amount} gezahlt habe.",
+    "certify_self": "Ich bestätige, dass ich an den Fahrer {driver} für den Monat {month} {amount} gezahlt habe (Empfangsbestätigung liegt bei).",
+    "reimburse": "Bitte erstatten Sie den obigen Betrag. Ich erkläre außerdem, dass die obigen Angaben richtig und wahr sind.",
     "ack_title": "Empfangsbestätigung",
     "receipt_date_of": "Empfangsdatum",
-    "for_month": "Für den Monat",
-    "received_sum": "Betrag von {amount} für den Monat {month} von {employer} erhalten.",
-    "period": "Zeitraum",
-    "receipt_of": "Quittung {number} von {total}",
+    "received_sum": "Ich habe einen Betrag von {amount} für den Monat {month} von {employer} erhalten.",
+    "ack_certify": "Hiermit wird bestätigt, dass ich dem Fahrer {driver} für den Monat {month} {amount} gezahlt habe (Empfangsbestätigung unten beigefügt).",
+    "ack_certify_period": "Hiermit wird bestätigt, dass ich dem Fahrer {driver} für den Zeitraum {month} {amount} gezahlt habe (Empfangsbestätigung unten beigefügt).",
+    "ack_reimburse": "Bitte erstatten Sie den obigen Betrag auf mein Konto.",
+    "ack_further": "Ich erkläre ferner, dass die obigen Angaben nach meinem besten Wissen und Gewissen richtig und wahr sind.",
+    "ack_heading": "Zahlungsbeleg und Empfangsbestätigung (vom Fahrer zu unterschreiben)",
+    "ack_received": "Betrag von {amount} ({words}) für den Monat {month} von {employer} erhalten.",
+    "ack_received_period": "Betrag von {amount} ({words}) für den Zeitraum {month} von {employer} erhalten.",
+    "ack_thumb": "Unterschrift / Daumenabdruck des Fahrers",
+    "employee_address": "Anschrift des Mitarbeiters",
     "payroll_voucher": "Lohnbeleg",
     "voucher_sub": "Zahlungsbeleg für das Fahrergehalt",
-    "payer": "Zahler",
-    "driver": "Fahrer",
     "acknowledgement": "Bestätigung",
     "ack_voucher": "Erhalten von {driver} von {employer} als Gehalt für {month}.",
     "received_by": "Empfangen durch",
@@ -106,7 +103,6 @@
     "name": "Name",
     "record_title": "Gehaltsnachweis Fahrer",
     "record_sub": "Einfaches Bestätigungsformular",
-    "payer_name": "Name des Zahlers",
     "declaration_label": "Erklärung",
     "confirm": "Ich bestätige den Erhalt des oben genannten Gehalts vom Zahler für den in diesem Nachweis genannten Monat.",
     "notes": "Hinweise",
@@ -128,5 +124,11 @@
     "allowance": 100,
     "deductions": 80,
     "declaration": "Ich erkläre außerdem, dass der Fahrer ausschließlich dienstlich eingesetzt wird."
+  },
+  "groups": {
+    "business": "Mitarbeiter",
+    "document": "Gehaltszeitraum",
+    "customer": "Fahrer",
+    "details": "Fahrzeug"
   }
 }

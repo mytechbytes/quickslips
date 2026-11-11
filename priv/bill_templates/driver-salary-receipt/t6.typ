@@ -20,8 +20,17 @@
 #let breakdown = (
   (t.monthly_salary, data.basic_salary), (t.overtime, overtime), (t.allowance, allowance), (t.deductions, -deductions),
 ).filter(row => row.at(1) != 0)
-
-#let month = month-label(data.month)
+#let code = opt(data, "employee_code")
+#let employee = data.employer_name + if code != none { " (" + code + ")" } else { "" }
+// A receipt for each month chosen, or one for the quarter, half-year or year (see `salary-periods` of the helpers), one on
+// each page of the PDF.
+#let receipts = salary-periods(data)
+#for (i, receipt) in receipts.enumerate() [
+#if i > 0 { pagebreak() }
+#let month = receipt.label
+#let when = receipt.date
+#let net = net * receipt.months
+#let breakdown = breakdown.map(((label, amount)) => (label, amount * receipt.months))
 #let row(label, value) = [#upper(label) : #value \ ]
 
 #line(length: 100%, stroke: 1.6pt)
@@ -33,9 +42,10 @@
 #v(1mm)
 #line(length: 100%, stroke: 1.6pt)
 #v(3mm)
-#row(t.date, fmt-date(data.receipt_date))
+#if when != none { row(t.date, fmt-date(when)) }
 #row(t.salary_month, month)
-#row(t.payer_name, data.employer_name)
+#row(t.employer_name, data.employer_name)
+#if code != none { row(t.employee_code, code) }
 #row(t.driver_name, data.driver_name)
 #if vehicle != none { row(t.vehicle_no, vehicle) }
 #for (label, amount) in breakdown { row(label, money(amount)) }
@@ -60,8 +70,12 @@
   columns: (1fr, 1fr, 1fr),
   column-gutter: 3mm,
   ..(
-    [#text(size: 8pt, upper(t.payer_details)) \ #v(1mm) #t.name: #data.employer_name],
+    [#text(size: 8pt, upper(t.payer_details)) \ #v(1mm) #t.name: #data.employer_name#if code != none [ \ #t.employee_code: #code]],
     [#text(size: 8pt, weight: "bold", upper(t.revenue_stamp)) \ #v(1mm) #stamp(width: 100%, height: 22mm)],
-    [#text(size: 8pt, upper(t.driver_signature)) \ #v(1mm) #t.name: #data.driver_name],
+    [#text(size: 8pt, upper(t.driver_signature)) \ #v(1mm) #t.name: #data.driver_name \ #{
+      let signature = picture(data, "driver_signature", 11mm)
+      if signature != none { signature }
+    }],
   ).map(cell => block(width: 100%, height: 38mm, stroke: 0.6pt + luma(190), inset: 3mm, radius: 1.5mm, cell)),
 )
+]
