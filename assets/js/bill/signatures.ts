@@ -35,10 +35,12 @@ export function createDriverSignaturePicker(root: HTMLElement, drawn: (url: stri
   select.addEventListener("change", () => use(select.value ? Number(select.value) : null))
   // A signature saved in the first picker is listed here too, in the same order, keeping the choice.
   root.addEventListener(SIGNATURE_SAVED, (event) => {
-    signatures.push((event as CustomEvent<Signature>).detail)
+    const { signature, forDriver } = (event as CustomEvent<{ signature: Signature; forDriver: boolean }>).detail
+    signatures.push(signature)
     signatures.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
     select.replaceChildren(select.options[0], ...signatures.map((s) => new Option(s.name, String(s.id))))
     select.value = chosen ? String(chosen) : ""
+    if (forDriver) use(signature.id)
   })
 
   return {
@@ -76,6 +78,11 @@ export function createSignaturePicker(root: HTMLElement, drawn: (url: string | n
   }
   select.addEventListener("change", () => use(select.value ? Number(select.value) : null))
 
+  // Both selects have a + button that opens the one dialog; the signature saved there is chosen in the select whose
+  // button opened it.
+  root.querySelector("#signature-open")?.addEventListener("click", () => (root.dataset.signatureTarget = "main"))
+  root.querySelector("#driver-signature-open")?.addEventListener("click", () => (root.dataset.signatureTarget = "driver"))
+
   const name = root.querySelector<HTMLInputElement>("#signature-name")!
   const file = root.querySelector<HTMLInputElement>("#signature-file")!
   const rights = root.querySelector<HTMLInputElement>("#signature-rights")!
@@ -105,8 +112,9 @@ export function createSignaturePicker(root: HTMLElement, drawn: (url: string | n
     signatures.push(result.signature)
     signatures.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
     select.replaceChildren(select.options[0], ...signatures.map((s) => new Option(s.name, String(s.id))))
-    root.dispatchEvent(new CustomEvent(SIGNATURE_SAVED, { detail: result.signature }))
-    use(result.signature.id) // the signature that was just saved is the one the visitor wants
+    const forDriver = root.dataset.signatureTarget === "driver"
+    root.dispatchEvent(new CustomEvent(SIGNATURE_SAVED, { detail: { signature: result.signature, forDriver } }))
+    if (!forDriver) use(result.signature.id) // the signature that was just saved is the one the visitor wants
     name.value = ""
     file.value = ""
     rights.checked = false

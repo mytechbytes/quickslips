@@ -140,7 +140,7 @@ msgstr ""
 msgid "Documents"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:345
+#: lib/quickslips_web/live/template_live.html.heex:408
 #, elixir-autogen, elixir-format
 msgid "Download PDF"
 msgstr ""
@@ -225,7 +225,7 @@ msgstr ""
 #: lib/quickslips_web/components/layouts.ex:164
 #: lib/quickslips_web/components/layouts.ex:217
 #: lib/quickslips_web/live/home_live.ex:151
-#: lib/quickslips_web/live/template_live.html.heex:337
+#: lib/quickslips_web/live/template_live.html.heex:400
 #: lib/quickslips_web/live/user_live/confirmation.ex:57
 #: lib/quickslips_web/live/user_live/login.ex:119
 #: lib/quickslips_web/live/user_live/registration.ex:67
@@ -357,7 +357,7 @@ msgstr ""
 msgid "Preview could not be rendered."
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:326
+#: lib/quickslips_web/live/template_live.html.heex:389
 #, elixir-autogen, elixir-format
 msgid "Preview loads here…"
 msgstr ""
@@ -387,7 +387,7 @@ msgstr ""
 #: lib/quickslips_web/components/layouts.ex:167
 #: lib/quickslips_web/components/layouts.ex:220
 #: lib/quickslips_web/live/home_live.ex:154
-#: lib/quickslips_web/live/template_live.html.heex:339
+#: lib/quickslips_web/live/template_live.html.heex:402
 #: lib/quickslips_web/live/user_live/login.ex:103
 #: lib/quickslips_web/live/user_live/registration.ex:51
 #: lib/quickslips_web/live/user_live/registration.ex:91
@@ -531,13 +531,15 @@ msgstr ""
 msgid "You've used today's free downloads."
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:332
+#: lib/quickslips_web/live/template_live.html.heex:395
 #, elixir-autogen, elixir-format
 msgid "You've used your free downloads for today. Log in or sign up to keep going, and come back tomorrow for more."
 msgstr ""
 
 #: lib/quickslips_web/components/core_components.ex:81
 #: lib/quickslips_web/components/ui.ex:654
+#: lib/quickslips_web/live/template_live.html.heex:145
+#: lib/quickslips_web/live/template_live.html.heex:280
 #, elixir-autogen, elixir-format
 msgid "close"
 msgstr ""
@@ -700,27 +702,28 @@ msgstr ""
 msgid "Give the signature a name."
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:128
-#: lib/quickslips_web/live/template_live.html.heex:129
+#: lib/quickslips_web/live/template_live.html.heex:155
+#: lib/quickslips_web/live/template_live.html.heex:156
 #, elixir-autogen, elixir-format
 msgid "Name, like Owner"
 msgstr ""
 
 #: lib/quickslips_web/live/template_live.html.heex:109
-#: lib/quickslips_web/live/template_live.html.heex:173
+#: lib/quickslips_web/live/template_live.html.heex:203
 #, elixir-autogen, elixir-format
 msgid "No signature (placeholder only)"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:136
-#: lib/quickslips_web/live/template_live.html.heex:139
-#: lib/quickslips_web/live/template_live.html.heex:238
-#: lib/quickslips_web/live/template_live.html.heex:241
+#: lib/quickslips_web/live/template_live.html.heex:163
+#: lib/quickslips_web/live/template_live.html.heex:167
+#: lib/quickslips_web/live/template_live.html.heex:298
+#: lib/quickslips_web/live/template_live.html.heex:302
 #, elixir-autogen, elixir-format
 msgid "PNG or JPG picture, up to 1 MB"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:120
+#: lib/quickslips_web/live/template_live.html.heex:125
+#: lib/quickslips_web/live/template_live.html.heex:138
 #, elixir-autogen, elixir-format
 msgid "Save a new signature"
 msgstr ""
@@ -730,7 +733,7 @@ msgstr ""
 msgid "Save seller details"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:148
+#: lib/quickslips_web/live/template_live.html.heex:177
 #, elixir-autogen, elixir-format
 msgid "Save signature"
 msgstr ""
@@ -790,7 +793,7 @@ msgstr ""
 msgid "You can keep up to %{max} signatures. Delete one on the Signatures page first."
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:365
+#: lib/quickslips_web/live/template_live.html.heex:428
 #, elixir-autogen, elixir-format
 msgid "Frequently asked questions"
 msgstr ""
@@ -925,7 +928,7 @@ msgstr ""
 msgid "How can we help?"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:384
+#: lib/quickslips_web/live/template_live.html.heex:447
 #, elixir-autogen, elixir-format
 msgid "Is something missing or wrong in this template?"
 msgstr ""
@@ -961,12 +964,12 @@ msgid "Something is broken, wrong or confusing."
 msgstr ""
 
 #: lib/quickslips_web/components/layouts.ex:274
-#: lib/quickslips_web/live/template_live.html.heex:398
+#: lib/quickslips_web/live/template_live.html.heex:461
 #, elixir-autogen, elixir-format
 msgid "Tell us"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:387
+#: lib/quickslips_web/live/template_live.html.heex:450
 #, elixir-autogen, elixir-format
 msgid "Tell us what you would like changed or added, or report a mistake. We read every message."
 msgstr ""
@@ -1117,7 +1120,7 @@ msgstr ""
 msgid "Your message:"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:203
+#: lib/quickslips_web/live/template_live.html.heex:233
 #, elixir-autogen, elixir-format
 msgid "Empty box (placeholder only)"
 msgstr ""
@@ -1127,23 +1130,24 @@ msgstr ""
 msgid "Give the stamp a name."
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:230
-#: lib/quickslips_web/live/template_live.html.heex:231
+#: lib/quickslips_web/live/template_live.html.heex:290
+#: lib/quickslips_web/live/template_live.html.heex:291
 #, elixir-autogen, elixir-format
 msgid "Name, like Rent receipts"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:194
+#: lib/quickslips_web/live/template_live.html.heex:224
 #, elixir-autogen, elixir-format
 msgid "Revenue stamp"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:222
+#: lib/quickslips_web/live/template_live.html.heex:258
+#: lib/quickslips_web/live/template_live.html.heex:273
 #, elixir-autogen, elixir-format
 msgid "Save a new stamp"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:250
+#: lib/quickslips_web/live/template_live.html.heex:312
 #, elixir-autogen, elixir-format
 msgid "Save stamp"
 msgstr ""
@@ -1168,18 +1172,18 @@ msgstr ""
 msgid "You can keep up to %{max} stamps. Delete one on the Stamps page first."
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:282
-#: lib/quickslips_web/live/template_live.html.heex:311
+#: lib/quickslips_web/live/template_live.html.heex:345
+#: lib/quickslips_web/live/template_live.html.heex:374
 #, elixir-autogen, elixir-format
 msgid "As designed"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:291
+#: lib/quickslips_web/live/template_live.html.heex:354
 #, elixir-autogen, elixir-format
 msgid "Made for a thermal receipt printer, so there is no paper to choose."
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:271
+#: lib/quickslips_web/live/template_live.html.heex:334
 #, elixir-autogen, elixir-format
 msgid "Paper"
 msgstr ""
@@ -1189,7 +1193,7 @@ msgstr ""
 msgid "Additional options"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:261
+#: lib/quickslips_web/live/template_live.html.heex:324
 #, elixir-autogen, elixir-format
 msgid "Advanced settings"
 msgstr ""
@@ -1205,13 +1209,13 @@ msgstr ""
 msgid "Confirm that you have the rights to use this image."
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:146
-#: lib/quickslips_web/live/template_live.html.heex:248
+#: lib/quickslips_web/live/template_live.html.heex:175
+#: lib/quickslips_web/live/template_live.html.heex:310
 #, elixir-autogen, elixir-format
 msgid "I confirm I have the rights to use this image"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:300
+#: lib/quickslips_web/live/template_live.html.heex:363
 #, elixir-autogen, elixir-format
 msgid "Margins"
 msgstr ""
@@ -1221,7 +1225,7 @@ msgstr ""
 msgid "Months"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:312
+#: lib/quickslips_web/live/template_live.html.heex:375
 #, elixir-autogen, elixir-format
 msgid "Narrow"
 msgstr ""
@@ -1231,7 +1235,7 @@ msgstr ""
 msgid "Receipt date (optional)"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:313
+#: lib/quickslips_web/live/template_live.html.heex:376
 #, elixir-autogen, elixir-format
 msgid "Wide"
 msgstr ""
@@ -1316,7 +1320,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: lib/quickslips_web/live/template_live.html.heex:165
+#: lib/quickslips_web/live/template_live.html.heex:195
 #, elixir-autogen, elixir-format
 msgid "Driver signature"
 msgstr ""

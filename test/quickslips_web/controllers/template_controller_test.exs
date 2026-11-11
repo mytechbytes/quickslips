@@ -649,6 +649,72 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
     end
   end
 
+  describe "saving a new signature or stamp" do
+    test "is done in a dialog that a button opens, not in an expanding section", %{conn: conn} do
+      conn = log_in_user(conn, user_fixture())
+
+      doc =
+        conn
+        |> get(~p"/en-in/fuel-bill-generator")
+        |> html_response(200)
+        |> LazyHTML.from_document()
+
+      for kind <- ["signature", "stamp"] do
+        assert LazyHTML.query(doc, "button##{kind}-open[data-dialog-open=#{kind}-dialog]")
+               |> Enum.count() == 1
+
+        assert LazyHTML.query(doc, "dialog##{kind}-dialog ##{kind}-file[type=file]")
+               |> Enum.count() == 1
+
+        assert LazyHTML.query(doc, "dialog##{kind}-dialog ##{kind}-rights[type=checkbox]")
+               |> Enum.count() == 1
+
+        assert LazyHTML.query(doc, "dialog##{kind}-dialog ##{kind}-save") |> Enum.count() == 1
+        assert LazyHTML.query(doc, "details##{kind}-new") |> Enum.count() == 0
+      end
+    end
+  end
+
+  describe "the signatures of a bill that has two" do
+    test "each section says whose it is, and each select has a + button for a new one", %{
+      conn: conn
+    } do
+      conn = log_in_user(conn, user_fixture())
+
+      doc =
+        conn
+        |> get(~p"/en-in/driver-salary-receipt-generator")
+        |> html_response(200)
+        |> LazyHTML.from_document()
+
+      text = fn selector ->
+        doc |> LazyHTML.query(selector) |> LazyHTML.text() |> String.trim()
+      end
+
+      assert text.("label[for=signature-select]") == "Employee Signature"
+      assert text.("label[for=driver-signature-select]") == "Driver Signature"
+
+      for id <- ["signature-open", "driver-signature-open", "stamp-open"] do
+        assert LazyHTML.query(doc, "button##{id}[data-dialog-open]") |> Enum.count() == 1
+      end
+    end
+
+    test "a bill with one signature calls it Signature", %{conn: conn} do
+      conn = log_in_user(conn, user_fixture())
+
+      doc =
+        conn
+        |> get(~p"/en-in/fuel-bill-generator")
+        |> html_response(200)
+        |> LazyHTML.from_document()
+
+      assert doc
+             |> LazyHTML.query("label[for=signature-select]")
+             |> LazyHTML.text()
+             |> String.trim() == "Signature"
+    end
+  end
+
   describe "the sections of the form" do
     @groups ~w(business registration document customer items details charges payment additional)
 

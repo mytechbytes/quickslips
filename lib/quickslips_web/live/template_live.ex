@@ -156,6 +156,17 @@ defmodule QuickSlipsWeb.TemplateLive do
     Enum.any?(schema["templates"], &(&1["id"] == template and &1["signature"] == true))
   end
 
+  # The titles of the two signatures of a bill that has a second one say whose each is ("Employee Signature", "Driver
+  # Signature", in the words of the bill); a bill with one signature calls it "Signature".
+  defp signature_heading(schema, text) do
+    if Enum.any?(schema["templates"], &(&1["driver_signature"] == true)),
+      do: get_in(text, ["print", "employer_signature"]) || gettext("Signature"),
+      else: gettext("Signature")
+  end
+
+  defp driver_signature_heading(text),
+    do: get_in(text, ["print", "driver_signature"]) || gettext("Driver signature")
+
   # Whether it has a place for a second signature, the driver's.
   defp driver_signature_design?(schema, template) do
     Enum.any?(schema["templates"], &(&1["id"] == template and &1["driver_signature"] == true))

@@ -40,7 +40,13 @@
 #v(2mm)
 *#t.employer_name:* #data.employer_name#if code != none [ \ *#t.employee_code:* #code]#if address != none [ \ *#t.employee_address:* #lines(address)]#if when != none [ \ *#t.date:* #fmt-date(when)]
 
-#v(3mm)
+#grid(
+  columns: (1fr, auto),
+  [],
+  align(bottom, signature-block(data, t.employer_signature, name: employee)),
+)
+
+#v(1mm)
 #line(length: 100%, stroke: 1.4pt)
 #v(3mm)
 #align(center, text(size: 12pt, weight: "bold", t.ack_title))
@@ -55,6 +61,7 @@
 #grid(
   columns: (1fr, auto),
   stamp(),
-  align(bottom, signature-block(data, t.employer_signature, name: employee)),
+  align(bottom, signature-block(data, t.ack_thumb, key: "driver_signature")),
 )
+#align(right)[*#t.driver_name:* #data.driver_name]
 ]
