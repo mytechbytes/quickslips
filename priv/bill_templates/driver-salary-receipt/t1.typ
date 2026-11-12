@@ -29,6 +29,7 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let net = net * receipt.months
 #let breakdown = breakdown.map(((label, amount)) => (label, amount * receipt.months))
 #v(1mm)
@@ -52,7 +53,7 @@
   column-gutter: 8mm,
   row-gutter: 5mm,
   [*#t.employer_name:* #data.employer_name#if code != none [ \ *#t.employee_code:* #code]#if address != none [ \ *#t.employee_address:* #lines(address)]],
-  if when != none { align(right)[*#t.date:* #fmt-date(when)] } else [],
+  if when != none or memo != none { align(right)[#if memo != none [*#t.memo_number:* #memo \ ]#if when != none [*#t.date:* #fmt-date(when)]] } else [],
   [*#t.driver_name:* #data.driver_name#if vehicle != none [ \ *#t.vehicle_no:* #vehicle]], [],
 )
 #v(4mm)

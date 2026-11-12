@@ -32,6 +32,17 @@ defmodule QuickSlips.Templates.PeriodsTest do
            }
   end
 
+  test "a field with a number column keeps one number for each receipt, and one without drops them" do
+    schema = put_in(@schema, ["fields", Access.at(0), "numbers"], true)
+    value = %{"bill_by" => "Monthly", "months" => ["2026-09", "2026-10"], "numbers" => [" AB098 "]}
+
+    assert {:ok, %{"periods" => %{"numbers" => ["AB098", ""]}}} =
+             Validator.validate(schema, %{"periods" => value})
+
+    assert {:ok, %{"periods" => clean}} = check(value)
+    refute Map.has_key?(clean, "numbers")
+  end
+
   test "the dates are optional: a receipt with no date keeps an empty one" do
     assert {:ok, %{"periods" => %{"dates" => [""]}}} =
              check(%{"bill_by" => "Monthly", "months" => ["2026-09"]})

@@ -56,6 +56,7 @@
     },
     "periods": {
       "label": "給与の期間",
+      "number_label": "現金伝票／バウチャー番号（任意）",
       "options": {
         "Monthly": "毎月",
         "Quarterly": "四半期ごと",
@@ -78,6 +79,7 @@
     "period": "期間",
     "receipt_date": "領収日",
     "employee_code": "従業員コード",
+    "memo_number": "現金伝票／バウチャー番号",
     "certify_plain": "私は運転手{driver}に{month}分として{amount}を支払ったことを証明します。",
     "certify_plain_period": "私は運転手{driver}に{month}の期間分として{amount}を支払ったことを証明します。",
     "certify_self": "私は運転手 {driver} に {month} 分として {amount} を支払ったことを証明します（受領書を添付）。",

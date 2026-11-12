@@ -56,6 +56,7 @@
     },
     "periods": {
       "label": "Salary Period",
+      "number_label": "Cash Memo / Voucher No. (optional)",
       "options": {
         "Monthly": "Monthly",
         "Quarterly": "Quarterly",
@@ -78,6 +79,7 @@
     "period": "Period",
     "receipt_date": "Receipt Date",
     "employee_code": "Employee Code",
+    "memo_number": "Cash Memo / Voucher No.",
     "certify_plain": "This is to certify that I have paid {amount} to the driver, {driver}, for the month of {month}.",
     "certify_plain_period": "This is to certify that I have paid {amount} to the driver, {driver}, for the period {month}.",
     "certify_self": "This is to certify that I have paid {amount} to driver {driver} for the month of {month} (acknowledged receipt enclosed).",

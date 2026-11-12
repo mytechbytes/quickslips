@@ -29,6 +29,7 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let net = net * receipt.months
 #let breakdown = breakdown.map(((label, amount)) => (label, amount * receipt.months))
 #let row(label, value) = [#upper(label) : #value \ ]
@@ -42,6 +43,7 @@
 #v(1mm)
 #line(length: 100%, stroke: 1.6pt)
 #v(3mm)
+#if memo != none { row(t.memo_number, memo) }
 #if when != none { row(t.date, fmt-date(when)) }
 #row(t.salary_month, month)
 #row(t.employer_name, data.employer_name)

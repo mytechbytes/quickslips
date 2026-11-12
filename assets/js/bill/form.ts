@@ -28,6 +28,9 @@ export type Field = {
   // A tax rate field: the percentages the country offers.
   rates?: number[]
   max_rows?: number
+  // A periods field with a column for the number of each receipt, and the head of that column.
+  numbers?: boolean
+  number_label?: string
   name_max_length?: number
 }
 // A design of the bill; `signature` says whether its layout has a place for a signature.

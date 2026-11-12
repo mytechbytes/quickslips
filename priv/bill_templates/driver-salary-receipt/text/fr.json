@@ -56,6 +56,7 @@
     },
     "periods": {
       "label": "Période de salaire",
+      "number_label": "N° de reçu / bon de caisse (facultatif)",
       "options": {
         "Monthly": "Mensuel",
         "Quarterly": "Trimestriel",
@@ -78,6 +79,7 @@
     "period": "Période",
     "receipt_date": "Date du reçu",
     "employee_code": "Code employé",
+    "memo_number": "N° de reçu / bon de caisse",
     "certify_plain": "Je certifie avoir versé {amount} au chauffeur {driver} pour le mois de {month}.",
     "certify_plain_period": "Je certifie avoir versé {amount} au chauffeur {driver} pour la période {month}.",
     "certify_self": "Je certifie avoir versé {amount} au chauffeur {driver} pour le mois de {month} (reçu joint).",

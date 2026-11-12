@@ -30,6 +30,7 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let net = net * receipt.months
 #let breakdown = breakdown.map(((label, amount)) => (label, amount * receipt.months))
 #let heading(content) = align(center, block(width: 100%, text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
@@ -46,6 +47,7 @@
 #v(1mm)
 #t.ack_further
 #v(3mm)
+#if memo != none [*#t.memo_number:* #memo \ ]
 *#t.employer_name:* #data.employer_name
 #if code != none [ \ *#t.employee_code:* #code]
 #if address != none [ \ *#t.employee_address:* #lines(address)]
@@ -63,6 +65,7 @@
 ]
 #heading(t.ack_heading)
 #v(2mm)
+#if memo != none [*#t.memo_number:* #memo \ ]
 #if when != none [*#t.receipt_date:* #fmt-date(when) \ ]
 *#t.salary_month:* #month \
 *#t.driver_name:* #data.driver_name#if vehicle != none [ \ *#t.vehicle_no:* #vehicle]

@@ -126,6 +126,10 @@ defmodule QuickSlips.Templates.Localizer do
         names = words["options"] || field["option_labels"] || %{}
         Map.put(field, "option_labels", Map.new(options, &{&1, names[&1] || &1}))
 
+      # A periods field with a column for the number of each receipt: the head of the column.
+      %{"type" => "periods", "numbers" => true} ->
+        Map.put(field, "number_label", words["number_label"] || field["number_label"])
+
       # The heads of the columns of a table of items: `{"name": "Item", "qty": "Qty", "rate": "Price ({currency})"}`
       # (and `code`, `billing`, `discount` for a table that has them).
       %{"type" => "items"} ->

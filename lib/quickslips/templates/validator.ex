@@ -89,8 +89,15 @@ defmodule QuickSlips.Templates.Validator do
         receipts = length(months)
 
         case clean_dates(value["dates"], receipts) do
-          {:ok, dates} -> {:ok, %{"bill_by" => by, "months" => months, "dates" => dates}}
-          :error -> {:error, "dates must be like 2026-10-31"}
+          {:ok, dates} ->
+            clean = %{"bill_by" => by, "months" => months, "dates" => dates}
+
+            if field["numbers"] == true,
+              do: {:ok, Map.put(clean, "numbers", clean_numbers(value["numbers"], receipts))},
+              else: {:ok, clean}
+
+          :error ->
+            {:error, "dates must be like 2026-10-31"}
         end
     end
   end
@@ -126,6 +133,15 @@ defmodule QuickSlips.Templates.Validator do
     if Enum.all?(cleaned, &match?({:ok, _}, &1)),
       do: {:ok, Enum.map(cleaned, &elem(&1, 1))},
       else: :error
+  end
+
+  # One number (a cash memo or voucher number, up to 30 characters) or "" for each receipt.
+  defp clean_numbers(numbers, receipts) do
+    list = if is_list(numbers), do: numbers, else: []
+
+    for number <- Enum.take(list ++ List.duplicate("", receipts), receipts) do
+      if is_binary(number), do: number |> String.trim() |> String.slice(0, 30), else: ""
+    end
   end
 
   defp validate_items(field, value) do

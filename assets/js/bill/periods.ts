@@ -6,13 +6,20 @@ import { INPUT_CLASS } from "./styles"
  * The period a receipt is for, as the server keeps it (see the `periods` field of `Templates.Validator`): how it is
  * billed, the month each period chosen starts in, and the optional date of the receipt of each.
  */
-export type PeriodsValue = { bill_by: string; months: string[]; dates: string[] }
+export type PeriodsValue = { bill_by: string; months: string[]; dates: string[]; numbers?: string[] }
 
 const STEP: Record<string, number> = { Monthly: 1, Quarterly: 3, "Half-yearly": 6, Yearly: 12 }
 
 // "2026-09" as a number of months, and back.
 const toIndex = (ym: string) => Number(ym.slice(0, 4)) * 12 + Number(ym.slice(5, 7)) - 1
 const toMonth = (index: number) => `${Math.floor(index / 12)}-${String((index % 12) + 1).padStart(2, "0")}`
+/** "AIAJD098" gives "AIAJD099", "AB-9" gives "AB-10": the last run of digits goes up by one, with its zeros kept. */
+export function nextNumber(value: string): string {
+  const match = /^(.*?)(\d+)(\D*)$/.exec(value)
+  if (!match) return ""
+  const [, head, digits, tail] = match
+  return head + String(BigInt(digits) + 1n).padStart(digits.length, "0") + tail
+}
 const currentMonth = () => new Date().toISOString().slice(0, 7)
 
 // Billed by the year, the table lists the years from the start to this one, up to this many.
@@ -45,6 +52,19 @@ export function createPeriodsField(field: Field, initial: PeriodsValue | undefin
   ;(initial?.months ?? []).forEach((m, i) => {
     const date = initial?.dates?.[i]
     if (date) dates.set(m, date)
+  })
+
+  // The optional number of each receipt (a cash memo or voucher number), for a field that has the column.
+  const hasNumbers = field.numbers === true
+  const numbers = new Map<string, string>()
+  // The numbers typed by hand: the others are the next of the number above them (AIAJD098, AIAJD099, AIAJD100).
+  const typed = new Set<string>()
+  ;(initial?.months ?? []).forEach((m, i) => {
+    const number = initial?.numbers?.[i]
+    if (number) {
+      numbers.set(m, number)
+      typed.add(m)
+    }
   })
 
   const step = () => STEP[billBy] ?? 1
@@ -120,6 +140,7 @@ export function createPeriodsField(field: Field, initial: PeriodsValue | undefin
     `<th scope="col" class="w-12 border-b border-line px-3 py-2"></th>` +
     `<th scope="col" class="border-b border-l border-line px-3 py-2"></th>` +
     `<th scope="col" class="border-b border-l border-line px-3 py-2"><div class="flex flex-wrap items-center justify-between gap-2"><span></span></div></th>` +
+    (hasNumbers ? `<th scope="col" class="border-b border-l border-line px-3 py-2"></th>` : "") +
     `</tr></thead><tbody></tbody>`
   frame.append(table)
 
@@ -131,6 +152,8 @@ export function createPeriodsField(field: Field, initial: PeriodsValue | undefin
   table.querySelector("th:nth-child(1)")!.append(checkAll)
   table.querySelector("th:nth-child(2)")!.textContent = t("periods_period")
   table.querySelector("th:nth-child(3) span")!.textContent = t("periods_date")
+
+  if (hasNumbers) table.querySelector("th:nth-child(4)")!.textContent = field.number_label ?? ""
 
   // The day of the month for every row (billed monthly, with several receipts).
   const day = document.createElement("select")
@@ -163,6 +186,24 @@ export function createPeriodsField(field: Field, initial: PeriodsValue | undefin
     checkAll.indeterminate = ticked > 0 && ticked < list.length
     checkAll.disabled = !several
     day.classList.toggle("hidden", !(several && billBy === "Monthly"))
+  }
+
+  /** Gives every ticked row without a typed number the next of the one above it. */
+  function renumber() {
+    if (!hasNumbers) return
+    let previous = ""
+    body.querySelectorAll<HTMLInputElement>("input[data-number]").forEach((input) => {
+      const month = input.dataset.month!
+      if (!chosen.has(month) && several) return
+      if (typed.has(month)) previous = numbers.get(month) ?? ""
+      else {
+        const next = previous ? nextNumber(previous) : ""
+        input.value = next
+        if (next) numbers.set(month, next)
+        else numbers.delete(month)
+        previous = next
+      }
+    })
   }
 
   function drawRows() {
@@ -214,10 +255,42 @@ export function createPeriodsField(field: Field, initial: PeriodsValue | undefin
       })
       when.append(date)
       tr.append(tick, name, when)
+      if (hasNumbers) {
+        const cellNumber = document.createElement("td")
+        cellNumber.className = "border-b border-l border-line px-3 py-1.5"
+        const number = document.createElement("input")
+        number.type = "text"
+        number.id = `${id}-number-${i}`
+        number.dataset.number = "true"
+        number.dataset.month = month
+        number.maxLength = 30
+        number.className = INPUT_CLASS
+        number.value = numbers.get(month) ?? ""
+        number.disabled = !box.checked
+        number.setAttribute("aria-label", `${field.number_label ?? ""}: ${periodLabel(month)}`)
+        number.addEventListener("input", () => {
+          const value = number.value.trim()
+          if (value) {
+            numbers.set(month, value)
+            typed.add(month)
+          } else {
+            numbers.delete(month)
+            typed.delete(month)
+          }
+          renumber()
+        })
+        box.addEventListener("change", () => {
+          number.disabled = !box.checked
+          renumber()
+        })
+        cellNumber.append(number)
+        tr.append(cellNumber)
+      }
       body.append(tr)
     })
     // The last row has no line under it: the frame has the border.
     for (const c of body.lastElementChild?.children ?? []) (c as HTMLElement).classList.replace("border-b", "border-b-0")
+    renumber()
     syncHeader()
   }
 
@@ -275,7 +348,9 @@ export function createPeriodsField(field: Field, initial: PeriodsValue | undefin
     element: root,
     read(): PeriodsValue {
       const list = starts().filter((m) => chosen.has(m) || !several)
-      return { bill_by: billBy, months: list, dates: list.map((m) => dates.get(m) ?? "") }
+      const value: PeriodsValue = { bill_by: billBy, months: list, dates: list.map((m) => dates.get(m) ?? "") }
+      if (hasNumbers) value.numbers = list.map((m) => numbers.get(m) ?? "")
+      return value
     },
     showErrors(errors: Record<string, string[]>) {
       error.textContent = (errors[field.key] ?? []).join(", ")

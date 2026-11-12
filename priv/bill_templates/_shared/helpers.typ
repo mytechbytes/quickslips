@@ -177,10 +177,15 @@
     let date = periods.at("dates", default: ()).at(i, default: "")
     if date == "" { none } else { date }
   }
+  let number-at(i) = {
+    let number = periods.at("numbers", default: ()).at(i, default: "")
+    if number == "" { none } else { number }
+  }
   periods.months.enumerate().map(((i, month)) => (
     label: if step == 1 { month-label(month) } else { month-label(month) + " – " + month-label(ym-str(ym-int(month) + step - 1)) },
     months: step,
     date: date-at(i),
+    number: number-at(i),
   ))
 }
 

@@ -56,6 +56,7 @@
     },
     "periods": {
       "label": "Período do salário",
+      "number_label": "N.º do recibo / comprovante (opcional)",
       "options": {
         "Monthly": "Mensal",
         "Quarterly": "Trimestral",
@@ -78,6 +79,7 @@
     "period": "Período",
     "receipt_date": "Data do recibo",
     "employee_code": "Código do funcionário",
+    "memo_number": "N.º do recibo / comprovante",
     "certify_plain": "Certifico que paguei {amount} ao motorista {driver} referente ao mês de {month}.",
     "certify_plain_period": "Certifico que paguei {amount} ao motorista {driver} referente ao período {month}.",
     "certify_self": "Certifico que paguei {amount} ao motorista {driver} pelo mês de {month} (recibo de quitação anexo).",

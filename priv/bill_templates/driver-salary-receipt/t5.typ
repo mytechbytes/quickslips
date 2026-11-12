@@ -28,10 +28,12 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let net = net * receipt.months
 #let breakdown = breakdown.map(((label, amount)) => (label, amount * receipt.months))
 #let grey = luma(244)
 #let rows = (
+  ..if memo != none { ((t.memo_number, memo),) } else { () },
   (t.employer_name, data.employer_name),
   ..if code != none { ((t.employee_code, code),) } else { () },
   (t.driver_name, data.driver_name),

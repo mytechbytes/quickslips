@@ -56,6 +56,7 @@
     },
     "periods": {
       "label": "工资周期",
+      "number_label": "现金单据/凭证编号（选填）",
       "options": {
         "Monthly": "按月",
         "Quarterly": "按季度",
@@ -78,6 +79,7 @@
     "period": "期间",
     "receipt_date": "收据日期",
     "employee_code": "员工编号",
+    "memo_number": "现金单据/凭证编号",
     "certify_plain": "兹证明本人已向司机{driver}支付{month}的工资{amount}。",
     "certify_plain_period": "兹证明本人已向司机{driver}支付{month}期间的工资{amount}。",
     "certify_self": "兹证明本人已向司机 {driver} 支付 {month} 的工资 {amount}（附收款确认单）。",

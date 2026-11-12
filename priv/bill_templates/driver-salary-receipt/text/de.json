@@ -56,6 +56,7 @@
     },
     "periods": {
       "label": "Gehaltszeitraum",
+      "number_label": "Kassenbeleg-/Belegnummer (optional)",
       "options": {
         "Monthly": "Monatlich",
         "Quarterly": "Vierteljährlich",
@@ -78,6 +79,7 @@
     "period": "Zeitraum",
     "receipt_date": "Belegdatum",
     "employee_code": "Mitarbeiternummer",
+    "memo_number": "Kassenbeleg-/Belegnr.",
     "certify_plain": "Hiermit wird bestätigt, dass ich dem Fahrer {driver} für den Monat {month} {amount} gezahlt habe.",
     "certify_plain_period": "Hiermit wird bestätigt, dass ich dem Fahrer {driver} für den Zeitraum {month} {amount} gezahlt habe.",
     "certify_self": "Ich bestätige, dass ich an den Fahrer {driver} für den Monat {month} {amount} gezahlt habe (Empfangsbestätigung liegt bei).",

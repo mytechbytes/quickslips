@@ -56,6 +56,7 @@
     },
     "periods": {
       "label": "Periodo dello stipendio",
+      "number_label": "N. ricevuta / buono di cassa (facoltativo)",
       "options": {
         "Monthly": "Mensile",
         "Quarterly": "Trimestrale",
@@ -78,6 +79,7 @@
     "period": "Periodo",
     "receipt_date": "Data della ricevuta",
     "employee_code": "Codice dipendente",
+    "memo_number": "N. ricevuta / buono di cassa",
     "certify_plain": "Si certifica che ho pagato {amount} all'autista {driver} per il mese di {month}.",
     "certify_plain_period": "Si certifica che ho pagato {amount} all'autista {driver} per il periodo {month}.",
     "certify_self": "Certifico di aver versato {amount} all'autista {driver} per il mese di {month} (ricevuta allegata).",
