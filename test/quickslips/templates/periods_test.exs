@@ -34,7 +34,12 @@ defmodule QuickSlips.Templates.PeriodsTest do
 
   test "a field with a number column keeps one number for each receipt, and one without drops them" do
     schema = put_in(@schema, ["fields", Access.at(0), "numbers"], true)
-    value = %{"bill_by" => "Monthly", "months" => ["2026-09", "2026-10"], "numbers" => [" AB098 "]}
+
+    value = %{
+      "bill_by" => "Monthly",
+      "months" => ["2026-09", "2026-10"],
+      "numbers" => [" AB098 "]
+    }
 
     assert {:ok, %{"periods" => %{"numbers" => ["AB098", ""]}}} =
              Validator.validate(schema, %{"periods" => value})
