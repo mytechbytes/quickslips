@@ -100,5 +100,9 @@
     "class_name": "Klasse 7b",
     "fee_period": "2. Halbjahr 2026/27",
     "school_phone": "030 1234567"
+  },
+  "groups": {
+    "business": "Schule",
+    "customer": "Schüler"
   }
 }

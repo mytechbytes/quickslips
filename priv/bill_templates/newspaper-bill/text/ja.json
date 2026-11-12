@@ -118,5 +118,8 @@
     ],
     "service_charge": 500,
     "name_prefix": "Mr."
+  },
+  "groups": {
+    "business": "代理店"
   }
 }

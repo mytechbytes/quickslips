@@ -10,16 +10,16 @@
   },
   "fields": {
     "facility_name": {
-      "label": "Parking facility name"
+      "label": "Parking Facility Name"
     },
     "facility_address": {
-      "label": "Facility address"
+      "label": "Facility Address"
     },
     "facility_phone": {
       "label": "Telephone (optional)"
     },
     "receipt_number": {
-      "label": "Receipt number"
+      "label": "Receipt Number"
     },
     "date": {
       "label": "Date"
@@ -28,13 +28,13 @@
       "label": "Time (optional)"
     },
     "space_number": {
-      "label": "Parking space"
+      "label": "Parking Space"
     },
     "thank_you": {
-      "label": "Thank-you message (optional)"
+      "label": "Thank-You Message (optional)"
     },
     "amount": {
-      "label": "Total amount ({currency})"
+      "label": "Total Amount ({currency})"
     }
   },
   "print": {
@@ -43,5 +43,9 @@
     "paid": "Paid",
     "tel": "Tel."
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Facility",
+    "details": "Space"
+  }
 }

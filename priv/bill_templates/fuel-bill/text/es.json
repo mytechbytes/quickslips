@@ -147,5 +147,9 @@
     "tax_percent": 21,
     "customer_name": "Carlos Gómez",
     "station_phone": "954 123 456"
+  },
+  "groups": {
+    "business": "Estación",
+    "details": "Vehículo"
   }
 }

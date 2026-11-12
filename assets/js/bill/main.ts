@@ -2,7 +2,7 @@ import { buildForm, type Business, type BillData, type Design, type SaveSeller, 
 import { createPreview } from "./preview"
 import { downloadPdf } from "./download"
 import { saveSection, saveSeller } from "./saved"
-import { createDriverSignaturePicker, createSignaturePicker } from "./signatures"
+import { createDriverSignaturePicker, createExtraSignaturePickers, createSignaturePicker } from "./signatures"
 import { createStampPicker } from "./stamps"
 import { createTurnstile } from "../turnstile"
 import { loadStrings, t } from "./i18n"
@@ -59,6 +59,8 @@ export function mountBillApp(root: HTMLElement): () => void {
   const signature = createSignaturePicker(root, (url) => preview.setSignature(url))
   // The driver's signature, the second one, on a design that has a place for it.
   const driverSignature = createDriverSignaturePicker(root, (url) => preview.setDriverSignature(url))
+  // The further signatures (prepared, checked, approved...), one select each, on a design that has places for them.
+  const extraSignatures = createExtraSignaturePickers(root, (slot, url) => preview.setExtraSignature(slot, url))
   // The revenue stamp of the bill: the empty box, the default stamp of the site, or a saved one.
   const stamp = createStampPicker(root, (url) => preview.setStamp(url))
   // The saved business the user picked, if any: its logo goes on the preview and the PDF, and its default signature
@@ -74,10 +76,11 @@ export function mountBillApp(root: HTMLElement): () => void {
   // Saves the seller details of the form as a business of the user (the sentences are in the language of the page).
   const saveSellerDetails: SaveSeller | null =
     root.dataset.signedIn === "true"
-      ? async (details) => {
+      ? async (details, id) => {
           if (!details.name) return { error: t("seller_error_name_blank") }
-          const result = await saveSeller(details, region.country)
+          const result = await saveSeller(details, region.country, id)
           if (!result.ok) {
+            if (result.code === "name_taken") return { error: t("saved_error_name_taken") }
             if (result.code === "tax_id_invalid") return { error: t("seller_error_tax_id_invalid", { label: region.tax?.id?.label ?? "" }) }
             return { error: result.code === "name_blank" ? t("seller_error_name_blank") : t("error") }
           }
@@ -145,6 +148,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     preview.setTemplate(template)
     signature.showFor(design)
     driverSignature.showFor(design)
+    for (const picker of Object.values(extraSignatures)) picker.showFor(design)
     stamp.showFor(design, region.country)
     showPaper(design)
   })
@@ -172,7 +176,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     region = view.region
     money = makeMoney(region)
     ui = mountForm(data)
-    if (business) form.querySelector<HTMLSelectElement>("#business-select")!.value = String(business.id)
+    if (business) ui.chooseBusiness(business.id)
     preview.setRegion(JSON.stringify(view.text), JSON.stringify(view.region))
   }
 
@@ -190,13 +194,15 @@ export function mountBillApp(root: HTMLElement): () => void {
   // already hold what the document had, so nothing is filled in.
   const earlier = businesses.find((b) => b.id === Number(root.dataset.businessId))
   if (earlier) {
-    form.querySelector<HTMLSelectElement>("#business-select")!.value = String(earlier.id)
+    ui.chooseBusiness(earlier.id)
     useBusiness(earlier)
   }
   // ... and with the signature it had (or none), which is not always the default of its business.
   if (root.dataset.edit === "true") {
     signature.use(root.dataset.signatureId ? Number(root.dataset.signatureId) : null)
     driverSignature.use(root.dataset.driverSignatureId ? Number(root.dataset.driverSignatureId) : null)
+    const earlierExtras: Record<string, number> = JSON.parse(root.dataset.extraSignatureIds ?? "{}")
+    for (const [slot, picker] of Object.entries(extraSignatures)) picker.use(earlierExtras[slot] ?? null)
   }
   // ... and with the revenue stamp it had.
   if (root.dataset.edit === "true") stamp.use(root.dataset.stampChoice ?? "")
@@ -219,6 +225,16 @@ export function mountBillApp(root: HTMLElement): () => void {
   }
   refreshQuota()
 
+  // The saved signatures chosen for the further places to sign of the design that is chosen.
+  const chosenExtras = (id: string) => {
+    const design = schema.templates?.find((d) => d.id === id)
+    const ids: Record<string, number> = {}
+    for (const [slot, picker] of Object.entries(extraSignatures)) {
+      if (design?.extra_signatures?.includes(slot) && picker.id !== null) ids[slot] = picker.id
+    }
+    return ids
+  }
+
   button.addEventListener("click", async () => {
     button.disabled = true
     status.textContent = t("creating")
@@ -236,7 +252,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     const result = await downloadPdf(schema.slug, template, ui.read(), turnstileToken, business?.id, locale, {
       country: region.country,
       currency: region.currency.code,
-    }, signature.id, stamp.choice, paperSelect.value, marginSelect.value, driverSignature.id)
+    }, signature.id, stamp.choice, paperSelect.value, marginSelect.value, driverSignature.id, chosenExtras(template))
     button.disabled = false
 
     if (result.ok) {

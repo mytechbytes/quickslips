@@ -26,6 +26,13 @@ defmodule QuickSlipsWeb.HistoryController do
     signature = Signatures.get_signature(scope, document.signature_id)
     driver_signature = Signatures.get_signature(scope, document.driver_signature_id)
 
+    extras =
+      for {slot, id} <- document.options["signatures"] || %{},
+          signature = Signatures.get_signature(scope, id),
+          into: %{} do
+        {slot, signature}
+      end
+
     # The revenue stamp the same way: a saved one that is gone is the empty box, and the site's default is a flag.
     stamp =
       if document.stamp_system,
@@ -33,7 +40,7 @@ defmodule QuickSlipsWeb.HistoryController do
         else: Stamps.get_stamp(scope, document.stamp_id)
 
     %{data: image_names, files: files} =
-      Businesses.render_assets(business, signature, stamp, driver_signature)
+      Businesses.render_assets(business, signature, stamp, driver_signature, extras)
 
     # The document is made again in the language and for the country it was made for.
     locale = Locales.for_document(document.language, document.options)

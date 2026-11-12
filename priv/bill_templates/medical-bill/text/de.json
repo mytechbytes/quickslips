@@ -223,5 +223,10 @@
     "clinic_phone": "030 1234567",
     "patient_details": "42 / W",
     "remark": "Im Notfall sofort einen Arzt aufsuchen bei Schmerzen, schmerzhaften Bewegungen, Rötung, Eiter oder Blutung. Kontrolle nach 5 Tagen."
+  },
+  "groups": {
+    "business": "Klinik",
+    "customer": "Patient",
+    "details": "Arzt"
   }
 }

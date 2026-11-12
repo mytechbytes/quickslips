@@ -123,5 +123,8 @@
     "customer_name": "Carlos Gómez",
     "table_number": "T-7",
     "gst_percent": 10
+  },
+  "groups": {
+    "business": "Restaurante"
   }
 }

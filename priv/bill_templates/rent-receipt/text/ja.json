@@ -8,7 +8,6 @@
   "designs": {
     "t1": "精算用",
     "t2": "受領確認付き",
-    "t3": "複数月",
     "t4": "正式な領収書"
   },
   "fields": {
@@ -23,27 +22,6 @@
     },
     "property_address": {
       "label": "賃貸物件の住所"
-    },
-    "month": {
-      "label": "家賃の対象月"
-    },
-    "from_date": {
-      "label": "期間の開始（任意）"
-    },
-    "to_date": {
-      "label": "期間の終了（任意）"
-    },
-    "bill_by": {
-      "label": "発行単位",
-      "options": {
-        "Monthly": "毎月",
-        "Quarterly": "四半期ごと",
-        "Half-yearly": "半年ごと",
-        "Yearly": "毎年"
-      }
-    },
-    "receipt_date": {
-      "label": "領収日"
     },
     "monthly_rent": {
       "label": "月額家賃（{currency}）"
@@ -68,13 +46,22 @@
     },
     "receiver_name": {
       "label": "受領者名（任意）"
+    },
+    "periods": {
+      "label": "家賃の期間",
+      "options": {
+        "Monthly": "毎月",
+        "Quarterly": "四半期ごと",
+        "Half-yearly": "半年ごと",
+        "Yearly": "毎年"
+      }
     }
   },
   "print": {
     "title": "家賃領収書",
     "date": "日付",
-    "certify": "{tenant} が家主 {landlord} に {month} 分の家賃として {amount} を支払ったことを証明します（受領書を添付）。",
-    "certify_period": "{tenant} が家主 {landlord} に {period} 分の家賃として {amount} を支払ったことを証明します（受領書を添付）。",
+    "certify": "私は家主 {landlord} に {month} 分の家賃として {amount} を支払ったことを証明します（受領書を添付）。",
+    "certify_period": "私は家主 {landlord} に {period} 分の家賃として {amount} を支払ったことを証明します（受領書を添付）。",
     "reimburse": "上記金額の精算をお願いします。上記の内容が正確かつ真実であることを申し添えます。",
     "address": "住所",
     "payment_method": "支払方法",
@@ -103,14 +90,21 @@
     "term_2": "光熱費・違約金・修繕費は、別途記載がない限り含まれません。",
     "term_3": "両当事者は、本領収書の記載が真実かつ正確であることを確認します。",
     "name": "氏名",
-    "period": "期間",
     "month": "対象月",
-    "receipt_of": "{total} 枚中 {number} 枚目"
+    "received_text_period": "{tenant} 様より {month} の期間分の家賃として {amount} を受領しました。受領者：{role} {receiver}。",
+    "receipt_date": "領収日",
+    "second_signature": "借主の署名",
+    "first_signature": "家主の署名"
   },
   "sample": {
     "tenant_name": "田中 太郎",
     "landlord_name": "鈴木 一郎",
     "receiver_name": "鈴木 一郎",
     "monthly_rent": 85000
+  },
+  "groups": {
+    "business": "大家",
+    "customer": "借主",
+    "document": "家賃の期間"
   }
 }

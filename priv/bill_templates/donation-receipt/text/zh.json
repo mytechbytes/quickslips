@@ -82,5 +82,10 @@
     "amount": 1000,
     "received_by": "李明，财务",
     "donation_description": "用于修缮历史图书馆的捐款。"
+  },
+  "groups": {
+    "business": "组织",
+    "customer": "捐赠人",
+    "details": "捐赠"
   }
 }

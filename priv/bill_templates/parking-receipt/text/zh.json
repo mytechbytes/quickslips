@@ -48,5 +48,9 @@
     "facility_phone": "010-12345678",
     "amount": 20,
     "thank_you": "感谢光临，请安全驾驶！"
+  },
+  "groups": {
+    "business": "场所",
+    "details": "车位"
   }
 }

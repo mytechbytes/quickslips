@@ -223,5 +223,10 @@
     "clinic_phone": "06 1234567",
     "patient_details": "42 / M",
     "remark": "In caso di emergenza, consultare subito se compaiono dolore, movimenti dolorosi, arrossamento, pus o sanguinamento. Controllo dopo 5 giorni."
+  },
+  "groups": {
+    "business": "Clinica",
+    "customer": "Paziente",
+    "details": "Medico"
   }
 }

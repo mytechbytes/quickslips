@@ -100,5 +100,9 @@
     "class_name": "七年级（2）班",
     "fee_period": "2026-27 学年第二学期",
     "school_phone": "010-12345678"
+  },
+  "groups": {
+    "business": "学校",
+    "customer": "学生"
   }
 }

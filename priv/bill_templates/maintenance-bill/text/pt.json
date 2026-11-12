@@ -189,5 +189,9 @@
     ],
     "tax_percent": null,
     "terms": "Pagamento em até 7 dias a partir da data da fatura.\nOrçamento válido por 15 dias.\nMão de obra conforme a política da oficina.\nSinistros do seguro sujeitos à aprovação do perito.\nA oficina não se responsabiliza por objetos deixados no veículo.\nConfira todos os dados antes de sair da oficina."
+  },
+  "groups": {
+    "business": "Oficina",
+    "details": "Veículo"
   }
 }

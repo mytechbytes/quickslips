@@ -171,5 +171,9 @@
     "shipping_charge": 4.9,
     "return_policy": "Ci impegniamo a consegnare ogni ordine alla perfezione. Se devi restituire un articolo, fallo con la confezione o il cartellino del prezzo originali, l'imballaggio originale e la fattura; senza di essi non possiamo elaborare la tua richiesta. Si applicano termini e condizioni.\nI prodotti venduti sono destinati al consumo finale e non alla rivendita.",
     "customer_phone": "333 123 4567"
+  },
+  "groups": {
+    "business": "Venditore",
+    "details": "Ordine"
   }
 }

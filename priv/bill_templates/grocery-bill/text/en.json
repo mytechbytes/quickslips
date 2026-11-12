@@ -11,13 +11,13 @@
   },
   "fields": {
     "store_name": {
-      "label": "Store name"
+      "label": "Store Name"
     },
     "store_address": {
       "label": "Address (optional)"
     },
     "store_phone": {
-      "label": "Phone number (optional)"
+      "label": "Phone Number (optional)"
     },
     "gstin": {
       "label": "{tax_id} (optional)"
@@ -26,7 +26,7 @@
       "label": "FSSAI licence no. (optional)"
     },
     "bill_number": {
-      "label": "Bill number"
+      "label": "Bill Number"
     },
     "date": {
       "label": "Date"
@@ -38,7 +38,7 @@
       "label": "Transaction ID (optional)"
     },
     "customer_name": {
-      "label": "Customer name (optional)"
+      "label": "Customer Name (optional)"
     },
     "discount": {
       "label": "Discount ({currency}) (optional)"
@@ -70,20 +70,20 @@
     "phone": "Phone no.",
     "retail_invoice": "Retail invoice",
     "bill_no": "Bill no.",
-    "bill_date": "Bill date",
+    "bill_date": "Bill Date",
     "time": "Time",
     "particulars": "Particulars",
     "rate": "Rate",
     "qty": "Qty",
     "amount": "Amount",
     "total": "Total",
-    "net_amount": "Net amount",
-    "payment_method": "Payment method",
+    "net_amount": "Net Amount",
+    "payment_method": "Payment Method",
     "transaction": "Transaction ID",
     "customer": "Customer name",
     "thanks": "Thank you! Please visit again.",
     "sn": "Sn.",
-    "item_name": "Item name",
+    "item_name": "Item Name",
     "unit_price": "Net price",
     "sub_total": "Sub total",
     "saving": "Total saving",
@@ -92,5 +92,8 @@
   },
   "sample": {
     "tax_percent": 5
+  },
+  "groups": {
+    "business": "Store"
   }
 }

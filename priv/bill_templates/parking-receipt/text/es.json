@@ -48,5 +48,9 @@
     "facility_phone": "954 123 456",
     "amount": 6.5,
     "thank_you": "¡GRACIAS Y CONDUZCA CON PRUDENCIA!"
+  },
+  "groups": {
+    "business": "Instalación",
+    "details": "Plaza"
   }
 }

@@ -11,10 +11,10 @@
   },
   "fields": {
     "laundry_name": {
-      "label": "Laundry name"
+      "label": "Laundry Name"
     },
     "laundry_address": {
-      "label": "Laundry address (optional)"
+      "label": "Laundry Address (optional)"
     },
     "invoice_number": {
       "label": "Invoice ID"
@@ -23,19 +23,19 @@
       "label": "Date"
     },
     "delivery_date": {
-      "label": "Delivery date"
+      "label": "Delivery Date"
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "customer_address": {
-      "label": "Customer address (optional)"
+      "label": "Customer Address (optional)"
     },
     "tax_percent": {
       "label": "{tax} (%) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -48,7 +48,7 @@
       "label": "Terms and conditions (one per line) (optional)"
     },
     "items": {
-      "label": "Garments and services",
+      "label": "Garments and Services",
       "columns": {
         "name": "Description",
         "qty": "Qty",
@@ -58,7 +58,7 @@
   },
   "print": {
     "date": "Date",
-    "delivery_date": "Delivery date",
+    "delivery_date": "Delivery Date",
     "bill_to": "Bill to",
     "description": "Description",
     "qty": "Qty",
@@ -66,11 +66,11 @@
     "total": "Total",
     "subtotal": "Subtotal",
     "tax_pct": "Tax %",
-    "tax_amount": "Tax amount",
+    "tax_amount": "Tax Amount",
     "grand_total": "Grand total",
-    "payment_method": "Payment method",
+    "payment_method": "Payment Method",
     "terms": "Terms and conditions",
-    "service_title": "Dry cleaning & laundry service",
+    "service_title": "Dry Cleaning & Laundry Service",
     "cash_credit_invoice": "Cash / credit invoice",
     "name": "Name",
     "address": "Address",
@@ -84,5 +84,8 @@
   },
   "sample": {
     "tax_percent": 18
+  },
+  "groups": {
+    "business": "Laundry"
   }
 }

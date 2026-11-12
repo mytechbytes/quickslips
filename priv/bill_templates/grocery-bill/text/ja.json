@@ -124,5 +124,8 @@
     "customer_name": "田中 太郎",
     "tax_percent": 8,
     "store_phone": "03-1234-5678"
+  },
+  "groups": {
+    "business": "店舗"
   }
 }

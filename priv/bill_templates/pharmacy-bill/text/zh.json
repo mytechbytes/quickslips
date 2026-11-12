@@ -177,5 +177,8 @@
     "registered_office": "绿叶大药房连锁有限公司，北京市朝阳区建国路100号",
     "admin_office": "绿叶大药房连锁有限公司，北京市海淀区中关村大街1号",
     "signatory_line": "执业药师"
+  },
+  "groups": {
+    "business": "药店"
   }
 }

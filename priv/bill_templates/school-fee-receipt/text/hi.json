@@ -100,5 +100,9 @@
     "class_name": "कक्षा 7-ब",
     "fee_period": "द्वितीय सत्र, 2026-27",
     "school_address": "सेक्टर 14, चंडीगढ़ 160014"
+  },
+  "groups": {
+    "business": "स्कूल",
+    "customer": "छात्र"
   }
 }

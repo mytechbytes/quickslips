@@ -183,5 +183,10 @@
     "extra_charges": 28,
     "gst_percent": 10,
     "advance_amount": 50
+  },
+  "groups": {
+    "business": "Hotel",
+    "customer": "Huésped",
+    "details": "Estancia"
   }
 }

@@ -10,19 +10,20 @@
   "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
   "tax": { "default": "added", "es": "included", "de": "included", "fr": "included", "it": "included", "gb": "included", "jp": "included", "cn": "included" },
   "templates": [{ "id": "t1" }, { "id": "t2" }],
+  "saved_groups": ["customer"],
   "fields": [
-    { "key": "laundry_name", "group": "business", "label": "Laundry name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "laundry_address", "group": "business", "label": "Laundry address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "laundry_name", "group": "business", "label": "Laundry Name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "laundry_address", "group": "business", "label": "Laundry Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
     { "key": "invoice_number", "group": "document", "label": "Invoice ID", "type": "text", "required": true, "max_length": 30 },
     { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
-    { "key": "delivery_date", "group": "document", "label": "Delivery date", "type": "date", "required": true },
-    { "key": "customer_name", "group": "customer", "label": "Customer name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "customer_address", "group": "customer", "label": "Customer address (optional)", "type": "textarea", "required": false, "max_length": 200 },
-    { "key": "items", "group": "items", "label": "Garments and services", "type": "items", "required": true, "max_rows": 40, "name_max_length": 100,
+    { "key": "delivery_date", "group": "document", "label": "Delivery Date", "type": "date", "required": true },
+    { "key": "customer_name", "group": "customer", "label": "Customer Name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "customer_address", "group": "customer", "label": "Customer Address (optional)", "type": "textarea", "required": false, "max_length": 200 },
+    { "key": "items", "group": "items", "label": "Garments and Services", "type": "items", "required": true, "max_rows": 40, "name_max_length": 100,
       "cells": ["name", "qty", "rate"],
       "columns": { "name": "Description", "qty": "Qty", "rate": "Price ({currency})" } },
     { "key": "tax_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
-    { "key": "payment_mode", "group": "payment", "label": "Payment method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true },
+    { "key": "payment_mode", "group": "payment", "label": "Payment Method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true },
     { "key": "terms", "group": "details", "label": "Terms and conditions (optional, one per line)", "type": "textarea", "required": false, "max_length": 1200 }
   ]
 }

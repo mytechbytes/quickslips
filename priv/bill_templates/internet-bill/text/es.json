@@ -172,5 +172,9 @@
     "plan_charge": 29.9,
     "gst_percent": 21,
     "terms": "Los cheques deben extenderse a favor de Cielo Fibra.\nEn caso de devolución del cheque se aplicará una penalización de 10 €.\nSe cobrará un recargo por demora si la factura se paga después del vencimiento.\nEn caso de impago, nos reservamos el derecho de desactivar el servicio.\nEsta factura se genera por sistema; no requiere firma ni sello."
+  },
+  "groups": {
+    "business": "Proveedor",
+    "details": "Plan"
   }
 }

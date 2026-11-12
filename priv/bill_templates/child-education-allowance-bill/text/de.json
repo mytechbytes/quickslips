@@ -129,5 +129,8 @@
         "batch": "Mia Keller"
       }
     ]
+  },
+  "groups": {
+    "customer": "Antragsteller"
   }
 }

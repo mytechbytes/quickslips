@@ -129,5 +129,8 @@
         "batch": "Giulia Conti"
       }
     ]
+  },
+  "groups": {
+    "customer": "Richiedente"
   }
 }

@@ -1,44 +1,55 @@
-// Daily helper receipt, design t1: the certificate an employee hands in to be reimbursed for the pay of a household helper: who
-// paid whom, as what, how much and for which month, with the declaration. Reads data.json (next to this file). The words
-// come from text.json (`t`), the number and date formats from region.json.
+// Daily helper receipt, design t1: the certificate an employee hands in to be reimbursed for the pay of the helper: who paid
+// whom, how much and for which month, with the declaration. Reads data.json (next to this file). The words come from
+// text.json (`t`), the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
 #show: base.with(width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
 #set par(leading: 0.75em)
 
-#let amount = data.salary
-#let month = month-label(data.month)
-#let role = data.working_as
-#let declaration = opt(data, "declaration")
-// The revenue stamp is stuck on a receipt in India only.
+// What the helper is paid in a month, and the revenue stamp (stuck on a receipt in India only).
+#let net = data.salary
 #let stamp(width: 24mm, height: 28mm) = if region.country == "in" {
   revenue-stamp(data, t.revenue_stamp, width: width, height: height)
 }
-#let heading(content) = align(center, block(text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
-
-#align(right)[#t.date: #fmt-date(data.receipt_date)]
+#let role = data.working_as
+#let declaration = opt(data, "declaration")
+#let employee = data.employer_name
+// A receipt for each month chosen, or one for the quarter, half-year or year (see `salary-periods` of the helpers), one on
+// each page of the PDF.
+#let receipts = salary-periods(data)
+#for (i, receipt) in receipts.enumerate() [
+#if i > 0 { pagebreak() }
+#let month = receipt.label
+#let when = receipt.date
+#let net = net * receipt.months
 #v(1mm)
 #align(center, text(size: 14pt, weight: "bold", t.title))
 #v(2mm)
 #rule()
 #v(4mm)
 
-#say(t.certify, (employer: data.employer_name, amount: money(amount), helper: data.helper_name, role: role, month: month))
-#if declaration != none [ #declaration]
-
-#t.reimburse
+#let period = receipt.months > 1
+#let address = opt(data, "employer_address")
+#say(if period { t.certify_plain_period } else { t.certify_plain }, (amount: money(net), helper: data.helper_name, role: role, month: month))
+#if declaration != none [ #v(1mm) #lines(declaration)]
+#v(1mm)
+#t.ack_reimburse
+#v(1mm)
+#t.ack_further
 
 #v(2mm)
 #grid(
   columns: (1fr, auto),
   column-gutter: 8mm,
   row-gutter: 5mm,
-  [*#t.date:* #fmt-date(data.receipt_date)], align(right)[*#t.payment_method:* #option-label("payment_mode", data.payment_mode)],
-  [*#t.helper_name:* #data.helper_name], align(right)[*#t.employer_name:* #data.employer_name],
+  [*#t.employer_name:* #data.employer_name#if address != none [ \ *#t.employer_address:* #lines(address)]],
+  if when != none { align(right)[*#t.date:* #fmt-date(when)] } else [],
+  [*#t.helper_name:* #data.helper_name], [],
 )
 #v(4mm)
 #grid(
   columns: (1fr, auto),
   stamp(),
-  align(bottom, signature-block(data, t.employer_signature, name: data.employer_name)),
+  align(bottom, signature-block(data, t.employer_signature, name: employee)),
 )
+]

@@ -147,5 +147,9 @@
     "tax_percent": 13,
     "customer_name": "王伟",
     "station_phone": "010-12345678"
+  },
+  "groups": {
+    "business": "加油站",
+    "details": "车辆"
   }
 }

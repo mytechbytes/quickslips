@@ -150,5 +150,8 @@
     "service_description": "Gastronomieleistung",
     "payment_note": "Online bezahlt",
     "signatory_name": "A. Schmidt"
+  },
+  "groups": {
+    "business": "Restaurant"
   }
 }

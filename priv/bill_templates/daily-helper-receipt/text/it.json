@@ -26,12 +26,6 @@
     "declaration": {
       "label": "Dichiarazione (facoltativo)"
     },
-    "month": {
-      "label": "Stipendio del mese"
-    },
-    "receipt_date": {
-      "label": "Data della ricevuta"
-    },
     "salary": {
       "label": "Importo dello stipendio ({currency})"
     },
@@ -45,6 +39,15 @@
         "Card": "Carta",
         "Online": "Online"
       }
+    },
+    "periods": {
+      "label": "Periodo dello stipendio",
+      "options": {
+        "Monthly": "Mensile",
+        "Quarterly": "Trimestrale",
+        "Half-yearly": "Semestrale",
+        "Yearly": "Annuale"
+      }
     }
   },
   "print": {
@@ -53,19 +56,28 @@
     "certify": "Si certifica che {employer} ha versato {amount} a {helper}, che lavora come {role}, a titolo di stipendio per il mese di {month} (ricevuta allegata).",
     "certify_self": "Certifico di aver versato {amount} a {helper}, che lavora come {role}, per il mese di {month} (ricevuta allegata).",
     "reimburse": "Si prega di rimborsare l'importo indicato. Dichiaro inoltre che quanto sopra è corretto e veritiero.",
-    "payment_method": "Metodo di pagamento",
     "helper_name": "Nome dell'aiuto domestico",
-    "working_as": "Mansione",
     "employer_name": "Nome del datore di lavoro",
     "employer_signature": "Firma del datore di lavoro",
     "revenue_stamp": "Marca da bollo",
     "salary_month": "Stipendio del mese",
-    "amount_paid": "Importo pagato",
-    "received_text": "Ricevuto da {employer} l'importo di {amount} da {helper} ({role}) a titolo di stipendio per il mese di {month}.",
     "ack_title": "Conferma di ricevuta",
     "receipt_date_of": "Data di ricezione",
     "for_month": "Per il mese di",
-    "received_sum": "Ricevuta la somma di {amount} per il mese di {month} da {employer}."
+    "received_sum": "Ho ricevuto la somma di {amount} per il mese di {month} da {employer}.",
+    "ack_certify": "Certifico di aver versato {amount} a {helper}, che lavora come {role}, per il mese di {month} (ricevuta di conferma allegata sotto).",
+    "ack_certify_period": "Certifico di aver versato {amount} a {helper}, che lavora come {role}, per il periodo {month} (ricevuta di conferma allegata sotto).",
+    "certify_plain": "Certifico di aver versato {amount} a {helper}, che lavora come {role}, per il mese di {month}.",
+    "certify_plain_period": "Certifico di aver versato {amount} a {helper}, che lavora come {role}, per il periodo {month}.",
+    "ack_reimburse": "Si prega di rimborsare l'importo sopra indicato sul mio conto.",
+    "ack_further": "Dichiaro inoltre che quanto sopra è corretto e veritiero per quanto a mia conoscenza e convinzione.",
+    "ack_heading": "Ricevuta di pagamento e conferma (da firmare dal collaboratore)",
+    "ack_received": "Ricevuta la somma di {amount} ({words}) per il mese di {month} da {employer}.",
+    "ack_received_period": "Ricevuta la somma di {amount} ({words}) per il periodo {month} da {employer}.",
+    "ack_thumb": "Firma / impronta del pollice del collaboratore",
+    "employer_address": "Indirizzo del datore di lavoro",
+    "second_signature": "Firma del collaboratore",
+    "receipt_date": "Data della ricevuta"
   },
   "sample": {
     "employer_name": "Luca Bianchi",
@@ -73,5 +85,10 @@
     "working_as": "collaboratrice domestica",
     "salary": 650,
     "declaration": "Dichiaro inoltre che l'aiuto domestico è impiegato esclusivamente per scopi di lavoro."
+  },
+  "groups": {
+    "business": "Datore di lavoro",
+    "customer": "Collaboratore",
+    "document": "Periodo dello stipendio"
   }
 }

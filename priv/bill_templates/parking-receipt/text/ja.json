@@ -48,5 +48,9 @@
     "facility_phone": "03-1234-5678",
     "amount": 1200,
     "thank_you": "ご利用ありがとうございました。安全運転で！"
+  },
+  "groups": {
+    "business": "施設",
+    "details": "駐車スペース"
   }
 }

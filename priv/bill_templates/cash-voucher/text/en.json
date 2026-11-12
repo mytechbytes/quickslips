@@ -34,7 +34,7 @@
       "label": "Resident certificate no. (optional)"
     },
     "received_date": {
-      "label": "Date received (optional)"
+      "label": "Date Received (optional)"
     },
     "place": {
       "label": "Place (optional)"
@@ -64,5 +64,8 @@
     "res_cert": "Res. cert. no.",
     "place": "Place"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "customer": "Payee"
+  }
 }

@@ -223,5 +223,10 @@
     "clinic_phone": "010-12345678",
     "patient_details": "42 / 男",
     "remark": "如出现疼痛、活动疼痛、红肿、流脓或出血，请立即就诊。5 天后复查。"
+  },
+  "groups": {
+    "business": "诊所",
+    "customer": "患者",
+    "details": "医生"
   }
 }

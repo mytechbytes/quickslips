@@ -171,5 +171,9 @@
     "shipping_charge": 3.95,
     "return_policy": "Nos esforzamos por entregar cada pedido a la perfección. Si necesitas devolver un artículo, hazlo con la caja o la etiqueta de precio originales, el embalaje original y la factura; sin ellos no podemos tramitar tu solicitud. Se aplican los términos y condiciones.\nLos productos vendidos son para el consumo del usuario final y no para su reventa.",
     "customer_phone": "612 345 678"
+  },
+  "groups": {
+    "business": "Vendedor",
+    "details": "Pedido"
   }
 }

@@ -15,22 +15,22 @@
   },
   "fields": {
     "station_name": {
-      "label": "Fuel station name"
+      "label": "Fuel Station Name"
     },
     "station_address": {
-      "label": "Station address"
+      "label": "Station Address"
     },
     "bill_number": {
-      "label": "Bill number"
+      "label": "Bill Number"
     },
     "date": {
       "label": "Date"
     },
     "vehicle_number": {
-      "label": "Vehicle number"
+      "label": "Vehicle Number"
     },
     "fuel_type": {
-      "label": "Fuel type",
+      "label": "Fuel Type",
       "options": {
         "Petrol": "Petrol",
         "Diesel": "Diesel",
@@ -41,7 +41,7 @@
       "label": "Quantity (litres)"
     },
     "rate": {
-      "label": "Rate per litre ({currency})"
+      "label": "Rate per Litre ({currency})"
     },
     "seller_tax_id": {
       "label": "{tax_id} (optional)"
@@ -50,10 +50,10 @@
       "label": "{tax} (%) (optional)"
     },
     "station_phone": {
-      "label": "Station phone (optional)"
+      "label": "Station Phone (optional)"
     },
     "dealer_name": {
-      "label": "Dealer name (optional)"
+      "label": "Dealer Name (optional)"
     },
     "fcc_id": {
       "label": "FCC ID (optional)"
@@ -65,7 +65,7 @@
       "label": "Time (optional)"
     },
     "customer_name": {
-      "label": "Customer name (optional)"
+      "label": "Customer Name (optional)"
     },
     "nozzle_number": {
       "label": "Nozzle no. (optional)"
@@ -74,7 +74,7 @@
       "label": "Density (kg/m³) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "Card": "Card",
@@ -137,5 +137,9 @@
     "grade": "Grade",
     "unit_price": "Unit Price"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Station",
+    "details": "Vehicle"
+  }
 }

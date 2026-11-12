@@ -147,5 +147,9 @@
     "tax_percent": 22,
     "customer_name": "Marco Rossi",
     "station_phone": "06 1234567"
+  },
+  "groups": {
+    "business": "Stazione",
+    "details": "Veicolo"
   }
 }

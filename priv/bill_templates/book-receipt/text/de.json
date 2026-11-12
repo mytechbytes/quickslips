@@ -89,5 +89,9 @@
     "description": "Taschenbuch",
     "quantity": 2,
     "book_price": 8.9
+  },
+  "groups": {
+    "business": "Geschäft",
+    "details": "Buch"
   }
 }

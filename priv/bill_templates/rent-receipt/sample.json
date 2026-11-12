@@ -3,13 +3,17 @@
   "landlord_name": "Ramesh Gupta",
   "landlord_pan": "",
   "property_address": "Flat 402, Lotus Heights, Sector 21, Noida, Uttar Pradesh",
-  "month": "2026-10",
-  "from_date": "2026-07-01",
-  "to_date": "2026-12-31",
-  "bill_by": "Quarterly",
   "monthly_rent": 25000,
   "payment_mode": "Bank transfer",
   "received_by": "Landlord",
   "receiver_name": "Ramesh Gupta",
-  "receipt_date": "2026-10-05"
+  "periods": {
+    "bill_by": "Monthly",
+    "months": [
+      "2026-10"
+    ],
+    "dates": [
+      "2026-10-05"
+    ]
+  }
 }

@@ -253,7 +253,7 @@ defmodule QuickSlips.Templates.RegistryTest do
       {:ok, fuel} = QuickSlips.Templates.get("fuel-bill")
 
       assert Map.new(rent["templates"], &{&1["id"], &1["stamp"]}) ==
-               %{"t1" => true, "t2" => true, "t3" => true, "t4" => false}
+               %{"t1" => true, "t2" => true, "t4" => false}
 
       refute Enum.any?(fuel["templates"], & &1["stamp"])
     end

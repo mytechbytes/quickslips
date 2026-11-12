@@ -172,5 +172,8 @@
     ],
     "savings": 1.4,
     "delivery_mode": "Home delivery"
+  },
+  "groups": {
+    "details": "Ordine"
   }
 }

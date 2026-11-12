@@ -26,12 +26,6 @@
     "declaration": {
       "label": "Declaração (opcional)"
     },
-    "month": {
-      "label": "Salário do mês"
-    },
-    "receipt_date": {
-      "label": "Data do recibo"
-    },
     "salary": {
       "label": "Valor do salário ({currency})"
     },
@@ -45,6 +39,15 @@
         "Card": "Cartão",
         "Online": "Online"
       }
+    },
+    "periods": {
+      "label": "Período do salário",
+      "options": {
+        "Monthly": "Mensal",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
     }
   },
   "print": {
@@ -53,19 +56,28 @@
     "certify": "Certifica-se que {employer} pagou {amount} a {helper}, que trabalha como {role}, referente ao salário do mês de {month} (recibo de quitação anexo).",
     "certify_self": "Certifico que paguei {amount} a {helper}, que trabalha como {role}, pelo mês de {month} (recibo de quitação anexo).",
     "reimburse": "Solicito o reembolso do valor acima. Declaro ainda que o que consta acima é correto e verdadeiro.",
-    "payment_method": "Forma de pagamento",
     "helper_name": "Nome do auxiliar",
-    "working_as": "Função",
     "employer_name": "Nome do empregador",
     "employer_signature": "Assinatura do empregador",
     "revenue_stamp": "Selo fiscal",
     "salary_month": "Salário do mês",
-    "amount_paid": "Valor pago",
-    "received_text": "Recebido de {employer} a quantia de {amount} por {helper} ({role}) referente ao salário do mês de {month}.",
     "ack_title": "Confirmação de recebimento",
     "receipt_date_of": "Data de recebimento",
     "for_month": "Pelo mês de",
-    "received_sum": "Recebida a quantia de {amount} pelo mês de {month} de {employer}."
+    "received_sum": "Recebi a quantia de {amount} referente ao mês de {month} de {employer}.",
+    "ack_certify": "Certifico que paguei {amount} a {helper}, que trabalha como {role}, pelo mês de {month} (recibo de confirmação anexo abaixo).",
+    "ack_certify_period": "Certifico que paguei {amount} a {helper}, que trabalha como {role}, pelo período {month} (recibo de confirmação anexo abaixo).",
+    "certify_plain": "Certifico que paguei {amount} a {helper}, que trabalha como {role}, pelo mês de {month}.",
+    "certify_plain_period": "Certifico que paguei {amount} a {helper}, que trabalha como {role}, pelo período {month}.",
+    "ack_reimburse": "Por favor, reembolse o valor acima na minha conta.",
+    "ack_further": "Declaro ainda que o acima exposto é correto e verdadeiro, até onde sei e acredito.",
+    "ack_heading": "Recibo de pagamento e confirmação (a ser assinado pelo ajudante)",
+    "ack_received": "Recebi a quantia de {amount} ({words}) referente ao mês de {month} de {employer}.",
+    "ack_received_period": "Recebi a quantia de {amount} ({words}) referente ao período {month} de {employer}.",
+    "ack_thumb": "Assinatura / impressão digital do polegar do ajudante",
+    "employer_address": "Endereço do empregador",
+    "second_signature": "Assinatura do ajudante",
+    "receipt_date": "Data do recibo"
   },
   "sample": {
     "employer_name": "Carlos Lima",
@@ -73,5 +85,10 @@
     "working_as": "diarista",
     "salary": 1800,
     "declaration": "Declaro ainda que o auxiliar é utilizado exclusivamente para fins profissionais."
+  },
+  "groups": {
+    "business": "Empregador",
+    "customer": "Ajudante",
+    "document": "Período do salário"
   }
 }

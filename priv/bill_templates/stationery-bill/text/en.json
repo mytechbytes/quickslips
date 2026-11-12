@@ -10,31 +10,31 @@
   },
   "fields": {
     "shop_name": {
-      "label": "Shop name"
+      "label": "Shop Name"
     },
     "shop_address": {
-      "label": "Shop address"
+      "label": "Shop Address"
     },
     "seller_tax_id": {
       "label": "{tax_id} (optional)"
     },
     "invoice_number": {
-      "label": "Receipt number"
+      "label": "Receipt Number"
     },
     "date": {
       "label": "Date"
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "customer_address": {
-      "label": "Customer address"
+      "label": "Customer Address"
     },
     "tax_percent": {
       "label": "{tax} (%) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -44,7 +44,7 @@
       }
     },
     "remarks": {
-      "label": "Remarks / instructions (optional)"
+      "label": "Remarks / Instructions (optional)"
     },
     "items": {
       "label": "Items",
@@ -56,7 +56,7 @@
     }
   },
   "print": {
-    "receipt_no": "Receipt no",
+    "receipt_no": "Receipt No",
     "date": "Date",
     "billed_to": "Billed to",
     "address": "Address",
@@ -66,11 +66,14 @@
     "amount": "Amount",
     "remarks": "Remarks / instructions",
     "subtotal": "Subtotal",
-    "total_amount": "Total amount",
-    "payment_method": "Payment method",
+    "total_amount": "Total Amount",
+    "payment_method": "Payment Method",
     "save_paper": "Save paper, save nature! Thanks for shopping with us."
   },
   "sample": {
     "tax_percent": 18
+  },
+  "groups": {
+    "business": "Shop"
   }
 }

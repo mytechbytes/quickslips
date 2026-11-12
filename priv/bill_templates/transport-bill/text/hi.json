@@ -132,5 +132,9 @@
     "charged_weight": "500 किग्रा",
     "to_pay": 4500,
     "signatory_name": "आर. शर्मा"
+  },
+  "groups": {
+    "customer": "प्रेषक और परेषिती",
+    "details": "यात्रा"
   }
 }

@@ -1,5 +1,6 @@
 import type { Design } from "./form"
 import { t } from "./i18n"
+import { makeSearchable } from "./combo"
 import { saveSignature, type Signature } from "./saved"
 
 /** Told when a signature is saved on the page, so the other select of signatures lists it too. */
@@ -22,25 +23,57 @@ export function createDriverSignaturePicker(root: HTMLElement, drawn: (url: stri
   const section = root.querySelector<HTMLElement>("#driver-signature-section")
   const select = root.querySelector<HTMLSelectElement>("#driver-signature-select")
   if (!section || !select) return NO_PICKER
+  return createListedPicker(root, section, select, "driver", drawn, (design) => design?.driver_signature === true)
+}
 
+/**
+ * A further signature of a design (the third of a cash voucher: "approved by"): one select of the saved signatures for
+ * each slot the server drew (`[data-extra-signature]`, named "signature_3", ...). `drawn` is told the slot and the
+ * address of the chosen picture, or `null`.
+ */
+export function createExtraSignaturePickers(
+  root: HTMLElement,
+  drawn: (slot: string, url: string | null) => void,
+): Record<string, SignaturePicker> {
+  const pickers: Record<string, SignaturePicker> = {}
+  for (const section of root.querySelectorAll<HTMLElement>("[data-extra-signature]")) {
+    const slot = section.dataset.extraSignature!
+    const select = section.querySelector<HTMLSelectElement>("select")
+    if (!select) continue
+    pickers[slot] = createListedPicker(root, section, select, slot, (url) => drawn(slot, url), (design) => design?.extra_signatures?.includes(slot) === true)
+    root.querySelector(`#extra-signature-open-${slot}`)?.addEventListener("click", () => (root.dataset.signatureTarget = slot))
+  }
+  return pickers
+}
+
+/** A select of the saved signatures that follows the one dialog that saves a new one: it lists it, and chooses it when its button opened the dialog. */
+function createListedPicker(
+  root: HTMLElement,
+  section: HTMLElement,
+  select: HTMLSelectElement,
+  target: string,
+  drawn: (url: string | null) => void,
+  wanted: (design: Design | undefined) => boolean,
+): SignaturePicker {
+  makeSearchable(select)
   const signatures: Signature[] = JSON.parse(root.dataset.signatures ?? "[]")
   let chosen: number | null = null
 
   function use(id: number | null) {
     const signature = signatures.find((s) => s.id === id) ?? null
     chosen = signature ? signature.id : null
-    select!.value = signature ? String(signature.id) : ""
+    select.value = signature ? String(signature.id) : ""
     drawn(signature?.url ?? null)
   }
   select.addEventListener("change", () => use(select.value ? Number(select.value) : null))
-  // A signature saved in the first picker is listed here too, in the same order, keeping the choice.
+  // A signature saved in the dialog is listed here too, in the same order, keeping the choice.
   root.addEventListener(SIGNATURE_SAVED, (event) => {
-    const { signature, forDriver } = (event as CustomEvent<{ signature: Signature; forDriver: boolean }>).detail
-    signatures.push(signature)
+    const detail = (event as CustomEvent<{ signature: Signature; target: string }>).detail
+    signatures.push(detail.signature)
     signatures.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
     select.replaceChildren(select.options[0], ...signatures.map((s) => new Option(s.name, String(s.id))))
     select.value = chosen ? String(chosen) : ""
-    if (forDriver) use(signature.id)
+    if (detail.target === target) use(detail.signature.id)
   })
 
   return {
@@ -49,7 +82,7 @@ export function createDriverSignaturePicker(root: HTMLElement, drawn: (url: stri
     },
     use,
     showFor(design) {
-      section.classList.toggle("hidden", !design?.driver_signature)
+      section.classList.toggle("hidden", !wanted(design))
     },
   }
 }
@@ -67,16 +100,7 @@ export function createSignaturePicker(root: HTMLElement, drawn: (url: string | n
   const select = root.querySelector<HTMLSelectElement>("#signature-select")
   if (!section || !select) return NO_PICKER
 
-  const signatures: Signature[] = JSON.parse(root.dataset.signatures ?? "[]")
-  let chosen: number | null = null
-
-  function use(id: number | null) {
-    const signature = signatures.find((s) => s.id === id) ?? null
-    chosen = signature ? signature.id : null
-    select!.value = signature ? String(signature.id) : ""
-    drawn(signature?.url ?? null)
-  }
-  select.addEventListener("change", () => use(select.value ? Number(select.value) : null))
+  const picker = createListedPicker(root, section, select, "main", drawn, (design) => design?.signature === true)
 
   // Both selects have a + button that opens the one dialog; the signature saved there is chosen in the select whose
   // button opened it.
@@ -109,25 +133,14 @@ export function createSignaturePicker(root: HTMLElement, drawn: (url: string | n
       return say(t(key) === key ? t("error") : t(key), true)
     }
 
-    signatures.push(result.signature)
-    signatures.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
-    select.replaceChildren(select.options[0], ...signatures.map((s) => new Option(s.name, String(s.id))))
-    const forDriver = root.dataset.signatureTarget === "driver"
-    root.dispatchEvent(new CustomEvent(SIGNATURE_SAVED, { detail: { signature: result.signature, forDriver } }))
-    if (!forDriver) use(result.signature.id) // the signature that was just saved is the one the visitor wants
+    // Every select lists it; the one whose + button opened the dialog also chooses it.
+    const target = root.dataset.signatureTarget ?? "main"
+    root.dispatchEvent(new CustomEvent(SIGNATURE_SAVED, { detail: { signature: result.signature, target } }))
     name.value = ""
     file.value = ""
     rights.checked = false
     say(t("signature_saved"), false)
   })
 
-  return {
-    get id() {
-      return chosen
-    },
-    use,
-    showFor(design) {
-      section.classList.toggle("hidden", !design?.signature)
-    },
-  }
+  return picker
 }

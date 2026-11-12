@@ -11,25 +11,25 @@
   },
   "fields": {
     "travel_name": {
-      "label": "Travel operator"
+      "label": "Travel Operator"
     },
     "boarding_phone": {
-      "label": "Boarding point phone"
+      "label": "Boarding Point Phone"
     },
     "customer_care": {
-      "label": "Customer care number"
+      "label": "Customer Care Number"
     },
     "seller_tax_id": {
       "label": "{tax_id} (optional)"
     },
     "ticket_number": {
-      "label": "Ticket number"
+      "label": "Ticket Number"
     },
     "pnr_number": {
-      "label": "PNR number (optional)"
+      "label": "PNR Number (optional)"
     },
     "travel_type": {
-      "label": "Travel type",
+      "label": "Travel Type",
       "options": {
         "Sleeper": "Sleeper",
         "AC Sleeper": "AC Sleeper",
@@ -40,37 +40,37 @@
       }
     },
     "location": {
-      "label": "Boarding point: location"
+      "label": "Boarding Point: Location"
     },
     "landmark": {
-      "label": "Boarding point: landmark"
+      "label": "Boarding Point: Landmark"
     },
     "boarding_address": {
-      "label": "Boarding point: address"
+      "label": "Boarding Point: Address"
     },
     "reporting_date": {
-      "label": "Reporting date"
+      "label": "Reporting Date"
     },
     "departure_time": {
-      "label": "Departure time (optional)"
+      "label": "Departure Time (optional)"
     },
     "dropping_date": {
-      "label": "Dropping point: date"
+      "label": "Dropping Point: Date"
     },
     "dropping_time": {
-      "label": "Dropping point: time (optional)"
+      "label": "Dropping Point: Time (optional)"
     },
     "dropping_address": {
-      "label": "Dropping point: address"
+      "label": "Dropping Point: Address"
     },
     "passenger_details": {
-      "label": "Passenger name, age, gender"
+      "label": "Passenger Name, Age, Gender"
     },
     "passenger_count": {
-      "label": "Number of passengers"
+      "label": "Number of Passengers"
     },
     "seat_number": {
-      "label": "Seat number"
+      "label": "Seat Number"
     },
     "amount": {
       "label": "Fare ({currency})"
@@ -79,10 +79,10 @@
       "label": "{tax} (%) (optional)"
     },
     "cancellation_charge": {
-      "label": "Cancellation charge before departure ({currency}) (optional)"
+      "label": "Cancellation Charge Before Departure ({currency}) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -97,11 +97,11 @@
     "eticket": "eTICKET",
     "type": "Type",
     "need_help": "Need help with your trip?",
-    "boarding_phone": "Boarding point phone",
+    "boarding_phone": "Boarding Point Phone",
     "customer_care": "Travels customer care",
-    "ticket_no": "Ticket no",
-    "pnr_no": "PNR no",
-    "reporting_date": "Reporting date",
+    "ticket_no": "Ticket No",
+    "pnr_no": "PNR No",
+    "reporting_date": "Reporting Date",
     "departure_time": "Departure time",
     "no_passengers": "No. of passengers",
     "boarding_point": "Boarding point details",
@@ -112,12 +112,12 @@
     "time": "Time",
     "date": "Date",
     "passenger_details": "Passenger details (age, gender)",
-    "seat_number": "Seat number",
+    "seat_number": "Seat Number",
     "mticket_note": "NOTE: This operator accepts mobile tickets; you need not carry a printout.",
     "total_fare": "Total fare",
     "gst_note": "({rate}% {tax} and service charge applicable, if any)",
-    "net_amount": "Net amount",
-    "taxable_amount": "Taxable amount",
+    "net_amount": "Net Amount",
+    "taxable_amount": "Taxable Amount",
     "terms": "Terms and conditions",
     "t1_term_0": "Please note the following regarding the luggage policy for your journey.",
     "t1_term_1": "Each passenger may carry one bag of up to 10 kg and one personal item such as a laptop bag, handbag or briefcase of up to 5 kg.",
@@ -131,13 +131,13 @@
     "on": "on",
     "cut_as_charges": "{amount} will be cut as cancellation charges",
     "t2_banner": "Congratulations! Your ticket is reschedulable until {when}.",
-    "lta_month": "LTA month",
+    "lta_month": "LTA Month",
     "boarding_help": "Boarding help",
-    "journey_date": "Journey date",
+    "journey_date": "Journey Date",
     "passengers": "Passengers",
     "seat_count": "Seat",
-    "passenger_details_title": "Passenger details (name/age/gender)",
-    "payment_method": "Payment method",
+    "passenger_details_title": "Passenger Details (name/age/gender)",
+    "payment_method": "Payment Method",
     "important_note": "Important note",
     "note_mticket": "This operator accepts mobile tickets. Carrying a printed ticket is optional.",
     "note_id": "Carry a valid photo ID for passenger verification during boarding.",
@@ -151,5 +151,9 @@
     "cancel_window": "Cancellation window",
     "applicable_charge": "Applicable charge"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "customer": "Passenger",
+    "details": "Journey"
+  }
 }

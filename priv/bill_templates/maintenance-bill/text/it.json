@@ -189,5 +189,9 @@
     ],
     "tax_percent": 22,
     "terms": "Pagamento entro 7 giorni dalla data della fattura.\nPreventivo valido per 15 giorni.\nManodopera secondo il listino dell'officina.\nI sinistri assicurativi sono soggetti all'approvazione del perito.\nL'officina non risponde degli oggetti lasciati nel veicolo.\nControlla tutti i dati prima di lasciare l'officina."
+  },
+  "groups": {
+    "business": "Officina",
+    "details": "Veicolo"
   }
 }

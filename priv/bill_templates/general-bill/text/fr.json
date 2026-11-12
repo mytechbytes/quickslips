@@ -97,5 +97,8 @@
         "tax": 20
       }
     ]
+  },
+  "groups": {
+    "business": "Boutique"
   }
 }

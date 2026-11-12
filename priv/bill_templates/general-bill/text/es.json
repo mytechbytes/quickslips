@@ -97,5 +97,8 @@
         "tax": 21
       }
     ]
+  },
+  "groups": {
+    "business": "Tienda"
   }
 }

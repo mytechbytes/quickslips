@@ -183,5 +183,10 @@
     "extra_charges": 150,
     "gst_percent": 6,
     "advance_amount": 200
+  },
+  "groups": {
+    "business": "酒店",
+    "customer": "住客",
+    "details": "住宿"
   }
 }

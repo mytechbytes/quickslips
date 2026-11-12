@@ -699,6 +699,32 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       end
     end
 
+    test "a cash voucher has a signature select for each of its three signers, with their names",
+         %{
+           conn: conn
+         } do
+      conn = log_in_user(conn, user_fixture())
+
+      doc =
+        conn
+        |> get(~p"/en-in/cash-voucher-generator")
+        |> html_response(200)
+        |> LazyHTML.from_document()
+
+      text = fn selector ->
+        doc |> LazyHTML.query(selector) |> LazyHTML.text() |> String.trim()
+      end
+
+      assert text.("label[for=signature-select]") == "Prepared by"
+      assert text.("label[for=driver-signature-select]") == "Checked by"
+      assert text.("label[for=extra-signature-select-signature_3]") == "Approved by"
+
+      assert LazyHTML.query(doc, "button#extra-signature-open-signature_3[data-dialog-open]")
+             |> Enum.count() == 1
+
+      assert LazyHTML.query(doc, "[data-extra-signature=signature_4]") |> Enum.count() == 0
+    end
+
     test "a bill with one signature calls it Signature", %{conn: conn} do
       conn = log_in_user(conn, user_fixture())
 
@@ -712,6 +738,47 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
              |> LazyHTML.query("label[for=signature-select]")
              |> LazyHTML.text()
              |> String.trim() == "Signature"
+    end
+  end
+
+  describe "the sections of a bill in its own words" do
+    defp schema_of(conn, path) do
+      [json] = conn |> get(path) |> html_response(200) |> attrs("#bill-app", "data-schema")
+      Jason.decode!(json)
+    end
+
+    test "name the parties of the bill, in the language of the page", %{conn: conn} do
+      en = schema_of(conn, "/en-in/rent-receipt-generator")
+
+      assert %{"business" => "Landlord", "customer" => "Tenant", "document" => "Rent Period"} =
+               en["groups"]
+
+      hi = schema_of(conn, "/hi-in/rent-receipt-generator")
+      assert hi["groups"]["customer"] != "Tenant"
+      assert hi["groups"]["customer"] != ""
+    end
+
+    test "say which sections a user may save and pick again", %{conn: conn} do
+      assert schema_of(conn, "/en-in/driver-salary-receipt-generator")["saved_groups"] ==
+               ["business", "customer", "details"]
+
+      assert schema_of(conn, "/en-in/rent-receipt-generator")["saved_groups"] == ["customer"]
+
+      assert schema_of(conn, "/en-in/fuel-bill-generator")["saved_groups"] == [
+               "customer",
+               "details"
+             ]
+    end
+
+    test "have field names in Title Case", %{conn: conn} do
+      labels =
+        conn
+        |> schema_of("/en-in/fuel-bill-generator")
+        |> Map.fetch!("fields")
+        |> Enum.map(& &1["label"])
+
+      assert "Fuel Station Name" in labels
+      assert "Bill Number" in labels
     end
   end
 

@@ -89,5 +89,9 @@
     "description": "Livre de poche",
     "quantity": 2,
     "book_price": 9.5
+  },
+  "groups": {
+    "business": "Magasin",
+    "details": "Livre"
   }
 }

@@ -160,5 +160,10 @@
     ],
     "instructions": "Check-in: Melden Sie sich bei Ankunft bei Bedarf an der Rezeption an.\nKleidung und Hygiene: Tragen Sie Sportkleidung und saubere Hallenschuhe. Bringen Sie ein Handtuch zum Abwischen der Geräte mit.\nAufwärmen: Beginnen Sie mit 5-10 Minuten Aufwärmen, z. B. leichtes Cardio oder dynamisches Dehnen.\nGeräte: Machen Sie sich als Neuling mit den Geräten vertraut und fragen Sie das Personal.\nCardiogeräte: Stellen Sie die Geräte auf Ihr Niveau ein und wischen Sie sie vor und nach der Nutzung ab.\nFlüssigkeit: Trinken Sie vor, während und nach dem Training Wasser.\nPausen: Ruhen Sie zwischen den Sätzen, blockieren Sie aber zu Stoßzeiten keine Geräte.\nCool-down: Beenden Sie das Training mit 5-10 Minuten leichtem Dehnen.\nWertsachen: Bewahren Sie Ihre Sachen in den Schließfächern auf und lassen Sie nichts unbeaufsichtigt.\nViel Spaß und Regelmäßigkeit: Regelmäßigkeit ist der Schlüssel zum Ziel.",
     "remarks": "Für Pausierungen ist eine Frist von 7 Tagen einzuhalten."
+  },
+  "groups": {
+    "business": "Fitnessstudio",
+    "customer": "Mitglied",
+    "details": "Tarif"
   }
 }

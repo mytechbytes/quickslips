@@ -160,5 +160,10 @@
     ],
     "instructions": "Check-in: all'arrivo, presentati alla reception se necessario.\nAbbigliamento e igiene: indossa abbigliamento sportivo e scarpe pulite. Porta un asciugamano per pulire gli attrezzi.\nRiscaldamento: inizia con 5-10 minuti di riscaldamento, come cardio leggero o stretching dinamico.\nAttrezzature: se sei nuovo, familiarizza con i macchinari e chiedi aiuto al personale.\nCardio: regola le macchine al tuo livello e puliscile prima e dopo l'uso.\nIdratazione: bevi acqua prima, durante e dopo l'allenamento.\nPause: riposa tra le serie, ma non monopolizzare gli attrezzi nelle ore di punta.\nDefaticamento: concludi con 5-10 minuti di stretching leggero.\nEffetti personali: riponi le tue cose negli armadietti e non lasciare oggetti di valore incustoditi.\nDivertiti e sii costante: la costanza è la chiave per raggiungere i tuoi obiettivi.",
     "remarks": "Le richieste di sospensione richiedono 7 giorni di preavviso."
+  },
+  "groups": {
+    "business": "Palestra",
+    "customer": "Iscritto",
+    "details": "Piano"
   }
 }

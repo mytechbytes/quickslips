@@ -123,5 +123,8 @@
     "customer_name": "王伟",
     "table_number": "T-7",
     "gst_percent": 6
+  },
+  "groups": {
+    "business": "餐厅"
   }
 }

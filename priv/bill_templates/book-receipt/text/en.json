@@ -11,22 +11,22 @@
   },
   "fields": {
     "store_name": {
-      "label": "Bookstore name"
+      "label": "Bookstore Name"
     },
     "store_address": {
-      "label": "Bookstore address (optional)"
+      "label": "Bookstore Address (optional)"
     },
     "receipt_number": {
-      "label": "Receipt number"
+      "label": "Receipt Number"
     },
     "date": {
-      "label": "Purchase date"
+      "label": "Purchase Date"
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "book_name": {
-      "label": "Book title"
+      "label": "Book Title"
     },
     "author": {
       "label": "Author (optional)"
@@ -41,10 +41,10 @@
       "label": "Quantity"
     },
     "book_price": {
-      "label": "Price of one book ({currency})"
+      "label": "Price of One Book ({currency})"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -59,12 +59,12 @@
     "bill_to": "Bill to",
     "receipt_details": "Receipt details",
     "receipt_no": "Receipt no.",
-    "receipt_date": "Receipt date",
-    "customer_name": "Customer name",
-    "book_name": "Book name",
+    "receipt_date": "Receipt Date",
+    "customer_name": "Customer Name",
+    "book_name": "Book Name",
     "author": "Author",
     "publisher": "Publisher",
-    "payment_method": "Payment method",
+    "payment_method": "Payment Method",
     "receipt_summary": "Receipt summary",
     "item": "Item",
     "description": "Description",
@@ -72,13 +72,17 @@
     "price": "Price",
     "total": "Total",
     "sold_by": "Sold by",
-    "store_name": "Store name",
-    "store_address": "Store address",
+    "store_name": "Store Name",
+    "store_address": "Store Address",
     "thanks": "Thank you! Visit again.",
     "quote_1": "A room without books is like a body without a soul.",
     "quote_2": "Take a good book to bed with you — books do not snore.",
     "quote_3": "Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers.",
     "quote_4": "Books are good company, in sad times and happy times, for books are people – people who have managed to stay alive by hiding between the covers of a book."
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Store",
+    "details": "Book"
+  }
 }

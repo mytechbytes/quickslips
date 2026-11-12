@@ -102,5 +102,8 @@
     ],
     "tax_percent": 21,
     "remarks": "Conserve el ticket para cambios en un plazo de 7 días."
+  },
+  "groups": {
+    "business": "Tienda"
   }
 }

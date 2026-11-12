@@ -82,5 +82,10 @@
     "amount": 100,
     "received_by": "Luca Bianchi, tesoriere",
     "donation_description": "Donazione per il restauro della biblioteca storica."
+  },
+  "groups": {
+    "business": "Organizzazione",
+    "customer": "Donatore",
+    "details": "Donazione"
   }
 }

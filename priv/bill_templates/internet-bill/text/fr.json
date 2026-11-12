@@ -172,5 +172,9 @@
     "plan_charge": 29.99,
     "gst_percent": 20,
     "terms": "Les chèques sont à libeller à l'ordre de Ciel Fibre.\nEn cas de chèque impayé, une pénalité de 10 € sera appliquée.\nDes frais de retard seront facturés si la facture est réglée après l'échéance.\nEn cas de retard de paiement, nous nous réservons le droit de suspendre le service.\nCette facture est générée par le système ; signature et cachet non requis."
+  },
+  "groups": {
+    "business": "Fournisseur",
+    "details": "Forfait"
   }
 }

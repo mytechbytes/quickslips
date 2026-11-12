@@ -9,6 +9,8 @@
   "description": "Create a cash voucher with the payee, the particulars and amounts, the total in figures and words, and the prepared, checked, approved and received signatures. Preview instantly and download as PDF.",
   "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
   "templates": [{ "id": "t1" }],
+  "saved_groups": ["customer"],
+  "signature_labels": ["prepared_by", "checked_by", "approved_by"],
   "fields": [
     { "key": "voucher_number", "group": "document", "label": "Voucher no.", "type": "text", "required": true, "max_length": 30 },
     { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
@@ -21,7 +23,7 @@
     { "key": "checked_by", "group": "details", "label": "Checked by", "type": "text", "required": true, "max_length": 60 },
     { "key": "approved_by", "group": "details", "label": "Approved by", "type": "text", "required": true, "max_length": 60 },
     { "key": "resident_certificate", "group": "details", "label": "Resident certificate no. (optional)", "type": "text", "required": false, "max_length": 30 },
-    { "key": "received_date", "group": "details", "label": "Date received (optional)", "type": "date", "required": false },
+    { "key": "received_date", "group": "details", "label": "Date Received (optional)", "type": "date", "required": false },
     { "key": "place", "group": "details", "label": "Place (optional)", "type": "text", "required": false, "max_length": 60 }
   ]
 }

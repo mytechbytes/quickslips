@@ -172,5 +172,9 @@
     "plan_charge": 34.95,
     "gst_percent": 19,
     "terms": "Schecks sind auf Himmelsnetz auszustellen.\nBei einem geplatzten Scheck wird eine Gebühr von 10 € fällig.\nBei Zahlung nach dem Fälligkeitsdatum wird eine Mahngebühr erhoben.\nBei Zahlungsverzug behalten wir uns vor, den Dienst zu sperren.\nDiese Rechnung wurde maschinell erstellt; Unterschrift und Stempel sind nicht erforderlich."
+  },
+  "groups": {
+    "business": "Anbieter",
+    "details": "Tarif"
   }
 }

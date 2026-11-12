@@ -46,5 +46,9 @@
   "sample": {
     "facility_name": "सिटी सेंटर पार्किंग",
     "thank_you": "धन्यवाद, सुरक्षित चलाएँ!"
+  },
+  "groups": {
+    "business": "सुविधा",
+    "details": "स्थान"
   }
 }

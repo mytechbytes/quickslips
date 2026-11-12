@@ -100,5 +100,9 @@
     "class_name": "1ª B",
     "fee_period": "Secondo quadrimestre, 2026-27",
     "school_phone": "06 1234567"
+  },
+  "groups": {
+    "business": "Scuola",
+    "customer": "Studente"
   }
 }

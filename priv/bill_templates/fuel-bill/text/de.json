@@ -147,5 +147,9 @@
     "tax_percent": 19,
     "customer_name": "Anna Becker",
     "station_phone": "030 1234567"
+  },
+  "groups": {
+    "business": "Tankstelle",
+    "details": "Fahrzeug"
   }
 }

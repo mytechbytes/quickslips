@@ -81,5 +81,8 @@
     "approved_by": "A. Dietz",
     "place": "Berlin",
     "resident_certificate": "M-3169647"
+  },
+  "groups": {
+    "customer": "Zahlungsempfänger"
   }
 }

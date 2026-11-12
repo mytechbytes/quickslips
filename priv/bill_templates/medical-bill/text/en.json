@@ -11,22 +11,22 @@
   },
   "fields": {
     "clinic_name": {
-      "label": "Hospital, clinic or lab"
+      "label": "Hospital, Clinic or Lab"
     },
     "clinic_address": {
       "label": "Address (optional)"
     },
     "clinic_phone": {
-      "label": "Contact phone (optional)"
+      "label": "Contact Phone (optional)"
     },
     "hospital_details": {
-      "label": "Hospital details (optional)"
+      "label": "Hospital Details (optional)"
     },
     "registration_number": {
-      "label": "Registration number (optional)"
+      "label": "Registration Number (optional)"
     },
     "bill_number": {
-      "label": "Bill number"
+      "label": "Bill Number"
     },
     "date": {
       "label": "Date"
@@ -35,43 +35,43 @@
       "label": "Time (optional)"
     },
     "admit_date": {
-      "label": "Admit date (optional)"
+      "label": "Admit Date (optional)"
     },
     "discharge_date": {
-      "label": "Discharge date (optional)"
+      "label": "Discharge Date (optional)"
     },
     "patient_name": {
-      "label": "Patient name"
+      "label": "Patient Name"
     },
     "patient_details": {
-      "label": "Age and sex (optional)"
+      "label": "Age and Sex (optional)"
     },
     "patient_issue": {
-      "label": "Patient issue (optional)"
+      "label": "Patient Issue (optional)"
     },
     "guardian_name": {
-      "label": "Guardian name (optional)"
+      "label": "Guardian Name (optional)"
     },
     "patient_phone": {
-      "label": "Patient mobile (optional)"
+      "label": "Patient Mobile (optional)"
     },
     "patient_address": {
-      "label": "Patient address (optional)"
+      "label": "Patient Address (optional)"
     },
     "payer_name": {
-      "label": "Payer name (optional)"
+      "label": "Payer Name (optional)"
     },
     "payer_address": {
-      "label": "Payer address (optional)"
+      "label": "Payer Address (optional)"
     },
     "doctor_name": {
-      "label": "Doctor / consultant (optional)"
+      "label": "Doctor / Consultant (optional)"
     },
     "doctor_designation": {
       "label": "Designation (optional)"
     },
     "room": {
-      "label": "Room category (optional)",
+      "label": "Room Category (optional)",
       "options": {
         "Single": "Single",
         "Semi-private": "Semi-private",
@@ -97,10 +97,10 @@
       "label": "Medicines ({currency}) (optional)"
     },
     "tests_cost": {
-      "label": "Tests and procedures ({currency}) (optional)"
+      "label": "Tests and Procedures ({currency}) (optional)"
     },
     "other_charges": {
-      "label": "Other charges ({currency}) (optional)"
+      "label": "Other Charges ({currency}) (optional)"
     },
     "discount": {
       "label": "Discount ({currency}) (optional)"
@@ -109,7 +109,7 @@
       "label": "{tax} (%) (optional)"
     },
     "amount_paid": {
-      "label": "Amount paid ({currency}) (optional)"
+      "label": "Amount Paid ({currency}) (optional)"
     },
     "payment_mode": {
       "label": "Paid by",
@@ -122,7 +122,7 @@
       }
     },
     "items": {
-      "label": "Itemised charges",
+      "label": "Itemised Charges",
       "columns": {
         "name": "Description",
         "qty": "Units",
@@ -134,10 +134,10 @@
     "invoice_no": "Invoice no.",
     "contact": "Contact",
     "reg_no": "Reg. no.",
-    "discharge_date": "Discharge date",
-    "admit_date": "Admit date",
+    "discharge_date": "Discharge Date",
+    "admit_date": "Admit Date",
     "patient_info": "Patient information",
-    "patient_name": "Patient name",
+    "patient_name": "Patient Name",
     "patient_issue": "Patient issue",
     "address": "Address",
     "guardian": "Guardian name",
@@ -155,7 +155,7 @@
     "tax": "Tax",
     "taxable": "Taxable amount",
     "net": "Net amount",
-    "total_amount": "Total amount",
+    "total_amount": "Total Amount",
     "remark": "Remark",
     "computer": "* This is a computer generated invoice, signature not required.",
     "created": "Created on {when}",
@@ -167,7 +167,7 @@
     "consulting_doctors": "Consulting doctors",
     "date": "Date",
     "admission_no": "Admission no.",
-    "admission_date": "Admission date",
+    "admission_date": "Admission Date",
     "bed": "Bed(s)",
     "provisional": "Provisional bill",
     "room_type": "Room type",
@@ -179,7 +179,7 @@
     "breakup": "Detailed breakup",
     "date_time": "Date & time",
     "rate": "Rate",
-    "payment_mode": "Payment mode",
+    "payment_mode": "Payment Mode",
     "gst_type": "GST type",
     "intra": "Intra-state (CGST + SGST)",
     "gst_pct": "Tax rate",
@@ -193,5 +193,10 @@
   "sample": {
     "tax_percent": 5,
     "remark": "In case of emergency, consult immediately if you get pain, painful movements, redness, pus or bleeding. Follow up after 5 days."
+  },
+  "groups": {
+    "business": "Clinic",
+    "customer": "Patient",
+    "details": "Doctor"
   }
 }

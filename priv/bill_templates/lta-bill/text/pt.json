@@ -162,5 +162,9 @@
     "amount": 180,
     "tax_percent": null,
     "cancellation_charge": 36
+  },
+  "groups": {
+    "customer": "Passageiro",
+    "details": "Viagem"
   }
 }

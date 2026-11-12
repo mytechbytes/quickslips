@@ -10,10 +10,10 @@
   },
   "fields": {
     "agency_name": {
-      "label": "Agency name"
+      "label": "Agency Name"
     },
     "agency_address": {
-      "label": "Agency address"
+      "label": "Agency Address"
     },
     "agency_mobile": {
       "label": "Mobile (optional)"
@@ -25,7 +25,7 @@
       "label": "Date"
     },
     "bill_number": {
-      "label": "Bill number"
+      "label": "Bill Number"
     },
     "month": {
       "label": "Month",
@@ -45,7 +45,7 @@
       }
     },
     "bill_year": {
-      "label": "Bill year"
+      "label": "Bill Year"
     },
     "name_prefix": {
       "label": "Title (optional)",
@@ -55,13 +55,13 @@
       }
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "service_charge": {
-      "label": "Service charge ({currency}) (optional)"
+      "label": "Service Charge ({currency}) (optional)"
     },
     "payment_mode": {
-      "label": "Payment type",
+      "label": "Payment Type",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -71,7 +71,7 @@
       }
     },
     "items": {
-      "label": "Newspapers and magazines",
+      "label": "Newspapers and Magazines",
       "columns": {
         "name": "Description",
         "rate": "Rate ({currency})",
@@ -94,7 +94,10 @@
     "service_note": "This includes the delivery charge for home service.",
     "grand_total": "Grand total",
     "date": "Date",
-    "customer_signature": "Customer signature"
+    "customer_signature": "Customer Signature"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Agency"
+  }
 }

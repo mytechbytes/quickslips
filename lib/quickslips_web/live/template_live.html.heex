@@ -30,6 +30,7 @@
       data-signatures={Jason.encode!(@signatures)}
       data-signature-id={@document && @document.signature_id}
       data-driver-signature-id={@document && @document.driver_signature_id}
+      data-extra-signature-ids={Jason.encode!(@extra_signature_ids)}
       data-stamps={Jason.encode!(@system_stamps ++ @stamps)}
       data-stamp-choice={@stamp_choice}
       data-paper={@paper}
@@ -196,7 +197,7 @@
               for="driver-signature-select"
               class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
             >
-              {driver_signature_heading(@text)}
+              {driver_signature_heading(@schema, @text)}
             </label>
             <span class="h-px flex-1 bg-line"></span>
           </div>
@@ -217,6 +218,51 @@
             <button
               type="button"
               id="driver-signature-open"
+              data-dialog-open="signature-dialog"
+              aria-haspopup="dialog"
+              title={gettext("Save a new signature")}
+              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none"
+            >
+              <.icon name="hero-plus" class="size-5" />
+              <span class="sr-only">{gettext("Save a new signature")}</span>
+            </button>
+          </div>
+        </section>
+        <%!-- The further signatures of a design (prepared, checked, approved...): a choice of a saved signature for each. --%>
+        <section
+          :for={slot <- extra_slots(@schema, @text)}
+          :if={@signed_in?}
+          id={"extra-signature-section-#{slot.key}"}
+          data-extra-signature={slot.key}
+          data-group="extra-signature"
+          class={[!extra_slot_design?(@schema, @template, slot.key) && "hidden"]}
+        >
+          <div class="mb-3 flex items-center gap-3">
+            <label
+              for={"extra-signature-select-#{slot.key}"}
+              class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
+            >
+              {slot.heading}
+            </label>
+            <span class="h-px flex-1 bg-line"></span>
+          </div>
+          <div class="flex items-center gap-2 sm:max-w-sm">
+            <select
+              id={"extra-signature-select-#{slot.key}"}
+              class="block w-full min-w-0 flex-1 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus"
+            >
+              <option value="">{gettext("No signature (placeholder only)")}</option>
+              <option
+                :for={signature <- @signatures}
+                value={signature.id}
+                selected={@extra_signature_ids[slot.key] == signature.id}
+              >
+                {signature.name}
+              </option>
+            </select>
+            <button
+              type="button"
+              id={"extra-signature-open-#{slot.key}"}
               data-dialog-open="signature-dialog"
               aria-haspopup="dialog"
               title={gettext("Save a new signature")}
@@ -392,9 +438,31 @@
                   !paper_choice?(@schema, @template) && "hidden"
                 ]}
               >
-                <option value="" selected={@margin == ""}>{gettext("As designed")}</option>
+                <option value="none" selected={@margin == "none"}>{gettext("Full bleed")}</option>
+                <option value="hairline" selected={@margin == "hairline"}>
+                  {gettext("Hairline")}
+                </option>
+                <option value="minimal" selected={@margin == "minimal"}>
+                  {gettext("Minimal")}
+                </option>
                 <option value="narrow" selected={@margin == "narrow"}>{gettext("Narrow")}</option>
+                <option value="compact" selected={@margin == "compact"}>
+                  {gettext("Compact")}
+                </option>
+                <option value="moderate" selected={@margin == "moderate"}>
+                  {gettext("Moderate")}
+                </option>
+                <option value="" selected={@margin == ""}>{gettext("Normal")}</option>
+                <option value="classic" selected={@margin == "classic"}>
+                  {gettext("Classic")}
+                </option>
+                <option value="generous" selected={@margin == "generous"}>
+                  {gettext("Generous")}
+                </option>
                 <option value="wide" selected={@margin == "wide"}>{gettext("Wide")}</option>
+                <option value="extra-wide" selected={@margin == "extra-wide"}>
+                  {gettext("Extra wide")}
+                </option>
               </select>
             </section>
           </div>

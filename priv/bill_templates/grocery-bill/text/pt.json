@@ -124,5 +124,8 @@
     "customer_name": "Ana Souza",
     "tax_percent": null,
     "store_phone": "(11) 3456-7890"
+  },
+  "groups": {
+    "business": "Loja"
   }
 }

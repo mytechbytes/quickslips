@@ -81,5 +81,8 @@
     "approved_by": "A. Delgado",
     "place": "Sevilla",
     "resident_certificate": "R-3169647"
+  },
+  "groups": {
+    "customer": "Beneficiario"
   }
 }

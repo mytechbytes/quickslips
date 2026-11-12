@@ -48,5 +48,9 @@
     "facility_phone": "01 23 45 67 89",
     "amount": 7.5,
     "thank_you": "MERCI ET BONNE ROUTE !"
+  },
+  "groups": {
+    "business": "Installation",
+    "details": "Place"
   }
 }

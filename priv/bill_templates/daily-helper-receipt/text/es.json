@@ -26,12 +26,6 @@
     "declaration": {
       "label": "Declaración (opcional)"
     },
-    "month": {
-      "label": "Sueldo del mes"
-    },
-    "receipt_date": {
-      "label": "Fecha del recibo"
-    },
     "salary": {
       "label": "Importe del sueldo ({currency})"
     },
@@ -45,6 +39,15 @@
         "Card": "Tarjeta",
         "Online": "En línea"
       }
+    },
+    "periods": {
+      "label": "Período del sueldo",
+      "options": {
+        "Monthly": "Mensual",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
     }
   },
   "print": {
@@ -53,19 +56,28 @@
     "certify": "Se certifica que {employer} ha pagado {amount} a {helper}, que trabaja como {role}, en concepto de sueldo del mes de {month} (se adjunta recibo de conformidad).",
     "certify_self": "Certifico que he pagado {amount} a {helper}, que trabaja como {role}, por el mes de {month} (se adjunta recibo de conformidad).",
     "reimburse": "Solicito el reembolso del importe anterior. Declaro además que lo indicado es correcto y veraz.",
-    "payment_method": "Forma de pago",
     "helper_name": "Nombre del ayudante",
-    "working_as": "Trabaja como",
     "employer_name": "Nombre del empleador",
     "employer_signature": "Firma del empleador",
     "revenue_stamp": "Timbre fiscal",
     "salary_month": "Sueldo del mes",
-    "amount_paid": "Importe pagado",
-    "received_text": "Recibido de {employer} la cantidad de {amount} por {helper} ({role}) en concepto de sueldo del mes de {month}.",
     "ack_title": "Acuse de recibo",
     "receipt_date_of": "Fecha de recepción",
     "for_month": "Por el mes de",
-    "received_sum": "Recibida la suma de {amount} por el mes de {month} de {employer}."
+    "received_sum": "He recibido la suma de {amount} por el mes de {month} de {employer}.",
+    "ack_certify": "Certifico que he pagado {amount} a {helper}, que trabaja como {role}, por el mes de {month} (se adjunta abajo el recibo de conformidad).",
+    "ack_certify_period": "Certifico que he pagado {amount} a {helper}, que trabaja como {role}, por el periodo {month} (se adjunta abajo el recibo de conformidad).",
+    "certify_plain": "Certifico que he pagado {amount} a {helper}, que trabaja como {role}, por el mes de {month}.",
+    "certify_plain_period": "Certifico que he pagado {amount} a {helper}, que trabaja como {role}, por el periodo {month}.",
+    "ack_reimburse": "Por favor, reembolse el importe anterior en mi cuenta.",
+    "ack_further": "Declaro además que lo indicado anteriormente es correcto y verdadero según mi leal saber y entender.",
+    "ack_heading": "Recibo de pago y conformidad (a firmar por el ayudante)",
+    "ack_received": "Recibida la suma de {amount} ({words}) por el mes de {month} de {employer}.",
+    "ack_received_period": "Recibida la suma de {amount} ({words}) por el periodo {month} de {employer}.",
+    "ack_thumb": "Firma / huella dactilar del ayudante",
+    "employer_address": "Dirección del empleador",
+    "second_signature": "Firma del ayudante",
+    "receipt_date": "Fecha del recibo"
   },
   "sample": {
     "employer_name": "Javier Ortiz",
@@ -73,5 +85,10 @@
     "working_as": "empleada de hogar",
     "salary": 600,
     "declaration": "Declaro además que el ayudante se utiliza exclusivamente para fines oficiales."
+  },
+  "groups": {
+    "business": "Empleador",
+    "customer": "Ayudante",
+    "document": "Periodo del salario"
   }
 }

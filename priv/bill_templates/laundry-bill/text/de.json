@@ -109,5 +109,8 @@
     ],
     "tax_percent": 19,
     "terms": "Alle Kleidungsstücke, Wäsche und Stoffe werden mit größter Sorgfalt behandelt; aufgrund des Zustands der Artikel oder nicht sichtbarer Materialfehler besteht jedoch die MÖGLICHKEIT VON FARBVERÄNDERUNG ODER EINLAUFEN. Solche Stücke werden auf EIGENE GEFAHR DES EIGENTÜMERS zur Reinigung angenommen; das Unternehmen übernimmt dafür keine Haftung.\nDas Unternehmen bemüht sich in angemessener Weise, Waschen, Trocknen und Falten auf hohem Qualitätsniveau zu halten.\nAus Zeitgründen liest das Unternehmen die Pflegeetiketten der Hersteller nicht und haftet nicht für Kleidung mit dem Hinweis „nur Handwäsche“ oder „nur chemische Reinigung“."
+  },
+  "groups": {
+    "business": "Wäscherei"
   }
 }

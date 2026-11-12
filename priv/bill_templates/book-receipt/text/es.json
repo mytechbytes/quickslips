@@ -89,5 +89,9 @@
     "description": "Tapa blanda, edición de bolsillo",
     "quantity": 1,
     "book_price": 18.9
+  },
+  "groups": {
+    "business": "Tienda",
+    "details": "Libro"
   }
 }

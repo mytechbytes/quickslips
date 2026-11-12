@@ -189,5 +189,9 @@
     ],
     "tax_percent": 20,
     "terms": "Paiement à effectuer sous 7 jours à compter de la date de la facture.\nDevis valable 15 jours.\nMain-d'œuvre facturée selon la politique de l'atelier.\nLes prises en charge par l'assurance sont soumises à l'accord de l'expert.\nL'atelier n'est pas responsable des objets laissés dans le véhicule.\nVeuillez vérifier tous les détails avant de quitter l'atelier."
+  },
+  "groups": {
+    "business": "Atelier",
+    "details": "Véhicule"
   }
 }

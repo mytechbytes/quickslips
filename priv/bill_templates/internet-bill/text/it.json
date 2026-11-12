@@ -172,5 +172,9 @@
     "plan_charge": 27.9,
     "gst_percent": 22,
     "terms": "Gli assegni vanno intestati a Cielo Fibra.\nIn caso di assegno insoluto sarà applicata una penale di 10 €.\nSe la fattura viene pagata dopo la scadenza sarà addebitata una mora.\nIn caso di mancato pagamento ci riserviamo il diritto di disattivare il servizio.\nQuesta fattura è generata dal sistema; firma e timbro non sono necessari."
+  },
+  "groups": {
+    "business": "Fornitore",
+    "details": "Piano"
   }
 }

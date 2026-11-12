@@ -123,5 +123,8 @@
     "customer_name": "Anna Becker",
     "table_number": "T-7",
     "gst_percent": 19
+  },
+  "groups": {
+    "business": "Restaurant"
   }
 }

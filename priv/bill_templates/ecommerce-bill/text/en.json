@@ -16,13 +16,13 @@
       "label": "Sold by"
     },
     "seller_address": {
-      "label": "Seller address (optional)"
+      "label": "Seller Address (optional)"
     },
     "seller_phone": {
-      "label": "Seller phone (optional)"
+      "label": "Seller Phone (optional)"
     },
     "platform_name": {
-      "label": "Online store or marketplace (optional)"
+      "label": "Online Store or Marketplace (optional)"
     },
     "platform_website": {
       "label": "Website (optional)"
@@ -31,34 +31,34 @@
       "label": "{tax_id} (optional)"
     },
     "invoice_number": {
-      "label": "Invoice number"
+      "label": "Invoice Number"
     },
     "date": {
-      "label": "Invoice date"
+      "label": "Invoice Date"
     },
     "order_number": {
-      "label": "Order number (optional)"
+      "label": "Order Number (optional)"
     },
     "order_date": {
-      "label": "Order date (optional)"
+      "label": "Order Date (optional)"
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "customer_phone": {
-      "label": "Mobile number (optional)"
+      "label": "Mobile Number (optional)"
     },
     "shipping_address": {
-      "label": "Shipping address"
+      "label": "Shipping Address"
     },
     "billing_address": {
-      "label": "Billing address (optional)"
+      "label": "Billing Address (optional)"
     },
     "shipping_charge": {
-      "label": "Shipping charges ({currency}) (optional)"
+      "label": "Shipping Charges ({currency}) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -68,10 +68,10 @@
       }
     },
     "signatory_name": {
-      "label": "Signatory name (optional)"
+      "label": "Signatory Name (optional)"
     },
     "return_policy": {
-      "label": "Return policy and notes (optional)"
+      "label": "Return Policy and Notes (optional)"
     },
     "items": {
       "label": "Products",
@@ -91,22 +91,22 @@
     "receipt_no": "Receipt no.",
     "sold_by": "Sold by",
     "order_no": "Order no.",
-    "order_date": "Order date",
-    "invoice_date": "Invoice date",
-    "receipt_date": "Receipt date",
+    "order_date": "Order Date",
+    "invoice_date": "Invoice Date",
+    "receipt_date": "Receipt Date",
     "bill_to": "Bill to",
     "description": "Description",
-    "net_amount": "Net amount",
+    "net_amount": "Net Amount",
     "qty": "Qty",
-    "total_amount": "Total amount",
+    "total_amount": "Total Amount",
     "total": "Total",
     "shipping": "Shipping",
-    "payment_method": "Payment method",
+    "payment_method": "Payment Method",
     "order_confirmed": "Your order is confirmed!",
     "hello": "Hello",
-    "order_number": "Order number",
-    "shipping_address": "Shipping address",
-    "mobile": "Mobile number",
+    "order_number": "Order Number",
+    "shipping_address": "Shipping Address",
+    "mobile": "Mobile Number",
     "receipt_summary": "Receipt summary",
     "rate": "Rate",
     "amt": "Amt",
@@ -124,18 +124,22 @@
     "amount": "Amount",
     "tax_invoice": "Tax invoice",
     "ship_from": "Ship-from address",
-    "invoice_number": "Invoice number",
+    "invoice_number": "Invoice Number",
     "order_id": "Order ID",
     "payment": "Payment",
     "ship_to": "Ship to",
     "keep_invoice": "keep this invoice and the manufacturer's box for warranty purposes",
     "total_items": "Total items",
     "title": "Title",
-    "gross_amount": "Gross amount",
+    "gross_amount": "Gross Amount",
     "taxable_value": "Taxable value",
     "grand_total": "Grand total",
     "thank_you": "Thank you!",
     "for_shopping": "for shopping with us"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Seller",
+    "details": "Order"
+  }
 }

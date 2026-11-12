@@ -223,5 +223,10 @@
     "clinic_phone": "954 123 456",
     "patient_details": "42 / M",
     "remark": "En caso de urgencia, consulte de inmediato si tiene dolor, movimientos dolorosos, enrojecimiento, pus o sangrado. Revisión a los 5 días."
+  },
+  "groups": {
+    "business": "Clínica",
+    "customer": "Paciente",
+    "details": "Médico"
   }
 }

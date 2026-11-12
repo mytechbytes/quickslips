@@ -160,5 +160,10 @@
     ],
     "instructions": "Registro: al llegar, regístrate en recepción si es necesario.\nRopa e higiene: usa ropa deportiva y calzado limpio de suela no marcante. Lleva una toalla para limpiar los equipos.\nCalentamiento: empieza con 5-10 minutos de calentamiento, como cardio suave o estiramientos dinámicos.\nEquipos: si eres nuevo, familiarízate con las máquinas y pide ayuda al personal.\nCardio: ajusta las máquinas a tu nivel y límpialas antes y después de usarlas.\nHidratación: bebe agua antes, durante y después del entrenamiento.\nDescansos: descansa entre series, pero no acapares los equipos en horas punta.\nEnfriamiento: termina con 5-10 minutos de estiramientos suaves.\nPertenencias: guarda tus cosas en las taquillas y no dejes objetos de valor sin vigilar.\nDisfruta y sé constante: la constancia es la clave para lograr tus objetivos.",
     "remarks": "Las solicitudes de congelación requieren 7 días de aviso."
+  },
+  "groups": {
+    "business": "Gimnasio",
+    "customer": "Socio",
+    "details": "Plan"
   }
 }

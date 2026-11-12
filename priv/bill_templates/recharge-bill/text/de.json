@@ -173,5 +173,9 @@
     "offer_text": "Breitband-Datenvolumen zu jedem Prepaid- und TV-Anschluss",
     "pay_options": "Mit der App bezahlen\nMit der Zing-Pay-App bezahlen: im Play Store oder App Store laden\nAuf der offiziellen Website bezahlen",
     "landmark": null
+  },
+  "groups": {
+    "business": "Anbieter",
+    "details": "Leistung"
   }
 }

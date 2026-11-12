@@ -150,5 +150,8 @@
     "service_description": "Servizio di ristorazione",
     "payment_note": "Pagato online",
     "signatory_name": "A. Ferrari"
+  },
+  "groups": {
+    "business": "Ristorante"
   }
 }

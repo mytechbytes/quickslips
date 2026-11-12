@@ -171,5 +171,9 @@
     "shipping_charge": 19.9,
     "return_policy": "Nos esforçamos para entregar cada pedido com perfeição. Se precisar devolver um item, faça-o com a caixa ou a etiqueta de preço originais, a embalagem original e a nota fiscal; sem eles não podemos processar o seu pedido. Aplicam-se os termos e condições.\nOs produtos vendidos destinam-se ao consumo final e não à revenda.",
     "customer_phone": "(11) 91234-5678"
+  },
+  "groups": {
+    "business": "Vendedor",
+    "details": "Pedido"
   }
 }

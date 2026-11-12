@@ -5,8 +5,6 @@
 #show: base.with(width: 160mm, margin: (x: 14mm, y: 13mm), size: 10pt)
 #set par(leading: 0.75em)
 
-#let rent = data.monthly_rent
-#let month = month-label(data.month)
 #let receiver = opt(data, "receiver_name")
 #let receiver = if receiver == none { data.landlord_name } else { receiver }
 #let role = option-label("received_by", data.at("received_by", default: "Landlord"))
@@ -15,7 +13,13 @@
 }
 #let heading(content) = align(center, block(text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
 
-#align(right)[#t.date: #fmt-date(data.receipt_date)]
+#let receipts = salary-periods(data)
+#for (i, receipt) in receipts.enumerate() [
+#if i > 0 { pagebreak() }
+#let month = receipt.label
+#let when = receipt.date
+#let rent = data.monthly_rent * receipt.months
+#let period = receipt.months > 1
 #v(1mm)
 #align(center, box(width: 55mm, heading(t.title)))
 #v(2mm)
@@ -26,13 +30,15 @@
   align(right)[*#t.rental_address:* \ #lines(data.property_address)],
 )
 #v(3mm)
-#say(t.received_text, (tenant: data.tenant_name, amount: money(rent), month: month, role: role, receiver: receiver))
+#say(if period { t.received_text_period } else { t.received_text }, (tenant: data.tenant_name, amount: money(rent), month: month, role: role, receiver: receiver))
 #v(3mm)
 #grid(
   columns: (1fr, auto),
   [*#t.tenant_name:* #data.tenant_name],
-  [*#t.date:* #fmt-date(data.receipt_date)],
+  if when != none [*#t.date:* #fmt-date(when)] else [],
 )
+#v(1mm)
+#signature-block(data, t.second_signature, name: data.tenant_name, key: "driver_signature")
 
 #v(4mm)
 #line(length: 100%, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"))
@@ -42,7 +48,7 @@
 #grid(
   columns: (1fr, auto, auto),
   column-gutter: 8mm,
-  [*#t.rent_month:* \ #month], [*#t.amount:* #money(rent)], [*#t.date:* #fmt-date(data.receipt_date)],
+  [*#t.rent_month:* \ #month], [*#t.amount:* #money(rent)], if when != none [*#t.date:* #fmt-date(when)] else [],
 )
 #v(3mm)
 *#t.received_from:* #data.tenant_name \
@@ -58,3 +64,4 @@
 )
 #v(2mm)
 #signature-block(data, t.landlord_signature, name: receiver)
+]

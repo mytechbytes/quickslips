@@ -245,5 +245,8 @@
     "copy_label": "(Original für den Empfänger)",
     "remarks": "Bewahren Sie diese Rechnung für die Garantie auf. Displayschutz im Geschäft kostenlos angebracht.",
     "thank_you": "Danke. Bis bald."
+  },
+  "groups": {
+    "business": "Verkäufer"
   }
 }

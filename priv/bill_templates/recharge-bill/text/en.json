@@ -10,34 +10,34 @@
   },
   "fields": {
     "provider_name": {
-      "label": "Operator or retailer"
+      "label": "Operator or Retailer"
     },
     "provider_address": {
-      "label": "Operator address (optional)"
+      "label": "Operator Address (optional)"
     },
     "seller_tax_id": {
       "label": "{tax_id} (optional)"
     },
     "invoice_number": {
-      "label": "Invoice number"
+      "label": "Invoice Number"
     },
     "bill_date": {
-      "label": "Bill date"
+      "label": "Bill Date"
     },
     "time": {
       "label": "Time (optional)"
     },
     "period_start": {
-      "label": "Bill period from"
+      "label": "Bill Period from"
     },
     "period_end": {
-      "label": "Bill period to"
+      "label": "Bill Period to"
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "customer_address": {
-      "label": "Customer address (optional)"
+      "label": "Customer Address (optional)"
     },
     "landmark": {
       "label": "Landmark (optional)"
@@ -46,10 +46,10 @@
       "label": "Customer ID"
     },
     "mobile_number": {
-      "label": "Mobile number"
+      "label": "Mobile Number"
     },
     "alternative_number": {
-      "label": "Alternative number (optional)"
+      "label": "Alternative Number (optional)"
     },
     "email": {
       "label": "Email (optional)"
@@ -69,7 +69,7 @@
       }
     },
     "bill_cycle": {
-      "label": "Billing cycle",
+      "label": "Billing Cycle",
       "options": {
         "Monthly": "Monthly",
         "Quarterly": "Quarterly",
@@ -78,7 +78,7 @@
       }
     },
     "theme": {
-      "label": "Colour theme",
+      "label": "Colour Theme",
       "options": {
         "Red": "Red",
         "Blue": "Blue",
@@ -87,34 +87,34 @@
       }
     },
     "email_banner": {
-      "label": "Banner message (optional)"
+      "label": "Banner Message (optional)"
     },
     "offer_title": {
-      "label": "Offer headline (optional)"
+      "label": "Offer Headline (optional)"
     },
     "offer_text": {
-      "label": "Offer text (optional)"
+      "label": "Offer Text (optional)"
     },
     "pay_options": {
       "label": "Ways to pay (one per line) (optional)"
     },
     "previous_balance": {
-      "label": "Previous bill ({currency}) (optional)"
+      "label": "Previous Bill ({currency}) (optional)"
     },
     "adjustment": {
-      "label": "Adjustment amount ({currency}) (optional)"
+      "label": "Adjustment Amount ({currency}) (optional)"
     },
     "amount": {
-      "label": "Recharge or plan amount ({currency})"
+      "label": "Recharge or Plan Amount ({currency})"
     },
     "tax_percent": {
       "label": "{tax} (%) (optional)"
     },
     "amount_after_due": {
-      "label": "Amount after the due date ({currency}) (optional)"
+      "label": "Amount After the Due Date ({currency}) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -126,42 +126,46 @@
   },
   "print": {
     "original_copy": "Original copy for recipient — Tax invoice",
-    "invoice_no": "Invoice no",
+    "invoice_no": "Invoice No",
     "billed_to": "Billed to",
     "customer_id": "Customer ID",
-    "mobile_no": "Mobile no",
-    "bill_no": "Bill no",
-    "bill_date": "Bill date",
+    "mobile_no": "Mobile No",
+    "bill_no": "Bill No",
+    "bill_date": "Bill Date",
     "bill_cycle": "Bill cycle",
-    "bill_period": "Bill period",
+    "bill_period": "Bill Period",
     "to": "to",
     "pay_by": "Pay by",
-    "alt_no": "Alternative no",
+    "alt_no": "Alternative No",
     "email": "Email",
     "account_summary": "Your account summary",
     "previous_bill": "Previous bill",
     "adjustment": "Adjustment amount",
-    "this_month": "This month",
+    "this_month": "This Month",
     "service": "Service",
     "after_due": "Amount after due date",
-    "payment_method": "Payment method",
+    "payment_method": "Payment Method",
     "month_charge": "This month's charge",
     "monthly_charges": "Monthly charges",
     "tax": "Tax",
-    "taxable_amount": "Taxable amount",
+    "taxable_amount": "Taxable Amount",
     "bill_from": "Bill from",
-    "total_amount": "Total amount",
+    "total_amount": "Total Amount",
     "tax_note": "As per the applicable rules, the effective {tax} on this invoice is {rate}%.",
     "detach": "Please detach this slip and return it with your payment",
     "pay_on_go": "Pay on the go",
     "provider_details": "Provider details",
     "acknowledgement": "Acknowledgement slip",
-    "customer_name": "Customer name",
+    "customer_name": "Customer Name",
     "amount": "Amount",
     "computer_generated": "* This is a computer generated invoice, signature not required. Created on {date} at {time}.",
     "computer_generated_date": "* This is a computer generated invoice, signature not required. Created on {date}."
   },
   "sample": {
     "tax_percent": 18
+  },
+  "groups": {
+    "business": "Provider",
+    "details": "Service"
   }
 }

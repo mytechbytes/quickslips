@@ -162,5 +162,9 @@
     "amount": 45,
     "tax_percent": 10,
     "cancellation_charge": 9
+  },
+  "groups": {
+    "customer": "Pasajero",
+    "details": "Trayecto"
   }
 }

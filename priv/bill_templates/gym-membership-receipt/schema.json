@@ -25,11 +25,12 @@
       "id": "t2"
     }
   ],
+  "saved_groups": ["customer"],
   "fields": [
     {
       "key": "gym_name",
       "group": "business",
-      "label": "Gym or fitness club",
+      "label": "Gym or Fitness Club",
       "type": "text",
       "required": true,
       "max_length": 80,
@@ -47,7 +48,7 @@
     {
       "key": "gym_email",
       "group": "business",
-      "label": "Gym email (optional)",
+      "label": "Gym Email (optional)",
       "type": "text",
       "required": false,
       "max_length": 80
@@ -55,7 +56,7 @@
     {
       "key": "gym_phone",
       "group": "business",
-      "label": "Gym phone (optional)",
+      "label": "Gym Phone (optional)",
       "type": "text",
       "required": false,
       "max_length": 20
@@ -72,7 +73,7 @@
     {
       "key": "receipt_number",
       "group": "document",
-      "label": "Receipt number",
+      "label": "Receipt Number",
       "type": "text",
       "required": true,
       "max_length": 30
@@ -80,14 +81,14 @@
     {
       "key": "date",
       "group": "document",
-      "label": "Receipt date",
+      "label": "Receipt Date",
       "type": "date",
       "required": true
     },
     {
       "key": "member_name",
       "group": "customer",
-      "label": "Member name",
+      "label": "Member Name",
       "type": "text",
       "required": true,
       "max_length": 80
@@ -95,7 +96,7 @@
     {
       "key": "member_phone",
       "group": "customer",
-      "label": "Member phone (optional)",
+      "label": "Member Phone (optional)",
       "type": "text",
       "required": false,
       "max_length": 15
@@ -103,7 +104,7 @@
     {
       "key": "customer_number",
       "group": "customer",
-      "label": "Customer number (optional)",
+      "label": "Customer Number (optional)",
       "type": "text",
       "required": false,
       "max_length": 20
@@ -119,7 +120,7 @@
     {
       "key": "member_address",
       "group": "customer",
-      "label": "Member address (optional)",
+      "label": "Member Address (optional)",
       "type": "textarea",
       "required": false,
       "max_length": 200
@@ -141,7 +142,7 @@
     {
       "key": "billing_cycle",
       "group": "details",
-      "label": "Billing cycle (optional)",
+      "label": "Billing Cycle (optional)",
       "type": "select",
       "options": [
         "Monthly",
@@ -161,14 +162,14 @@
     {
       "key": "end_date",
       "group": "details",
-      "label": "Valid till",
+      "label": "Valid Till",
       "type": "date",
       "required": true
     },
     {
       "key": "fee",
       "group": "charges",
-      "label": "Membership fee ({currency})",
+      "label": "Membership Fee ({currency})",
       "type": "number",
       "required": true,
       "min": 0
@@ -176,7 +177,7 @@
     {
       "key": "joining_fee",
       "group": "charges",
-      "label": "Joining fee ({currency}) (optional)",
+      "label": "Joining Fee ({currency}) (optional)",
       "type": "number",
       "required": false,
       "min": 0
@@ -191,7 +192,7 @@
     {
       "key": "items",
       "group": "items",
-      "label": "Extra items (optional)",
+      "label": "Extra Items (optional)",
       "type": "items",
       "required": false,
       "max_rows": 20,
@@ -210,7 +211,7 @@
     {
       "key": "payment_mode",
       "group": "payment",
-      "label": "Payment method",
+      "label": "Payment Method",
       "type": "select",
       "options": [
         "Cash",

@@ -223,5 +223,10 @@
     "clinic_phone": "01 23 45 67 89",
     "patient_details": "42 / F",
     "remark": "En cas d'urgence, consultez immédiatement en cas de douleur, de mouvements douloureux, de rougeur, de pus ou de saignement. Contrôle après 5 jours."
+  },
+  "groups": {
+    "business": "Clinique",
+    "customer": "Patient",
+    "details": "Médecin"
   }
 }

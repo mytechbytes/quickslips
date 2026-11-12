@@ -245,5 +245,8 @@
     "copy_label": "(Via original do destinatário)",
     "remarks": "Guarde esta nota para a garantia. Película de tela aplicada gratuitamente na loja.",
     "thank_you": "Obrigado. Volte sempre."
+  },
+  "groups": {
+    "business": "Vendedor"
   }
 }

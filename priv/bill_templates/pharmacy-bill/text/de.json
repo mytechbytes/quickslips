@@ -177,5 +177,8 @@
     "registered_office": "Apotheke am Markt GmbH, Friedrichstraße 100, 10117 Berlin",
     "admin_office": "Apotheke am Markt GmbH, Hauptstraße 12, 10115 Berlin",
     "signatory_line": "Apotheker/in"
+  },
+  "groups": {
+    "business": "Apotheke"
   }
 }

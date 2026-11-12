@@ -81,5 +81,8 @@
     "approved_by": "渡辺",
     "place": "東京",
     "resident_certificate": "T-3169647"
+  },
+  "groups": {
+    "customer": "受取人"
   }
 }

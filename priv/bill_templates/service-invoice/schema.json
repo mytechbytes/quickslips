@@ -10,20 +10,22 @@
   "intro": "An invoice is a request for payment for work that was done. It shows the client, the service lines, the tax and the payment notes.",
   "tax": { "default": "added" },
   "templates": [{ "id": "t1", "name": "Classic" }],
+  "saved_groups": ["customer"],
+  "groups": {"customer": "Client"},
   "fields": [
-    { "key": "seller_name", "group": "business", "label": "Your business name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "seller_address", "group": "business", "label": "Your address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "seller_name", "group": "business", "label": "Your Business Name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "seller_address", "group": "business", "label": "Your Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
     { "key": "gstin", "group": "registration", "label": "{tax_id} (optional)", "type": "text", "required": false, "max_length": 20, "prefill": "business.gstin" },
-    { "key": "invoice_number", "group": "document", "label": "Invoice number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "invoice_date", "group": "document", "label": "Invoice date", "type": "date", "required": true },
-    { "key": "due_date", "group": "document", "label": "Due date (optional)", "type": "date", "required": false },
-    { "key": "client_name", "group": "customer", "label": "Client name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "client_address", "group": "customer", "label": "Client address (optional)", "type": "textarea", "required": false, "max_length": 200 },
+    { "key": "invoice_number", "group": "document", "label": "Invoice Number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "invoice_date", "group": "document", "label": "Invoice Date", "type": "date", "required": true },
+    { "key": "due_date", "group": "document", "label": "Due Date (optional)", "type": "date", "required": false },
+    { "key": "client_name", "group": "customer", "label": "Client Name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "client_address", "group": "customer", "label": "Client Address (optional)", "type": "textarea", "required": false, "max_length": 200 },
     { "key": "client_gstin", "group": "customer", "label": "Client {tax_id} (optional)", "type": "text", "required": false, "max_length": 20 },
     { "key": "items", "group": "items", "label": "Items", "type": "items", "required": true, "max_rows": 30, "name_max_length": 120,
       "columns": { "name": "Description", "qty": "Qty", "rate": "Rate ({currency})" },
       "legacy": { "name": "service", "qty": "qty", "rate": "rate", "count": 3 } },
     { "key": "gst_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
-    { "key": "notes", "group": "details", "label": "Payment details or notes (optional)", "type": "textarea", "required": false, "max_length": 300 }
+    { "key": "notes", "group": "details", "label": "Payment Details or Notes (optional)", "type": "textarea", "required": false, "max_length": 300 }
   ]
 }

@@ -8,7 +8,6 @@
   "designs": {
     "t1": "Remboursement",
     "t2": "Avec accusé de réception",
-    "t3": "Plusieurs mois",
     "t4": "Quittance formelle"
   },
   "fields": {
@@ -23,27 +22,6 @@
     },
     "property_address": {
       "label": "Adresse du logement loué"
-    },
-    "month": {
-      "label": "Loyer du mois"
-    },
-    "from_date": {
-      "label": "Période du (facultatif)"
-    },
-    "to_date": {
-      "label": "Période au (facultatif)"
-    },
-    "bill_by": {
-      "label": "Facturer par",
-      "options": {
-        "Monthly": "Mensuel",
-        "Quarterly": "Trimestriel",
-        "Half-yearly": "Semestriel",
-        "Yearly": "Annuel"
-      }
-    },
-    "receipt_date": {
-      "label": "Date de la quittance"
     },
     "monthly_rent": {
       "label": "Loyer mensuel ({currency})"
@@ -68,13 +46,22 @@
     },
     "receiver_name": {
       "label": "Nom du receveur (facultatif)"
+    },
+    "periods": {
+      "label": "Période de loyer",
+      "options": {
+        "Monthly": "Mensuel",
+        "Quarterly": "Trimestriel",
+        "Half-yearly": "Semestriel",
+        "Yearly": "Annuel"
+      }
     }
   },
   "print": {
     "title": "Quittance de loyer",
     "date": "Date",
-    "certify": "Il est certifié que {tenant} a payé {amount} au propriétaire {landlord} au titre du loyer du mois de {month} (quittance jointe).",
-    "certify_period": "Il est certifié que {tenant} a payé {amount} au propriétaire {landlord} au titre du loyer de la période {period} (quittance jointe).",
+    "certify": "Je certifie que j'ai payé {amount} au propriétaire {landlord} au titre du loyer du mois de {month} (quittance jointe).",
+    "certify_period": "Je certifie que j'ai payé {amount} au propriétaire {landlord} au titre du loyer de la période {period} (quittance jointe).",
     "reimburse": "Veuillez rembourser le montant ci-dessus. Je déclare en outre que ce qui précède est exact et sincère.",
     "address": "Adresse",
     "payment_method": "Mode de paiement",
@@ -103,14 +90,21 @@
     "term_2": "Les charges, pénalités ou frais d'entretien sont exclus sauf mention distincte.",
     "term_3": "Les parties affirment que les informations de cette quittance sont vraies et exactes.",
     "name": "Nom",
-    "period": "Période",
     "month": "Mois",
-    "receipt_of": "Quittance {number} sur {total}"
+    "received_text_period": "Reçu de {tenant} la somme de {amount} au titre du loyer de la période {month}. Reçu par {role} {receiver}.",
+    "receipt_date": "Date du reçu",
+    "second_signature": "Signature du locataire",
+    "first_signature": "Signature du propriétaire"
   },
   "sample": {
     "tenant_name": "Camille Martin",
     "landlord_name": "Pierre Dubois",
     "receiver_name": "Pierre Dubois",
     "monthly_rent": 950
+  },
+  "groups": {
+    "business": "Propriétaire",
+    "customer": "Locataire",
+    "document": "Période de loyer"
   }
 }

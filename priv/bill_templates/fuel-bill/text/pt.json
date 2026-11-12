@@ -146,5 +146,9 @@
     "seller_tax_id": "12.345.678/0001-90",
     "customer_name": "Ana Souza",
     "station_phone": "(11) 3456-7890"
+  },
+  "groups": {
+    "business": "Posto",
+    "details": "Veículo"
   }
 }

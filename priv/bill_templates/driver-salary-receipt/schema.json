@@ -10,18 +10,18 @@
   "templates": [{"id": "t1"}, {"id": "t2"}, {"id": "t3"}, {"id": "t5"}, {"id": "t6"}],
   "saved_groups": ["business", "customer", "details"],
   "fields": [
-    { "key": "employer_name", "group": "business", "label": "Employee Name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "employee_code", "group": "business", "label": "Employee Code (optional)", "type": "text", "required": false, "max_length": 30 },
-    { "key": "employer_address", "group": "business", "label": "Employee Address (optional)", "type": "textarea", "required": false, "max_length": 200 },
-    { "key": "periods", "group": "document", "label": "Salary period", "type": "periods", "required": true, "options": ["Monthly", "Quarterly", "Half-yearly", "Yearly"] },
-    { "key": "driver_name", "group": "customer", "label": "Driver Name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "vehicle_number", "group": "details", "label": "Vehicle Number (optional)", "type": "text", "required": false, "max_length": 20 },
-    { "key": "basic_salary", "group": "charges", "label": "Monthly salary ({currency})", "type": "number", "required": true, "min": 0 },
-    { "key": "overtime", "group": "charges", "label": "Overtime ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "allowance", "group": "charges", "label": "Fuel and other allowance ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "deductions", "group": "charges", "label": "Advance or deductions ({currency}) (optional)", "type": "number", "required": false, "min": 0 },
-    { "key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Bank transfer", "Cheque", "Card", "Online"], "required": true },
-    { "key": "declaration", "group": "additional", "label": "Declaration (optional)", "type": "textarea", "required": false, "max_length": 300 }
+    {"key": "employer_name", "group": "business", "label": "Employee Name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name"},
+    {"key": "employee_code", "group": "business", "label": "Employee Code (optional)", "type": "text", "required": false, "max_length": 30},
+    {"key": "employer_address", "group": "business", "label": "Employee Address (optional)", "type": "textarea", "required": false, "max_length": 200},
+    {"key": "periods", "group": "document", "label": "Salary Period", "type": "periods", "required": true, "options": ["Monthly", "Quarterly", "Half-yearly", "Yearly"]},
+    {"key": "driver_name", "group": "customer", "label": "Driver Name", "type": "text", "required": true, "max_length": 80},
+    {"key": "vehicle_number", "group": "details", "label": "Vehicle Number (optional)", "type": "text", "required": false, "max_length": 20},
+    {"key": "basic_salary", "group": "charges", "label": "Monthly Salary ({currency})", "type": "number", "required": true, "min": 0},
+    {"key": "overtime", "group": "charges", "label": "Overtime ({currency}) (optional)", "type": "number", "required": false, "min": 0},
+    {"key": "allowance", "group": "charges", "label": "Fuel and Other Allowance ({currency}) (optional)", "type": "number", "required": false, "min": 0},
+    {"key": "deductions", "group": "charges", "label": "Advance or Deductions ({currency}) (optional)", "type": "number", "required": false, "min": 0},
+    {"key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Bank transfer", "Cheque", "Card", "Online"], "required": true},
+    {"key": "declaration", "group": "additional", "label": "Declaration (optional)", "type": "textarea", "required": false, "max_length": 300}
   ],
   "groups": {"business": "Employee", "document": "Salary period", "customer": "Driver", "details": "Vehicle"}
 }

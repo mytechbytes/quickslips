@@ -150,5 +150,8 @@
     "service_description": "Serviço de restaurante",
     "payment_note": "Pago online",
     "signatory_name": "A. Oliveira"
+  },
+  "groups": {
+    "business": "Restaurante"
   }
 }

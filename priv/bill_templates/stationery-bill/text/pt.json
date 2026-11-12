@@ -102,5 +102,8 @@
     ],
     "tax_percent": null,
     "remarks": "Guarde a nota para trocas em até 7 dias."
+  },
+  "groups": {
+    "business": "Loja"
   }
 }

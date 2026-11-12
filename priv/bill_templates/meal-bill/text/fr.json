@@ -150,5 +150,8 @@
     "service_description": "Prestation de restauration",
     "payment_note": "Payé en ligne",
     "signatory_name": "A. Bernard"
+  },
+  "groups": {
+    "business": "Restaurant"
   }
 }

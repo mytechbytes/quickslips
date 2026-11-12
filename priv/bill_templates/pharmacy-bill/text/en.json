@@ -10,7 +10,7 @@
   },
   "fields": {
     "brand_name": {
-      "label": "Pharmacy name"
+      "label": "Pharmacy Name"
     },
     "brand_subtitle": {
       "label": "Tagline (optional)"
@@ -19,7 +19,7 @@
       "label": "Branch (optional)"
     },
     "branch_address": {
-      "label": "Branch address (optional)"
+      "label": "Branch Address (optional)"
     },
     "toll_free": {
       "label": "Phone (optional)"
@@ -37,13 +37,13 @@
       "label": "FSSAI no. (optional)"
     },
     "registered_office": {
-      "label": "Registered office (optional)"
+      "label": "Registered Office (optional)"
     },
     "admin_office": {
-      "label": "Admin office (optional)"
+      "label": "Admin Office (optional)"
     },
     "bill_number": {
-      "label": "Bill number"
+      "label": "Bill Number"
     },
     "date": {
       "label": "Date"
@@ -55,16 +55,16 @@
       "label": "Terminal no. (optional)"
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "ref_number": {
       "label": "Ref. no. (optional)"
     },
     "doctor_name": {
-      "label": "Doctor / prescriber (optional)"
+      "label": "Doctor / Prescriber (optional)"
     },
     "discount": {
-      "label": "Discount on the total ({currency}) (optional)"
+      "label": "Discount on the Total ({currency}) (optional)"
     },
     "payment_mode": {
       "label": "Payment",
@@ -77,10 +77,10 @@
       }
     },
     "signatory_name": {
-      "label": "Signatory name (optional)"
+      "label": "Signatory Name (optional)"
     },
     "signatory_line": {
-      "label": "Signatory line (optional)"
+      "label": "Signatory Line (optional)"
     },
     "items": {
       "label": "Medicines",
@@ -118,7 +118,7 @@
     "mrp": "MRP",
     "tax_rate": "Tax %",
     "taxable": "Taxable",
-    "total_amount": "Total amount",
+    "total_amount": "Total Amount",
     "total": "Total",
     "discount": "Discount",
     "net_total": "Net total",
@@ -127,5 +127,8 @@
     "admin": "Admin office",
     "taxable_value": "Taxable value"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Pharmacy"
+  }
 }

@@ -89,5 +89,9 @@
     "description": "Brossura, edizione tascabile",
     "quantity": 1,
     "book_price": 12
+  },
+  "groups": {
+    "business": "Negozio",
+    "details": "Libro"
   }
 }

@@ -10,16 +10,16 @@
   },
   "fields": {
     "workshop_name": {
-      "label": "Workshop name"
+      "label": "Workshop Name"
     },
     "workshop_address": {
-      "label": "Workshop address"
+      "label": "Workshop Address"
     },
     "workshop_phone": {
       "label": "Contact (optional)"
     },
     "dealer_name": {
-      "label": "Authorised dealer (optional)"
+      "label": "Authorised Dealer (optional)"
     },
     "document_type": {
       "label": "Document",
@@ -30,16 +30,16 @@
       }
     },
     "document_number": {
-      "label": "Document number"
+      "label": "Document Number"
     },
     "reference_number": {
-      "label": "Reference number (optional)"
+      "label": "Reference Number (optional)"
     },
     "date": {
       "label": "Date"
     },
     "workshop_section": {
-      "label": "Workshop section (optional)",
+      "label": "Workshop Section (optional)",
       "options": {
         "Main workshop": "Main workshop",
         "Service bay": "Service bay",
@@ -50,22 +50,22 @@
       }
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "customer_phone": {
-      "label": "Customer contact (optional)"
+      "label": "Customer Contact (optional)"
     },
     "vehicle_model": {
       "label": "Model"
     },
     "registration_number": {
-      "label": "Registration number"
+      "label": "Registration Number"
     },
     "vin": {
       "label": "VIN (optional)"
     },
     "insurance_company": {
-      "label": "Insurance company (optional)"
+      "label": "Insurance Company (optional)"
     },
     "tax_percent": {
       "label": "{tax} (%) (optional)"
@@ -74,7 +74,7 @@
       "label": "{tax_id} (optional)"
     },
     "terms": {
-      "label": "Terms, one per line (optional)"
+      "label": "Terms, One per Line (optional)"
     },
     "parts": {
       "label": "Parts",
@@ -182,5 +182,9 @@
     ],
     "tax_percent": 18,
     "terms": "Payment to be made within 7 days from the date of invoice.\nEstimate valid for 15 days only.\nLabour charges as per company policy.\nInsurance claims subject to surveyor approval.\nThe workshop is not responsible for items left in the vehicle.\nPlease check all details before leaving the workshop."
+  },
+  "groups": {
+    "business": "Workshop",
+    "details": "Vehicle"
   }
 }

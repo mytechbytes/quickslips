@@ -118,5 +118,8 @@
     ],
     "service_charge": 8,
     "name_prefix": "Mr."
+  },
+  "groups": {
+    "business": "Agencia"
   }
 }

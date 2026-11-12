@@ -171,5 +171,9 @@
     "shipping_charge": 4.95,
     "return_policy": "Nous nous efforçons de livrer chaque commande à la perfection. Pour retourner un article, merci de le renvoyer avec sa boîte d'origine ou son étiquette de prix, son emballage d'origine et la facture ; sans ces éléments, nous ne pouvons pas traiter votre demande. Les conditions générales s'appliquent.\nLes produits vendus sont destinés à la consommation finale et non à la revente.",
     "customer_phone": "06 12 34 56 78"
+  },
+  "groups": {
+    "business": "Vendeur",
+    "details": "Commande"
   }
 }

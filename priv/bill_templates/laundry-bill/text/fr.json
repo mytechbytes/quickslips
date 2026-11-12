@@ -109,5 +109,8 @@
     ],
     "tax_percent": 20,
     "terms": "Tous les vêtements, le linge et les tissus sont traités avec le plus grand soin, mais en raison de l'état des articles ou de défauts non visibles de la matière, il existe une POSSIBILITÉ DE DÉCOLORATION OU DE RÉTRÉCISSEMENT. Ces articles sont acceptés pour nettoyage AUX RISQUES DU PROPRIÉTAIRE et l'entreprise décline toute responsabilité.\nL'entreprise fera des efforts raisonnables pour maintenir un haut niveau de qualité pour le lavage, le séchage et le pliage.\nFaute de temps, l'entreprise ne lit pas les étiquettes d'entretien des fabricants et n'est pas responsable des vêtements marqués « lavage à la main uniquement » ou « nettoyage à sec uniquement »."
+  },
+  "groups": {
+    "business": "Blanchisserie"
   }
 }

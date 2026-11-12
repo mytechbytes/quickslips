@@ -124,5 +124,8 @@
     "customer_name": "Marco Rossi",
     "tax_percent": 4,
     "store_phone": "06 1234567"
+  },
+  "groups": {
+    "business": "Negozio"
   }
 }

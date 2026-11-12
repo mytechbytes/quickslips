@@ -189,5 +189,9 @@
     ],
     "tax_percent": 19,
     "terms": "Zahlung innerhalb von 7 Tagen ab Rechnungsdatum.\nKostenvoranschlag 15 Tage gültig.\nArbeitskosten nach den Richtlinien der Werkstatt.\nVersicherungsansprüche vorbehaltlich der Freigabe durch den Gutachter.\nFür im Fahrzeug zurückgelassene Gegenstände übernimmt die Werkstatt keine Haftung.\nBitte prüfen Sie alle Angaben, bevor Sie die Werkstatt verlassen."
+  },
+  "groups": {
+    "business": "Werkstatt",
+    "details": "Fahrzeug"
   }
 }

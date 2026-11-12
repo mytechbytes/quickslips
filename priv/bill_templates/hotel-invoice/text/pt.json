@@ -183,5 +183,10 @@
     "extra_charges": 120,
     "gst_percent": 5,
     "advance_amount": 200
+  },
+  "groups": {
+    "business": "Hotel",
+    "customer": "Hóspede",
+    "details": "Estadia"
   }
 }

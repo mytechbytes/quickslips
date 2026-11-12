@@ -134,5 +134,9 @@
     "charged_weight": "500 公斤",
     "to_pay": 2800,
     "signatory_name": "李强"
+  },
+  "groups": {
+    "customer": "发货人和收货人",
+    "details": "行程"
   }
 }

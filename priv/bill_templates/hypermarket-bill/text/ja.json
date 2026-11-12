@@ -172,5 +172,8 @@
     ],
     "savings": 120,
     "delivery_mode": "Home delivery"
+  },
+  "groups": {
+    "details": "注文"
   }
 }

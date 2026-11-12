@@ -26,12 +26,6 @@
     "declaration": {
       "label": "申告（任意）"
     },
-    "month": {
-      "label": "給与の対象月"
-    },
-    "receipt_date": {
-      "label": "領収日"
-    },
     "salary": {
       "label": "給与額（{currency}）"
     },
@@ -45,6 +39,15 @@
         "Card": "カード",
         "Online": "オンライン"
       }
+    },
+    "periods": {
+      "label": "給与の期間",
+      "options": {
+        "Monthly": "毎月",
+        "Quarterly": "四半期ごと",
+        "Half-yearly": "半年ごと",
+        "Yearly": "毎年"
+      }
     }
   },
   "print": {
@@ -53,19 +56,28 @@
     "certify": "{employer} が {role} として勤務する {helper} に {month} 分の給与として {amount} を支払ったことを証明します（受領書を添付）。",
     "certify_self": "私は {role} として勤務する {helper} に {month} 分として {amount} を支払ったことを証明します（受領書を添付）。",
     "reimburse": "上記金額の精算をお願いします。上記の内容が正確かつ真実であることを申し添えます。",
-    "payment_method": "支払方法",
     "helper_name": "お手伝いの氏名",
-    "working_as": "仕事の内容",
     "employer_name": "雇用主の氏名",
     "employer_signature": "雇用主の署名",
     "revenue_stamp": "収入印紙",
     "salary_month": "給与の対象月",
-    "amount_paid": "支払金額",
-    "received_text": "{helper}（{role}）は {employer} から {month} 分の給与として {amount} を受領しました。",
     "ack_title": "受領確認",
     "receipt_date_of": "受領日",
     "for_month": "対象月",
-    "received_sum": "{employer} から {month} 分として {amount} を受領しました。"
+    "received_sum": "私は{employer}から{month}分として{amount}を受領しました。",
+    "ack_certify": "私は {role} として勤務する {helper} に {month} 分として {amount} を支払ったことを証明します（受領確認書を下に添付）。",
+    "ack_certify_period": "私は {role} として勤務する {helper} に {month} の期間分として {amount} を支払ったことを証明します（受領確認書を下に添付）。",
+    "certify_plain": "私は {role} として勤務する {helper} に {month} 分として {amount} を支払ったことを証明します。",
+    "certify_plain_period": "私は {role} として勤務する {helper} に {month} の期間分として {amount} を支払ったことを証明します。",
+    "ack_reimburse": "上記の金額を私の口座に払い戻してください。",
+    "ack_further": "上記の内容は、私の知る限り正確かつ真実であることを重ねて申告します。",
+    "ack_heading": "支払領収書および受領確認（お手伝いさんが署名）",
+    "ack_received": "{employer}から{month}分として{amount}（{words}）を受領しました。",
+    "ack_received_period": "{employer}から{month}の期間分として{amount}（{words}）を受領しました。",
+    "ack_thumb": "お手伝いさんの署名/拇印",
+    "employer_address": "雇用主の住所",
+    "second_signature": "お手伝いさんの署名",
+    "receipt_date": "領収日"
   },
   "sample": {
     "employer_name": "鈴木 一郎",
@@ -73,5 +85,10 @@
     "working_as": "家政スタッフ",
     "salary": 80000,
     "declaration": "なお、このお手伝いは業務のみに使用されていることを申し添えます。"
+  },
+  "groups": {
+    "business": "雇用主",
+    "customer": "お手伝いさん",
+    "document": "給与の期間"
   }
 }

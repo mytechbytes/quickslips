@@ -160,5 +160,10 @@
     ],
     "instructions": "Check-in: ao chegar, apresente-se na recepção, se necessário.\nRoupa e higiene: use roupa de treino e tênis limpos. Leve uma toalha para limpar os aparelhos.\nAquecimento: comece com 5 a 10 minutos de aquecimento, como cardio leve ou alongamento dinâmico.\nEquipamentos: se for novo, conheça os aparelhos e peça ajuda à equipe.\nCardio: ajuste as máquinas ao seu nível e limpe-as antes e depois do uso.\nHidratação: beba água antes, durante e depois do treino.\nDescanso: descanse entre as séries, mas não monopolize os aparelhos em horários de pico.\nVolta à calma: termine com 5 a 10 minutos de alongamento leve.\nPertences: guarde suas coisas nos armários e não deixe objetos de valor sem vigilância.\nAproveite e seja constante: a constância é a chave para alcançar seus objetivos.",
     "remarks": "Pedidos de trancamento exigem aviso com 7 dias de antecedência."
+  },
+  "groups": {
+    "business": "Academia",
+    "customer": "Membro",
+    "details": "Plano"
   }
 }

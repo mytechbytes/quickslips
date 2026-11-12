@@ -89,5 +89,9 @@
     "description": "Brochura, edição de bolso",
     "quantity": 2,
     "book_price": 39.9
+  },
+  "groups": {
+    "business": "Loja",
+    "details": "Livro"
   }
 }

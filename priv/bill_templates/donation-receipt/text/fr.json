@@ -82,5 +82,10 @@
     "amount": 100,
     "received_by": "Pierre Dubois, trésorier",
     "donation_description": "Don pour la restauration de la bibliothèque patrimoniale."
+  },
+  "groups": {
+    "business": "Organisme",
+    "customer": "Donateur",
+    "details": "Don"
   }
 }

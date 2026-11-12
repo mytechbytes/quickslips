@@ -245,5 +245,8 @@
     "copy_label": "(Originale per il destinatario)",
     "remarks": "Conservare questa fattura per la garanzia. Pellicola protettiva applicata gratuitamente in negozio.",
     "thank_you": "Grazie. Arrivederci."
+  },
+  "groups": {
+    "business": "Venditore"
   }
 }

@@ -26,12 +26,6 @@
     "declaration": {
       "label": "घोषणा (वैकल्पिक)"
     },
-    "month": {
-      "label": "वेतन का महीना"
-    },
-    "receipt_date": {
-      "label": "रसीद की तारीख"
-    },
     "salary": {
       "label": "वेतन राशि ({currency})"
     },
@@ -45,6 +39,15 @@
         "Card": "कार्ड",
         "Online": "ऑनलाइन"
       }
+    },
+    "periods": {
+      "label": "वेतन अवधि",
+      "options": {
+        "Monthly": "मासिक",
+        "Quarterly": "तिमाही",
+        "Half-yearly": "छमाही",
+        "Yearly": "वार्षिक"
+      }
     }
   },
   "print": {
@@ -53,19 +56,28 @@
     "certify": "प्रमाणित किया जाता है कि {employer} ने {role} के रूप में कार्यरत {helper} को {month} माह के वेतन के रूप में {amount} का भुगतान किया है (पावती रसीद संलग्न)।",
     "certify_self": "प्रमाणित किया जाता है कि मैंने {role} के रूप में कार्यरत {helper} को {month} माह के लिए {amount} का भुगतान किया है (पावती रसीद संलग्न)।",
     "reimburse": "कृपया उपरोक्त राशि की प्रतिपूर्ति करें। मैं यह भी घोषणा करता/करती हूँ कि ऊपर लिखा विवरण सही और सत्य है।",
-    "payment_method": "भुगतान का तरीका",
     "helper_name": "सहायक का नाम",
-    "working_as": "कार्य / पद",
     "employer_name": "नियोक्ता का नाम",
     "employer_signature": "नियोक्ता के हस्ताक्षर",
     "revenue_stamp": "रेवेन्यू स्टाम्प",
     "salary_month": "वेतन का महीना",
-    "amount_paid": "भुगतान की गई राशि",
-    "received_text": "{employer} से {role} {helper} को {month} माह के वेतन के रूप में {amount} प्राप्त हुए।",
     "ack_title": "रसीद की पावती",
     "receipt_date_of": "प्राप्ति की तारीख",
     "for_month": "माह",
-    "received_sum": "{employer} से {month} माह के लिए केवल {amount} की राशि प्राप्त हुई।"
+    "received_sum": "मैंने {employer} से {month} माह के लिए {amount} की राशि प्राप्त की है।",
+    "ack_certify": "प्रमाणित किया जाता है कि मैंने {role} के रूप में कार्यरत {helper} को {month} माह के लिए {amount} का भुगतान किया है (पावती रसीद नीचे संलग्न)।",
+    "ack_certify_period": "प्रमाणित किया जाता है कि मैंने {role} के रूप में कार्यरत {helper} को {month} अवधि के लिए {amount} का भुगतान किया है (पावती रसीद नीचे संलग्न)।",
+    "certify_plain": "प्रमाणित किया जाता है कि मैंने {role} के रूप में कार्यरत {helper} को {month} माह के लिए {amount} का भुगतान किया है।",
+    "certify_plain_period": "प्रमाणित किया जाता है कि मैंने {role} के रूप में कार्यरत {helper} को {month} अवधि के लिए {amount} का भुगतान किया है।",
+    "ack_reimburse": "कृपया उपरोक्त राशि मेरे खाते में प्रतिपूर्ति करें।",
+    "ack_further": "मैं आगे घोषणा करता/करती हूँ कि ऊपर कही गई बातें मेरी जानकारी और विश्वास के अनुसार सही और सत्य हैं।",
+    "ack_heading": "भुगतान रसीद और पावती (सहायक द्वारा हस्ताक्षरित)",
+    "ack_received": "{employer} से {month} माह के लिए {amount} ({words}) की राशि प्राप्त हुई।",
+    "ack_received_period": "{employer} से {month} अवधि के लिए {amount} ({words}) की राशि प्राप्त हुई।",
+    "ack_thumb": "सहायक के हस्ताक्षर / अंगूठे का निशान",
+    "employer_address": "नियोक्ता का पता",
+    "second_signature": "सहायक के हस्ताक्षर",
+    "receipt_date": "रसीद की तारीख़"
   },
   "sample": {
     "employer_name": "अनिल कपूर",
@@ -74,5 +86,10 @@
     "salary": 8000,
     "employer_address": "बी-24, ग्रेटर कैलाश II, नई दिल्ली 110048",
     "declaration": "मैं यह भी घोषणा करता/करती हूँ कि सहायक का उपयोग केवल कार्यालयीन कार्य के लिए किया जाता है।"
+  },
+  "groups": {
+    "business": "नियोक्ता",
+    "customer": "सहायक",
+    "document": "वेतन की अवधि"
   }
 }

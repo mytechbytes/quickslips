@@ -8,7 +8,6 @@
   "designs": {
     "t1": "Rimborso",
     "t2": "Con conferma di ricevuta",
-    "t3": "Più mesi",
     "t4": "Ricevuta formale"
   },
   "fields": {
@@ -23,27 +22,6 @@
     },
     "property_address": {
       "label": "Indirizzo dell'immobile affittato"
-    },
-    "month": {
-      "label": "Affitto del mese"
-    },
-    "from_date": {
-      "label": "Periodo dal (facoltativo)"
-    },
-    "to_date": {
-      "label": "Periodo al (facoltativo)"
-    },
-    "bill_by": {
-      "label": "Fattura per",
-      "options": {
-        "Monthly": "Mensile",
-        "Quarterly": "Trimestrale",
-        "Half-yearly": "Semestrale",
-        "Yearly": "Annuale"
-      }
-    },
-    "receipt_date": {
-      "label": "Data della ricevuta"
     },
     "monthly_rent": {
       "label": "Affitto mensile ({currency})"
@@ -68,13 +46,22 @@
     },
     "receiver_name": {
       "label": "Nome di chi riceve (facoltativo)"
+    },
+    "periods": {
+      "label": "Periodo di affitto",
+      "options": {
+        "Monthly": "Mensile",
+        "Quarterly": "Trimestrale",
+        "Half-yearly": "Semestrale",
+        "Yearly": "Annuale"
+      }
     }
   },
   "print": {
     "title": "Ricevuta di affitto",
     "date": "Data",
-    "certify": "Si certifica che {tenant} ha versato {amount} al proprietario {landlord} a titolo di affitto per il mese di {month} (ricevuta allegata).",
-    "certify_period": "Si certifica che {tenant} ha versato {amount} al proprietario {landlord} a titolo di affitto per il periodo {period} (ricevuta allegata).",
+    "certify": "Si certifica che ho versato {amount} al proprietario {landlord} a titolo di affitto per il mese di {month} (ricevuta allegata).",
+    "certify_period": "Si certifica che ho versato {amount} al proprietario {landlord} a titolo di affitto per il periodo {period} (ricevuta allegata).",
     "reimburse": "Si prega di rimborsare l'importo indicato. Dichiaro inoltre che quanto sopra è corretto e veritiero.",
     "address": "Indirizzo",
     "payment_method": "Metodo di pagamento",
@@ -103,14 +90,21 @@
     "term_2": "Utenze, penali o manutenzione sono escluse salvo diversa indicazione.",
     "term_3": "Le parti dichiarano che i dati di questa ricevuta sono veri e corretti.",
     "name": "Nome",
-    "period": "Periodo",
     "month": "Mese",
-    "receipt_of": "Ricevuta {number} di {total}"
+    "received_text_period": "Ricevuto da {tenant} l'importo di {amount} a titolo di affitto per il periodo {month}. Ricevuto da {role} {receiver}.",
+    "receipt_date": "Data della ricevuta",
+    "second_signature": "Firma dell'inquilino",
+    "first_signature": "Firma del proprietario"
   },
   "sample": {
     "tenant_name": "Marco Rossi",
     "landlord_name": "Luca Bianchi",
     "receiver_name": "Luca Bianchi",
     "monthly_rent": 800
+  },
+  "groups": {
+    "business": "Proprietario",
+    "customer": "Inquilino",
+    "document": "Periodo di affitto"
   }
 }

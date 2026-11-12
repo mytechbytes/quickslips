@@ -9,18 +9,19 @@
   "description": "Create a bookstore receipt with the book's title, author and publisher, quantity, price and payment method. Preview instantly and download as PDF.",
   "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
   "templates": [{ "id": "t1" }, { "id": "t2" }],
+  "saved_groups": ["customer"],
   "fields": [
-    { "key": "store_name", "group": "business", "label": "Bookstore name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "store_address", "group": "business", "label": "Bookstore address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
-    { "key": "receipt_number", "group": "document", "label": "Receipt number", "type": "text", "required": true, "max_length": 30 },
-    { "key": "date", "group": "document", "label": "Purchase date", "type": "date", "required": true },
-    { "key": "customer_name", "group": "customer", "label": "Customer name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "book_name", "group": "details", "label": "Book title", "type": "text", "required": true, "max_length": 100 },
+    { "key": "store_name", "group": "business", "label": "Bookstore Name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "store_address", "group": "business", "label": "Bookstore Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
+    { "key": "receipt_number", "group": "document", "label": "Receipt Number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "date", "group": "document", "label": "Purchase Date", "type": "date", "required": true },
+    { "key": "customer_name", "group": "customer", "label": "Customer Name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "book_name", "group": "details", "label": "Book Title", "type": "text", "required": true, "max_length": 100 },
     { "key": "author", "group": "details", "label": "Author (optional)", "type": "text", "required": false, "max_length": 80 },
     { "key": "publisher", "group": "details", "label": "Publisher", "type": "text", "required": true, "max_length": 80 },
     { "key": "description", "group": "details", "label": "Description (optional)", "type": "textarea", "required": false, "max_length": 200 },
     { "key": "quantity", "group": "charges", "label": "Quantity", "type": "number", "required": true, "min": 1 },
-    { "key": "book_price", "group": "charges", "label": "Price of one book ({currency})", "type": "number", "required": true, "min": 0 },
-    { "key": "payment_mode", "group": "payment", "label": "Payment method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true }
+    { "key": "book_price", "group": "charges", "label": "Price of One Book ({currency})", "type": "number", "required": true, "min": 0 },
+    { "key": "payment_mode", "group": "payment", "label": "Payment Method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true }
   ]
 }

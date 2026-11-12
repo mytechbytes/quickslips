@@ -81,5 +81,8 @@
     "approved_by": "陈批准",
     "place": "北京",
     "resident_certificate": "京-3169647"
+  },
+  "groups": {
+    "customer": "收款人"
   }
 }

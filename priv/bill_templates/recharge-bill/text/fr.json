@@ -173,5 +173,9 @@
     "offer_text": "Données haut débit avec chaque ligne prépayée et TV",
     "pay_options": "Payez avec l'application\nPayez avec l'application Zing Pay : à télécharger sur Play Store ou App Store\nPayez sur le site officiel",
     "landmark": null
+  },
+  "groups": {
+    "business": "Fournisseur",
+    "details": "Service"
   }
 }

@@ -100,5 +100,9 @@
     "class_name": "1.º de ESO B",
     "fee_period": "Segundo trimestre, 2026-27",
     "school_phone": "954 123 456"
+  },
+  "groups": {
+    "business": "Colegio",
+    "customer": "Alumno"
   }
 }

@@ -159,7 +159,7 @@ defmodule QuickSlipsWeb.SeoPagesTest do
       [how, required | _] = texts(doc, "#bill-faq h3 + p")
 
       assert how =~ "Choose one of the 6 designs: Receipt, Pump slip, Thermal"
-      assert required =~ "You need: Fuel station name, Bill number, Date, Fuel type"
+      assert required =~ "You need: Fuel Station Name, Bill Number, Date, Fuel Type"
     end
 
     test "ask about the tax only where the bill has one", %{conn: conn} do

@@ -90,5 +90,9 @@
     "quantity": 2,
     "book_price": 199,
     "store_address": "दुकान 4, स्टेशन रोड, पुणे, महाराष्ट्र 411001"
+  },
+  "groups": {
+    "business": "दुकान",
+    "details": "पुस्तक"
   }
 }

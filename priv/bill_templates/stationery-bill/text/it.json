@@ -102,5 +102,8 @@
     ],
     "tax_percent": 22,
     "remarks": "Conservare lo scontrino per i cambi entro 7 giorni."
+  },
+  "groups": {
+    "business": "Negozio"
   }
 }

@@ -150,5 +150,8 @@
     "service_description": "Servicio de restauración",
     "payment_note": "Pagado en línea",
     "signatory_name": "A. Sánchez"
+  },
+  "groups": {
+    "business": "Restaurante"
   }
 }

@@ -172,5 +172,9 @@
     "plan_charge": 119.9,
     "gst_percent": null,
     "terms": "Os cheques devem ser emitidos em favor de Céu Fibra.\nEm caso de cheque devolvido, será aplicada multa de R$ 20.\nSerá cobrada multa por atraso se a fatura for paga após o vencimento.\nEm caso de inadimplência, reservamo-nos o direito de desativar o serviço.\nEsta fatura é gerada pelo sistema; assinatura e carimbo não são necessários."
+  },
+  "groups": {
+    "business": "Provedor",
+    "details": "Plano"
   }
 }

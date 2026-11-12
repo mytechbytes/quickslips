@@ -123,5 +123,8 @@
     "customer_name": "Marco Rossi",
     "table_number": "T-7",
     "gst_percent": 10
+  },
+  "groups": {
+    "business": "Ristorante"
   }
 }

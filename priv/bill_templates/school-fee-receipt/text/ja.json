@@ -100,5 +100,9 @@
     "class_name": "中学1年B組",
     "fee_period": "2026年度 2学期",
     "school_phone": "03-1234-5678"
+  },
+  "groups": {
+    "business": "学校",
+    "customer": "生徒"
   }
 }

@@ -171,5 +171,10 @@
     "airport_charge": 3,
     "advance_paid": 0,
     "tax_percent": 10
+  },
+  "groups": {
+    "business": "Operatore",
+    "customer": "Passeggero",
+    "details": "Corsa"
   }
 }

@@ -864,10 +864,8 @@ defmodule QuickSlips.Render.RendererTest do
       }
     },
     "rent-receipt" => %{
-      designs: ~w(t1 t2 t3 t4),
-      # t3 is a receipt for each quarter of the sample's period: July to December is two pages
-      pages: %{"t3" => 2},
-      optional: ~w(landlord_pan from_date to_date bill_by received_by receiver_name),
+      designs: ~w(t1 t2 t4),
+      optional: ~w(landlord_pan received_by receiver_name),
       long: %{
         "tenant_name" => String.duplicate("Ramakrishnan ", 5),
         "landlord_name" => String.duplicate("Venkatasubramanian ", 4),
@@ -953,7 +951,7 @@ defmodule QuickSlips.Render.RendererTest do
 
       for design <- ~w(t1 t2 t3 t5 t6),
           paper <- ["a4", "a5", "us-letter"],
-          margin <- ["narrow", "wide"] do
+          margin <- ["" | Templates.margins()] do
         data = Map.merge(many, %{"paper_size" => paper, "margin_size" => margin})
         assert {:ok, pdf} = Renderer.render("driver-salary-receipt", design, data)
         assert length(Regex.scan(~r{/Type\s*/Page[^s]}, pdf)) >= 2, "#{design} #{paper} #{margin}"
@@ -1007,32 +1005,30 @@ defmodule QuickSlips.Render.RendererTest do
       end
     end
 
-    test "rent-receipt/t3 makes a receipt for each month, quarter, half-year or year of the period, at most 12 months" do
-      sample = sample("rent-receipt")
+    test "the rent receipt and the daily helper receipt make a page for each period chosen" do
+      for {slug, designs} <- [
+            {"rent-receipt", ~w(t1 t2 t4)},
+            {"daily-helper-receipt", ~w(t1 t2 t3)}
+          ],
+          design <- designs do
+        sample = sample(slug)
 
-      receipts = fn from, to, bill_by ->
-        data =
-          Map.merge(sample, %{"from_date" => from, "to_date" => to, "bill_by" => bill_by})
+        months = fn count, by ->
+          starts = Enum.take(["2026-01", "2026-04", "2026-07", "2026-10"], count)
 
-        {:ok, pdf} = Renderer.render("rent-receipt", "t3", data)
-        pages(pdf)
+          Map.put(sample, "periods", %{
+            "bill_by" => by,
+            "months" => starts,
+            "dates" => List.duplicate("", count)
+          })
+        end
+
+        {:ok, pdf} = Renderer.render(slug, design, months.(1, "Monthly"))
+        assert pages(pdf) == 1, "#{slug}/#{design}"
+
+        {:ok, pdf} = Renderer.render(slug, design, months.(4, "Quarterly"))
+        assert pages(pdf) == 4, "#{slug}/#{design}"
       end
-
-      assert receipts.("2026-01-05", "2026-06-30", "Monthly") == 6
-      assert receipts.("2026-01-05", "2026-12-31", "Quarterly") == 4
-      assert receipts.("2026-01-05", "2026-12-31", "Half-yearly") == 2
-      assert receipts.("2026-01-05", "2026-12-31", "Yearly") == 1
-      # Five months by quarters: a quarter and a part of one.
-      assert receipts.("2026-01-05", "2026-05-31", "Quarterly") == 2
-      # More than a year is cut at 12 months.
-      assert receipts.("2024-01-05", "2026-12-31", "Monthly") == 12
-      assert receipts.("2024-01-05", "2026-12-31", "Quarterly") == 4
-
-      # Without a period it is the receipt of the month; a period that runs backwards is one month.
-      without = Map.drop(sample, ["from_date", "to_date", "bill_by"])
-      assert {:ok, pdf} = Renderer.render("rent-receipt", "t3", without)
-      assert pages(pdf) == 1
-      assert receipts.("2026-06-05", "2026-01-31", "Monthly") == 1
     end
 
     test "the cash memo has no column for small change in a currency that has none" do

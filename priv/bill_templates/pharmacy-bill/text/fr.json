@@ -177,5 +177,8 @@
     "registered_office": "Pharmacie du Marché SAS, 10 rue de Rivoli, 75004 Paris",
     "admin_office": "Pharmacie du Marché SAS, 12 avenue de la République, 75011 Paris",
     "signatory_line": "Pharmacien(ne)"
+  },
+  "groups": {
+    "business": "Pharmacie"
   }
 }

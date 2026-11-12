@@ -48,5 +48,9 @@
     "facility_phone": "06 1234567",
     "amount": 5,
     "thank_you": "GRAZIE E BUON VIAGGIO!"
+  },
+  "groups": {
+    "business": "Struttura",
+    "details": "Posto"
   }
 }

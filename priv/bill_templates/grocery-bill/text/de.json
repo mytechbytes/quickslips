@@ -124,5 +124,8 @@
     "customer_name": "Anna Becker",
     "tax_percent": 7,
     "store_phone": "030 1234567"
+  },
+  "groups": {
+    "business": "Geschäft"
   }
 }

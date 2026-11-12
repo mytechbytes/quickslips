@@ -134,5 +134,9 @@
     "charged_weight": "500 kg",
     "to_pay": 270,
     "signatory_name": "L. Bianchi"
+  },
+  "groups": {
+    "customer": "Mittente e destinatario",
+    "details": "Viaggio"
   }
 }

@@ -29,6 +29,7 @@ defmodule QuickSlipsWeb.GenerateController do
          {:ok, business} <- load_business(conn, params),
          {:ok, signature} <- load_signature(conn, params),
          {:ok, driver_signature} <- load_driver_signature(conn, params),
+         {:ok, extras} <- load_extra_signatures(conn, params),
          {:ok, stamp} <- load_stamp(conn, params),
          :ok <- verify_human(conn, params),
          {:ok, grant} <- Downloads.reserve(caller(conn)),
@@ -37,7 +38,7 @@ defmodule QuickSlipsWeb.GenerateController do
              Templates.paper_data(schema, template, params["paper"]),
              Templates.margin_data(schema, template, params["margin"])
            ),
-         pictures = Businesses.render_assets(business, signature, stamp, driver_signature),
+         pictures = Businesses.render_assets(business, signature, stamp, driver_signature, extras),
          pictures = %{pictures | data: Map.merge(pictures.data, paper)},
          {:ok, pdf} <- render_or_refund(slug, template, clean, pictures, locale, currency, grant) do
       remember(
@@ -45,7 +46,7 @@ defmodule QuickSlipsWeb.GenerateController do
         schema,
         template,
         clean,
-        {business, signature, stamp, driver_signature},
+        {business, signature, stamp, driver_signature, extras},
         locale,
         currency,
         paper
@@ -113,6 +114,31 @@ defmodule QuickSlipsWeb.GenerateController do
   end
 
   defp load_driver_signature(_conn, _params), do: {:ok, nil}
+
+  # The further signatures of a design (`signature_3`, ...): `extra_signature_ids` maps each slot to the id of one of the
+  # user's saved signatures. Looked up through the scope, so somebody else's is a 404; a visitor has none.
+  @extra_slots ~w(signature_3 signature_4 signature_5)
+
+  defp load_extra_signatures(conn, %{"extra_signature_ids" => ids}) when is_map(ids) do
+    case conn.assigns[:current_scope] do
+      %{user: %{}} = scope ->
+        {:ok,
+         for {slot, id} <- ids, slot in @extra_slots, id not in [nil, ""], into: %{} do
+           {slot, Signatures.get_signature!(scope, id)}
+         end}
+
+      _anonymous ->
+        {:ok, %{}}
+    end
+  end
+
+  defp load_extra_signatures(_conn, _params), do: {:ok, %{}}
+
+  # What the history keeps of them, to draw them again: `%{"signatures" => %{"signature_3" => 12}}`.
+  defp extra_signature_options(extras) when map_size(extras) == 0, do: %{}
+
+  defp extra_signature_options(extras),
+    do: %{"signatures" => Map.new(extras, fn {slot, signature} -> {slot, signature.id} end)}
 
   # The revenue stamp: "system:<name>" (one the site provides, for anybody), the id of one of the user's saved ones, or nothing (the
   # empty box). A saved one is looked up through the scope, so somebody else's is a 404; a visitor has none.
@@ -182,7 +208,7 @@ defmodule QuickSlipsWeb.GenerateController do
          schema,
          template,
          clean,
-         {business, signature, stamp, driver_signature},
+         {business, signature, stamp, driver_signature, extras},
          locale,
          currency,
          paper
@@ -195,8 +221,8 @@ defmodule QuickSlipsWeb.GenerateController do
            "data" => clean,
            "language" => locale.language,
            "options" =>
-             Map.merge(
-               %{"country" => locale.country, "currency" => currency},
+             %{"country" => locale.country, "currency" => currency}
+             |> Map.merge(
                for(
                  {key, name} <- [{"paper_size", "paper"}, {"margin_size", "margin"}],
                  paper[key],
@@ -204,6 +230,7 @@ defmodule QuickSlipsWeb.GenerateController do
                  do: {name, paper[key]}
                )
              )
+             |> Map.merge(extra_signature_options(extras))
          },
          {:error, changeset} <-
            Documents.create_document(scope, attrs, business, signature, stamp, driver_signature) do

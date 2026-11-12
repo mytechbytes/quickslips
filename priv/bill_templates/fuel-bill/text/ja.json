@@ -147,5 +147,9 @@
     "tax_percent": 10,
     "customer_name": "田中 太郎",
     "station_phone": "03-1234-5678"
+  },
+  "groups": {
+    "business": "スタンド",
+    "details": "車両"
   }
 }

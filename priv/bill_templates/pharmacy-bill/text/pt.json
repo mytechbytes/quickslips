@@ -177,5 +177,8 @@
     "registered_office": "Farmácia Verde Ltda., Av. Faria Lima, 1000, São Paulo - SP",
     "admin_office": "Farmácia Verde Ltda., Rua da Mooca, 1200, São Paulo - SP",
     "signatory_line": "Farmacêutico(a)"
+  },
+  "groups": {
+    "business": "Farmácia"
   }
 }

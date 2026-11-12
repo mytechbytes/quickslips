@@ -10,49 +10,49 @@
   },
   "fields": {
     "company_name": {
-      "label": "Transport company name"
+      "label": "Transport Company Name"
     },
     "company_address": {
-      "label": "Company address (optional)"
+      "label": "Company Address (optional)"
     },
     "company_phone": {
-      "label": "Office phone numbers (optional)"
+      "label": "Office Phone Numbers (optional)"
     },
     "seller_tax_id": {
       "label": "{tax_id} (optional)"
     },
     "gc_number": {
-      "label": "Consignment note number"
+      "label": "Consignment Note Number"
     },
     "date": {
       "label": "Date"
     },
     "booking_date": {
-      "label": "Booking date (optional)"
+      "label": "Booking Date (optional)"
     },
     "eta_date": {
-      "label": "Expected delivery date (optional)"
+      "label": "Expected Delivery Date (optional)"
     },
     "pm_number": {
       "label": "P.M. number (optional)"
     },
     "consignor": {
-      "label": "Consignor's name and address"
+      "label": "Consignor's Name and Address"
     },
     "consignee": {
-      "label": "Consignee's name and address"
+      "label": "Consignee's Name and Address"
     },
     "description": {
-      "label": "Description of goods (optional)"
+      "label": "Description of Goods (optional)"
     },
     "articles": {
-      "label": "Number of articles (optional)"
+      "label": "Number of Articles (optional)"
     },
     "actual_weight": {
-      "label": "Actual weight (optional)"
+      "label": "Actual Weight (optional)"
     },
     "charged_weight": {
-      "label": "Charged weight (optional)"
+      "label": "Charged Weight (optional)"
     },
     "remarks": {
       "label": "Remarks (optional)"
@@ -61,28 +61,28 @@
       "label": "From (place)"
     },
     "from_phone": {
-      "label": "Origin phone (optional)"
+      "label": "Origin Phone (optional)"
     },
     "from_address": {
-      "label": "Origin address"
+      "label": "Origin Address"
     },
     "to_place": {
       "label": "To (place)"
     },
     "to_phone": {
-      "label": "Destination phone (optional)"
+      "label": "Destination Phone (optional)"
     },
     "to_address": {
-      "label": "Destination address"
+      "label": "Destination Address"
     },
     "delivery_at": {
       "label": "Delivery at (optional)"
     },
     "signatory_name": {
-      "label": "Signatory name (optional)"
+      "label": "Signatory Name (optional)"
     },
     "to_pay": {
-      "label": "To pay ({currency}) (optional)"
+      "label": "To Pay ({currency}) (optional)"
     },
     "paid": {
       "label": "Paid ({currency}) (optional)"
@@ -90,7 +90,7 @@
   },
   "print": {
     "heading": "Goods consignment note",
-    "title": "Customer's copy (original)",
+    "title": "Customer's Copy (original)",
     "gc_no": "G.C. No.",
     "from": "From",
     "to": "To",
@@ -115,5 +115,9 @@
     "note_validity": "This receipt is valid for 5 days from the booking date only. Please take delivery from the transport godown on time.",
     "note_docs": "Any transport documents required by law (such as an E-way bill in India) must be provided by the consignor, who is responsible for losses caused by missing documents."
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "customer": "Consignor & Consignee",
+    "details": "Journey"
+  }
 }

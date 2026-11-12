@@ -189,5 +189,9 @@
     ],
     "tax_percent": 21,
     "terms": "El pago debe realizarse en un plazo de 7 días desde la fecha de la factura.\nPresupuesto válido durante 15 días.\nLa mano de obra se factura según la política del taller.\nLas reclamaciones al seguro están sujetas a la aprobación del perito.\nEl taller no se responsabiliza de los objetos dejados en el vehículo.\nCompruebe todos los datos antes de salir del taller."
+  },
+  "groups": {
+    "business": "Taller",
+    "details": "Vehículo"
   }
 }

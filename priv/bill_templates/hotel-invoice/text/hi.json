@@ -185,5 +185,10 @@
     "advance_amount": 2000,
     "hotel_address": "4, बीच रोड, कैंडोलिम, गोवा 403515",
     "guest_address": "22, हिल रोड, बांद्रा पश्चिम, मुंबई 400050"
+  },
+  "groups": {
+    "business": "होटल",
+    "customer": "अतिथि",
+    "details": "ठहराव"
   }
 }

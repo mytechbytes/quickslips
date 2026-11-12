@@ -8,7 +8,6 @@
   "designs": {
     "t1": "Reembolso",
     "t2": "Con acuse de recibo",
-    "t3": "Varios meses",
     "t4": "Recibo formal"
   },
   "fields": {
@@ -23,27 +22,6 @@
     },
     "property_address": {
       "label": "Dirección del inmueble alquilado"
-    },
-    "month": {
-      "label": "Alquiler del mes"
-    },
-    "from_date": {
-      "label": "Periodo desde (opcional)"
-    },
-    "to_date": {
-      "label": "Periodo hasta (opcional)"
-    },
-    "bill_by": {
-      "label": "Facturar por",
-      "options": {
-        "Monthly": "Mensual",
-        "Quarterly": "Trimestral",
-        "Half-yearly": "Semestral",
-        "Yearly": "Anual"
-      }
-    },
-    "receipt_date": {
-      "label": "Fecha del recibo"
     },
     "monthly_rent": {
       "label": "Alquiler mensual ({currency})"
@@ -68,13 +46,22 @@
     },
     "receiver_name": {
       "label": "Nombre de quien recibe (opcional)"
+    },
+    "periods": {
+      "label": "Periodo del alquiler",
+      "options": {
+        "Monthly": "Mensual",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
     }
   },
   "print": {
     "title": "Recibo de alquiler",
     "date": "Fecha",
-    "certify": "Se certifica que {tenant} ha pagado {amount} al propietario {landlord} en concepto de alquiler del mes de {month} (se adjunta recibo de conformidad).",
-    "certify_period": "Se certifica que {tenant} ha pagado {amount} al propietario {landlord} en concepto de alquiler del periodo {period} (se adjunta recibo de conformidad).",
+    "certify": "Se certifica que he pagado {amount} al propietario {landlord} en concepto de alquiler del mes de {month} (se adjunta recibo de conformidad).",
+    "certify_period": "Se certifica que he pagado {amount} al propietario {landlord} en concepto de alquiler del periodo {period} (se adjunta recibo de conformidad).",
     "reimburse": "Solicito el reembolso del importe anterior. Declaro además que lo indicado es correcto y veraz.",
     "address": "Dirección",
     "payment_method": "Forma de pago",
@@ -103,14 +90,21 @@
     "term_2": "Los suministros, penalizaciones o mantenimiento quedan excluidos salvo indicación expresa.",
     "term_3": "Las partes afirman que los datos de este recibo son veraces y correctos.",
     "name": "Nombre",
-    "period": "Periodo",
     "month": "Mes",
-    "receipt_of": "Recibo {number} de {total}"
+    "received_text_period": "Recibido de {tenant} la cantidad de {amount} en concepto de alquiler del periodo {month}. Recibido por {role} {receiver}.",
+    "receipt_date": "Fecha del recibo",
+    "second_signature": "Firma del inquilino",
+    "first_signature": "Firma del propietario"
   },
   "sample": {
     "tenant_name": "Lucía Fernández",
     "landlord_name": "Javier Ortiz",
     "receiver_name": "Javier Ortiz",
     "monthly_rent": 850
+  },
+  "groups": {
+    "business": "Propietario",
+    "customer": "Inquilino",
+    "document": "Periodo del alquiler"
   }
 }

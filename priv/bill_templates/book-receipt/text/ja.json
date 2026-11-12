@@ -89,5 +89,9 @@
     "description": "文庫本",
     "quantity": 2,
     "book_price": 880
+  },
+  "groups": {
+    "business": "店舗",
+    "details": "書籍"
   }
 }

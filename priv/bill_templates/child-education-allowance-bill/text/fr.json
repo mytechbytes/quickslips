@@ -129,5 +129,8 @@
         "batch": "Léa Roux"
       }
     ]
+  },
+  "groups": {
+    "customer": "Demandeur"
   }
 }

@@ -172,5 +172,8 @@
     ],
     "savings": 6,
     "delivery_mode": "Home delivery"
+  },
+  "groups": {
+    "details": "订单"
   }
 }

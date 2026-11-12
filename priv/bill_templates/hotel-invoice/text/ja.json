@@ -183,5 +183,10 @@
     "extra_charges": 4000,
     "gst_percent": 10,
     "advance_amount": 5000
+  },
+  "groups": {
+    "business": "ホテル",
+    "customer": "宿泊者",
+    "details": "宿泊"
   }
 }

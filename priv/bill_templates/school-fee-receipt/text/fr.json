@@ -100,5 +100,9 @@
     "class_name": "5e B",
     "fee_period": "2e trimestre, 2026-27",
     "school_phone": "01 23 45 67 89"
+  },
+  "groups": {
+    "business": "École",
+    "customer": "Élève"
   }
 }

@@ -171,5 +171,10 @@
     "airport_charge": 0,
     "advance_paid": 0,
     "tax_percent": 3
+  },
+  "groups": {
+    "business": "运营商",
+    "customer": "乘客",
+    "details": "行程"
   }
 }

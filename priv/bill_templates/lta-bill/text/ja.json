@@ -162,5 +162,9 @@
     "amount": 6500,
     "tax_percent": 10,
     "cancellation_charge": 1300
+  },
+  "groups": {
+    "customer": "乗客",
+    "details": "旅程"
   }
 }

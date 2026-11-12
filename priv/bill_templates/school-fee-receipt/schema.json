@@ -15,11 +15,12 @@
       "id": "t2"
     }
   ],
+  "saved_groups": ["customer"],
   "fields": [
     {
       "key": "school_name",
       "group": "business",
-      "label": "School or institute",
+      "label": "School or Institute",
       "type": "text",
       "required": true,
       "max_length": 80,
@@ -37,7 +38,7 @@
     {
       "key": "school_phone",
       "group": "business",
-      "label": "Contact number (optional)",
+      "label": "Contact Number (optional)",
       "type": "text",
       "required": false,
       "max_length": 40
@@ -45,7 +46,7 @@
     {
       "key": "receipt_number",
       "group": "document",
-      "label": "Receipt number",
+      "label": "Receipt Number",
       "type": "text",
       "required": true,
       "max_length": 30
@@ -53,14 +54,14 @@
     {
       "key": "date",
       "group": "document",
-      "label": "Receipt date",
+      "label": "Receipt Date",
       "type": "date",
       "required": true
     },
     {
       "key": "student_name",
       "group": "customer",
-      "label": "Student name",
+      "label": "Student Name",
       "type": "text",
       "required": true,
       "max_length": 80
@@ -68,7 +69,7 @@
     {
       "key": "class_name",
       "group": "customer",
-      "label": "Class and section",
+      "label": "Class and Section",
       "type": "text",
       "required": true,
       "max_length": 30
@@ -76,7 +77,7 @@
     {
       "key": "admission_number",
       "group": "customer",
-      "label": "Admission or roll number (optional)",
+      "label": "Admission or Roll Number (optional)",
       "type": "text",
       "required": false,
       "max_length": 30
@@ -84,7 +85,7 @@
     {
       "key": "parent_name",
       "group": "customer",
-      "label": "Parent or guardian (optional)",
+      "label": "Parent or Guardian (optional)",
       "type": "text",
       "required": false,
       "max_length": 80
@@ -100,7 +101,7 @@
     {
       "key": "tuition_fee",
       "group": "charges",
-      "label": "Tuition fee ({currency})",
+      "label": "Tuition Fee ({currency})",
       "type": "number",
       "required": true,
       "min": 0
@@ -108,7 +109,7 @@
     {
       "key": "transport_fee",
       "group": "charges",
-      "label": "Transport fee ({currency}) (optional)",
+      "label": "Transport Fee ({currency}) (optional)",
       "type": "number",
       "required": false,
       "min": 0
@@ -116,7 +117,7 @@
     {
       "key": "other_fee",
       "group": "charges",
-      "label": "Exam, activity and other fees ({currency}) (optional)",
+      "label": "Exam, Activity and Other Fees ({currency}) (optional)",
       "type": "number",
       "required": false,
       "min": 0
@@ -124,7 +125,7 @@
     {
       "key": "late_fee",
       "group": "charges",
-      "label": "Late fee ({currency}) (optional)",
+      "label": "Late Fee ({currency}) (optional)",
       "type": "number",
       "required": false,
       "min": 0
@@ -140,7 +141,7 @@
     {
       "key": "payment_mode",
       "group": "payment",
-      "label": "Payment method",
+      "label": "Payment Method",
       "type": "select",
       "options": [
         "Cash",

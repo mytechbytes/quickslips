@@ -8,7 +8,6 @@
   "designs": {
     "t1": "Reembolso",
     "t2": "Com confirmação de recebimento",
-    "t3": "Vários meses",
     "t4": "Recibo formal"
   },
   "fields": {
@@ -23,27 +22,6 @@
     },
     "property_address": {
       "label": "Endereço do imóvel alugado"
-    },
-    "month": {
-      "label": "Aluguel do mês"
-    },
-    "from_date": {
-      "label": "Período de (opcional)"
-    },
-    "to_date": {
-      "label": "Período até (opcional)"
-    },
-    "bill_by": {
-      "label": "Cobrar por",
-      "options": {
-        "Monthly": "Mensal",
-        "Quarterly": "Trimestral",
-        "Half-yearly": "Semestral",
-        "Yearly": "Anual"
-      }
-    },
-    "receipt_date": {
-      "label": "Data do recibo"
     },
     "monthly_rent": {
       "label": "Aluguel mensal ({currency})"
@@ -68,13 +46,22 @@
     },
     "receiver_name": {
       "label": "Nome do recebedor (opcional)"
+    },
+    "periods": {
+      "label": "Período do aluguel",
+      "options": {
+        "Monthly": "Mensal",
+        "Quarterly": "Trimestral",
+        "Half-yearly": "Semestral",
+        "Yearly": "Anual"
+      }
     }
   },
   "print": {
     "title": "Recibo de aluguel",
     "date": "Data",
-    "certify": "Certifica-se que {tenant} pagou {amount} ao proprietário {landlord} referente ao aluguel do mês de {month} (recibo de quitação anexo).",
-    "certify_period": "Certifica-se que {tenant} pagou {amount} ao proprietário {landlord} referente ao aluguel do período {period} (recibo de quitação anexo).",
+    "certify": "Certifico que paguei {amount} ao proprietário {landlord} referente ao aluguel do mês de {month} (recibo de quitação anexo).",
+    "certify_period": "Certifico que paguei {amount} ao proprietário {landlord} referente ao aluguel do período {period} (recibo de quitação anexo).",
     "reimburse": "Solicito o reembolso do valor acima. Declaro ainda que o que consta acima é correto e verdadeiro.",
     "address": "Endereço",
     "payment_method": "Forma de pagamento",
@@ -103,14 +90,21 @@
     "term_2": "Taxas de consumo, multas ou manutenção estão excluídas, salvo indicação em separado.",
     "term_3": "As partes afirmam que os dados deste recibo são verdadeiros e corretos.",
     "name": "Nome",
-    "period": "Período",
     "month": "Mês",
-    "receipt_of": "Recibo {number} de {total}"
+    "received_text_period": "Recebido de {tenant} a quantia de {amount} referente ao aluguel do período {month}. Recebido por {role} {receiver}.",
+    "receipt_date": "Data do recibo",
+    "second_signature": "Assinatura do inquilino",
+    "first_signature": "Assinatura do proprietário"
   },
   "sample": {
     "tenant_name": "Ana Souza",
     "landlord_name": "Carlos Lima",
     "receiver_name": "Carlos Lima",
     "monthly_rent": 2500
+  },
+  "groups": {
+    "business": "Proprietário",
+    "customer": "Inquilino",
+    "document": "Período do aluguel"
   }
 }

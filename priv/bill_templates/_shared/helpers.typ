@@ -45,18 +45,25 @@
   let roll = slip and width <= 90mm
   let chosen = json("/data.json").at("paper_size", default: none)
   let sheet = if chosen != none and not roll { chosen } else { none }
-  // The margins the user chose (`"margin_size"`: "narrow" or "wide") scale those of the layout; a roll keeps its own.
-  let scale = if roll { 1 } else { (narrow: 0.6, wide: 1.5).at(json("/data.json").at("margin_size", default: ""), default: 1) }
-  let margin = if type(margin) == dictionary { margin.pairs().map(((key, value)) => (key, value * scale)).to-dict() } else { margin * scale }
+  // The margins the user chose (`"margin_size"`) scale those of the layout, which are the "normal" ones; a roll keeps its own.
+  // Each size is the factor of the sides and of the top and bottom (a normal margin is 1 inch each way).
+  let factors = (
+    "none": (0, 0), hairline: (0.125, 0.125), minimal: (0.25, 0.25), narrow: (0.5, 0.5), compact: (0.75, 0.75),
+    moderate: (0.75, 1), classic: (1.25, 1), generous: (1.5, 1.25), wide: (2, 1), "extra-wide": (2.5, 1.5),
+  )
+  let (scale-x, scale-y) = if roll { (1, 1) } else { factors.at(json("/data.json").at("margin_size", default: ""), default: (1, 1)) }
+  let margin = if type(margin) == dictionary {
+    margin.pairs().map(((key, value)) => (key, value * if key in ("x", "left", "right") { scale-x } else { scale-y })).to-dict()
+  } else { (x: margin * scale-x, y: margin * scale-y) }
   let mark = if preview {
     rotate(-30deg, text(size: if slip and width < 100mm { 22pt } else { 54pt }, weight: "bold", fill: luma(225))[QUICK SLIPS])
   }
   if sheet != none and slip {
     // The slip sits in the middle of the sheet: the margins at the sides are what is left of the sheet's width. The
     // body is not in a block (a block cannot hold a page break, and a design may make a page for each receipt).
-    let side = if type(margin) == dictionary { margin.at("x", default: 14mm) } else { margin }
+    let side = margin.at("x", default: 14mm)
     let across = (a4: 210mm, a5: 148mm, "us-letter": 215.9mm).at(sheet, default: 210mm)
-    set page(paper: sheet, margin: (x: calc.max((across - (width - 2 * side)) / 2, 15mm * scale), y: 15mm * scale), background: mark)
+    set page(paper: sheet, margin: (x: calc.max((across - (width - 2 * side)) / 2, 15mm * scale-x), y: 15mm * scale-y), background: mark)
     set text(font: text-data.at("fonts", default: ("Noto Sans",)), size: size, lang: text-data.at("lang", default: "en"))
     body
   } else {

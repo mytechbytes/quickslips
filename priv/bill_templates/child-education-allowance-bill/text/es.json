@@ -129,5 +129,8 @@
         "batch": "Lucía Cano"
       }
     ]
+  },
+  "groups": {
+    "customer": "Solicitante"
   }
 }

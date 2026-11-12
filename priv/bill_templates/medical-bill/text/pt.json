@@ -223,5 +223,10 @@
     "clinic_phone": "(11) 3456-7890",
     "patient_details": "42 / M",
     "remark": "Em caso de emergência, procure atendimento imediatamente se houver dor, movimentos dolorosos, vermelhidão, pus ou sangramento. Retorno após 5 dias."
+  },
+  "groups": {
+    "business": "Clínica",
+    "customer": "Paciente",
+    "details": "Médico"
   }
 }

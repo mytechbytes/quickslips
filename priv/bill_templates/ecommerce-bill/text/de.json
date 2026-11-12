@@ -171,5 +171,9 @@
     "shipping_charge": 4.9,
     "return_policy": "Wir bemühen uns, jede Bestellung einwandfrei zu liefern. Wenn Sie einen Artikel zurücksenden möchten, senden Sie ihn bitte mit der Original-Markenverpackung oder dem Preisschild, der Originalverpackung und der Rechnung zurück; ohne diese können wir Ihre Anfrage nicht bearbeiten. Es gelten die Geschäftsbedingungen.\nDie verkauften Waren sind für den Endverbrauch bestimmt und nicht für den Weiterverkauf.",
     "customer_phone": "0151 2345678"
+  },
+  "groups": {
+    "business": "Verkäufer",
+    "details": "Bestellung"
   }
 }

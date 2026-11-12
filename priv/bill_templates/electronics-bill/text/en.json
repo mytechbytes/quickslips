@@ -10,7 +10,7 @@
   },
   "fields": {
     "company_name": {
-      "label": "Company name"
+      "label": "Company Name"
     },
     "branch": {
       "label": "Branch (optional)"
@@ -37,10 +37,10 @@
       "label": "CIN (optional)"
     },
     "copy_label": {
-      "label": "Copy label (optional)"
+      "label": "Copy Label (optional)"
     },
     "place_of_supply": {
-      "label": "Place of supply (optional)"
+      "label": "Place of Supply (optional)"
     },
     "supply": {
       "label": "Supply",
@@ -50,13 +50,13 @@
       }
     },
     "reverse_charge": {
-      "label": "Reverse charge (optional)"
+      "label": "Reverse Charge (optional)"
     },
     "invoice_number": {
-      "label": "Invoice number"
+      "label": "Invoice Number"
     },
     "date": {
-      "label": "Invoice date"
+      "label": "Invoice Date"
     },
     "do_number": {
       "label": "Delivery order no. (optional)"
@@ -65,16 +65,16 @@
       "label": "Financier (optional)"
     },
     "bill_name": {
-      "label": "Bill to: name"
+      "label": "Bill To: Name"
     },
     "bill_care_of": {
-      "label": "Bill to: c/o name (optional)"
+      "label": "Bill To: C/O Name (optional)"
     },
     "bill_address": {
-      "label": "Bill to: address (optional)"
+      "label": "Bill To: Address (optional)"
     },
     "bill_state": {
-      "label": "Bill to: state (optional)"
+      "label": "Bill To: State (optional)"
     },
     "bill_pin": {
       "label": "Bill to: PIN / postal code (optional)"
@@ -83,28 +83,28 @@
       "label": "Bill to: contact no. (optional)"
     },
     "bill_tax_id": {
-      "label": "Bill to: {tax_id} (optional)"
+      "label": "Bill To: {tax_id} (optional)"
     },
     "ship_code": {
-      "label": "Ship to: code (optional)"
+      "label": "Ship To: Code (optional)"
     },
     "ship_auth_code": {
-      "label": "Ship to: authorization code (optional)"
+      "label": "Ship To: Authorization Code (optional)"
     },
     "ship_address": {
-      "label": "Ship to: address (optional)"
+      "label": "Ship To: Address (optional)"
     },
     "ship_state": {
-      "label": "Ship to: state (optional)"
+      "label": "Ship To: State (optional)"
     },
     "ship_phone": {
       "label": "Ship to: contact no. (optional)"
     },
     "ship_tax_id": {
-      "label": "Ship to: {tax_id} (optional)"
+      "label": "Ship To: {tax_id} (optional)"
     },
     "payment_mode": {
-      "label": "Payment mode",
+      "label": "Payment Mode",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -118,7 +118,7 @@
       "label": "Card approval / cheque / OTP no. (optional)"
     },
     "payment_date": {
-      "label": "Payment date (optional)"
+      "label": "Payment Date (optional)"
     },
     "amount_paid": {
       "label": "Amount paid ({currency}) (the whole total when empty) (optional)"
@@ -130,7 +130,7 @@
       "label": "Bank (optional)"
     },
     "bank_account": {
-      "label": "Bank account (optional)"
+      "label": "Bank Account (optional)"
     },
     "bank_ifsc": {
       "label": "IFSC (optional)"
@@ -145,7 +145,7 @@
       "label": "Signatory for (optional)"
     },
     "thank_you": {
-      "label": "Thank-you message (optional)"
+      "label": "Thank-You Message (optional)"
     },
     "items": {
       "label": "Items",
@@ -165,9 +165,9 @@
     "tel_no": "Tel no.",
     "email": "Email",
     "place_of_supply": "Place of supply",
-    "invoice_number": "Invoice number",
-    "invoice_date": "Invoice date",
-    "do_number": "DO number",
+    "invoice_number": "Invoice Number",
+    "invoice_date": "Invoice Date",
+    "do_number": "DO Number",
     "bill_to_party": "Bill to party",
     "ship_to_party": "Ship to party",
     "financier": "Financier",
@@ -177,9 +177,9 @@
     "pin": "PIN",
     "contact": "Contact no.",
     "code": "Code",
-    "auth_code": "Authorization code",
+    "auth_code": "Authorization Code",
     "serial_no": "Serial no.",
-    "item_name": "Item name",
+    "item_name": "Item Name",
     "hsn": "HSN / SAC",
     "qty": "Qty",
     "rate": "Rate",
@@ -203,5 +203,8 @@
     "for": "for",
     "authorised": "Authorised signatory"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Seller"
+  }
 }

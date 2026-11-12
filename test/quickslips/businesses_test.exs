@@ -314,6 +314,27 @@ defmodule QuickSlips.BusinessesTest do
       assert Businesses.count_businesses(scope) == 1
     end
 
+    test "with an id the page is explicit: Update changes that business, Create new may not take a saved name" do
+      scope = user_scope_fixture()
+      existing = business_fixture(scope, %{name: "Sunrise Fuel"})
+
+      assert {:error, :name_taken} = Businesses.save_details(scope, Map.put(@details, "id", nil))
+
+      assert {:ok, %Business{name: "Sunrise Petrol"}, :updated} =
+               Businesses.save_details(
+                 scope,
+                 %{@details | "name" => "Sunrise Petrol"} |> Map.put("id", existing.id)
+               )
+
+      assert {:ok, %Business{name: "Another"}, :created} =
+               Businesses.save_details(
+                 scope,
+                 %{@details | "name" => "Another"} |> Map.put("id", "")
+               )
+
+      assert {:error, :not_found} = Businesses.save_details(scope, Map.put(@details, "id", -1))
+    end
+
     test "updates the business of that name (capitals do not count), and leaves its pictures" do
       scope = user_scope_fixture()
       signature = signature_fixture(scope)

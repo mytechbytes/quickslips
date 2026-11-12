@@ -123,5 +123,8 @@
     "customer_name": "田中 太郎",
     "table_number": "T-7",
     "gst_percent": 10
+  },
+  "groups": {
+    "business": "レストラン"
   }
 }

@@ -139,7 +139,7 @@ defmodule QuickSlips.TemplatesTest do
       Map.new(schema["templates"], &{&1["id"], &1["signature"]})
     end
 
-    assert signs.("rent-receipt") |> Map.values() == [true, true, true, true]
+    assert signs.("rent-receipt") |> Map.values() == [true, true, true]
     assert signs.("grocery-bill") |> Map.values() == [false, false]
     assert %{"t1" => true, "t2" => false, "t5" => true} = signs.("fuel-bill")
     # A layout that only says "no signature required" has no place for one.

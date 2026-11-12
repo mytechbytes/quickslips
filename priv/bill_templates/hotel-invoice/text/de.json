@@ -183,5 +183,10 @@
     "extra_charges": 32,
     "gst_percent": 7,
     "advance_amount": 60
+  },
+  "groups": {
+    "business": "Hotel",
+    "customer": "Gast",
+    "details": "Aufenthalt"
   }
 }

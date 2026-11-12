@@ -150,5 +150,8 @@
     "service_description": "餐饮服务",
     "payment_note": "在线支付",
     "signatory_name": "李明"
+  },
+  "groups": {
+    "business": "餐厅"
   }
 }

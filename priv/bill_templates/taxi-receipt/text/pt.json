@@ -171,5 +171,10 @@
     "airport_charge": 0,
     "advance_paid": 0,
     "tax_percent": null
+  },
+  "groups": {
+    "business": "Operador",
+    "customer": "Passageiro",
+    "details": "Viagem"
   }
 }

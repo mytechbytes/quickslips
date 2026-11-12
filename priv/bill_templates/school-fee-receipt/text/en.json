@@ -11,52 +11,52 @@
   },
   "fields": {
     "school_name": {
-      "label": "School or institute"
+      "label": "School or Institute"
     },
     "school_address": {
       "label": "Address (optional)"
     },
     "school_phone": {
-      "label": "Contact number (optional)"
+      "label": "Contact Number (optional)"
     },
     "receipt_number": {
-      "label": "Receipt number"
+      "label": "Receipt Number"
     },
     "date": {
-      "label": "Receipt date"
+      "label": "Receipt Date"
     },
     "student_name": {
-      "label": "Student name"
+      "label": "Student Name"
     },
     "class_name": {
-      "label": "Class and section"
+      "label": "Class and Section"
     },
     "admission_number": {
-      "label": "Admission or roll number (optional)"
+      "label": "Admission or Roll Number (optional)"
     },
     "parent_name": {
-      "label": "Parent or guardian (optional)"
+      "label": "Parent or Guardian (optional)"
     },
     "fee_period": {
       "label": "Fee for"
     },
     "tuition_fee": {
-      "label": "Tuition fee ({currency})"
+      "label": "Tuition Fee ({currency})"
     },
     "transport_fee": {
-      "label": "Transport fee ({currency}) (optional)"
+      "label": "Transport Fee ({currency}) (optional)"
     },
     "other_fee": {
-      "label": "Exam, activity and other fees ({currency}) (optional)"
+      "label": "Exam, Activity and Other Fees ({currency}) (optional)"
     },
     "late_fee": {
-      "label": "Late fee ({currency}) (optional)"
+      "label": "Late Fee ({currency}) (optional)"
     },
     "amount_in_words": {
       "label": "Amount in words (written out for you when empty) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -90,5 +90,9 @@
     "received": "Received with thanks from Mr. / Mrs. {payer}, parent of {pupil}, the sum of {words} towards {purpose} by {mode}.",
     "signature": "Signature"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "School",
+    "customer": "Student"
+  }
 }

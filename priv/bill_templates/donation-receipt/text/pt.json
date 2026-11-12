@@ -82,5 +82,10 @@
     "amount": 300,
     "received_by": "Mariana Lima, tesoureira",
     "donation_description": "Doação para a restauração da biblioteca histórica."
+  },
+  "groups": {
+    "business": "Organização",
+    "customer": "Doador",
+    "details": "Doação"
   }
 }

@@ -134,5 +134,9 @@
     "charged_weight": "500 kg",
     "to_pay": 48000,
     "signatory_name": "鈴木 一郎"
+  },
+  "groups": {
+    "customer": "荷送人と荷受人",
+    "details": "旅程"
   }
 }

@@ -13,40 +13,40 @@
       "label": "Date"
     },
     "academic_year": {
-      "label": "Academic year"
+      "label": "Academic Year"
     },
     "name_rank": {
       "label": "Name and rank of the government servant"
     },
     "personal_number": {
-      "label": "Personal number"
+      "label": "Personal Number"
     },
     "designation": {
       "label": "Designation"
     },
     "unit": {
-      "label": "Unit or establishment"
+      "label": "Unit or Establishment"
     },
     "spouse_employed": {
       "label": "Spouse employed under government, a public body or a private organisation"
     },
     "spouse_office": {
-      "label": "Spouse's designation and office (optional)"
+      "label": "Spouse's Designation and Office (optional)"
     },
     "child1_name": {
-      "label": "Child 1: name"
+      "label": "Child 1: Name"
     },
     "child1_dob": {
-      "label": "Child 1: date of birth"
+      "label": "Child 1: Date of Birth"
     },
     "child1_standard": {
-      "label": "Child 1: standard or class"
+      "label": "Child 1: Standard or Class"
     },
     "child1_school": {
       "label": "Child 1: name and place of the school"
     },
     "child2_name": {
-      "label": "Child 2: name (optional)"
+      "label": "Child 2: Name (optional)"
     },
     "child2_dob": {
       "label": "Child 2: date of birth (optional)"
@@ -58,7 +58,7 @@
       "label": "Child 2: name and place of the school (optional)"
     },
     "items": {
-      "label": "Reimbursement of expenditure",
+      "label": "Reimbursement of Expenditure",
       "columns": {
         "code": "Sequence",
         "name": "Period",
@@ -81,7 +81,7 @@
     "q6": "Designation, office and B.U. no. of the spouse (if employed under the central / state government)",
     "children_title": "Details of the child / children for whom the allowance / hostel subsidy is claimed:",
     "sequence": "Sequence",
-    "child_name": "Name of child",
+    "child_name": "Name of Child",
     "dob": "DOB",
     "standard": "Standard",
     "ay": "A.Y.",
@@ -94,5 +94,8 @@
     "total_claimed": "Total amount claimed",
     "months": "months"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "customer": "Claimant"
+  }
 }

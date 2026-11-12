@@ -5,8 +5,13 @@
 #show: base.with(width: 140mm, margin: (x: 12mm, y: 12mm), size: 9.5pt)
 #set par(leading: 0.8em)
 
-#let rent = data.monthly_rent
-#let month = month-label(data.month)
+#let receipts = salary-periods(data)
+#for (i, receipt) in receipts.enumerate() [
+#if i > 0 { pagebreak() }
+#let month = receipt.label
+#let when = receipt.date
+#let rent = data.monthly_rent * receipt.months
+#let period = receipt.months > 1
 #let facts = (
   (t.landlord, data.landlord_name + if opt(data, "landlord_pan") != none { " (PAN: " + opt(data, "landlord_pan") + ")" } else { "" }),
   (t.tenant, data.tenant_name),
@@ -14,10 +19,9 @@
   (t.rental_period, month),
   (t.amount_received, money(rent)),
   (t.mode, option-label("payment_mode", data.payment_mode)),
+  ..if when != none { ((t.receipt_date, fmt-date(when)),) } else { () },
 )
 
-#text(size: 7.5pt, tracking: 0.4pt)[#upper(t.date): #fmt-date(data.receipt_date)]
-#v(1mm)
 #align(center)[
   #text(size: 22pt, weight: "bold", tracking: 1.2pt, upper(t.title)) \
   #text(size: 9pt, style: "italic", fill: muted, t.subtitle)
@@ -50,3 +54,4 @@
 #signature-block(data, t.landlord_signature, name: data.landlord_name)
 #v(2mm)
 #text(size: 8.5pt)[#t.name: #data.landlord_name \ #t.month: #month]
+]

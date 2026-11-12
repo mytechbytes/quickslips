@@ -4,8 +4,15 @@
   "helper_name": "Sunita Devi",
   "working_as": "Housekeeper",
   "declaration": "I also declare that the helper is exclusively utilized for official purposes only.",
-  "month": "2026-10",
-  "receipt_date": "2026-10-31",
   "salary": 8000,
-  "payment_mode": "Cash"
+  "payment_mode": "Cash",
+  "periods": {
+    "bill_by": "Monthly",
+    "months": [
+      "2026-10"
+    ],
+    "dates": [
+      "2026-10-31"
+    ]
+  }
 }

@@ -48,5 +48,9 @@
     "facility_phone": "(11) 3456-7890",
     "amount": 25,
     "thank_you": "OBRIGADO E DIRIJA COM SEGURANÇA!"
+  },
+  "groups": {
+    "business": "Instalação",
+    "details": "Vaga"
   }
 }

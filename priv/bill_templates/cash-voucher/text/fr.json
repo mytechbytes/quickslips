@@ -81,5 +81,8 @@
     "approved_by": "A. Delorme",
     "place": "Paris",
     "resident_certificate": "R-3169647"
+  },
+  "groups": {
+    "customer": "Bénéficiaire"
   }
 }

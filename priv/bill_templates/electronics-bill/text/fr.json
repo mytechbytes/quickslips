@@ -245,5 +245,8 @@
     "copy_label": "(Original pour le destinataire)",
     "remarks": "Conservez cette facture pour la garantie. Protège-écran posé gratuitement en magasin.",
     "thank_you": "Merci. À bientôt."
+  },
+  "groups": {
+    "business": "Vendeur"
   }
 }

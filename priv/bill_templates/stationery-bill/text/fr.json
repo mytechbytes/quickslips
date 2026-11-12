@@ -102,5 +102,8 @@
     ],
     "tax_percent": 20,
     "remarks": "Veuillez conserver le ticket pour tout échange sous 7 jours."
+  },
+  "groups": {
+    "business": "Boutique"
   }
 }

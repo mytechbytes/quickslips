@@ -82,5 +82,10 @@
     "amount": 100,
     "received_by": "Lucía Fernández, tesorera",
     "donation_description": "Donativo para la restauración de la biblioteca histórica."
+  },
+  "groups": {
+    "business": "Organización",
+    "customer": "Donante",
+    "details": "Donación"
   }
 }

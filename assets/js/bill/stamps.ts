@@ -1,5 +1,6 @@
 import type { Design } from "./form"
 import { t } from "./i18n"
+import { makeSearchable } from "./combo"
 import { saveStamp, type Stamp } from "./saved"
 
 export type StampPicker = {
@@ -23,6 +24,7 @@ export function createStampPicker(root: HTMLElement, drawn: (url: string | null)
   const select = root.querySelector<HTMLSelectElement>("#stamp-select")
   if (!section || !select) return { choice: "", use() {}, showFor() {} }
 
+  makeSearchable(select)
   const stamps: Stamp[] = JSON.parse(root.dataset.stamps ?? "[]")
   let chosen = ""
 

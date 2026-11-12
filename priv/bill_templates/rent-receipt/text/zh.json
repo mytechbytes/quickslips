@@ -8,7 +8,6 @@
   "designs": {
     "t1": "报销用",
     "t2": "附收款确认",
-    "t3": "多个月份",
     "t4": "正式收据"
   },
   "fields": {
@@ -23,27 +22,6 @@
     },
     "property_address": {
       "label": "租赁房产地址"
-    },
-    "month": {
-      "label": "租金月份"
-    },
-    "from_date": {
-      "label": "期间起（选填）"
-    },
-    "to_date": {
-      "label": "期间止（选填）"
-    },
-    "bill_by": {
-      "label": "按周期开具",
-      "options": {
-        "Monthly": "按月",
-        "Quarterly": "按季度",
-        "Half-yearly": "按半年",
-        "Yearly": "按年"
-      }
-    },
-    "receipt_date": {
-      "label": "收据日期"
     },
     "monthly_rent": {
       "label": "月租金（{currency}）"
@@ -68,13 +46,22 @@
     },
     "receiver_name": {
       "label": "收款人姓名（选填）"
+    },
+    "periods": {
+      "label": "租金期间",
+      "options": {
+        "Monthly": "按月",
+        "Quarterly": "按季度",
+        "Half-yearly": "按半年",
+        "Yearly": "按年"
+      }
     }
   },
   "print": {
     "title": "租金收据",
     "date": "日期",
-    "certify": "兹证明 {tenant} 已向房东 {landlord} 支付 {month} 的租金 {amount}（附收款确认单）。",
-    "certify_period": "兹证明 {tenant} 已向房东 {landlord} 支付 {period} 期间的租金 {amount}（附收款确认单）。",
+    "certify": "兹证明 本人已向房东 {landlord} 支付 {month} 的租金 {amount}（附收款确认单）。",
+    "certify_period": "兹证明 本人已向房东 {landlord} 支付 {period} 期间的租金 {amount}（附收款确认单）。",
     "reimburse": "请报销上述金额。本人另声明以上内容真实无误。",
     "address": "地址",
     "payment_method": "支付方式",
@@ -103,14 +90,21 @@
     "term_2": "水电费、违约金或维修费用不包含在内，另有说明的除外。",
     "term_3": "双方确认本收据所载内容真实无误。",
     "name": "姓名",
-    "period": "期间",
     "month": "月份",
-    "receipt_of": "第 {number} 张，共 {total} 张"
+    "received_text_period": "已收到 {tenant} 支付的 {month} 期间租金 {amount}。收款人：{role} {receiver}。",
+    "receipt_date": "收据日期",
+    "second_signature": "租客签名",
+    "first_signature": "房东签字"
   },
   "sample": {
     "tenant_name": "王伟",
     "landlord_name": "李强",
     "receiver_name": "李强",
     "monthly_rent": 6000
+  },
+  "groups": {
+    "business": "房东",
+    "customer": "租客",
+    "document": "租金期间"
   }
 }

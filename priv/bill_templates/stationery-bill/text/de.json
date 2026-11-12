@@ -102,5 +102,8 @@
     ],
     "tax_percent": 19,
     "remarks": "Bitte bewahren Sie den Bon für Umtausch innerhalb von 7 Tagen auf."
+  },
+  "groups": {
+    "business": "Geschäft"
   }
 }

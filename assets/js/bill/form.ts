@@ -1,3 +1,4 @@
+import { makeSearchable } from "./combo"
 import { t } from "./i18n"
 import { createItemsField, type ItemRow } from "./items"
 import { createPeriodsField, type PeriodsValue } from "./periods"
@@ -30,7 +31,7 @@ export type Field = {
   name_max_length?: number
 }
 // A design of the bill; `signature` says whether its layout has a place for a signature.
-export type Design = { id: string; name?: string; signature?: boolean; driver_signature?: boolean; stamp?: boolean; thermal?: boolean }
+export type Design = { id: string; name?: string; signature?: boolean; driver_signature?: boolean; extra_signatures?: string[]; stamp?: boolean; thermal?: boolean }
 // `groups` names the sections of the form where this bill has its own words ("Employee" for the business of a salary receipt).
 export type Schema = {
   slug: string
@@ -68,11 +69,10 @@ export type SavedSections = {
  * Saves the seller details of the form (the server updates the business of that name, or makes one). Tells the form
  * the saved business and the sentence to show, or the sentence to show when it did not work.
  */
-export type SaveSeller = (details: {
-  name: string
-  address: string
-  gstin: string
-}) => Promise<{ business: Business; message: string } | { error: string }>
+export type SaveSeller = (
+  details: { name: string; address: string; gstin: string },
+  id?: number,
+) => Promise<{ business: Business; message: string } | { error: string }>
 
 // The sections of the form, in the order they appear; a field says which one it is in. The titles are ui strings
 // (`group_business`, ...), so every language has them.
@@ -81,126 +81,43 @@ const GROUPS = ["business", "registration", "document", "customer", "items", "de
 
 type Control = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
-/**
- * What a logged-in user sees above the first field: a "Fill from a saved business" picker, and a button that saves
- * the seller details of the form. Choosing a business fills every field whose `prefill` is `business.<attribute>`,
- * and tells `picked` which business it is (`null` for the "Choose…" line), because its logo and signature belong
- * on the document too. A visitor who has nothing saved, and cannot save, sees neither.
- */
-function addSavedDetails(
-  form: HTMLFormElement,
-  schema: Schema,
-  businesses: Business[],
-  controls: Map<string, Control>,
-  notify: () => void,
-  picked: (business: Business | null) => void,
-  saveSeller: SaveSeller | null,
-) {
-  const sellerFields = schema.fields.filter((field) => field.prefill?.startsWith("business."))
-  const canSave = saveSeller !== null && sellerFields.some((field) => field.prefill === "business.name")
-  if (businesses.length === 0 && !canSave) return // a visitor, or a bill with no seller
-  if (schema.saved_groups?.includes("business")) return // the business section has its own saved details
-
-  const select = document.createElement("select")
-  select.id = "business-select"
-  select.className = INPUT_CLASS
-  // The "Choose…" line and a line for each saved business; the list changes when the seller details are saved.
-  const showBusinesses = (selected?: number) => {
-    select.replaceChildren(new Option(t("pick_business"), ""))
-    for (const business of businesses) select.append(new Option(business.name, String(business.id)))
-    if (selected !== undefined) select.value = String(selected)
-  }
-  showBusinesses()
-
-  const label = document.createElement("label")
-  label.htmlFor = select.id
-  label.className = "mb-1 block text-sm/6 font-medium text-ink"
-  label.textContent = t("fill_business")
-
-  select.addEventListener("change", () => {
-    const business = businesses.find((b) => String(b.id) === select.value) ?? null
-    picked(business)
-    if (!business) return // the "Choose…" line: nothing to fill
-
-    for (const field of schema.fields) {
-      if (!field.prefill?.startsWith("business.")) continue
-      const value = business[field.prefill.slice("business.".length) as keyof Business]
-      const text = typeof value === "string" ? value : ""
-      controls.get(field.key)!.value = field.max_length ? text.slice(0, field.max_length) : text
-    }
-    notify() // update the preview
-  })
-
-  const picker = document.createElement("div")
-  picker.hidden = businesses.length === 0 // nothing to choose from until one is saved
-  picker.append(label, select)
-
-  const wrapper = document.createElement("div")
-  wrapper.className = "space-y-2"
-  wrapper.append(picker)
-
-  if (canSave) {
-    const button = document.createElement("button")
-    button.type = "button"
-    button.id = "save-seller"
-    button.className = SECONDARY_BUTTON_CLASS
-    button.textContent = t("save_seller")
-
-    const message = document.createElement("p")
-    message.id = "save-seller-message"
-    message.setAttribute("role", "status")
-
-    button.addEventListener("click", async () => {
-      const details = { name: "", address: "", gstin: "" }
-      for (const field of sellerFields) {
-        const key = field.prefill!.slice("business.".length) as keyof typeof details
-        const control = controls.get(field.key)
-        if (control && key in details && details[key] === "") details[key] = control.value.trim()
-      }
-
-      button.disabled = true
-      const result = await saveSeller!(details)
-      button.disabled = false
-
-      message.className = "text-sm/6 " + ("error" in result ? "text-danger" : "text-ink-muted")
-      message.textContent = "error" in result ? result.error : result.message
-      if ("error" in result) return
-
-      picker.hidden = false
-      showBusinesses(result.business.id)
-      picked(result.business)
-    })
-    wrapper.append(button, message)
-  }
-
-  form.prepend(wrapper)
+/** What a picker of saved details works on: the entries to choose from and how to keep what is typed. */
+type SectionPicker = {
+  /** The id of the select: `saved-<group>`. */
+  group: string
+  /** The fields that choosing an entry fills and that Update / Create new keep. */
+  fields: Field[]
+  entries: SavedEntry[]
+  /** The line of the select that chooses nothing. */
+  placeholder: string
+  /** Where the select goes (above the fields), and where the buttons go (under them). */
+  top: HTMLElement
+  bottom: HTMLElement
+  /** `null` for a visitor, who cannot save. */
+  save: ((data: Record<string, string>, id?: number) => Promise<{ entry: SavedEntry; message: string } | { error: string }>) | null
+  /** Told which entry was chosen (`null`: the "Choose…" line), for what the entry carries besides its fields (a business's logo). */
+  picked?: (id: number | null) => void
 }
 
 /**
- * At the top of a section whose details may be saved (the employee, the driver): a list of the saved ones and a
- * button that saves what is typed in the section. Choosing one fills every field of the section.
+ * At the top of a section whose details may be saved (the employee, the driver, the seller): a searchable list of the
+ * saved ones and, under the fields, "Update" (changes the one chosen) and "Create new" (always makes another). Choosing
+ * one fills every field of the section.
  */
-function addSavedSection(
-  grid: HTMLElement,
-  group: string,
-  fields: Field[],
-  controls: Map<string, Control>,
-  saved: SavedSections,
-  notify: () => void,
-) {
-  const entries = saved.entries[group] ?? []
-  if (entries.length === 0 && !saved.save) return // a visitor with nothing to pick
+function addSavedSection(picker: SectionPicker, controls: Map<string, Control>, notify: () => void) {
+  const { entries, fields } = picker
+  if (entries.length === 0 && !picker.save) return null // a visitor with nothing to pick
 
   const row = document.createElement("div")
   row.className = "sm:col-span-2"
-  row.dataset.savedSection = group
+  row.dataset.savedSection = picker.group
 
   const select = document.createElement("select")
-  select.id = `saved-${group}`
+  select.id = `saved-${picker.group}`
   select.className = INPUT_CLASS
-  select.setAttribute("aria-label", t("pick_saved"))
+  select.setAttribute("aria-label", picker.placeholder)
   const show = (selected?: number) => {
-    select.replaceChildren(new Option(t("pick_saved"), ""))
+    select.replaceChildren(new Option(picker.placeholder, ""))
     for (const entry of entries) select.append(new Option(entry.name, String(entry.id)))
     if (selected !== undefined) select.value = String(selected)
     select.hidden = entries.length === 0
@@ -209,8 +126,8 @@ function addSavedSection(
 
   select.addEventListener("change", () => {
     const entry = entries.find((e) => String(e.id) === select.value)
-    if (!entry) return
-    fill(entry)
+    picker.picked?.(entry ? entry.id : null)
+    if (entry) fill(entry)
   })
 
   function fill(entry: SavedEntry) {
@@ -224,19 +141,20 @@ function addSavedSection(
   }
 
   row.append(select)
-  grid.prepend(row)
+  picker.top.prepend(row)
+  makeSearchable(select)
+  // "Update" can only change an entry that is chosen.
+  let refresh = () => {}
 
-  // The button and its message close the section, under the fields that it saves.
-  const message = document.createElement("p")
-  message.setAttribute("role", "status")
-  message.className = "text-sm/6"
+  if (picker.save) {
+    const message = document.createElement("p")
+    message.setAttribute("role", "status")
+    message.className = "text-sm/6"
 
-  if (saved.save) {
-    // "Update" changes the saved details that are chosen in the list; "Create new" always makes a new entry.
     const makeButton = (suffix: string, text: string) => {
       const b = document.createElement("button")
       b.type = "button"
-      b.id = `save-${group}-${suffix}`
+      b.id = `save-${picker.group}-${suffix}`
       b.className = SECONDARY_BUTTON_CLASS + " disabled:cursor-not-allowed disabled:opacity-50"
       b.textContent = text
       return b
@@ -248,6 +166,7 @@ function addSavedSection(
     }
     sync()
     select.addEventListener("change", sync)
+    refresh = sync
 
     const keep = async (id?: number) => {
       const data: Record<string, string> = {}
@@ -255,7 +174,7 @@ function addSavedSection(
 
       update.disabled = true
       create.disabled = true
-      const result = await saved.save!(group, data, id)
+      const result = await picker.save!(data, id)
       create.disabled = false
       sync()
 
@@ -268,15 +187,24 @@ function addSavedSection(
       else entries.push(result.entry)
       entries.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
       show(result.entry.id)
+      picker.picked?.(result.entry.id)
       sync()
     }
     update.addEventListener("click", () => keep(Number(select.value)))
     create.addEventListener("click", () => keep())
     const foot = document.createElement("div")
     foot.className = "flex flex-wrap items-center gap-3 sm:col-span-2"
-    foot.dataset.savedSectionSave = group
+    foot.dataset.savedSectionSave = picker.group
     foot.append(update, create, message)
-    grid.append(foot)
+    picker.bottom.append(foot)
+  }
+
+  return {
+    /** Chooses the entry (as if the visitor had), without filling the fields. */
+    choose(id: number | null) {
+      select.value = id === null ? "" : String(id)
+      refresh()
+    },
   }
 }
 
@@ -444,7 +372,61 @@ export function buildForm(
   for (const group of schema.saved_groups ?? []) {
     const grid = sections.get(group)
     const fields = schema.fields.filter((f) => f.group === group && controls.has(f.key))
-    if (grid && fields.length > 0) addSavedSection(grid, group, fields, controls, savedSections, () => onChange(read()))
+    if (!grid || fields.length === 0) continue
+    // The seller of a bill whose "business" section is saved as a section (a salary receipt's employee).
+    addSavedSection(
+      {
+        group,
+        fields,
+        entries: savedSections.entries[group] ?? (savedSections.entries[group] = []),
+        placeholder: t("pick_saved"),
+        top: grid,
+        bottom: grid,
+        save: savedSections.save ? (data, id) => savedSections.save!(group, data, id) : null,
+      },
+      controls,
+      () => onChange(read()),
+    )
+  }
+
+  // The seller of the bill: a saved business, chosen like any saved section, with Update and Create new under the fields.
+  // It carries a logo and a signature, so choosing one tells the page which it is.
+  let businessPicker: ReturnType<typeof addSavedSection> = null
+  const sellerFields = schema.fields.filter((f) => f.prefill?.startsWith("business.") && controls.has(f.key))
+  if (!schema.saved_groups?.includes("business") && (businesses.length > 0 || (saveSeller && sellerFields.some((f) => f.prefill === "business.name")))) {
+    const attribute = (field: Field) => field.prefill!.slice("business.".length)
+    const asEntry = (b: Business): SavedEntry => ({
+      id: b.id,
+      name: b.name,
+      data: Object.fromEntries(sellerFields.map((f) => [f.key, String(b[attribute(f) as keyof Business] ?? "")])),
+    })
+    const entries = businesses.map(asEntry)
+    const last = [...sellerFields].reverse().find((f) => sections.has(f.group ?? "details"))
+    businessPicker = addSavedSection(
+      {
+        group: "business",
+        fields: sellerFields,
+        entries,
+        placeholder: t("fill_business"),
+        top: sections.get("business") ?? sections.get(sellerFields[0]?.group ?? "details") ?? sectionOf({ group: "business" } as Field),
+        bottom: sections.get(last?.group ?? "business") ?? sectionOf({ group: "business" } as Field),
+        save:
+          saveSeller && sellerFields.some((f) => f.prefill === "business.name")
+            ? async (data, id) => {
+                const details = { name: "", address: "", gstin: "" }
+                for (const f of sellerFields) {
+                  const key = attribute(f) as keyof typeof details
+                  if (key in details && details[key] === "") details[key] = data[f.key] ?? ""
+                }
+                const result = await saveSeller(details, id)
+                return "error" in result ? result : { entry: asEntry(result.business), message: result.message }
+              }
+            : null,
+        picked: (id) => onBusiness(businesses.find((b) => b.id === id) ?? null),
+      },
+      controls,
+      () => onChange(read()),
+    )
   }
 
   for (const id of GROUPS) {
@@ -477,10 +459,12 @@ export function buildForm(
   const onInput = () => onChange(read())
   form.addEventListener("input", onInput)
 
-  addSavedDetails(form, schema, businesses, controls, () => onChange(read()), onBusiness, saveSeller)
-
   return {
     read,
+    /** "Edit and regenerate": the business the document was made with is chosen in the list again. */
+    chooseBusiness(id: number | null) {
+      businessPicker?.choose(id)
+    },
     /** Takes the form's listener away, before the form is built again. */
     destroy() {
       form.removeEventListener("input", onInput)

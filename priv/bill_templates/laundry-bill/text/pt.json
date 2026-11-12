@@ -109,5 +109,8 @@
     ],
     "tax_percent": null,
     "terms": "Todas as peças, roupas de cama e tecidos são tratados com o máximo cuidado, mas devido ao estado dos artigos ou a defeitos não visíveis no material há POSSIBILIDADE DE DESBOTAMENTO OU ENCOLHIMENTO. Tais peças são aceitas para limpeza POR CONTA E RISCO DO PROPRIETÁRIO e a empresa não assume qualquer responsabilidade.\nA empresa fará esforços razoáveis para manter em alto nível a qualidade da lavagem, secagem e dobra.\nPor falta de tempo, a empresa não lê as etiquetas de cuidado dos fabricantes e não se responsabiliza por peças etiquetadas «somente lavar à mão» ou «somente lavagem a seco»."
+  },
+  "groups": {
+    "business": "Lavanderia"
   }
 }

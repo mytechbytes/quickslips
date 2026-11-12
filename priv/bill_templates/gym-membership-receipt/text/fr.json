@@ -160,5 +160,10 @@
     ],
     "instructions": "Accueil : à votre arrivée, présentez-vous à l'accueil si nécessaire.\nTenue et hygiène : portez une tenue de sport et des chaussures propres. Apportez une serviette pour essuyer les appareils.\nÉchauffement : commencez par 5 à 10 minutes d'échauffement, comme du cardio léger ou des étirements dynamiques.\nÉquipements : si vous débutez, familiarisez-vous avec les machines et demandez conseil au personnel.\nCardio : réglez les machines à votre niveau et essuyez-les avant et après usage.\nHydratation : buvez de l'eau avant, pendant et après l'entraînement.\nRepos : reposez-vous entre les séries, sans monopoliser les appareils aux heures de pointe.\nRetour au calme : terminez par 5 à 10 minutes d'étirements légers.\nAffaires personnelles : rangez vos affaires dans les casiers et ne laissez pas d'objets de valeur sans surveillance.\nProfitez et restez régulier : la régularité est la clé pour atteindre vos objectifs.",
     "remarks": "Les demandes de suspension nécessitent un préavis de 7 jours."
+  },
+  "groups": {
+    "business": "Salle de sport",
+    "customer": "Membre",
+    "details": "Forfait"
   }
 }

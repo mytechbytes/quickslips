@@ -26,12 +26,6 @@
     "declaration": {
       "label": "声明（选填）"
     },
-    "month": {
-      "label": "工资月份"
-    },
-    "receipt_date": {
-      "label": "收据日期"
-    },
     "salary": {
       "label": "工资金额（{currency}）"
     },
@@ -45,6 +39,15 @@
         "Card": "银行卡",
         "Online": "在线支付"
       }
+    },
+    "periods": {
+      "label": "工资周期",
+      "options": {
+        "Monthly": "按月",
+        "Quarterly": "按季度",
+        "Half-yearly": "按半年",
+        "Yearly": "按年"
+      }
     }
   },
   "print": {
@@ -53,19 +56,28 @@
     "certify": "兹证明 {employer} 已向担任{role}的 {helper} 支付 {month} 的工资 {amount}（附收款确认单）。",
     "certify_self": "兹证明本人已向担任{role}的 {helper} 支付 {month} 的工资 {amount}（附收款确认单）。",
     "reimburse": "请报销上述金额。本人另声明以上内容真实无误。",
-    "payment_method": "支付方式",
     "helper_name": "家政人员姓名",
-    "working_as": "职务",
     "employer_name": "雇主姓名",
     "employer_signature": "雇主签字",
     "revenue_stamp": "印花税票",
     "salary_month": "工资月份",
-    "amount_paid": "已付金额",
-    "received_text": "{helper}（{role}）已收到 {employer} 支付的 {month} 工资 {amount}。",
     "ack_title": "收款确认",
     "receipt_date_of": "收款日期",
     "for_month": "所属月份",
-    "received_sum": "已收到 {employer} 支付的 {month} 工资 {amount}。"
+    "received_sum": "本人已收到{employer}支付的{month}工资{amount}。",
+    "ack_certify": "兹证明本人已向担任{role}的 {helper} 支付 {month} 的工资 {amount}（收款确认回执附于下方）。",
+    "ack_certify_period": "兹证明本人已向担任{role}的 {helper} 支付 {month} 期间的工资 {amount}（收款确认回执附于下方）。",
+    "certify_plain": "兹证明本人已向担任{role}的 {helper} 支付 {month} 的工资 {amount}。",
+    "certify_plain_period": "兹证明本人已向担任{role}的 {helper} 支付 {month} 期间的工资 {amount}。",
+    "ack_reimburse": "请将上述金额报销至我的账户。",
+    "ack_further": "本人进一步声明，以上所述就本人所知所信均真实无误。",
+    "ack_heading": "付款收据及确认（由帮工签署）",
+    "ack_received": "已收到{employer}支付的{month}工资{amount}（{words}）。",
+    "ack_received_period": "已收到{employer}支付的{month}期间工资{amount}（{words}）。",
+    "ack_thumb": "帮工签名 / 指纹",
+    "employer_address": "雇主地址",
+    "second_signature": "帮工签名",
+    "receipt_date": "收据日期"
   },
   "sample": {
     "employer_name": "李强",
@@ -73,5 +85,10 @@
     "working_as": "保洁员",
     "salary": 3500,
     "declaration": "本人另声明，该人员仅用于公务。"
+  },
+  "groups": {
+    "business": "雇主",
+    "customer": "帮工",
+    "document": "工资期间"
   }
 }

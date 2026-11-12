@@ -65,9 +65,9 @@
     columns: (1fr, 1fr, 1fr, 1.5fr),
     stroke: (x, y) => (left: if x > 0 { frame }),
     inset: 2.2mm,
-    [#text(size: 7.5pt, weight: "bold", upper(t.prepared_by + ":")) \ #v(1mm) #data.prepared_by \ #v(5mm) #sign-line],
-    [#text(size: 7.5pt, weight: "bold", upper(t.checked_by + ":")) \ #v(1mm) #data.checked_by \ #v(5mm) #sign-line],
-    [#text(size: 7.5pt, weight: "bold", upper(t.approved_by + ":")) \ #v(1mm) #data.approved_by \ #v(1mm) #picture(data, "signature", 5mm) #v(4mm) #sign-line],
+    [#text(size: 7.5pt, weight: "bold", upper(t.prepared_by + ":")) \ #v(1mm) #data.prepared_by \ #v(1mm) #picture(data, "signature", 5mm) #v(4mm) #sign-line],
+    [#text(size: 7.5pt, weight: "bold", upper(t.checked_by + ":")) \ #v(1mm) #data.checked_by \ #v(1mm) #picture(data, "driver_signature", 5mm) #v(4mm) #sign-line],
+    [#text(size: 7.5pt, weight: "bold", upper(t.approved_by + ":")) \ #v(1mm) #data.approved_by \ #v(1mm) #picture(data, "signature_3", 5mm) #v(4mm) #sign-line],
     [
       #text(size: 7.5pt, weight: "bold", upper(t.received_by)) \
       #v(7mm)

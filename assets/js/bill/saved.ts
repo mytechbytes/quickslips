@@ -60,8 +60,10 @@ export type SellerDetails = { name: string; address: string; gstin: string }
 export async function saveSeller(
   details: SellerDetails,
   country: string,
+  id?: number,
 ): Promise<{ ok: true; business: Business; created: boolean } | Refused> {
-  const result = await post("/api/businesses", JSON.stringify({ ...details, country }), { "content-type": "application/json" })
+  // "id" is always sent: a number updates that business, none makes a new one (see `BusinessController`).
+  const result = await post("/api/businesses", JSON.stringify({ ...details, country, id: id ?? null }), { "content-type": "application/json" })
   return result.ok
     ? { ok: true, business: result.data.business as Business, created: result.data.outcome === "created" }
     : result

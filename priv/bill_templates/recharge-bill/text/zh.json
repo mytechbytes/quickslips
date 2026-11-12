@@ -173,5 +173,9 @@
     "offer_text": "每个预付费和电视套餐均赠送宽带流量",
     "pay_options": "通过应用付款\n通过 Zing Pay 应用付款：可在应用商店下载\n通过官方网站付款",
     "landmark": null
+  },
+  "groups": {
+    "business": "服务商",
+    "details": "服务"
   }
 }

@@ -26,12 +26,6 @@
     "declaration": {
       "label": "Déclaration (facultatif)"
     },
-    "month": {
-      "label": "Salaire du mois"
-    },
-    "receipt_date": {
-      "label": "Date de la quittance"
-    },
     "salary": {
       "label": "Montant du salaire ({currency})"
     },
@@ -45,6 +39,15 @@
         "Card": "Carte",
         "Online": "En ligne"
       }
+    },
+    "periods": {
+      "label": "Période de salaire",
+      "options": {
+        "Monthly": "Mensuel",
+        "Quarterly": "Trimestriel",
+        "Half-yearly": "Semestriel",
+        "Yearly": "Annuel"
+      }
     }
   },
   "print": {
@@ -53,19 +56,28 @@
     "certify": "Il est certifié que {employer} a versé {amount} à {helper}, qui travaille comme {role}, au titre du salaire du mois de {month} (reçu joint).",
     "certify_self": "Je certifie avoir versé {amount} à {helper}, qui travaille comme {role}, pour le mois de {month} (reçu joint).",
     "reimburse": "Veuillez rembourser le montant ci-dessus. Je déclare en outre que ce qui précède est exact et sincère.",
-    "payment_method": "Mode de paiement",
     "helper_name": "Nom de l'aide à domicile",
-    "working_as": "Fonction",
     "employer_name": "Nom de l'employeur",
     "employer_signature": "Signature de l'employeur",
     "revenue_stamp": "Timbre fiscal",
     "salary_month": "Salaire du mois",
-    "amount_paid": "Montant versé",
-    "received_text": "Reçu de {employer} la somme de {amount} par {helper} ({role}) au titre du salaire du mois de {month}.",
     "ack_title": "Accusé de réception",
     "receipt_date_of": "Date de réception",
     "for_month": "Pour le mois de",
-    "received_sum": "Somme de {amount} reçue de {employer} pour le mois de {month}."
+    "received_sum": "J'ai reçu la somme de {amount} pour le mois de {month} de la part de {employer}.",
+    "ack_certify": "Je certifie avoir versé {amount} à {helper}, qui travaille comme {role}, pour le mois de {month} (reçu d'accusé de réception joint ci-dessous).",
+    "ack_certify_period": "Je certifie avoir versé {amount} à {helper}, qui travaille comme {role}, pour la période {month} (reçu d'accusé de réception joint ci-dessous).",
+    "certify_plain": "Je certifie avoir versé {amount} à {helper}, qui travaille comme {role}, pour le mois de {month}.",
+    "certify_plain_period": "Je certifie avoir versé {amount} à {helper}, qui travaille comme {role}, pour la période {month}.",
+    "ack_reimburse": "Veuillez rembourser le montant ci-dessus sur mon compte.",
+    "ack_further": "Je déclare en outre que ce qui précède est exact et véridique, au meilleur de ma connaissance.",
+    "ack_heading": "Reçu de paiement et accusé de réception (à signer par l'employé de maison)",
+    "ack_received": "Somme de {amount} ({words}) reçue pour le mois de {month} de la part de {employer}.",
+    "ack_received_period": "Somme de {amount} ({words}) reçue pour la période {month} de la part de {employer}.",
+    "ack_thumb": "Signature / empreinte du pouce de l'employé de maison",
+    "employer_address": "Adresse de l'employeur",
+    "second_signature": "Signature de l'employé de maison",
+    "receipt_date": "Date du reçu"
   },
   "sample": {
     "employer_name": "Pierre Dubois",
@@ -73,5 +85,10 @@
     "working_as": "femme de ménage",
     "salary": 700,
     "declaration": "Je déclare en outre que l'aide à domicile est employée exclusivement à des fins professionnelles."
+  },
+  "groups": {
+    "business": "Employeur",
+    "customer": "Employé de maison",
+    "document": "Période de salaire"
   }
 }

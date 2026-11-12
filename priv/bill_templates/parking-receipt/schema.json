@@ -10,14 +10,14 @@
   "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
   "templates": [{ "id": "t1" }],
   "fields": [
-    { "key": "facility_name", "group": "business", "label": "Parking facility name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "facility_address", "group": "business", "label": "Facility address", "type": "textarea", "required": true, "max_length": 200, "prefill": "business.address" },
+    { "key": "facility_name", "group": "business", "label": "Parking Facility Name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "facility_address", "group": "business", "label": "Facility Address", "type": "textarea", "required": true, "max_length": 200, "prefill": "business.address" },
     { "key": "facility_phone", "group": "business", "label": "Telephone (optional)", "type": "text", "required": false, "max_length": 20 },
-    { "key": "receipt_number", "group": "document", "label": "Receipt number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "receipt_number", "group": "document", "label": "Receipt Number", "type": "text", "required": true, "max_length": 30 },
     { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
     { "key": "time", "group": "document", "label": "Time (optional)", "type": "time", "required": false },
-    { "key": "space_number", "group": "details", "label": "Parking space", "type": "text", "required": true, "max_length": 20 },
-    { "key": "thank_you", "group": "details", "label": "Thank-you message (optional)", "type": "textarea", "required": false, "max_length": 120 },
-    { "key": "amount", "group": "charges", "label": "Total amount ({currency})", "type": "number", "required": true, "min": 0 }
+    { "key": "space_number", "group": "details", "label": "Parking Space", "type": "text", "required": true, "max_length": 20 },
+    { "key": "thank_you", "group": "details", "label": "Thank-You Message (optional)", "type": "textarea", "required": false, "max_length": 120 },
+    { "key": "amount", "group": "charges", "label": "Total Amount ({currency})", "type": "number", "required": true, "min": 0 }
   ]
 }

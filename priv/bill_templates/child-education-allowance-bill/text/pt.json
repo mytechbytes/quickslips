@@ -129,5 +129,8 @@
         "batch": "Júlia Cunha"
       }
     ]
+  },
+  "groups": {
+    "customer": "Requerente"
   }
 }

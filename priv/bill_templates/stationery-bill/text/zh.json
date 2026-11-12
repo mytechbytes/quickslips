@@ -102,5 +102,8 @@
     ],
     "tax_percent": 13,
     "remarks": "7 天内换货请保留小票。"
+  },
+  "groups": {
+    "business": "店铺"
   }
 }

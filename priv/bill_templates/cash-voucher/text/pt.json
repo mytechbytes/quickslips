@@ -81,5 +81,8 @@
     "approved_by": "A. Duarte",
     "place": "São Paulo",
     "resident_certificate": "R-3169647"
+  },
+  "groups": {
+    "customer": "Beneficiário"
   }
 }

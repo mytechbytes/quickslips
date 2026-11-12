@@ -177,5 +177,8 @@
     "registered_office": "Farmacia Centrale S.r.l., Via Torino 20, 20123 Milano",
     "admin_office": "Farmacia Centrale S.r.l., Via Roma 12, 00184 Roma",
     "signatory_line": "Farmacista"
+  },
+  "groups": {
+    "business": "Farmacia"
   }
 }

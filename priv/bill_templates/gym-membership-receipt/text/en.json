@@ -11,40 +11,40 @@
   },
   "fields": {
     "gym_name": {
-      "label": "Gym or fitness club"
+      "label": "Gym or Fitness Club"
     },
     "gym_address": {
       "label": "Address (optional)"
     },
     "gym_email": {
-      "label": "Gym email (optional)"
+      "label": "Gym Email (optional)"
     },
     "gym_phone": {
-      "label": "Gym phone (optional)"
+      "label": "Gym Phone (optional)"
     },
     "gstin": {
       "label": "{tax_id} (optional)"
     },
     "receipt_number": {
-      "label": "Receipt number"
+      "label": "Receipt Number"
     },
     "date": {
-      "label": "Receipt date"
+      "label": "Receipt Date"
     },
     "member_name": {
-      "label": "Member name"
+      "label": "Member Name"
     },
     "member_phone": {
-      "label": "Member phone (optional)"
+      "label": "Member Phone (optional)"
     },
     "customer_number": {
-      "label": "Customer number (optional)"
+      "label": "Customer Number (optional)"
     },
     "user_number": {
       "label": "User ID (optional)"
     },
     "member_address": {
-      "label": "Member address (optional)"
+      "label": "Member Address (optional)"
     },
     "plan": {
       "label": "Plan",
@@ -57,7 +57,7 @@
       }
     },
     "billing_cycle": {
-      "label": "Billing cycle (optional)",
+      "label": "Billing Cycle (optional)",
       "options": {
         "Monthly": "Monthly",
         "Quarterly": "Quarterly",
@@ -69,19 +69,19 @@
       "label": "Valid from"
     },
     "end_date": {
-      "label": "Valid till"
+      "label": "Valid Till"
     },
     "fee": {
-      "label": "Membership fee ({currency})"
+      "label": "Membership Fee ({currency})"
     },
     "joining_fee": {
-      "label": "Joining fee ({currency}) (optional)"
+      "label": "Joining Fee ({currency}) (optional)"
     },
     "gst_percent": {
       "label": "{tax} (%) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method",
+      "label": "Payment Method",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -97,7 +97,7 @@
       "label": "Instructions for members (one per line) (optional)"
     },
     "items": {
-      "label": "Extra items",
+      "label": "Extra Items",
       "columns": {
         "name": "Item and description",
         "qty": "Unit",
@@ -121,27 +121,32 @@
     "authorised": "Authorised signatory",
     "stay_fit": "Stay fit. See you at the gym.",
     "invoice_no": "Invoice #",
-    "invoice_date": "Invoice date",
+    "invoice_date": "Invoice Date",
     "user_id": "User ID",
-    "customer_name": "Customer name",
+    "customer_name": "Customer Name",
     "address": "Address",
     "mobile": "Mobile",
     "account_summary": "Account summary",
-    "bill_from_date": "Bill from date",
+    "bill_from_date": "Bill from Date",
     "billing_cycle": "Billing cycle",
-    "due_date": "Due date",
+    "due_date": "Due Date",
     "amount": "Amount",
-    "payment_mode": "Payment mode",
+    "payment_mode": "Payment Mode",
     "billing_details": "Billing details",
     "gym_item": "Gym item",
     "unit": "Unit",
-    "net_amount": "Net amount",
+    "net_amount": "Net Amount",
     "total": "Total",
     "tax_pct": "Tax %",
-    "taxable_amount": "Taxable amount",
-    "instructions_title": "Instructions for the gym",
+    "taxable_amount": "Taxable Amount",
+    "instructions_title": "Instructions for the Gym",
     "remark": "Remark",
     "signature": "Signature"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Gym",
+    "customer": "Member",
+    "details": "Plan"
+  }
 }

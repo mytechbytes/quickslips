@@ -134,5 +134,9 @@
     "charged_weight": "500 kg",
     "to_pay": 850,
     "signatory_name": "C. Lima"
+  },
+  "groups": {
+    "customer": "Remetente e destinatário",
+    "details": "Viagem"
   }
 }

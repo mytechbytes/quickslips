@@ -134,5 +134,9 @@
     "charged_weight": "500 kg",
     "to_pay": 185,
     "signatory_name": "J. Ortiz"
+  },
+  "groups": {
+    "customer": "Remitente y consignatario",
+    "details": "Trayecto"
   }
 }

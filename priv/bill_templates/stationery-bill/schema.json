@@ -10,19 +10,20 @@
   "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
   "tax": { "default": "added", "es": "included", "de": "included", "fr": "included", "it": "included", "gb": "included", "jp": "included", "cn": "included" },
   "templates": [{ "id": "t1" }],
+  "saved_groups": ["customer"],
   "fields": [
-    { "key": "shop_name", "group": "business", "label": "Shop name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
-    { "key": "shop_address", "group": "business", "label": "Shop address", "type": "textarea", "required": true, "max_length": 200, "prefill": "business.address" },
+    { "key": "shop_name", "group": "business", "label": "Shop Name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
+    { "key": "shop_address", "group": "business", "label": "Shop Address", "type": "textarea", "required": true, "max_length": 200, "prefill": "business.address" },
     { "key": "seller_tax_id", "group": "registration", "label": "{tax_id} (optional)", "type": "tax_id", "required": false, "max_length": 20, "prefill": "business.gstin" },
-    { "key": "invoice_number", "group": "document", "label": "Receipt number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "invoice_number", "group": "document", "label": "Receipt Number", "type": "text", "required": true, "max_length": 30 },
     { "key": "date", "group": "document", "label": "Date", "type": "date", "required": true },
-    { "key": "customer_name", "group": "customer", "label": "Customer name", "type": "text", "required": true, "max_length": 80 },
-    { "key": "customer_address", "group": "customer", "label": "Customer address", "type": "textarea", "required": true, "max_length": 200 },
+    { "key": "customer_name", "group": "customer", "label": "Customer Name", "type": "text", "required": true, "max_length": 80 },
+    { "key": "customer_address", "group": "customer", "label": "Customer Address", "type": "textarea", "required": true, "max_length": 200 },
     { "key": "items", "group": "items", "label": "Items", "type": "items", "required": true, "max_rows": 40, "name_max_length": 100,
       "cells": ["name", "qty", "rate"],
       "columns": { "name": "Item", "qty": "Quantity", "rate": "Rate ({currency})" } },
     { "key": "tax_percent", "group": "charges", "label": "{tax} (%) (optional)", "type": "tax_rate", "required": false },
-    { "key": "payment_mode", "group": "payment", "label": "Payment method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true },
-    { "key": "remarks", "group": "details", "label": "Remarks / instructions (optional)", "type": "textarea", "required": false, "max_length": 200 }
+    { "key": "payment_mode", "group": "payment", "label": "Payment Method", "type": "select", "options": ["Cash", "UPI", "Card", "Bank transfer", "Online"], "required": true },
+    { "key": "remarks", "group": "details", "label": "Remarks / Instructions (optional)", "type": "textarea", "required": false, "max_length": 200 }
   ]
 }

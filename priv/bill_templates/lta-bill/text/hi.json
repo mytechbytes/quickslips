@@ -164,5 +164,9 @@
     "cancellation_charge": 240,
     "boarding_address": "होसूर रोड, मडीवाला, बेंगलुरु, कर्नाटक 560068",
     "dropping_address": "जुबली बस स्टेशन, सिकंदराबाद, तेलंगाना 500003"
+  },
+  "groups": {
+    "customer": "यात्री",
+    "details": "यात्रा"
   }
 }

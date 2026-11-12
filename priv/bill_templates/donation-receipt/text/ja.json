@@ -82,5 +82,10 @@
     "amount": 10000,
     "received_by": "山田 花子（会計）",
     "donation_description": "歴史ある図書館の修復のための寄付。"
+  },
+  "groups": {
+    "business": "団体",
+    "customer": "寄付者",
+    "details": "寄付"
   }
 }

@@ -221,16 +221,44 @@ defmodule QuickSlips.Businesses do
   Returns `{:ok, business, :created | :updated}` or `{:error, changeset}`. `opts` as in `create_business/4`.
   """
   def save_details(%Scope{} = scope, attrs, opts \\ []) do
+    # With an "id" (even an empty one) the page says which it means: "Update" sends the id of the business, "Create new"
+    # sends none and may not take a name that is saved. Without the key, a saved name is updated, as it always was.
+    explicit? = Map.has_key?(attrs, "id")
+    id = attrs["id"]
     attrs = Map.take(attrs, ["name", "address", "gstin"])
+    taken = find_by_name(scope, attrs["name"])
 
-    case find_by_name(scope, attrs["name"]) do
-      nil ->
+    cond do
+      id not in [nil, ""] ->
+        case get_owned(scope, id) do
+          nil ->
+            {:error, :not_found}
+
+          business when taken != nil and taken.id != business.id ->
+            {:error, :name_taken}
+
+          business ->
+            with {:ok, business} <- update_business(scope, business, attrs, %{}, opts),
+                 do: {:ok, business, :updated}
+        end
+
+      taken != nil and explicit? ->
+        {:error, :name_taken}
+
+      taken != nil ->
+        with {:ok, business} <- update_business(scope, taken, attrs, %{}, opts),
+             do: {:ok, business, :updated}
+
+      true ->
         with {:ok, business} <- create_business(scope, attrs, %{}, opts),
              do: {:ok, business, :created}
+    end
+  end
 
-      business ->
-        with {:ok, business} <- update_business(scope, business, attrs, %{}, opts),
-             do: {:ok, business, :updated}
+  defp get_owned(scope, id) do
+    case Ecto.Type.cast(:id, id) do
+      {:ok, id} when is_integer(id) -> Repo.get_by(Business, id: id, user_id: scope.user.id)
+      _no_id -> nil
     end
   end
 
@@ -257,13 +285,21 @@ defmodule QuickSlips.Businesses do
   An image whose file has gone missing is left out, so the document is made without it. `nil` for the business
   has no logo.
   """
-  def render_assets(business, signature \\ nil, stamp \\ nil, driver_signature \\ nil) do
-    pictures = [
-      logo_assets(business),
-      Signatures.render_assets(signature),
-      Signatures.render_assets(driver_signature, "driver_signature"),
-      QuickSlips.Stamps.render_assets(stamp)
-    ]
+  def render_assets(
+        business,
+        signature \\ nil,
+        stamp \\ nil,
+        driver_signature \\ nil,
+        extra_signatures \\ %{}
+      ) do
+    pictures =
+      [
+        logo_assets(business),
+        Signatures.render_assets(signature),
+        Signatures.render_assets(driver_signature, "driver_signature"),
+        QuickSlips.Stamps.render_assets(stamp)
+      ] ++
+        for {slot, extra} <- extra_signatures, do: Signatures.render_assets(extra, slot)
 
     %{
       data: Enum.reduce(pictures, %{}, &Map.merge(&2, &1.data)),

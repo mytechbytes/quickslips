@@ -13,49 +13,49 @@
   },
   "fields": {
     "operator_name": {
-      "label": "Cab company or driver name"
+      "label": "Cab Company or Driver Name"
     },
     "operator_address": {
       "label": "Address (optional)"
     },
     "receipt_number": {
-      "label": "Receipt number"
+      "label": "Receipt Number"
     },
     "date": {
-      "label": "Trip date"
+      "label": "Trip Date"
     },
     "drop_date": {
-      "label": "Drop date (optional)"
+      "label": "Drop Date (optional)"
     },
     "passenger_name": {
-      "label": "Passenger name (optional)"
+      "label": "Passenger Name (optional)"
     },
     "customer_phone": {
-      "label": "Passenger mobile (optional)"
+      "label": "Passenger Mobile (optional)"
     },
     "customer_address": {
-      "label": "Passenger address (optional)"
+      "label": "Passenger Address (optional)"
     },
     "driver_name": {
-      "label": "Driver name (optional)"
+      "label": "Driver Name (optional)"
     },
     "vehicle_number": {
-      "label": "Vehicle number (optional)"
+      "label": "Vehicle Number (optional)"
     },
     "vehicle_model": {
-      "label": "Vehicle model (optional)"
+      "label": "Vehicle Model (optional)"
     },
     "pickup": {
       "label": "Pickup"
     },
     "pickup_time": {
-      "label": "Pickup time (optional)"
+      "label": "Pickup Time (optional)"
     },
     "drop": {
       "label": "Drop"
     },
     "drop_time": {
-      "label": "Drop time (optional)"
+      "label": "Drop Time (optional)"
     },
     "distance_km": {
       "label": "Distance (km)"
@@ -64,13 +64,13 @@
       "label": "Fare ({currency})"
     },
     "toll": {
-      "label": "Toll and convenience fee ({currency}) (optional)"
+      "label": "Toll and Convenience Fee ({currency}) (optional)"
     },
     "airport_charge": {
-      "label": "Airport pickup charge ({currency}) (optional)"
+      "label": "Airport Pickup Charge ({currency}) (optional)"
     },
     "advance_paid": {
-      "label": "Advance paid ({currency}) (optional)"
+      "label": "Advance Paid ({currency}) (optional)"
     },
     "tax_percent": {
       "label": "{tax} (%) (optional)"
@@ -117,10 +117,10 @@
     "driver_invoice": "Driver trip invoice",
     "service": "Service: cab ride",
     "invoice_id": "Invoice ID",
-    "invoice_date": "Invoice date",
+    "invoice_date": "Invoice Date",
     "customer": "Customer name",
-    "mobile": "Mobile number",
-    "pickup_address": "Pickup address",
+    "mobile": "Mobile Number",
+    "pickup_address": "Pickup Address",
     "description": "Description",
     "amount": "Amount",
     "ride_fee": "Ride fee",
@@ -135,7 +135,7 @@
     "vehicle": "Vehicle",
     "date_time": "Date & time",
     "particulars": "Particulars",
-    "period": "Travel period",
+    "period": "Travel Period",
     "until": "to",
     "distance": "Distance",
     "rate": "Rate",
@@ -143,7 +143,7 @@
     "drop_point": "Drop point",
     "advance": "Less: advance paid",
     "balance": "Balance due",
-    "total_amount": "Total bill amount",
+    "total_amount": "Total Bill Amount",
     "signatory": "Authorised signatory",
     "thanks_riding": "Thanks for riding,",
     "before_tax": "Before taxes",
@@ -157,5 +157,10 @@
   },
   "sample": {
     "tax_percent": 5
+  },
+  "groups": {
+    "business": "Operator",
+    "customer": "Passenger",
+    "details": "Trip"
   }
 }

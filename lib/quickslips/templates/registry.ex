@@ -19,7 +19,7 @@ defmodule QuickSlips.Templates.Registry do
                healthz thumbnails sitemap sitemap.xml sitemap.xsl terms privacy disclaimer contact sw.js favicon.ico robots.txt admin)
 
   # Field keys the server fills in itself (the names of a business's pictures), so a template can't use them.
-  @reserved_keys ~w(logo signature driver_signature stamp paper_size margin_size)
+  @reserved_keys ~w(logo signature driver_signature stamp signature_3 signature_4 signature_5 paper_size margin_size)
 
   ## Client API
 
@@ -226,6 +226,7 @@ defmodule QuickSlips.Templates.Registry do
           design
           |> mark_signature(dir)
           |> mark_driver_signature(dir)
+          |> mark_extra_signatures(dir)
           |> mark_stamp(dir)
           |> mark_page(dir)
         end)
@@ -258,6 +259,22 @@ defmodule QuickSlips.Templates.Registry do
   defp mark_driver_signature(%{"id" => id} = design, dir) do
     source = File.read!(Path.join(dir, id <> ".typ"))
     Map.put(design, "driver_signature", String.contains?(source, ~s("driver_signature")))
+  end
+
+  # The further signatures of a design, as `"extra_signatures": ["signature_3"]`: the numbered pictures it reads, after
+  # the first and the second. The page offers a choice of a saved signature for each, named by the bill's
+  # `"signature_labels"`.
+  defp mark_extra_signatures(%{"id" => id} = design, dir) do
+    source = File.read!(Path.join(dir, id <> ".typ"))
+
+    slots =
+      ~r/"(signature_\d)"/
+      |> Regex.scan(source, capture: :all_but_first)
+      |> List.flatten()
+      |> Enum.uniq()
+      |> Enum.sort()
+
+    Map.put(design, "extra_signatures", slots)
   end
 
   # Whether a design has a place for a revenue stamp, as `"stamp": true` on it: it uses the `revenue-stamp` helper.

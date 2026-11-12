@@ -123,5 +123,8 @@
     "customer_name": "Ana Souza",
     "table_number": "T-7",
     "gst_percent": null
+  },
+  "groups": {
+    "business": "Restaurante"
   }
 }

@@ -177,5 +177,8 @@
     "registered_office": "Farmacia Giralda S.L., Calle Serrano 10, 28001 Madrid",
     "admin_office": "Farmacia Giralda S.L., Av. de la Constitución 45, 41001 Sevilla",
     "signatory_line": "Farmacéutico/a"
+  },
+  "groups": {
+    "business": "Farmacia"
   }
 }

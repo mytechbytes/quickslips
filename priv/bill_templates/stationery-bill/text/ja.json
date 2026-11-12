@@ -102,5 +102,8 @@
     ],
     "tax_percent": 10,
     "remarks": "7日以内の交換にはレシートが必要です。"
+  },
+  "groups": {
+    "business": "店"
   }
 }

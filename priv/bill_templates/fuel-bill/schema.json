@@ -6,6 +6,7 @@
   "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
   "tax": { "default": "none", "es": "included", "de": "included", "fr": "included", "it": "included", "gb": "included", "jp": "included", "cn": "included", "ca": "included" },
   "templates": [{ "id": "t1" }, { "id": "t2" }, { "id": "t3" }, { "id": "t4" }, { "id": "t5" }, { "id": "t6" }],
+  "saved_groups": ["customer", "details"],
   "fields": [
     { "key": "station_name", "group": "business", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
     { "key": "station_address", "group": "business", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },

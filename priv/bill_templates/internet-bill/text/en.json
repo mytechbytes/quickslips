@@ -13,7 +13,7 @@
   },
   "fields": {
     "provider_name": {
-      "label": "Internet provider"
+      "label": "Internet Provider"
     },
     "provider_address": {
       "label": "Address (optional)"
@@ -22,46 +22,46 @@
       "label": "Email (optional)"
     },
     "registered_office": {
-      "label": "Registered office (optional)"
+      "label": "Registered Office (optional)"
     },
     "gstin": {
       "label": "{tax_id} (optional)"
     },
     "bill_number": {
-      "label": "Bill number"
+      "label": "Bill Number"
     },
     "account_number": {
-      "label": "Customer account number"
+      "label": "Customer Account Number"
     },
     "bill_date": {
-      "label": "Bill date"
+      "label": "Bill Date"
     },
     "due_date": {
-      "label": "Due date (optional)"
+      "label": "Due Date (optional)"
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "customer_address": {
-      "label": "Customer address (optional)"
+      "label": "Customer Address (optional)"
     },
     "user_name": {
-      "label": "User name (optional)"
+      "label": "User Name (optional)"
     },
     "period_start": {
-      "label": "Billing period from"
+      "label": "Billing Period from"
     },
     "period_end": {
-      "label": "Billing period to"
+      "label": "Billing Period to"
     },
     "plan_name": {
       "label": "Plan"
     },
     "plan_speed": {
-      "label": "Plan speed (optional)"
+      "label": "Plan Speed (optional)"
     },
     "plan_package": {
-      "label": "Plan package (optional)",
+      "label": "Plan Package (optional)",
       "options": {
         "Limited": "Limited",
         "Unlimited": "Unlimited",
@@ -69,7 +69,7 @@
       }
     },
     "plan_validity": {
-      "label": "Plan validity (optional)",
+      "label": "Plan Validity (optional)",
       "options": {
         "Monthly": "Monthly",
         "Quarterly": "Quarterly",
@@ -78,13 +78,13 @@
       }
     },
     "service_description": {
-      "label": "Service description (optional)"
+      "label": "Service Description (optional)"
     },
     "plan_charge": {
-      "label": "Plan charge ({currency})"
+      "label": "Plan Charge ({currency})"
     },
     "other_charges": {
-      "label": "Installation or other charges ({currency}) (optional)"
+      "label": "Installation or Other Charges ({currency}) (optional)"
     },
     "discount": {
       "label": "Discount ({currency}) (optional)"
@@ -93,10 +93,10 @@
       "label": "{tax} (%) (optional)"
     },
     "payments_received": {
-      "label": "Payments received ({currency}) (optional)"
+      "label": "Payments Received ({currency}) (optional)"
     },
     "payment_mode": {
-      "label": "Payment method (optional)",
+      "label": "Payment Method (optional)",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -110,12 +110,12 @@
     }
   },
   "print": {
-    "title": "Internet bill",
+    "title": "Internet Bill",
     "bill_no": "Bill no.",
-    "bill_date": "Bill date",
-    "due_date": "Due date",
+    "bill_date": "Bill Date",
+    "due_date": "Due Date",
     "account_no": "Account no.",
-    "billing_period": "Billing period",
+    "billing_period": "Billing Period",
     "billed_to": "Billed to",
     "description": "Description",
     "amount": "Amount",
@@ -125,14 +125,14 @@
     "amount_due": "Amount due",
     "pay_by": "Please pay by {date} to keep your connection running.",
     "computer_generated": "This is a computer generated bill.",
-    "invoice_title": "Internet invoice",
-    "customer_name": "Customer name",
-    "customer_address": "Customer address",
+    "invoice_title": "Internet Invoice",
+    "customer_name": "Customer Name",
+    "customer_address": "Customer Address",
     "bill_account": "Bill account number",
     "receipt_details": "Receipt details",
-    "receipt_no": "Receipt number",
+    "receipt_no": "Receipt Number",
     "date": "Date",
-    "payment_method": "Payment method",
+    "payment_method": "Payment Method",
     "provider_details": "Internet provider details",
     "billing_cycle": "Billing cycle",
     "plan_summary": "Service plan summary",
@@ -140,28 +140,32 @@
     "plan_speed": "Plan speed",
     "plan_package": "Plan package",
     "plan_validity": "Plan validity",
-    "plan_amount": "Plan amount",
+    "plan_amount": "Plan Amount",
     "total": "Total",
     "payable_to": "All payments to be made in favour of",
     "no_signature": "This is a computer generated invoice and does not require any signature",
     "receipt_for_recipient": "(Receipt for the recipient)",
     "name": "Name",
     "invoice_no": "Invoice no.",
-    "taxable_amount": "Taxable amount",
+    "taxable_amount": "Taxable Amount",
     "rate_pct": "rate %",
     "payments_received": "Payments received",
-    "user_name": "User name",
+    "user_name": "User Name",
     "service_description": "Internet service description",
     "amount_incl_tax": "Amount incl. tax",
     "registered_office": "Registered office address",
-    "terms_title": "Terms and conditions",
+    "terms_title": "Terms and Conditions",
     "acknowledgement": "Acknowledgement slip",
-    "subscriber_name": "Subscriber name",
+    "subscriber_name": "Subscriber Name",
     "hello": "Hello",
     "invoice_total": "Invoice total",
     "currency": "Currency",
-    "invoice_amount": "Invoice amount",
-    "mailing_address": "Our mailing address is"
+    "invoice_amount": "Invoice Amount",
+    "mailing_address": "Our Mailing Address Is"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Provider",
+    "details": "Plan"
+  }
 }

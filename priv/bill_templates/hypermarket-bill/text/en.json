@@ -10,22 +10,22 @@
   },
   "fields": {
     "brand_name": {
-      "label": "Store brand"
+      "label": "Store Brand"
     },
     "company_name": {
-      "label": "Company name"
+      "label": "Company Name"
     },
     "company_address": {
-      "label": "Company address (optional)"
+      "label": "Company Address (optional)"
     },
     "phone": {
-      "label": "Customer care phone (optional)"
+      "label": "Customer Care Phone (optional)"
     },
     "email": {
-      "label": "Customer care email (optional)"
+      "label": "Customer Care Email (optional)"
     },
     "website": {
-      "label": "Terms web address (optional)"
+      "label": "Terms Web Address (optional)"
     },
     "cin": {
       "label": "CIN (optional)"
@@ -37,25 +37,25 @@
       "label": "FSSAI no. (optional)"
     },
     "invoice_number": {
-      "label": "Invoice number"
+      "label": "Invoice Number"
     },
     "date": {
-      "label": "Invoice date"
+      "label": "Invoice Date"
     },
     "order_number": {
-      "label": "Order number (optional)"
+      "label": "Order Number (optional)"
     },
     "order_date": {
-      "label": "Order date (optional)"
+      "label": "Order Date (optional)"
     },
     "delivery_date": {
-      "label": "Delivery date (optional)"
+      "label": "Delivery Date (optional)"
     },
     "delivery_time": {
-      "label": "Delivery time (optional)"
+      "label": "Delivery Time (optional)"
     },
     "payment_mode": {
-      "label": "Payment mode",
+      "label": "Payment Mode",
       "options": {
         "Cash": "Cash",
         "UPI": "UPI",
@@ -65,26 +65,26 @@
       }
     },
     "customer_name": {
-      "label": "Customer name (optional)"
+      "label": "Customer Name (optional)"
     },
     "customer_phone": {
-      "label": "Mobile number (optional)"
+      "label": "Mobile Number (optional)"
     },
     "delivery_mode": {
-      "label": "Delivery mode",
+      "label": "Delivery Mode",
       "options": {
         "Self pick-up": "Self pick-up",
         "Home delivery": "Home delivery"
       }
     },
     "delivery_address": {
-      "label": "Pick-up / delivery address (optional)"
+      "label": "Pick-Up / Delivery Address (optional)"
     },
     "savings": {
-      "label": "Savings on the list price ({currency}) (optional)"
+      "label": "Savings on the List Price ({currency}) (optional)"
     },
     "payment_note": {
-      "label": "Payment instruction (optional)"
+      "label": "Payment Instruction (optional)"
     },
     "items": {
       "label": "Items",
@@ -100,7 +100,7 @@
   "print": {
     "tax_invoice": "Tax invoice",
     "invoice_no": "Invoice no.",
-    "invoice_date": "Invoice date",
+    "invoice_date": "Invoice Date",
     "hsn": "HSN",
     "particulars": "Particulars",
     "qty": "Qty",
@@ -116,19 +116,22 @@
     "taxable": "Taxable",
     "total": "Total",
     "order_details": "Order details",
-    "order_number": "Order number",
-    "order_date": "Order date",
-    "delivery_date": "Delivery date",
+    "order_number": "Order Number",
+    "order_date": "Order Date",
+    "delivery_date": "Delivery Date",
     "delivery_time": "Delivery time",
-    "payment_mode": "Payment mode",
+    "payment_mode": "Payment Mode",
     "customer_delivery": "Customer & delivery details",
-    "customer_name": "Customer name",
-    "mobile": "Mobile number",
-    "delivery_mode": "Delivery mode",
-    "address": "Pick-up / delivery address",
+    "customer_name": "Customer Name",
+    "mobile": "Mobile Number",
+    "delivery_mode": "Delivery Mode",
+    "address": "Pick-Up / Delivery Address",
     "collect": "{amount} to be collected at the time of delivery",
     "computer_generated": "This is a computer generated invoice.",
     "exempt": "Exempt"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "details": "Order"
+  }
 }

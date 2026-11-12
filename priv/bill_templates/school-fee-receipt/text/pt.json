@@ -100,5 +100,9 @@
     "class_name": "7º ano B",
     "fee_period": "2º semestre de 2026",
     "school_phone": "(11) 3456-7890"
+  },
+  "groups": {
+    "business": "Escola",
+    "customer": "Aluno"
   }
 }

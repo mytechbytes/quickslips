@@ -89,5 +89,9 @@
     "description": "平装，第二版",
     "quantity": 1,
     "book_price": 58
+  },
+  "groups": {
+    "business": "商店",
+    "details": "图书"
   }
 }

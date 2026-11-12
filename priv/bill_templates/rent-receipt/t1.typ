@@ -6,20 +6,25 @@
 #show: base.with(width: 160mm, margin: (x: 14mm, y: 13mm), size: 10.5pt)
 #set par(leading: 0.75em)
 
-#let rent = data.monthly_rent
 // The revenue stamp is stuck on a receipt in India only.
 #let stamp = if region.country == "in" {
   revenue-stamp(data, t.revenue_stamp, width: 24mm, height: 28mm)
 }
 
-#align(right)[#t.date: #fmt-date(data.receipt_date)]
+#let receipts = salary-periods(data)
+#for (i, receipt) in receipts.enumerate() [
+#if i > 0 { pagebreak() }
+#let month = receipt.label
+#let when = receipt.date
+#let rent = data.monthly_rent * receipt.months
+#let period = receipt.months > 1
 #v(1mm)
 #align(center, text(size: 15pt, weight: "bold", t.title))
 #v(2mm)
 #rule()
 #v(4mm)
 
-#say(t.certify, (tenant: data.tenant_name, amount: money(rent), landlord: data.landlord_name, month: month-label(data.month)))
+#say(if period { t.certify_period } else { t.certify }, (tenant: data.tenant_name, amount: money(rent), landlord: data.landlord_name, month: month, period: month))
 
 #t.reimburse
 
@@ -34,6 +39,14 @@
 #v(4mm)
 #grid(
   columns: (1fr, auto),
-  [*#t.date:* #fmt-date(data.receipt_date) #if stamp != none [ \ \ #stamp]],
-  align(bottom, signature-block(data, t.landlord_signature, name: data.landlord_name)),
+  [#if when != none [*#t.date:* #fmt-date(when)]#if stamp != none [ \ \ #stamp]],
+  [],
 )
+#v(2mm)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 8mm,
+  align(left, signature-block(data, t.second_signature, name: data.tenant_name, key: "driver_signature")),
+  signature-block(data, t.landlord_signature, name: data.landlord_name),
+)
+]

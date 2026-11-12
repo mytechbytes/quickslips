@@ -10,16 +10,16 @@
   },
   "fields": {
     "brand_name": {
-      "label": "Platform or brand name (optional)"
+      "label": "Platform or Brand Name (optional)"
     },
     "legal_name": {
-      "label": "Legal entity name (optional)"
+      "label": "Legal Entity Name (optional)"
     },
     "restaurant_name": {
-      "label": "Restaurant name"
+      "label": "Restaurant Name"
     },
     "restaurant_address": {
-      "label": "Restaurant address (optional)"
+      "label": "Restaurant Address (optional)"
     },
     "restaurant_gstin": {
       "label": "Restaurant {tax_id} (optional)"
@@ -28,38 +28,38 @@
       "label": "Restaurant FSSAI no. (optional)"
     },
     "invoice_number": {
-      "label": "Invoice number"
+      "label": "Invoice Number"
     },
     "date": {
-      "label": "Invoice date"
+      "label": "Invoice Date"
     },
     "order_id": {
       "label": "Order ID (optional)"
     },
     "customer_name": {
-      "label": "Customer name"
+      "label": "Customer Name"
     },
     "delivery_address": {
-      "label": "Delivery address (optional)"
+      "label": "Delivery Address (optional)"
     },
     "place_of_supply": {
       "label": "State and place of supply (optional)"
     },
     "hsn_code": {
-      "label": "HSN code (optional)"
+      "label": "HSN Code (optional)"
     },
     "service_description": {
-      "label": "Service description (optional)"
+      "label": "Service Description (optional)"
     },
     "reverse_charge": {
-      "label": "Reverse charge (optional)",
+      "label": "Reverse Charge (optional)",
       "options": {
         "No": "No",
         "Yes": "Yes"
       }
     },
     "payment_note": {
-      "label": "Payment note (optional)"
+      "label": "Payment Note (optional)"
     },
     "platform_company": {
       "label": "Platform company name and address (optional)"
@@ -77,10 +77,10 @@
       "label": "Platform FSSAI no. (optional)"
     },
     "signatory_name": {
-      "label": "Signatory name (optional)"
+      "label": "Signatory Name (optional)"
     },
     "items": {
-      "label": "Billing rows",
+      "label": "Billing Rows",
       "columns": {
         "name": "Particulars",
         "rate": "Gross value ({currency})",
@@ -95,9 +95,9 @@
     "on_behalf": "Tax invoice on behalf of",
     "restaurant": "Restaurant",
     "invoice_no": "Invoice no.",
-    "invoice_date": "Invoice date",
+    "invoice_date": "Invoice Date",
     "customer": "Customer name",
-    "delivery_address": "Delivery address",
+    "delivery_address": "Delivery Address",
     "place": "State name & place of supply",
     "hsn": "HSN code",
     "service": "Service description",
@@ -114,5 +114,8 @@
     "for": "For",
     "authorised": "Authorised signatory"
   },
-  "sample": {}
+  "sample": {},
+  "groups": {
+    "business": "Restaurant"
+  }
 }

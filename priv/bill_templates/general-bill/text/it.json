@@ -97,5 +97,8 @@
         "tax": 22
       }
     ]
+  },
+  "groups": {
+    "business": "Negozio"
   }
 }

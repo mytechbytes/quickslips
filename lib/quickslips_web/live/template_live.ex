@@ -63,6 +63,7 @@ defmodule QuickSlipsWeb.TemplateLive do
             stamps: saved_stamps(scope),
             system_stamps: Enum.map(Stamps.system_stamps(), &StampController.system_payload/1),
             stamp_choice: stamp_choice(document),
+            extra_signature_ids: (document && document.options["signatures"]) || %{},
             paper: (document && document.options["paper"]) || "",
             margin: (document && document.options["margin"]) || "",
             feedback_path: feedback_path("/#{locale.code}/#{public_slug}")
@@ -156,16 +157,51 @@ defmodule QuickSlipsWeb.TemplateLive do
     Enum.any?(schema["templates"], &(&1["id"] == template and &1["signature"] == true))
   end
 
-  # The titles of the two signatures of a bill that has a second one say whose each is ("Employee Signature", "Driver
-  # Signature", in the words of the bill); a bill with one signature calls it "Signature".
+  # The titles of the signatures of a bill say whose each is ("Employee Signature", "Driver Signature", or "Prepared by",
+  # "Checked by", "Approved by", in the words of the bill). A bill names them in the `signature_labels` of its schema
+  # (keys of its print texts, in the order of the signatures); else the second one of a receipt is the employee's or
+  # the driver's, and a bill with one signature calls it "Signature".
   defp signature_heading(schema, text) do
-    if Enum.any?(schema["templates"], &(&1["driver_signature"] == true)),
-      do: get_in(text, ["print", "employer_signature"]) || gettext("Signature"),
-      else: gettext("Signature")
+    cond do
+      title = labelled(schema, text, 0) ->
+        title
+
+      Enum.any?(schema["templates"], &(&1["driver_signature"] == true)) ->
+        get_in(text, ["print", "first_signature"]) ||
+          get_in(text, ["print", "employer_signature"]) ||
+          gettext("Signature")
+
+      true ->
+        gettext("Signature")
+    end
   end
 
-  defp driver_signature_heading(text),
-    do: get_in(text, ["print", "driver_signature"]) || gettext("Driver signature")
+  defp driver_signature_heading(schema, text),
+    do:
+      labelled(schema, text, 1) || get_in(text, ["print", "second_signature"]) ||
+        get_in(text, ["print", "driver_signature"]) || gettext("Driver signature")
+
+  defp labelled(schema, text, index) do
+    case Enum.at(schema["signature_labels"] || [], index) do
+      nil -> nil
+      key -> get_in(text, ["print", key])
+    end
+  end
+
+  # The further signatures of a bill, for the page: `[%{key: "signature_3", heading: "Approved by"}]`.
+  defp extra_slots(schema, text) do
+    for {key, n} <- [{"signature_3", 2}, {"signature_4", 3}, {"signature_5", 4}],
+        Enum.any?(schema["templates"], &(key in (&1["extra_signatures"] || []))) do
+      %{key: key, heading: labelled(schema, text, n) || gettext("Signature")}
+    end
+  end
+
+  defp extra_slot_design?(schema, template, key) do
+    Enum.any?(
+      schema["templates"],
+      &(&1["id"] == template and key in (&1["extra_signatures"] || []))
+    )
+  end
 
   # Whether it has a place for a second signature, the driver's.
   defp driver_signature_design?(schema, template) do
@@ -186,6 +222,8 @@ defmodule QuickSlipsWeb.TemplateLive do
           remaining: "{remaining}",
           limit: "{limit}"
         ),
+      "search" => gettext("Search…"),
+      "search_none" => gettext("Nothing found"),
       "creating" => gettext("Creating your PDF…"),
       "downloaded" => gettext("Downloaded."),
       "fix_fields" => gettext("Please fix the highlighted fields."),

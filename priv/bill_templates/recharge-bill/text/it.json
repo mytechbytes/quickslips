@@ -173,5 +173,9 @@
     "offer_text": "Dati a banda larga con ogni linea prepagata e TV",
     "pay_options": "Paga con l'app\nPaga con l'app Zing Pay: scaricala da Play Store o App Store\nPaga sul sito ufficiale",
     "landmark": null
+  },
+  "groups": {
+    "business": "Fornitore",
+    "details": "Servizio"
   }
 }

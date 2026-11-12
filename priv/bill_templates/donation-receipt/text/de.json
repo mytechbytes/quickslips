@@ -82,5 +82,10 @@
     "amount": 100,
     "received_by": "Thomas Müller, Schatzmeister",
     "donation_description": "Spende für die Restaurierung der historischen Bibliothek."
+  },
+  "groups": {
+    "business": "Organisation",
+    "customer": "Spender",
+    "details": "Spende"
   }
 }

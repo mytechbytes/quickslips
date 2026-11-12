@@ -143,5 +143,9 @@
     "vehicle_number": "HR 26 AB 1234",
     "seller_tax_id": "06ABCDE1234F1Z5",
     "customer_name": "अमित वर्मा"
+  },
+  "groups": {
+    "business": "स्टेशन",
+    "details": "वाहन"
   }
 }

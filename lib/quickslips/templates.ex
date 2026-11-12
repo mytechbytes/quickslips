@@ -35,9 +35,12 @@ defmodule QuickSlips.Templates do
 
   def paper_data(_schema, _template, _choice), do: %{}
 
-  @margins ~w(narrow wide)
+  @margins ~w(none hairline minimal narrow compact moderate classic generous wide extra-wide)
 
-  @doc "The margins a user may choose, besides the layout's own."
+  @doc """
+  The margins a user may choose, besides "normal", which is the layout's own. Each scales the margins of the layout
+  (see `base` of the helpers): the sides and the top and bottom by the ratio of the size to a normal one of 1 inch.
+  """
   def margins, do: @margins
 
   @doc """

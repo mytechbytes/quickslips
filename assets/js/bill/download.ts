@@ -23,6 +23,8 @@ export async function downloadPdf(
   margin?: string,
   // The driver's signature, the second one of a receipt (none: the place to sign by hand).
   driverSignatureId?: number | null,
+  // The further signatures of the design, by slot ("signature_3"): the id of a saved signature each.
+  extraSignatureIds?: Record<string, number>,
 ): Promise<DownloadResult> {
   const csrf = document.querySelector<HTMLMetaElement>("meta[name='csrf-token']")?.content ?? ""
 
@@ -37,6 +39,7 @@ export async function downloadPdf(
       business_id: businessId,
       signature_id: signatureId,
       driver_signature_id: driverSignatureId,
+      extra_signature_ids: extraSignatureIds,
       stamp,
       paper,
       margin,

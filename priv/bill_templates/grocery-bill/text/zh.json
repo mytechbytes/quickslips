@@ -124,5 +124,8 @@
     "customer_name": "王伟",
     "tax_percent": 9,
     "store_phone": "010-12345678"
+  },
+  "groups": {
+    "business": "商店"
   }
 }

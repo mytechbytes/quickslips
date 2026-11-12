@@ -109,5 +109,8 @@
     ],
     "tax_percent": 22,
     "terms": "Tutti i capi, la biancheria e i tessuti sono trattati con la massima cura, ma a causa delle condizioni degli articoli o di difetti non visibili del materiale esiste la POSSIBILITÀ DI SCOLORIMENTO O RESTRINGIMENTO. Tali capi sono accettati per la pulizia A RISCHIO DEL PROPRIETARIO e l'azienda non si assume alcuna responsabilità.\nL'azienda si impegna ragionevolmente a mantenere un alto livello di qualità nel lavaggio, nell'asciugatura e nella piegatura.\nPer ragioni di tempo, l'azienda non legge le etichette di manutenzione dei produttori e non risponde dei capi con etichetta «solo lavaggio a mano» o «solo lavaggio a secco»."
+  },
+  "groups": {
+    "business": "Lavanderia"
   }
 }

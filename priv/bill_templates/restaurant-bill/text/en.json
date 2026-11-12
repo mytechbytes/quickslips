@@ -13,7 +13,7 @@
   },
   "fields": {
     "restaurant_name": {
-      "label": "Restaurant name"
+      "label": "Restaurant Name"
     },
     "restaurant_address": {
       "label": "Address (optional)"
@@ -25,7 +25,7 @@
       "label": "FSSAI licence no. (optional)"
     },
     "bill_number": {
-      "label": "Bill number"
+      "label": "Bill Number"
     },
     "date": {
       "label": "Date"
@@ -37,10 +37,10 @@
       "label": "Table (optional)"
     },
     "customer_name": {
-      "label": "Customer name (optional)"
+      "label": "Customer Name (optional)"
     },
     "service_percent": {
-      "label": "Service charge (%) (optional)"
+      "label": "Service Charge (%) (optional)"
     },
     "gst_percent": {
       "label": "{tax} (%) (optional)"
@@ -93,5 +93,8 @@
   },
   "sample": {
     "gst_percent": 5
+  },
+  "groups": {
+    "business": "Restaurant"
   }
 }

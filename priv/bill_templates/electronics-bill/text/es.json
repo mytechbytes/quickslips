@@ -245,5 +245,8 @@
     "copy_label": "(Original para el destinatario)",
     "remarks": "Conserve esta factura para la garantía. Protector de pantalla colocado gratis en tienda.",
     "thank_you": "Gracias. Vuelva pronto."
+  },
+  "groups": {
+    "business": "Vendedor"
   }
 }

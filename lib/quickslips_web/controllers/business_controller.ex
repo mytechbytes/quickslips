@@ -4,7 +4,8 @@ defmodule QuickSlipsWeb.BusinessController do
   `name`, `address` and `gstin` (the registration number of the country) and the `country` the bill is for. A
   logged-in user only.
 
-  A name the user already has updates that business; a new name makes one. The answer is the business and what
+  A name the user already has updates that business; a new name makes one. With an `id` (even an empty one) the page
+  is explicit: a number updates that business, none makes a new one and a name that is saved is `name_taken`. The answer is the business and what
   happened (`%{business: %{...}, outcome: "created" | "updated"}`), or `%{code: "name_blank"}` /
   `%{code: "tax_id_invalid", label: "NIF"}` with status 422.
   """
@@ -35,6 +36,9 @@ defmodule QuickSlipsWeb.BusinessController do
       case Businesses.save_details(scope, params, tax_id: {pattern, label}) do
         {:ok, business, outcome} ->
           json(conn, %{business: payload(business), outcome: outcome})
+
+        {:error, reason} when reason in [:name_taken, :not_found] ->
+          conn |> put_status(:unprocessable_entity) |> json(%{code: Atom.to_string(reason)})
 
         {:error, %Ecto.Changeset{errors: errors}} ->
           conn

@@ -177,5 +177,8 @@
     "registered_office": "グリーン薬局株式会社 東京都渋谷区道玄坂1-1-1",
     "admin_office": "グリーン薬局株式会社 東京都千代田区丸の内1-1-1",
     "signatory_line": "薬剤師"
+  },
+  "groups": {
+    "business": "薬局"
   }
 }

@@ -162,5 +162,9 @@
     "amount": 220,
     "tax_percent": 9,
     "cancellation_charge": 44
+  },
+  "groups": {
+    "customer": "乘客",
+    "details": "行程"
   }
 }

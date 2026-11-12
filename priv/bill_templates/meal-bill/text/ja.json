@@ -150,5 +150,8 @@
     "service_description": "飲食サービス",
     "payment_note": "オンライン決済",
     "signatory_name": "山本 一郎"
+  },
+  "groups": {
+    "business": "レストラン"
   }
 }

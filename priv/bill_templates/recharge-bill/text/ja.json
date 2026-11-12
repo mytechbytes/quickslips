@@ -173,5 +173,9 @@
     "offer_text": "プリペイド回線・テレビ回線ごとにブロードバンドデータ付き",
     "pay_options": "アプリでお支払い\nZing Pay アプリでお支払い：Play Store または App Store からダウンロード\n公式サイトでお支払い",
     "landmark": null
+  },
+  "groups": {
+    "business": "プロバイダー",
+    "details": "サービス"
   }
 }

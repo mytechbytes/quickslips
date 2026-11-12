@@ -32,16 +32,16 @@
       "label": "Declaration (optional)"
     },
     "basic_salary": {
-      "label": "Monthly salary ({currency})"
+      "label": "Monthly Salary ({currency})"
     },
     "overtime": {
       "label": "Overtime ({currency}) (optional)"
     },
     "allowance": {
-      "label": "Fuel and other allowance ({currency}) (optional)"
+      "label": "Fuel and Other Allowance ({currency}) (optional)"
     },
     "deductions": {
-      "label": "Advance or deductions ({currency}) (optional)"
+      "label": "Advance or Deductions ({currency}) (optional)"
     },
     "payment_mode": {
       "label": "Paid by",
@@ -55,7 +55,7 @@
       }
     },
     "periods": {
-      "label": "Salary period",
+      "label": "Salary Period",
       "options": {
         "Monthly": "Monthly",
         "Quarterly": "Quarterly",
@@ -82,7 +82,7 @@
     "certify_plain_period": "This is to certify that I have paid {amount} to the driver, {driver}, for the period {month}.",
     "certify_self": "This is to certify that I have paid {amount} to driver {driver} for the month of {month} (acknowledged receipt enclosed).",
     "reimburse": "Please reimburse the above amount. I further declare that what is stated above is correct and true.",
-    "ack_title": "Receipt acknowledgement",
+    "ack_title": "Receipt Acknowledgement",
     "receipt_date_of": "Date of Receipt",
     "received_sum": "I have received a sum of {amount} only for the month of {month} from {employer}.",
     "ack_certify": "This is to certify that I have paid {amount} to the driver, {driver}, for the month of {month} (Acknowledged receipt enclosed below).",
@@ -94,15 +94,15 @@
     "ack_received_period": "Received a sum of {amount} ({words}) for the period {month} from {employer}.",
     "ack_thumb": "Signature / Thumb Impression of Driver",
     "employee_address": "Employee Address",
-    "payroll_voucher": "Payroll voucher",
-    "voucher_sub": "Driver salary disbursement slip",
+    "payroll_voucher": "Payroll Voucher",
+    "voucher_sub": "Driver Salary Disbursement Slip",
     "acknowledgement": "Acknowledgement",
     "ack_voucher": "Received by {driver} from {employer} towards salary for {month}.",
-    "received_by": "Received By",
-    "prepared_by": "Prepared By",
+    "received_by": "Received by",
+    "prepared_by": "Prepared by",
     "name": "Name",
-    "record_title": "Driver salary record",
-    "record_sub": "Simple typed acknowledgement format",
+    "record_title": "Driver Salary Record",
+    "record_sub": "Simple Typed Acknowledgement Format",
     "declaration_label": "Declaration",
     "confirm": "I confirm receipt of the salary amount stated above from the payer for the month mentioned in this record.",
     "notes": "Notes",
@@ -110,10 +110,10 @@
     "note_2": "Overtime and allowances are included only where listed.",
     "payer_details": "Employee Details",
     "driver_signature": "Driver Signature",
-    "monthly_salary": "Monthly salary",
+    "monthly_salary": "Monthly Salary",
     "overtime": "Overtime",
     "allowance": "Allowance",
-    "deductions": "Advance or deductions"
+    "deductions": "Advance or Deductions"
   },
   "sample": {
     "declaration": "I also declare that the driver is exclusively utilized for official purpose only."
