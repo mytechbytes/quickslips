@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "Periodo del alquiler",
+      "number_label": "N.º de recibo / comprobante (opcional)",
       "options": {
         "Monthly": "Mensual",
         "Quarterly": "Trimestral",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "N.º de recibo / comprobante",
     "title": "Recibo de alquiler",
     "date": "Fecha",
     "certify": "Se certifica que he pagado {amount} al propietario {landlord} en concepto de alquiler del mes de {month} (se adjunta recibo de conformidad).",
@@ -97,7 +99,7 @@
     "first_signature": "Firma del propietario"
   },
   "sample": {
-    "tenant_name": "Lucía Fernández",
+    "tenant_name": "Vivek Kumar",
     "landlord_name": "Javier Ortiz",
     "receiver_name": "Javier Ortiz",
     "monthly_rent": 850

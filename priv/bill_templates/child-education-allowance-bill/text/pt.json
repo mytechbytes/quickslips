@@ -9,6 +9,12 @@
     "t1": "Formulário"
   },
   "fields": {
+    "voucher_number": {
+      "label": "Número do comprovante (opcional)"
+    },
+    "voucher_number": {
+      "label": "Número do comprovante (opcional)"
+    },
     "claim_date": {
       "label": "Data"
     },
@@ -69,6 +75,7 @@
     }
   },
   "print": {
+    "voucher_number": "N.º do comprovante",
     "title": "Formulário de reembolso do auxílio-educação dos filhos",
     "claim_for": "Pedido para o ano letivo",
     "intro": "Solicito o reembolso do auxílio-educação / subsídio de alojamento para meu filho/meus filhos; os dados pertinentes seguem abaixo:",

@@ -42,6 +42,7 @@
     },
     "periods": {
       "label": "Periodo dello stipendio",
+      "number_label": "N. ricevuta / buono di cassa (facoltativo)",
       "options": {
         "Monthly": "Mensile",
         "Quarterly": "Trimestrale",
@@ -51,6 +52,7 @@
     }
   },
   "print": {
+    "memo_number": "N. ricevuta / buono di cassa",
     "title": "Ricevuta per aiuto domestico",
     "date": "Data",
     "certify": "Si certifica che {employer} ha versato {amount} a {helper}, che lavora come {role}, a titolo di stipendio per il mese di {month} (ricevuta allegata).",
@@ -80,7 +82,7 @@
     "receipt_date": "Data della ricevuta"
   },
   "sample": {
-    "employer_name": "Luca Bianchi",
+    "employer_name": "Vivek Kumar",
     "helper_name": "Olga Ivanova",
     "working_as": "collaboratrice domestica",
     "salary": 650,

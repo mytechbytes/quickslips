@@ -17,6 +17,7 @@
     { "key": "customer_care", "group": "business", "label": "Customer Care Number", "type": "text", "required": true, "max_length": 20 },
     { "key": "seller_tax_id", "group": "registration", "label": "{tax_id} (optional)", "type": "tax_id", "required": false, "max_length": 20, "prefill": "business.gstin" },
     { "key": "ticket_number", "group": "document", "label": "Ticket Number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "order_number", "group": "document", "label": "Order / Invoice Number (optional)", "type": "text", "required": false, "max_length": 30 },
     { "key": "pnr_number", "group": "document", "label": "PNR Number (optional)", "type": "text", "required": false, "max_length": 30 },
     { "key": "travel_type", "group": "details", "label": "Travel Type", "type": "select", "options": ["Sleeper", "AC Sleeper", "Semi Sleeper", "AC Sleeper (2+1)", "Non Sleeper", "Non AC"], "required": true },
     { "key": "location", "group": "details", "label": "Boarding Point: Location", "type": "textarea", "required": true, "max_length": 120 },

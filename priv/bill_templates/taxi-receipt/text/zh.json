@@ -12,6 +12,9 @@
     "t4": "简洁收据"
   },
   "fields": {
+    "invoice_number": {
+      "label": "发票号码（选填）"
+    },
     "operator_name": {
       "label": "出租车公司或司机名称"
     },
@@ -19,7 +22,7 @@
       "label": "地址（选填）"
     },
     "receipt_number": {
-      "label": "单据编号"
+      "label": "收据号码（选填）"
     },
     "date": {
       "label": "行程日期"
@@ -90,6 +93,8 @@
     }
   },
   "print": {
+    "invoice_number": "发票号码",
+    "receipt_number": "收据号码",
     "receipt_title": "这是您本次行程的收据，",
     "enjoyed": "希望您乘车愉快。",
     "trip_total": "行程总费用",
@@ -157,7 +162,7 @@
   },
   "sample": {
     "operator_name": "朝阳出租车",
-    "passenger_name": "王伟",
+    "passenger_name": "Vivek Kumar",
     "driver_name": "李强",
     "pickup": "北京南站",
     "drop": "首都国际机场",

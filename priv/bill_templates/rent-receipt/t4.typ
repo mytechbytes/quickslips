@@ -10,9 +10,11 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let rent = data.monthly_rent * receipt.months
 #let period = receipt.months > 1
 #let facts = (
+  ..if memo != none { ((t.memo_number, memo),) } else { () },
   (t.landlord, data.landlord_name + if opt(data, "landlord_pan") != none { " (PAN: " + opt(data, "landlord_pan") + ")" } else { "" }),
   (t.tenant, data.tenant_name),
   (t.property, lines(data.property_address)),

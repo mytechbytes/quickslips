@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "家賃の期間",
+      "number_label": "現金伝票／バウチャー番号（任意）",
       "options": {
         "Monthly": "毎月",
         "Quarterly": "四半期ごと",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "現金伝票／バウチャー番号",
     "title": "家賃領収書",
     "date": "日付",
     "certify": "私は家主 {landlord} に {month} 分の家賃として {amount} を支払ったことを証明します（受領書を添付）。",
@@ -97,7 +99,7 @@
     "first_signature": "家主の署名"
   },
   "sample": {
-    "tenant_name": "田中 太郎",
+    "tenant_name": "Vivek Kumar",
     "landlord_name": "鈴木 一郎",
     "receiver_name": "鈴木 一郎",
     "monthly_rent": 85000

@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "Mietzeitraum",
+      "number_label": "Kassenbeleg-/Belegnummer (optional)",
       "options": {
         "Monthly": "Monatlich",
         "Quarterly": "Vierteljährlich",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "Kassenbeleg-/Belegnr.",
     "title": "Mietquittung",
     "date": "Datum",
     "certify": "Hiermit wird bestätigt, dass ich an den Vermieter {landlord} für den Monat {month} eine Miete von {amount} gezahlt habe (Empfangsbestätigung liegt bei).",
@@ -97,7 +99,7 @@
     "first_signature": "Unterschrift des Vermieters"
   },
   "sample": {
-    "tenant_name": "Anna Becker",
+    "tenant_name": "Vivek Kumar",
     "landlord_name": "Thomas Müller",
     "receiver_name": "Thomas Müller",
     "monthly_rent": 1200

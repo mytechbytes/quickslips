@@ -10,7 +10,8 @@
     "t2": "Com confirmação de recebimento",
     "t3": "Declaração do funcionário",
     "t5": "Comprovante de folha",
-    "t6": "Registro simples"
+    "t6": "Registro simples",
+    "t7": "Recibo do empregador"
   },
   "fields": {
     "employer_name": {
@@ -66,6 +67,13 @@
     }
   },
   "print": {
+    "er_sub": "Recibo de salário emitido pelo empregador",
+    "er_name": "Nome do empregador",
+    "er_code": "Código do empregador",
+    "er_address": "Endereço do empregador",
+    "er_signature": "Assinatura do empregador",
+    "er_paid": "Eu, {employer}, paguei {amount} a {driver}, meu motorista, como salário do mês de {month}.",
+    "er_paid_period": "Eu, {employer}, paguei {amount} a {driver}, meu motorista, como salário do período {month}.",
     "title": "Recibo de salário do motorista",
     "date": "Data",
     "vehicle_no": "Placa",
@@ -118,7 +126,7 @@
     "deductions": "Adiantamento ou descontos"
   },
   "sample": {
-    "employer_name": "Carlos Lima",
+    "employer_name": "Vivek Kumar",
     "driver_name": "João Santos",
     "vehicle_number": "ABC-1D23",
     "basic_salary": 3200,

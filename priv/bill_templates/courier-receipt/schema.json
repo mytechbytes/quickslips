@@ -16,6 +16,7 @@
     { "key": "courier_name", "group": "business", "label": "Courier Company", "type": "text", "required": true, "max_length": 80, "prefill": "business.name" },
     { "key": "courier_address", "group": "business", "label": "Address (optional)", "type": "textarea", "required": false, "max_length": 200, "prefill": "business.address" },
     { "key": "tracking_number", "group": "document", "label": "Tracking Number", "type": "text", "required": true, "max_length": 30 },
+    { "key": "order_number", "group": "document", "label": "Order / Invoice Number (optional)", "type": "text", "required": false, "max_length": 30 },
     { "key": "booking_date", "group": "document", "label": "Booking Date", "type": "date", "required": true },
     { "key": "sender_name", "group": "customer", "label": "Sender Name", "type": "text", "required": true, "max_length": 80 },
     { "key": "sender_city", "group": "customer", "label": "From (city)", "type": "text", "required": true, "max_length": 60 },

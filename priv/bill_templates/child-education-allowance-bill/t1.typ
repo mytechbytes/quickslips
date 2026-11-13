@@ -23,7 +23,7 @@
 #v(2mm)
 #t.intro
 #v(2mm)
-#t.date: #fmt-date(data.claim_date)
+#t.date: #fmt-date(data.claim_date)#if some("voucher_number") != none [ #h(1fr) #t.voucher_number: #some("voucher_number")]
 #v(2mm)
 #table(
   columns: (auto, 1fr, auto, 1.1fr),

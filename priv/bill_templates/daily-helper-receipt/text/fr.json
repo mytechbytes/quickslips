@@ -42,6 +42,7 @@
     },
     "periods": {
       "label": "Période de salaire",
+      "number_label": "N° de reçu / bon de caisse (facultatif)",
       "options": {
         "Monthly": "Mensuel",
         "Quarterly": "Trimestriel",
@@ -51,6 +52,7 @@
     }
   },
   "print": {
+    "memo_number": "N° de reçu / bon de caisse",
     "title": "Reçu d'aide à domicile",
     "date": "Date",
     "certify": "Il est certifié que {employer} a versé {amount} à {helper}, qui travaille comme {role}, au titre du salaire du mois de {month} (reçu joint).",
@@ -80,7 +82,7 @@
     "receipt_date": "Date du reçu"
   },
   "sample": {
-    "employer_name": "Pierre Dubois",
+    "employer_name": "Vivek Kumar",
     "helper_name": "Maria Silva",
     "working_as": "femme de ménage",
     "salary": 700,

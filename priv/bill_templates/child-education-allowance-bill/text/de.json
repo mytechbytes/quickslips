@@ -9,6 +9,12 @@
     "t1": "Formular"
   },
   "fields": {
+    "voucher_number": {
+      "label": "Belegnummer (optional)"
+    },
+    "voucher_number": {
+      "label": "Belegnummer (optional)"
+    },
     "claim_date": {
       "label": "Datum"
     },
@@ -69,6 +75,7 @@
     }
   },
   "print": {
+    "voucher_number": "Belegnr.",
     "title": "Formular zur Erstattung des Kinderbildungszuschusses",
     "claim_for": "Antrag für das Schuljahr",
     "intro": "Hiermit beantrage ich die Erstattung des Kinderbildungs- / Internatszuschusses für mein Kind / meine Kinder; die maßgeblichen Angaben folgen unten:",

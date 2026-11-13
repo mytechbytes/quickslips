@@ -9,14 +9,34 @@
   "date": "2026-11-07",
   "order_number": "ORD-44572069",
   "order_date": "2026-11-05",
-  "customer_name": "Rohan Mehta",
+  "customer_name": "Vivek Kumar",
   "customer_phone": "98200 12345",
   "shipping_address": "Flat 12, Sunrise Apartments, Station Road, Mumbai, Maharashtra 400093",
   "items": [
-    { "name": "Wireless earbuds with charging case", "qty": 1, "rate": 1999, "tax": 18 },
-    { "name": "Silicone phone case", "qty": 2, "rate": 349, "tax": 18 },
-    { "name": "Cotton round-neck T-shirt", "qty": 2, "rate": 499, "tax": 5 },
-    { "name": "Stainless steel water bottle (750 ml)", "qty": 1, "rate": 599, "tax": 18 }
+    {
+      "name": "Wireless earbuds with charging case",
+      "qty": 1,
+      "rate": 1999,
+      "tax": 18
+    },
+    {
+      "name": "Silicone phone case",
+      "qty": 2,
+      "rate": 349,
+      "tax": 18
+    },
+    {
+      "name": "Cotton round-neck T-shirt",
+      "qty": 2,
+      "rate": 499,
+      "tax": 5
+    },
+    {
+      "name": "Stainless steel water bottle (750 ml)",
+      "qty": 1,
+      "rate": 599,
+      "tax": 18
+    }
   ],
   "shipping_charge": 49,
   "payment_mode": "Online",

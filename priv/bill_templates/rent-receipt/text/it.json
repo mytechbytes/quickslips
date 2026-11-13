@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "Periodo di affitto",
+      "number_label": "N. ricevuta / buono di cassa (facoltativo)",
       "options": {
         "Monthly": "Mensile",
         "Quarterly": "Trimestrale",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "N. ricevuta / buono di cassa",
     "title": "Ricevuta di affitto",
     "date": "Data",
     "certify": "Si certifica che ho versato {amount} al proprietario {landlord} a titolo di affitto per il mese di {month} (ricevuta allegata).",
@@ -97,7 +99,7 @@
     "first_signature": "Firma del proprietario"
   },
   "sample": {
-    "tenant_name": "Marco Rossi",
+    "tenant_name": "Vivek Kumar",
     "landlord_name": "Luca Bianchi",
     "receiver_name": "Luca Bianchi",
     "monthly_rent": 800

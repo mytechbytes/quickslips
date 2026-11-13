@@ -10,6 +10,12 @@
     "t2": "E-billet encadré"
   },
   "fields": {
+    "order_number": {
+      "label": "Numéro de commande / facture (facultatif)"
+    },
+    "order_number": {
+      "label": "Numéro de commande / facture (facultatif)"
+    },
     "travel_name": {
       "label": "Opérateur de voyage"
     },
@@ -93,6 +99,7 @@
     }
   },
   "print": {
+    "order_number": "N° de commande / facture",
     "t1_banner": "Félicitations ! Vous avez réservé un billet modifiable. Vous pouvez avancer ou reporter ce voyage jusqu'au {when}.",
     "eticket": "E-BILLET",
     "type": "Type",

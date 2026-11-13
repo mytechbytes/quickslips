@@ -4,14 +4,34 @@
   "seller_tax_id": "27ABCDE1234F1Z5",
   "invoice_number": "9583",
   "date": "2026-11-07",
-  "customer_name": "Rohan Mehta",
+  "customer_name": "Vivek Kumar",
   "customer_address": "Flat 12, Sunrise Apartments, Station Road, Pune",
   "items": [
-    { "name": "Spiral notebook (200 pages)", "qty": 4, "rate": 60 },
-    { "name": "Ball pens, blue (pack of 10)", "qty": 2, "rate": 90 },
-    { "name": "Highlighter set (4 colours)", "qty": 1, "rate": 140 },
-    { "name": "A4 paper ream (500 sheets)", "qty": 1, "rate": 380 },
-    { "name": "Glue stick (2 pieces)", "qty": 2, "rate": 45 }
+    {
+      "name": "Spiral notebook (200 pages)",
+      "qty": 4,
+      "rate": 60
+    },
+    {
+      "name": "Ball pens, blue (pack of 10)",
+      "qty": 2,
+      "rate": 90
+    },
+    {
+      "name": "Highlighter set (4 colours)",
+      "qty": 1,
+      "rate": 140
+    },
+    {
+      "name": "A4 paper ream (500 sheets)",
+      "qty": 1,
+      "rate": 380
+    },
+    {
+      "name": "Glue stick (2 pieces)",
+      "qty": 2,
+      "rate": 45
+    }
   ],
   "payment_mode": "Cash",
   "remarks": "Please keep the receipt for exchanges within 7 days."

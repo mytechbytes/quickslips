@@ -10,6 +10,12 @@
     "t2": "E-Ticket mit Feldern"
   },
   "fields": {
+    "order_number": {
+      "label": "Bestell-/Rechnungsnummer (optional)"
+    },
+    "order_number": {
+      "label": "Bestell-/Rechnungsnummer (optional)"
+    },
     "travel_name": {
       "label": "Reiseveranstalter"
     },
@@ -93,6 +99,7 @@
     }
   },
   "print": {
+    "order_number": "Bestell-/Rechnungsnr.",
     "t1_banner": "Glückwunsch! Sie haben ein umbuchbares Ticket gebucht. Sie können diese Reise bis {when} vorverlegen oder verschieben.",
     "eticket": "E-TICKET",
     "type": "Typ",

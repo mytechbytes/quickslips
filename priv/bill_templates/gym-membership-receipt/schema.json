@@ -79,6 +79,14 @@
       "max_length": 30
     },
     {
+      "key": "invoice_number",
+      "group": "document",
+      "label": "Order / Invoice Number (optional)",
+      "type": "text",
+      "required": false,
+      "max_length": 30
+    },
+    {
       "key": "date",
       "group": "document",
       "label": "Receipt Date",

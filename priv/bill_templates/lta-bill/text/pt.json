@@ -10,6 +10,12 @@
     "t2": "E-ticket em quadros"
   },
   "fields": {
+    "order_number": {
+      "label": "Número do pedido / fatura (opcional)"
+    },
+    "order_number": {
+      "label": "Número do pedido / fatura (opcional)"
+    },
     "travel_name": {
       "label": "Operadora de viagens"
     },
@@ -93,6 +99,7 @@
     }
   },
   "print": {
+    "order_number": "N.º do pedido / fatura",
     "t1_banner": "Parabéns! Você reservou uma passagem remarcável. Você pode antecipar ou adiar esta viagem até {when}.",
     "eticket": "E-TICKET",
     "type": "Tipo",

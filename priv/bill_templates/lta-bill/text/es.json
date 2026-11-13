@@ -10,6 +10,12 @@
     "t2": "Billete con cuadros"
   },
   "fields": {
+    "order_number": {
+      "label": "Número de pedido / factura (opcional)"
+    },
+    "order_number": {
+      "label": "Número de pedido / factura (opcional)"
+    },
     "travel_name": {
       "label": "Operador de viajes"
     },
@@ -93,6 +99,7 @@
     }
   },
   "print": {
+    "order_number": "N.º de pedido / factura",
     "t1_banner": "¡Enhorabuena! Has reservado un billete reprogramable. Puedes adelantar o aplazar este viaje hasta {when}.",
     "eticket": "BILLETE ELECTRÓNICO",
     "type": "Tipo",

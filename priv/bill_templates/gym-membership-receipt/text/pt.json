@@ -10,6 +10,12 @@
     "t2": "Fatura"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Número do pedido / fatura (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número do pedido / fatura (opcional)"
+    },
     "gym_name": {
       "label": "Academia ou clube"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "N.º do pedido / fatura",
     "membership_receipt": "Recibo de matrícula",
     "receipt_no": "Recibo n.º",
     "date": "Data",
@@ -145,7 +152,7 @@
   },
   "sample": {
     "gym_name": "Academia Ferro Forte",
-    "member_name": "Ana Souza",
+    "member_name": "Vivek Kumar",
     "gym_phone": "(11) 3456-7890",
     "member_phone": "(11) 91234-5678",
     "fee": 270,

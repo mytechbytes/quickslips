@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "Rent Period",
+      "number_label": "Cash Memo / Voucher No. (optional)",
       "options": {
         "Monthly": "Monthly",
         "Quarterly": "Quarterly",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "Cash Memo / Voucher No.",
     "title": "Rent Receipt",
     "date": "Date",
     "certify": "This is to certify that I have paid {amount} to landlord {landlord} towards rent for the month of {month} (acknowledged receipt enclosed).",

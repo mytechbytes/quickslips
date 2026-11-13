@@ -10,6 +10,12 @@
     "t2": "Rechnung"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Bestell-/Rechnungsnummer (optional)"
+    },
+    "invoice_number": {
+      "label": "Bestell-/Rechnungsnummer (optional)"
+    },
     "gym_name": {
       "label": "Fitnessstudio oder Club"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "Bestell-/Rechnungsnr.",
     "membership_receipt": "Mitgliedsbeleg",
     "receipt_no": "Quittungs-Nr.",
     "date": "Datum",
@@ -145,7 +152,7 @@
   },
   "sample": {
     "gym_name": "Eisenwerk Fitness",
-    "member_name": "Anna Becker",
+    "member_name": "Vivek Kumar",
     "gym_phone": "030 1234567",
     "member_phone": "0151 2345678",
     "fee": 99,

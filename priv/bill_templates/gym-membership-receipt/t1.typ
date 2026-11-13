@@ -30,6 +30,7 @@
 
 #details((
   (t.receipt_no, data.receipt_number),
+  (t.order_number, some("invoice_number")),
   (t.date, fmt-date(data.date)),
   (t.member, data.member_name),
   (t.phone, some("member_phone")),

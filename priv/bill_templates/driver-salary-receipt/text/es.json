@@ -10,7 +10,8 @@
     "t2": "Con acuse de recibo",
     "t3": "Declaración del empleado",
     "t5": "Comprobante de nómina",
-    "t6": "Registro sencillo"
+    "t6": "Registro sencillo",
+    "t7": "Recibo del empleador"
   },
   "fields": {
     "employer_name": {
@@ -66,6 +67,13 @@
     }
   },
   "print": {
+    "er_sub": "Recibo de salario emitido por el empleador",
+    "er_name": "Nombre del empleador",
+    "er_code": "Código del empleador",
+    "er_address": "Dirección del empleador",
+    "er_signature": "Firma del empleador",
+    "er_paid": "Yo, {employer}, he pagado {amount} a {driver}, mi conductor, como salario del mes de {month}.",
+    "er_paid_period": "Yo, {employer}, he pagado {amount} a {driver}, mi conductor, como salario del período {month}.",
     "title": "Recibo de sueldo del conductor",
     "date": "Fecha",
     "vehicle_no": "Matrícula",
@@ -118,7 +126,7 @@
     "deductions": "Anticipo o deducciones"
   },
   "sample": {
-    "employer_name": "Javier Ortiz",
+    "employer_name": "Vivek Kumar",
     "driver_name": "Miguel Torres",
     "vehicle_number": "4521 LMN",
     "basic_salary": 1400,

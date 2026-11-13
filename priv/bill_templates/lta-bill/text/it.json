@@ -10,6 +10,12 @@
     "t2": "E-ticket a riquadri"
   },
   "fields": {
+    "order_number": {
+      "label": "Numero ordine / fattura (facoltativo)"
+    },
+    "order_number": {
+      "label": "Numero ordine / fattura (facoltativo)"
+    },
     "travel_name": {
       "label": "Operatore di viaggio"
     },
@@ -93,6 +99,7 @@
     }
   },
   "print": {
+    "order_number": "N. ordine / fattura",
     "t1_banner": "Congratulazioni! Hai prenotato un biglietto modificabile. Puoi anticipare o posticipare questo viaggio fino al {when}.",
     "eticket": "E-TICKET",
     "type": "Tipo",

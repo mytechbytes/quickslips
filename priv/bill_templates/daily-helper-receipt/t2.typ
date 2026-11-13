@@ -22,6 +22,7 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let net = net * receipt.months
 #let heading(content) = align(center, block(width: 100%, text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
 #let period = receipt.months > 1
@@ -54,6 +55,7 @@
 ]
 #heading(t.ack_heading)
 #v(2mm)
+#if memo != none [*#t.memo_number:* #memo \ ]
 #if when != none [*#t.receipt_date:* #fmt-date(when) \ ]
 *#t.salary_month:* #month \
 *#t.helper_name:* #data.helper_name#v(2mm)

@@ -12,6 +12,9 @@
     "t4": "Recibo sencillo"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Número de factura (opcional)"
+    },
     "operator_name": {
       "label": "Nombre de la empresa de taxi o del conductor"
     },
@@ -19,7 +22,7 @@
       "label": "Dirección (opcional)"
     },
     "receipt_number": {
-      "label": "Número de recibo"
+      "label": "Número de recibo (opcional)"
     },
     "date": {
       "label": "Fecha del viaje"
@@ -90,6 +93,8 @@
     }
   },
   "print": {
+    "invoice_number": "N.º de factura",
+    "receipt_number": "N.º de recibo",
     "receipt_title": "Este es el recibo de su viaje,",
     "enjoyed": "Esperamos que haya disfrutado del viaje.",
     "trip_total": "Tarifa total del viaje",
@@ -157,7 +162,7 @@
   },
   "sample": {
     "operator_name": "Taxi Giralda",
-    "passenger_name": "Lucía Fernández",
+    "passenger_name": "Vivek Kumar",
     "driver_name": "Javier Ortiz",
     "pickup": "Estación de Santa Justa, Sevilla",
     "drop": "Aeropuerto de Sevilla",

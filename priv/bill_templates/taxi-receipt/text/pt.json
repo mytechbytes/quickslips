@@ -12,6 +12,9 @@
     "t4": "Recibo simples"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Número da fatura (opcional)"
+    },
     "operator_name": {
       "label": "Nome da empresa de táxi ou do motorista"
     },
@@ -19,7 +22,7 @@
       "label": "Endereço (opcional)"
     },
     "receipt_number": {
-      "label": "Número do recibo"
+      "label": "Número do recibo (opcional)"
     },
     "date": {
       "label": "Data da corrida"
@@ -90,6 +93,8 @@
     }
   },
   "print": {
+    "invoice_number": "N.º da fatura",
+    "receipt_number": "N.º do recibo",
     "receipt_title": "Aqui está o recibo da sua corrida,",
     "enjoyed": "Esperamos que tenha gostado da corrida.",
     "trip_total": "Tarifa total da corrida",
@@ -157,7 +162,7 @@
   },
   "sample": {
     "operator_name": "Táxi Paulista",
-    "passenger_name": "Ana Souza",
+    "passenger_name": "Vivek Kumar",
     "driver_name": "Carlos Lima",
     "pickup": "Estação da Luz, São Paulo",
     "drop": "Aeroporto de Congonhas",

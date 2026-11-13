@@ -9,6 +9,12 @@
     "t1": "Modulo"
   },
   "fields": {
+    "voucher_number": {
+      "label": "Numero di buono (facoltativo)"
+    },
+    "voucher_number": {
+      "label": "Numero di buono (facoltativo)"
+    },
     "claim_date": {
       "label": "Data"
     },
@@ -69,6 +75,7 @@
     }
   },
   "print": {
+    "voucher_number": "N. buono",
     "title": "Modulo di rimborso dell'indennità per l'istruzione dei figli",
     "claim_for": "Richiesta per l'anno scolastico",
     "intro": "Con la presente chiedo il rimborso dell'indennità per l'istruzione / contributo per il convitto per mio figlio/miei figli; i dati pertinenti sono riportati di seguito:",

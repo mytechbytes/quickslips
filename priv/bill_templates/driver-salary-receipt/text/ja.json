@@ -10,7 +10,8 @@
     "t2": "受領確認付き",
     "t3": "従業員の申告",
     "t5": "給与伝票",
-    "t6": "簡易記録"
+    "t6": "簡易記録",
+    "t7": "雇用主の領収書"
   },
   "fields": {
     "employer_name": {
@@ -66,6 +67,13 @@
     }
   },
   "print": {
+    "er_sub": "雇用主が発行する給与領収書",
+    "er_name": "雇用主名",
+    "er_code": "雇用主コード",
+    "er_address": "雇用主の住所",
+    "er_signature": "雇用主の署名",
+    "er_paid": "私、{employer}は、運転手の{driver}に{month}分の給与として{amount}を支払いました。",
+    "er_paid_period": "私、{employer}は、運転手の{driver}に{month}期間の給与として{amount}を支払いました。",
     "title": "運転手給与領収書",
     "date": "日付",
     "vehicle_no": "車両ナンバー",
@@ -118,7 +126,7 @@
     "deductions": "前払いまたは控除"
   },
   "sample": {
-    "employer_name": "鈴木 一郎",
+    "employer_name": "Vivek Kumar",
     "driver_name": "佐藤 健",
     "vehicle_number": "品川 300 あ 12-34",
     "basic_salary": 280000,

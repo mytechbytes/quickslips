@@ -9,6 +9,12 @@
     "t1": "Formulaire"
   },
   "fields": {
+    "voucher_number": {
+      "label": "Numéro de bon (facultatif)"
+    },
+    "voucher_number": {
+      "label": "Numéro de bon (facultatif)"
+    },
     "claim_date": {
       "label": "Date"
     },
@@ -69,6 +75,7 @@
     }
   },
   "print": {
+    "voucher_number": "N° de bon",
     "title": "Formulaire de remboursement de l'allocation d'études des enfants",
     "claim_for": "Demande pour l'année scolaire",
     "intro": "Je demande par la présente le remboursement de l'allocation d'études / aide à l'internat pour mon ou mes enfants ; les informations utiles figurent ci-dessous :",

@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "किराये की अवधि",
+      "number_label": "कैश मेमो / वाउचर नं. (वैकल्पिक)",
       "options": {
         "Monthly": "मासिक",
         "Quarterly": "तिमाही",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "कैश मेमो / वाउचर नं.",
     "title": "किराया रसीद",
     "date": "तारीख",
     "certify": "प्रमाणित किया जाता है कि मैंने मकान मालिक {landlord} को {month} माह के किराये के रूप में {amount} का भुगतान किया है (पावती रसीद संलग्न)।",
@@ -97,7 +99,7 @@
     "first_signature": "मकान मालिक के हस्ताक्षर"
   },
   "sample": {
-    "tenant_name": "आशा वर्मा",
+    "tenant_name": "Vivek Kumar",
     "landlord_name": "रमेश गुप्ता",
     "receiver_name": "रमेश गुप्ता",
     "monthly_rent": 25000,

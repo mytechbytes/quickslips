@@ -12,6 +12,7 @@
   "saved_groups": ["customer"],
   "fields": [
     { "key": "claim_date", "group": "document", "label": "Date", "type": "date", "required": true },
+    { "key": "voucher_number", "group": "document", "label": "Voucher Number (optional)", "type": "text", "required": false, "max_length": 30 },
     { "key": "academic_year", "group": "document", "label": "Academic Year", "type": "text", "required": true, "max_length": 20 },
     { "key": "name_rank", "group": "customer", "label": "Name and rank of the government servant", "type": "textarea", "required": true, "max_length": 120 },
     { "key": "personal_number", "group": "customer", "label": "Personal Number", "type": "text", "required": true, "max_length": 30 },

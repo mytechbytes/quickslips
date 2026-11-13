@@ -417,7 +417,7 @@ defmodule QuickSlips.Render.RendererTest do
     "lta-bill" => %{
       designs: ~w(t1 t2),
       optional:
-        ~w(seller_tax_id pnr_number departure_time dropping_time tax_percent cancellation_charge),
+        ~w(order_number seller_tax_id pnr_number departure_time dropping_time tax_percent cancellation_charge),
       long: %{
         "travel_name" => String.duplicate("Evergreen Travels ", 4),
         "location" => String.duplicate("Madiwala Bus Stop, Bengaluru, ", 6),
@@ -455,7 +455,7 @@ defmodule QuickSlips.Render.RendererTest do
     "gym-membership-receipt" => %{
       designs: ~w(t1 t2),
       optional:
-        ~w(gym_address gym_email gym_phone gstin member_phone customer_number user_number member_address billing_cycle joining_fee gst_percent remarks instructions),
+        ~w(invoice_number gym_address gym_email gym_phone gstin member_phone customer_number user_number member_address billing_cycle joining_fee gst_percent remarks instructions),
       long: %{
         "gym_name" => "IronWorks Fitness",
         "gym_address" => "2nd Floor, City Mall, Noida",
@@ -544,7 +544,7 @@ defmodule QuickSlips.Render.RendererTest do
     },
     "child-education-allowance-bill" => %{
       designs: ~w(t1),
-      optional: ~w(child2_name child2_dob child2_standard child2_school),
+      optional: ~w(voucher_number child2_name child2_dob child2_standard child2_school),
       long: %{
         "name_rank" => String.duplicate("Major Arvind Kumar ", 5),
         "designation" => String.duplicate("Staff Officer ", 6),
@@ -848,7 +848,7 @@ defmodule QuickSlips.Render.RendererTest do
       }
     },
     "driver-salary-receipt" => %{
-      designs: ~w(t1 t2 t3 t5 t6),
+      designs: ~w(t1 t2 t3 t5 t6 t7),
       optional:
         ~w(employer_address employee_code vehicle_number declaration overtime allowance deductions),
       long: %{
@@ -877,7 +877,7 @@ defmodule QuickSlips.Render.RendererTest do
     "taxi-receipt" => %{
       designs: ~w(t1 t2 t3 t4),
       optional:
-        ~w(operator_address seller_tax_id drop_date passenger_name customer_phone customer_address
+        ~w(receipt_number invoice_number operator_address seller_tax_id drop_date passenger_name customer_phone customer_address
            driver_name vehicle_number vehicle_model pickup_time drop_time toll airport_charge
            advance_paid tax_percent),
       long: %{

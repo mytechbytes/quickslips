@@ -10,6 +10,12 @@
     "t2": "发票"
   },
   "fields": {
+    "invoice_number": {
+      "label": "订单/发票号码（选填）"
+    },
+    "invoice_number": {
+      "label": "订单/发票号码（选填）"
+    },
     "gym_name": {
       "label": "健身房或俱乐部"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "订单/发票号码",
     "membership_receipt": "会员收据",
     "receipt_no": "收据号码",
     "date": "日期",
@@ -145,7 +152,7 @@
   },
   "sample": {
     "gym_name": "铁人健身房",
-    "member_name": "王伟",
+    "member_name": "Vivek Kumar",
     "gym_phone": "010-12345678",
     "member_phone": "138 0013 8000",
     "fee": 899,

@@ -46,7 +46,7 @@
 #grid(
   columns: (1fr, auto),
   text(fill: muted, [→ #h(3mm) #reporting]),
-  align(right)[#strong(t.ticket_no + ":") #data.ticket_number #if some("pnr_number") != none [ \ #strong(t.pnr_no + ":") #some("pnr_number")]],
+  align(right)[#strong(t.ticket_no + ":") #data.ticket_number #if some("pnr_number") != none [ \ #strong(t.pnr_no + ":") #some("pnr_number")]#if some("order_number") != none [ \ #strong(t.order_number + ":") #some("order_number")]],
 )
 #v(2mm)
 #line(length: 100%, stroke: 0.6pt + rgb("#e7c93a"))

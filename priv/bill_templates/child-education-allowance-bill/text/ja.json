@@ -9,6 +9,12 @@
     "t1": "申請書"
   },
   "fields": {
+    "voucher_number": {
+      "label": "伝票番号（任意）"
+    },
+    "voucher_number": {
+      "label": "伝票番号（任意）"
+    },
     "claim_date": {
       "label": "日付"
     },
@@ -69,6 +75,7 @@
     }
   },
   "print": {
+    "voucher_number": "伝票番号",
     "title": "子女教育手当 償還申請書",
     "claim_for": "申請の対象学年度",
     "intro": "子女の教育手当・寮費補助の償還を申請します。関連事項は以下のとおりです。",

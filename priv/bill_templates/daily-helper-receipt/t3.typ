@@ -20,6 +20,7 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let net = net * receipt.months
 
 #align(center, text(size: 14pt, weight: "bold", t.title))
@@ -29,7 +30,7 @@
 #if declaration != none [ #declaration]
 #t.reimburse
 #v(2mm)
-*#t.employer_name:* #data.employer_name#if address != none [ \ *#t.employer_address:* #lines(address)]#if when != none [ \ *#t.date:* #fmt-date(when)]
+#if memo != none [*#t.memo_number:* #memo \ ]*#t.employer_name:* #data.employer_name#if address != none [ \ *#t.employer_address:* #lines(address)]#if when != none [ \ *#t.date:* #fmt-date(when)]
 
 #grid(
   columns: (1fr, auto),
@@ -42,6 +43,7 @@
 #v(3mm)
 #align(center, text(size: 12pt, weight: "bold", t.ack_title))
 #v(2mm)
+#if memo != none [*#t.memo_number:* #memo \ ]
 #if when != none [*#t.receipt_date_of:* #fmt-date(when) \ ]
 *#t.for_month:* #month \
 *#t.helper_name:* #data.helper_name \

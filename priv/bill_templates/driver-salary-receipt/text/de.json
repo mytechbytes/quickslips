@@ -10,7 +10,8 @@
     "t2": "Mit Empfangsbestätigung",
     "t3": "Erklärung des Mitarbeiters",
     "t5": "Lohnbeleg",
-    "t6": "Einfacher Nachweis"
+    "t6": "Einfacher Nachweis",
+    "t7": "Beleg des Arbeitgebers"
   },
   "fields": {
     "employer_name": {
@@ -66,6 +67,13 @@
     }
   },
   "print": {
+    "er_sub": "Lohnbeleg, vom Arbeitgeber ausgestellt",
+    "er_name": "Name des Arbeitgebers",
+    "er_code": "Code des Arbeitgebers",
+    "er_address": "Anschrift des Arbeitgebers",
+    "er_signature": "Unterschrift des Arbeitgebers",
+    "er_paid": "Ich, {employer}, habe {amount} an {driver}, meinen Fahrer, als Lohn für den Monat {month} gezahlt.",
+    "er_paid_period": "Ich, {employer}, habe {amount} an {driver}, meinen Fahrer, als Lohn für den Zeitraum {month} gezahlt.",
     "title": "Gehaltsquittung für den Fahrer",
     "date": "Datum",
     "vehicle_no": "Kennzeichen",
@@ -118,7 +126,7 @@
     "deductions": "Vorschuss oder Abzüge"
   },
   "sample": {
-    "employer_name": "Thomas Müller",
+    "employer_name": "Vivek Kumar",
     "driver_name": "Klaus Weber",
     "vehicle_number": "B WK 4521",
     "basic_salary": 2600,

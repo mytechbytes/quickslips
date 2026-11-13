@@ -12,6 +12,9 @@
     "t4": "Simple receipt"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Invoice Number (optional)"
+    },
     "operator_name": {
       "label": "Cab Company or Driver Name"
     },
@@ -19,7 +22,7 @@
       "label": "Address (optional)"
     },
     "receipt_number": {
-      "label": "Receipt Number"
+      "label": "Receipt Number (optional)"
     },
     "date": {
       "label": "Trip Date"
@@ -90,6 +93,8 @@
     }
   },
   "print": {
+    "invoice_number": "Invoice No.",
+    "receipt_number": "Receipt No.",
     "receipt_title": "Here's your receipt for your ride,",
     "enjoyed": "We hope you enjoyed your ride.",
     "trip_total": "Trip total fare",

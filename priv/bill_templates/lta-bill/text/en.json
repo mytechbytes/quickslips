@@ -10,6 +10,12 @@
     "t2": "Boxed e-ticket"
   },
   "fields": {
+    "order_number": {
+      "label": "Order / Invoice Number (optional)"
+    },
+    "order_number": {
+      "label": "Order / Invoice Number (optional)"
+    },
     "travel_name": {
       "label": "Travel Operator"
     },
@@ -93,6 +99,7 @@
     }
   },
   "print": {
+    "order_number": "Order / Invoice No.",
     "t1_banner": "Congratulations! You have booked a reschedulable ticket. You can advance or postpone this journey till {when}.",
     "eticket": "eTICKET",
     "type": "Type",

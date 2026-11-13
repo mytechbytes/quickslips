@@ -21,6 +21,7 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let net = net * receipt.months
 #v(1mm)
 #align(center, text(size: 14pt, weight: "bold", t.title))
@@ -43,7 +44,7 @@
   column-gutter: 8mm,
   row-gutter: 5mm,
   [*#t.employer_name:* #data.employer_name#if address != none [ \ *#t.employer_address:* #lines(address)]],
-  if when != none { align(right)[*#t.date:* #fmt-date(when)] } else [],
+  if when != none or memo != none { align(right)[#if memo != none [*#t.memo_number:* #memo \ ]#if when != none [*#t.date:* #fmt-date(when)]] } else [],
   [*#t.helper_name:* #data.helper_name], [],
 )
 #v(4mm)

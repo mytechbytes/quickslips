@@ -42,6 +42,7 @@
     },
     "periods": {
       "label": "Salary Period",
+      "number_label": "Cash Memo / Voucher No. (optional)",
       "options": {
         "Monthly": "Monthly",
         "Quarterly": "Quarterly",
@@ -51,6 +52,7 @@
     }
   },
   "print": {
+    "memo_number": "Cash Memo / Voucher No.",
     "title": "Daily Helper Receipt",
     "date": "Date",
     "certify": "This is to certify that {employer} has paid {amount} to {helper}, who is working as {role}, towards salary for the month of {month} (acknowledged receipt enclosed).",

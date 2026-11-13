@@ -42,6 +42,7 @@
     },
     "periods": {
       "label": "給与の期間",
+      "number_label": "現金伝票／バウチャー番号（任意）",
       "options": {
         "Monthly": "毎月",
         "Quarterly": "四半期ごと",
@@ -51,6 +52,7 @@
     }
   },
   "print": {
+    "memo_number": "現金伝票／バウチャー番号",
     "title": "お手伝い給与領収書",
     "date": "日付",
     "certify": "{employer} が {role} として勤務する {helper} に {month} 分の給与として {amount} を支払ったことを証明します（受領書を添付）。",
@@ -80,7 +82,7 @@
     "receipt_date": "領収日"
   },
   "sample": {
-    "employer_name": "鈴木 一郎",
+    "employer_name": "Vivek Kumar",
     "helper_name": "田中 花子",
     "working_as": "家政スタッフ",
     "salary": 80000,

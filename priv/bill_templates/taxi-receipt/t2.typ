@@ -1,6 +1,8 @@
 // Cab bill, design t2: the summary of a ride and, below it, the invoice of the driver with the tax split in two lines.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+// The receipt and the invoice number, optional: only those given are printed.
+#let numbers = ((t.receipt_number, opt(data, "receipt_number")), (t.invoice_number, opt(data, "invoice_number"))).filter(pair => pair.at(1) != none)
 #show: base.with(width: 117mm, margin: (x: 6mm, y: 6mm), size: 9pt)
 
 #let toll = num(data, "toll")
@@ -104,7 +106,7 @@
   #v(1mm)
   #rule()
   #v(1.5mm)
-  #row([#text(fill: muted, t.invoice_id) #strong(data.receipt_number)], [#text(fill: muted, t.invoice_date) #strong(fmt-date(data.date))])
+  #row(numbers.map(((label, value)) => [#text(fill: muted, label) #strong(value)]).join(linebreak()), [#text(fill: muted, t.invoice_date) #strong(fmt-date(data.date))])
   #v(1.5mm)
   #rule()
   #v(1.5mm)

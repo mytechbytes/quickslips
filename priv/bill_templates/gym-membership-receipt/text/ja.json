@@ -10,6 +10,12 @@
     "t2": "請求書"
   },
   "fields": {
+    "invoice_number": {
+      "label": "注文／請求書番号（任意）"
+    },
+    "invoice_number": {
+      "label": "注文／請求書番号（任意）"
+    },
     "gym_name": {
       "label": "ジムまたはフィットネスクラブ"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "注文／請求書番号",
     "membership_receipt": "会費領収書",
     "receipt_no": "領収書番号",
     "date": "日付",
@@ -145,7 +152,7 @@
   },
   "sample": {
     "gym_name": "アイアンワークス・フィットネス",
-    "member_name": "田中 太郎",
+    "member_name": "Vivek Kumar",
     "gym_phone": "03-1234-5678",
     "member_phone": "090-1234-5678",
     "fee": 24000,

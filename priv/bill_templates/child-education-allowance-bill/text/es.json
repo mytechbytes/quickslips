@@ -9,6 +9,12 @@
     "t1": "Formulario"
   },
   "fields": {
+    "voucher_number": {
+      "label": "Número de comprobante (opcional)"
+    },
+    "voucher_number": {
+      "label": "Número de comprobante (opcional)"
+    },
     "claim_date": {
       "label": "Fecha"
     },
@@ -69,6 +75,7 @@
     }
   },
   "print": {
+    "voucher_number": "N.º de comprobante",
     "title": "Formulario de reembolso de la ayuda por estudios de los hijos",
     "claim_for": "Solicitud para el curso escolar",
     "intro": "Por la presente solicito el reembolso de la ayuda por estudios / subsidio de residencia para mi hijo/hijos; los datos pertinentes figuran a continuación:",

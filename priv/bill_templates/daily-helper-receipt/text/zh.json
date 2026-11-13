@@ -42,6 +42,7 @@
     },
     "periods": {
       "label": "工资周期",
+      "number_label": "现金单据/凭证编号（选填）",
       "options": {
         "Monthly": "按月",
         "Quarterly": "按季度",
@@ -51,6 +52,7 @@
     }
   },
   "print": {
+    "memo_number": "现金单据/凭证编号",
     "title": "家政人员工资收据",
     "date": "日期",
     "certify": "兹证明 {employer} 已向担任{role}的 {helper} 支付 {month} 的工资 {amount}（附收款确认单）。",
@@ -80,7 +82,7 @@
     "receipt_date": "收据日期"
   },
   "sample": {
-    "employer_name": "李强",
+    "employer_name": "Vivek Kumar",
     "helper_name": "王芳",
     "working_as": "保洁员",
     "salary": 3500,

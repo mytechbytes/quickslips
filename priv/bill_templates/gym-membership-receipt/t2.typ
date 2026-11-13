@@ -33,6 +33,8 @@
 
 #align(right, text(size: 9pt)[
   #strong(t.invoice_no) #data.receipt_number \
+  #if some("invoice_number") != none [#strong(t.order_number): #some("invoice_number") \
+  ]
   #t.invoice_date: #fmt-date(data.date)
 ])
 #v(2mm)

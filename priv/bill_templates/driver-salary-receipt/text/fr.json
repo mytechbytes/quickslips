@@ -10,7 +10,8 @@
     "t2": "Avec accusé de réception",
     "t3": "Déclaration de l'employé",
     "t5": "Bon de paie",
-    "t6": "Relevé simple"
+    "t6": "Relevé simple",
+    "t7": "Reçu de l'employeur"
   },
   "fields": {
     "employer_name": {
@@ -66,6 +67,13 @@
     }
   },
   "print": {
+    "er_sub": "Reçu de salaire établi par l'employeur",
+    "er_name": "Nom de l'employeur",
+    "er_code": "Code de l'employeur",
+    "er_address": "Adresse de l'employeur",
+    "er_signature": "Signature de l'employeur",
+    "er_paid": "Je soussigné(e) {employer}, ai versé {amount} à {driver}, mon chauffeur, au titre du salaire du mois de {month}.",
+    "er_paid_period": "Je soussigné(e) {employer}, ai versé {amount} à {driver}, mon chauffeur, au titre du salaire de la période {month}.",
     "title": "Reçu de salaire du chauffeur",
     "date": "Date",
     "vehicle_no": "Immatriculation",
@@ -118,7 +126,7 @@
     "deductions": "Acompte ou retenues"
   },
   "sample": {
-    "employer_name": "Pierre Dubois",
+    "employer_name": "Vivek Kumar",
     "driver_name": "Antoine Moreau",
     "vehicle_number": "AB-452-CD",
     "basic_salary": 2000,

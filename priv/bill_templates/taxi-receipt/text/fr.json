@@ -12,6 +12,9 @@
     "t4": "Reçu simple"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Numéro de facture (facultatif)"
+    },
     "operator_name": {
       "label": "Nom de la société de taxi ou du chauffeur"
     },
@@ -19,7 +22,7 @@
       "label": "Adresse (facultatif)"
     },
     "receipt_number": {
-      "label": "Numéro de reçu"
+      "label": "Numéro de reçu (facultatif)"
     },
     "date": {
       "label": "Date de la course"
@@ -90,6 +93,8 @@
     }
   },
   "print": {
+    "invoice_number": "N° de facture",
+    "receipt_number": "N° de reçu",
     "receipt_title": "Voici votre reçu pour votre course,",
     "enjoyed": "Nous espérons que vous avez apprécié votre course.",
     "trip_total": "Tarif total de la course",
@@ -157,7 +162,7 @@
   },
   "sample": {
     "operator_name": "Taxi Seine",
-    "passenger_name": "Camille Martin",
+    "passenger_name": "Vivek Kumar",
     "driver_name": "Pierre Dubois",
     "pickup": "Gare de Lyon, Paris",
     "drop": "Aéroport Charles-de-Gaulle, Roissy",

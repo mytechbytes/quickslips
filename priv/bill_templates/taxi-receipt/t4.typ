@@ -1,6 +1,8 @@
 // Cab bill, design t4: a plain receipt, the total first and the facts of the trip below.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+// The receipt and the invoice number, optional: only those given are printed.
+#let numbers = ((t.receipt_number, opt(data, "receipt_number")), (t.invoice_number, opt(data, "invoice_number"))).filter(pair => pair.at(1) != none)
 #show: base.with(width: 117mm, margin: (x: 8mm, y: 8mm), size: 9.5pt)
 
 #let toll = num(data, "toll")
@@ -54,7 +56,7 @@
 #rule()
 #v(3mm)
 
-#fact(t.trip_id, strong(data.receipt_number))
+#for (label, value) in numbers { fact(label, strong(value)) }
 #fact(t.driver, opt(data, "driver_name"))
 #fact(t.pickup, data.pickup)
 #fact(t.drop, data.drop)

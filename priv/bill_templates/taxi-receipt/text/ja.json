@@ -12,6 +12,9 @@
     "t4": "シンプルなレシート"
   },
   "fields": {
+    "invoice_number": {
+      "label": "請求書番号（任意）"
+    },
     "operator_name": {
       "label": "タクシー会社または運転手名"
     },
@@ -19,7 +22,7 @@
       "label": "住所（任意）"
     },
     "receipt_number": {
-      "label": "伝票番号"
+      "label": "領収書番号（任意）"
     },
     "date": {
       "label": "乗車日"
@@ -90,6 +93,8 @@
     }
   },
   "print": {
+    "invoice_number": "請求書番号",
+    "receipt_number": "領収書番号",
     "receipt_title": "ご乗車のレシートです。",
     "enjoyed": "快適なご乗車だったことを願っています。",
     "trip_total": "運賃合計",
@@ -157,7 +162,7 @@
   },
   "sample": {
     "operator_name": "東京ハイヤー",
-    "passenger_name": "田中 太郎",
+    "passenger_name": "Vivek Kumar",
     "driver_name": "鈴木 一郎",
     "pickup": "東京駅",
     "drop": "羽田空港",

@@ -10,6 +10,12 @@
     "t2": "Fattura"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Numero ordine / fattura (facoltativo)"
+    },
+    "invoice_number": {
+      "label": "Numero ordine / fattura (facoltativo)"
+    },
     "gym_name": {
       "label": "Palestra o club"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "N. ordine / fattura",
     "membership_receipt": "Ricevuta di iscrizione",
     "receipt_no": "Ricevuta n.",
     "date": "Data",
@@ -145,7 +152,7 @@
   },
   "sample": {
     "gym_name": "Palestra Ferro Forma",
-    "member_name": "Marco Rossi",
+    "member_name": "Vivek Kumar",
     "gym_phone": "06 1234567",
     "member_phone": "333 123 4567",
     "fee": 89,

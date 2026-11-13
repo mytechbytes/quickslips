@@ -3,6 +3,8 @@
 // region.json; the helpers read both.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+// The receipt and the invoice number, optional: only those given are printed.
+#let numbers = ((t.receipt_number, opt(data, "receipt_number")), (t.invoice_number, opt(data, "invoice_number"))).filter(pair => pair.at(1) != none)
 #show: base.with(width: 120mm, margin: (x: 9mm, y: 9mm), size: 9.5pt)
 
 #let toll = num(data, "toll")
@@ -45,6 +47,7 @@
 #v(3mm)
 #text(size: 14pt, weight: "bold", t.receipt_title) \
 #text(fill: muted, weight: "bold", size: 8.5pt, t.enjoyed)
+#for (label, value) in numbers [ \ #text(size: 8.5pt)[#label: #value]]
 #v(4mm)
 
 #grid(

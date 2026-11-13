@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "Période de loyer",
+      "number_label": "N° de reçu / bon de caisse (facultatif)",
       "options": {
         "Monthly": "Mensuel",
         "Quarterly": "Trimestriel",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "N° de reçu / bon de caisse",
     "title": "Quittance de loyer",
     "date": "Date",
     "certify": "Je certifie que j'ai payé {amount} au propriétaire {landlord} au titre du loyer du mois de {month} (quittance jointe).",
@@ -97,7 +99,7 @@
     "first_signature": "Signature du propriétaire"
   },
   "sample": {
-    "tenant_name": "Camille Martin",
+    "tenant_name": "Vivek Kumar",
     "landlord_name": "Pierre Dubois",
     "receiver_name": "Pierre Dubois",
     "monthly_rent": 950

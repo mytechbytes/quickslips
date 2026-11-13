@@ -5,13 +5,28 @@
   "invoice_number": "86026437",
   "date": "2026-11-07",
   "order_number": "9742",
-  "customer_name": "Rohan Mehta",
+  "customer_name": "Vivek Kumar",
   "customer_location": "Jaipur",
   "shipping_address": "Flat 5, Lotus Apartments, C-Scheme, Jaipur, Rajasthan 302001",
   "items": [
-    { "name": "Steel kitchen container set", "qty": 2, "rate": 650, "tax": 18 },
-    { "name": "Cotton bed sheet (double)", "qty": 3, "rate": 420, "tax": 5 },
-    { "name": "LED bulb 9 W (pack of 4)", "qty": 2, "rate": 280, "tax": 18 }
+    {
+      "name": "Steel kitchen container set",
+      "qty": 2,
+      "rate": 650,
+      "tax": 18
+    },
+    {
+      "name": "Cotton bed sheet (double)",
+      "qty": 3,
+      "rate": 420,
+      "tax": 5
+    },
+    {
+      "name": "LED bulb 9 W (pack of 4)",
+      "qty": 2,
+      "rate": 280,
+      "tax": 18
+    }
   ],
   "payment_mode": "Cash"
 }

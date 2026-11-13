@@ -10,7 +10,8 @@
     "t2": "Con conferma di ricevuta",
     "t3": "Dichiarazione del dipendente",
     "t5": "Voucher di paga",
-    "t6": "Registro semplice"
+    "t6": "Registro semplice",
+    "t7": "Ricevuta del datore di lavoro"
   },
   "fields": {
     "employer_name": {
@@ -66,6 +67,13 @@
     }
   },
   "print": {
+    "er_sub": "Ricevuta di stipendio emessa dal datore di lavoro",
+    "er_name": "Nome del datore di lavoro",
+    "er_code": "Codice del datore di lavoro",
+    "er_address": "Indirizzo del datore di lavoro",
+    "er_signature": "Firma del datore di lavoro",
+    "er_paid": "Io, {employer}, ho pagato {amount} a {driver}, il mio autista, come stipendio del mese di {month}.",
+    "er_paid_period": "Io, {employer}, ho pagato {amount} a {driver}, il mio autista, come stipendio del periodo {month}.",
     "title": "Ricevuta di stipendio dell'autista",
     "date": "Data",
     "vehicle_no": "Targa",
@@ -118,7 +126,7 @@
     "deductions": "Anticipo o trattenute"
   },
   "sample": {
-    "employer_name": "Luca Bianchi",
+    "employer_name": "Vivek Kumar",
     "driver_name": "Giuseppe Conti",
     "vehicle_number": "AB 452 CD",
     "basic_salary": 1700,

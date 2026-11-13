@@ -13,6 +13,7 @@
 
 #details((
   ([Tracking no.], data.tracking_number),
+  ([Order / Invoice no.], opt(data, "order_number")),
   ([Booked on], fmt-date(data.booking_date)),
   ([Service], data.service),
   ([Weight], [#data.weight_kg kg]),

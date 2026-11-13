@@ -18,6 +18,7 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let rent = data.monthly_rent * receipt.months
 #let period = receipt.months > 1
 #v(1mm)
@@ -35,7 +36,7 @@
 #grid(
   columns: (1fr, auto),
   [*#t.tenant_name:* #data.tenant_name],
-  if when != none [*#t.date:* #fmt-date(when)] else [],
+  if when != none or memo != none [#if memo != none [*#t.memo_number:* #memo \ ]#if when != none [*#t.date:* #fmt-date(when)]] else [],
 )
 #v(1mm)
 #signature-block(data, t.second_signature, name: data.tenant_name, key: "driver_signature")

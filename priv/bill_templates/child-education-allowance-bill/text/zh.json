@@ -9,6 +9,12 @@
     "t1": "申请表"
   },
   "fields": {
+    "voucher_number": {
+      "label": "凭证编号（选填）"
+    },
+    "voucher_number": {
+      "label": "凭证编号（选填）"
+    },
     "claim_date": {
       "label": "日期"
     },
@@ -69,6 +75,7 @@
     }
   },
   "print": {
+    "voucher_number": "凭证编号",
     "title": "子女教育津贴报销申请表",
     "claim_for": "申请学年",
     "intro": "兹申请报销我子女的教育津贴/住宿补贴，相关事项填报如下：",

@@ -10,6 +10,12 @@
     "t2": "Invoice"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Order / Invoice Number (optional)"
+    },
+    "invoice_number": {
+      "label": "Order / Invoice Number (optional)"
+    },
     "gym_name": {
       "label": "Gym or Fitness Club"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "Order / Invoice No.",
     "membership_receipt": "Membership receipt",
     "receipt_no": "Receipt no.",
     "date": "Date",

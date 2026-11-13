@@ -10,7 +10,8 @@
     "t2": "With acknowledgement",
     "t3": "Employee's declaration",
     "t5": "Payroll voucher",
-    "t6": "Simple record"
+    "t6": "Simple record",
+    "t7": "Employer's receipt"
   },
   "fields": {
     "employer_name": {
@@ -66,6 +67,13 @@
     }
   },
   "print": {
+    "er_sub": "Salary receipt issued by the employer",
+    "er_name": "Employer Name",
+    "er_code": "Employer Code",
+    "er_address": "Employer Address",
+    "er_signature": "Employer Signature",
+    "er_paid": "I, {employer}, have paid {amount} to {driver}, my driver, as salary for the month of {month}.",
+    "er_paid_period": "I, {employer}, have paid {amount} to {driver}, my driver, as salary for the period {month}.",
     "title": "Driver Salary Receipt",
     "date": "Date",
     "vehicle_no": "Vehicle Number",

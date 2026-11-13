@@ -16,6 +16,7 @@
 #if i > 0 { pagebreak() }
 #let month = receipt.label
 #let when = receipt.date
+#let memo = receipt.number
 #let rent = data.monthly_rent * receipt.months
 #let period = receipt.months > 1
 #v(1mm)
@@ -39,7 +40,7 @@
 #v(4mm)
 #grid(
   columns: (1fr, auto),
-  [#if when != none [*#t.date:* #fmt-date(when)]#if stamp != none [ \ \ #stamp]],
+  [#if memo != none [*#t.memo_number:* #memo \ ]#if when != none [*#t.date:* #fmt-date(when)]#if stamp != none [ \ \ #stamp]],
   [],
 )
 #v(2mm)

@@ -10,6 +10,12 @@
     "t2": "इनवॉइस"
   },
   "fields": {
+    "invoice_number": {
+      "label": "ऑर्डर / इनवॉइस नंबर (वैकल्पिक)"
+    },
+    "invoice_number": {
+      "label": "ऑर्डर / इनवॉइस नंबर (वैकल्पिक)"
+    },
     "gym_name": {
       "label": "जिम या फ़िटनेस क्लब"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "ऑर्डर / इनवॉइस नं.",
     "membership_receipt": "सदस्यता रसीद",
     "receipt_no": "रसीद नं.",
     "date": "तारीख",
@@ -145,7 +152,7 @@
   },
   "sample": {
     "gym_name": "आयरनवर्क्स फ़िटनेस",
-    "member_name": "विक्रम राव",
+    "member_name": "Vivek Kumar",
     "gym_phone": "0120 456 7890",
     "member_phone": "98100 22334",
     "fee": 6000,

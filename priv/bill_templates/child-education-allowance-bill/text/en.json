@@ -9,6 +9,12 @@
     "t1": "Proforma"
   },
   "fields": {
+    "voucher_number": {
+      "label": "Voucher Number (optional)"
+    },
+    "voucher_number": {
+      "label": "Voucher Number (optional)"
+    },
     "claim_date": {
       "label": "Date"
     },
@@ -69,6 +75,7 @@
     }
   },
   "print": {
+    "voucher_number": "Voucher No.",
     "title": "Proforma for reimbursement of children education allowance",
     "claim_for": "Claim for the academic year",
     "intro": "I hereby apply for the reimbursement of the children education allowance / hostel subsidy for my child / children, and the relevant particulars are furnished below:",

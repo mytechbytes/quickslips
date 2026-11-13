@@ -14,7 +14,7 @@
     {"key": "helper_name", "group": "customer", "label": "Helper Name", "type": "text", "required": true, "max_length": 80},
     {"key": "working_as", "group": "customer", "label": "Working as", "type": "text", "required": true, "max_length": 60},
     {"key": "declaration", "group": "additional", "label": "Declaration (optional)", "type": "textarea", "required": false, "max_length": 300},
-    {"key": "periods", "group": "document", "label": "Salary Period", "type": "periods", "required": true, "options": ["Monthly", "Quarterly", "Half-yearly", "Yearly"]},
+    {"key": "periods", "group": "document", "label": "Salary Period", "type": "periods", "numbers": true, "number_label": "Cash Memo / Voucher No. (optional)", "required": true, "options": ["Monthly", "Quarterly", "Half-yearly", "Yearly"]},
     {"key": "salary", "group": "charges", "label": "Salary Amount ({currency})", "type": "number", "required": true, "min": 0},
     {"key": "payment_mode", "group": "payment", "label": "Paid by", "type": "select", "options": ["Cash", "UPI", "Bank transfer", "Cheque", "Card", "Online"], "required": true}
   ],

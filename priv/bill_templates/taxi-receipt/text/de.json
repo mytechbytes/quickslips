@@ -12,6 +12,9 @@
     "t4": "Einfacher Beleg"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Rechnungsnummer (optional)"
+    },
     "operator_name": {
       "label": "Name des Taxiunternehmens oder Fahrers"
     },
@@ -19,7 +22,7 @@
       "label": "Adresse (optional)"
     },
     "receipt_number": {
-      "label": "Belegnummer"
+      "label": "Belegnummer (optional)"
     },
     "date": {
       "label": "Fahrtdatum"
@@ -90,6 +93,8 @@
     }
   },
   "print": {
+    "invoice_number": "Rechnungsnr.",
+    "receipt_number": "Belegnr.",
     "receipt_title": "Hier ist Ihr Beleg für Ihre Fahrt,",
     "enjoyed": "Wir hoffen, die Fahrt hat Ihnen gefallen.",
     "trip_total": "Gesamtpreis der Fahrt",
@@ -157,7 +162,7 @@
   },
   "sample": {
     "operator_name": "Taxi Spree",
-    "passenger_name": "Anna Becker",
+    "passenger_name": "Vivek Kumar",
     "driver_name": "Thomas Müller",
     "pickup": "Hauptbahnhof, Berlin",
     "drop": "Flughafen Berlin Brandenburg",

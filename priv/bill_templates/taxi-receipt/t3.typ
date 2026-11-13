@@ -1,6 +1,8 @@
 // Cab bill, design t3: a tax invoice of a hire for the days of a journey, in boxes, with the advance and the balance.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+// The receipt and the invoice number, optional: only those given are printed.
+#let numbers = ((t.receipt_number, opt(data, "receipt_number")), (t.invoice_number, opt(data, "invoice_number"))).filter(pair => pair.at(1) != none)
 #show: base.with(width: 117mm, margin: (x: 7mm, y: 7mm), size: 9pt)
 
 #let toll = num(data, "toll")
@@ -30,7 +32,7 @@
       column-gutter: 5mm,
       row-gutter: 1.5mm,
       align: (left, right),
-      text(fill: muted, t.invoice_no), strong(data.receipt_number),
+      ..numbers.map(((label, value)) => (text(fill: muted, label), strong(value))).flatten(),
       text(fill: muted, t.date), strong(fmt-date(data.date)),
     )
   },

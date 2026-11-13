@@ -10,7 +10,8 @@
     "t2": "附收款确认",
     "t3": "员工声明",
     "t5": "工资凭证",
-    "t6": "简易记录"
+    "t6": "简易记录",
+    "t7": "雇主收据"
   },
   "fields": {
     "employer_name": {
@@ -66,6 +67,13 @@
     }
   },
   "print": {
+    "er_sub": "由雇主出具的工资收据",
+    "er_name": "雇主姓名",
+    "er_code": "雇主编号",
+    "er_address": "雇主地址",
+    "er_signature": "雇主签字",
+    "er_paid": "本人{employer}已向我的司机{driver}支付{month}月份工资{amount}。",
+    "er_paid_period": "本人{employer}已向我的司机{driver}支付{month}期间工资{amount}。",
     "title": "司机工资收据",
     "date": "日期",
     "vehicle_no": "车牌号",
@@ -118,7 +126,7 @@
     "deductions": "预支或扣款"
   },
   "sample": {
-    "employer_name": "李强",
+    "employer_name": "Vivek Kumar",
     "driver_name": "张伟",
     "vehicle_number": "京A·12345",
     "basic_salary": 7000,

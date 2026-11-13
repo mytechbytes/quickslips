@@ -8,11 +8,23 @@
   "month": "November",
   "bill_year": "2026",
   "name_prefix": "Mr.",
-  "customer_name": "Rohan Mehta",
+  "customer_name": "Vivek Kumar",
   "items": [
-    { "name": "Morning Chronicle (daily)", "rate": 6, "qty": 30 },
-    { "name": "Sunday Magazine", "rate": 15, "qty": 4 },
-    { "name": "Business Weekly", "rate": 20, "qty": 4 }
+    {
+      "name": "Morning Chronicle (daily)",
+      "rate": 6,
+      "qty": 30
+    },
+    {
+      "name": "Sunday Magazine",
+      "rate": 15,
+      "qty": 4
+    },
+    {
+      "name": "Business Weekly",
+      "rate": 20,
+      "qty": 4
+    }
   ],
   "service_charge": 50,
   "payment_mode": "Cash"

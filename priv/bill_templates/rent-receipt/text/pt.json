@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "Período do aluguel",
+      "number_label": "N.º do recibo / comprovante (opcional)",
       "options": {
         "Monthly": "Mensal",
         "Quarterly": "Trimestral",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "N.º do recibo / comprovante",
     "title": "Recibo de aluguel",
     "date": "Data",
     "certify": "Certifico que paguei {amount} ao proprietário {landlord} referente ao aluguel do mês de {month} (recibo de quitação anexo).",
@@ -97,7 +99,7 @@
     "first_signature": "Assinatura do proprietário"
   },
   "sample": {
-    "tenant_name": "Ana Souza",
+    "tenant_name": "Vivek Kumar",
     "landlord_name": "Carlos Lima",
     "receiver_name": "Carlos Lima",
     "monthly_rent": 2500

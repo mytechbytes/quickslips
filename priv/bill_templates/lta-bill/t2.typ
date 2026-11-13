@@ -48,6 +48,7 @@
   column-gutter: 3mm,
   labelled(t.ticket_no, data.ticket_number),
   labelled(t.pnr_no, if some("pnr_number") != none { some("pnr_number") } else { "N/A" }),
+  ..if some("order_number") != none { (labelled(t.order_number, some("order_number")),) } else { () },
   labelled(t.journey_date, reporting),
 ))
 #v(2.5mm)

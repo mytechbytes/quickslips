@@ -10,6 +10,12 @@
     "t2": "枠つき電子チケット"
   },
   "fields": {
+    "order_number": {
+      "label": "注文／請求書番号（任意）"
+    },
+    "order_number": {
+      "label": "注文／請求書番号（任意）"
+    },
     "travel_name": {
       "label": "運行会社"
     },
@@ -93,6 +99,7 @@
     }
   },
   "print": {
+    "order_number": "注文／請求書番号",
     "t1_banner": "予約が完了しました。この旅程は {when} まで前倒し・延期できます。",
     "eticket": "電子チケット",
     "type": "タイプ",

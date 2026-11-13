@@ -12,6 +12,9 @@
     "t4": "Ricevuta semplice"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Numero di fattura (facoltativo)"
+    },
     "operator_name": {
       "label": "Nome della società di taxi o dell'autista"
     },
@@ -19,7 +22,7 @@
       "label": "Indirizzo (facoltativo)"
     },
     "receipt_number": {
-      "label": "Numero di ricevuta"
+      "label": "Numero di ricevuta (facoltativo)"
     },
     "date": {
       "label": "Data della corsa"
@@ -90,6 +93,8 @@
     }
   },
   "print": {
+    "invoice_number": "N. fattura",
+    "receipt_number": "N. ricevuta",
     "receipt_title": "Ecco la ricevuta della tua corsa,",
     "enjoyed": "Speriamo che il viaggio ti sia piaciuto.",
     "trip_total": "Tariffa totale della corsa",
@@ -157,7 +162,7 @@
   },
   "sample": {
     "operator_name": "Taxi Tevere",
-    "passenger_name": "Marco Rossi",
+    "passenger_name": "Vivek Kumar",
     "driver_name": "Luca Bianchi",
     "pickup": "Stazione Termini, Roma",
     "drop": "Aeroporto di Fiumicino",

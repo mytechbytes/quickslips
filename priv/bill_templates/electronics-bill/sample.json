@@ -15,7 +15,7 @@
   "invoice_number": "INV-8810",
   "date": "2026-11-07",
   "do_number": "DO-5521",
-  "bill_name": "Rohan Mehta",
+  "bill_name": "Vivek Kumar",
   "bill_address": "Flat 12, Sunrise Apartments, Station Road, Mumbai",
   "bill_state": "Maharashtra",
   "bill_pin": "400093",
@@ -25,9 +25,30 @@
   "ship_state": "Maharashtra",
   "ship_phone": "98200 12345",
   "items": [
-    { "name": "Smartphone 128 GB (Midnight Black)", "code": "SN-35829104", "hsn": "8517", "qty": 1, "rate": 24999, "tax": 18 },
-    { "name": "Wireless earbuds", "code": "SN-77120045", "hsn": "8518", "qty": 1, "rate": 2999, "tax": 18 },
-    { "name": "Power bank 20000 mAh", "code": "SN-90017733", "hsn": "8507", "qty": 1, "rate": 1799, "tax": 18 }
+    {
+      "name": "Smartphone 128 GB (Midnight Black)",
+      "code": "SN-35829104",
+      "hsn": "8517",
+      "qty": 1,
+      "rate": 24999,
+      "tax": 18
+    },
+    {
+      "name": "Wireless earbuds",
+      "code": "SN-77120045",
+      "hsn": "8518",
+      "qty": 1,
+      "rate": 2999,
+      "tax": 18
+    },
+    {
+      "name": "Power bank 20000 mAh",
+      "code": "SN-90017733",
+      "hsn": "8507",
+      "qty": 1,
+      "rate": 1799,
+      "tax": 18
+    }
   ],
   "payment_mode": "Card",
   "payment_reference": "APP-482913",

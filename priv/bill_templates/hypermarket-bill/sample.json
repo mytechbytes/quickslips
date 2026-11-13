@@ -15,16 +15,46 @@
   "delivery_date": "2026-11-07",
   "delivery_time": "6:00 PM - 9:00 PM",
   "payment_mode": "Cash",
-  "customer_name": "Rohan Mehta",
+  "customer_name": "Vivek Kumar",
   "customer_phone": "98200 12345",
   "delivery_mode": "Home delivery",
   "delivery_address": "Flat 12, Sunrise Apartments, Station Road, Mumbai 400093",
   "items": [
-    { "name": "Basmati rice (5 kg)", "hsn": "1006", "qty": 1, "rate": 640, "tax": 5 },
-    { "name": "Sunflower oil (1 L)", "hsn": "1512", "qty": 2, "rate": 142, "tax": 5 },
-    { "name": "Cream biscuits (300 g)", "hsn": "1905", "qty": 3, "rate": 40, "tax": 18 },
-    { "name": "Dish wash liquid (500 ml)", "hsn": "3402", "qty": 1, "rate": 129, "tax": 18 },
-    { "name": "Fresh tomatoes (1 kg)", "hsn": "0702", "qty": 2, "rate": 38, "tax": 0 }
+    {
+      "name": "Basmati rice (5 kg)",
+      "hsn": "1006",
+      "qty": 1,
+      "rate": 640,
+      "tax": 5
+    },
+    {
+      "name": "Sunflower oil (1 L)",
+      "hsn": "1512",
+      "qty": 2,
+      "rate": 142,
+      "tax": 5
+    },
+    {
+      "name": "Cream biscuits (300 g)",
+      "hsn": "1905",
+      "qty": 3,
+      "rate": 40,
+      "tax": 18
+    },
+    {
+      "name": "Dish wash liquid (500 ml)",
+      "hsn": "3402",
+      "qty": 1,
+      "rate": 129,
+      "tax": 18
+    },
+    {
+      "name": "Fresh tomatoes (1 kg)",
+      "hsn": "0702",
+      "qty": 2,
+      "rate": 38,
+      "tax": 0
+    }
   ],
   "savings": 86,
   "payment_note": "Pay on delivery (cash or card)"

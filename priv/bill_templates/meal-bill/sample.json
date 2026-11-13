@@ -8,16 +8,36 @@
   "invoice_number": "22721147",
   "date": "2026-10-19",
   "order_id": "1521383097",
-  "customer_name": "Rohan Mehta",
+  "customer_name": "Vivek Kumar",
   "delivery_address": "Flat 12, Lotus Apartments, HSR Layout, Bengaluru, Karnataka 560102",
   "place_of_supply": "Karnataka(29)",
   "hsn_code": "996331",
   "service_description": "Restaurant service",
   "items": [
-    { "name": "Masala Dosa x 2", "rate": 240, "discount": 0, "tax": 5 },
-    { "name": "Filter Coffee x 3", "rate": 180, "discount": 10, "tax": 5 },
-    { "name": "Paneer Tikka", "rate": 320, "discount": 0, "tax": 5 },
-    { "name": "Packaging and delivery", "rate": 40, "discount": 0, "tax": 18 }
+    {
+      "name": "Masala Dosa x 2",
+      "rate": 240,
+      "discount": 0,
+      "tax": 5
+    },
+    {
+      "name": "Filter Coffee x 3",
+      "rate": 180,
+      "discount": 10,
+      "tax": 5
+    },
+    {
+      "name": "Paneer Tikka",
+      "rate": 320,
+      "discount": 0,
+      "tax": 5
+    },
+    {
+      "name": "Packaging and delivery",
+      "rate": 40,
+      "discount": 0,
+      "tax": 18
+    }
   ],
   "reverse_charge": "No",
   "payment_note": "Paid online",

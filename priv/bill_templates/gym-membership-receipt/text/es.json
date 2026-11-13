@@ -10,6 +10,12 @@
     "t2": "Factura"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Número de pedido / factura (opcional)"
+    },
+    "invoice_number": {
+      "label": "Número de pedido / factura (opcional)"
+    },
     "gym_name": {
       "label": "Gimnasio o club"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "N.º de pedido / factura",
     "membership_receipt": "Recibo de socio",
     "receipt_no": "Recibo n.º",
     "date": "Fecha",
@@ -145,7 +152,7 @@
   },
   "sample": {
     "gym_name": "Gimnasio Hierro Fit",
-    "member_name": "Carlos Gómez",
+    "member_name": "Vivek Kumar",
     "gym_phone": "954 123 456",
     "member_phone": "612 345 678",
     "fee": 90,

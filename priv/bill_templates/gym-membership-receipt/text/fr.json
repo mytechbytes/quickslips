@@ -10,6 +10,12 @@
     "t2": "Facture"
   },
   "fields": {
+    "invoice_number": {
+      "label": "Numéro de commande / facture (facultatif)"
+    },
+    "invoice_number": {
+      "label": "Numéro de commande / facture (facultatif)"
+    },
     "gym_name": {
       "label": "Salle de sport ou club"
     },
@@ -106,6 +112,7 @@
     }
   },
   "print": {
+    "order_number": "N° de commande / facture",
     "membership_receipt": "Reçu d'adhésion",
     "receipt_no": "Reçu n°",
     "date": "Date",
@@ -145,7 +152,7 @@
   },
   "sample": {
     "gym_name": "Salle Fer & Forme",
-    "member_name": "Camille Martin",
+    "member_name": "Vivek Kumar",
     "gym_phone": "01 23 45 67 89",
     "member_phone": "06 12 34 56 78",
     "fee": 95,

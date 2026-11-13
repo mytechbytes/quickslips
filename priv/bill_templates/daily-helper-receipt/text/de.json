@@ -42,6 +42,7 @@
     },
     "periods": {
       "label": "Gehaltszeitraum",
+      "number_label": "Kassenbeleg-/Belegnummer (optional)",
       "options": {
         "Monthly": "Monatlich",
         "Quarterly": "Vierteljährlich",
@@ -51,6 +52,7 @@
     }
   },
   "print": {
+    "memo_number": "Kassenbeleg-/Belegnr.",
     "title": "Quittung für Haushaltshilfe",
     "date": "Datum",
     "certify": "Hiermit wird bestätigt, dass {employer} an {helper}, tätig als {role}, für den Monat {month} ein Gehalt von {amount} gezahlt hat (Empfangsbestätigung liegt bei).",
@@ -80,7 +82,7 @@
     "receipt_date": "Belegdatum"
   },
   "sample": {
-    "employer_name": "Thomas Müller",
+    "employer_name": "Vivek Kumar",
     "helper_name": "Elena Petrova",
     "working_as": "Reinigungskraft",
     "salary": 900,

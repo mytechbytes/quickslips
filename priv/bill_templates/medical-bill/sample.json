@@ -9,7 +9,7 @@
   "time": "10:38",
   "admit_date": "2026-10-03",
   "discharge_date": "2026-10-05",
-  "patient_name": "Anitha Nair",
+  "patient_name": "Vivek Kumar",
   "patient_details": "42 / F",
   "patient_issue": "Fever and cough",
   "guardian_name": "Rajan Nair",
@@ -23,8 +23,16 @@
   "insurance": "Yes",
   "remark": "In case of emergency, consult immediately if you get pain, painful movements, redness, pus or bleeding. Follow up after 5 days.",
   "items": [
-    { "name": "Room rent (per day)", "qty": 2, "rate": 1800 },
-    { "name": "Nursing charges (per day)", "qty": 2, "rate": 400 }
+    {
+      "name": "Room rent (per day)",
+      "qty": 2,
+      "rate": 1800
+    },
+    {
+      "name": "Nursing charges (per day)",
+      "qty": 2,
+      "rate": 400
+    }
   ],
   "consultation_fee": 500,
   "medicines_cost": 430,

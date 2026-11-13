@@ -49,6 +49,7 @@
     },
     "periods": {
       "label": "租金期间",
+      "number_label": "现金单据/凭证编号（选填）",
       "options": {
         "Monthly": "按月",
         "Quarterly": "按季度",
@@ -58,6 +59,7 @@
     }
   },
   "print": {
+    "memo_number": "现金单据/凭证编号",
     "title": "租金收据",
     "date": "日期",
     "certify": "兹证明 本人已向房东 {landlord} 支付 {month} 的租金 {amount}（附收款确认单）。",
@@ -97,7 +99,7 @@
     "first_signature": "房东签字"
   },
   "sample": {
-    "tenant_name": "王伟",
+    "tenant_name": "Vivek Kumar",
     "landlord_name": "李强",
     "receiver_name": "李强",
     "monthly_rent": 6000

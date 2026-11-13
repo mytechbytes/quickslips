@@ -10,6 +10,12 @@
     "t2": "分栏电子票"
   },
   "fields": {
+    "order_number": {
+      "label": "订单/发票号码（选填）"
+    },
+    "order_number": {
+      "label": "订单/发票号码（选填）"
+    },
     "travel_name": {
       "label": "运输公司"
     },
@@ -93,6 +99,7 @@
     }
   },
   "print": {
+    "order_number": "订单/发票号码",
     "t1_banner": "恭喜！您已预订可改期车票。您可在 {when} 前提前或推迟本次行程。",
     "eticket": "电子票",
     "type": "类型",

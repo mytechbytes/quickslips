@@ -7,7 +7,7 @@
   "summary": "Monthly pay receipt for a driver.",
   "description": "Create a salary receipt for a driver with monthly pay, overtime, allowances and deductions. Preview instantly and download as PDF.",
   "languages": ["en", "hi", "es", "de", "fr", "it", "pt", "zh", "ja"],
-  "templates": [{"id": "t1"}, {"id": "t2"}, {"id": "t3"}, {"id": "t5"}, {"id": "t6"}],
+  "templates": [{"id": "t1"}, {"id": "t2"}, {"id": "t3"}, {"id": "t5"}, {"id": "t6"}, {"id": "t7"}],
   "saved_groups": ["business", "customer", "details"],
   "fields": [
     {"key": "employer_name", "group": "business", "label": "Employee Name", "type": "text", "required": true, "max_length": 80, "prefill": "business.name"},
