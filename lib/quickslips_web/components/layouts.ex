@@ -307,6 +307,48 @@ defmodule QuickSlipsWeb.Layouts do
     """
   end
 
+  # The question about Google Analytics, asked of every visitor, wherever they are. It is drawn
+  # hidden: the script (`assets/js/consent.ts`) shows it when the browser has no choice yet, so a visitor who has chosen
+  # never sees it flash. Both answers look the same: saying no is as easy as saying yes.
+  defp consent_banner(assigns) do
+    ~H"""
+    <section
+      id="consent-banner"
+      hidden
+      aria-labelledby="consent-title"
+      class="fixed inset-x-0 bottom-0 z-50 p-3 sm:p-4 print:hidden"
+    >
+      <div class="mx-auto flex max-w-3xl flex-col gap-4 rounded-card border border-line bg-surface p-4 shadow-pop sm:flex-row sm:items-center sm:gap-6 sm:p-5">
+        <div class="min-w-0 flex-1">
+          <h2 id="consent-title" class="font-display text-base font-semibold text-ink">
+            {gettext("Visit statistics")}
+          </h2>
+          <p class="mt-1 text-sm/6 text-ink-muted">
+            {gettext(
+              "We would like to use Google Analytics to count visits and see which pages are used. It sets cookies. It is your choice, and you can change it at any time."
+            )}
+            <a
+              id="consent-privacy-link"
+              href={~p"/privacy"}
+              class="rounded-field font-medium whitespace-nowrap text-primary underline underline-offset-2 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+            >
+              {gettext("Read the privacy policy")}
+            </a>
+          </p>
+        </div>
+        <div class="grid shrink-0 grid-cols-2 gap-3 sm:flex">
+          <.button id="consent-reject" type="button" variant="secondary" size="lg" data-consent-reject>
+            {gettext("Reject")}
+          </.button>
+          <.button id="consent-accept" type="button" variant="secondary" size="lg" data-consent-accept>
+            {gettext("Accept")}
+          </.button>
+        </div>
+      </div>
+    </section>
+    """
+  end
+
   # The slim bar at the top of every page: the same ask in one line, and a way to close it. Nothing when there is no page of support.
   attr :locale, :map, required: true
 
@@ -427,6 +469,7 @@ defmodule QuickSlipsWeb.Layouts do
       %{label: gettext("Sitemap"), to: ~p"/sitemap"},
       %{label: gettext("Terms"), to: ~p"/terms"},
       %{label: gettext("Privacy"), to: ~p"/privacy"},
+      %{label: gettext("Cookie settings"), consent: true},
       %{label: gettext("Disclaimer"), to: ~p"/disclaimer"}
     ] ++ contact_links() ++ support_links(locale)
   end
@@ -450,7 +493,8 @@ defmodule QuickSlipsWeb.Layouts do
 
   attr :links, :list,
     default: [],
-    doc: "`[%{label: _, to: path}]`, or `%{label: _, href: url}` for a link that leaves the app"
+    doc:
+      "`[%{label: _, to: path}]`, `%{label: _, href: url}` for a link that leaves the app, or `%{label: _, consent: true}` for the button that opens the cookie choice again"
 
   slot :extra, doc: "one more line after the links"
 
@@ -466,6 +510,14 @@ defmodule QuickSlipsWeb.Layouts do
           <.link :if={Map.has_key?(link, :href)} href={link.href} class={footer_link_class()}>
             {link.label}
           </.link>
+          <button
+            :if={Map.has_key?(link, :consent)}
+            type="button"
+            data-consent-open
+            class={footer_link_class() ++ ["cursor-pointer"]}
+          >
+            {link.label}
+          </button>
         </li>
         <li :if={@extra != []}>{render_slot(@extra)}</li>
       </ul>

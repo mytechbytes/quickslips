@@ -208,7 +208,7 @@ defmodule QuickSlipsWeb.LegalComponents do
 
   def privacy(assigns) do
     ~H"""
-    <.legal_page id="legal-privacy" title="Privacy policy" updated={~D[2026-11-08]}>
+    <.legal_page id="legal-privacy" title="Privacy policy" updated={~D[2026-11-13]}>
       <p>
         This page says what QuickSlips does with information about you. We have tried to keep it short and to say
         only what is true.
@@ -222,6 +222,10 @@ defmodule QuickSlipsWeb.LegalComponents do
           <li>
             With an account we keep your e-mail address, the businesses and signatures you save and a history of your
             documents, so that you can use them again.
+          </li>
+          <li>
+            We use Google Analytics to count visits and to see which pages are used. It uses cookies. It
+            starts only if you agree, and you can change your mind at any time.
           </li>
           <li>
             We do not sell your data, we show no advertising and we use no advertising trackers.
@@ -249,6 +253,28 @@ defmodule QuickSlipsWeb.LegalComponents do
           and device you use. We use this to show you the site, to keep it secure and to find faults, and we keep
           technical logs for a limited time. Cloudflare tells us the country your visit comes from, and your browser
           tells us its language; we use both only to suggest a language and country for the site.
+        </p>
+        <p id="legal-visit-statistics">
+          <strong>Visit statistics.</strong>
+          We use Google Analytics, loaded through Google Tag Manager, to count visits and to see which pages are
+          used, so that we can improve the site. It records the pages you view, how far you scroll, the links to
+          other sites that you click, the files you download, and when you start or send a form, but not what you
+          type into a form. Google also receives your IP address, your browser, device and language, and works out
+          roughly where you are from the IP address. It sets cookies for this, listed below. We use these statistics
+          only to understand how the site is used, never for advertising. How Google handles this data is explained
+          in <a
+            href="https://policies.google.com/technologies/partner-sites"
+            target="_blank"
+            rel="noopener noreferrer"
+          >How Google uses data when you use our partners' sites or apps</a>.
+        </p>
+        <p id="legal-consent">
+          <strong>Your say in it.</strong>
+          Nothing of Google's is loaded until you agree, in the banner that asks on your first visit, wherever you
+          are. Your choice is kept in your browser, not in a cookie. You can
+          change it at any time with “Cookie settings” in the footer, and we ask again after a year. If you say no, or
+          change your mind, Google Analytics is told to stop, its cookies are deleted, and it does not start again on
+          the next page you open.
         </p>
         <p>
           <strong>Daily download limits.</strong>
@@ -299,8 +325,8 @@ defmodule QuickSlipsWeb.LegalComponents do
 
       <.legal_section title="Cookies and similar storage">
         <p>
-          These are all needed for the site to work, to keep it secure and to remember your choices. We use no
-          advertising cookies and no analytics cookies.
+          These are needed for the site to work, to keep it secure and to remember your choices. We use no
+          advertising cookies.
         </p>
         <ul id="legal-cookies">
           <li>
@@ -320,11 +346,25 @@ defmodule QuickSlipsWeb.LegalComponents do
             remembers the language and country you chose. It is set only when you choose one, and lasts one year.
           </li>
           <li>
-            Your browser also keeps your light or dark choice, and copies of the preview engine and the fonts, so that
-            pages load faster.
+            Your browser also keeps your light or dark choice, your choice about the visit statistics,
+            and copies of the preview engine and the fonts, so that pages load faster.
           </li>
           <li>
             Cloudflare, which sits in front of the site, may set its own cookies or similar storage for security.
+          </li>
+        </ul>
+        <p>
+          Google Analytics (see “Visit statistics” above) sets two more cookies, which the site does not need in order
+          to work. They are set only if you agree. You can block them; see “Your choices and rights”.
+        </p>
+        <ul id="legal-analytics-cookies">
+          <li>
+            <code>_ga</code>
+            tells one visitor from another, so that visits can be counted. It lasts up to two years.
+          </li>
+          <li>
+            <code>_ga_</code>
+            followed by a code of our Analytics account keeps the state of your visit. It lasts up to two years.
           </li>
         </ul>
       </.legal_section>
@@ -332,7 +372,8 @@ defmodule QuickSlipsWeb.LegalComponents do
       <.legal_section title="Who else handles your data">
         <p>
           We use other companies to run QuickSlips: a hosting provider for our servers and database, Cloudflare to
-          protect and speed up the site and for the Turnstile check, an e-mail provider to send log-in and account
+          protect and speed up the site and for the Turnstile check, Google to count visits (Google Analytics), an
+          e-mail provider to send log-in and account
           e-mails<span :if={@contact_email}>
             and to deliver the messages of the contact form to us and their confirmations to the people who wrote them
           </span>, and, only if you choose “Continue with Google”, Google to sign you in. They may handle data in
@@ -355,6 +396,9 @@ defmodule QuickSlipsWeb.LegalComponents do
             The daily counters and the technical logs: for as long as we need them to enforce the limits and to keep
             the service secure and working.
           </li>
+          <li>
+            Visit statistics: Google Analytics keeps the detailed data for 14 months at most.
+          </li>
         </ul>
         <p :if={@contact_email}>
           If you ask us to close your account, we delete your account data and everything you saved. We may keep a
@@ -368,6 +412,14 @@ defmodule QuickSlipsWeb.LegalComponents do
           out at any time. Depending on where you live, you may also have the right to ask us for a copy of your
           data, to correct it, to delete it, or to object to how we use it, and to complain to your local data
           protection authority.
+        </p>
+        <p>
+          <strong>Visit statistics.</strong>
+          You can change your choice at any time with “Cookie settings” in the footer. You can also stop Google Analytics by blocking cookies and scripts in your browser, with a content blocker, or with <a
+            href="https://tools.google.com/dlpage/gaoptout"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Google's opt-out add-on</a>. The site works the same without it.
         </p>
         <p :if={@contact_email}>
           To use these rights, or to close your account, use the <.contact_link /> or write to

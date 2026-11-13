@@ -28,6 +28,18 @@ import "@tailwindplus/elements";
 import {mountBillApp} from "./bill/main"
 import {mountContactCheck} from "./contact"
 import "./locale"
+import {startTagManager, stopTagManager} from "./analytics"
+import {mountConsent} from "./consent"
+
+// Google Tag Manager (analytics). Only the live site loads it, so visits while building or testing are not counted.
+// Every visitor is asked first (the banner of the root layout): it starts when they agree and stops when they take
+// that back (consent.ts). The tags it runs are set in the Tag Manager account.
+mountConsent({
+  start: () => {
+    if (process.env.NODE_ENV === "production") startTagManager("GTM-T9KX6WPW")
+  },
+  stop: stopTagManager,
+})
 
 // The "Keep QuickSlips free" bar at the top of every page can be closed; this browser remembers it. The state is on <html>,
 // so it holds through the page changes of LiveView (CSS hides the bar: see app.css).

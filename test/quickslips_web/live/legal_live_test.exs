@@ -144,6 +144,50 @@ defmodule QuickSlipsWeb.LegalLiveTest do
                ])
     end
 
+    test "says that Google Analytics is used, names its cookies and says how to stop it", %{
+      conn: conn
+    } do
+      doc = page(conn, "/privacy")
+      visit_statistics = words(conn, "/privacy", "legal-visit-statistics")
+
+      assert visit_statistics =~ "Google Analytics"
+      assert visit_statistics =~ "Google Tag Manager"
+      assert visit_statistics =~ "but not what you type into a form"
+
+      # Google's script sets these in the browser, not the app, so they are not in the list of the app's cookies.
+      assert texts(doc, "#legal-analytics-cookies code") == ["_ga", "_ga_"]
+
+      # The two links that the use of Analytics calls for: how Google uses the data, and the way to opt out.
+      for href <- [
+            "https://policies.google.com/technologies/partner-sites",
+            "https://tools.google.com/dlpage/gaoptout"
+          ] do
+        assert doc |> LazyHTML.query("#legal-privacy a[href='#{href}']") |> Enum.any?(), href
+      end
+    end
+
+    test "says who is asked before Google Analytics starts, and how to change the choice", %{
+      conn: conn
+    } do
+      consent = words(conn, "/privacy", "legal-consent")
+
+      assert consent =~ "until you agree"
+      assert consent =~ "“Cookie settings” in the footer"
+      assert consent =~ "we ask again after a year"
+      assert consent =~ "its cookies are deleted"
+    end
+
+    # The pages must stay in step with the code (see `QuickSlipsWeb.LegalComponents`). Tag Manager is started in the
+    # JavaScript bundle, which no test of the server can see, so this reads its source.
+    test "mentions Tag Manager when the bundle starts it, and only then", %{conn: conn} do
+      bundle = File.read!(Path.expand("../../../assets/js/app.js", __DIR__))
+
+      bundle_starts_it = bundle =~ ~r/startTagManager\("GTM-[A-Z0-9]+"\)/
+      policy_says_so = words(conn, "/privacy", "legal-privacy") =~ "Google Tag Manager"
+
+      assert bundle_starts_it == policy_says_so
+    end
+
     test "says what is kept for an account, and for a visitor who has none", %{conn: conn} do
       text = words(conn, "/privacy", "legal-privacy")
 

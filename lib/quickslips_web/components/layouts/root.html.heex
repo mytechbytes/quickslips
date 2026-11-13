@@ -68,5 +68,7 @@
   </head>
   <body class="bg-page font-sans text-ink antialiased">
     {@inner_content}
+    <%!-- Outside the LiveView, so the page changes of LiveView leave it alone. The script of the page shows it. --%>
+    <.consent_banner />
   </body>
 </html>
