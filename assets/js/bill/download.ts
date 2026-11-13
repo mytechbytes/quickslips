@@ -1,7 +1,7 @@
 import type { BillData } from "./form"
 
 export type DownloadResult =
-  | { ok: true }
+  | { ok: true; url: string; filename: string }
   | { ok: false; status: number; errors?: Record<string, string[]>; message?: string }
 
 export async function downloadPdf(
@@ -62,6 +62,6 @@ export async function downloadPdf(
   document.body.append(link)
   link.click()
   link.remove()
-  URL.revokeObjectURL(url)
-  return { ok: true }
+  // The page lets go of the address when it is done with it (the dialog that offers the link keeps it open).
+  return { ok: true, url, filename: link.download }
 }

@@ -52,6 +52,16 @@ config :quickslips,
 # they need it), so that what is in the shell of whoever runs them cannot change what they check.
 if config_env() != :test do
   config :quickslips, :contact_email, System.get_env("CONTACT_EMAIL")
+
+  # SUPPORT_URL replaces the page where people can support the site (everywhere but India); an empty value hides the banner and the footer link.
+  if url = System.get_env("SUPPORT_URL") do
+    config :quickslips, :support_url, if(url == "", do: nil, else: url)
+  end
+
+  # SUPPORT_URL_IN is the page for visitors in India (rupees, UPI); without it they get SUPPORT_URL.
+  if url = System.get_env("SUPPORT_URL_IN") do
+    config :quickslips, :support_url_in, if(url == "", do: nil, else: url)
+  end
 end
 
 if config_env() == :dev do

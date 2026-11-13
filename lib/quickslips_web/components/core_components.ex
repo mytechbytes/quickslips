@@ -98,7 +98,7 @@ defmodule QuickSlipsWeb.CoreComponents do
       <.button loading>Making the PDF</.button>
   """
   attr :rest, :global,
-    include: ~w(href navigate patch method download name value disabled type form)
+    include: ~w(href navigate patch method download name value disabled type form target rel)
 
   attr :class, :any, default: nil, doc: "extra classes, added to the variant and size classes"
 

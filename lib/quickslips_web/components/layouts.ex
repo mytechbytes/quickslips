@@ -139,6 +139,7 @@ defmodule QuickSlipsWeb.Layouts do
   defp public_shell(assigns) do
     ~H"""
     <div class="flex min-h-screen flex-col">
+      <.support_bar locale={@locale} />
       <header class="border-b border-line bg-surface">
         <nav
           aria-label={gettext("Main")}
@@ -240,6 +241,83 @@ defmodule QuickSlipsWeb.Layouts do
 
   ## The footer of the public pages
 
+  attr :id, :string, required: true
+  attr :url, :string, required: true
+  attr :class, :any, default: nil
+
+  @doc """
+  The card that asks for support: the heart, "Keep QuickSlips free", what the money does and the button, which opens the
+  page of support in a new tab. Used in the footer and in the dialog of a download.
+  """
+  def support_card(assigns) do
+    ~H"""
+    <aside
+      id={@id}
+      class={["rounded-card border border-accent/40 bg-accent-soft p-4 text-ink", @class]}
+    >
+      <div>
+        <p class="flex items-center gap-x-2 text-base/6 font-semibold">
+          <.icon name="hero-heart" class="size-5 shrink-0 text-accent" />
+          {gettext("Keep QuickSlips free")}
+        </p>
+        <p class="mt-1 text-sm/6 text-ink-muted">
+          {gettext(
+            "QuickSlips is free for everyone and runs on a little help from people like you. If it saves you time, a coffee keeps it going."
+          )}
+        </p>
+      </div>
+      <.button
+        id={"#{@id}-link"}
+        href={@url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-3 shrink-0 sm:mt-0"
+      >
+        {gettext("Support us")} <.icon name="hero-arrow-top-right-on-square" class="size-4" />
+      </.button>
+    </aside>
+    """
+  end
+
+  # The slim bar at the top of every page: the same ask in one line, and a way to close it. Nothing when there is no page of support.
+  attr :locale, :map, required: true
+
+  defp support_bar(assigns) do
+    assigns = assign(assigns, :url, QuickSlips.Support.url(assigns.locale))
+
+    ~H"""
+    <div :if={@url} id="support-bar" class="bg-primary text-on-primary">
+      <div class="mx-auto flex max-w-8xl items-center gap-x-3 px-4 py-2 text-sm/6 sm:px-6 lg:px-8">
+        <.icon name="hero-heart" class="size-5 shrink-0 text-accent-soft" />
+        <p class="min-w-0 flex-1">
+          <span class="font-semibold">{gettext("Keep QuickSlips free")}</span>
+          <span class="hidden sm:inline">
+            · {gettext("QuickSlips is free for everyone. Help keep it that way.")}
+          </span>
+        </p>
+        <a
+          id="support-bar-link"
+          href={@url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="shrink-0 rounded-field font-semibold underline underline-offset-2 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-primary"
+        >
+          {gettext("Support us")}
+        </a>
+        <button
+          id="support-bar-close"
+          type="button"
+          data-close-support-bar
+          class="-mr-1.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full hover:bg-on-primary/15 focus-visible:outline-2 focus-visible:outline-on-primary"
+        >
+          <span class="sr-only">{gettext("close")}</span>
+          <.icon name="hero-x-mark" class="size-5" />
+        </button>
+      </div>
+    </div>
+    """
+  end
+
   attr :locale, :map, required: true
 
   # What a visitor can go on to from any public page: the bills people ask for most, the whole catalogue, the pages
@@ -252,10 +330,17 @@ defmodule QuickSlipsWeb.Layouts do
       |> assign(:more, QuickSlipsWeb.Footer.more(assigns.locale))
       |> assign(:site, site_links(assigns.locale))
       |> assign(:contact?, QuickSlips.Contact.available?())
+      |> assign(:support_url, QuickSlips.Support.url(assigns.locale))
 
     ~H"""
     <footer id="site-footer" class="border-t border-line bg-surface">
       <div class="mx-auto max-w-8xl px-4 py-10 sm:px-6 lg:px-8">
+        <.support_card
+          :if={@support_url}
+          id="footer-support"
+          url={@support_url}
+          class="mb-10 sm:flex sm:items-center sm:justify-between sm:gap-x-6"
+        />
         <div class="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))]">
           <div class="sm:col-span-2 lg:col-span-1">
             <.wordmark id="footer-logo" navigate={home_path(@locale)} />
@@ -319,7 +404,15 @@ defmodule QuickSlipsWeb.Layouts do
       %{label: gettext("Terms"), to: ~p"/terms"},
       %{label: gettext("Privacy"), to: ~p"/privacy"},
       %{label: gettext("Disclaimer"), to: ~p"/disclaimer"}
-    ] ++ contact_links()
+    ] ++ contact_links() ++ support_links(locale)
+  end
+
+  # The page where people can support the site, when there is one (`SUPPORT_URL`).
+  defp support_links(locale) do
+    case QuickSlips.Support.url(locale) do
+      url when is_binary(url) -> [%{label: gettext("Keep QuickSlips free"), href: url}]
+      _none -> []
+    end
   end
 
   defp contact_links do
@@ -418,6 +511,8 @@ defmodule QuickSlipsWeb.Layouts do
 
     ~H"""
     <div class="flex min-h-screen flex-col">
+      <.support_bar locale={@locale} />
+
       <%!-- Phone: a dark top bar with a menu --%>
       <div class="lg:hidden">
         <nav aria-label={gettext("Main")} class="bg-sidebar">

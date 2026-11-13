@@ -57,6 +57,7 @@ defmodule QuickSlipsWeb.TemplateLive do
             text: Templates.print_text(slug, view_locale),
             fonts: QuickSlips.Fonts.urls(locale.language),
             signed_in?: signed_in?(scope),
+            support_url: QuickSlips.Support.url(locale),
             businesses: saved_businesses(scope),
             saved_entries: saved_entries(scope, slug),
             signatures: saved_signatures(scope),

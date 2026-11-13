@@ -29,6 +29,24 @@ import {mountBillApp} from "./bill/main"
 import {mountContactCheck} from "./contact"
 import "./locale"
 
+// The "Keep QuickSlips free" bar at the top of every page can be closed; this browser remembers it. The state is on <html>,
+// so it holds through the page changes of LiveView (CSS hides the bar: see app.css).
+const SUPPORT_BAR_KEY = "quickslips-support-bar"
+try {
+  if (localStorage.getItem(SUPPORT_BAR_KEY) === "closed") document.documentElement.dataset.supportBar = "closed"
+} catch {
+  // no storage: the bar shows on every page
+}
+document.addEventListener("click", (event) => {
+  if (!(event.target instanceof Element) || !event.target.closest("[data-close-support-bar]")) return
+  document.documentElement.dataset.supportBar = "closed"
+  try {
+    localStorage.setItem(SUPPORT_BAR_KEY, "closed")
+  } catch {
+    // not remembered
+  }
+})
+
 // The form and the preview of a bill's page (`TemplateLive`): started when the page is there, stopped when it goes.
 const BillApp = {
   mounted() { this.stop = mountBillApp(this.el) },

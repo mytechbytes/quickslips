@@ -222,6 +222,28 @@ export function mountBillApp(root: HTMLElement): () => void {
     loginPrompt.classList.toggle("hidden", !(q.tier === "anonymous" && q.remaining === 0))
   }
 
+  // After each PDF: a dialog says it is ready (it starts downloading by itself) and keeps the link, for a download that did
+  // not start. The address of the PDF is let go of when the dialog closes.
+  const downloadDialog = root.querySelector<HTMLDialogElement>("#download-dialog")
+  const downloadLink = root.querySelector<HTMLAnchorElement>("#download-dialog-link")
+  let pdfUrl: string | null = null
+  const releasePdf = () => {
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl)
+    pdfUrl = null
+  }
+  downloadDialog?.addEventListener("close", releasePdf)
+  const showDownloadDialog = (url: string, filename: string) => {
+    if (!downloadDialog || !downloadLink) {
+      URL.revokeObjectURL(url)
+      return
+    }
+    releasePdf()
+    pdfUrl = url
+    downloadLink.href = url
+    downloadLink.download = filename
+    if (!downloadDialog.open) downloadDialog.showModal()
+  }
+
   function refreshQuota() {
     fetch("/api/quota")
       .then((r) => r.json())
@@ -263,6 +285,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     if (result.ok) {
       status.textContent = t("downloaded")
       refreshQuota()
+      showDownloadDialog(result.url, result.filename)
     } else if (result.status === 422) {
       ui.showErrors(result.errors ?? {})
       status.textContent = t("fix_fields")

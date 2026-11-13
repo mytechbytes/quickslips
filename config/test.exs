@@ -55,3 +55,7 @@ config :phoenix_live_view,
 # Sort query params output of verified routes for robust url comparisons
 config :phoenix,
   sort_verified_routes_query_params: true
+
+# The support link and banner are off in the tests that do not look for them.
+config :quickslips, :support_url, nil
+config :quickslips, :support_url_in, nil

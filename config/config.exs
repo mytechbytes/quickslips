@@ -89,6 +89,12 @@ config :phoenix, :json_library, Jason
 
 config :quickslips, :typst_bin, "typst"
 
+# Where people can support the site (the "Keep QuickSlips free" banner and the footer link); `nil` hides both.
+config :quickslips, :support_url, "https://buymeacoffee.com/mytechbytes"
+
+# The page for India (rupees, UPI), if it has one of its own; India uses the page above until then.
+config :quickslips, :support_url_in, nil
+
 # limits of quota for downloads PDF
 config :quickslips, :quota, anonymous: 2, user: 10, ip: 20
 

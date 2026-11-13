@@ -182,6 +182,81 @@ defmodule QuickSlipsWeb.FooterTest do
     end
   end
 
+  describe "the support link" do
+    test "is in the footer, the top bar and the download dialog when there is a page to support the site",
+         %{conn: conn} do
+      Application.put_env(:quickslips, :support_url, "https://example.com/support-us")
+      on_exit(fn -> Application.put_env(:quickslips, :support_url, nil) end)
+
+      assert {"Keep QuickSlips free", "https://example.com/support-us"} in links(
+               page(conn, ~p"/en-in"),
+               "#footer-site"
+             )
+
+      {:ok, view, _html} = live(conn, ~p"/en-in/fuel-bill-generator")
+
+      assert has_element?(
+               view,
+               ~s(#download-dialog #download-support-link[href="https://example.com/support-us"])
+             )
+
+      assert has_element?(view, "#download-dialog-link")
+
+      html = conn |> get(~p"/en-in") |> html_response(200)
+      assert html =~ ~s(id="support-bar")
+      assert html =~ ~s(id="footer-support")
+    end
+
+    test "is another page in India than in the other countries, and India falls back to the other page",
+         %{conn: conn} do
+      Application.put_env(:quickslips, :support_url, "https://example.com/world")
+      Application.put_env(:quickslips, :support_url_in, "https://example.com/india")
+
+      on_exit(fn ->
+        Application.put_env(:quickslips, :support_url, nil)
+        Application.put_env(:quickslips, :support_url_in, nil)
+      end)
+
+      assert {"Keep QuickSlips free", "https://example.com/india"} in links(
+               page(conn, ~p"/en-in"),
+               "#footer-site"
+             )
+
+      assert {"Keep QuickSlips free", "https://example.com/world"} in links(
+               page(conn, ~p"/en-us"),
+               "#footer-site"
+             )
+
+      {:ok, view, _html} = live(conn, ~p"/hi-in/fuel-bill-generator")
+      assert has_element?(view, ~s(#download-support-link[href="https://example.com/india"]))
+
+      {:ok, view, _html} = live(conn, ~p"/en-us/fuel-bill-generator")
+      assert has_element?(view, ~s(#download-support-link[href="https://example.com/world"]))
+
+      Application.put_env(:quickslips, :support_url_in, nil)
+
+      assert {"Keep QuickSlips free", "https://example.com/world"} in links(
+               page(conn, ~p"/en-in"),
+               "#footer-site"
+             )
+    end
+
+    test "is not there when none is set", %{conn: conn} do
+      refute Enum.any?(
+               links(page(conn, ~p"/en-in"), "#footer-site"),
+               &match?({_, "http" <> _}, &1)
+             )
+
+      {:ok, view, _html} = live(conn, ~p"/en-in/fuel-bill-generator")
+      refute has_element?(view, "#download-support")
+      assert has_element?(view, "#download-dialog")
+
+      html = conn |> get(~p"/en-in") |> html_response(200)
+      refute html =~ ~s(id="support-bar")
+      refute html =~ ~s(id="footer-support")
+    end
+  end
+
   describe "for a logged-in user" do
     setup :register_and_log_in_user
 
