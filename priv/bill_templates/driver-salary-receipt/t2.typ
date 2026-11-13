@@ -58,7 +58,7 @@
   align(bottom, signature-block(data, t.employer_signature, name: employee)),
 )
 
-#if small-sheet { pagebreak() } else [
+#if small-sheet or preview { pagebreak() } else [
   #v(2mm)
   #line(length: 100%, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"))
   #v(3mm)

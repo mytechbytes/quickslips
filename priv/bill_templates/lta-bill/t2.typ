@@ -98,6 +98,8 @@
     text(size: 10pt, weight: "bold", t.total_fare), align(right, text(size: 10pt, weight: "bold", money(total-fare))),
   )),
 )
+// In the browser preview the next part is a page of its own.
+#if preview { pagebreak(weak: true) }
 #v(3mm)
 #line(length: 100%, stroke: 0.6pt + hairline)
 #v(2mm)

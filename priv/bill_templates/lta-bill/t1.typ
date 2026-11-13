@@ -96,6 +96,8 @@
 #v(1.5mm)
 #kv(t.net_amount, money(base-fare))
 #kv(t.taxable_amount, money(base-fare))
+// In the browser preview the next part is a page of its own.
+#if preview { pagebreak(weak: true) }
 #v(3mm)
 #align(center, text(size: 10pt, weight: "bold", t.terms))
 #v(2mm)

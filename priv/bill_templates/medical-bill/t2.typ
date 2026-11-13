@@ -126,6 +126,8 @@
 ))
 #v(2mm)
 #double-rule()
+// In the browser preview the next part is a page of its own.
+#if preview { pagebreak(weak: true) }
 #v(1.5mm)
 #heading-of(t.breakup)
 #v(1mm)

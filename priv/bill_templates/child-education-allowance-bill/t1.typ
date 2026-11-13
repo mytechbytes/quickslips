@@ -47,6 +47,8 @@
   ..(t.sequence, t.child_name, t.dob, [#t.standard (#t.ay #data.academic_year)], t.school).map(head => text(size: 7pt, weight: "bold", head)),
   ..children.map(((n, key)) => ([#n], some(key + "_name"), if some(key + "_dob") != none { fmt-date(some(key + "_dob")) } else { [] }, some(key + "_standard"), some(key + "_school"))).flatten(),
 )
+// In the browser preview the expenditure is a page of its own.
+#if preview { pagebreak(weak: true) }
 #v(3mm)
 #text(weight: "bold", [8. #t.expenditure_title])
 #v(1mm)

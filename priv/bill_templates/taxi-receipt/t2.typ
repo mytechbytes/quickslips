@@ -93,7 +93,8 @@
   ]
 ]
 
-#v(4mm)
+// In the browser preview the invoice is a page of its own, below the summary of the ride.
+#if preview { pagebreak() } else { v(4mm) }
 
 #card[
   #align(center)[

@@ -104,6 +104,8 @@
   block(width: 100%, fill: luma(246), inset: 2.5mm, align(center, [#t.registered_office: #some("registered_office")]))
   v(3mm)
 }
+// In the browser preview the next part is a page of its own.
+#if preview { pagebreak(weak: true) }
 #if terms-list.len() > 0 {
   block(width: 100%, stroke: 0.6pt + luma(220), radius: 2mm, clip: true, {
     block(width: 100%, fill: accent, inset: (x: 3mm, y: 2.4mm), text(size: 11pt, weight: "bold", fill: white, t.terms_title))

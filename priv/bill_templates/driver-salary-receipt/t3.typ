@@ -47,9 +47,12 @@
   align(bottom, signature-block(data, t.employer_signature, name: employee)),
 )
 
-#v(1mm)
-#line(length: 100%, stroke: 1.4pt)
-#v(3mm)
+// In the browser preview the acknowledgement is a page of its own, as the second part of the receipt.
+#if preview { pagebreak() } else [
+  #v(1mm)
+  #line(length: 100%, stroke: 1.4pt)
+  #v(3mm)
+]
 #align(center, text(size: 12pt, weight: "bold", t.ack_title))
 #v(2mm)
 #if memo != none [*#t.memo_number:* #memo \ ]

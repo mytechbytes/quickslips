@@ -41,9 +41,12 @@
 #v(1mm)
 #signature-block(data, t.second_signature, name: data.tenant_name, key: "driver_signature")
 
-#v(4mm)
-#line(length: 100%, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"))
-#v(4mm)
+// In the browser preview the acknowledgement slip is a page of its own.
+#if preview { pagebreak() } else [
+  #v(4mm)
+  #line(length: 100%, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"))
+  #v(4mm)
+]
 #align(center, box(width: 70mm, heading(t.ack_title)))
 #v(2mm)
 #grid(
