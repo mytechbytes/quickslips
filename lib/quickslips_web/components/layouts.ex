@@ -242,6 +242,34 @@ defmodule QuickSlipsWeb.Layouts do
   ## The footer of the public pages
 
   attr :id, :string, required: true
+  attr :class, :any, default: nil
+
+  @doc """
+  The short notice about what a document made here is: made from what the user typed, theirs to check and to use lawfully,
+  not legal advice. A quiet line with an info mark, and the link to the Disclaimer, which says it in full. Shown under the
+  Download button, in the dialog of a download and in the footer.
+  """
+  def legal_note(assigns) do
+    ~H"""
+    <p id={@id} class={["flex items-start gap-x-2 text-xs/5 text-ink-muted", @class]}>
+      <.icon name="hero-information-circle" class="mt-0.5 size-4 shrink-0" />
+      <span>
+        {gettext(
+          "QuickSlips makes documents from the details you enter. Please check they are accurate and use them lawfully. They are not legal advice, and are not a substitute for review by a lawyer."
+        )}
+        <.link
+          id={"#{@id}-link"}
+          navigate={~p"/disclaimer"}
+          class="rounded-field font-medium whitespace-nowrap text-primary underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+        >
+          {gettext("Read the full disclaimer")}
+        </.link>
+      </span>
+    </p>
+    """
+  end
+
+  attr :id, :string, required: true
   attr :url, :string, required: true
   attr :class, :any, default: nil
 
@@ -385,11 +413,7 @@ defmodule QuickSlipsWeb.Layouts do
 
         <div class="mt-10 flex flex-col gap-4 border-t border-line pt-6 lg:flex-row lg:items-center lg:justify-between">
           <.locale_picker id="footer-locale" locale={@locale} />
-          <p id="footer-notice" class="max-w-2xl text-sm/6 text-ink-muted lg:text-right">
-            {gettext(
-              "We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
-            )}
-          </p>
+          <.legal_note id="footer-notice" class="max-w-2xl" />
         </div>
       </div>
     </footer>

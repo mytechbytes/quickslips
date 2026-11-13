@@ -76,7 +76,7 @@ defmodule QuickSlipsWeb.LegalComponents do
 
   def terms(assigns) do
     ~H"""
-    <.legal_page id="legal-terms" title="Terms of use" updated={~D[2026-11-08]}>
+    <.legal_page id="legal-terms" title="Terms of use" updated={~D[2026-11-13]}>
       <p>
         These terms are the rules for using QuickSlips, a website that helps you make bills and receipts as PDF files.
         By using QuickSlips you agree to them. If you do not agree, please do not use the site.
@@ -86,7 +86,9 @@ defmodule QuickSlipsWeb.LegalComponents do
         <p>
           You fill in a form, QuickSlips draws a document from the details you enter, and you download it as a PDF.
           It is a tool for writing down real transactions. It does not check what you enter, and the documents it
-          makes are not official invoices or tax documents. Please read the <.link navigate={
+          makes are not official invoices or tax documents. We turn the details you enter into ready-to-use documents;
+          it is up to you to double-check that everything is accurate and used lawfully, and these documents are not
+          meant for legal use without a lawyer's review. Please read the <.link navigate={
             ~p"/disclaimer"
           }>Disclaimer</.link>.
         </p>
@@ -410,11 +412,19 @@ defmodule QuickSlipsWeb.LegalComponents do
 
   def disclaimer(assigns) do
     ~H"""
-    <.legal_page id="legal-disclaimer" title="Disclaimer" updated={~D[2026-11-08]}>
+    <.legal_page id="legal-disclaimer" title="Disclaimer" updated={~D[2026-11-13]}>
       <p>
         QuickSlips helps you write down things that really happened. Please read what a document made here is, and is
         not.
       </p>
+
+      <.legal_section title="Check every document before you use it">
+        <p>
+          We turn the details you enter into ready-to-use documents. It is up to you to double-check that everything is
+          accurate and used lawfully, and please remember that these documents are not meant for legal use without a
+          lawyer's review.
+        </p>
+      </.legal_section>
 
       <.legal_section title="Not an official document">
         <p>

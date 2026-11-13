@@ -136,7 +136,7 @@ defmodule QuickSlipsWeb.FooterTest do
       assert text(doc, "#footer-copyright") ==
                "© #{Date.utc_today().year} QuickSlips. All rights reserved."
 
-      assert text(doc, "#footer-notice") =~ "You are responsible for their accuracy"
+      assert text(doc, "#footer-notice") =~ "Please check they are accurate and use them lawfully"
     end
 
     test "keeps the language and country switch", %{conn: conn} do

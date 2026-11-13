@@ -20,7 +20,7 @@ defmodule QuickSlipsWeb.TranslationTest do
              )
 
       assert has_element?(view, "#cta-signup", "Sign up")
-      assert html =~ "You are responsible for their accuracy"
+      assert html =~ "Please check they are accurate and use them lawfully"
     end
 
     test "speaks Hindi: the hero, the header, the search, the chips, the call to action and the footer",
@@ -36,7 +36,7 @@ defmodule QuickSlipsWeb.TranslationTest do
       assert has_element?(view, ~s(#template-search[placeholder="टेम्पलेट खोजें, जैसे पेट्रोल या किराया"]))
       assert has_element?(view, "#chip-all", "सभी")
       assert has_element?(view, "#cta-login", "लॉग इन")
-      assert html =~ "हम आपके दिए गए विवरण से दस्तावेज़ बनाते हैं"
+      assert html =~ "QuickSlips आपके भरे गए विवरण से दस्तावेज़ बनाता है"
       assert html =~ "© #{Date.utc_today().year} QuickSlips."
     end
 
@@ -48,7 +48,7 @@ defmodule QuickSlipsWeb.TranslationTest do
       assert has_element?(view, "#header-signup", "Registrarse")
       assert has_element?(view, "#chip-all", "Todas")
       assert has_element?(view, "#cta-signup", "Registrarse")
-      assert html =~ "Creamos documentos a partir de los datos que introduces"
+      assert html =~ "QuickSlips crea documentos a partir de los datos que introduces"
     end
 
     test "keeps speaking English in the English page after a Hindi one, on the same connection",

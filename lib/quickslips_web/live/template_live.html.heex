@@ -599,6 +599,7 @@
         <.button id="download-button" type="button" block class="mt-4">
           {gettext("Download PDF")}
         </.button>
+        <Layouts.legal_note id="bill-legal-note" class="mt-3" />
         <%!-- Opens each time the Download button makes a PDF: the PDF starts downloading by itself, the link is there if it did not. --%>
         <dialog
           id="download-dialog"
@@ -639,6 +640,7 @@
               url={@support_url}
               class="mt-5"
             />
+            <Layouts.legal_note id="download-legal-note" class="mt-4" />
           </div>
         </dialog>
       </div>

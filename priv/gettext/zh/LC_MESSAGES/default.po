@@ -41,8 +41,8 @@ msgstr "全部"
 msgid "Already have an account?"
 msgstr "已有账号？"
 
-#: lib/quickslips_web/components/layouts.ex:779
-#: lib/quickslips_web/components/layouts.ex:794
+#: lib/quickslips_web/components/layouts.ex:803
+#: lib/quickslips_web/components/layouts.ex:818
 #, elixir-autogen, elixir-format
 msgid "Attempting to reconnect"
 msgstr "正在尝试重新连接"
@@ -126,7 +126,7 @@ msgid "Dark"
 msgstr "深色"
 
 #: lib/quickslips_web/components/layouts.ex:129
-#: lib/quickslips_web/components/layouts.ex:620
+#: lib/quickslips_web/components/layouts.ex:644
 #, elixir-autogen, elixir-format
 msgid "Dashboard"
 msgstr "仪表盘"
@@ -137,13 +137,13 @@ msgid "Document preview"
 msgstr "文档预览"
 
 #: lib/quickslips_web/components/layouts.ex:130
-#: lib/quickslips_web/components/layouts.ex:628
+#: lib/quickslips_web/components/layouts.ex:652
 #, elixir-autogen, elixir-format
 msgid "Documents"
 msgstr "文档"
 
 #: lib/quickslips_web/live/template_live.html.heex:600
-#: lib/quickslips_web/live/template_live.html.heex:634
+#: lib/quickslips_web/live/template_live.html.heex:635
 #, elixir-autogen, elixir-format
 msgid "Download PDF"
 msgstr "下载 PDF"
@@ -261,7 +261,7 @@ msgstr "登录 QuickSlips"
 msgid "Log me in only this time"
 msgstr "仅本次登录"
 
-#: lib/quickslips_web/components/layouts.ex:599
+#: lib/quickslips_web/components/layouts.ex:623
 #: lib/quickslips_web/components/ui.ex:808
 #, elixir-autogen, elixir-format
 msgid "Log out"
@@ -285,8 +285,8 @@ msgid "Magic link is invalid or it has expired."
 msgstr "魔法链接无效或已过期。"
 
 #: lib/quickslips_web/components/layouts.ex:145
-#: lib/quickslips_web/components/layouts.ex:518
-#: lib/quickslips_web/components/layouts.ex:613
+#: lib/quickslips_web/components/layouts.ex:542
+#: lib/quickslips_web/components/layouts.ex:637
 #, elixir-autogen, elixir-format
 msgid "Main"
 msgstr "主要"
@@ -296,10 +296,10 @@ msgstr "主要"
 msgid "Need more than 2 downloads a day?"
 msgstr "每天需要下载超过 2 次？"
 
-#: lib/quickslips_web/components/layouts.ex:542
-#: lib/quickslips_web/components/layouts.ex:704
-#: lib/quickslips_web/components/layouts.ex:706
-#: lib/quickslips_web/components/layouts.ex:707
+#: lib/quickslips_web/components/layouts.ex:566
+#: lib/quickslips_web/components/layouts.ex:728
+#: lib/quickslips_web/components/layouts.ex:730
+#: lib/quickslips_web/components/layouts.ex:731
 #, elixir-autogen, elixir-format
 msgid "New document"
 msgstr "新建文档"
@@ -315,7 +315,7 @@ msgid "No template matches your search."
 msgstr "没有符合搜索条件的模板。"
 
 #: lib/quickslips_web/components/layouts.ex:178
-#: lib/quickslips_web/components/layouts.ex:532
+#: lib/quickslips_web/components/layouts.ex:556
 #, elixir-autogen, elixir-format
 msgid "Open main menu"
 msgstr "打开主菜单"
@@ -368,7 +368,7 @@ msgid "Preview loads here…"
 msgstr "预览将显示在这里…"
 
 #: lib/quickslips_web/components/layouts.ex:131
-#: lib/quickslips_web/components/layouts.ex:639
+#: lib/quickslips_web/components/layouts.ex:663
 #, elixir-autogen, elixir-format
 msgid "Saved businesses"
 msgstr "已保存的企业"
@@ -383,7 +383,7 @@ msgstr "搜索模板"
 msgid "Search templates, like fuel or rent"
 msgstr "搜索模板，如加油或房租"
 
-#: lib/quickslips_web/components/layouts.ex:571
+#: lib/quickslips_web/components/layouts.ex:595
 #: lib/quickslips_web/components/ui.ex:800
 #, elixir-autogen, elixir-format
 msgid "Settings"
@@ -400,7 +400,7 @@ msgstr "设置"
 msgid "Sign up"
 msgstr "注册"
 
-#: lib/quickslips_web/components/layouts.ex:786
+#: lib/quickslips_web/components/layouts.ex:810
 #, elixir-autogen, elixir-format
 msgid "Something went wrong!"
 msgstr "出错了！"
@@ -422,7 +422,7 @@ msgstr "系统"
 
 #: lib/quickslips_web/components/layouts.ex:156
 #: lib/quickslips_web/components/layouts.ex:213
-#: lib/quickslips_web/components/layouts.ex:402
+#: lib/quickslips_web/components/layouts.ex:426
 #: lib/quickslips_web/live/home_live.ex:81
 #: lib/quickslips_web/live/template_live.html.heex:8
 #, elixir-autogen, elixir-format
@@ -474,7 +474,7 @@ msgstr "正在更新预览…"
 msgid "User confirmed successfully."
 msgstr "用户已成功确认。"
 
-#: lib/quickslips_web/components/layouts.ex:771
+#: lib/quickslips_web/components/layouts.ex:795
 #, elixir-autogen, elixir-format
 msgid "We can't find the internet"
 msgstr "无法连接到互联网"
@@ -542,11 +542,11 @@ msgid "You've used your free downloads for today. Log in or sign up to keep goin
 msgstr "你今天的免费下载次数已用完。登录或注册后可继续使用，明天也会有新的次数。"
 
 #: lib/quickslips_web/components/core_components.ex:81
-#: lib/quickslips_web/components/layouts.ex:313
+#: lib/quickslips_web/components/layouts.ex:341
 #: lib/quickslips_web/components/ui.ex:663
 #: lib/quickslips_web/live/template_live.html.heex:151
 #: lib/quickslips_web/live/template_live.html.heex:348
-#: lib/quickslips_web/live/template_live.html.heex:624
+#: lib/quickslips_web/live/template_live.html.heex:625
 #, elixir-autogen, elixir-format
 msgid "close"
 msgstr "关闭"
@@ -774,7 +774,7 @@ msgid "Signature saved."
 msgstr "签名已保存。"
 
 #: lib/quickslips_web/components/layouts.ex:132
-#: lib/quickslips_web/components/layouts.ex:646
+#: lib/quickslips_web/components/layouts.ex:670
 #, elixir-autogen, elixir-format
 msgid "Signatures"
 msgstr "签名"
@@ -809,7 +809,7 @@ msgstr "您已有同名的签名。"
 msgid "You can keep up to %{max} signatures. Delete one on the Signatures page first."
 msgstr "最多可保存 %{max} 个签名。请先在“签名”页面删除一个。"
 
-#: lib/quickslips_web/live/template_live.html.heex:662
+#: lib/quickslips_web/live/template_live.html.heex:664
 #, elixir-autogen, elixir-format
 msgid "Frequently asked questions"
 msgstr "常见问题"
@@ -824,12 +824,12 @@ msgstr "QuickSlips 的所有页面，按语言和国家排列。"
 msgid "Languages and countries: %{count}"
 msgstr "语言和国家数：%{count}"
 
-#: lib/quickslips_web/components/layouts.ex:348
+#: lib/quickslips_web/components/layouts.ex:376
 #, elixir-autogen, elixir-format
 msgid "Make a clean bill or receipt as a PDF in seconds: fill in the form, check the preview, download. Nothing to install."
 msgstr "几秒钟生成整洁的 PDF 账单或收据：填写表单，查看预览，下载即可。无需安装任何软件。"
 
-#: lib/quickslips_web/components/layouts.ex:369
+#: lib/quickslips_web/components/layouts.ex:397
 #, elixir-autogen, elixir-format
 msgid "More templates"
 msgstr "更多模板"
@@ -839,12 +839,12 @@ msgstr "更多模板"
 msgid "Pages: %{count}"
 msgstr "页面数：%{count}"
 
-#: lib/quickslips_web/components/layouts.ex:367
+#: lib/quickslips_web/components/layouts.ex:395
 #, elixir-autogen, elixir-format
 msgid "Popular bills"
 msgstr "热门单据"
 
-#: lib/quickslips_web/components/layouts.ex:403
+#: lib/quickslips_web/components/layouts.ex:427
 #: lib/quickslips_web/live/sitemap_live.ex:21
 #: lib/quickslips_web/live/sitemap_live.ex:32
 #, elixir-autogen, elixir-format
@@ -856,41 +856,36 @@ msgstr "网站地图"
 msgid "The same list, as search engines read it:"
 msgstr "同一份列表，搜索引擎读取的就是它："
 
-#: lib/quickslips_web/components/layouts.ex:378
+#: lib/quickslips_web/components/layouts.ex:406
 #, elixir-autogen, elixir-format
 msgid "View all templates"
 msgstr "查看全部模板"
 
-#: lib/quickslips_web/components/layouts.ex:389
-#, elixir-autogen, elixir-format
-msgid "We create documents from the details you enter. You are responsible for their accuracy and for using them lawfully."
-msgstr "我们根据你输入的信息生成文档。你需对信息的准确性及合法使用负责。"
-
-#: lib/quickslips_web/components/layouts.ex:363
+#: lib/quickslips_web/components/layouts.ex:391
 #, elixir-autogen, elixir-format
 msgid "© %{year} QuickSlips. All rights reserved."
 msgstr "© %{year} QuickSlips。保留所有权利。"
 
-#: lib/quickslips_web/components/layouts.ex:420
-#: lib/quickslips_web/components/layouts.ex:589
-#: lib/quickslips_web/components/layouts.ex:670
-#: lib/quickslips_web/components/layouts.ex:691
+#: lib/quickslips_web/components/layouts.ex:444
+#: lib/quickslips_web/components/layouts.ex:613
+#: lib/quickslips_web/components/layouts.ex:694
+#: lib/quickslips_web/components/layouts.ex:715
 #: lib/quickslips_web/live/contact_live.ex:40
 #, elixir-autogen, elixir-format
 msgid "Contact"
 msgstr "联系我们"
 
-#: lib/quickslips_web/components/layouts.ex:406
+#: lib/quickslips_web/components/layouts.ex:430
 #, elixir-autogen, elixir-format
 msgid "Disclaimer"
 msgstr "免责声明"
 
-#: lib/quickslips_web/components/layouts.ex:405
+#: lib/quickslips_web/components/layouts.ex:429
 #, elixir-autogen, elixir-format
 msgid "Privacy"
 msgstr "隐私政策"
 
-#: lib/quickslips_web/components/layouts.ex:404
+#: lib/quickslips_web/components/layouts.ex:428
 #, elixir-autogen, elixir-format
 msgid "Terms"
 msgstr "使用条款"
@@ -945,7 +940,7 @@ msgstr "提供反馈"
 msgid "How can we help?"
 msgstr "有什么可以帮您？"
 
-#: lib/quickslips_web/live/template_live.html.heex:681
+#: lib/quickslips_web/live/template_live.html.heex:683
 #, elixir-autogen, elixir-format
 msgid "Is something missing or wrong in this template?"
 msgstr "这个模板缺了什么，或者有错误吗？"
@@ -980,13 +975,13 @@ msgstr "其他"
 msgid "Something is broken, wrong or confusing."
 msgstr "有东西坏了、不对，或者让人困惑。"
 
-#: lib/quickslips_web/components/layouts.ex:359
-#: lib/quickslips_web/live/template_live.html.heex:695
+#: lib/quickslips_web/components/layouts.ex:387
+#: lib/quickslips_web/live/template_live.html.heex:697
 #, elixir-autogen, elixir-format
 msgid "Tell us"
 msgstr "告诉我们"
 
-#: lib/quickslips_web/live/template_live.html.heex:684
+#: lib/quickslips_web/live/template_live.html.heex:686
 #, elixir-autogen, elixir-format
 msgid "Tell us what you would like changed or added, or report a mistake. We read every message."
 msgstr "告诉我们您希望修改或添加什么，或者报告一个错误。我们会阅读每一条消息。"
@@ -1011,7 +1006,7 @@ msgstr "您说得越详细，我们越能帮到您。请不要写密码或银行
 msgid "Too many messages have been sent today. Please try again tomorrow."
 msgstr "今天已发送的消息过多，请明天再试。"
 
-#: lib/quickslips_web/components/layouts.ex:353
+#: lib/quickslips_web/components/layouts.ex:381
 #, elixir-autogen, elixir-format
 msgid "Want a change, have feedback, or hit a problem?"
 msgstr "想要修改、有反馈，或遇到问题？"
@@ -1121,9 +1116,9 @@ msgstr "您发给 QuickSlips 的消息（%{reference}）"
 msgid "Your reference:"
 msgstr "您的参考编号："
 
-#: lib/quickslips_web/components/layouts.ex:580
-#: lib/quickslips_web/components/layouts.ex:677
-#: lib/quickslips_web/components/layouts.ex:700
+#: lib/quickslips_web/components/layouts.ex:604
+#: lib/quickslips_web/components/layouts.ex:701
+#: lib/quickslips_web/components/layouts.ex:724
 #, elixir-autogen, elixir-format
 msgid "Messages"
 msgstr "消息"
@@ -1177,7 +1172,7 @@ msgid "Stamp saved."
 msgstr "印花税票已保存。"
 
 #: lib/quickslips_web/components/layouts.ex:133
-#: lib/quickslips_web/components/layouts.ex:653
+#: lib/quickslips_web/components/layouts.ex:677
 #, elixir-autogen, elixir-format
 msgid "Stamps"
 msgstr "印花税票"
@@ -1474,45 +1469,55 @@ msgstr "水印图片（PNG 或 JPG，最大 1.5 MB）"
 msgid "Watermark text"
 msgstr "水印文字"
 
-#: lib/quickslips_web/components/layouts.ex:664
+#: lib/quickslips_web/components/layouts.ex:688
 #, elixir-autogen, elixir-format
 msgid "Help"
 msgstr "帮助"
 
-#: lib/quickslips_web/components/layouts.ex:633
+#: lib/quickslips_web/components/layouts.ex:657
 #, elixir-autogen, elixir-format
 msgid "Library"
 msgstr "资料库"
 
-#: lib/quickslips_web/components/layouts.ex:261
-#: lib/quickslips_web/components/layouts.ex:293
-#: lib/quickslips_web/components/layouts.ex:413
+#: lib/quickslips_web/components/layouts.ex:289
+#: lib/quickslips_web/components/layouts.ex:321
+#: lib/quickslips_web/components/layouts.ex:437
 #, elixir-autogen, elixir-format
 msgid "Keep QuickSlips free"
 msgstr "让 QuickSlips 一直免费"
 
-#: lib/quickslips_web/components/layouts.ex:276
-#: lib/quickslips_web/components/layouts.ex:305
+#: lib/quickslips_web/components/layouts.ex:304
+#: lib/quickslips_web/components/layouts.ex:333
 #, elixir-autogen, elixir-format
 msgid "Support us"
 msgstr "支持我们"
 
-#: lib/quickslips_web/components/layouts.ex:264
+#: lib/quickslips_web/components/layouts.ex:292
 #, elixir-autogen, elixir-format
 msgid "QuickSlips is free for everyone and runs on a little help from people like you. If it saves you time, a coffee keeps it going."
 msgstr "QuickSlips 对所有人免费，靠像你这样的人的一点点帮助运转。如果它为你节省了时间，一杯咖啡就能让它继续下去。"
 
-#: lib/quickslips_web/components/layouts.ex:295
+#: lib/quickslips_web/components/layouts.ex:323
 #, elixir-autogen, elixir-format
 msgid "QuickSlips is free for everyone. Help keep it that way."
 msgstr "QuickSlips 对所有人免费。请帮助我们继续保持。"
 
-#: lib/quickslips_web/live/template_live.html.heex:616
+#: lib/quickslips_web/live/template_live.html.heex:617
 #, elixir-autogen, elixir-format
 msgid "Your PDF is ready"
 msgstr "你的 PDF 已准备好"
 
-#: lib/quickslips_web/live/template_live.html.heex:629
+#: lib/quickslips_web/live/template_live.html.heex:630
 #, elixir-autogen, elixir-format
 msgid "It should start downloading on its own in a second. If it doesn't, just grab it from the link below!"
 msgstr "下载应该会在一秒内自动开始。如果没有，直接点击下面的链接获取即可！"
+
+#: lib/quickslips_web/components/layouts.ex:257
+#, elixir-autogen, elixir-format
+msgid "QuickSlips makes documents from the details you enter. Please check they are accurate and use them lawfully. They are not legal advice, and are not a substitute for review by a lawyer."
+msgstr "QuickSlips 根据你填写的信息生成文档。请核对内容是否准确，并合法使用。这些文档不构成法律意见，也不能替代律师的审核。"
+
+#: lib/quickslips_web/components/layouts.ex:265
+#, elixir-autogen, elixir-format
+msgid "Read the full disclaimer"
+msgstr "阅读完整免责声明"
