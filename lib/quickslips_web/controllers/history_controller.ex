@@ -61,7 +61,8 @@ defmodule QuickSlipsWeb.HistoryController do
              )
              |> Map.merge(
                Templates.margin_data(schema, document.template, document.options["margin"])
-             ),
+             )
+             |> Map.merge(watermark_data(document.options["watermark"])),
              assets: files,
              locale: Locales.for_document(document.language, document.options).code,
              country: country,
@@ -81,4 +82,12 @@ defmodule QuickSlipsWeb.HistoryController do
         |> redirect(to: ~p"/history")
     end
   end
+
+  # The watermark of a document made again: a text one only (a picture is not kept in the history).
+  defp watermark_data(%{} = settings) do
+    {:ok, %{data: data}} = QuickSlips.Watermark.prepare(settings)
+    data
+  end
+
+  defp watermark_data(_none), do: %{}
 end

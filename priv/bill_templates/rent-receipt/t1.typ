@@ -3,7 +3,7 @@
 // (`t`), the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(width: 160mm, margin: (x: 14mm, y: 13mm), size: 10.5pt)
+#show: base.with(paged: true, width: 160mm, margin: (x: 14mm, y: 13mm), size: 10.5pt)
 #set par(leading: 0.75em)
 
 // The revenue stamp is stuck on a receipt in India only.
@@ -14,6 +14,7 @@
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [
 #if i > 0 { pagebreak() }
+#fit-page[
 #let month = receipt.label
 #let when = receipt.date
 #let memo = receipt.number
@@ -50,4 +51,5 @@
   align(left, signature-block(data, t.second_signature, name: data.tenant_name, key: "driver_signature")),
   signature-block(data, t.landlord_signature, name: data.landlord_name),
 )
+]
 ]

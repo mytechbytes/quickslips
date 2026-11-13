@@ -2,12 +2,13 @@
 // the landlord's acknowledgement with the amount in words, three conditions and a signature.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(width: 140mm, margin: (x: 12mm, y: 12mm), size: 9.5pt)
+#show: base.with(paged: true, width: 140mm, margin: (x: 12mm, y: 12mm), size: 9.5pt)
 #set par(leading: 0.8em)
 
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [
 #if i > 0 { pagebreak() }
+#fit-page[
 #let month = receipt.label
 #let when = receipt.date
 #let memo = receipt.number
@@ -56,4 +57,5 @@
 #signature-block(data, t.landlord_signature, name: data.landlord_name)
 #v(2mm)
 #text(size: 8.5pt)[#t.name: #data.landlord_name \ #t.month: #month]
+]
 ]

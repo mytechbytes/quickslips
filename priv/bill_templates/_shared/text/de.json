@@ -28,11 +28,11 @@
     "Dez"
   ],
   "categories": {
-    "Travel": "Reisen & Verkehr",
-    "Home & utilities": "Haushalt & Nebenkosten",
+    "Travel": "Reisen & Fahrzeuge",
+    "Home & utilities": "Haus & Nebenkosten",
     "Health & learning": "Gesundheit & Bildung",
-    "Food & shopping": "Essen & Einkaufen",
-    "Work": "Beruf"
+    "Food & shopping": "Einkaufen & Essen",
+    "Work": "Geschäft & Gehalt"
   },
   "in_words": {
     "label": "Betrag in Worten",

@@ -28,11 +28,11 @@
     "दिस."
   ],
   "categories": {
-    "Travel": "यात्रा",
-    "Home & utilities": "घर और उपयोगिताएं",
+    "Travel": "यात्रा और वाहन",
+    "Home & utilities": "घर और उपयोगिताएँ",
     "Health & learning": "स्वास्थ्य और शिक्षा",
-    "Food & shopping": "खान-पान और खरीदारी",
-    "Work": "कार्य"
+    "Food & shopping": "खरीदारी और भोजन",
+    "Work": "व्यापार और वेतन"
   },
   "in_words": {
     "label": "राशि शब्दों में",

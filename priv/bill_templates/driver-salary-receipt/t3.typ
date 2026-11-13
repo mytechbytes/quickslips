@@ -2,7 +2,8 @@
 // money below it, with the revenue stamp.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
+#let on-a5 = data.at("paper_size", default: none) == "a5"
+#show: base.with(paged: true, width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
 #set par(leading: 0.75em)
 
 #let overtime = num(data, "overtime")
@@ -26,6 +27,7 @@
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [
 #if i > 0 { pagebreak() }
+#fit-page(skip: on-a5)[
 #let month = receipt.label
 #let when = receipt.date
 #let memo = receipt.number
@@ -47,8 +49,7 @@
   align(bottom, signature-block(data, t.employer_signature, name: employee)),
 )
 
-// In the browser preview the acknowledgement is a page of its own, as the second part of the receipt.
-#if preview { pagebreak() } else [
+#[
   #v(1mm)
   #line(length: 100%, stroke: 1.4pt)
   #v(3mm)
@@ -69,4 +70,5 @@
   align(bottom, signature-block(data, t.ack_thumb, key: "driver_signature")),
 )
 #align(right)[*#t.driver_name:* #data.driver_name]
+]
 ]

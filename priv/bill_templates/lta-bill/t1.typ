@@ -4,6 +4,7 @@
 // data.json (next to this file). The words come from text.json (`t`), the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+#let on-sheet = data.at("paper_size", default: none) != none
 #let some(key) = opt(data, key)
 #show: base.with(width: 120mm, margin: (x: 7mm, y: 7mm), size: 8.5pt)
 #set par(leading: 0.55em)
@@ -97,7 +98,7 @@
 #kv(t.net_amount, money(base-fare))
 #kv(t.taxable_amount, money(base-fare))
 // In the browser preview the next part is a page of its own.
-#if preview { pagebreak(weak: true) }
+#if preview and not on-sheet { pagebreak(weak: true) }
 #v(3mm)
 #align(center, text(size: 10pt, weight: "bold", t.terms))
 #v(2mm)

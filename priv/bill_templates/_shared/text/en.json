@@ -2,11 +2,11 @@
   "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
   "months_short": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   "categories": {
-    "Travel": "Travel",
-    "Home & utilities": "Home & utilities",
-    "Health & learning": "Health & learning",
-    "Food & shopping": "Food & shopping",
-    "Work": "Work"
+    "Travel": "Travel & Vehicles",
+    "Home & utilities": "Home & Utilities",
+    "Health & learning": "Health & Education",
+    "Food & shopping": "Shopping & Dining",
+    "Work": "Business & Payroll"
   },
   "in_words": {
     "label": "Amount in words",

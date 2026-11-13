@@ -2,7 +2,8 @@
 // acknowledgement that the helper signs.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
+#let on-a5 = data.at("paper_size", default: none) == "a5"
+#show: base.with(paged: true, width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
 // On an A5 sheet the two parts do not fit one page: the acknowledgement starts the next one.
 #let small-sheet = data.at("paper_size", default: none) == "a5"
 #set par(leading: 0.75em)
@@ -20,6 +21,7 @@
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [
 #if i > 0 { pagebreak() }
+#fit-page(skip: on-a5)[
 #let month = receipt.label
 #let when = receipt.date
 #let memo = receipt.number
@@ -48,7 +50,7 @@
   align(bottom, signature-block(data, t.employer_signature, name: employee)),
 )
 
-#if small-sheet or preview { pagebreak() } else [
+#if small-sheet { pagebreak() } else [
   #v(2mm)
   #line(length: 100%, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"))
   #v(3mm)
@@ -70,4 +72,5 @@
   align(bottom, signature-block(data, t.ack_thumb, key: "driver_signature")),
 )
 #align(right)[*#t.helper_name:* #data.helper_name]
+]
 ]

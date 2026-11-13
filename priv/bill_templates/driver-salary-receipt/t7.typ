@@ -2,7 +2,7 @@
 // in words, and the signatures of the employer and the driver.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(width: 150mm, margin: (x: 12mm, y: 12mm), size: 10pt)
+#show: base.with(paged: true, width: 150mm, margin: (x: 12mm, y: 12mm), size: 10pt)
 #set par(leading: 0.75em)
 
 #let overtime = num(data, "overtime")
@@ -26,6 +26,7 @@
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [
 #if i > 0 { pagebreak() }
+#fit-page[
 #let month = receipt.label
 #let when = receipt.date
 #let memo = receipt.number
@@ -73,4 +74,5 @@
   align(left + bottom, box(width: 52mm, signature-block(data, t.er_signature))),
   align(right + bottom, signature-block(data, t.ack_thumb, key: "driver_signature", name: data.driver_name)),
 )
+]
 ]

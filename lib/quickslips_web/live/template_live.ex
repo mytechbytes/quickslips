@@ -66,6 +66,7 @@ defmodule QuickSlipsWeb.TemplateLive do
             extra_signature_ids: (document && document.options["signatures"]) || %{},
             paper: (document && document.options["paper"]) || "",
             margin: (document && document.options["margin"]) || "",
+            watermark: (document && document.options["watermark"]) || %{},
             feedback_path: feedback_path("/#{locale.code}/#{public_slug}")
           )
 
@@ -234,6 +235,7 @@ defmodule QuickSlipsWeb.TemplateLive do
       "preview_updating" => gettext("Updating preview…"),
       "preview_failed" => gettext("Preview could not be rendered."),
       "preview_alt" => gettext("Document preview"),
+      "watermark_image_error" => gettext("Choose a PNG or JPG picture of up to 1.5 MB."),
       "group_business" => gettext("Business"),
       "group_registration" => gettext("Registration"),
       "group_document" => gettext("Document"),

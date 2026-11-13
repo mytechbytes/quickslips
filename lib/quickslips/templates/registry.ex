@@ -19,7 +19,7 @@ defmodule QuickSlips.Templates.Registry do
                healthz thumbnails sitemap sitemap.xml sitemap.xsl terms privacy disclaimer contact sw.js favicon.ico robots.txt admin)
 
   # Field keys the server fills in itself (the names of a business's pictures), so a template can't use them.
-  @reserved_keys ~w(logo signature driver_signature stamp signature_3 signature_4 signature_5 paper_size margin_size)
+  @reserved_keys ~w(logo signature driver_signature stamp signature_3 signature_4 signature_5 paper_size margin_size watermark)
 
   ## Client API
 

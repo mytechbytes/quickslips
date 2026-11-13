@@ -77,7 +77,7 @@ defmodule QuickSlipsWeb.SitemapLiveTest do
       |> LazyHTML.query("#sitemap-en-in h2")
       |> Enum.map(&(&1 |> LazyHTML.text() |> String.trim()))
 
-    assert "Travel" in categories
+    assert "Travel & Vehicles" in categories
     # the language of a group is marked, for a screen reader and for the browser's fonts
     assert html |> LazyHTML.query("#sitemap-ja-jp [lang=ja]") |> Enum.count() >= 2
   end
@@ -160,7 +160,7 @@ defmodule QuickSlipsWeb.SitemapLiveTest do
       # 34 bills and the catalogue
       assert english.count == 35
 
-      assert %{bills: bills} = Enum.find(english.categories, &(&1.name == "Travel"))
+      assert %{bills: bills} = Enum.find(english.categories, &(&1.name == "Travel & Vehicles"))
       assert %{path: "/en-in/fuel-bill-generator"} = Enum.find(bills, &(&1.name == "Fuel Bill"))
     end
 

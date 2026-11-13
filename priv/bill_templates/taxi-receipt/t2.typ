@@ -1,6 +1,7 @@
 // Cab bill, design t2: the summary of a ride and, below it, the invoice of the driver with the tax split in two lines.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+#let on-sheet = data.at("paper_size", default: none) != none
 // The receipt and the invoice number, optional: only those given are printed.
 #let numbers = ((t.receipt_number, opt(data, "receipt_number")), (t.invoice_number, opt(data, "invoice_number"))).filter(pair => pair.at(1) != none)
 #show: base.with(width: 117mm, margin: (x: 6mm, y: 6mm), size: 9pt)
@@ -94,7 +95,7 @@
 ]
 
 // In the browser preview the invoice is a page of its own, below the summary of the ride.
-#if preview { pagebreak() } else { v(4mm) }
+#if preview and not on-sheet { pagebreak() } else { v(4mm) }
 
 #card[
   #align(center)[

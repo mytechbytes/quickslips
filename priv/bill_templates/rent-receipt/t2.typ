@@ -2,7 +2,8 @@
 // the rent to keep.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(width: 160mm, margin: (x: 14mm, y: 13mm), size: 10pt)
+#let on-a5 = data.at("paper_size", default: none) == "a5"
+#show: base.with(paged: true, width: 160mm, margin: (x: 14mm, y: 13mm), size: 10pt)
 #set par(leading: 0.75em)
 
 #let receiver = opt(data, "receiver_name")
@@ -16,6 +17,7 @@
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [
 #if i > 0 { pagebreak() }
+#fit-page(skip: on-a5)[
 #let month = receipt.label
 #let when = receipt.date
 #let memo = receipt.number
@@ -41,8 +43,7 @@
 #v(1mm)
 #signature-block(data, t.second_signature, name: data.tenant_name, key: "driver_signature")
 
-// In the browser preview the acknowledgement slip is a page of its own.
-#if preview { pagebreak() } else [
+#[
   #v(4mm)
   #line(length: 100%, stroke: (paint: luma(120), thickness: 0.7pt, dash: "dashed"))
   #v(4mm)
@@ -68,4 +69,5 @@
 )
 #v(2mm)
 #signature-block(data, t.landlord_signature, name: receiver)
+]
 ]

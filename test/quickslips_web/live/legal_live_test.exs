@@ -74,7 +74,7 @@ defmodule QuickSlipsWeb.LegalLiveTest do
       for {path, id, title} <- @pages do
         {:ok, view, _html} = live(conn, path)
         assert has_element?(view, "##{id} h1", title)
-        refute has_element?(view, "#site-footer")
+        assert has_element?(view, "#site-footer")
       end
     end
   end

@@ -28,11 +28,11 @@
     "12月"
   ],
   "categories": {
-    "Travel": "出行",
-    "Home & utilities": "居家与水电",
+    "Travel": "出行与车辆",
+    "Home & utilities": "家居与水电",
     "Health & learning": "健康与教育",
-    "Food & shopping": "餐饮与购物",
-    "Work": "工作"
+    "Food & shopping": "购物与餐饮",
+    "Work": "商务与薪资"
   },
   "in_words": {
     "label": "大写金额",

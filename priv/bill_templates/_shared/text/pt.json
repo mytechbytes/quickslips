@@ -28,11 +28,11 @@
     "dez"
   ],
   "categories": {
-    "Travel": "Viagens",
-    "Home & utilities": "Casa e contas",
+    "Travel": "Viagens e veículos",
+    "Home & utilities": "Casa e serviços",
     "Health & learning": "Saúde e educação",
-    "Food & shopping": "Comida e compras",
-    "Work": "Trabalho"
+    "Food & shopping": "Compras e refeições",
+    "Work": "Negócios e salários"
   },
   "in_words": {
     "label": "Valor por extenso",

@@ -3,7 +3,7 @@
 // text.json (`t`), the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
+#show: base.with(paged: true, width: 150mm, margin: (x: 13mm, y: 12mm), size: 10pt)
 #set par(leading: 0.75em)
 
 // What the helper is paid in a month, and the revenue stamp (stuck on a receipt in India only).
@@ -19,6 +19,7 @@
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [
 #if i > 0 { pagebreak() }
+#fit-page[
 #let month = receipt.label
 #let when = receipt.date
 #let memo = receipt.number
@@ -53,4 +54,5 @@
   stamp(),
   align(bottom, signature-block(data, t.employer_signature, name: employee)),
 )
+]
 ]

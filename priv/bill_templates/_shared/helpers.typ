@@ -34,13 +34,91 @@
   names.at(value, default: value)
 }
 
+// The sheet the user chose for the document, if any, and the size of the area that its margins leave (set by `base`).
+#let fit-state = state("sheet-fit", none)
+
+// One page of a slip on the sheet the user chose: scaled, all of it, as large as will go in the free area of the sheet and put
+// in the middle, across and down. With no sheet chosen (or `skip`, for a sheet too small for the design) it is left as it is.
+// The body must not hold a page break (it is in a block).
+#let fit-page(body, skip: false) = context {
+  let cfg = fit-state.get()
+  if cfg == none or skip { body } else {
+    let natural = measure(width: cfg.inner, body).height
+    let k = calc.max(calc.min(cfg.free-width / cfg.inner, if natural > 0pt { cfg.free-height / natural } else { 3 }, 3), 0.3)
+    block(width: 100%, height: 100%, align(center + horizon, scale(k * 100%, reflow: true, block(width: cfg.inner, align(start + top, body)))))
+  }
+}
+
+// The mark of QuickSlips, drawn small in a staggered grid over the preview (not the PDF): the logo, a twentieth of its strength.
+#let brand-svg = bytes("<svg xmlns='http://www.w3.org/2000/svg' viewBox='24 24 976 976' width='64' height='64'><g opacity='0.05'><rect x='24' y='24' width='976' height='976' rx='185' fill='#177457'/><path fill='#f9f4ea' fill-rule='evenodd' d='M272 478a216.5 216.5 0 1 0 433 0a216.5 216.5 0 1 0-433 0ZM389 473a100 100 0 1 0 200 0a100 100 0 1 0-200 0Z'/><polygon points='530,483 754,691 734,759 675,702 626,758 451,557' fill='#e97720' stroke='#177457' stroke-width='72' stroke-linejoin='round' paint-order='stroke'/></g></svg>")
+#let brand-mark(size) = {
+  let pitch = 22mm
+  let icon = 7mm
+  for row in range(calc.ceil(size.height / pitch) + 1) {
+    for col in range(calc.ceil(size.width / pitch) + 1) {
+      let shift = if calc.odd(row) { pitch / 2 } else { 0pt }
+      place(top + left, dx: col * pitch + shift - pitch / 2, dy: row * pitch, image(brand-svg, format: "svg", width: icon))
+    }
+  }
+}
+
+// The watermark the user chose (`"watermark"` in the data, see `Templates.watermark_data/1`): a text or a picture, put `count` times
+// on the page in a `layout` (diagonal, horizontal, vertical or grid), each turned by `angle` degrees.
+#let user-mark(size, cfg) = {
+  let w = size.width
+  let h = size.height
+  let n = calc.clamp(int(cfg.at("count", default: 1)), 1, 50)
+  let angle = float(cfg.at("angle", default: 0)) * 1deg
+  let layout = cfg.at("layout", default: "diagonal")
+  let rows = calc.max(1, calc.min(n, int(calc.round(calc.sqrt(n * h / w)))))
+  let cols = calc.ceil(n / rows)
+  // Where the middle of each mark goes, from the top left corner of the page.
+  let points = if layout == "horizontal" {
+    range(n).map(i => (w * (i + 0.5) / n, h / 2))
+  } else if layout == "vertical" {
+    range(n).map(i => (w / 2, h * (i + 0.5) / n))
+  } else if layout == "grid" {
+    range(n).map(i => (w * (calc.rem(i, cols) + 0.5) / cols, h * (calc.quo(i, cols) + 0.5) / rows))
+  } else {
+    // On one straight line at 45 degrees through the middle of the page, spread over most of its length.
+    let step = calc.min(w, h) * 0.8 / n
+    range(n).map(i => (w / 2 + (i - (n - 1) / 2) * step, h / 2 - (i - (n - 1) / 2) * step))
+  }
+  let slot = if layout == "horizontal" { w / n } else if layout == "vertical" { h / n } else if layout == "grid" {
+    calc.min(w / cols, h / rows)
+  } else { calc.min(w, h) * 0.8 * calc.sqrt(2) / n }
+  let piece = if cfg.at("type", default: "text") == "image" {
+    let name = cfg.at("image", default: none)
+    if name == none { none } else {
+      let width = calc.min(slot * 0.6, calc.min(w, h) * 0.6)
+      // A picture cannot be made see-through here, so a white veil over it (the page behind is white) makes it faint.
+      box(inset: 0pt, {
+        image("/" + name, width: width)
+        place(top + left, rect(width: 100%, height: 100%, fill: white.transparentize(72%), stroke: none))
+      })
+    }
+  } else {
+    let words = cfg.at("text", default: "")
+    if words == "" { none } else {
+      let size = calc.min(calc.max(slot * 0.7 / (words.clusters().len() * 0.55), 6pt), 64pt, calc.min(w, h) * 0.4)
+      text(size: size, weight: "bold", fill: luma(120).transparentize(70%), words)
+    }
+  }
+  if piece != none {
+    let own = measure(piece)
+    for (x, y) in points {
+      place(top + left, dx: x - own.width / 2, dy: y - own.height / 2, rotate(-angle, piece))
+    }
+  }
+}
+
 // The page: size, margins, font, and the watermark of the preview. Use it with `#show: base.with(...)`.
 // A slip (a till receipt) has its own `width`, and a `height` that is `auto`: the paper is as long as the text.
 //
 // The user may choose a sheet for the document (`"paper_size"` in the data: "a4", "a5" or "us-letter"). A layout made
 // for a named paper then uses that paper; a slip is put at the top of the sheet at its own width. A roll receipt (a
 // slip of 90 mm or less, made for a thermal printer) keeps its own width whatever is chosen.
-#let base(paper: "a5", width: none, height: auto, margin: 14mm, size: 10pt, body) = {
+#let base(paged: false, paper: "a5", width: none, height: auto, margin: 14mm, size: 10pt, body) = {
   let slip = width != none
   let roll = slip and width <= 90mm
   let chosen = json("/data.json").at("paper_size", default: none)
@@ -52,20 +130,37 @@
     moderate: (0.75, 1), classic: (1.25, 1), generous: (1.5, 1.25), wide: (2, 1), "extra-wide": (2.5, 1.5),
   )
   let (scale-x, scale-y) = if roll { (1, 1) } else { factors.at(json("/data.json").at("margin_size", default: ""), default: (1, 1)) }
+  // The side margin of the layout itself, before the user's choice scales it.
+  let own-side = if type(margin) == dictionary { margin.at("x", default: 14mm) } else { margin }
   let margin = if type(margin) == dictionary {
     margin.pairs().map(((key, value)) => (key, value * if key in ("x", "left", "right") { scale-x } else { scale-y })).to-dict()
   } else { (x: margin * scale-x, y: margin * scale-y) }
-  let mark = if preview {
-    rotate(-30deg, text(size: if slip and width < 100mm { 22pt } else { 54pt }, weight: "bold", fill: luma(225))[QUICK SLIPS])
+  // The watermarks, behind the page: the mark of QuickSlips on the preview, and the one the user chose (on the preview and the PDF).
+  let user-watermark = json("/data.json").at("watermark", default: none)
+  let mark = if preview or user-watermark != none {
+    // One block as tall as the page, with everything put in it from its top left corner: stacked blocks, or a block that is
+    // not the size of the page, are centred by the browser's typesetter on a page that is as long as its text.
+    layout(size => block(width: size.width, height: size.height, {
+      if preview { brand-mark(size) }
+      if user-watermark != none { user-mark(size, user-watermark) }
+    }))
   }
   if sheet != none and slip {
-    // The slip sits in the middle of the sheet: the margins at the sides are what is left of the sheet's width. The
-    // body is not in a block (a block cannot hold a page break, and a design may make a page for each receipt).
-    let side = margin.at("x", default: 14mm)
+    // The slip is fitted to the sheet. The margins are those of the sheet, in the proportions of a word processor (a normal
+    // one is an inch on every side, see the factors above) and applied to the top, the bottom and both sides. What is left is
+    // the free area: the slip is scaled, as a whole, as large as will go in it (a small sheet shrinks it) and put in the
+    // middle (see `fit-page`). A design that makes a page for each receipt calls `fit-page` for each; any other is fitted here.
     let across = (a4: 210mm, a5: 148mm, "us-letter": 215.9mm).at(sheet, default: 210mm)
-    set page(paper: sheet, margin: (x: calc.max((across - (width - 2 * side)) / 2, 15mm * scale-x), y: 15mm * scale-y), background: mark)
+    let tall = (a4: 297mm, a5: 210mm, "us-letter": 279.4mm).at(sheet, default: 297mm)
+    set page(paper: sheet, margin: (x: 25.4mm * scale-x, y: 25.4mm * scale-y), background: mark)
     set text(font: text-data.at("fonts", default: ("Noto Sans",)), size: size, lang: text-data.at("lang", default: "en"))
-    body
+    fit-state.update((
+      inner: width - 2 * own-side,
+      free-width: across - 2 * 25.4mm * scale-x,
+      free-height: tall - 2 * 25.4mm * scale-y,
+    ))
+    // A design that makes a page for each receipt (`paged: true`) cannot have its body in a block: it fits each page itself.
+    if paged or repr(body).contains("pagebreak") { body } else { fit-page(body) }
   } else {
     set page(
       ..if sheet != none { (paper: sheet) } else if slip { (width: width, height: height) } else { (paper: paper) },

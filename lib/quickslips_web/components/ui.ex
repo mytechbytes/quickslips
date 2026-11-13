@@ -461,13 +461,15 @@ defmodule QuickSlipsWeb.UI do
   ## Menus (Tailwind Plus Elements)
 
   # The look of a menu panel and of its items.
-  defp menu_class do
+  @doc false
+  def menu_class do
     "origin-top-right rounded-field bg-surface py-1 shadow-pop outline outline-line transition transition-discrete motion-reduce:transition-none " <>
       "[--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 " <>
       "data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
   end
 
-  defp menu_item_class,
+  @doc false
+  def menu_item_class,
     do:
       "flex w-full items-center gap-2 px-3 py-2 text-left text-sm/6 text-ink focus:bg-surface-muted focus:outline-hidden"
 
@@ -564,6 +566,10 @@ defmodule QuickSlipsWeb.UI do
   attr :locale, :map, required: true, doc: "the locale of the page, from `QuickSlips.Locales`"
   attr :on_dark, :boolean, default: false
 
+  attr :compact, :boolean,
+    default: false,
+    doc: "show the choice in words on a very wide screen only (2xl), not from sm"
+
   def locale_menu(assigns) do
     ~H"""
     <button
@@ -581,11 +587,14 @@ defmodule QuickSlipsWeb.UI do
     >
       <span class="sr-only">{gettext("Language, Country & Currency")}</span>
       <.icon name="hero-globe-alt" class="size-5" />
-      <span class="hidden text-sm/6 font-medium sm:inline">
+      <span class={["hidden text-sm/6 font-medium", (@compact && "2xl:inline") || "sm:inline"]}>
         <span lang={@locale.language}>{@locale.name}</span>
         · {country_name(@locale.country)} · <.currency_label locale={@locale} />
       </span>
-      <.icon name="hero-chevron-down" class="hidden size-4 opacity-70 sm:block" />
+      <.icon
+        name="hero-chevron-down"
+        class={["hidden size-4 opacity-70", (@compact && "2xl:block") || "sm:block"]}
+      />
     </button>
     <div id={@id}>
       <.locale_dialog id={@id} locale={@locale} />
@@ -776,7 +785,7 @@ defmodule QuickSlipsWeb.UI do
       >
         <span class="sr-only">{gettext("Open user menu")}</span>
         <.avatar initials={initials(@user)} />
-        <span class="hidden lg:flex lg:items-center">
+        <span class="hidden 2xl:flex 2xl:items-center">
           <span class="text-sm/6 font-semibold text-ink">{display_name(@user)}</span>
           <.icon name="hero-chevron-down" class="ml-2 size-4 text-ink-faint" />
         </span>

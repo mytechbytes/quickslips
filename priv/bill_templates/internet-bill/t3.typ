@@ -4,6 +4,7 @@
 // file). The words come from text.json (`t`), the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+#let on-sheet = data.at("paper_size", default: none) != none
 #let some(key) = opt(data, key)
 #let india = region.country == "in"
 
@@ -105,7 +106,7 @@
   v(3mm)
 }
 // In the browser preview the next part is a page of its own.
-#if preview { pagebreak(weak: true) }
+#if preview and not on-sheet { pagebreak(weak: true) }
 #if terms-list.len() > 0 {
   block(width: 100%, stroke: 0.6pt + luma(220), radius: 2mm, clip: true, {
     block(width: 100%, fill: accent, inset: (x: 3mm, y: 2.4mm), text(size: 11pt, weight: "bold", fill: white, t.terms_title))

@@ -25,6 +25,8 @@ export async function downloadPdf(
   driverSignatureId?: number | null,
   // The further signatures of the design, by slot ("signature_3"): the id of a saved signature each.
   extraSignatureIds?: Record<string, number>,
+  // The watermark: its settings, with the picture (if it is one) as a data URL.
+  watermark?: Record<string, unknown>,
 ): Promise<DownloadResult> {
   const csrf = document.querySelector<HTMLMetaElement>("meta[name='csrf-token']")?.content ?? ""
 
@@ -43,6 +45,7 @@ export async function downloadPdf(
       stamp,
       paper,
       margin,
+      watermark,
     }),
   })
 

@@ -15,6 +15,54 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
 
   defp sample, do: "priv/bill_templates/fuel-bill/sample.json" |> File.read!() |> Jason.decode!()
 
+  describe "the watermark" do
+    defp watermarked(conn, watermark) do
+      post(conn, ~p"/api/generate", %{
+        slug: "fuel-bill",
+        template: "t1",
+        data: sample(),
+        turnstile_token: "test",
+        watermark: watermark
+      })
+    end
+
+    test "a text in every layout makes a PDF", %{conn: conn} do
+      for layout <- ~w(diagonal horizontal vertical grid) do
+        conn =
+          watermarked(conn, %{
+            "type" => "text",
+            "text" => "PAID",
+            "layout" => layout,
+            "angle" => 20,
+            "count" => 5
+          })
+
+        assert "%PDF" <> _ = response(conn, 200)
+      end
+    end
+
+    test "a picture is drawn from the bytes that were sent", %{conn: conn} do
+      png = "priv/static/images/logo-mark-512.png" |> File.read!() |> Base.encode64()
+
+      conn =
+        watermarked(conn, %{
+          "type" => "image",
+          "image_data" => "data:image/png;base64," <> png,
+          "layout" => "grid",
+          "count" => 6
+        })
+
+      assert "%PDF" <> _ = response(conn, 200)
+    end
+
+    test "a picture that is not a picture is a bad request", %{conn: conn} do
+      conn =
+        watermarked(conn, %{"type" => "image", "image_data" => "data:image/png;base64,AAAA"})
+
+      assert json_response(conn, 400)
+    end
+  end
+
   test "returns a PDF download", %{conn: conn} do
     conn =
       post(conn, ~p"/api/generate", %{

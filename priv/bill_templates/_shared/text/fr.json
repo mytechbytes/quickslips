@@ -28,11 +28,11 @@
     "déc."
   ],
   "categories": {
-    "Travel": "Voyage",
-    "Home & utilities": "Maison et charges",
-    "Health & learning": "Santé et formation",
-    "Food & shopping": "Alimentation et achats",
-    "Work": "Travail"
+    "Travel": "Voyage et véhicules",
+    "Home & utilities": "Maison et services",
+    "Health & learning": "Santé et éducation",
+    "Food & shopping": "Courses et restaurants",
+    "Work": "Entreprise et paie"
   },
   "in_words": {
     "label": "Montant en lettres",

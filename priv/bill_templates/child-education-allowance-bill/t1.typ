@@ -5,6 +5,7 @@
 // the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+#let on-sheet = data.at("paper_size", default: none) != none
 #let some(key) = opt(data, key)
 #show: base.with(width: 120mm, margin: (x: 8mm, y: 8mm), size: 8.5pt)
 #set par(leading: 0.55em)
@@ -48,7 +49,7 @@
   ..children.map(((n, key)) => ([#n], some(key + "_name"), if some(key + "_dob") != none { fmt-date(some(key + "_dob")) } else { [] }, some(key + "_standard"), some(key + "_school"))).flatten(),
 )
 // In the browser preview the expenditure is a page of its own.
-#if preview { pagebreak(weak: true) }
+#if preview and not on-sheet { pagebreak(weak: true) }
 #v(3mm)
 #text(weight: "bold", [8. #t.expenditure_title])
 #v(1mm)

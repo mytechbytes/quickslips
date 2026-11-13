@@ -1,5 +1,6 @@
 import type { BillData, Business } from "./form"
 import { t } from "./i18n"
+import type { WatermarkPreview } from "./watermark"
 
 type Reply = { id: number; svg?: string; error?: string }
 
@@ -68,6 +69,8 @@ export function createPreview(opts: {
   let paper = ""
   // The margins chosen ("narrow", "wide"), or "" for the layout's own.
   let margin = ""
+  // The watermark the user chose: its settings, and its picture if it is one.
+  let watermark: WatermarkPreview | null = null
 
   const img = document.createElement("img")
   img.alt = t("preview_alt")
@@ -164,8 +167,14 @@ export function createPreview(opts: {
       id,
       source: await loadSource(),
       helpers: await loadHelpers(),
-      data: { ...data, ...imageNames, ...(paper ? { paper_size: paper } : {}), ...(margin ? { margin_size: margin } : {}) },
-      images,
+      data: {
+        ...data,
+        ...imageNames,
+        ...(paper ? { paper_size: paper } : {}),
+        ...(margin ? { margin_size: margin } : {}),
+        ...(watermark ? { watermark: watermark.settings } : {}),
+      },
+      images: watermark?.image ? { ...images, [watermark.image.name]: watermark.image.bytes } : images,
       text,
       region,
       fonts: opts.fonts,
@@ -221,6 +230,11 @@ export function createPreview(opts: {
     setMargin(choice: string) {
       margin = choice
       if (lastData) renderNow(lastData)
+    },
+    /** Draw the document with this watermark (`null`: none). */
+    setWatermark(choice: WatermarkPreview | null) {
+      watermark = choice
+      if (lastData) this.schedule(lastData, 250)
     },
     /** Draw the document on this sheet (`""`: the layout's own size). A roll receipt ignores it, as the PDF does. */
     setPaper(choice: string) {

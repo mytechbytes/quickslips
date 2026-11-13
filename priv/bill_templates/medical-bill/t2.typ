@@ -2,6 +2,7 @@
 // charges with the totals, the balance, then a detailed breakup line by line.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+#let on-sheet = data.at("paper_size", default: none) != none
 #let some(key) = opt(data, key)
 
 // The fixed charges of the form that are not 0, then the itemised lines (units times price).
@@ -127,7 +128,7 @@
 #v(2mm)
 #double-rule()
 // In the browser preview the next part is a page of its own.
-#if preview { pagebreak(weak: true) }
+#if preview and not on-sheet { pagebreak(weak: true) }
 #v(1.5mm)
 #heading-of(t.breakup)
 #v(1mm)

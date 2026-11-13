@@ -2,7 +2,7 @@
 // amount, an acknowledgement with the amount in words, and three boxes (received by, revenue stamp, prepared by).
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
-#show: base.with(width: 150mm, margin: (x: 12mm, y: 12mm), size: 9.5pt)
+#show: base.with(paged: true, width: 150mm, margin: (x: 12mm, y: 12mm), size: 9.5pt)
 #set par(leading: 0.75em)
 
 #let overtime = num(data, "overtime")
@@ -26,6 +26,7 @@
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [
 #if i > 0 { pagebreak() }
+#fit-page[
 #let month = receipt.label
 #let when = receipt.date
 #let memo = receipt.number
@@ -82,4 +83,5 @@
     }],
   ).map(cell => block(width: 100%, height: 38mm, stroke: 0.6pt + luma(190), inset: 3mm, radius: 1.5mm, cell)),
 )
+]
 ]

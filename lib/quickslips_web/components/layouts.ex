@@ -356,6 +356,51 @@ defmodule QuickSlipsWeb.Layouts do
     """
   end
 
+  attr :id, :string, required: true
+  attr :label, :string, required: true
+  attr :icon, :string, required: true
+  attr :current, :boolean, default: false, doc: "one of the pages of the menu is open"
+  attr :items, :list, required: true, doc: "`[%{id:, label:, icon:, path:, current:}]`"
+
+  # A menu of the bar at the top of the page (laptop) that opens a list of pages: the second level.
+  defp top_menu(assigns) do
+    ~H"""
+    <el-dropdown id={@id} class="relative">
+      <button
+        id={"#{@id}-trigger"}
+        type="button"
+        aria-current={@current && "page"}
+        class={top_nav_class()}
+      >
+        <.icon name={@icon} class="size-5 shrink-0" />{@label}
+        <.icon name="hero-chevron-down" class="size-4 opacity-70" />
+      </button>
+      <el-menu anchor="bottom start" popover class={["w-56", QuickSlipsWeb.UI.menu_class()]}>
+        <.link
+          :for={item <- @items}
+          id={item.id}
+          navigate={item.path}
+          aria-current={item.current && "page"}
+          class={[
+            QuickSlipsWeb.UI.menu_item_class(),
+            "aria-[current=page]:bg-primary-soft aria-[current=page]:font-semibold aria-[current=page]:text-primary"
+          ]}
+        >
+          <.icon name={item.icon} class="size-5 shrink-0 text-ink-muted" />{item.label}
+        </.link>
+      </el-menu>
+    </el-dropdown>
+    """
+  end
+
+  # A link of the menu at the top of the page (laptop), with the page that is open marked.
+  defp top_nav_class do
+    [
+      "flex min-h-9 items-center gap-x-2 rounded-button px-3 py-1.5 text-sm/6 font-semibold whitespace-nowrap text-ink-muted hover:bg-surface-muted hover:text-ink",
+      "aria-[current=page]:bg-primary-soft aria-[current=page]:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+    ]
+  end
+
   defp footer_link_class do
     [
       "rounded-field text-sm/6 text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
@@ -372,198 +417,230 @@ defmodule QuickSlipsWeb.Layouts do
       |> assign(:admin?, QuickSlips.Accounts.admin?(assigns.current_scope.user))
 
     ~H"""
-    <%!-- Phone: a dark top bar with a menu --%>
-    <div class="lg:hidden">
-      <nav aria-label={gettext("Main")} class="bg-sidebar">
-        <div class="mx-auto max-w-8xl px-4 sm:px-6">
-          <div class="flex h-16 items-center justify-between">
-            <.wordmark id="m-logo" tone={:sidebar} navigate={~p"/dashboard"} />
-            <div class="-mr-2 flex items-center gap-x-1">
-              <.locale_menu id="m-locale-menu" locale={@locale} on_dark />
-              <.theme_menu id="m-theme-menu" on_dark />
-              <button
-                id="mobile-menu-toggle"
-                type="button"
-                command="--toggle"
-                commandfor="mobile-menu"
-                class="relative inline-flex size-10 sm:size-9 items-center justify-center rounded-full text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-              >
-                <span class="sr-only">{gettext("Open main menu")}</span>
-                <.icon name="hero-bars-3" class="size-6 in-aria-expanded:hidden" />
-                <.icon name="hero-x-mark" class="size-6 not-in-aria-expanded:hidden" />
-              </button>
+    <div class="flex min-h-screen flex-col">
+      <%!-- Phone: a dark top bar with a menu --%>
+      <div class="lg:hidden">
+        <nav aria-label={gettext("Main")} class="bg-sidebar">
+          <div class="mx-auto max-w-8xl px-4 sm:px-6">
+            <div class="flex h-16 items-center justify-between">
+              <.wordmark id="m-logo" tone={:sidebar} navigate={~p"/dashboard"} />
+              <div class="-mr-2 flex items-center gap-x-1">
+                <.locale_menu id="m-locale-menu" locale={@locale} on_dark />
+                <.theme_menu id="m-theme-menu" on_dark />
+                <button
+                  id="mobile-menu-toggle"
+                  type="button"
+                  command="--toggle"
+                  commandfor="mobile-menu"
+                  class="relative inline-flex size-10 sm:size-9 items-center justify-center rounded-full text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                >
+                  <span class="sr-only">{gettext("Open main menu")}</span>
+                  <.icon name="hero-bars-3" class="size-6 in-aria-expanded:hidden" />
+                  <.icon name="hero-x-mark" class="size-6 not-in-aria-expanded:hidden" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <el-disclosure id="mobile-menu" hidden class="block">
-          <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-            <.button id="m-new-document" navigate={home_path(@locale)} block on_dark class="mb-2">
-              <.icon name="hero-plus" class="size-5" /> {gettext("New document")}
-            </.button>
-            <.link
-              :for={{key, label, ic, path} <- nav_items()}
-              id={"m-nav-#{key}"}
-              navigate={path}
-              aria-current={@active == key && "page"}
-              class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-            >
-              <.icon name={ic} class="size-5 shrink-0" />{label}
-            </.link>
-          </div>
-          <div class="border-t border-on-sidebar/20 pt-4 pb-3">
-            <div class="flex items-center px-5">
-              <.avatar initials={initials(@user)} class="size-10" />
-              <div class="ml-3 min-w-0">
-                <div class="truncate text-base font-medium text-on-sidebar">
-                  {@user.name || @user.email}
+          <el-disclosure id="mobile-menu" hidden class="block">
+            <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+              <.button id="m-new-document" navigate={home_path(@locale)} block on_dark class="mb-2">
+                <.icon name="hero-plus" class="size-5" /> {gettext("New document")}
+              </.button>
+              <.link
+                :for={{key, label, ic, path} <- nav_items()}
+                id={"m-nav-#{key}"}
+                navigate={path}
+                aria-current={@active == key && "page"}
+                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+              >
+                <.icon name={ic} class="size-5 shrink-0" />{label}
+              </.link>
+            </div>
+            <div class="border-t border-on-sidebar/20 pt-4 pb-3">
+              <div class="flex items-center px-5">
+                <.avatar initials={initials(@user)} class="size-10" />
+                <div class="ml-3 min-w-0">
+                  <div class="truncate text-base font-medium text-on-sidebar">
+                    {@user.name || @user.email}
+                  </div>
+                  <div class="truncate text-sm font-medium text-on-sidebar/70">{@user.email}</div>
                 </div>
-                <div class="truncate text-sm font-medium text-on-sidebar/70">{@user.email}</div>
+              </div>
+              <div class="mt-3 space-y-1 px-2">
+                <.link
+                  id="m-settings"
+                  navigate={~p"/users/settings"}
+                  aria-current={@active == :settings && "page"}
+                  class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                >
+                  <.icon name="hero-cog-6-tooth" class="size-5 shrink-0" /> {gettext("Settings")}
+                </.link>
+                <.link
+                  :if={@admin?}
+                  id="m-messages"
+                  navigate={~p"/admin/messages"}
+                  aria-current={@active == :messages && "page"}
+                  class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                >
+                  <.icon name="hero-inbox" class="size-5 shrink-0" /> {gettext("Messages")}
+                </.link>
+                <.link
+                  :if={@contact?}
+                  id="m-contact"
+                  navigate={~p"/contact"}
+                  aria-current={@active == :contact && "page"}
+                  class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                >
+                  <.icon name="hero-chat-bubble-left-right" class="size-5 shrink-0" /> {gettext(
+                    "Contact"
+                  )}
+                </.link>
+                <.link
+                  id="m-logout"
+                  href={~p"/users/log-out"}
+                  method="delete"
+                  class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
+                >
+                  <.icon name="hero-arrow-right-start-on-rectangle" class="size-5 shrink-0" /> {gettext(
+                    "Log out"
+                  )}
+                </.link>
               </div>
             </div>
-            <div class="mt-3 space-y-1 px-2">
-              <.link
-                id="m-settings"
-                navigate={~p"/users/settings"}
-                aria-current={@active == :settings && "page"}
-                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-              >
-                <.icon name="hero-cog-6-tooth" class="size-5 shrink-0" /> {gettext("Settings")}
-              </.link>
-              <.link
-                :if={@admin?}
-                id="m-messages"
-                navigate={~p"/admin/messages"}
-                aria-current={@active == :messages && "page"}
-                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-              >
-                <.icon name="hero-inbox" class="size-5 shrink-0" /> {gettext("Messages")}
-              </.link>
-              <.link
-                :if={@contact?}
-                id="m-contact"
-                navigate={~p"/contact"}
-                aria-current={@active == :contact && "page"}
-                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-              >
-                <.icon name="hero-chat-bubble-left-right" class="size-5 shrink-0" /> {gettext(
-                  "Contact"
-                )}
-              </.link>
-              <.link
-                id="m-logout"
-                href={~p"/users/log-out"}
-                method="delete"
-                class="flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-button px-3 py-2 text-base font-medium text-on-sidebar/80 hover:bg-on-sidebar/10 hover:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-              >
-                <.icon name="hero-arrow-right-start-on-rectangle" class="size-5 shrink-0" /> {gettext(
-                  "Log out"
-                )}
-              </.link>
-            </div>
-          </div>
-        </el-disclosure>
-      </nav>
-    </div>
-
-    <%!-- Laptop: the dark sidebar --%>
-    <nav
-      aria-label={gettext("Main")}
-      class="hidden bg-sidebar ring-1 ring-on-sidebar/10 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col"
-    >
-      <div class="flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4">
-        <div class="flex h-16 shrink-0 items-center">
-          <.wordmark id="logo" tone={:sidebar} navigate={~p"/dashboard"} />
-        </div>
-        <.button id="new-document" navigate={home_path(@locale)} block on_dark>
-          <.icon name="hero-plus" class="size-5" /> {gettext("New document")}
-        </.button>
-        <div class="flex flex-1 flex-col">
-          <ul role="list" class="flex flex-1 flex-col gap-y-7">
-            <li>
-              <ul role="list" class="-mx-2 space-y-1">
-                <li :for={{key, label, ic, path} <- nav_items()}>
-                  <.link
-                    id={"nav-#{key}"}
-                    navigate={path}
-                    aria-current={@active == key && "page"}
-                    class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-                  >
-                    <.icon name={ic} class="size-6 shrink-0" />{label}
-                  </.link>
-                </li>
-              </ul>
-            </li>
-            <li class="mt-auto">
-              <ul role="list" class="-mx-2 space-y-1">
-                <li>
-                  <.link
-                    id="nav-settings"
-                    navigate={~p"/users/settings"}
-                    aria-current={@active == :settings && "page"}
-                    class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-                  >
-                    <.icon name="hero-cog-6-tooth" class="size-6 shrink-0" /> {gettext("Settings")}
-                  </.link>
-                </li>
-                <li :if={@admin?}>
-                  <.link
-                    id="nav-messages"
-                    navigate={~p"/admin/messages"}
-                    aria-current={@active == :messages && "page"}
-                    class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-                  >
-                    <.icon name="hero-inbox" class="size-6 shrink-0" /> {gettext("Messages")}
-                  </.link>
-                </li>
-                <li :if={@contact?}>
-                  <.link
-                    id="nav-contact"
-                    navigate={~p"/contact"}
-                    aria-current={@active == :contact && "page"}
-                    class="group flex min-h-10 sm:min-h-9 items-center gap-x-3 rounded-field p-2 text-sm/6 font-semibold text-on-sidebar/70 hover:bg-on-sidebar/5 hover:text-on-sidebar aria-[current=page]:bg-on-sidebar/10 aria-[current=page]:text-on-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-sidebar"
-                  >
-                    <.icon name="hero-chat-bubble-left-right" class="size-6 shrink-0" /> {gettext(
-                      "Contact"
-                    )}
-                  </.link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+          </el-disclosure>
+        </nav>
       </div>
-    </nav>
 
-    <div class="lg:pl-72">
-      <header class="sticky top-0 z-40 hidden h-16 shrink-0 items-center gap-x-3 border-b border-line bg-surface px-8 lg:flex">
-        <div class="ml-auto flex items-center gap-x-3">
-          <.locale_menu id="locale-menu" locale={@locale} />
-          <.theme_menu id="theme-menu" />
-          <div aria-hidden="true" class="h-6 w-px bg-line"></div>
-          <.user_menu id="user-menu" user={@user} />
-        </div>
-      </header>
+      <%!-- Laptop: the menu is on a bar at the top of the page --%>
+      <div class="flex grow flex-col">
+        <header class="sticky top-0 z-40 hidden h-16 shrink-0 items-center gap-x-4 border-b border-line bg-surface px-8 lg:flex">
+          <.wordmark id="logo" navigate={~p"/dashboard"} />
+          <nav aria-label={gettext("Main")} class="ml-2 flex min-w-0 items-center gap-x-1">
+            <.link
+              id="nav-dashboard"
+              navigate={~p"/dashboard"}
+              aria-current={@active == :dashboard && "page"}
+              class={top_nav_class()}
+            >
+              <.icon name="hero-squares-2x2" class="size-5 shrink-0" />{gettext("Dashboard")}
+            </.link>
+            <.link
+              id="nav-history"
+              navigate={~p"/history"}
+              aria-current={@active == :history && "page"}
+              class={top_nav_class()}
+            >
+              <.icon name="hero-document-text" class="size-5 shrink-0" />{gettext("Documents")}
+            </.link>
+            <%!-- What the user keeps to use again: one menu, so the bar stays short --%>
+            <.top_menu
+              id="nav-library"
+              label={gettext("Library")}
+              icon="hero-archive-box"
+              current={@active in [:businesses, :signatures, :stamps]}
+              items={[
+                %{
+                  id: "nav-businesses",
+                  label: gettext("Saved businesses"),
+                  icon: "hero-building-storefront",
+                  path: ~p"/businesses",
+                  current: @active == :businesses
+                },
+                %{
+                  id: "nav-signatures",
+                  label: gettext("Signatures"),
+                  icon: "hero-pencil",
+                  path: ~p"/signatures",
+                  current: @active == :signatures
+                },
+                %{
+                  id: "nav-stamps",
+                  label: gettext("Stamps"),
+                  icon: "hero-ticket",
+                  path: ~p"/stamps",
+                  current: @active == :stamps
+                }
+              ]}
+            />
+            <%!-- Help: the contact form, and for an admin the messages that come in --%>
+            <.top_menu
+              :if={@admin? and @contact?}
+              id="nav-help"
+              label={gettext("Help")}
+              icon="hero-lifebuoy"
+              current={@active in [:contact, :messages]}
+              items={[
+                %{
+                  id: "nav-contact",
+                  label: gettext("Contact"),
+                  icon: "hero-chat-bubble-left-right",
+                  path: ~p"/contact",
+                  current: @active == :contact
+                },
+                %{
+                  id: "nav-messages",
+                  label: gettext("Messages"),
+                  icon: "hero-inbox",
+                  path: ~p"/admin/messages",
+                  current: @active == :messages
+                }
+              ]}
+            />
+            <.link
+              :if={@contact? and not @admin?}
+              id="nav-contact"
+              navigate={~p"/contact"}
+              aria-current={@active == :contact && "page"}
+              class={top_nav_class()}
+            >
+              <.icon name="hero-chat-bubble-left-right" class="size-5 shrink-0" />{gettext("Contact")}
+            </.link>
+            <.link
+              :if={@admin? and not @contact?}
+              id="nav-messages"
+              navigate={~p"/admin/messages"}
+              aria-current={@active == :messages && "page"}
+              class={top_nav_class()}
+            >
+              <.icon name="hero-inbox" class="size-5 shrink-0" />{gettext("Messages")}
+            </.link>
+          </nav>
+          <div class="ml-auto flex shrink-0 items-center gap-x-3">
+            <.button id="new-document" navigate={home_path(@locale)} title={gettext("New document")}>
+              <.icon name="hero-plus" class="size-5" />
+              <span class="hidden xl:inline">{gettext("New document")}</span>
+              <span class="sr-only xl:hidden">{gettext("New document")}</span>
+            </.button>
+            <.locale_menu id="locale-menu" locale={@locale} compact />
+            <.theme_menu id="theme-menu" />
+            <div aria-hidden="true" class="h-6 w-px bg-line"></div>
+            <.user_menu id="user-menu" user={@user} />
+          </div>
+        </header>
 
-      <main>
-        <div :if={@title} class="border-b border-line bg-surface lg:border-0 lg:bg-transparent">
-          <div class="mx-auto max-w-8xl px-4 py-4 sm:px-6 lg:px-8 lg:pt-5 lg:pb-0">
-            <div class="sm:flex sm:items-center sm:justify-between sm:gap-x-6">
-              <div>
-                <h1 class="font-display text-2xl/8 font-semibold tracking-tight text-ink">
-                  {@title}
-                </h1>
-                <p :if={@subtitle} class="mt-1 text-sm/6 text-ink-muted">{@subtitle}</p>
-              </div>
-              <div :if={@actions != []} class="mt-4 flex gap-x-3 sm:mt-0 sm:shrink-0">
-                {render_slot(@actions)}
+        <main class="grow">
+          <div :if={@title} class="border-b border-line bg-surface lg:border-0 lg:bg-transparent">
+            <div class="mx-auto max-w-8xl px-4 py-4 sm:px-6 lg:px-8 lg:pt-5 lg:pb-0">
+              <div class="sm:flex sm:items-center sm:justify-between sm:gap-x-6">
+                <div>
+                  <h1 class="font-display text-2xl/8 font-semibold tracking-tight text-ink">
+                    {@title}
+                  </h1>
+                  <p :if={@subtitle} class="mt-1 text-sm/6 text-ink-muted">{@subtitle}</p>
+                </div>
+                <div :if={@actions != []} class="mt-4 flex gap-x-3 sm:mt-0 sm:shrink-0">
+                  {render_slot(@actions)}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="mx-auto max-w-8xl px-4 py-4 sm:px-6 lg:px-8 lg:py-5">
-          {render_slot(@inner_block)}
-        </div>
-      </main>
+          <div class="mx-auto max-w-8xl px-4 py-4 sm:px-6 lg:px-8 lg:py-5">
+            {render_slot(@inner_block)}
+          </div>
+        </main>
+
+        <.site_footer locale={@locale} />
+      </div>
     </div>
 
     <.flash_group flash={@flash} />

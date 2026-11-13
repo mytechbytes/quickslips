@@ -28,11 +28,11 @@
     "dic"
   ],
   "categories": {
-    "Travel": "Viajes",
-    "Home & utilities": "Hogar y suministros",
-    "Health & learning": "Salud y formación",
-    "Food & shopping": "Comida y compras",
-    "Work": "Trabajo"
+    "Travel": "Viajes y vehículos",
+    "Home & utilities": "Hogar y servicios",
+    "Health & learning": "Salud y educación",
+    "Food & shopping": "Compras y restaurantes",
+    "Work": "Negocios y nómina"
   },
   "in_words": {
     "label": "Importe en letras",

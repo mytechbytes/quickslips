@@ -4,6 +4,7 @@
 // The words come from text.json (`t`), the number and date formats from region.json.
 #import "_shared/helpers.typ": *
 #let data = json("data.json")
+#let on-sheet = data.at("paper_size", default: none) != none
 #let some(key) = opt(data, key)
 #show: base.with(width: 120mm, margin: (x: 7mm, y: 7mm), size: 8.5pt)
 #set par(leading: 0.55em)
@@ -99,7 +100,7 @@
   )),
 )
 // In the browser preview the next part is a page of its own.
-#if preview { pagebreak(weak: true) }
+#if preview and not on-sheet { pagebreak(weak: true) }
 #v(3mm)
 #line(length: 100%, stroke: 0.6pt + hairline)
 #v(2mm)

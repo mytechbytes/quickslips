@@ -75,6 +75,10 @@ defmodule QuickSlipsWeb.CatalogueComponents do
           focus()
         ]}
       >
+        <.icon
+          name={category_icon(key)}
+          class={["size-5 -ml-1 mr-1.5 shrink-0", category_icon_color(key)]}
+        />
         {name}
       </button>
     </div>
@@ -97,6 +101,65 @@ defmodule QuickSlipsWeb.CatalogueComponents do
     """
   end
 
+  @doc """
+  The icon of a bill in the colours of the logo (green, orange and cream), the glyph always in another colour than the
+  ground. Each bill keeps the same colours (they come from its slug).
+  """
+  attr :slug, :string, required: true
+  attr :name, :string, required: true, doc: "the heroicon"
+  attr :class, :any, default: nil, doc: "the size of the tile"
+  attr :icon_class, :string, default: "size-6"
+
+  def bill_icon(assigns) do
+    assigns = assign(assigns, :tone, bill_tone(assigns.slug))
+
+    ~H"""
+    <span
+      class={[
+        "flex shrink-0 items-center justify-center rounded-field shadow-xs",
+        @tone,
+        @class
+      ]}
+      aria-hidden="true"
+    >
+      <.icon name={@name} class={@icon_class} />
+    </span>
+    """
+  end
+
+  # Six pairs of the colours of the logo, each with a glyph of another colour than its ground.
+  @tones [
+    "bg-primary text-secondary",
+    "bg-accent text-primary-hover",
+    "bg-secondary text-primary ring-1 ring-primary/40 ring-inset",
+    "bg-primary text-accent",
+    "bg-accent text-secondary",
+    "bg-secondary text-accent ring-1 ring-accent/50 ring-inset"
+  ]
+  defp bill_tone(slug), do: Enum.at(@tones, :erlang.phash2(slug, length(@tones)))
+
+  @doc "The icon of a category of the catalogue (its key is the English name in the schemas)."
+  def category_icon("Food & shopping"), do: "hero-shopping-bag"
+  def category_icon("Health & learning"), do: "hero-heart"
+  def category_icon("Home & utilities"), do: "hero-home"
+  def category_icon("Travel"), do: "hero-truck"
+  def category_icon("Work"), do: "hero-briefcase"
+  def category_icon(_other), do: "hero-squares-2x2"
+
+  # The colour of the icon of a category chip, and the colours of its tag on a card: the colours of the logo.
+  defp category_icon_color("Food & shopping"), do: "text-accent"
+  defp category_icon_color("Health & learning"), do: "text-danger"
+  defp category_icon_color("Home & utilities"), do: "text-primary"
+  defp category_icon_color("Travel"), do: "text-info"
+  defp category_icon_color("Work"), do: "text-warning"
+  defp category_icon_color(_other), do: "text-ink-muted"
+
+  defp category_pill("Food & shopping"), do: "bg-accent-soft text-on-accent"
+  defp category_pill("Travel"), do: "bg-info-soft text-info"
+  defp category_pill("Health & learning"), do: "bg-danger-soft text-danger"
+  defp category_pill("Work"), do: "bg-warning-soft text-warning"
+  defp category_pill(_other), do: "bg-primary-soft text-primary"
+
   @doc "The tile: an icon, the name and one line. It links to the template page."
   attr :template, :map, required: true
   attr :class, :any, default: nil
@@ -113,16 +176,22 @@ defmodule QuickSlipsWeb.CatalogueComponents do
         focus()
       ]}
     >
-      <span class="flex size-10 sm:size-9 shrink-0 items-center justify-center rounded-field bg-primary-soft text-primary">
-        <.icon name={icon_name(@template)} class="size-6" />
-      </span>
+      <.bill_icon
+        slug={@template["slug"]}
+        name={icon_name(@template)}
+        class="size-10 sm:size-9"
+      />
       <span class="min-w-0">
         <span class="block text-base/6 font-semibold text-ink">{@template["title"]}</span>
         <span class="mt-0.5 block text-sm/5 text-ink-muted">{@template["summary"]}</span>
       </span>
-      <span class="absolute top-5 right-5 bg-primary text-on-primary px-2 py-1 rounded-button text-xs capitalize">{@template[
-        "category"
-      ]}</span>
+      <span class={[
+        "absolute top-5 right-5 inline-flex items-center gap-x-1 rounded-button px-2 py-1 text-xs font-medium",
+        category_pill(@template["category"])
+      ]}>
+        <.icon name={category_icon(@template["category"])} class="size-3.5" />
+        {@template["category_name"] || @template["category"]}
+      </span>
       <span class="min-w-0 block">
         <span class="size-5 text-ink-faint text-sm text-primary font-semibold">{gettext(
           "Generate Now"
@@ -167,9 +236,12 @@ defmodule QuickSlipsWeb.CatalogueComponents do
             <span class="mt-4 ml-auto block h-2 w-1/3 rounded-full bg-paper-ink/60"></span>
           </span>
         </span>
-        <span class="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full bg-primary-soft text-primary ring-1 ring-primary/20">
-          <.icon name={icon_name(@template)} class="size-5" />
-        </span>
+        <.bill_icon
+          slug={@template["slug"]}
+          name={icon_name(@template)}
+          class="absolute top-4 right-4 size-9 !rounded-full"
+          icon_class="size-5"
+        />
       </span>
       <span class="mt-3 flex items-start justify-between gap-x-3 px-1 pb-1">
         <span class="min-w-0">

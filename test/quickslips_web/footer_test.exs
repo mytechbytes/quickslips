@@ -185,12 +185,12 @@ defmodule QuickSlipsWeb.FooterTest do
   describe "for a logged-in user" do
     setup :register_and_log_in_user
 
-    test "there is none: the app has its own shell", %{conn: conn} do
+    test "is in the app's shell too", %{conn: conn} do
       {:ok, view, _html} = live(conn, ~p"/dashboard")
-      refute has_element?(view, "#site-footer")
+      assert has_element?(view, "#site-footer")
 
       {:ok, view, _html} = live(conn, ~p"/en-in")
-      refute has_element?(view, "#site-footer")
+      assert has_element?(view, "#site-footer")
     end
   end
 

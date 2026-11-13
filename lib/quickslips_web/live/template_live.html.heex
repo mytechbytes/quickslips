@@ -35,6 +35,7 @@
       data-stamp-choice={@stamp_choice}
       data-paper={@paper}
       data-margin={@margin}
+      data-watermark={Jason.encode!(@watermark)}
       data-schema={Jason.encode!(Map.drop(@schema, ["intro", "faq"]))}
       data-sample={Jason.encode!(@sample)}
       data-worker={~p"/assets/js/preview_worker.js"}
@@ -465,12 +466,114 @@
                 </option>
               </select>
             </section>
+            <%!-- A watermark on every page of the document: a text or a picture, put in one of four layouts. --%>
+            <section id="watermark-section" data-group="watermark">
+              <div class="mb-3 flex items-center gap-3">
+                <label
+                  for="watermark-type"
+                  class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
+                >
+                  {gettext("Watermark")}
+                </label>
+                <span class="h-px flex-1 bg-line"></span>
+              </div>
+              <select
+                id="watermark-type"
+                class="block w-full rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:max-w-xs"
+              >
+                <option value="">{gettext("No watermark")}</option>
+                <option value="text">{gettext("Text")}</option>
+                <option value="image">{gettext("Image")}</option>
+              </select>
+              <div id="watermark-options" class="mt-3 hidden space-y-3">
+                <div id="watermark-text-field" class="hidden">
+                  <label for="watermark-text" class="mb-1 block text-sm/5 font-medium text-ink">{gettext(
+                    "Watermark text"
+                  )}</label>
+                  <input
+                    id="watermark-text"
+                    type="text"
+                    maxlength="40"
+                    autocomplete="off"
+                    placeholder={gettext("PAID")}
+                    class="block w-full rounded-field border border-line-strong bg-surface px-3 py-2 text-base text-ink placeholder:text-ink-faint focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:py-1.5 sm:text-sm/5"
+                  />
+                </div>
+                <div id="watermark-image-field" class="hidden">
+                  <label for="watermark-image" class="mb-1 block text-sm/5 font-medium text-ink">
+                    {gettext("Watermark image (PNG or JPG, up to 1.5 MB)")}
+                  </label>
+                  <input
+                    id="watermark-image"
+                    type="file"
+                    accept="image/png,image/jpeg"
+                    class="block w-full text-sm text-ink file:mr-3 file:rounded-button file:border file:border-line-strong file:bg-surface file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-ink hover:file:bg-surface-muted"
+                  />
+                  <p id="watermark-image-message" role="status" class="mt-1 text-sm/6 text-danger">
+                  </p>
+                </div>
+                <div class="grid gap-3 sm:grid-cols-3">
+                  <div>
+                    <label
+                      for="watermark-layout"
+                      class="mb-1 block text-sm/5 font-medium text-ink"
+                    >{gettext("Placement")}</label>
+                    <select
+                      id="watermark-layout"
+                      class="block w-full rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:max-w-xs"
+                    >
+                      <option value="diagonal">{gettext("Diagonal")}</option>
+                      <option value="horizontal">{gettext("Horizontal")}</option>
+                      <option value="vertical">{gettext("Vertical")}</option>
+                      <option value="grid">{gettext("Grid")}</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="watermark-angle" class="mb-1 block text-sm/5 font-medium text-ink">{gettext(
+                      "Angle (degrees)"
+                    )}</label>
+                    <input
+                      id="watermark-angle"
+                      type="number"
+                      min="-360"
+                      max="360"
+                      step="1"
+                      value="45"
+                      class="block w-full rounded-field border border-line-strong bg-surface px-3 py-2 text-base text-ink placeholder:text-ink-faint focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:py-1.5 sm:text-sm/5"
+                    />
+                  </div>
+                  <div>
+                    <label for="watermark-count" class="mb-1 block text-sm/5 font-medium text-ink">{gettext(
+                      "Occurrences"
+                    )}</label>
+                    <input
+                      id="watermark-count"
+                      type="number"
+                      min="1"
+                      max="50"
+                      step="1"
+                      value="1"
+                      class="block w-full rounded-field border border-line-strong bg-surface px-3 py-2 text-base text-ink placeholder:text-ink-faint focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus sm:py-1.5 sm:text-sm/5"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </details>
       </div>
 
-      <%!-- On a wide screen the preview stays in view while the long form scrolls past it. --%>
-      <div class="lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:self-start lg:overflow-y-auto">
+      <%!-- On a wide screen the preview stays in view while the long form scrolls past it. A signed-in user has a sticky bar (4rem) on top, which the preview must stay clear of. --%>
+      <div
+        id="bill-preview-column"
+        class={[
+          "lg:sticky lg:self-start lg:overflow-y-auto",
+          if(@current_scope && @current_scope.user,
+            do: "lg:top-20 lg:max-h-[calc(100vh-6rem)]",
+            else: "lg:top-4 lg:max-h-[calc(100vh-2rem)]"
+          )
+        ]}
+      >
         <div
           id="bill-preview"
           class="flex min-h-96 items-center justify-center rounded-card border border-line bg-tray p-2"

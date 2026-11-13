@@ -4,7 +4,7 @@ defmodule QuickSlipsWeb.HistoryLive do
   # A live navigation does not run the router's plugs, so the login is checked here too.
   on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}
 
-  import QuickSlipsWeb.CatalogueComponents, only: [search_input: 1]
+  import QuickSlipsWeb.CatalogueComponents, only: [search_input: 1, bill_icon: 1]
 
   alias QuickSlips.Documents
   alias QuickSlips.Documents.Document
@@ -124,12 +124,12 @@ defmodule QuickSlipsWeb.HistoryLive do
             id={id}
             class="flex items-center gap-x-4 px-4 py-3 sm:px-6"
           >
-            <span
-              class="flex size-10 shrink-0 items-center justify-center rounded-field bg-primary-soft text-primary"
-              aria-hidden="true"
-            >
-              <.icon name={icon(@icons, doc.slug)} class="size-5" />
-            </span>
+            <.bill_icon
+              slug={doc.slug}
+              name={icon(@icons, doc.slug)}
+              class="size-10"
+              icon_class="size-5"
+            />
             <div class="min-w-0 grow">
               <p class="truncate text-sm/6 font-semibold text-ink">{doc.title}</p>
               <p class="truncate text-xs/5 text-ink-muted">

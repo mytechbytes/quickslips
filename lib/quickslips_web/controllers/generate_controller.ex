@@ -10,6 +10,7 @@ defmodule QuickSlipsWeb.GenerateController do
   alias QuickSlips.Regions
   alias QuickSlips.Signatures
   alias QuickSlips.Stamps
+  alias QuickSlips.Watermark
   alias QuickSlips.Templates.Items
   alias QuickSlips.Templates.Validator
   alias QuickSlips.Templates
@@ -31,6 +32,7 @@ defmodule QuickSlipsWeb.GenerateController do
          {:ok, driver_signature} <- load_driver_signature(conn, params),
          {:ok, extras} <- load_extra_signatures(conn, params),
          {:ok, stamp} <- load_stamp(conn, params),
+         {:ok, watermark} <- Watermark.prepare(params["watermark"] || %{}),
          :ok <- verify_human(conn, params),
          {:ok, grant} <- Downloads.reserve(caller(conn)),
          paper =
@@ -39,7 +41,10 @@ defmodule QuickSlipsWeb.GenerateController do
              Templates.margin_data(schema, template, params["margin"])
            ),
          pictures = Businesses.render_assets(business, signature, stamp, driver_signature, extras),
-         pictures = %{pictures | data: Map.merge(pictures.data, paper)},
+         pictures = %{
+           data: pictures.data |> Map.merge(paper) |> Map.merge(watermark.data),
+           files: Map.merge(pictures.files, watermark.files)
+         },
          {:ok, pdf} <- render_or_refund(slug, template, clean, pictures, locale, currency, grant) do
       remember(
         conn,
@@ -49,7 +54,7 @@ defmodule QuickSlipsWeb.GenerateController do
         {business, signature, stamp, driver_signature, extras},
         locale,
         currency,
-        paper
+        Map.merge(paper, watermark.data)
       )
 
       conn
@@ -231,6 +236,7 @@ defmodule QuickSlipsWeb.GenerateController do
                )
              )
              |> Map.merge(extra_signature_options(extras))
+             |> Map.merge(watermark_options(paper))
          },
          {:error, changeset} <-
            Documents.create_document(scope, attrs, business, signature, stamp, driver_signature) do
@@ -239,6 +245,12 @@ defmodule QuickSlipsWeb.GenerateController do
 
     :ok
   end
+
+  # What the history keeps of the watermark: its settings, not the picture (that has to be chosen again).
+  defp watermark_options(%{"watermark" => settings}),
+    do: %{"watermark" => Map.delete(settings, "image")}
+
+  defp watermark_options(_paper), do: %{}
 
   # The short names of the months in the language of the document, for its title in the history.
   defp short_months(schema, locale) do

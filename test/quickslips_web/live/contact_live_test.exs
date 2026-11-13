@@ -496,11 +496,11 @@ defmodule QuickSlipsWeb.ContactLiveTest do
       assert emails() == []
     end
 
-    test "is inside the app, which has its own shell and no footer", %{conn: conn} do
+    test "is inside the app, which has its own shell and the footer", %{conn: conn} do
       {:ok, view, _html} = live(conn, ~p"/contact")
 
       assert has_element?(view, "#contact-form")
-      refute has_element?(view, "#site-footer")
+      assert has_element?(view, "#site-footer")
       assert has_element?(view, "#nav-contact[aria-current=page]")
     end
 

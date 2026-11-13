@@ -39,6 +39,8 @@
   --primary-hover: oklch(45% 0.085 170);
   --primary-soft: oklch(96% 0.03 170);
   --on-primary: oklch(99% 0.008 171);
+  --secondary: oklch(96.5% 0.022 85); /* the cream of the logo */
+  --on-secondary: oklch(45% 0.09 170);
   --accent: oklch(70% 0.165 52);
   --accent-soft: oklch(95.5% 0.03 70);
   --on-accent: oklch(24% 0.05 45);
@@ -85,6 +87,8 @@
   --primary-hover: oklch(80% 0.12 171);
   --primary-soft: oklch(30% 0.05 171);
   --on-primary: oklch(21% 0.04 171);
+  --secondary: oklch(30% 0.05 171);
+  --on-secondary: oklch(88% 0.06 85);
   --accent: oklch(74% 0.15 55);
   --accent-soft: oklch(30% 0.06 55);
   --on-accent: oklch(22% 0.05 50);
@@ -130,6 +134,8 @@
   --color-primary-hover: var(--primary-hover);
   --color-primary-soft: var(--primary-soft);
   --color-on-primary: var(--on-primary);
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-on-accent: var(--on-accent);

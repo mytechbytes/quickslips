@@ -28,11 +28,11 @@
     "12月"
   ],
   "categories": {
-    "Travel": "旅行・移動",
-    "Home & utilities": "住まいと公共料金",
+    "Travel": "旅行・車",
+    "Home & utilities": "住まい・公共料金",
     "Health & learning": "健康・教育",
-    "Food & shopping": "食事・買い物",
-    "Work": "仕事"
+    "Food & shopping": "買い物・外食",
+    "Work": "ビジネス・給与"
   },
   "in_words": {
     "label": "金額(大字)",

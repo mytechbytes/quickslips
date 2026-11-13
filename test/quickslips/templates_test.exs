@@ -153,7 +153,7 @@ defmodule QuickSlips.TemplatesTest do
                title: "Fuel Bill Generator",
                public_slug: "fuel-bill-generator",
                category: "Travel",
-               category_name: "Travel"
+               category_name: "Travel & Vehicles"
              } = Templates.names(Locales.fetch!("en-in"))["fuel-bill"]
 
       assert %{name: "Factura de Gasolina", public_slug: "generador-de-factura-de-gasolina"} =
@@ -333,7 +333,7 @@ defmodule QuickSlips.TemplatesTest do
       assert schema["title"] == "पेट्रोल बिल जनरेटर"
       assert schema["name"] == "पेट्रोल बिल"
       assert schema["category"] == "Travel"
-      assert schema["category_name"] == "यात्रा"
+      assert schema["category_name"] == "यात्रा और वाहन"
       assert schema["locale"] == "hi-in"
 
       assert Enum.map(schema["fields"], & &1["key"]) |> Enum.take(2) == [

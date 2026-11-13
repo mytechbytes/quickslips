@@ -19,7 +19,7 @@ defmodule QuickSlips.Render.Renderer do
     * `mode: :final | :preview` (preview adds the watermark).
     * `format: :pdf | :png` (default `:pdf`). `:png` draws the first page as a picture, for a thumbnail; `ppi:` (default 50)
       says how sharp.
-    * `assets: %{"logo.png" => "/abs/path/to/the/file"}`: pictures to copy next to the template, so it can
+    * `assets: %{"logo.png" => "/abs/path/to/the/file"}` (or `{:binary, bytes}` in place of the path): pictures to copy next to the template, so it can
       draw them with `#image("logo.png")`. The names come from our code, never from a user.
     * `locale: "hi-in"`: the language of the words and the country of the numbers and dates (default `en-in`).
     * `country: "jp"`: the document is made for another country than the locale's (its numbers, dates, tax).
@@ -99,7 +99,14 @@ defmodule QuickSlips.Render.Renderer do
       # The helpers every template imports (`#import "_shared/helpers.typ": *`).
       File.cp_r!(Path.join(Templates.root_dir(), "_shared"), Path.join(tmp, "_shared"))
 
-      for {name, source} <- assets, do: File.cp!(source, Path.join(tmp, Path.basename(name)))
+      for {name, source} <- assets do
+        target = Path.join(tmp, Path.basename(name))
+
+        case source do
+          {:binary, bytes} -> File.write!(target, bytes)
+          path -> File.cp!(path, target)
+        end
+      end
 
       compile(typst, tmp, mode)
     after

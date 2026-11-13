@@ -1,5 +1,6 @@
 import { buildForm, type Business, type BillData, type Design, type SaveSeller, type SavedSections, type Schema } from "./form"
 import { createPreview } from "./preview"
+import { createWatermark } from "./watermark"
 import { downloadPdf } from "./download"
 import { saveSection, saveSeller } from "./saved"
 import { createDriverSignaturePicker, createExtraSignaturePickers, createSignaturePicker } from "./signatures"
@@ -161,6 +162,10 @@ export function mountBillApp(root: HTMLElement): () => void {
   }
   // "Edit and regenerate": the sheet the document was made on.
   if (root.dataset.paper) preview.setPaper(root.dataset.paper)
+  // The watermark of the advanced settings: a text or a picture, drawn in the preview and on the PDF.
+  const watermark = createWatermark(root, () => preview.setWatermark(watermark.preview()))
+  preview.setWatermark(watermark.preview())
+  if (watermark.chosen()) root.querySelector<HTMLDetailsElement>("#advanced-settings")!.open = true
 
   // Another currency: the money of the form, the preview and the PDF is written in it. The server says what the
   // region is (and the words the layout prints); the values typed so far stay.
@@ -252,7 +257,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     const result = await downloadPdf(schema.slug, template, ui.read(), turnstileToken, business?.id, locale, {
       country: region.country,
       currency: region.currency.code,
-    }, signature.id, stamp.choice, paperSelect.value, marginSelect.value, driverSignature.id, chosenExtras(template))
+    }, signature.id, stamp.choice, paperSelect.value, marginSelect.value, driverSignature.id, chosenExtras(template), watermark.download())
     button.disabled = false
 
     if (result.ok) {
