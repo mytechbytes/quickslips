@@ -289,7 +289,9 @@ export function mountBillApp(root: HTMLElement): () => void {
     } else if (result.status === 422) {
       ui.showErrors(result.errors ?? {})
       status.textContent = t("fix_fields")
-    } else if (result.status === 429) {
+    } else if (result.status === 429 && result.code !== "slow_down") {
+      // The day's free downloads are used. (A 429 with the code "slow_down" is only a brake on a burst of calls: it
+      // goes to the general message below, "try again".)
       status.textContent = t("limit_reached")
       refreshQuota()
     } else {

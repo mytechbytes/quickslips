@@ -98,6 +98,15 @@ config :quickslips, :support_url_in, nil
 # limits of quota for downloads PDF
 config :quickslips, :quota, anonymous: 2, user: 10, ip: 20
 
+# What is done with the Content-Security-Policy of the pages (`QuickSlipsWeb.ContentSecurityPolicy`): `:enforce` (the
+# browser refuses what the policy does not list), `:report_only` (it only says so in its console) or `:off`. The
+# development machine only reports (config/dev.exs); `CSP_MODE` sets it when the app starts (config/runtime.exs).
+config :quickslips, :csp, :enforce
+
+# The Cross-Origin-Opener-Policy of every response (`QuickSlipsWeb.Plugs.SecurityHeaders`): `"same-origin"`, `"same-origin-allow-popups"`,
+# `"unsafe-none"`, or `nil` for no header. `CROSS_ORIGIN_OPENER_POLICY` sets it when the app starts (config/runtime.exs).
+config :quickslips, :cross_origin_opener_policy, "same-origin"
+
 # Messages of the contact form in a day: for one logged-in user and for the whole site (a mailbox can be flooded), and
 # the confirmations that one address may be sent (it may not be the sender's). Everybody passes the Turnstile check
 # as well.

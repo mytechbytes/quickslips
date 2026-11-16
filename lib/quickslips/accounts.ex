@@ -4,6 +4,9 @@ defmodule QuickSlips.Accounts do
   """
 
   import Ecto.Query, warn: false
+
+  require Logger
+
   alias QuickSlips.Repo
 
   alias QuickSlips.Accounts.{User, UserToken, UserNotifier}
@@ -79,6 +82,47 @@ defmodule QuickSlips.Accounts do
     |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
+
+  @doc """
+  Registers a user for the sign-up page, which must not tell a visitor whether an address already has an account:
+  whoever could ask for any address and read the answer would be able to list the people who use the site.
+
+  Returns `{:ok, email}` when the account was made, *and also when the address already had one*; in both cases the
+  e-mail that logs in or confirms (see `send_login_instructions_later/2`) goes to the owner of the address and the page
+  says the same. For an address that has an account the e-mail is the way the owner learns of it. Returns `{:error,
+  changeset}` for what is wrong with the form itself (a short password, no @), which is the same whatever the address, and
+  never with the "has already been taken" of the e-mail.
+  """
+  def register_user_quietly(attrs, magic_link_url_fun) do
+    case register_user(attrs) do
+      {:ok, user} ->
+        send_login_instructions_later(user.email, magic_link_url_fun)
+        {:ok, user.email}
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        case Enum.split_with(changeset.errors, &email_taken?/1) do
+          {[], _others} ->
+            {:error, changeset}
+
+          {_taken, []} ->
+            # Nothing else is wrong, so a new address would have had its password hashed (the part that takes time),
+            # and the taken one was refused before that. Do the same work, so the answer comes as slowly.
+            Bcrypt.no_user_verify()
+            email = Ecto.Changeset.get_field(changeset, :email)
+            send_login_instructions_later(email, magic_link_url_fun)
+            {:ok, email}
+
+          {_taken, others} ->
+            {:error, %{changeset | errors: others}}
+        end
+    end
+  end
+
+  # What `unsafe_validate_unique` (in the form) and `unique_constraint` (when the database says no) put on the e-mail.
+  defp email_taken?({:email, {_message, options}}),
+    do: options[:validation] == :unsafe_unique or options[:constraint] == :unique
+
+  defp email_taken?(_error), do: false
 
   @doc """
   Returns a changeset for the registration form (no hashing, no uniqueness query).
@@ -309,6 +353,27 @@ defmodule QuickSlips.Accounts do
     {encoded_token, user_token} = UserToken.build_email_token(user, "login")
     Repo.insert!(user_token)
     UserNotifier.deliver_login_instructions(user, magic_link_url_fun.(encoded_token))
+  end
+
+  @doc """
+  Sends the e-mail that logs in the owner of `email` (or confirms their account, if it was never confirmed) from a
+  task of its own, and says nothing of whether there is an account for the address.
+
+  The look-up, the token and the sending are all in the task. Sending takes a second or more and the look-up of an
+  address that has no account takes nothing, so a page that did them itself would answer slowly for an address that has
+  an account and at once for one that has none, and whoever timed it would know which addresses are registered.
+  """
+  def send_login_instructions_later(email, magic_link_url_fun)
+      when is_binary(email) and is_function(magic_link_url_fun, 1) do
+    {:ok, _pid} =
+      Task.Supervisor.start_child(QuickSlips.TaskSupervisor, fn ->
+        with %User{} = user <- get_user_by_email(email),
+             {:error, reason} <- deliver_login_instructions(user, magic_link_url_fun) do
+          Logger.warning("could not send the log-in e-mail: #{inspect(reason)}")
+        end
+      end)
+
+    :ok
   end
 
   @doc """

@@ -3,6 +3,9 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
 
   import Phoenix.LiveViewTest
   import QuickSlips.AccountsFixtures
+  import QuickSlips.TaskHelpers
+  import QuickSlips.TurnstileHelpers
+  import Swoosh.TestAssertions
 
   describe "login page" do
     test "renders login page", %{conn: conn} do
@@ -19,6 +22,7 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
       user = user_fixture()
 
       {:ok, lv, _html} = live(conn, ~p"/users/log-in")
+      pass_turnstile(lv)
 
       {:ok, _lv, html} =
         form(lv, "#login_form_magic", user: %{email: user.email})
@@ -27,12 +31,18 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
 
       assert html =~ "If your email is in our system"
 
+      # The e-mail is made and sent by a task, so the page does not wait for it.
+      wait_for_tasks()
+
       assert QuickSlips.Repo.get_by!(QuickSlips.Accounts.UserToken, user_id: user.id).context ==
                "login"
+
+      assert_email_sent(to: {nil, user.email})
     end
 
     test "does not disclose if user is registered", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/log-in")
+      pass_turnstile(lv)
 
       {:ok, _lv, html} =
         form(lv, "#login_form_magic", user: %{email: "idonotexist@example.com"})
@@ -40,6 +50,48 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
         |> follow_redirect(conn, ~p"/users/log-in")
 
       assert html =~ "If your email is in our system"
+
+      wait_for_tasks()
+      refute_email_sent()
+    end
+
+    test "asks for the Turnstile check", %{conn: conn} do
+      {:ok, lv, _html} = live(conn, ~p"/users/log-in")
+
+      assert has_element?(
+               lv,
+               "#login-turnstile[phx-hook=AuthTurnstile][phx-update=ignore][data-site-key=test]"
+             )
+    end
+
+    test "sends nothing before the check is passed", %{conn: conn} do
+      user = user_fixture()
+      {:ok, lv, _html} = live(conn, ~p"/users/log-in")
+
+      html = lv |> form("#login_form_magic", user: %{email: user.email}) |> render_submit()
+
+      # The page stays, and says what is wrong
+      assert html =~ "couldn&#39;t check that you are a person"
+      wait_for_tasks()
+      refute_email_sent()
+      assert QuickSlips.Repo.get_by(QuickSlips.Accounts.UserToken, user_id: user.id) == nil
+    end
+
+    test "sends nothing when Cloudflare says the visitor is not a person, and asks for a new check",
+         %{
+           conn: conn
+         } do
+      user = user_fixture()
+      {:ok, lv, _html} = live(conn, ~p"/users/log-in")
+      turnstile_says(lv, false)
+      give_token(lv)
+
+      html = lv |> form("#login_form_magic", user: %{email: user.email}) |> render_submit()
+
+      assert html =~ "couldn&#39;t check that you are a person"
+      assert_push_event(lv, "turnstile:reset", %{})
+      wait_for_tasks()
+      refute_email_sent()
     end
   end
 

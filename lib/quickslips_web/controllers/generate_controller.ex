@@ -19,6 +19,10 @@ defmodule QuickSlipsWeb.GenerateController do
 
   action_fallback QuickSlipsWeb.FallbackController
 
+  # A PDF is made by a Typst run. The day's quota (below) is what a visitor may make; this brake only keeps a burst
+  # from one address from putting a dozen runs on the machine at once.
+  plug QuickSlipsWeb.Plugs.RateLimit, [name: :generate] when action == :create
+
   # `locale` ("hi-in") says in which language the document is written and for which country its numbers and
   # dates are. A client that does not send one (a page loaded before this existed) gets the default.
   def create(conn, %{"slug" => slug, "template" => template, "data" => data} = params)

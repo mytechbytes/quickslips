@@ -68,6 +68,8 @@ Set these in Dokploy, on the application's Environment tab. `config/runtime.exs`
 | `SMTP_PORT` | optional, default `587` (STARTTLS); `465` uses TLS from the first byte |
 | `MAIL_FROM` | the From address of every email, on a domain you control (set up SPF and DKIM for it) |
 | `TYPST_BIN`, `UPLOADS_DIR`, `POOL_SIZE`, `PORT` | optional, with defaults in `runtime.exs` |
+| `CSP_MODE` | optional: `enforce` (the default in production), `report_only` or `off`. The Content-Security-Policy of the pages. If the browser console of the live site says the policy blocked something the site needs, set `report_only` and redeploy: the browser then only reports, and nothing is blocked while it is fixed |
+| `CROSS_ORIGIN_OPENER_POLICY` | optional, default `same-origin`; `unsafe-none` or `off` while you use Google's Tag Assistant (the Tag Manager preview), which opens the site in a window and talks to it |
 
 The release refuses to start without `SMTP_HOST`, `SMTP_USERNAME`, `SMTP_PASSWORD` and `MAIL_FROM`, so confirmation and log-in emails can never be dropped silently. The server's certificate is always verified against the system CA store. Any port other than 465 (for example 2525) is treated as STARTTLS.
 

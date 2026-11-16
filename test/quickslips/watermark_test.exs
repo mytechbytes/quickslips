@@ -1,9 +1,12 @@
 defmodule QuickSlips.WatermarkTest do
   use ExUnit.Case, async: true
 
+  import QuickSlips.UploadsFixtures
+
   alias QuickSlips.Watermark
 
-  @png <<137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 0>>
+  # A whole 8x8 PNG: the picture of a watermark is looked at as closely as an upload is.
+  @png png_bytes()
 
   defp data_url(bytes, type \\ "image/png"), do: "data:#{type};base64," <> Base.encode64(bytes)
 
@@ -69,6 +72,45 @@ defmodule QuickSlips.WatermarkTest do
              )
 
     assert {:error, :bad_request} = Watermark.prepare(Map.put(base, "image_data", "nonsense"))
+  end
+
+  test "a picture that says it is huge is turned down, whatever its file size" do
+    base = %{"type" => "image", "layout" => "grid"}
+
+    # 4001 x 4001 pixels in a few kilobytes: a few of these, drawn at once, would take all the memory Typst can get.
+    assert {:error, :bad_request} =
+             Watermark.prepare(Map.put(base, "image_data", data_url(png_of_size(4_001))))
+
+    assert {:error, :bad_request} =
+             Watermark.prepare(
+               Map.put(base, "image_data", data_url(jpg_header(5_000), "image/jpeg"))
+             )
+
+    # The largest side that is allowed still passes.
+    assert {:ok, %{files: %{"watermark.png" => _}}} =
+             Watermark.prepare(Map.put(base, "image_data", data_url(png_of_size(4_000))))
+  end
+
+  test "a picture that is cut short, or has only the start of a PNG, is turned down" do
+    base = %{"type" => "image", "layout" => "grid"}
+    start = binary_part(@png, 0, 20)
+    cut = binary_part(@png, 0, byte_size(@png) - 8)
+
+    assert {:error, :bad_request} =
+             Watermark.prepare(Map.put(base, "image_data", data_url(start)))
+
+    assert {:error, :bad_request} = Watermark.prepare(Map.put(base, "image_data", data_url(cut)))
+  end
+
+  test "a JPEG goes through under the name watermark.jpg" do
+    assert {:ok, %{data: %{"watermark" => %{"image" => "watermark.jpg"}}, files: files}} =
+             Watermark.prepare(%{
+               "type" => "image",
+               "image_data" => data_url(jpg_bytes(), "image/jpeg"),
+               "layout" => "grid"
+             })
+
+    assert files == %{"watermark.jpg" => {:binary, jpg_bytes()}}
   end
 
   test "a picture watermark with no picture (made again from the history) is left out" do
