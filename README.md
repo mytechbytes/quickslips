@@ -66,12 +66,31 @@ Set these in Dokploy, on the application's Environment tab. `config/runtime.exs`
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | the Google OAuth client, for "Continue with Google" |
 | `SMTP_HOST`, `SMTP_USERNAME`, `SMTP_PASSWORD` | the SMTP details from your email provider |
 | `SMTP_PORT` | optional, default `587` (STARTTLS); `465` uses TLS from the first byte |
-| `MAIL_FROM` | the From address of every email, on a domain you control (set up SPF and DKIM for it) |
+| `MAIL_FROM` | the From address of every email, on a domain you control. Best a sub-domain of its own (for example `hello@quickslips.example.com`), with SPF, DKIM and DMARC set up for it, so that the reputation of these e-mails stays apart from your own mailbox (see [E-mail](#e-mail)) |
 | `TYPST_BIN`, `UPLOADS_DIR`, `POOL_SIZE`, `PORT` | optional, with defaults in `runtime.exs` |
 | `CSP_MODE` | optional: `enforce` (the default in production), `report_only` or `off`. The Content-Security-Policy of the pages. If the browser console of the live site says the policy blocked something the site needs, set `report_only` and redeploy: the browser then only reports, and nothing is blocked while it is fixed |
 | `CROSS_ORIGIN_OPENER_POLICY` | optional, default `same-origin`; `unsafe-none` or `off` while you use Google's Tag Assistant (the Tag Manager preview), which opens the site in a window and talks to it |
 
 The release refuses to start without `SMTP_HOST`, `SMTP_USERNAME`, `SMTP_PASSWORD` and `MAIL_FROM`, so confirmation and log-in emails can never be dropped silently. The server's certificate is always verified against the system CA store. Any port other than 465 (for example 2525) is treated as STARTTLS.
+
+## E-mail
+
+The site sends five e-mails: confirm an account, log in with a link, confirm a new address, and the two of the contact form (one to you, one to the visitor). They are all made the same way, by `QuickSlips.Mail`: one branded layout with an HTML and a plain-text version, in the language the visitor chose on the site (the one to you is in English), with no tracking pixel and no tracked links. To see all of them, in every language, without sending anything:
+
+```bash
+mix quickslips.mail.preview
+```
+
+Then open `tmp/mail-preview/index.html` in a browser. In development the e-mails that the site really sends are also kept at `/dev/mailbox`.
+
+What makes the mail reach the inbox and not the spam folder is partly outside the code:
+
+- **The domain.** Send from a domain, or better a sub-domain, whose DNS has SPF, DKIM and DMARC for your mail provider. Add the records the provider shows, wait until it says "Verified", and only then change `MAIL_FROM` and redeploy (a DMARC policy of `reject` on the main domain also covers its sub-domains, so mail sent before the records exist is refused).
+- **Tracking off.** In the provider, keep open tracking and click tracking off. They put a pixel into the HTML and send the links through another address, which breaks the log-in links and is not what the privacy page says.
+- **A mailbox that is read.** Set `CONTACT_EMAIL`: it is the Reply-To of the account e-mails, and the foot of them says that a person reads the answers.
+- **After a deploy**, send a sign-up e-mail to a Gmail, an Outlook and a Yahoo address and look at the original (in Gmail: the three dots, "Show original") for `SPF: PASS`, `DKIM: PASS` and `DMARC: PASS`. Mark the first ones "Not spam": a new sender builds its reputation by the way people treat its first e-mails.
+
+The logo in the header is `priv/static/images/email/logo.png`, made from `logo-on-dark.svg` with Typst (the command is in `priv/email/logo.typ`), because e-mail programs block SVG. Its address must not change: old e-mails still show it.
 
 ## Where versions live
 

@@ -82,10 +82,36 @@ defmodule QuickSlipsWeb.UserLive.RegistrationTest do
       assert html =~
                ~r/An email was sent to .*, please access it and use the password you just chose to confirm your account/
 
+      assert html =~ "check your spam folder"
       assert Repo.get_by!(User, email: email).confirmed_at == nil
 
       wait_for_tasks()
       assert_email_sent(to: {nil, email})
+    end
+
+    test "sends the confirmation in the language the visitor has chosen", %{conn: conn} do
+      conn = conn |> get(~p"/es-es") |> recycle()
+
+      {:ok, lv, _html} = live(conn, ~p"/users/register")
+      pass_turnstile(lv)
+
+      email = unique_user_email()
+
+      {:ok, _lv, html} =
+        lv
+        |> form("#registration_form", user: valid_user_attributes(email: email))
+        |> render_submit()
+        |> follow_redirect(conn, ~p"/users/log-in")
+
+      assert html =~ "revisa tu carpeta de spam"
+
+      wait_for_tasks()
+
+      assert_email_sent(fn sent ->
+        sent.to == [{"", email}] and sent.subject == "Confirma tu cuenta de QuickSlips" and
+          sent.html_body =~ ~s(<html lang="es") and
+          sent.text_body =~ "escribe la contraseña que elegiste al registrarte"
+      end)
     end
 
     test "asks for the Turnstile check", %{conn: conn} do

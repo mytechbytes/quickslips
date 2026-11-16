@@ -12,6 +12,12 @@ defmodule QuickSlips.Accounts.UserToken do
   @change_email_validity_in_days 7
   @session_validity_in_days 14
 
+  @doc "How long a log-in or confirmation link works, in minutes. The e-mails say so."
+  def magic_link_validity_in_minutes, do: @magic_link_validity_in_minutes
+
+  @doc "How long the link that confirms a new e-mail address works, in days. The e-mail says so."
+  def change_email_validity_in_days, do: @change_email_validity_in_days
+
   schema "users_tokens" do
     field :token, :binary
     field :context, :string

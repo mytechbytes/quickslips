@@ -513,6 +513,86 @@ defmodule QuickSlips.ContactTest do
     end
   end
 
+  describe "the look of the e-mails" do
+    defp html_of(email), do: LazyHTML.from_document(email.html_body)
+
+    test "both have an HTML version with the logo and the reference, next to the text" do
+      saved = submit!()
+      sent = emails()
+
+      for email <- [to_owner(sent), to_sender(sent)] do
+        assert email.html_body =~ "https://quickslips.example/images/email/logo.png"
+        assert email.html_body =~ saved.reference
+        assert email.text_body =~ saved.reference
+      end
+    end
+
+    test "both say in their headers that a program wrote them" do
+      submit!()
+
+      for email <- emails() do
+        assert email.headers["Auto-Submitted"] == "auto-generated"
+        assert email.headers["X-Auto-Response-Suppress"] == "OOF, AutoReply"
+        refute Map.has_key?(email.headers, "List-Unsubscribe")
+      end
+    end
+
+    test "show the words of the sender as text: no tag, no link, whoever reads them" do
+      submit!(%{
+        "name" => "Asha Rao",
+        "message" => "<b>Hi</b> pay at https://evil.example/pay\n\nThanks"
+      })
+
+      for email <- emails() do
+        document = html_of(email)
+
+        assert document |> LazyHTML.query("body b") |> Enum.count() == 0
+
+        refute document
+               |> LazyHTML.query("a")
+               |> LazyHTML.attribute("href")
+               |> Enum.any?(&(&1 =~ "evil"))
+
+        assert LazyHTML.text(document) =~ "<b>Hi</b> pay at https://evil.example/pay"
+      end
+    end
+
+    test "the e-mail to the owner has the facts in a table, and the way to the message" do
+      saved = submit!()
+
+      owner = emails() |> to_owner()
+
+      assert owner.html_body =~ "New message from the contact form"
+      assert owner.html_body =~ ~s(href="https://quickslips.example/admin/messages/#{saved.id}")
+      assert owner.html_body =~ "Asha Rao &lt;asha@example.com&gt;"
+      assert owner.html_body =~ ~s(<html lang="en")
+    end
+
+    test "the e-mail to the sender is in the language of the page, all of it, and says why it came" do
+      submit!(%{}, %{locale: Locales.fetch!("es-es")})
+
+      email = emails() |> to_sender()
+
+      assert email.html_body =~ ~s(<html lang="es")
+      assert email.html_body =~ "Hemos recibido tu mensaje"
+
+      assert email.text_body =~
+               "Recibes este correo porque asha@example.com se escribió en el formulario de contacto de QuickSlips."
+
+      assert email.text_body =~ "Facturas y recibos, listos en segundos"
+      refute email.text_body =~ "Bills and receipts"
+    end
+
+    test "the e-mail to the sender has the name of the sender only in the greeting" do
+      submit!(%{"name" => "Asha Rao"})
+
+      email = emails() |> to_sender()
+
+      assert html_of(email) |> LazyHTML.text() =~ "Hello Asha Rao,"
+      refute email.subject =~ "Asha"
+    end
+  end
+
   describe "the ceilings of a day" do
     test "a user can send as many messages as the ceiling says, and then no more" do
       user = user_fixture()

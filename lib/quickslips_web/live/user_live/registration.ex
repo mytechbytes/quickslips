@@ -124,13 +124,15 @@ defmodule QuickSlipsWeb.UserLive.Registration do
          :ok <- TurnstileCheck.verify(socket),
          :ok <- AuthLimits.check_mail(socket.assigns.client_ip, user_params["email"]),
          {:ok, email} <-
-           Accounts.register_user_quietly(user_params, &url(~p"/users/log-in/#{&1}")) do
+           Accounts.register_user_quietly(user_params, &url(~p"/users/log-in/#{&1}"),
+             locale: socket.assigns.locale
+           ) do
       {:noreply,
        socket
        |> put_flash(
          :info,
          gettext(
-           "An email was sent to %{email}, please access it and use the password you just chose to confirm your account.",
+           "An email was sent to %{email}, please access it and use the password you just chose to confirm your account. If it does not arrive, check your spam folder.",
            email: email
          )
        )

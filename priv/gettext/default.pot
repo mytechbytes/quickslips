@@ -47,6 +47,7 @@ msgstr ""
 msgid "Attempting to reconnect"
 msgstr ""
 
+#: lib/quickslips/mail.ex:79
 #: lib/quickslips_web/live/home_live.ex:93
 #, elixir-autogen, elixir-format
 msgid "Bills and receipts, ready in seconds"
@@ -200,11 +201,6 @@ msgstr ""
 msgid "Google sign-in didn't complete. Please try again."
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/login.ex:160
-#, elixir-autogen, elixir-format
-msgid "If your email is in our system, you will receive instructions for logging in shortly."
-msgstr ""
-
 #: lib/quickslips_web/components/ui.ex:570
 #, elixir-autogen, elixir-format
 msgid "India"
@@ -225,6 +221,7 @@ msgstr ""
 msgid "Light"
 msgstr ""
 
+#: lib/quickslips/accounts/user_notifier.ex:102
 #: lib/quickslips_web/components/layouts.ex:165
 #: lib/quickslips_web/components/layouts.ex:218
 #: lib/quickslips_web/live/home_live.ex:151
@@ -251,6 +248,7 @@ msgstr ""
 msgid "Log in or sign up to make more documents."
 msgstr ""
 
+#: lib/quickslips/accounts/user_notifier.ex:97
 #: lib/quickslips_web/live/user_live/login.ex:16
 #, elixir-autogen, elixir-format
 msgid "Log in to QuickSlips"
@@ -558,11 +556,6 @@ msgstr ""
 msgid "or"
 msgstr ""
 
-#: lib/quickslips_web/live/user_live/registration.ex:132
-#, elixir-autogen, elixir-format
-msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account."
-msgstr ""
-
 #: lib/quickslips_web/live/template_live.ex:273
 #, elixir-autogen, elixir-format
 msgid "Add item"
@@ -867,6 +860,7 @@ msgstr ""
 msgid "© %{year} QuickSlips. All rights reserved."
 msgstr ""
 
+#: lib/quickslips/mail.ex:86
 #: lib/quickslips_web/components/layouts.ex:487
 #: lib/quickslips_web/components/layouts.ex:665
 #: lib/quickslips_web/components/layouts.ex:746
@@ -881,11 +875,13 @@ msgstr ""
 msgid "Disclaimer"
 msgstr ""
 
+#: lib/quickslips/mail.ex:88
 #: lib/quickslips_web/components/layouts.ex:471
 #, elixir-autogen, elixir-format
 msgid "Privacy"
 msgstr ""
 
+#: lib/quickslips/mail.ex:89
 #: lib/quickslips_web/components/layouts.ex:470
 #, elixir-autogen, elixir-format
 msgid "Terms"
@@ -1072,42 +1068,45 @@ msgstr ""
 msgid "A confirmation is on its way to %{email}. If it does not arrive, look in your spam folder."
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:161
+#: lib/quickslips/accounts/user_notifier.ex:60
+#: lib/quickslips/accounts/user_notifier.ex:99
+#: lib/quickslips/accounts/user_notifier.ex:128
+#: lib/quickslips/contact/notifier.ex:169
 #, elixir-autogen, elixir-format
 msgid "Hello,"
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:147
+#: lib/quickslips/contact/notifier.ex:154
 #, elixir-autogen, elixir-format
 msgid "If we reply, it will be to this e-mail address. Please quote the reference if you write to us again."
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:151
+#: lib/quickslips/contact/notifier.ex:157
 #, elixir-autogen, elixir-format
 msgid "If you did not send this message, please ignore this e-mail."
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:140
+#: lib/quickslips/contact/notifier.ex:150
 #, elixir-autogen, elixir-format
 msgid "Received: %{time}"
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:138
+#: lib/quickslips/contact/notifier.ex:148
 #, elixir-autogen, elixir-format
 msgid "Reference: %{reference}"
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:134
+#: lib/quickslips/contact/notifier.ex:143
 #, elixir-autogen, elixir-format
 msgid "Thank you for writing to QuickSlips. We have received your message and we will read it."
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:139
+#: lib/quickslips/contact/notifier.ex:149
 #, elixir-autogen, elixir-format
 msgid "Topic: %{topic}"
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:46
+#: lib/quickslips/contact/notifier.ex:137
 #, elixir-autogen, elixir-format
 msgid "Your message to QuickSlips (%{reference})"
 msgstr ""
@@ -1124,12 +1123,12 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:162
+#: lib/quickslips/contact/notifier.ex:170
 #, elixir-autogen, elixir-format
 msgid "Hello %{name},"
 msgstr ""
 
-#: lib/quickslips/contact/notifier.ex:142
+#: lib/quickslips/contact/notifier.ex:152
 #, elixir-autogen, elixir-format
 msgid "Your message:"
 msgstr ""
@@ -1566,4 +1565,144 @@ msgstr ""
 #: lib/quickslips_web/auth_messages.ex:10
 #, elixir-autogen, elixir-format
 msgid "We couldn't check that you are a person. Reload the page and try again, or continue with Google."
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/registration.ex:134
+#, elixir-autogen, elixir-format
+msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account. If it does not arrive, check your spam folder."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:68
+#, elixir-autogen, elixir-format
+msgid "Confirm my account"
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:133
+#, elixir-autogen, elixir-format
+msgid "Confirm new email address"
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:125
+#, elixir-autogen, elixir-format
+msgid "Confirm this address to use it for your QuickSlips account."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:55
+#, elixir-autogen, elixir-format
+msgid "Confirm your QuickSlips account"
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:57
+#, elixir-autogen, elixir-format
+msgid "Confirm your email address"
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:124
+#, elixir-autogen, elixir-format
+msgid "Confirm your new QuickSlips email address"
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:126
+#, elixir-autogen, elixir-format
+msgid "Confirm your new email address"
+msgstr ""
+
+#: lib/quickslips_web/live/user_live/login.ex:163
+#, elixir-autogen, elixir-format
+msgid "If your email is in our system, you will receive instructions for logging in shortly. If it does not arrive, check your spam folder."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:171
+#, elixir-autogen, elixir-format
+msgid "Make your first bill"
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:56
+#, elixir-autogen, elixir-format
+msgid "One step left: confirm your email address."
+msgstr ""
+
+#: lib/quickslips/mail.ex:80
+#, elixir-autogen, elixir-format
+msgid "Or copy and paste this link into your browser:"
+msgstr ""
+
+#: lib/quickslips/mail.ex:83
+#, elixir-autogen, elixir-format
+msgid "Questions? Reply to this email and a person will read it."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:135
+#, elixir-autogen, elixir-format
+msgid "The link works once and for %{days} days. If you didn't ask for this change, ignore this email and your account stays as it is."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:104
+#, elixir-autogen, elixir-format
+msgid "The link works once and for %{minutes} minutes. If you didn't ask for it, ignore this email: nobody can log in without it."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:70
+#, elixir-autogen, elixir-format
+msgid "The link works once and for %{minutes} minutes. If you didn't create a QuickSlips account, ignore this email and nothing will happen."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:101
+#, elixir-autogen, elixir-format
+msgid "Use the button below to log in to your account. You don't need your password."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:94
+#, elixir-autogen, elixir-format
+msgid "Use this link to log in. It works once, for %{minutes} minutes."
+msgstr ""
+
+#: lib/quickslips/contact/notifier.ex:139
+#, elixir-autogen, elixir-format
+msgid "We have your message"
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:62
+#, elixir-autogen, elixir-format
+msgid "Welcome to QuickSlips. Confirm your email address to finish creating your account."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:158
+#, elixir-autogen, elixir-format
+msgid "When the page asks, enter the password you chose at sign-up."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:141
+#, elixir-autogen, elixir-format
+msgid "You are receiving this email because %{email} was entered as the new address of a QuickSlips account."
+msgstr ""
+
+#: lib/quickslips/contact/notifier.ex:160
+#, elixir-autogen, elixir-format
+msgid "You are receiving this email because %{email} was entered in the contact form on QuickSlips."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:76
+#, elixir-autogen, elixir-format
+msgid "You are receiving this email because %{email} was used to create a QuickSlips account."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:110
+#, elixir-autogen, elixir-format
+msgid "You are receiving this email because someone asked for a log-in link for %{email} on QuickSlips."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:130
+#, elixir-autogen, elixir-format
+msgid "You asked to change the email address of your QuickSlips account to this one. Confirm the change with the button below."
+msgstr ""
+
+#: lib/quickslips/accounts/user_notifier.ex:92
+#, elixir-autogen, elixir-format
+msgid "Your QuickSlips log-in link"
+msgstr ""
+
+#: lib/quickslips/contact/notifier.ex:138
+#, elixir-autogen, elixir-format
+msgid "Your reference is %{reference}."
 msgstr ""

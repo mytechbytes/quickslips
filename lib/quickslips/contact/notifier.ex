@@ -4,32 +4,33 @@ defmodule QuickSlips.Contact.Notifier do
 
   *To the owner* (`deliver_to_owner/3`): it comes from the site's own address (`MAIL_FROM`, which the mail provider
   has agreed to send for) and has the sender's address as Reply-To, so answering it from the mailbox answers the
-  visitor. The owner reads it, so it is in English whatever the language of the page was.
+  visitor. The owner reads it, so it is in English whatever the language of the page was; it says which language
+  and country the visitor was on.
 
-  *To the sender* (`deliver_confirmation/3`): in the language of the page, to greet them by name, say that the
+  *To the sender* (`deliver_confirmation/3`): in the language the visitor chose, to greet them by name, say that the
   message arrived, what its reference is, and to give their words back. The address may be somebody else's, so this
   is limited (Turnstile for everybody, and a few confirmations a day to one address); the e-mail says to ignore it
   if it was not sent by them. Its Reply-To is the owner's, so an answer to it is read.
+
+  Both are described as a `QuickSlips.Mail.Letter` and sent by `QuickSlips.Mail`, like every e-mail of the site. The
+  words of the visitor are shown as text (never as links) in a box of their own, whoever reads them.
+  `owner_letter/2` and `confirmation_letter/2` only build the letter, for the preview and the tests.
   """
   use Gettext, backend: QuickSlipsWeb.Gettext
 
-  import Swoosh.Email
-
   alias QuickSlips.Contact.{Message, Topic}
-  alias QuickSlips.Mailer
+  alias QuickSlips.Mail
+  alias QuickSlips.Mail.Letter
 
   @doc """
   Sends `message` to `to`, the owner. `context` says what the form knew besides the message: `:user` (who was logged
   in, or nothing) and `:site_url` (the address of the site, for the links in the e-mail).
   """
   def deliver_to_owner(%Message{} = message, to, context) do
-    new()
-    |> to(to)
-    |> from(sender())
-    |> reply_to(reply_address(message))
-    |> subject("[QuickSlips] #{Topic.name(message.topic)}: #{preview(message.message)}")
-    |> text_body(owner_body(message, context))
-    |> send_email()
+    Mail.deliver(owner_letter(message, context), to,
+      reply_to: reply_address(message),
+      site_url: context[:site_url]
+    )
   end
 
   @doc """
@@ -37,28 +38,53 @@ defmodule QuickSlips.Contact.Notifier do
   the `:locale` of the page (the language of the e-mail) and the `:site_url`.
   """
   def deliver_confirmation(%Message{} = message, owner, context) do
-    Gettext.with_locale(QuickSlipsWeb.Gettext, context.locale.language, fn ->
-      new()
-      |> to(message.email)
-      |> from(sender())
-      |> reply_to(owner)
-      |> subject(
-        gettext("Your message to QuickSlips (%{reference})", reference: message.reference)
-      )
-      |> text_body(confirmation_body(message, context))
-      |> send_email()
-    end)
-  end
-
-  defp sender, do: {"QuickSlips", Application.fetch_env!(:quickslips, :mail_from)}
-
-  defp send_email(email) do
-    with {:ok, _metadata} <- Mailer.deliver(email) do
-      {:ok, email}
-    end
+    Mail.deliver(confirmation_letter(message, context), message.email,
+      reply_to: owner,
+      site_url: context[:site_url]
+    )
   end
 
   ## To the owner
+
+  @doc "The e-mail to the owner, in English."
+  def owner_letter(%Message{} = message, context) do
+    site_url = context[:site_url]
+
+    rows =
+      Enum.filter(
+        [
+          {"Reference", message.reference},
+          {"Topic", Topic.name(message.topic)},
+          {"From", from_line(message)},
+          context[:user] && {"Account", account(context.user)},
+          message.locale && {"Language", message.locale},
+          message.page && {"Page", address(site_url, message.page)},
+          {"Sent", time(message.inserted_at)},
+          site_url && message.id &&
+            {"Open", {:link, "#{site_url}/admin/messages/#{message.id}"}}
+        ],
+        & &1
+      )
+
+    %Letter{
+      language: "en",
+      subject: "[QuickSlips] #{Topic.name(message.topic)}: #{preview(message.message)}",
+      preheader: "From #{from_line(message)}",
+      heading: "New message from the contact form",
+      blocks: [
+        {:facts, rows},
+        {:quote, nil, message.message},
+        {:text, "Reply to this e-mail to answer the sender."}
+      ],
+      footer: [
+        "You are receiving this e-mail because your address is where the contact form of QuickSlips sends its messages."
+      ]
+    }
+  end
+
+  # A page of the site is a link when the site's address is known, and its path alone when it is not.
+  defp address(nil, path), do: path
+  defp address(site_url, path), do: {:link, site_url <> path}
 
   # The subject starts the message, on one line, so that the inbox says what each one is about.
   defp preview(text) do
@@ -93,33 +119,6 @@ defmodule QuickSlips.Contact.Notifier do
     end
   end
 
-  defp owner_body(%Message{} = message, context) do
-    site_url = context[:site_url]
-
-    [
-      "A message from the contact form of QuickSlips.",
-      "",
-      line("Reference", message.reference),
-      line("Topic", Topic.name(message.topic)),
-      line("From", from_line(message)),
-      context[:user] && line("Account", account(context.user)),
-      message.locale && line("Language", message.locale),
-      message.page && line("Page", (site_url || "") <> message.page),
-      line("Sent", time(message.inserted_at)),
-      site_url && message.id && line("Open", "#{site_url}/admin/messages/#{message.id}"),
-      "",
-      String.duplicate("-", 40),
-      message.message,
-      String.duplicate("-", 40),
-      "",
-      "Reply to this e-mail to answer the sender."
-    ]
-    |> Enum.filter(& &1)
-    |> Enum.join("\n")
-  end
-
-  defp line(label, value), do: String.pad_trailing(label <> ":", 11) <> value
-
   defp from_line(%Message{name: nil, email: email}), do: email
   defp from_line(%Message{name: name, email: email}), do: "#{name} <#{email}>"
 
@@ -127,35 +126,44 @@ defmodule QuickSlips.Contact.Notifier do
 
   ## To the sender
 
-  defp confirmation_body(%Message{} = message, context) do
-    [
-      greeting(message),
-      "",
-      gettext(
-        "Thank you for writing to QuickSlips. We have received your message and we will read it."
-      ),
-      "",
-      gettext("Reference: %{reference}", reference: message.reference),
-      gettext("Topic: %{topic}", topic: Topic.label(message.topic)),
-      gettext("Received: %{time}", time: time(message.inserted_at)),
-      "",
-      gettext("Your message:"),
-      String.duplicate("-", 40),
-      message.message,
-      String.duplicate("-", 40),
-      "",
-      gettext(
-        "If we reply, it will be to this e-mail address. Please quote the reference if you write to us again."
-      ),
-      "",
-      gettext("If you did not send this message, please ignore this e-mail."),
-      "",
-      case context[:site_url] do
-        nil -> "QuickSlips"
-        site_url -> "QuickSlips · #{site_url}"
-      end
-    ]
-    |> Enum.join("\n")
+  @doc "The confirmation to the sender, in the language of `context.locale`."
+  def confirmation_letter(%Message{} = message, context) do
+    locale = context.locale
+
+    Gettext.with_locale(QuickSlipsWeb.Gettext, locale.language, fn ->
+      %Letter{
+        language: locale.language,
+        subject:
+          gettext("Your message to QuickSlips (%{reference})", reference: message.reference),
+        preheader: gettext("Your reference is %{reference}.", reference: message.reference),
+        heading: gettext("We have your message"),
+        blocks: [
+          {:text, greeting(message)},
+          {:text,
+           gettext(
+             "Thank you for writing to QuickSlips. We have received your message and we will read it."
+           )},
+          {:lines,
+           [
+             gettext("Reference: %{reference}", reference: message.reference),
+             gettext("Topic: %{topic}", topic: Topic.label(message.topic)),
+             gettext("Received: %{time}", time: time(message.inserted_at))
+           ]},
+          {:quote, gettext("Your message:"), message.message},
+          {:text,
+           gettext(
+             "If we reply, it will be to this e-mail address. Please quote the reference if you write to us again."
+           )},
+          {:note, gettext("If you did not send this message, please ignore this e-mail.")}
+        ],
+        footer: [
+          gettext(
+            "You are receiving this email because %{email} was entered in the contact form on QuickSlips.",
+            email: message.email
+          )
+        ]
+      }
+    end)
   end
 
   defp greeting(%Message{name: nil}), do: gettext("Hello,")

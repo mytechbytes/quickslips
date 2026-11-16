@@ -154,11 +154,14 @@ defmodule QuickSlipsWeb.UserLive.Login do
       when is_binary(email) do
     with :ok <- TurnstileCheck.verify(socket),
          :ok <- AuthLimits.check_mail(socket.assigns.client_ip, email) do
-      Accounts.send_login_instructions_later(email, &url(~p"/users/log-in/#{&1}"))
+      # The e-mail is in the language the visitor has chosen, which this page is showing.
+      Accounts.send_login_instructions_later(email, &url(~p"/users/log-in/#{&1}"),
+        locale: socket.assigns.locale
+      )
 
       info =
         gettext(
-          "If your email is in our system, you will receive instructions for logging in shortly."
+          "If your email is in our system, you will receive instructions for logging in shortly. If it does not arrive, check your spam folder."
         )
 
       {:noreply,

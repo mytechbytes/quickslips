@@ -4,6 +4,7 @@ defmodule QuickSlipsWeb.UserLive.SettingsTest do
   alias QuickSlips.Accounts
   import Phoenix.LiveViewTest
   import QuickSlips.AccountsFixtures
+  import Swoosh.TestAssertions
 
   describe "Settings page" do
     test "renders settings page", %{conn: conn} do
@@ -57,6 +58,25 @@ defmodule QuickSlipsWeb.UserLive.SettingsTest do
 
       assert result =~ "A link to confirm your email"
       assert Accounts.get_user_by_email(user.email)
+    end
+
+    test "sends the e-mail that confirms the new address in the language the user has chosen", %{
+      conn: conn
+    } do
+      new_email = unique_user_email()
+      conn = conn |> get(~p"/es-es") |> recycle()
+
+      {:ok, lv, _html} = live(conn, ~p"/users/settings")
+
+      lv
+      |> form("#email_form", %{"user" => %{"email" => new_email}})
+      |> render_submit()
+
+      assert_email_sent(fn email ->
+        email.to == [{"", new_email}] and
+          email.subject == "Confirma tu nuevo correo electrónico de QuickSlips" and
+          email.html_body =~ ~s(<html lang="es")
+      end)
     end
 
     test "renders errors with invalid data (phx-change)", %{conn: conn} do

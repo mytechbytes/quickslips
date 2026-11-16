@@ -44,8 +44,12 @@ defmodule QuickSlipsWeb.Plugs.RateLimitTest do
     put_limit(:generate, 1, 60)
     n = System.unique_integer([:positive])
 
-    refute call({0x2001, 0x0DB8, 0xBEEF, n, 0, 0, 0, 1}).halted
-    assert call({0x2001, 0x0DB8, 0xBEEF, n, 0x1111, 0x2222, 0x3333, 0x4444}).halted
+    # A group of an IPv6 address has 16 bits and the counter of a test run can have more (it counts for every test,
+    # and a long run goes past 65535), so the number is spread over two groups of the /64.
+    {high, low} = {rem(div(n, 65_536), 65_536), rem(n, 65_536)}
+
+    refute call({0x2001, 0x0DB8, high, low, 0, 0, 0, 1}).halted
+    assert call({0x2001, 0x0DB8, high, low, 0x1111, 0x2222, 0x3333, 0x4444}).halted
   end
 
   test "each rule counts for itself" do

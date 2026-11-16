@@ -88,15 +88,18 @@ defmodule QuickSlips.Accounts do
   whoever could ask for any address and read the answer would be able to list the people who use the site.
 
   Returns `{:ok, email}` when the account was made, *and also when the address already had one*; in both cases the
-  e-mail that logs in or confirms (see `send_login_instructions_later/2`) goes to the owner of the address and the page
+  e-mail that logs in or confirms (see `send_login_instructions_later/3`) goes to the owner of the address and the page
   says the same. For an address that has an account the e-mail is the way the owner learns of it. Returns `{:error,
   changeset}` for what is wrong with the form itself (a short password, no @), which is the same whatever the address, and
   never with the "has already been taken" of the e-mail.
+
+  `opts` is passed on to the e-mail: `:locale` is the locale the visitor chose on the site, whose language the e-mail
+  is written in.
   """
-  def register_user_quietly(attrs, magic_link_url_fun) do
+  def register_user_quietly(attrs, magic_link_url_fun, opts \\ []) do
     case register_user(attrs) do
       {:ok, user} ->
-        send_login_instructions_later(user.email, magic_link_url_fun)
+        send_login_instructions_later(user.email, magic_link_url_fun, opts)
         {:ok, user.email}
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -109,7 +112,7 @@ defmodule QuickSlips.Accounts do
             # and the taken one was refused before that. Do the same work, so the answer comes as slowly.
             Bcrypt.no_user_verify()
             email = Ecto.Changeset.get_field(changeset, :email)
-            send_login_instructions_later(email, magic_link_url_fun)
+            send_login_instructions_later(email, magic_link_url_fun, opts)
             {:ok, email}
 
           {_taken, others} ->
@@ -331,28 +334,42 @@ defmodule QuickSlips.Accounts do
   @doc ~S"""
   Delivers the update email instructions to the given user.
 
+  `opts` is passed on to the e-mail: `:locale` is the locale the person chose on the site, whose language the e-mail
+  is written in.
+
   ## Examples
 
       iex> deliver_user_update_email_instructions(user, current_email, &url(~p"/users/settings/confirm-email/#{&1}"))
       {:ok, %{to: ..., body: ...}}
 
   """
-  def deliver_user_update_email_instructions(%User{} = user, current_email, update_email_url_fun)
+  def deliver_user_update_email_instructions(
+        %User{} = user,
+        current_email,
+        update_email_url_fun,
+        opts \\ []
+      )
       when is_function(update_email_url_fun, 1) do
     {encoded_token, user_token} = UserToken.build_email_token(user, "change:#{current_email}")
 
     Repo.insert!(user_token)
-    UserNotifier.deliver_update_email_instructions(user, update_email_url_fun.(encoded_token))
+
+    UserNotifier.deliver_update_email_instructions(
+      user,
+      update_email_url_fun.(encoded_token),
+      opts
+    )
   end
 
   @doc """
-  Delivers the magic link login instructions to the given user.
+  Delivers the magic link login instructions to the given user. `opts` is passed on to the e-mail (`:locale`, the
+  locale the person chose on the site, whose language the e-mail is written in).
   """
-  def deliver_login_instructions(%User{} = user, magic_link_url_fun)
+  def deliver_login_instructions(%User{} = user, magic_link_url_fun, opts \\ [])
       when is_function(magic_link_url_fun, 1) do
     {encoded_token, user_token} = UserToken.build_email_token(user, "login")
     Repo.insert!(user_token)
-    UserNotifier.deliver_login_instructions(user, magic_link_url_fun.(encoded_token))
+    UserNotifier.deliver_login_instructions(user, magic_link_url_fun.(encoded_token), opts)
   end
 
   @doc """
@@ -362,13 +379,16 @@ defmodule QuickSlips.Accounts do
   The look-up, the token and the sending are all in the task. Sending takes a second or more and the look-up of an
   address that has no account takes nothing, so a page that did them itself would answer slowly for an address that has
   an account and at once for one that has none, and whoever timed it would know which addresses are registered.
+
+  The task has no language of its own, so the language of the e-mail is passed in `opts` as `:locale`: the locale the
+  visitor chose on the site, which the page they are on knows (`socket.assigns.locale`).
   """
-  def send_login_instructions_later(email, magic_link_url_fun)
+  def send_login_instructions_later(email, magic_link_url_fun, opts \\ [])
       when is_binary(email) and is_function(magic_link_url_fun, 1) do
     {:ok, _pid} =
       Task.Supervisor.start_child(QuickSlips.TaskSupervisor, fn ->
         with %User{} = user <- get_user_by_email(email),
-             {:error, reason} <- deliver_login_instructions(user, magic_link_url_fun) do
+             {:error, reason} <- deliver_login_instructions(user, magic_link_url_fun, opts) do
           Logger.warning("could not send the log-in e-mail: #{inspect(reason)}")
         end
       end)

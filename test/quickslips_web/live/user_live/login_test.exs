@@ -30,6 +30,7 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
         |> follow_redirect(conn, ~p"/users/log-in")
 
       assert html =~ "If your email is in our system"
+      assert html =~ "check your spam folder"
 
       # The e-mail is made and sent by a task, so the page does not wait for it.
       wait_for_tasks()
@@ -38,6 +39,29 @@ defmodule QuickSlipsWeb.UserLive.LoginTest do
                "login"
 
       assert_email_sent(to: {nil, user.email})
+    end
+
+    test "sends the e-mail in the language the visitor has chosen", %{conn: conn} do
+      user = user_fixture()
+      conn = conn |> get(~p"/hi-in") |> recycle()
+
+      {:ok, lv, _html} = live(conn, ~p"/users/log-in")
+      pass_turnstile(lv)
+
+      {:ok, _lv, html} =
+        form(lv, "#login_form_magic", user: %{email: user.email})
+        |> render_submit()
+        |> follow_redirect(conn, ~p"/users/log-in")
+
+      # the page and the e-mail speak the same language
+      assert html =~ "स्पैम फ़ोल्डर"
+
+      wait_for_tasks()
+
+      assert_email_sent(fn email ->
+        email.to == [{"", user.email}] and email.subject == "आपका QuickSlips लॉग इन लिंक" and
+          email.html_body =~ ~s(<html lang="hi") and email.text_body =~ "लॉग इन"
+      end)
     end
 
     test "does not disclose if user is registered", %{conn: conn} do
