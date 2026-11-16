@@ -29,6 +29,18 @@ config :quickslips, QuickSlips.Mailer, adapter: Swoosh.Adapters.Test
 # limits of quota for downloads PDF
 config :quickslips, :quota, anonymous: 2, user: 3, ip: 5
 
+# The brakes of QuickSlips.RateLimit are out of reach in the tests: they all come from one address, and the counters
+# are shared by every test. A test of a brake sets the rule it needs and puts it back (see RateLimitCase).
+config :quickslips, :rate_limits,
+  generate: {1_000_000, 60},
+  api: {1_000_000, 60},
+  login_ip: {1_000_000, 900},
+  login_email: {1_000_000, 900},
+  login_captcha: {1_000_000, 900},
+  mail_ip: {1_000_000, 3600},
+  mail_email: {1_000_000, 3600},
+  mail_all: {1_000_000, 3600}
+
 # Pictures uploaded by the tests go here, outside the project. The tests remove what they store.
 config :quickslips, :uploads_dir, Path.join(System.tmp_dir!(), "quickslips-test-uploads")
 

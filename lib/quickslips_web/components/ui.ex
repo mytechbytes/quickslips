@@ -333,6 +333,37 @@ defmodule QuickSlipsWeb.UI do
     """
   end
 
+  @doc """
+  The Cloudflare Turnstile check of a form of the log-in and sign-up pages. It shows itself only when Cloudflare needs
+  the visitor to do something; otherwise it is an empty box. Each token goes to the LiveView as a `"turnstile"` event
+  (`%{"token" => token}`, or `nil` when the widget has none), and the LiveView asks for a new one with a
+  `"turnstile:reset"` event after it has used one (a token is good for one check).
+
+  `fill` is a CSS selector of hidden inputs that get the token as their value, for a form that is not sent by the
+  LiveView but by the browser (the log-in with a password): they sit in an element with `phx-update="ignore"`, so a patch
+  of the page does not empty them.
+
+  Draws nothing when there is no `site_key`.
+  """
+  attr :id, :string, required: true
+  attr :site_key, :string, default: nil
+  attr :fill, :string, default: nil
+
+  def turnstile_check(assigns) do
+    ~H"""
+    <div
+      :if={@site_key}
+      id={@id}
+      phx-hook="AuthTurnstile"
+      phx-update="ignore"
+      data-site-key={@site_key}
+      data-fill={@fill}
+      class="mt-4"
+    >
+    </div>
+    """
+  end
+
   @doc "The Continue with Google button. A normal link: it leaves the app for Google."
   attr :id, :string, default: "google-login"
 

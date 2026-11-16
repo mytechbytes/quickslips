@@ -41,6 +41,17 @@ defmodule QuickSlips.Uploads do
     :ok
   end
 
+  @doc """
+  Looks at the bytes of a picture the way `store/2` looks at a file: a whole PNG or a JPEG that is at most
+  #{@max_side} pixels on a side. Returns `{:ok, ".png" | ".jpg"}`, `{:error, :unsupported_type}` or
+  `{:error, :too_large}`.
+
+  For a picture that does not go into the uploads folder but straight into a render, like the picture of a watermark
+  that comes with the request. The size matters there as well: a small file can say it holds a picture of billions of
+  pixels, and Typst would try to make room for all of them.
+  """
+  def check_image(bytes) when is_binary(bytes), do: check(bytes)
+
   defp detect(file) do
     with {:ok, %File.Stat{size: size}} when size <= @max_bytes <- File.stat(file),
          {:ok, bytes} <- File.read(file) do

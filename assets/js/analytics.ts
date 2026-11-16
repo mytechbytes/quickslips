@@ -43,6 +43,11 @@ export function startTagManager(id: string): void {
   const script = document.createElement("script")
   script.async = true
   script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(id)}`
+  // The page's Content-Security-Policy lets only scripts with its nonce run inline. Tag Manager takes the nonce of its own
+  // tag and puts it on the scripts it makes (a tag of the container that needs to run inline). The nonce is that of the
+  // script of the layout, which the browser keeps in the `nonce` property after it hides the attribute.
+  const nonce = document.querySelector<HTMLScriptElement>("script[nonce]")?.nonce
+  if (nonce) script.nonce = nonce
   document.head.append(script)
 }
 

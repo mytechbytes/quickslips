@@ -75,12 +75,27 @@ const ContactTurnstile = {
   destroyed() { this.check?.stop() },
 }
 
+// The Turnstile check of the log-in and sign-up pages (`turnstile_check/1` in `QuickSlipsWeb.UI`): like the one of the
+// contact form, and it also copies each token into the hidden inputs `data-fill` names, for the form that the browser
+// sends (the log-in with a password) and not the LiveView.
+const AuthTurnstile = {
+  mounted() {
+    const fill = this.el.dataset.fill
+    this.check = mountContactCheck(this.el, token => {
+      if (fill) document.querySelectorAll(fill).forEach(input => { input.value = token ?? "" })
+      this.pushEvent("turnstile", {token})
+    })
+    this.handleEvent("turnstile:reset", () => this.check.reset())
+  },
+  destroyed() { this.check?.stop() },
+}
+
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 const liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
   // The locale of the page the visitor is on goes along when a LiveView connects (see `Plugs.Locale.on_mount/4`).
   params: () => ({_csrf_token: csrfToken, locale: document.documentElement.dataset.locale}),
-  hooks: {...colocatedHooks, BillApp, ContactTurnstile},
+  hooks: {...colocatedHooks, BillApp, ContactTurnstile, AuthTurnstile},
 })
 
 // Show progress bar on live navigation and form submits

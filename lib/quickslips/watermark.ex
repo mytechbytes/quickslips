@@ -13,11 +13,12 @@ defmodule QuickSlips.Watermark do
   kept with a document in the history: the same without the picture, which is too big to keep and has to be chosen again.
   """
 
+  alias QuickSlips.Uploads
+
   @layouts ~w(diagonal horizontal vertical grid)
   @max_text 40
   @max_count 50
   @max_image_bytes 1_500_000
-  @png <<137, 80, 78, 71, 13, 10, 26, 10>>
 
   @doc "The layouts a user may choose."
   def layouts, do: @layouts
@@ -95,11 +96,13 @@ defmodule QuickSlips.Watermark do
   # A watermark that is a picture with no picture (a document made again from the history) is left out.
   defp with_image(_settings, data) when data in [nil, ""], do: {:ok, %{data: %{}, files: %{}}}
 
+  # The picture comes from anybody who can call the download, and goes to Typst. It has to be a whole PNG or JPEG of a
+  # size Typst can draw: `Uploads.check_image/1` looks at its own header, not at what the sender says it is.
   defp with_image(settings, "data:" <> rest) do
     with [_type, encoded] <- String.split(rest, ";base64,", parts: 2),
          {:ok, bytes} <- Base.decode64(encoded),
          true <- byte_size(bytes) <= @max_image_bytes,
-         {:ok, ext} <- extension(bytes) do
+         {:ok, "." <> ext} <- Uploads.check_image(bytes) do
       name = "watermark." <> ext
 
       {:ok,
@@ -113,8 +116,4 @@ defmodule QuickSlips.Watermark do
   end
 
   defp with_image(_settings, _other), do: {:error, :bad_request}
-
-  defp extension(<<@png, _::binary>>), do: {:ok, "png"}
-  defp extension(<<0xFF, 0xD8, 0xFF, _::binary>>), do: {:ok, "jpg"}
-  defp extension(_bytes), do: :error
 end

@@ -2,7 +2,9 @@ import type { BillData } from "./form"
 
 export type DownloadResult =
   | { ok: true; url: string; filename: string }
-  | { ok: false; status: number; errors?: Record<string, string[]>; message?: string }
+  // `code` is "slow_down" when the server says too many calls came from this address in a short time (HTTP 429, like the
+  // day's limit, which has no code).
+  | { ok: false; status: number; errors?: Record<string, string[]>; message?: string; code?: string }
 
 export async function downloadPdf(
   slug: string,
@@ -51,7 +53,7 @@ export async function downloadPdf(
 
   if (!response.ok) {
     const body = await response.json().catch(() => ({}))
-    return { ok: false, status: response.status, errors: body.errors, message: body.error }
+    return { ok: false, status: response.status, errors: body.errors, message: body.error, code: body.code }
   }
 
   const blob = await response.blob()

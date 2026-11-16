@@ -29,6 +29,19 @@ defmodule QuickSlips.DownloadsTest do
     assert {:ok, %{remaining: 1}} = Downloads.reserve(anon("fresh-6", "10.8.8.8"))
   end
 
+  test "an IPv6 visitor is counted by the /64, not by the one address they happen to use" do
+    # five addresses of one network use the ceiling of 5 ...
+    for n <- 1..5,
+        do: assert({:ok, _} = Downloads.reserve(anon("v6-#{n}", "2001:db8:aa:1::#{n}")))
+
+    # ... so a sixth, in the same /64 but with an address nobody has used, is refused
+    assert {:error, {:limit_reached, :anonymous}} =
+             Downloads.reserve(anon("v6-6", "2001:db8:aa:1:ffff:eeee:dddd:1"))
+
+    # while another network is not touched
+    assert {:ok, %{remaining: 1}} = Downloads.reserve(anon("v6-7", "2001:db8:aa:2::1"))
+  end
+
   test "refund restores the download" do
     {:ok, grant} = Downloads.reserve(anon("vid-3", "10.0.0.3"))
     Downloads.refund(grant)

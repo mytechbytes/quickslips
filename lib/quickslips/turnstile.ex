@@ -3,6 +3,9 @@ defmodule QuickSlips.Turnstile do
 
   @verify_url "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
+  @doc "The public key of the widget (`nil` where none is set): the page needs it to draw the check."
+  def site_key, do: Application.get_env(:quickslips, :turnstile)[:site_key]
+
   # The address of the visitor is optional for Cloudflare. A page that is a LiveView does not have it behind the
   # proxy (only the controllers do), so it asks without.
   def verify(token, ip \\ nil)

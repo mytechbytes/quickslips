@@ -1,6 +1,7 @@
 defmodule QuickSlips.Downloads do
   @moduledoc "Decides whether a caller may generate another PDF today."
 
+  alias QuickSlips.ClientIp
   alias QuickSlips.Quota
 
   @type caller :: %{user: struct() | nil, visitor_id: String.t(), ip: String.t()}
@@ -18,10 +19,12 @@ defmodule QuickSlips.Downloads do
     end
   end
 
+  # A visitor can throw their cookie away and be a new visitor, so the address counts too. An IPv6 address is counted by
+  # its /64 (see `QuickSlips.ClientIp`): the person behind it has 2^64 of them to change to.
   def reserve(%{visitor_id: vid, ip: ip}) do
     limits = Quota.limits()
     visitor_key = "v:#{vid}"
-    ip_key = "ip:#{ip}"
+    ip_key = "ip:#{ClientIp.key(ip)}"
 
     with {:ok, remaining} <- Quota.check_and_increment(visitor_key, limits.anonymous),
          :ok <- reserve_ip(ip_key, limits.ip, visitor_key) do
@@ -55,7 +58,10 @@ defmodule QuickSlips.Downloads do
     limits = Quota.limits()
 
     remaining =
-      min(Quota.remaining("v:#{vid}", limits.anonymous), Quota.remaining("ip:#{ip}", limits.ip))
+      min(
+        Quota.remaining("v:#{vid}", limits.anonymous),
+        Quota.remaining("ip:#{ClientIp.key(ip)}", limits.ip)
+      )
 
     %{remaining: remaining, limit: limits.anonymous, tier: :anonymous}
   end

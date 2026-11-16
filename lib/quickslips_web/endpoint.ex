@@ -15,6 +15,9 @@ defmodule QuickSlipsWeb.Endpoint do
     websocket: [connect_info: [session: @session_options]],
     longpoll: [connect_info: [session: @session_options]]
 
+  # The headers of every response, a file of priv/static as well as a page (see the plug).
+  plug QuickSlipsWeb.Plugs.SecurityHeaders
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # When code reloading is disabled (e.g., in production),

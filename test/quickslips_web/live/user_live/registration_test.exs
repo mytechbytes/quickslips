@@ -1,8 +1,15 @@
 defmodule QuickSlipsWeb.UserLive.RegistrationTest do
   use QuickSlipsWeb.ConnCase, async: true
 
+  import Ecto.Query, only: [from: 2]
   import Phoenix.LiveViewTest
   import QuickSlips.AccountsFixtures
+  import QuickSlips.TaskHelpers
+  import QuickSlips.TurnstileHelpers
+  import Swoosh.TestAssertions
+
+  alias QuickSlips.Accounts.User
+  alias QuickSlips.Repo
 
   describe "Registration page" do
     test "renders registration page", %{conn: conn} do
@@ -63,6 +70,7 @@ defmodule QuickSlipsWeb.UserLive.RegistrationTest do
   describe "register user" do
     test "creates account but does not log in", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/register")
+      pass_turnstile(lv)
 
       email = unique_user_email()
       form = form(lv, "#registration_form", user: valid_user_attributes(email: email))
@@ -73,21 +81,139 @@ defmodule QuickSlipsWeb.UserLive.RegistrationTest do
 
       assert html =~
                ~r/An email was sent to .*, please access it and use the password you just chose to confirm your account/
+
+      assert Repo.get_by!(User, email: email).confirmed_at == nil
+
+      wait_for_tasks()
+      assert_email_sent(to: {nil, email})
     end
 
-    test "renders errors for duplicated email", %{conn: conn} do
+    test "asks for the Turnstile check", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/register")
 
-      user = user_fixture(%{email: "test@email.com"})
+      assert has_element?(
+               lv,
+               "#registration-turnstile[phx-hook=AuthTurnstile][phx-update=ignore][data-site-key=test]"
+             )
+    end
 
-      result =
+    test "makes no account and sends nothing before the check is passed", %{conn: conn} do
+      {:ok, lv, _html} = live(conn, ~p"/users/register")
+
+      email = unique_user_email()
+
+      html =
+        lv
+        |> form("#registration_form", user: valid_user_attributes(email: email))
+        |> render_submit()
+
+      assert html =~ "couldn&#39;t check that you are a person"
+      assert Repo.get_by(User, email: email) == nil
+      wait_for_tasks()
+      refute_email_sent()
+    end
+
+    test "makes no account when Cloudflare says the visitor is not a person", %{conn: conn} do
+      {:ok, lv, _html} = live(conn, ~p"/users/register")
+      turnstile_says(lv, false)
+      give_token(lv)
+
+      email = unique_user_email()
+
+      html =
+        lv
+        |> form("#registration_form", user: valid_user_attributes(email: email))
+        |> render_submit()
+
+      assert html =~ "couldn&#39;t check that you are a person"
+      assert_push_event(lv, "turnstile:reset", %{})
+      assert Repo.get_by(User, email: email) == nil
+    end
+
+    test "what is wrong with the form is told before the check, and uses no token", %{conn: conn} do
+      {:ok, lv, _html} = live(conn, ~p"/users/register")
+
+      html =
         lv
         |> form("#registration_form",
-          user: %{"email" => user.email}
+          user: %{
+            "email" => unique_user_email(),
+            "password" => "Ab1",
+            "password_confirmation" => "Ab1"
+          }
         )
         |> render_submit()
 
-      assert result =~ "has already been taken"
+      assert html =~ "should be at least 6 character(s)"
+      refute html =~ "couldn&#39;t check that you are a person"
+    end
+
+    test "does not tell that the address has an account: the page says what it says to a new one",
+         %{
+           conn: conn
+         } do
+      user = user_fixture(%{email: "test@email.com"})
+      {:ok, lv, _html} = live(conn, ~p"/users/register")
+      pass_turnstile(lv)
+
+      {:ok, _lv, html} =
+        lv
+        |> form("#registration_form", user: valid_user_attributes(email: user.email))
+        |> render_submit()
+        |> follow_redirect(conn, ~p"/users/log-in")
+
+      refute html =~ "has already been taken"
+
+      assert html =~
+               ~r/An email was sent to .*, please access it and use the password you just chose to confirm your account/
+
+      # Nothing was made, and the owner of the address is the one who is told.
+      assert Repo.aggregate(from(u in User, where: u.email == ^user.email), :count) == 1
+      wait_for_tasks()
+      assert_email_sent(to: {nil, user.email})
+    end
+
+    test "the e-mail of an address that has an account is the log-in link, and the account is not touched",
+         %{
+           conn: conn
+         } do
+      user = user_fixture()
+      {:ok, lv, _html} = live(conn, ~p"/users/register")
+      pass_turnstile(lv)
+
+      attrs =
+        valid_user_attributes(
+          email: user.email,
+          password: "Another pass 99",
+          password_confirmation: "Another pass 99"
+        )
+
+      lv |> form("#registration_form", user: attrs) |> render_submit()
+      wait_for_tasks()
+
+      reloaded = Repo.get!(User, user.id)
+      assert reloaded.hashed_password == user.hashed_password
+
+      assert QuickSlips.Repo.get_by!(QuickSlips.Accounts.UserToken, user_id: user.id).context ==
+               "login"
+    end
+
+    test "does not tell either when the password is wrong too: only the password is told", %{
+      conn: conn
+    } do
+      user = user_fixture()
+      {:ok, lv, _html} = live(conn, ~p"/users/register")
+      pass_turnstile(lv)
+
+      html =
+        lv
+        |> form("#registration_form",
+          user: %{"email" => user.email, "password" => "Ab1", "password_confirmation" => "Ab1"}
+        )
+        |> render_submit()
+
+      assert html =~ "should be at least 6 character(s)"
+      refute html =~ "has already been taken"
     end
   end
 

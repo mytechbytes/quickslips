@@ -11,6 +11,8 @@ defmodule QuickSlipsWeb.Router do
     plug :put_root_layout, html: {QuickSlipsWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    # Its policy replaces the short one above, and gives the layouts their `@csp_nonce`.
+    plug QuickSlipsWeb.Plugs.ContentSecurityPolicy
     plug :fetch_current_scope_for_user
     plug QuickSlipsWeb.Plugs.VisitorId
 
@@ -23,6 +25,9 @@ defmodule QuickSlipsWeb.Router do
   end
 
   pipeline :api_session do
+    # First, before the session or the database are touched: a flood of calls from one address is turned away here.
+    # `POST /api/generate` has a stricter limit of its own (its controller).
+    plug QuickSlipsWeb.Plugs.RateLimit, name: :api
     plug :accepts, ["json"]
     plug :fetch_session
     plug :fetch_current_scope_for_user
@@ -86,7 +91,10 @@ defmodule QuickSlipsWeb.Router do
   scope "/admin" do
     pipe_through [:browser, :require_authenticated_user, :require_admin]
 
-    error_tracker_dashboard "/errors", on_mount: [{QuickSlipsWeb.UserAuth, :require_admin}]
+    # The dashboard has its script and its styles in the page itself, so they need the nonce of the policy.
+    error_tracker_dashboard "/errors",
+      on_mount: [{QuickSlipsWeb.UserAuth, :require_admin}],
+      csp_nonce_assign_key: :csp_nonce
   end
 
   scope "/auth", QuickSlipsWeb do
@@ -130,6 +138,9 @@ defmodule QuickSlipsWeb.Router do
     # live session, and it does not run the plugs again; so each LiveView that needs a login says so with
     # `on_mount {QuickSlipsWeb.UserAuth, :require_authenticated}`, and its first load is guarded by the plug.
     live_session :current_user,
+      # The visitor's address, from the request that loads the page (a LiveView cannot see it behind the proxy): the
+      # log-in and sign-up pages count their brakes by it.
+      session: {QuickSlipsWeb.ClientSession, :session, []},
       on_mount: [
         {QuickSlipsWeb.Plugs.Locale, :default},
         {QuickSlipsWeb.UserAuth, :mount_current_scope}

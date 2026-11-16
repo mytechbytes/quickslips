@@ -75,3 +75,7 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+# The policy of the pages only reports here (in the browser's console): the tools of development (live reload, the
+# debugger) put scripts into the pages that it would refuse. To try the policy as it is in production: `CSP_MODE=enforce mix phx.server`.
+config :quickslips, :csp, :report_only

@@ -23,6 +23,27 @@ end
 config :quickslips, QuickSlipsWeb.Endpoint,
   http: [port: String.to_integer(System.get_env("PORT", "4000"))]
 
+# The Content-Security-Policy and the Cross-Origin-Opener-Policy can be set without a new version of the code: a policy
+# that is in the way of something is turned down to `report_only` (the browser only says what it would have refused), a
+# Tag Assistant session is made possible with `unsafe-none`. See `QuickSlipsWeb.ContentSecurityPolicy` and
+# `QuickSlipsWeb.Plugs.SecurityHeaders`. The tests keep what config/config.exs says.
+if config_env() != :test do
+  case System.get_env("CSP_MODE") do
+    mode when mode in ["enforce", "report_only", "off"] ->
+      config :quickslips, :csp, String.to_atom(mode)
+
+    _unset_or_unknown ->
+      :ok
+  end
+
+  case System.get_env("CROSS_ORIGIN_OPENER_POLICY") do
+    nil -> :ok
+    "" -> :ok
+    "off" -> config :quickslips, :cross_origin_opener_policy, nil
+    value -> config :quickslips, :cross_origin_opener_policy, value
+  end
+end
+
 # Social Logins
 config :ueberauth, Ueberauth.Strategy.Google.OAuth,
   client_id: System.get_env("GOOGLE_CLIENT_ID"),
