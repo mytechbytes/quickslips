@@ -10,13 +10,17 @@ export type StampPicker = {
    */
   readonly choice: string
   use(choice: string): void
-  /** The choice is shown while the chosen design has a place for a revenue stamp and the document is for India. */
-  showFor(design: Design | undefined, country: string): void
+  /**
+   * The choice stays on the form of a bill that has the box in some design, so it does not vanish when another design
+   * is picked; a design without the box says so in a note, shown while it is the chosen one.
+   */
+  showFor(design: Design | undefined): void
 }
 
 /**
  * The revenue stamp of the bill: a select with the empty box, the default stamp and the user's saved stamps (the server
- * draws it in `#stamp-section`), and, for a logged-in user, a small form that saves a new one from a picture and a name.
+ * draws it in `#stamp-section`, for a bill that has the box in some design), and, for a logged-in user, a small
+ * form that saves a new one from a picture and a name (a visitor has the button locked and no form).
  * `drawn` is told what to draw in the preview: the address of the chosen stamp's picture, or `null` for the empty box.
  */
 export function createStampPicker(root: HTMLElement, drawn: (url: string | null) => void): StampPicker {
@@ -25,6 +29,7 @@ export function createStampPicker(root: HTMLElement, drawn: (url: string | null)
   if (!section || !select) return { choice: "", use() {}, showFor() {} }
 
   makeSearchable(select)
+  const note = section.querySelector<HTMLElement>("#stamp-note-design")
   const stamps: Stamp[] = JSON.parse(root.dataset.stamps ?? "[]")
   let chosen = ""
 
@@ -83,8 +88,8 @@ export function createStampPicker(root: HTMLElement, drawn: (url: string | null)
       return chosen
     },
     use,
-    showFor(design, country) {
-      section.classList.toggle("hidden", !(design?.stamp && country === "in"))
+    showFor(design) {
+      note?.classList.toggle("hidden", design?.stamp === true)
     },
   }
 }

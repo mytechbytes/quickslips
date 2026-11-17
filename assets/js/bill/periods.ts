@@ -86,7 +86,7 @@ export function createPeriodsField(field: Field, initial: PeriodsValue | undefin
   const id = `field-${field.key}`
 
   const row = document.createElement("div")
-  row.className = "grid gap-x-3 gap-y-2.5 sm:grid-cols-3"
+  row.className = "grid grid-cols-1 gap-x-3 gap-y-2.5 sm:grid-cols-3"
 
   const cell = (label: string, control: HTMLElement) => {
     const wrapper = document.createElement("div")

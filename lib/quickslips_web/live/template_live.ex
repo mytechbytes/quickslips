@@ -143,10 +143,14 @@ defmodule QuickSlipsWeb.TemplateLive do
   defp stamp_choice(%{stamp_id: id}) when not is_nil(id), do: to_string(id)
   defp stamp_choice(_none), do: ""
 
-  # Whether the chosen design has a place for a revenue stamp, and the document is for India (see `Templates.Registry`).
-  defp stamp_design?(schema, template, region) do
-    region["country"] == "in" and
-      Enum.any?(schema["templates"], &(&1["id"] == template and &1["stamp"] == true))
+  # Whether the choice of a revenue stamp is on the form: the bill has a place for one in some design (see
+  # `Templates.Registry`), whatever the country or the design chosen, so it does not vanish when a design without the
+  # box is picked: that one says so instead (`stamp_design?/2`).
+  defp stamp_bill?(schema), do: Enum.any?(schema["templates"], &(&1["stamp"] == true))
+
+  # Whether the chosen design has a place for a revenue stamp.
+  defp stamp_design?(schema, template) do
+    Enum.any?(schema["templates"], &(&1["id"] == template and &1["stamp"] == true))
   end
 
   # Whether the chosen design has a paper to choose: all but the designs made for a thermal roll.
@@ -310,4 +314,22 @@ defmodule QuickSlipsWeb.TemplateLive do
 
   defp turnstile_site_key(%{user: %{}}), do: nil
   defp turnstile_site_key(_anonymous), do: Application.get_env(:quickslips, :turnstile)[:site_key]
+
+  attr :id, :string, required: true
+
+  # The label of a choice that only a logged-in user can use (saving a signature or a stamp takes an account): a link
+  # to the sign-up page, with a lock. It opens in a new tab, so the bill that is being filled in is not lost.
+  defp signup_badge(assigns) do
+    ~H"""
+    <.link
+      id={@id}
+      href={~p"/users/register"}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary-soft px-2 py-0.5 text-xs/5 font-medium text-primary transition-colors hover:bg-primary-soft/70 focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none"
+    >
+      <.icon name="hero-lock-closed" class="size-3.5" /> {gettext("Sign up to enable")}
+    </.link>
+    """
+  end
 end

@@ -16,8 +16,8 @@ export type SignaturePicker = {
 
 /**
  * The driver's signature, the second one of a receipt: a select of the same saved signatures (the server draws it in
- * `#driver-signature-section`), shown while the chosen design has a place for it. `drawn` is told the address of the
- * chosen picture, or `null`, for the preview.
+ * `#driver-signature-section`, locked for a visitor, who has none), shown while the chosen design has a place for it.
+ * `drawn` is told the address of the chosen picture, or `null`, for the preview.
  */
 export function createDriverSignaturePicker(root: HTMLElement, drawn: (url: string | null) => void): SignaturePicker {
   const section = root.querySelector<HTMLElement>("#driver-signature-section")
@@ -87,7 +87,7 @@ function createListedPicker(
   }
 }
 
-// A visitor has no signatures: nothing to choose and nothing to draw.
+// A design with no place for the choice on the page (the server draws none): nothing to choose and nothing to draw.
 const NO_PICKER: SignaturePicker = { id: null, use() {}, showFor() {} }
 
 /**
@@ -107,11 +107,13 @@ export function createSignaturePicker(root: HTMLElement, drawn: (url: string | n
   root.querySelector("#signature-open")?.addEventListener("click", () => (root.dataset.signatureTarget = "main"))
   root.querySelector("#driver-signature-open")?.addEventListener("click", () => (root.dataset.signatureTarget = "driver"))
 
-  const name = root.querySelector<HTMLInputElement>("#signature-name")!
-  const file = root.querySelector<HTMLInputElement>("#signature-file")!
-  const rights = root.querySelector<HTMLInputElement>("#signature-rights")!
-  const button = root.querySelector<HTMLButtonElement>("#signature-save")!
-  const message = root.querySelector<HTMLElement>("#signature-message")!
+  const name = root.querySelector<HTMLInputElement>("#signature-name")
+  const file = root.querySelector<HTMLInputElement>("#signature-file")
+  const rights = root.querySelector<HTMLInputElement>("#signature-rights")
+  const button = root.querySelector<HTMLButtonElement>("#signature-save")
+  const message = root.querySelector<HTMLElement>("#signature-message")
+  // A visitor sees the choice locked and has no dialog to save one in: nothing to wire up.
+  if (!name || !file || !rights || !button || !message) return picker
   const say = (text: string, error: boolean) => {
     message.textContent = text
     message.className = "text-sm/6 " + (error ? "text-danger" : "text-ink-muted")

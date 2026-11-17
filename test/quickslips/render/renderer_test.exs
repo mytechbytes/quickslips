@@ -236,6 +236,30 @@ defmodule QuickSlips.Render.RendererTest do
     end
   end
 
+  describe "the revenue stamp" do
+    # The three receipts that have a place for one (`"stamp": true` in `Templates.Registry`) draw it in every country:
+    # the empty box, or the picture that was chosen. A country with no revenue stamp of its own is no reason to drop it.
+    for slug <- ~w(rent-receipt driver-salary-receipt daily-helper-receipt) do
+      test "#{slug} draws the stamp that was chosen, in every live locale" do
+        slug = unquote(slug)
+        picture = tmp_file(jpg_bytes())
+
+        for locale <- Locales.live() do
+          {:ok, sample} = Templates.sample(slug, locale)
+          {:ok, empty} = Renderer.render(slug, "t1", sample, locale: locale.code)
+
+          {:ok, stamped} =
+            Renderer.render(slug, "t1", Map.put(sample, "stamp", "stamp.jpg"),
+              locale: locale.code,
+              assets: %{"stamp.jpg" => picture}
+            )
+
+          assert byte_size(stamped) > byte_size(empty), "#{slug} in #{locale.code}"
+        end
+      end
+    end
+  end
+
   describe "languages" do
     for code <- ["en-in", "hi-in", "es-es"] do
       test "fuel-bill/t1 compiles its sample in #{code}" do

@@ -1023,7 +1023,7 @@
   text(size: 9pt, fill: muted, label)
 }))
 
-// The revenue stamp of a receipt (stuck on a receipt in India only: the layout calls this for India). The picture of
+// The revenue stamp of a receipt (a layout that has a place for one calls this, in every country). The picture of
 // the stamp that was chosen, one of the user's or one the site provides, is named in the data under "stamp"; with none
 // chosen the empty dashed box is drawn, to stick a real stamp on.
 #let revenue-stamp(data, label, width: 24mm, height: 28mm) = {

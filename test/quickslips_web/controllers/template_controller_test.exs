@@ -264,6 +264,10 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       assert [_] = attrs(html, "#signature-name", "maxlength")
       assert [_] = attrs(html, "#signature-file", "accept")
       assert [_] = attrs(html, "#signature-save", "id")
+      # a logged-in user has it open: nothing is locked, and there is nothing to sign up for
+      assert attrs(html, "#signature-select", "disabled") == []
+      assert attrs(html, "#signature-open", "disabled") == []
+      assert attrs(html, "#signature-signup", "id") == []
     end
 
     test "is in the language of the page", %{conn: conn} do
@@ -302,7 +306,7 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
              }
     end
 
-    test "the revenue stamp: empty box, the default one, then the saved ones; for a receipt for India only",
+    test "the revenue stamp: empty box, the default one, then the saved ones; for a receipt that has a place for it",
          %{
            conn: conn
          } do
@@ -323,29 +327,129 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       assert LazyHTML.text(options) =~ "Landlord"
       refute html =~ "Somebody Else"
       refute html =~ "/uploads/#{theirs.path}"
-      refute hd(attrs(html, "#stamp-section", "class")) =~ "hidden"
+      assert [_] = attrs(html, "#stamp-section", "id")
       assert [_] = attrs(html, "#stamp-save", "id")
 
-      # a bill with no place for it, and a receipt made for another country, do not offer it
-      fuel = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
-      assert hd(attrs(fuel, "#stamp-section", "class")) =~ "hidden"
+      # a logged-in user has the upload open: nothing is locked, and there is nothing to sign up for
+      assert [_] = attrs(html, "#stamp-open", "id")
+      assert attrs(html, "#stamp-open", "disabled") == []
+      assert attrs(html, "#stamp-signup", "id") == []
+      assert [_] = attrs(html, "#stamp-dialog", "id")
 
+      # a bill with no place for it in any design does not offer it
+      fuel = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      assert attrs(fuel, "#stamp-section", "id") == []
+
+      # a receipt that has one offers it in every country, with the title in the language of the page
       spanish = conn |> get(~p"/es-es/generador-de-recibo-de-alquiler") |> html_response(200)
-      assert hd(attrs(spanish, "#stamp-section", "class")) =~ "hidden"
+      assert [_] = attrs(spanish, "#stamp-section", "id")
       assert spanish =~ "Sello fiscal"
+
+      hindi = conn |> get(~p"/hi-in/rent-receipt-generator") |> html_response(200)
+      assert hindi =~ "रेवेन्यू स्टैम्प"
     end
 
-    test "a visitor can choose a stamp of the site but has no saved ones and no form to save one",
-         %{
-           conn: conn
-         } do
+    test "the upload is on the receipt of every country for a logged-in user, as it is in India",
+         %{conn: conn} do
+      %{conn: conn} = register_and_log_in_user(%{conn: conn})
+
+      for path <- [
+            "/en-in/rent-receipt-generator",
+            "/en-us/rent-receipt-generator",
+            "/en-gb/rent-receipt-generator",
+            "/de-de/mietquittung-generator",
+            "/ja-jp/rent-receipt-generator"
+          ] do
+        html = conn |> get(path) |> html_response(200)
+
+        assert [_] = attrs(html, "#stamp-section", "id"), path
+        assert [_] = attrs(html, "#stamp-open", "id"), path
+        assert attrs(html, "#stamp-open", "disabled") == [], path
+        assert [_] = attrs(html, "#stamp-dialog", "id"), path
+      end
+    end
+
+    test "a design without the box keeps the choice on the page and says so, instead of hiding it",
+         %{conn: conn} do
+      %{conn: conn, scope: scope} = register_and_log_in_user(%{conn: conn})
+      schema = schema_of(conn, "/en-in/rent-receipt-generator")
+
+      boxes = Map.new(schema["templates"], &{&1["id"], &1["stamp"]})
+      assert boxes == %{"t1" => true, "t2" => true, "t4" => false}
+
+      # the first design has the box: the choice is there, and says nothing
+      html = conn |> get(~p"/en-in/rent-receipt-generator") |> html_response(200)
+      assert [_] = attrs(html, "#stamp-section", "id")
+      assert hd(attrs(html, "#stamp-note-design", "class")) =~ "hidden"
+
+      # a document made with the design that has none: the choice and the upload are still there, with the reason
+      document = document_fixture(scope, %{slug: "rent-receipt", template: "t4", data: %{}})
+
+      html =
+        conn |> get(~p"/en-in/rent-receipt-generator?from=#{document.id}") |> html_response(200)
+
+      assert [_] = attrs(html, "#stamp-section", "id")
+      assert [_] = attrs(html, "#stamp-select", "id")
+      assert [_] = attrs(html, "#stamp-open", "id")
+      assert attrs(html, "#stamp-open", "disabled") == []
+      refute hd(attrs(html, "#stamp-note-design", "class")) =~ "hidden"
+    end
+
+    test "a visitor can choose a stamp of the site, but saving one of their own is locked", %{
+      conn: conn
+    } do
       html = conn |> get(~p"/en-in/rent-receipt-generator") |> html_response(200)
 
       assert [_] = attrs(html, "#stamp-select", "id")
+      assert attrs(html, "#stamp-select", "disabled") == []
       # only the stamps of the site are on the page: no saved ones
       [stamps] = html |> attrs("#bill-app", "data-stamps") |> Enum.map(&Jason.decode!/1)
       assert Enum.all?(stamps, &String.starts_with?(&1["id"], "system:"))
+
+      # the upload is there but locked, with the way to enable it; the form that saves a stamp is not on the page
+      assert attrs(html, "#stamp-open", "disabled") == [""]
+      assert attrs(html, "#stamp-signup", "href") == ["/users/register"]
+      assert attrs(html, "#stamp-open", "aria-describedby") == ["stamp-signup"]
+      assert attrs(html, "#stamp-dialog", "id") == []
       assert attrs(html, "#stamp-save", "id") == []
+    end
+
+    test "does not depend on where the visitor is: a Thai address on the page for India still has it",
+         %{conn: conn} do
+      %{conn: conn} = register_and_log_in_user(%{conn: conn})
+
+      html =
+        conn
+        |> put_req_header("cf-ipcountry", "TH")
+        |> put_req_header("accept-language", "th-TH,th;q=0.9,en;q=0.8")
+        |> get(~p"/en-in/rent-receipt-generator")
+        |> html_response(200)
+
+      assert [_] = attrs(html, "#stamp-section", "id")
+      assert [_] = attrs(html, "#stamp-open", "id")
+      assert attrs(html, "#stamp-open", "disabled") == []
+    end
+
+    test "a visitor is offered the stamp on every receipt that has a place for it, in every country, and on no other bill",
+         %{conn: conn} do
+      fuel = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      assert attrs(fuel, "#stamp-section", "id") == []
+      assert attrs(fuel, "#stamp-signup", "id") == []
+
+      for path <- [
+            "/en-in/rent-receipt-generator",
+            "/en-us/rent-receipt-generator",
+            "/es-es/generador-de-recibo-de-alquiler",
+            "/ja-jp/rent-receipt-generator"
+          ] do
+        html = conn |> get(path) |> html_response(200)
+
+        assert [_] = attrs(html, "#stamp-section", "id"), path
+        assert attrs(html, "#stamp-select", "disabled") == [], path
+        assert attrs(html, "#stamp-open", "disabled") == [""], path
+        assert attrs(html, "#stamp-signup", "href") == ["/users/register"], path
+        assert attrs(html, "#stamp-dialog", "id") == [], path
+      end
     end
 
     test "the stamp of an earlier document is chosen again", %{conn: conn} do
@@ -374,12 +478,40 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       end
     end
 
-    test "a visitor has none: no choice, and an empty list", %{conn: conn} do
+    test "a visitor has none: the choice is there but locked, with a way to sign up", %{
+      conn: conn
+    } do
       html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
 
-      assert attrs(html, "#signature-section", "id") == []
       assert html =~ ~s(data-signatures="[]")
       assert attrs(html, "#bill-app", "data-signed-in") == ["false"]
+
+      # it is on the page, as it is for a logged-in user, with nothing in it to choose
+      assert [_] = attrs(html, "#signature-section", "id")
+      assert attrs(html, "#signature-select option", "value") == [""]
+      assert attrs(html, "#signature-select", "disabled") == [""]
+      assert attrs(html, "#signature-open", "disabled") == [""]
+
+      # ... with the way to enable it, and without the form that saves a signature
+      assert attrs(html, "#signature-signup", "href") == ["/users/register"]
+      assert attrs(html, "#signature-open", "aria-describedby") == ["signature-signup"]
+      assert attrs(html, "#signature-dialog", "id") == []
+      assert attrs(html, "#signature-save", "id") == []
+    end
+
+    test "a visitor's locked choice follows the design like a logged-in user's", %{conn: conn} do
+      fuel = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      grocery = conn |> get(~p"/en-in/grocery-bill-generator") |> html_response(200)
+
+      refute hd(attrs(fuel, "#signature-section", "class")) =~ "hidden"
+      assert hd(attrs(grocery, "#signature-section", "class")) =~ "hidden"
+    end
+
+    test "the label that says to sign up is in the language of the page", %{conn: conn} do
+      html = conn |> get(~p"/es-es/generador-de-factura-de-gasolina") |> html_response(200)
+
+      assert attrs(html, "#signature-signup", "href") == ["/users/register"]
+      assert html =~ "Regístrate para activarlo"
     end
 
     test "a logged-in user is told so", %{conn: conn} do
@@ -640,7 +772,8 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
       conn: conn
     } do
       conn = log_in_user(conn, user_fixture())
-      html = conn |> get(~p"/en-in/fuel-bill-generator") |> html_response(200)
+      # a bill that has a place for a revenue stamp: the others have no stamp dialog
+      html = conn |> get(~p"/en-in/rent-receipt-generator") |> html_response(200)
       doc = LazyHTML.from_document(html)
 
       assert LazyHTML.query(doc, "#design-picker.sm\\:grid-cols-6") |> Enum.count() == 1
@@ -653,9 +786,10 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
     test "is done in a dialog that a button opens, not in an expanding section", %{conn: conn} do
       conn = log_in_user(conn, user_fixture())
 
+      # a bill that has a place for a signature and for a revenue stamp
       doc =
         conn
-        |> get(~p"/en-in/fuel-bill-generator")
+        |> get(~p"/en-in/rent-receipt-generator")
         |> html_response(200)
         |> LazyHTML.from_document()
 
@@ -696,7 +830,50 @@ defmodule QuickSlipsWeb.TemplateControllerTest do
 
       for id <- ["signature-open", "driver-signature-open", "stamp-open"] do
         assert LazyHTML.query(doc, "button##{id}[data-dialog-open]") |> Enum.count() == 1
+        assert LazyHTML.query(doc, "button##{id}[disabled]") |> Enum.count() == 0
       end
+    end
+
+    test "a visitor sees each of them locked, with the name of its signer and a way to sign up",
+         %{
+           conn: conn
+         } do
+      salary =
+        conn
+        |> get(~p"/en-in/driver-salary-receipt-generator")
+        |> html_response(200)
+        |> LazyHTML.from_document()
+
+      voucher =
+        conn
+        |> get(~p"/en-in/cash-voucher-generator")
+        |> html_response(200)
+        |> LazyHTML.from_document()
+
+      count = fn doc, selector -> doc |> LazyHTML.query(selector) |> Enum.count() end
+
+      # the driver salary receipt: two signatures and the revenue stamp
+      for id <- ["signature", "driver-signature"] do
+        assert count.(salary, "select##{id}-select[disabled]") == 1
+        assert count.(salary, "button##{id}-open[disabled]") == 1
+        assert count.(salary, "a##{id}-signup[href='/users/register']") == 1
+      end
+
+      assert count.(salary, "button#stamp-open[disabled]") == 1
+      assert count.(salary, "a#stamp-signup[href='/users/register']") == 1
+      assert count.(salary, "select#stamp-select[disabled]") == 0
+
+      # the cash voucher: three signatures, named in the words of the bill
+      assert count.(voucher, "select#extra-signature-select-signature_3[disabled]") == 1
+      assert count.(voucher, "button#extra-signature-open-signature_3[disabled]") == 1
+      assert count.(voucher, "a#extra-signature-signup-signature_3[href='/users/register']") == 1
+
+      assert voucher
+             |> LazyHTML.query("label[for=extra-signature-select-signature_3]")
+             |> LazyHTML.text()
+             |> String.trim() == "Approved by"
+
+      assert count.(voucher, "[data-extra-signature=signature_4]") == 0
     end
 
     test "a cash voucher has a signature select for each of its three signers, with their names",

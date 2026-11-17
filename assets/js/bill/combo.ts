@@ -1,7 +1,7 @@
 import { t } from "./i18n"
 
 const BUTTON_CLASS =
-  "flex w-full min-w-0 items-center justify-between gap-2 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-left text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus"
+  "flex w-full min-w-0 items-center justify-between gap-2 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-left text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-ink-faint disabled:opacity-60"
 const OPTION_CLASS = "block w-full cursor-pointer truncate px-2.5 py-1.5 text-left text-sm text-ink aria-selected:font-semibold data-[active=true]:bg-surface-muted"
 
 const valueSetter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, "value")!
@@ -10,7 +10,7 @@ const valueSetter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,
  * Makes a `<select>` that lists saved things (employees, businesses, signatures, stamps) searchable: the select stays in
  * the page, hidden, as the one place the choice is kept and read, and a button in its place opens a list with a box that
  * filters it as the visitor types. Whatever changes the select afterwards (new options, a value set from the script, the
- * `hidden` attribute) shows in the button.
+ * `hidden` attribute, `disabled`) shows in the button.
  */
 export function makeSearchable(select: HTMLSelectElement) {
   if (select.dataset.searchable === "true") return
@@ -26,6 +26,9 @@ export function makeSearchable(select: HTMLSelectElement) {
   button.className = BUTTON_CLASS
   button.setAttribute("aria-haspopup", "listbox")
   button.setAttribute("aria-expanded", "false")
+  // The select is hidden from assistive technology, so what describes it (why it is locked) describes the button.
+  const described = select.getAttribute("aria-describedby")
+  if (described) button.setAttribute("aria-describedby", described)
   const label = document.createElement("span")
   label.className = "truncate"
   const chevron = document.createElement("span")
@@ -54,6 +57,9 @@ export function makeSearchable(select: HTMLSelectElement) {
 
   select.after(wrapper)
   select.classList.add("sr-only")
+  // The classes that sized the select on its own would win over `sr-only` (a hidden select as wide as its row still
+  // makes the page scroll sideways on a phone).
+  select.classList.remove("w-full", "flex-1")
   select.tabIndex = -1
   select.setAttribute("aria-hidden", "true")
 
@@ -65,6 +71,7 @@ export function makeSearchable(select: HTMLSelectElement) {
     label.textContent = chosen?.text ?? ""
     label.classList.toggle("text-ink-muted", !select.value)
     wrapper.hidden = select.hidden || select.classList.contains("hidden")
+    button.disabled = select.disabled
   }
 
   function fill() {
@@ -145,6 +152,6 @@ export function makeSearchable(select: HTMLSelectElement) {
       show()
     },
   })
-  new MutationObserver(show).observe(select, { childList: true, subtree: true, attributes: true, attributeFilter: ["hidden", "class"] })
+  new MutationObserver(show).observe(select, { childList: true, subtree: true, attributes: true, attributeFilter: ["hidden", "class", "disabled"] })
   show()
 }

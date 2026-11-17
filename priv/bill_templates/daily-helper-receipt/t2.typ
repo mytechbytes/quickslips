@@ -8,11 +8,9 @@
 #let small-sheet = data.at("paper_size", default: none) == "a5"
 #set par(leading: 0.75em)
 
-// What the helper is paid in a month, and the revenue stamp (stuck on a receipt in India only).
+// What the helper is paid in a month, and the place for the revenue stamp (the picture that was chosen, or an empty box), in every country.
 #let net = data.salary
-#let stamp(width: 24mm, height: 28mm) = if region.country == "in" {
-  revenue-stamp(data, t.revenue_stamp, width: width, height: height)
-}
+#let stamp(width: 24mm, height: 28mm) = revenue-stamp(data, t.revenue_stamp, width: width, height: height)
 #let role = data.working_as
 #let declaration = opt(data, "declaration")
 #let employee = data.employer_name

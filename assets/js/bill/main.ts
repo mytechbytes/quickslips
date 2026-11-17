@@ -150,7 +150,7 @@ export function mountBillApp(root: HTMLElement): () => void {
     signature.showFor(design)
     driverSignature.showFor(design)
     for (const picker of Object.values(extraSignatures)) picker.showFor(design)
-    stamp.showFor(design, region.country)
+    stamp.showFor(design)
     showPaper(design)
   })
   paperSelect.addEventListener("change", () => preview.setPaper(paperSelect.value))

@@ -40,7 +40,7 @@
       data-sample={Jason.encode!(@sample)}
       data-worker={~p"/assets/js/preview_worker.js"}
       data-turnstile-site-key={turnstile_site_key(@current_scope)}
-      class="mt-4 grid gap-5 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
+      class="mt-4 grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
     >
       <div class="space-y-5 rounded-card border border-line bg-surface p-4">
         <%!-- Always there, even when a bill has one template: the place where more will show up. --%>
@@ -88,14 +88,13 @@
         </section>
         <form id="bill-form" class="space-y-5" novalidate></form>
         <%!-- What can be saved and chosen again: below the form, above the advanced settings. --%>
-        <%!-- The signature: one of the saved ones, or none. Only for a logged-in user, and only while the chosen design has a place to sign. --%>
+        <%!-- The signature: one of the saved ones, or none, while the chosen design has a place to sign. A visitor sees it too, locked with a link to sign up: saving a signature takes an account. --%>
         <section
-          :if={@signed_in?}
           id="signature-section"
           data-group="signature"
           class={[!signature_design?(@schema, @template) && "hidden"]}
         >
-          <div class="mb-3 flex items-center gap-3">
+          <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1.5">
             <label
               for="signature-select"
               class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
@@ -103,11 +102,14 @@
               {signature_heading(@schema, @text)}
             </label>
             <span class="h-px flex-1 bg-line"></span>
+            <.signup_badge :if={!@signed_in?} id="signature-signup" />
           </div>
           <div class="flex items-center gap-2 sm:max-w-sm">
             <select
               id="signature-select"
-              class="block w-full min-w-0 flex-1 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus"
+              disabled={!@signed_in?}
+              aria-describedby={!@signed_in? && "signature-signup"}
+              class="block w-full min-w-0 flex-1 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-ink-faint disabled:opacity-60"
             >
               <option value="">{gettext("No signature (placeholder only)")}</option>
               <option
@@ -121,18 +123,26 @@
             <button
               type="button"
               id="signature-open"
+              disabled={!@signed_in?}
+              aria-describedby={!@signed_in? && "signature-signup"}
               data-dialog-open="signature-dialog"
               aria-haspopup="dialog"
-              title={gettext("Save a new signature")}
-              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none"
+              title={
+                if(@signed_in?,
+                  do: gettext("Save a new signature"),
+                  else: gettext("Sign up to enable")
+                )
+              }
+              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-ink-faint disabled:opacity-60"
             >
               <.icon name="hero-plus" class="size-5" />
               <span class="sr-only">{gettext("Save a new signature")}</span>
             </button>
           </div>
           <p id="signature-note" role="status" class="mt-1 text-sm/6 text-ink-muted"></p>
-          <%!-- The upload happens in a dialog: the picture, its name and the confirmation of the rights. --%>
+          <%!-- The upload happens in a dialog: the picture, its name and the confirmation of the rights. Only a logged-in user has one. --%>
           <dialog
+            :if={@signed_in?}
             id="signature-dialog"
             aria-labelledby="signature-dialog-title"
             data-backdrop-close
@@ -186,14 +196,13 @@
             </div>
           </dialog>
         </section>
-        <%!-- The driver's signature, for a design that has a place for it: one of the saved signatures, or none. --%>
+        <%!-- The driver's signature, for a design that has a place for it: one of the saved signatures, or none. Locked for a visitor, like the first. --%>
         <section
-          :if={@signed_in?}
           id="driver-signature-section"
           data-group="driver-signature"
           class={[!driver_signature_design?(@schema, @template) && "hidden"]}
         >
-          <div class="mb-3 flex items-center gap-3">
+          <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1.5">
             <label
               for="driver-signature-select"
               class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
@@ -201,11 +210,14 @@
               {driver_signature_heading(@schema, @text)}
             </label>
             <span class="h-px flex-1 bg-line"></span>
+            <.signup_badge :if={!@signed_in?} id="driver-signature-signup" />
           </div>
           <div class="flex items-center gap-2 sm:max-w-sm">
             <select
               id="driver-signature-select"
-              class="block w-full min-w-0 flex-1 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus"
+              disabled={!@signed_in?}
+              aria-describedby={!@signed_in? && "driver-signature-signup"}
+              class="block w-full min-w-0 flex-1 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-ink-faint disabled:opacity-60"
             >
               <option value="">{gettext("No signature (placeholder only)")}</option>
               <option
@@ -219,26 +231,32 @@
             <button
               type="button"
               id="driver-signature-open"
+              disabled={!@signed_in?}
+              aria-describedby={!@signed_in? && "driver-signature-signup"}
               data-dialog-open="signature-dialog"
               aria-haspopup="dialog"
-              title={gettext("Save a new signature")}
-              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none"
+              title={
+                if(@signed_in?,
+                  do: gettext("Save a new signature"),
+                  else: gettext("Sign up to enable")
+                )
+              }
+              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-ink-faint disabled:opacity-60"
             >
               <.icon name="hero-plus" class="size-5" />
               <span class="sr-only">{gettext("Save a new signature")}</span>
             </button>
           </div>
         </section>
-        <%!-- The further signatures of a design (prepared, checked, approved...): a choice of a saved signature for each. --%>
+        <%!-- The further signatures of a design (prepared, checked, approved...): a choice of a saved signature for each. Locked for a visitor. --%>
         <section
           :for={slot <- extra_slots(@schema, @text)}
-          :if={@signed_in?}
           id={"extra-signature-section-#{slot.key}"}
           data-extra-signature={slot.key}
           data-group="extra-signature"
           class={[!extra_slot_design?(@schema, @template, slot.key) && "hidden"]}
         >
-          <div class="mb-3 flex items-center gap-3">
+          <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1.5">
             <label
               for={"extra-signature-select-#{slot.key}"}
               class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
@@ -246,11 +264,14 @@
               {slot.heading}
             </label>
             <span class="h-px flex-1 bg-line"></span>
+            <.signup_badge :if={!@signed_in?} id={"extra-signature-signup-#{slot.key}"} />
           </div>
           <div class="flex items-center gap-2 sm:max-w-sm">
             <select
               id={"extra-signature-select-#{slot.key}"}
-              class="block w-full min-w-0 flex-1 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus"
+              disabled={!@signed_in?}
+              aria-describedby={!@signed_in? && "extra-signature-signup-#{slot.key}"}
+              class="block w-full min-w-0 flex-1 rounded-field border border-line-strong bg-surface px-2.5 py-1.5 text-sm text-ink focus:border-focus focus:outline-2 focus:-outline-offset-1 focus:outline-focus disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-ink-faint disabled:opacity-60"
             >
               <option value="">{gettext("No signature (placeholder only)")}</option>
               <option
@@ -264,23 +285,26 @@
             <button
               type="button"
               id={"extra-signature-open-#{slot.key}"}
+              disabled={!@signed_in?}
+              aria-describedby={!@signed_in? && "extra-signature-signup-#{slot.key}"}
               data-dialog-open="signature-dialog"
               aria-haspopup="dialog"
-              title={gettext("Save a new signature")}
-              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none"
+              title={
+                if(@signed_in?,
+                  do: gettext("Save a new signature"),
+                  else: gettext("Sign up to enable")
+                )
+              }
+              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-ink-faint disabled:opacity-60"
             >
               <.icon name="hero-plus" class="size-5" />
               <span class="sr-only">{gettext("Save a new signature")}</span>
             </button>
           </div>
         </section>
-        <%!-- The revenue stamp: the empty box, the default stamp of the site, or one of the saved ones. Only while the chosen design has a place for it and the document is for India. --%>
-        <section
-          id="stamp-section"
-          data-group="stamp"
-          class={[!stamp_design?(@schema, @template, @region) && "hidden"]}
-        >
-          <div class="mb-3 flex items-center gap-3">
+        <%!-- The revenue stamp: the empty box, the default stamp of the site, or one of the saved ones. On the form of a bill that has the box in some design, in every country. A design without the box says so below, so the choice does not vanish when it is picked. A visitor can choose the stamps of the site, but saving one of their own is locked. --%>
+        <section :if={stamp_bill?(@schema)} id="stamp-section" data-group="stamp">
+          <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1.5">
             <label
               for="stamp-select"
               class="border-l-2 border-accent pl-2 text-xs font-semibold tracking-wider text-ink uppercase"
@@ -288,6 +312,7 @@
               {gettext("Revenue stamp")}
             </label>
             <span class="h-px flex-1 bg-line"></span>
+            <.signup_badge :if={!@signed_in?} id="stamp-signup" />
           </div>
           <div class="flex items-center gap-2 sm:max-w-sm">
             <select
@@ -313,21 +338,39 @@
               </option>
             </select>
             <button
-              :if={@signed_in?}
               type="button"
               id="stamp-open"
+              disabled={!@signed_in?}
+              aria-describedby={!@signed_in? && "stamp-signup"}
               data-dialog-open="stamp-dialog"
               aria-haspopup="dialog"
-              title={gettext("Save a new stamp")}
-              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none"
+              title={
+                if(@signed_in?,
+                  do: gettext("Save a new stamp"),
+                  else: gettext("Sign up to enable")
+                )
+              }
+              class="inline-flex size-9 shrink-0 items-center justify-center rounded-field border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-focus motion-reduce:transition-none disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-ink-faint disabled:opacity-60"
             >
               <.icon name="hero-plus" class="size-5" />
               <span class="sr-only">{gettext("Save a new stamp")}</span>
             </button>
           </div>
-          <p :if={@signed_in?} id="stamp-note" role="status" class="mt-1 text-sm/6 text-ink-muted">
-          </p>
-          <%!-- The upload happens in a dialog: the picture, its name and the confirmation of the rights. --%>
+          <%!-- What is said when the chosen design has no box for the stamp (the script shows and hides it as the design changes). --%>
+          <div id="stamp-note" role="status">
+            <p
+              id="stamp-note-design"
+              class={[
+                "mt-1 text-sm/6 text-ink-muted",
+                stamp_design?(@schema, @template) && "hidden"
+              ]}
+            >
+              {gettext(
+                "This template has no place for a revenue stamp. Choose a template that has one."
+              )}
+            </p>
+          </div>
+          <%!-- The upload happens in a dialog: the picture, its name and the confirmation of the rights. Only a logged-in user has one. --%>
           <dialog
             :if={@signed_in?}
             id="stamp-dialog"
@@ -512,7 +555,7 @@
                   <p id="watermark-image-message" role="status" class="mt-1 text-sm/6 text-danger">
                   </p>
                 </div>
-                <div class="grid gap-3 sm:grid-cols-3">
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
                   <div>
                     <label
                       for="watermark-layout"

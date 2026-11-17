@@ -6,10 +6,8 @@
 #show: base.with(paged: true, width: 160mm, margin: (x: 14mm, y: 13mm), size: 10.5pt)
 #set par(leading: 0.75em)
 
-// The revenue stamp is stuck on a receipt in India only.
-#let stamp = if region.country == "in" {
-  revenue-stamp(data, t.revenue_stamp, width: 24mm, height: 28mm)
-}
+// The place for the revenue stamp (the picture that was chosen, or an empty box), in every country.
+#let stamp = revenue-stamp(data, t.revenue_stamp, width: 24mm, height: 28mm)
 
 #let receipts = salary-periods(data)
 #for (i, receipt) in receipts.enumerate() [

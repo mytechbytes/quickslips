@@ -9,11 +9,9 @@
 #let overtime = num(data, "overtime")
 #let allowance = num(data, "allowance")
 #let deductions = num(data, "deductions")
-// What the driver is paid in a month, and the revenue stamp (stuck on a receipt in India only).
+// What the driver is paid in a month, and the place for the revenue stamp (the picture that was chosen, or an empty box), in every country.
 #let net = data.basic_salary + overtime + allowance - deductions
-#let stamp(width: 24mm, height: 28mm) = if region.country == "in" {
-  revenue-stamp(data, t.revenue_stamp, width: width, height: height)
-}
+#let stamp(width: 24mm, height: 28mm) = revenue-stamp(data, t.revenue_stamp, width: width, height: height)
 #let vehicle = opt(data, "vehicle_number")
 #let declaration = opt(data, "declaration")
 // The parts of the pay, for the designs that show them: nothing is listed that is 0.

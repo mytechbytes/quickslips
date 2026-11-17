@@ -289,7 +289,7 @@ export function buildForm(
       section.dataset.group = id
       section.innerHTML =
         `<div class="mb-3 flex items-center gap-3"><h3 class="border-l-2 border-accent pl-2 text-xs font-semibold uppercase tracking-wider text-ink"></h3><span class="h-px flex-1 bg-line"></span></div>` +
-        `<div class="grid gap-x-3 gap-y-2.5 sm:grid-cols-2"></div>`
+        `<div class="grid grid-cols-1 gap-x-3 gap-y-2.5 sm:grid-cols-2"></div>`
       section.querySelector("h3")!.textContent = schema.groups?.[id] || t(`group_${id}`)
       grid = section.querySelector<HTMLElement>("div:last-child")!
       sections.set(id, grid)

@@ -9,9 +9,7 @@
 #let receiver = opt(data, "receiver_name")
 #let receiver = if receiver == none { data.landlord_name } else { receiver }
 #let role = option-label("received_by", data.at("received_by", default: "Landlord"))
-#let stamp = if region.country == "in" {
-  revenue-stamp(data, t.revenue_stamp, width: 22mm, height: 26mm)
-}
+#let stamp = revenue-stamp(data, t.revenue_stamp, width: 22mm, height: 26mm)
 #let heading(content) = align(center, block(text(size: 12pt, weight: "bold", content) + v(0.6mm) + line(length: 100%, stroke: 0.7pt)))
 
 #let receipts = salary-periods(data)

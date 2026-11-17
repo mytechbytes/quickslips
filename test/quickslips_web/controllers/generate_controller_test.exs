@@ -261,7 +261,7 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
     end
   end
 
-  describe "the revenue stamp of a receipt for India" do
+  describe "the revenue stamp of a receipt" do
     defp rent_sample,
       do: "priv/bill_templates/rent-receipt/sample.json" |> File.read!() |> Jason.decode!()
 
@@ -298,6 +298,23 @@ defmodule QuickSlipsWeb.GenerateControllerTest do
 
       assert "%PDF" <> _ = default
       assert default != empty
+    end
+
+    test "is drawn on a receipt for another country too, not only for India", %{conn: conn} do
+      {:ok, sample} =
+        QuickSlips.Templates.sample("rent-receipt", QuickSlips.Locales.fetch!("es-es"))
+
+      spanish = %{locale: "es-es", data: sample}
+
+      empty = conn |> generate_rent(spanish) |> response(200)
+
+      stamped =
+        conn
+        |> generate_rent(Map.put(spanish, :stamp, "system:india-rupee-one-revenue-stamp"))
+        |> response(200)
+
+      assert "%PDF" <> _ = stamped
+      assert stamped != empty
     end
 
     test "a visitor has no saved stamps: the choice is ignored", %{conn: conn} do

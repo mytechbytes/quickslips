@@ -278,7 +278,7 @@ defmodule QuickSlips.Templates.Registry do
   end
 
   # Whether a design has a place for a revenue stamp, as `"stamp": true` on it: it uses the `revenue-stamp` helper.
-  # The page offers the choice of a stamp only for those (and only for a document made for India).
+  # The page offers the choice of a stamp for a bill that has one in some design, in every country.
   defp mark_stamp(%{"id" => id} = design, dir) do
     source = File.read!(Path.join(dir, id <> ".typ"))
     Map.put(design, "stamp", String.contains?(source, "revenue-stamp("))
