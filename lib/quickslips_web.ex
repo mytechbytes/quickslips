@@ -17,7 +17,9 @@ defmodule QuickSlipsWeb do
   those modules here.
   """
 
-  def static_paths, do: ~w(assets fonts images wasm favicon.ico sw.js)
+  # `.well-known` holds what other services fetch to check things about the site. For now that is the file with which Azure
+  # confirms that this domain belongs to the app registered for "Continue with Microsoft" (see the README).
+  def static_paths, do: ~w(assets fonts images wasm favicon.ico sw.js .well-known)
 
   def router do
     quote do

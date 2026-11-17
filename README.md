@@ -72,6 +72,8 @@ Set these in Dokploy, on the application's Environment tab. `config/runtime.exs`
 | `CSP_MODE` | optional: `enforce` (the default in production), `report_only` or `off`. The Content-Security-Policy of the pages. If the browser console of the live site says the policy blocked something the site needs, set `report_only` and redeploy: the browser then only reports, and nothing is blocked while it is fixed |
 | `CROSS_ORIGIN_OPENER_POLICY` | optional, default `same-origin`; `unsafe-none` or `off` while you use Google's Tag Assistant (the Tag Manager preview), which opens the site in a window and talks to it |
 
+`priv/static/.well-known/microsoft-identity-association.json` is the file that Azure fetches to confirm that the domain belongs to the app (Branding & properties, Publisher domain). It is served as it is, with no redirect, at `https://<PHX_HOST>/.well-known/microsoft-identity-association.json`, and it holds the Application (client) ID of the app, so change it if the app is ever registered again. Cloudflare must let Microsoft's request through (no challenge for that address), or Azure cannot read it.
+
 The release refuses to start without `SMTP_HOST`, `SMTP_USERNAME`, `SMTP_PASSWORD` and `MAIL_FROM`, so confirmation and log-in emails can never be dropped silently. The server's certificate is always verified against the system CA store. Any port other than 465 (for example 2525) is treated as STARTTLS.
 
 ## E-mail
