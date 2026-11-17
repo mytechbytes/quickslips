@@ -11,8 +11,9 @@ defmodule QuickSlips.Accounts.User do
     field :confirmed_at, :utc_datetime
     field :authenticated_at, :utc_datetime, virtual: true
 
-    # Google Fields
+    # The id each provider gives to the person: "Continue with Google" and "Continue with Microsoft"
     field :google_uid, :string
+    field :microsoft_uid, :string
     timestamps(type: :utc_datetime)
   end
 
@@ -132,31 +133,41 @@ defmodule QuickSlips.Accounts.User do
     change(user, confirmed_at: now)
   end
 
-  @doc """
-  Attaches a verified Google identity to a user.
+  # The field that holds the id a provider gave to the person.
+  @social_uid_fields %{google: :google_uid, microsoft: :microsoft_uid}
 
-  `info` is built by our own code from Google's response, never from form params,
-  so we use `change/2` rather than `cast/3`.
+  @doc "The field of the user that holds the id given by `provider` (`:google` or `:microsoft`)."
+  def social_uid_field(provider), do: Map.fetch!(@social_uid_fields, provider)
+
+  @doc """
+  Attaches a verified identity from `provider` (`:google` or `:microsoft`) to a user.
+
+  `info` is built by our own code from the provider's response, never from form params,
+  so we use `change/2` rather than `cast/3`. A name or a picture that the provider did
+  not give (`nil`) leaves the one the user already has.
   """
-  def google_changeset(user_or_changeset, %{google_uid: uid} = info) when is_binary(uid) do
+  def social_changeset(user_or_changeset, provider, %{uid: uid} = info) when is_binary(uid) do
+    uid_field = social_uid_field(provider)
+
     changes =
       info
-      |> Map.take([:google_uid, :name, :avatar_url])
+      |> Map.take([:name, :avatar_url])
+      |> Map.put(uid_field, uid)
       |> Enum.reject(fn {_key, value} -> is_nil(value) end)
 
     user_or_changeset
     |> change(changes)
-    |> unique_constraint(:google_uid)
+    |> unique_constraint(uid_field)
   end
 
   @doc """
-  A changeset for a brand new user who signed up with Google: email is already
-  verified by Google, so the account starts confirmed and has no password.
+  A changeset for a brand new user who signed up with `provider`: the provider has
+  vouched for the email, so the account starts confirmed and has no password.
   """
-  def google_registration_changeset(%{email: email} = info) do
+  def social_registration_changeset(provider, %{email: email} = info) do
     %__MODULE__{}
     |> email_changeset(%{email: email})
-    |> google_changeset(info)
+    |> social_changeset(provider, info)
     |> confirm_changeset()
   end
 

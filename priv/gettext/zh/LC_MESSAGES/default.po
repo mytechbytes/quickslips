@@ -36,7 +36,7 @@ msgstr "操作"
 msgid "All"
 msgstr "全部"
 
-#: lib/quickslips_web/live/user_live/registration.ex:68
+#: lib/quickslips_web/live/user_live/registration.ex:71
 #, elixir-autogen, elixir-format
 msgid "Already have an account?"
 msgstr "已有账号？"
@@ -47,7 +47,7 @@ msgstr "已有账号？"
 msgid "Attempting to reconnect"
 msgstr "正在尝试重新连接"
 
-#: lib/quickslips/mail.ex:79
+#: lib/quickslips/mail.ex:97
 #: lib/quickslips_web/live/home_live.ex:93
 #, elixir-autogen, elixir-format
 msgid "Bills and receipts, ready in seconds"
@@ -94,7 +94,7 @@ msgstr "确认密码"
 msgid "Confirming..."
 msgstr "正在确认..."
 
-#: lib/quickslips_web/components/ui.ex:377
+#: lib/quickslips_web/components/ui.ex:374
 #, elixir-autogen, elixir-format
 msgid "Continue with Google"
 msgstr "使用 Google 继续"
@@ -121,7 +121,7 @@ msgstr "正在创建账号..."
 msgid "Creating your PDF…"
 msgstr "正在生成你的 PDF…"
 
-#: lib/quickslips_web/components/ui.ex:538
+#: lib/quickslips_web/components/ui.ex:572
 #, elixir-autogen, elixir-format
 msgid "Dark"
 msgstr "深色"
@@ -191,17 +191,17 @@ msgstr "免费账单和收据生成器"
 msgid "Free to start. You will confirm your email next."
 msgstr "免费开始。接下来你需要确认邮箱。"
 
-#: lib/quickslips_web/controllers/auth_controller.ex:33
+#: lib/quickslips_web/controllers/auth_controller.ex:66
 #, elixir-autogen, elixir-format
 msgid "Google says that email address isn't verified."
 msgstr "Google 提示该邮箱地址尚未验证。"
 
-#: lib/quickslips_web/controllers/auth_controller.ex:20
+#: lib/quickslips_web/controllers/auth_controller.ex:61
 #, elixir-autogen, elixir-format
 msgid "Google sign-in didn't complete. Please try again."
 msgstr "Google 登录未完成，请重试。"
 
-#: lib/quickslips_web/components/ui.ex:570
+#: lib/quickslips_web/components/ui.ex:604
 #, elixir-autogen, elixir-format
 msgid "India"
 msgstr "印度"
@@ -216,19 +216,19 @@ msgstr "邮箱或密码无效"
 msgid "Keep me logged in on this device"
 msgstr "在此设备上保持登录"
 
-#: lib/quickslips_web/components/ui.ex:537
+#: lib/quickslips_web/components/ui.ex:571
 #, elixir-autogen, elixir-format
 msgid "Light"
 msgstr "浅色"
 
-#: lib/quickslips/accounts/user_notifier.ex:102
+#: lib/quickslips/accounts/user_notifier.ex:104
 #: lib/quickslips_web/components/layouts.ex:165
 #: lib/quickslips_web/components/layouts.ex:218
 #: lib/quickslips_web/live/home_live.ex:151
 #: lib/quickslips_web/live/template_live.html.heex:592
 #: lib/quickslips_web/live/user_live/confirmation.ex:57
-#: lib/quickslips_web/live/user_live/login.ex:135
-#: lib/quickslips_web/live/user_live/registration.ex:73
+#: lib/quickslips_web/live/user_live/login.ex:138
+#: lib/quickslips_web/live/user_live/registration.ex:76
 #, elixir-autogen, elixir-format
 msgid "Log in"
 msgstr "登录"
@@ -260,7 +260,7 @@ msgid "Log me in only this time"
 msgstr "仅本次登录"
 
 #: lib/quickslips_web/components/layouts.ex:675
-#: lib/quickslips_web/components/ui.ex:839
+#: lib/quickslips_web/components/ui.ex:873
 #, elixir-autogen, elixir-format
 msgid "Log out"
 msgstr "退出登录"
@@ -302,7 +302,7 @@ msgstr "每天需要下载超过 2 次？"
 msgid "New document"
 msgstr "新建文档"
 
-#: lib/quickslips_web/live/user_live/login.ex:112
+#: lib/quickslips_web/live/user_live/login.ex:115
 #, elixir-autogen, elixir-format
 msgid "New here?"
 msgstr "第一次来？"
@@ -318,7 +318,7 @@ msgstr "没有符合搜索条件的模板。"
 msgid "Open main menu"
 msgstr "打开主菜单"
 
-#: lib/quickslips_web/components/ui.ex:817
+#: lib/quickslips_web/components/ui.ex:851
 #, elixir-autogen, elixir-format
 msgid "Open user menu"
 msgstr "打开用户菜单"
@@ -382,7 +382,7 @@ msgid "Search templates, like fuel or rent"
 msgstr "搜索模板，如加油或房租"
 
 #: lib/quickslips_web/components/layouts.ex:647
-#: lib/quickslips_web/components/ui.ex:831
+#: lib/quickslips_web/components/ui.ex:865
 #, elixir-autogen, elixir-format
 msgid "Settings"
 msgstr "设置"
@@ -391,9 +391,9 @@ msgstr "设置"
 #: lib/quickslips_web/components/layouts.ex:221
 #: lib/quickslips_web/live/home_live.ex:154
 #: lib/quickslips_web/live/template_live.html.heex:594
-#: lib/quickslips_web/live/user_live/login.ex:117
+#: lib/quickslips_web/live/user_live/login.ex:120
 #: lib/quickslips_web/live/user_live/registration.ex:57
-#: lib/quickslips_web/live/user_live/registration.ex:97
+#: lib/quickslips_web/live/user_live/registration.ex:100
 #, elixir-autogen, elixir-format
 msgid "Sign up"
 msgstr "注册"
@@ -408,12 +408,12 @@ msgstr "出错了！"
 msgid "Something went wrong. Please try again."
 msgstr "出错了，请重试。"
 
-#: lib/quickslips_web/components/ui.ex:571
+#: lib/quickslips_web/components/ui.ex:605
 #, elixir-autogen, elixir-format
 msgid "Spain"
 msgstr "西班牙"
 
-#: lib/quickslips_web/components/ui.ex:536
+#: lib/quickslips_web/components/ui.ex:570
 #, elixir-autogen, elixir-format
 msgid "System"
 msgstr "系统"
@@ -437,7 +437,7 @@ msgstr "该链接或密码无效。"
 msgid "The link is invalid or it has expired."
 msgstr "链接无效或已过期。"
 
-#: lib/quickslips_web/components/ui.ex:528
+#: lib/quickslips_web/components/ui.ex:562
 #, elixir-autogen, elixir-format
 msgid "Theme"
 msgstr "主题"
@@ -452,12 +452,12 @@ msgstr "此页面暂无该语言版本。以下是已有该语言的模板。"
 msgid "Tip: If you prefer passwords, you can enable them in the user settings."
 msgstr "提示：如果你更喜欢使用密码，可以在用户设置中启用。"
 
-#: lib/quickslips_web/components/ui.ex:573
+#: lib/quickslips_web/components/ui.ex:607
 #, elixir-autogen, elixir-format
 msgid "United Kingdom"
 msgstr "英国"
 
-#: lib/quickslips_web/components/ui.ex:572
+#: lib/quickslips_web/components/ui.ex:606
 #, elixir-autogen, elixir-format
 msgid "United States"
 msgstr "美国"
@@ -477,7 +477,7 @@ msgstr "用户已成功确认。"
 msgid "We can't find the internet"
 msgstr "无法连接到互联网"
 
-#: lib/quickslips_web/controllers/auth_controller.ex:38
+#: lib/quickslips_web/controllers/auth_controller.ex:72
 #, elixir-autogen, elixir-format
 msgid "We couldn't sign you in with Google. Please try again."
 msgstr "无法使用 Google 登录，请重试。"
@@ -509,7 +509,7 @@ msgstr "欢迎回来！"
 msgid "Welcome back."
 msgstr "欢迎回来。"
 
-#: lib/quickslips_web/controllers/auth_controller.ex:28
+#: lib/quickslips_web/controllers/auth_controller.ex:29
 #, elixir-autogen, elixir-format
 msgid "Welcome!"
 msgstr "欢迎！"
@@ -542,7 +542,7 @@ msgstr "你今天的免费下载次数已用完。登录或注册后可继续使
 
 #: lib/quickslips_web/components/core_components.ex:81
 #: lib/quickslips_web/components/layouts.ex:383
-#: lib/quickslips_web/components/ui.ex:694
+#: lib/quickslips_web/components/ui.ex:728
 #: lib/quickslips_web/live/template_live.html.heex:151
 #: lib/quickslips_web/live/template_live.html.heex:348
 #: lib/quickslips_web/live/template_live.html.heex:625
@@ -576,42 +576,42 @@ msgstr "删除第 %{number} 项"
 msgid "Subtotal"
 msgstr "小计"
 
-#: lib/quickslips_web/components/ui.ex:579
+#: lib/quickslips_web/components/ui.ex:613
 #, elixir-autogen, elixir-format
 msgid "Brazil"
 msgstr "巴西"
 
-#: lib/quickslips_web/components/ui.ex:580
+#: lib/quickslips_web/components/ui.ex:614
 #, elixir-autogen, elixir-format
 msgid "Canada"
 msgstr "加拿大"
 
-#: lib/quickslips_web/components/ui.ex:574
+#: lib/quickslips_web/components/ui.ex:608
 #, elixir-autogen, elixir-format
 msgid "China"
 msgstr "中国"
 
-#: lib/quickslips_web/components/ui.ex:577
+#: lib/quickslips_web/components/ui.ex:611
 #, elixir-autogen, elixir-format
 msgid "France"
 msgstr "法国"
 
-#: lib/quickslips_web/components/ui.ex:575
+#: lib/quickslips_web/components/ui.ex:609
 #, elixir-autogen, elixir-format
 msgid "Germany"
 msgstr "德国"
 
-#: lib/quickslips_web/components/ui.ex:578
+#: lib/quickslips_web/components/ui.ex:612
 #, elixir-autogen, elixir-format
 msgid "Italy"
 msgstr "意大利"
 
-#: lib/quickslips_web/components/ui.ex:576
+#: lib/quickslips_web/components/ui.ex:610
 #, elixir-autogen, elixir-format
 msgid "Japan"
 msgstr "日本"
 
-#: lib/quickslips_web/components/ui.ex:700
+#: lib/quickslips_web/components/ui.ex:734
 #, elixir-autogen, elixir-format
 msgid "Currency"
 msgstr "币种"
@@ -656,14 +656,14 @@ msgstr "付款"
 msgid "Registration"
 msgstr "登记信息"
 
-#: lib/quickslips_web/components/ui.ex:719
+#: lib/quickslips_web/components/ui.ex:753
 #, elixir-autogen, elixir-format
 msgid "Country & Language"
 msgstr "国家/地区与语言"
 
-#: lib/quickslips_web/components/ui.ex:619
-#: lib/quickslips_web/components/ui.ex:655
-#: lib/quickslips_web/components/ui.ex:687
+#: lib/quickslips_web/components/ui.ex:653
+#: lib/quickslips_web/components/ui.ex:689
+#: lib/quickslips_web/components/ui.ex:721
 #, elixir-autogen, elixir-format
 msgid "Language, Country & Currency"
 msgstr "语言、国家/地区和币种"
@@ -860,7 +860,7 @@ msgstr "查看全部模板"
 msgid "© %{year} QuickSlips. All rights reserved."
 msgstr "© %{year} QuickSlips。保留所有权利。"
 
-#: lib/quickslips/mail.ex:86
+#: lib/quickslips/mail.ex:104
 #: lib/quickslips_web/components/layouts.ex:487
 #: lib/quickslips_web/components/layouts.ex:665
 #: lib/quickslips_web/components/layouts.ex:746
@@ -875,13 +875,13 @@ msgstr "联系我们"
 msgid "Disclaimer"
 msgstr "免责声明"
 
-#: lib/quickslips/mail.ex:88
+#: lib/quickslips/mail.ex:106
 #: lib/quickslips_web/components/layouts.ex:471
 #, elixir-autogen, elixir-format
 msgid "Privacy"
 msgstr "隐私政策"
 
-#: lib/quickslips/mail.ex:89
+#: lib/quickslips/mail.ex:107
 #: lib/quickslips_web/components/layouts.ex:470
 #, elixir-autogen, elixir-format
 msgid "Terms"
@@ -1070,7 +1070,7 @@ msgstr "确认邮件正在发往 %{email}。如果没有收到，请查看垃圾
 
 #: lib/quickslips/accounts/user_notifier.ex:60
 #: lib/quickslips/accounts/user_notifier.ex:99
-#: lib/quickslips/accounts/user_notifier.ex:128
+#: lib/quickslips/accounts/user_notifier.ex:130
 #: lib/quickslips/contact/notifier.ex:169
 #, elixir-autogen, elixir-format
 msgid "Hello,"
@@ -1567,7 +1567,7 @@ msgstr "登录尝试次数过多，请等待几分钟后再试。"
 msgid "We couldn't check that you are a person. Reload the page and try again, or continue with Google."
 msgstr "我们无法确认您是真人。请刷新页面后重试，或改用 Google 继续。"
 
-#: lib/quickslips_web/live/user_live/registration.ex:134
+#: lib/quickslips_web/live/user_live/registration.ex:137
 #, elixir-autogen, elixir-format
 msgid "An email was sent to %{email}, please access it and use the password you just chose to confirm your account. If it does not arrive, check your spam folder."
 msgstr "已向 %{email} 发送邮件，请打开邮件并使用你刚设置的密码确认账号。如果没有收到，请查看垃圾邮件文件夹。"
@@ -1577,12 +1577,12 @@ msgstr "已向 %{email} 发送邮件，请打开邮件并使用你刚设置的�
 msgid "Confirm my account"
 msgstr "确认我的账号"
 
-#: lib/quickslips/accounts/user_notifier.ex:133
+#: lib/quickslips/accounts/user_notifier.ex:135
 #, elixir-autogen, elixir-format
 msgid "Confirm new email address"
 msgstr "确认新邮箱地址"
 
-#: lib/quickslips/accounts/user_notifier.ex:125
+#: lib/quickslips/accounts/user_notifier.ex:127
 #, elixir-autogen, elixir-format
 msgid "Confirm this address to use it for your QuickSlips account."
 msgstr "确认此地址后，即可用于你的 QuickSlips 账号。"
@@ -1597,22 +1597,22 @@ msgstr "确认你的 QuickSlips 账号"
 msgid "Confirm your email address"
 msgstr "确认你的邮箱地址"
 
-#: lib/quickslips/accounts/user_notifier.ex:124
+#: lib/quickslips/accounts/user_notifier.ex:126
 #, elixir-autogen, elixir-format
 msgid "Confirm your new QuickSlips email address"
 msgstr "确认你的 QuickSlips 新邮箱地址"
 
-#: lib/quickslips/accounts/user_notifier.ex:126
+#: lib/quickslips/accounts/user_notifier.ex:128
 #, elixir-autogen, elixir-format
 msgid "Confirm your new email address"
 msgstr "确认你的新邮箱地址"
 
-#: lib/quickslips_web/live/user_live/login.ex:163
+#: lib/quickslips_web/live/user_live/login.ex:166
 #, elixir-autogen, elixir-format
 msgid "If your email is in our system, you will receive instructions for logging in shortly. If it does not arrive, check your spam folder."
 msgstr "如果你的邮箱在我们的系统中，你很快会收到登录说明。如果没有收到，请查看垃圾邮件文件夹。"
 
-#: lib/quickslips/accounts/user_notifier.ex:171
+#: lib/quickslips/accounts/user_notifier.ex:173
 #, elixir-autogen, elixir-format
 msgid "Make your first bill"
 msgstr "制作你的第一张单据"
@@ -1622,22 +1622,22 @@ msgstr "制作你的第一张单据"
 msgid "One step left: confirm your email address."
 msgstr "只差一步：确认你的邮箱地址。"
 
-#: lib/quickslips/mail.ex:80
+#: lib/quickslips/mail.ex:98
 #, elixir-autogen, elixir-format
 msgid "Or copy and paste this link into your browser:"
 msgstr "或者将此链接复制到浏览器中打开："
 
-#: lib/quickslips/mail.ex:83
+#: lib/quickslips/mail.ex:101
 #, elixir-autogen, elixir-format
 msgid "Questions? Reply to this email and a person will read it."
 msgstr "有疑问？直接回复这封邮件，会有真人阅读。"
 
-#: lib/quickslips/accounts/user_notifier.ex:135
+#: lib/quickslips/accounts/user_notifier.ex:137
 #, elixir-autogen, elixir-format
 msgid "The link works once and for %{days} days. If you didn't ask for this change, ignore this email and your account stays as it is."
 msgstr "此链接仅可使用一次，%{days} 天内有效。如果你没有申请此更改，请忽略这封邮件，你的账号将保持不变。"
 
-#: lib/quickslips/accounts/user_notifier.ex:104
+#: lib/quickslips/accounts/user_notifier.ex:106
 #, elixir-autogen, elixir-format
 msgid "The link works once and for %{minutes} minutes. If you didn't ask for it, ignore this email: nobody can log in without it."
 msgstr "此链接仅可使用一次，%{minutes} 分钟内有效。如果不是你本人请求的，请忽略这封邮件：没有此链接，任何人都无法登录。"
@@ -1667,12 +1667,12 @@ msgstr "我们已收到您的消息"
 msgid "Welcome to QuickSlips. Confirm your email address to finish creating your account."
 msgstr "欢迎使用 QuickSlips。请确认你的邮箱地址，完成账号创建。"
 
-#: lib/quickslips/accounts/user_notifier.ex:158
+#: lib/quickslips/accounts/user_notifier.ex:160
 #, elixir-autogen, elixir-format
 msgid "When the page asks, enter the password you chose at sign-up."
 msgstr "页面提示时，请输入注册时设置的密码。"
 
-#: lib/quickslips/accounts/user_notifier.ex:141
+#: lib/quickslips/accounts/user_notifier.ex:143
 #, elixir-autogen, elixir-format
 msgid "You are receiving this email because %{email} was entered as the new address of a QuickSlips account."
 msgstr "你收到这封邮件，是因为 %{email} 被填写为某个 QuickSlips 账号的新邮箱地址。"
@@ -1687,12 +1687,12 @@ msgstr "您收到这封邮件，是因为有人在 QuickSlips 的联系表单中
 msgid "You are receiving this email because %{email} was used to create a QuickSlips account."
 msgstr "你收到这封邮件，是因为 %{email} 被用于创建 QuickSlips 账号。"
 
-#: lib/quickslips/accounts/user_notifier.ex:110
+#: lib/quickslips/accounts/user_notifier.ex:112
 #, elixir-autogen, elixir-format
 msgid "You are receiving this email because someone asked for a log-in link for %{email} on QuickSlips."
 msgstr "你收到这封邮件，是因为有人在 QuickSlips 上为 %{email} 请求了登录链接。"
 
-#: lib/quickslips/accounts/user_notifier.ex:130
+#: lib/quickslips/accounts/user_notifier.ex:132
 #, elixir-autogen, elixir-format
 msgid "You asked to change the email address of your QuickSlips account to this one. Confirm the change with the button below."
 msgstr "你申请将 QuickSlips 账号的邮箱地址改为此地址。请点击下方按钮确认更改。"
@@ -1706,3 +1706,23 @@ msgstr "你的 QuickSlips 登录链接"
 #, elixir-autogen, elixir-format
 msgid "Your reference is %{reference}."
 msgstr "您的参考编号是 %{reference}。"
+
+#: lib/quickslips_web/components/ui.ex:393
+#, elixir-autogen, elixir-format
+msgid "Continue with Microsoft"
+msgstr "使用 Microsoft 继续"
+
+#: lib/quickslips_web/controllers/auth_controller.ex:59
+#, elixir-autogen, elixir-format
+msgid "Microsoft sign-in didn't complete. Please try again."
+msgstr "Microsoft 登录未完成，请重试。"
+
+#: lib/quickslips_web/controllers/auth_controller.ex:64
+#, elixir-autogen, elixir-format
+msgid "We couldn't get a verified email address from your Microsoft account."
+msgstr "无法从您的 Microsoft 账户获取已验证的邮箱地址。"
+
+#: lib/quickslips_web/controllers/auth_controller.ex:69
+#, elixir-autogen, elixir-format
+msgid "We couldn't sign you in with Microsoft. Please try again."
+msgstr "无法使用 Microsoft 登录，请重试。"

@@ -404,37 +404,41 @@ defmodule QuickSlips.Accounts do
     :ok
   end
 
-  ## Google sign-in
+  ## Social sign-in (Google and Microsoft)
 
   @doc """
-  Finds, links or creates the user for a verified Google identity.
+  Finds, links or creates the user for a verified identity at `provider` (`:google` or `:microsoft`).
 
-  `info` is a map: `%{google_uid: _, email: _, name: _, avatar_url: _, email_verified?: _}`.
+  `info` is a map: `%{uid: _, email: _, name: _, avatar_url: _, email_verified?: _}`, built from what the
+  provider answered. `email_verified?` is the provider vouching that the person owns `email`: without it
+  nothing is linked or created, because an account is found by its email.
   Returns `{:ok, user}` or `{:error, :email_not_verified | %Ecto.Changeset{}}`.
   """
-  def get_or_register_google_user(%{email_verified?: true} = info) do
+  def get_or_register_social_user(provider, %{email_verified?: true} = info) do
+    uid_field = User.social_uid_field(provider)
+
     cond do
-      user = Repo.get_by(User, google_uid: info.google_uid) ->
+      user = Repo.get_by(User, [{uid_field, info.uid}]) ->
         {:ok, user}
 
       user = get_user_by_email(info.email) ->
-        link_google_account(user, info)
+        link_social_account(user, provider, info)
 
       true ->
-        info
-        |> User.google_registration_changeset()
+        provider
+        |> User.social_registration_changeset(info)
         |> Repo.insert()
     end
   end
 
-  def get_or_register_google_user(_info), do: {:error, :email_not_verified}
+  def get_or_register_social_user(_provider, _info), do: {:error, :email_not_verified}
 
   # The account was never confirmed, so any password on it was set by someone who
-  # did not prove they own the email. Google proved it; drop the password and
+  # did not prove they own the email. The provider proved it; drop the password and
   # every existing session/token before handing the account over.
-  defp link_google_account(%User{confirmed_at: nil} = user, info) do
+  defp link_social_account(%User{confirmed_at: nil} = user, provider, info) do
     user
-    |> User.google_changeset(info)
+    |> User.social_changeset(provider, info)
     |> User.confirm_changeset()
     |> Ecto.Changeset.change(hashed_password: nil)
     |> update_user_and_delete_all_tokens()
@@ -444,9 +448,9 @@ defmodule QuickSlips.Accounts do
     end
   end
 
-  defp link_google_account(%User{} = user, info) do
+  defp link_social_account(%User{} = user, provider, info) do
     user
-    |> User.google_changeset(info)
+    |> User.social_changeset(provider, info)
     |> Repo.update()
   end
 

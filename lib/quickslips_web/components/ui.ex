@@ -24,6 +24,7 @@ defmodule QuickSlipsWeb.UI do
   alias Phoenix.LiveView.JS
   alias QuickSlips.Locales
   alias QuickSlips.Regions
+  alias QuickSlipsWeb.SocialLogin
 
   @doc "True when the scope carries a logged-in user."
   def signed_in?(%{user: %{}}), do: true
@@ -369,12 +370,45 @@ defmodule QuickSlipsWeb.UI do
 
   def google_button(assigns) do
     ~H"""
+    <.social_link id={@id} href={~p"/auth/google"} logo={~p"/images/google.svg"}>
+      {gettext("Continue with Google")}
+    </.social_link>
+    """
+  end
+
+  @doc """
+  The Continue with Microsoft button, for personal, work and school accounts. Drawn only when this server has the keys of
+  the app registered with Microsoft (`SocialLogin.enabled?/1`), so it is never a way to an error page.
+  """
+  attr :id, :string, default: "microsoft-login"
+
+  def microsoft_button(assigns) do
+    ~H"""
+    <.social_link
+      :if={SocialLogin.enabled?(:microsoft)}
+      id={@id}
+      href={~p"/auth/microsoft"}
+      logo={~p"/images/microsoft.svg"}
+    >
+      {gettext("Continue with Microsoft")}
+    </.social_link>
+    """
+  end
+
+  # One look for every "Continue with ..." button: a plain link (it leaves the app), the logo of the provider and its words.
+  attr :id, :string, required: true
+  attr :href, :string, required: true
+  attr :logo, :string, required: true
+  slot :inner_block, required: true
+
+  defp social_link(assigns) do
+    ~H"""
     <.link
       id={@id}
-      href={~p"/auth/google"}
+      href={@href}
       class="flex min-h-10 sm:min-h-9 w-full items-center justify-center gap-3 rounded-button border border-line-strong bg-surface px-3 text-sm font-semibold text-ink shadow-card hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
     >
-      <img src={~p"/images/google.svg"} alt="" class="size-5" /> {gettext("Continue with Google")}
+      <img src={@logo} alt="" class="size-5" /> {render_slot(@inner_block)}
     </.link>
     """
   end

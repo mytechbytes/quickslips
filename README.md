@@ -64,6 +64,7 @@ Set these in Dokploy, on the application's Environment tab. `config/runtime.exs`
 | `SECRET_KEY_BASE` | the output of `mix phx.gen.secret` |
 | `DATABASE_URL` | `ecto://USER:PASSWORD@HOST:5432/DATABASE` |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | the Google OAuth client, for "Continue with Google" |
+| `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET` | optional: the app registered in the Azure portal (Microsoft Entra ID, "App registrations"), for "Continue with Microsoft". Its redirect URI is `https://<PHX_HOST>/auth/microsoft/callback`, and its client secret expires (24 months at most), so note the date. With either one missing there is no Microsoft button and `/auth/microsoft` is a 404 |
 | `SMTP_HOST`, `SMTP_USERNAME`, `SMTP_PASSWORD` | the SMTP details from your email provider |
 | `SMTP_PORT` | optional, default `587` (STARTTLS); `465` uses TLS from the first byte |
 | `MAIL_FROM` | the From address of every email, on a domain you control. Best a sub-domain of its own (for example `hello@quickslips.example.com`), with SPF, DKIM and DMARC set up for it, so that the reputation of these e-mails stays apart from your own mailbox (see [E-mail](#e-mail)) |

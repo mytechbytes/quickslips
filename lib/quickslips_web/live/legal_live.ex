@@ -18,7 +18,8 @@ defmodule QuickSlipsWeb.LegalLive do
     {:ok,
      assign(socket,
        page_title: Map.fetch!(@titles, socket.assigns.live_action),
-       contact_email: QuickSlips.Site.contact_email()
+       contact_email: QuickSlips.Site.contact_email(),
+       microsoft_login: QuickSlipsWeb.SocialLogin.enabled?(:microsoft)
      )}
   end
 
@@ -36,8 +37,16 @@ defmodule QuickSlipsWeb.LegalLive do
           {gettext("This page is only available in English.")}
         </p>
 
-        <.terms :if={@live_action == :terms} contact_email={@contact_email} />
-        <.privacy :if={@live_action == :privacy} contact_email={@contact_email} />
+        <.terms
+          :if={@live_action == :terms}
+          contact_email={@contact_email}
+          microsoft_login={@microsoft_login}
+        />
+        <.privacy
+          :if={@live_action == :privacy}
+          contact_email={@contact_email}
+          microsoft_login={@microsoft_login}
+        />
         <.disclaimer :if={@live_action == :disclaimer} contact_email={@contact_email} />
       </div>
     </Layouts.app>

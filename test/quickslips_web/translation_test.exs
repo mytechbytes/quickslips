@@ -161,6 +161,7 @@ defmodule QuickSlipsWeb.TranslationTest do
       assert has_element?(view, "#login-tabs-tab-password", "पासवर्ड")
       assert has_element?(view, "#login-tabs-tab-link", "ईमेल लिंक")
       assert has_element?(view, "#google-login", "Google से जारी रखें")
+      assert has_element?(view, "#microsoft-login", "Microsoft से जारी रखें")
 
       {:ok, view, _html} = conn |> recycle() |> live(~p"/users/register")
 
@@ -175,6 +176,7 @@ defmodule QuickSlipsWeb.TranslationTest do
 
       assert has_element?(view, "h1", "Inicia sesión en QuickSlips")
       assert has_element?(view, "#google-login", "Continuar con Google")
+      assert has_element?(view, "#microsoft-login", "Continuar con Microsoft")
     end
 
     test "say what is wrong with a form in the language", %{conn: conn} do

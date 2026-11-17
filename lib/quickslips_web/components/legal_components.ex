@@ -74,9 +74,13 @@ defmodule QuickSlipsWeb.LegalComponents do
 
   attr :contact_email, :string, default: nil
 
+  attr :microsoft_login, :boolean,
+    default: false,
+    doc: "true when \"Continue with Microsoft\" is offered"
+
   def terms(assigns) do
     ~H"""
-    <.legal_page id="legal-terms" title="Terms of use" updated={~D[2026-11-13]}>
+    <.legal_page id="legal-terms" title="Terms of use" updated={~D[2026-11-17]}>
       <p>
         These terms are the rules for using QuickSlips, a website that helps you make bills and receipts as PDF files.
         By using QuickSlips you agree to them. If you do not agree, please do not use the site.
@@ -120,7 +124,7 @@ defmodule QuickSlipsWeb.LegalComponents do
         <p>
           You can use QuickSlips without an account. With an account you can save businesses, logos and signatures,
           keep a history of your documents and download more each day. You can sign up with an e-mail address and a
-          password, with a link sent to your e-mail, or with Google.
+          password, with a link sent to your e-mail, or with Google<span :if={@microsoft_login}> or Microsoft</span>.
         </p>
         <p>
           Give a real e-mail address, keep your password and your log-in links to yourself, and tell us if you think
@@ -206,9 +210,13 @@ defmodule QuickSlipsWeb.LegalComponents do
 
   attr :contact_email, :string, default: nil
 
+  attr :microsoft_login, :boolean,
+    default: false,
+    doc: "true when \"Continue with Microsoft\" is offered"
+
   def privacy(assigns) do
     ~H"""
-    <.legal_page id="legal-privacy" title="Privacy policy" updated={~D[2026-11-13]}>
+    <.legal_page id="legal-privacy" title="Privacy policy" updated={~D[2026-11-17]}>
       <p>
         This page says what QuickSlips does with information about you. We have tried to keep it short and to say
         only what is true.
@@ -293,8 +301,12 @@ defmodule QuickSlipsWeb.LegalComponents do
           <strong>Your account.</strong>
           If you sign up we keep your e-mail address and when you confirmed it. We keep your password only in a
           scrambled form that cannot be turned back into the password. If you sign in with Google, we keep your
-          Google account identifier, your name and the link to your picture. We send you e-mails with log-in links
-          and account messages, through an e-mail provider.
+          Google account identifier, your name and the link to your picture.
+          <span :if={@microsoft_login}>
+            If you sign in with Microsoft, we keep your Microsoft account identifier and your name, and your e-mail
+            address with us is the sign-in address of that account.
+          </span>
+          We send you e-mails with log-in links and account messages, through an e-mail provider.
         </p>
         <p>
           <strong>What you save.</strong>
@@ -346,6 +358,12 @@ defmodule QuickSlipsWeb.LegalComponents do
             remembers the language and country you chose. It is set only when you choose one, and lasts one year.
           </li>
           <li>
+            <code>ueberauth.state_param</code> is set only when you start a sign-in with
+            Google<span :if={@microsoft_login}> or Microsoft</span>. It holds a random code
+            that is checked when you come back, to be sure that you started the sign-in yourself. It is deleted when
+            you come back, and in any case it lasts only until you close the browser.
+          </li>
+          <li>
             Your browser also keeps your light or dark choice, your choice about the visit statistics,
             and copies of the preview engine and the fonts, so that pages load faster.
           </li>
@@ -376,7 +394,11 @@ defmodule QuickSlipsWeb.LegalComponents do
           e-mail provider to send log-in and account
           e-mails<span :if={@contact_email}>
             and to deliver the messages of the contact form to us and their confirmations to the people who wrote them
-          </span>, and, only if you choose “Continue with Google”, Google to sign you in. They may handle data in
+          </span>, and, only if you choose “Continue with Google”, Google to sign you in.
+          <span :if={@microsoft_login}>
+            If you choose “Continue with Microsoft”, Microsoft signs you in.
+          </span>
+          They may handle data in
           other countries. We do not sell your data and we do not share it for advertising. We may share data if the
           law requires it.
         </p>

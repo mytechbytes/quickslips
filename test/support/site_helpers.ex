@@ -14,14 +14,22 @@ defmodule QuickSlips.SiteHelpers do
   @doc "Says which addresses are admins (`ADMIN_EMAILS`): the list of lower-case addresses."
   def put_admin_emails(emails), do: put_setting(:admin_emails, emails)
 
-  defp put_setting(key, value) do
-    previous = Application.fetch_env(:quickslips, key)
-    Application.put_env(:quickslips, key, value)
+  @doc """
+  Sets the keys of the app registered with Microsoft, like `[client_id: "a", client_secret: "b"]`. `[]` is none, and
+  there is then no Microsoft sign-in (the tests have keys unless a test says otherwise).
+  """
+  def put_microsoft_keys(keys), do: put_env(:ueberauth, Ueberauth.Strategy.Microsoft.OAuth, keys)
+
+  defp put_setting(key, value), do: put_env(:quickslips, key, value)
+
+  defp put_env(app, key, value) do
+    previous = Application.fetch_env(app, key)
+    Application.put_env(app, key, value)
 
     on_exit(fn ->
       case previous do
-        {:ok, old} -> Application.put_env(:quickslips, key, old)
-        :error -> Application.delete_env(:quickslips, key)
+        {:ok, old} -> Application.put_env(app, key, old)
+        :error -> Application.delete_env(app, key)
       end
     end)
   end

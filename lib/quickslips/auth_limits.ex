@@ -9,7 +9,7 @@ defmodule QuickSlips.AuthLimits do
       e-mail address that was typed (`login_email`). Past the limit of either, the log-in is turned away *before*
       the password is looked at, so a script gets nothing more out of trying. The limit of an address is higher than
       that of an account because many people can share an address. Someone who locks an account this way only
-      locks the password: the link by e-mail and Google still work.
+      locks the password: the link by e-mail, Google and Microsoft still work.
     * **Trying passwords with a script.** After a few wrong passwords from one address (`login_captcha`) the log-in asks
       for the Turnstile check as well. Until then it does not: a person who knows their password never meets it.
     * **Sending e-mail at somebody.** The sign-up and the "e-mail me a link" forms send an e-mail for whatever address is

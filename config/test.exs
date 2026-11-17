@@ -51,6 +51,11 @@ config :quickslips, :contact_email, nil
 config :quickslips, :turnstile, site_key: "test", secret_key: "test"
 config :quickslips, :turnstile_req_options, plug: {Req.Test, QuickSlips.Turnstile}
 
+# Microsoft sign-in is on in the tests, with keys that exist nowhere else (the tests never reach Microsoft)
+config :ueberauth, Ueberauth.Strategy.Microsoft.OAuth,
+  client_id: "test-microsoft-client-id",
+  client_secret: "test-microsoft-client-secret"
+
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false
 

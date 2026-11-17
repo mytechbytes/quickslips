@@ -43,7 +43,14 @@ config :phoenix_live_view,
 
 # Social Logins
 config :ueberauth, Ueberauth,
-  providers: [google: {Ueberauth.Strategy.Google, [default_scope: "email profile"]}]
+  providers: [
+    google: {Ueberauth.Strategy.Google, [default_scope: "email profile"]},
+    # Microsoft's own default scope also asks for "offline_access" (a refresh token). We never keep a token: we only
+    # sign the person in and read their name and sign-in address once, so that is all that is asked.
+    microsoft:
+      {Ueberauth.Strategy.Microsoft,
+       [default_scope: "https://graph.microsoft.com/user.read openid"]}
+  ]
 
 # Configure the mailer
 #

@@ -61,7 +61,10 @@ defmodule QuickSlipsWeb.UserLive.Registration do
 
         <div class="mt-6">
           <.divider>{gettext("or")}</.divider>
-          <div class="mt-6"><.google_button /></div>
+          <div class="mt-6 space-y-3">
+            <.google_button />
+            <.microsoft_button />
+          </div>
         </div>
 
         <:footer>

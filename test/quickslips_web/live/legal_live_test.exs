@@ -135,13 +135,57 @@ defmodule QuickSlipsWeb.LegalLiveTest do
 
       assert remembered.resp_cookies["_quick_slips_web_user_remember_me"]
 
+      # Starting a sign-in with Google or with Microsoft sets the one that checks, when the visitor comes back,
+      # that they started it themselves (Ueberauth's `state`). It is a session cookie: no `max_age`, no `expires`.
+      for provider <- ~w(google microsoft) do
+        started = get(build_conn(), "/auth/#{provider}")
+
+        header =
+          started
+          |> get_resp_header("set-cookie")
+          |> Enum.find(&String.starts_with?(&1, "ueberauth.state_param="))
+
+        assert header, provider
+        refute header =~ ~r/max-age|expires/i, provider
+      end
+
       assert Enum.sort(listed) ==
                Enum.sort([
                  "_quickslips_key",
                  "_quick_slips_web_user_remember_me",
                  "vid",
-                 QuickSlipsWeb.Plugs.Locale.cookie_name()
+                 QuickSlipsWeb.Plugs.Locale.cookie_name(),
+                 "ueberauth.state_param"
                ])
+    end
+
+    test "says that the cookie of the sign-in goes away when the visitor comes back, as it does",
+         %{
+           conn: conn
+         } do
+      # Ueberauth deletes it as soon as the state that comes back matches it. A callback with a state that does not
+      # match (a forged one) is turned away and the cookie is left, which is why the text also says it ends with the browser.
+      started = get(conn, ~p"/auth/microsoft")
+
+      state =
+        started
+        |> redirected_to(302)
+        |> URI.parse()
+        |> Map.fetch!(:query)
+        |> URI.decode_query()
+        |> Map.fetch!("state")
+
+      cookie = started.resp_cookies["ueberauth.state_param"].value
+
+      returned =
+        build_conn()
+        |> put_req_header("cookie", "ueberauth.state_param=#{cookie}")
+        |> get("/auth/microsoft/callback", %{"state" => state, "error" => "access_denied"})
+
+      assert returned.resp_cookies["ueberauth.state_param"].max_age == 0
+
+      assert words(conn, "/privacy", "legal-privacy") =~
+               "It is deleted when you come back, and in any case it lasts only until you close the browser."
     end
 
     test "says that Google Analytics is used, names its cookies and says how to stop it", %{
@@ -195,6 +239,39 @@ defmodule QuickSlipsWeb.LegalLiveTest do
       assert text =~ "we do not keep those details or the PDF"
       assert text =~ "Cloudflare"
       assert text =~ "Google"
+    end
+  end
+
+  describe "sign-in with Microsoft" do
+    # The tests have the keys of the app registered with Microsoft (config/test.exs), so the button is there.
+    test "is in the terms and the privacy policy while the button is offered, with what is kept",
+         %{
+           conn: conn
+         } do
+      terms = words(conn, "/terms", "legal-terms")
+      privacy = words(conn, "/privacy", "legal-privacy")
+
+      assert terms =~ "or with Google or Microsoft."
+
+      assert privacy =~
+               "If you sign in with Microsoft, we keep your Microsoft account identifier and your name"
+
+      # the sentence about Google is as it was, and one about Microsoft follows it
+      assert privacy =~
+               "only if you choose “Continue with Google”, Google to sign you in. If you choose “Continue with Microsoft”, Microsoft signs you in."
+    end
+
+    test "is in neither page while there is no button: the pages say only what the site does", %{
+      conn: conn
+    } do
+      put_microsoft_keys([])
+
+      assert words(conn, "/terms", "legal-terms") =~ "or with Google."
+      refute words(conn, "/terms", "legal-terms") =~ "Microsoft"
+      refute words(conn, "/privacy", "legal-privacy") =~ "Microsoft"
+      # Google is still said
+      assert words(conn, "/privacy", "legal-privacy") =~
+               "only if you choose “Continue with Google”, Google to sign you in"
     end
   end
 

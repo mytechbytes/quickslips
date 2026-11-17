@@ -49,6 +49,15 @@ config :ueberauth, Ueberauth.Strategy.Google.OAuth,
   client_id: System.get_env("GOOGLE_CLIENT_ID"),
   client_secret: System.get_env("GOOGLE_CLIENT_SECRET")
 
+# Microsoft is optional: with no keys set there is no "Continue with Microsoft" button and /auth/microsoft is a 404
+# (`QuickSlips.SocialLogin`), so the code can be deployed before the app is registered with Microsoft. The tests have keys
+# of their own (config/test.exs) and do not read these.
+if config_env() != :test do
+  config :ueberauth, Ueberauth.Strategy.Microsoft.OAuth,
+    client_id: System.get_env("MICROSOFT_CLIENT_ID"),
+    client_secret: System.get_env("MICROSOFT_CLIENT_SECRET")
+end
+
 # Cloudflare Turnstile. Locally the keys come from .env (Cloudflare's dummy pair); the prod block below
 # makes the release refuse to start without the real ones. The tests have keys of their own (config/test.exs)
 # and do not read these, so that the shell of whoever runs them cannot change what they check.
